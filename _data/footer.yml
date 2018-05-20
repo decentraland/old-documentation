@@ -1,16 +1,16 @@
 - name:
-  link: https://facebook.com/
+  link: https://facebook.com/decentraland
   new_window: true
   social_icon: Facebook
 - name:
-  link: https://twitter.com/
+  link: https://twitter.com/decentraland
   social_icon: Twitter
   new_window: true
 - name:
-  link: https://youtube.com/
-  social_icon: YouTube
+  link: https://github.com/decentraland
+  social_icon: Github
   new_window: true
 - name: 
   link: /feed.xml
-  social_icon: RSS
+  social_icon: Discord
   new_window: false

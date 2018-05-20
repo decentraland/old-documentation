@@ -1,24 +1,24 @@
 # ----
 # Site
 
-title: Base
-url: "https://orange-ape.cloudvent.net/"
+title: Decentraland
+url: "https://docs.decentraland.org/"
 baseurl:
 google_analytics_key:
 disqus_shortname:
 newsletter_action:
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
-logo: /siteicon.png
-description: Knowledge base template for Jekyll.
+logo: /images/logo.png
+description: Decentraland documentation
 author:
   name:
   email:
-  twitter: # twitter username without the @ symbol
+  twitter: decentraland
 social:
-  name: Base Template
+  name: Decentraland Documentation
   links:
-    - https://github.com/CloudCannon/base-jekyll-template
+    - https://github.com/decentraland/documentation
 
 # -----
 # Build

@@ -9,9 +9,18 @@
 }
 
 header {
-	padding: 16px 0 10px 0;
+
+  box-shadow: 0px 2px 40px 0px rgba(0,0,0,0.08);
+
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 9999;
+  top: 0;
+  width: 100%;
+  position: fixed;
+
+  min-height: 66px;
+
 	background: $header-color;
-	color: #fff;
 
 	form {
 		position: relative;
@@ -27,6 +36,16 @@ header {
 			display: flex;
 		}
 
+    .logo-name {
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 23px;
+      font-size: 18px;
+      margin-left: 10px;
+      font-family: "Source Sans Pro",Helvetica,sans-serif;
+      font-weight: 700;
+    }
+
 		.logo {
 			a {
 				display: block;
@@ -34,10 +53,8 @@ header {
 			}
 
 			svg {
-				fill: #fff;
-				width: 100%;
+				width: 46px;
 				height: 46px;
-				min-width: 100px;
 			}
 		}
 
@@ -47,6 +64,8 @@ header {
 	}
 
 	nav {
+    text-align: right;
+
 		@media #{$mid-point} {
 			flex: 1;
 			margin: 0 0 0 10px;
@@ -79,31 +98,41 @@ header {
 		}
 
 		a {
-			color: #fff;
+			color: #90949C;
 			text-decoration: none;
 			display: block;
-			padding: 20px 0;
+      padding: 20px 0;
+
+      font-variant: all-small-caps;
 
 			@media #{$mid-point} {
 				display: inline-block;
-				padding: 7px 0;
+				padding: 12px 0 19px;
 				margin: 0 15px;
 				border-bottom: 2px solid rgba(255, 255, 255, 0)
 			}
 
 			&.active, &.active:hover {
-				border-bottom-color: rgba(255, 255, 255, .3);
+				border-bottom-color: $action-color;
 			}
 
 			&:hover {
 				text-decoration: none;
-				color: #fff;
+				color: #666;
 				@media #{$mid-point} {
 					border-bottom-color: rgba(255, 255, 255, .1);
 				}
 			}
 		}
 	}
+}
+
+.show_hero_search header {
+  position: relative;
+}
+
+.top-bar {
+  padding: 10px 10px 0;
 }
 
 .nav-open header nav {
@@ -116,8 +145,7 @@ header {
 	font-size: 1.6em;
 	line-height: 1em;
 	text-decoration: none;
-	color: #fff;
-	top: 4px;
+	top: 18px;
 
 	@media #{$mid-point} {
 		display: none;
@@ -128,7 +156,7 @@ header {
 	display: none;
 	text-align: center;
 	flex: 0 0 100%;
-	padding: 60px 0 30px 0;
+	padding: 0px 0 30px 0;
 
 	form {
 		position: relative;
@@ -139,7 +167,7 @@ header {
 		svg {
 			fill: #eee;
 			position: absolute;
-			top: 31px;
+			top: 27px;
 			right: 12px;
 			display: inline-block;
 			width: 36px;
@@ -150,7 +178,6 @@ header {
 
 	h1 {
 		// font-size: 2.4em;
-		color: #fff;
 	}
 
 	input[type=search] {

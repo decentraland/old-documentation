@@ -13,8 +13,13 @@
 
 .content {
 	background: #fff;
-	padding: 60px 0;
+	padding: 120px 0 60px;
 }
+
+.show_hero_search .content {
+  padding: 0 0 60px;
+}
+
 
 dt, h2 {
 	a.header-link {
