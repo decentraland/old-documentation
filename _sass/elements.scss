@@ -1,3 +1,5 @@
+* { box-sizing: border-box; }
+
 html, body {
 	padding: 0;
 	margin: 0;
@@ -32,16 +34,4 @@ ul, ol {
 	li {
 		margin: 0 0 10px 0;
 	}
-}
-
-code, pre, tt {
-	font-family: $monospace-font-family;
-	font-size: 16px;
-	white-space: pre-wrap;
-	line-height: 23px;
-	font-weight: 400;
-	background-color: #404145;
-	color: #FAFAFA;
-	border-radius: 2px;
-	padding: 2px 5px;
 }

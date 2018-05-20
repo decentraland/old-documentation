@@ -5,7 +5,7 @@ description: Decentraland Software Development Kit
 categories:
   - SDK
 type: Document
-set: getting-started
+set: getting-started-sdk
 set_order: 3
 ---
 The Decentraland CLI is distributed via [npm](https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm), and is available for MacOS, Windows, and Linux based operating systems.
@@ -97,3 +97,175 @@ export default class MyScene extends ScriptableScene<any, any> {
   }
 }
 ```
+
+## package.json
+
+This file is used to give information to npm that allows it to identify the project as well as handle the project's dependencies.  Decentraland scenes need two packages:
+
+* `metaverse-api`, which allows the scene to communicate with the world engine
+* `typescript`, to compile the file scene.tsx to javascript
+
+> You don’t need the `typescript` package when creating static scenes. This is only required when you are building remote and interactive scenes.
+
+## build.json
+
+Decentraland build configuration file. This guides our command line tool and provides the context it needs to build a static scene, compile TypeScript, or generate the code to connect to a remote WebSocket.
+
+## tsconfig.json
+
+Directories containing a tsconfig.json file are root directories for TypeScript Projects. The tsconfig.json file specifies the root files and options required to compile your project in JavaScript. 
+
+> **Why do we use Typescript?**  
+> TypeScript is a superset of JavaScript and allows you to employ object oriented programming and type declaration. Features like autocomplete and type-checking speed up development times and allow for the creation of a solid codebase. These features are all key components to a positive developer experience.
+> 
+> You can use another tool or language instead of TypeScript, so long as your scripts are contented within a single Javascript file (scene.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
+
+# Scene types
+
+## Static Scenes
+
+Static scenes are merely collections of 3D objects, textures, and audio arranged in a scene using XML. You can take content from an application like [Blender](https://www.blender.org/), or a 3D model downloaded from [Sketchfab](https://sketchfab.com/) and using the markup stored in `scene.xml`, arrange it in your scene.
+
+```xml
+<scene>
+  <gltf-model
+    position="10 0 0"
+    scale="0.5 0.5 0.5"
+    src="models/Forest/Forest_20x20.gltf"
+    id="Forest"
+  />
+  <!-- OBJ models are also supported:
+    <obj-model position="10 0 0"
+      scale="0.5 0.5 0.5"
+      src="models/Forest/Forest_10x10.obj"
+      mtl="models/Forest/Forest_10x10.mtl"
+     id="Forest"/>
+  -->
+</scene>
+```
+
+## Dynamic Single Player Scenes
+
+If you choose to generate a dynamic single player scene a `scene.tsx` file will be created. This file exports a `ScriptableScene` that lets you split the experience into independent, reusable pieces so that you can isolate your required behavior. 
+
+### Scriptable Scene Lifecycle
+
+Each `ScriptableScene` has several “lifecycle methods” that you can override to run code at particular times in the process. Methods prefixed with `will` are called right before something happens, and methods prefixed with `did` are called right after something happens.
+
+```tsx
+interface ScriptableScene<Props, State> {
+  props: Props
+  state: State
+
+  /**
+   * Called to determine whether the change in props and state should trigger a re-render.
+   *
+   * If false is returned, `ScriptableScene#render`, and `sceneDidUpdate` will not be called.
+   */
+  shouldSceneUpdate?(nextProps: Props, nextState: State): boolean
+
+  /**
+   * Called immediately before a scene is destroyed. Perform any necessary cleanup in this method, such as
+   * cancelled network requests, or cleaning up any elements created in `sceneDidMount`.
+   */
+  sceneWillUnmount?(): void
+
+  /**
+   * Called immediately after a compoment is mounted. Setting state here will trigger re-rendering.
+   */
+  sceneDidMount?(): void
+
+  /**
+   * Called immediately after updating occurs. Not called for the initial render.
+   */
+  sceneDidUpdate?(prevProps: Readonly<Props>, prevState: Readonly<State>): void
+}
+```
+
+For a better understanding of the API, refer to [this overview](https://docs.decentraland.org/docs/sdk-overview#section-elements-of-the-api) and start browsing through our [scene examples](https://github.com/decentraland/sample-scenes).
+
+## Dynamic Multiplayer Scenes
+
+All of the components that describe your experience are compiled into one script. When your parcels are rendered in the client, this script runs in the context of a WebWorker, or remotely in a server.  This makes it possible for you to run custom logic inside the player's client, allowing you to create richer experiences in Decentraland.
+
+When you create a multiplayer scene, your scene.json will point to a host URL. The scene.json script will communicate with the host application through a JSON-RPC2 based protocol using a defined transport.  The CLI bootstraps a server that configures a WebSocketTransport and inits a RemoteScene.  For running this scene you should start the WebSocket server first. 
+
+# Preview your scene
+
+To preview your rendered scene locally before uploading it to IPFS, run
+
+```
+dcl preview
+```
+
+This preview also provides some useful debugging information and tools to help you understand how different entities are rendered. The preview mode provides information describing parcel boundaries and environmental and resource information, like the number of entities being rendered, the current FPS rate, user position, and whether or not different elements are exceeding parcel boundaries.
+
+> When previewing old scenes that you built before this release of the SDK, you will still have to install the latest versions of the `metaverse-api` and `metaverse-rpc` packages in your project.
+
+## Parcel limitations
+
+In order to improve performance in the metaverse, we have established a set of limits that every scene must follow.  If a scene exceeds these limitations then the parcel won’t be loaded and the preview will display an error message. With *n* representing the number of parcels that a scene will fill, the following are the maximum number of elements allowed:
+
+* **Triangles:** *log2(n+1) x 10000*
+* **Entities:**  *log2(n+1)  x 200*
+* **Materials:**  *log2(n+1) x 300*
+* **Textures:**  *log2(n+1) x 10* (up to 512x512px each)
+
+Parcel boundaries are enforced. If any content exceeds parcel boundaries, the preview will display highlight that content in red. **Height** is restricted to **log2(n+1)  x 20** meters where **n** is the number of parcels included in the scene.
+
+When your parcel is rendered, any static content extending beyond your parcel’s boundaries will be replaced with an error message. All dynamic entities that cross your parcel boundaries will be deleted from the scene.
+
+# Publish Your Scene
+
+To publish your scene:
+
+* Log into the Metamask account with the same public address associated with your parcel.
+* Start up an IPFS daemon by following [these instructions](https://ipfs.io/docs/getting-started/).
+* Finally, run `dcl deploy`
+
+This will update your parcel with your latest changes in addition to uploading your content to IPFS. To improve performance and user experience, your content will be pinned to Decentraland’s main IPFS server to ensure that the data needed to render your parcel is readily available 
+
+> You don’t have to pay a gas fee everytime you deploy your content. The smart contract for your LAND is only updated when you link your content to IPNS, the naming service for IPFS.
+
+While this command will deploy your scene to your parcel, remember that users can’t currently explore Decentraland, so your content won’t be discoverable “in-world”.
+
+## What is IPFS?
+
+[IPFS](https://ipfs.io/) (short for Inter-Planetary File System) is a hypermedia protocol and a P2P network for distributing files. The filesystem is content-addressed, meaning that each file is identified by its contents, not an arbitrary filename.
+
+We use IPFS to host and distribute all scene content in a similar way to BitTorrent, keeping the Decentraland network distributed. Of course, for better performance, we run an “IPFS Gateway”, which means that Decentraland is hosting most of the content referenced from the blockchain (after certain filters are applied) to improve the experience of exploring the world.
+
+In order to upload your files, you’ll need to run an IPFS node. After “pinning” your scene’s content (that means, notifying the network that your files are available) our IPFS nodes will try to download the files using the IPFS network, eventually reaching your computer and copying over the files.
+
+To run an IPFS node, please follow [these instructions](https://ipfs.io/docs/getting-started/).
+
+### What does IPFS have to do with my LAND?
+
+IPFS serves two primary functions for Decentraland.
+
+1. IPFS stores and distributes all of the assets required to render your scenes.
+2. The `dcl deploy` command links these assets with the LAND parcel specified in your **scene.json** file. Whenever you redeploy your scene, the CLI will update your LAND smart contract, if needed, to point to the most recent content available on IPFS.
+
+# Scene examples
+
+To get you up and running, and to illustrate what kind of experiences you can build using the SDK, we’ve put together some [code and scene examples](https://github.com/decentraland/sample-scenes).
+
+## Static Scene
+
+This is an example of a completely static scene. We've laid out a sample space to show off how you can use a layout from blender or a resource like [Sketchfab](https://sketchfab.com/) to build your first static Decentraland scene. [Link](https://github.com/decentraland/sample-scenes/tree/master/01-static-scene)
+
+## Dynamic Animation
+
+With this Dynamic Animation, we demonstrate how to employ simple data binding to objects in your scene. Translation, rotation, and scale are all properties you can bind to state values. [Link](https://github.com/decentraland/sample-scenes/tree/master/02-dynamic-animation)
+
+## Interactive Content
+
+The interactive door in this example shows how to handle reticle click input events from the user. The large, red dot in the center of the viewport determines which object you're currently focused on. [Link](https://github.com/decentraland/sample-scenes/tree/master/03-interactive-door)
+
+## Skeletal Animations
+
+In your scenes, you can load up an interactive GLTF model and trigger its animations. This is an example of how to do that. [Link](https://github.com/decentraland/sample-scenes/tree/master/04-skeletal-animation)
+
+## Multiplayer Content
+
+In this example, you can interact with a door by opening and closing it, while another player is in the same room. This simple example is built to give you a glimpse into how a multi-user environment will work where each user is able to interact with the same entities. [Link](https://github.com/decentraland/sample-scenes/tree/master/08-multiuser-EXPERIMENTAL)

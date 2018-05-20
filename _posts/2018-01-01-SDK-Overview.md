@@ -5,7 +5,7 @@ description: Decentraland Software Development Kit
 categories:
   - SDK
 type: Document
-set: getting-started
+set: getting-started-sdk
 set_order: 2
 ---
 

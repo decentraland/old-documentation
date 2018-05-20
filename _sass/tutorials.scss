@@ -111,7 +111,8 @@
 	}
 
 	.tutorial-content {
-		width: 100%;
+    width: 100%;
+    max-width: 900px;
 
 		@media #{$mid-point} {
 			margin-left: 230px;

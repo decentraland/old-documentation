@@ -1,25 +1,4 @@
-# Base
-
-Knowledge base template for Jekyll. Browse through a [live demo](https://orange-ape.cloudvent.net/).
-
-![Base template screenshot](images/_screenshot.png)
-
-Base was made by [CloudCannon](http://cloudcannon.com/), the Cloud CMS for Jekyll.
-
-Find more templates, themes and step-by-step Jekyll tutorials at [CloudCannon Academy](https://learn.cloudcannon.com/).
-
-## Features
-
-* Tutorials organised by category
-* Two types of tutorials - text and video
-* Ability to have a "tutorial series"
-* FAQ section
-* Disqus comments
-* Sticky sidebar for main headings in tutorials
-* Optimised for editing in [CloudCannon](http://cloudcannon.com/)
-* RSS/Atom feed
-* SEO tags
-* Google Analytics
+# Decentraland documentation
 
 ## Setup
 
@@ -76,3 +55,7 @@ To add a tutorial/post to a series:
 
 * Exposed as a data file to give clients better access.
 * Set in the _Data_ / _Footer_ section.
+
+---
+
+Base template was made by [CloudCannon](http://cloudcannon.com/), the Cloud CMS for Jekyll.
