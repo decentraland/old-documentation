@@ -60,12 +60,13 @@
       $('svg').click(function () {
         $(this).parent('form').submit();
       });
+
+      $("#open-nav").click(function (event) {
+        event.preventDefault();
+        $("body").toggleClass("nav-open");
+      });
     });
 
-    document.getElementById("open-nav").addEventListener("click", function (event) {
-      event.preventDefault();
-      document.body.classList.toggle("nav-open");
-    });
   </script>
 </body>
 

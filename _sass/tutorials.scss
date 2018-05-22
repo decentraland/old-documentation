@@ -78,7 +78,7 @@
     top: 85px;
 		width: 200px;
 
-		@media #{$mid-point} {
+		@media #{$desktop} {
 			display: block;
 		}
 
@@ -101,10 +101,13 @@
 			text-decoration: none;
 			display: block;
 			-webkit-transition: transform .2s ease;
-			line-height: 1.3em;
+      line-height: 1.3em;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 500;
 
 			&.active {
-				color: $link-color;
+				color: #000;
         transform: translateX(10px);
 			}
 		}
@@ -114,7 +117,7 @@
     width: 100%;
     max-width: 900px;
 
-		@media #{$mid-point} {
+		@media #{$desktop} {
 			margin-left: 230px;
 		}
 	}

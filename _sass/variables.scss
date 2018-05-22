@@ -1,12 +1,19 @@
 // Breakpoints
 $tablet: "(min-width: 450px)";
 $mid-point: "(min-width: 750px)";
-$desktop: "(min-width: 900px)";
+$desktop: "(min-width: 1150px)";
 
 // Colors
+// Colors
 
+$primary-color: #4B4F56;
+$action-color: $primary-color;
+$white-color: #fff;
+$black-color: #000;
+$blue-color: #4080FF;
+$dark-gray-color: #333;
 $dark-grey: #222;
-$medium-grey: #666;
+$medium-grey: #777;
 $light-grey: #ccc;
 $header-color: rgba(255,255,255,.98);
 
@@ -17,7 +24,7 @@ $heading-font-family: $base-font-family;
 
 // Font Sizes
 $base-font-size: 1em;
-$text-font-weight: 100;
+$text-font-weight: normal;
 
 // Line height
 $base-line-height: 1.45;
@@ -29,15 +36,7 @@ $base-spacing: $base-line-height * 1em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
-// Colors
-$primary-color: #4B4F56;
-$action-color: $primary-color;
-$white-color: #fff;
-$black-color: #000;
-$blue-color: #4080FF;
-$dark-gray-color: #333;
-$medium-gray-color: #999;
-$light-gray-color: #ccc;
+
 
 // Font Colors
 $base-font-color: #000;
@@ -50,7 +49,7 @@ $link-color: #4A4A4A;
 $link-hover-color: #111;
 
 // Border
-$base-border-color: $light-gray-color;
+$base-border-color: $light-grey;
 $base-border: 1px solid $base-border-color;
 
 // Background Colors
