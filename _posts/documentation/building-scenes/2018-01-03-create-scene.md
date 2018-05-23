@@ -11,8 +11,7 @@ set_order: 2
 
 ## Entities
 
-Entities are the basic unit in Decentraland scenes, those are our equivalent to Elements in a DOM tree. They share the
-same basic shape, they have a tag, attributes and children. That means we can create trees of entities.
+Entities are the basic unit in Decentraland scenes; those are our equivalent to Elements in a DOM tree. They share the same basic shape; they have a tag, attributes, and children. That means we can create trees of entities.
 
 ```ts
 interface IEntity {
@@ -24,14 +23,12 @@ interface IEntity {
 
 ## Kind of scenes
 
-In Decentraland, the scene is the representation of the content of the scene. There is roughly two ways to create
-scenes:
+In Decentraland, the scene is the representation of the content of the scene. There are roughly two ways to create scenes:
 
 * **static scene**: xml file describing static objects in the scene
 * **dynamic scene**: jsx/tsx files with dynamic content, those may create move and mutate entities in the scene
 
-Since we decoupled the execution of the scenes from the underlying engine, we have abstracted the communication protocol
-and that allows us to run the scenes both locally in a WebWorker and remotely in a Node.js server thru WebSockets.
+Since we decoupled the execution of the scenes from the underlying engine, we have abstracted the communication protocol, and that allows us to run the scenes both locally in a WebWorker and remotely in a Node.js server thru WebSockets.
 
 ## Basic scene structure
 
@@ -47,8 +44,7 @@ The root of the tree is always a `<scene>` element like in this demo scene (xml)
 </scene>
 ```
 
-Since the scene is a transform node, it can be translated, scaled and rotated. This becomes useful when you want to
-change the center of coordinates of the parcel:
+Since the scene is a transform node, it can be translated, scaled and rotated. Those capabilities become useful when you want to, i.e. change the center of coordinates of the parcel:
 
 ```xml
 <scene position="5 5 5">
@@ -96,10 +92,7 @@ class Scene extends ScriptableScene {
 > in XML you do `albedo-color="#ffeeaa"` (kebab-case)  
 > in JSX you do `albedoColor="#ffeeaa"` (camelCase)
 
-HTML and XHTML are case insensitive for attributes, that generate conflicts with the implementation of certain
-attributes like `albedoColor` because reading `albedocolor` sounds weird and having hardcoded keys with hyphens in the
-code was so dirty, we followed the React convention of having every property camel cased in code and hyphenated in the
-HTML/XML representation. Example:
+HTML and XHTML are case insensitive for attributes, that generate conflicts with the implementation of certain attributes like `albedoColor` because reading `albedocolor` sounds weird, and having hardcoded keys with hyphens in the code was so dirty. We followed the React convention of having every property camel cased in code and hyphenated in the HTML/XML representation. Example:
 
 ```xml
 <scene>
@@ -151,15 +144,13 @@ description of each of these scene types.
 
 ## scene.json
 
-The scene.json file is a JSON formatted manifest for a scene in the world. A scene can spawn multiple parcels of LAND,
-or a single LAND parcel. The scene.json manifest describes what objects exist in the scene, a list of any assets needed
-to render it, contact information for the parcel owner, and security settings. For more information and an example of a
-scene.json file, please visit the
-[Decentraland specification proposal](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki).
+The `scene.json` file is a JSON formatted manifest for a scene in the world. A scene can spawn multiple parcels of LAND,
+or a single LAND parcel. The `scene.json` manifest describes what objects exist in the scene, a list of any assets needed to render it, contact information for the parcel owner, and security settings. For more information and an example of a
+`scene.json` file, please visit the [Decentraland specification proposal](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki).
 
 ## scene.tsx
 
-If you are creating a locally run scene, this file contains the code that will be run for each client that is visiting your parcel. A very basic example of these scenes looks like this:
+If you are creating a locally run scene, this file contains the code that will run for each client that is visiting your parcel. An elementary example of these scenes looks like this:
 
 ```tsx
 import { ScriptableScene, createElement } from "metaverse-api";
@@ -180,7 +171,7 @@ export default class MyScene extends ScriptableScene<any, any> {
 
 ## package.json
 
-This file is used to give information to npm that allows it to identify the project as well as handle the project's dependencies. Decentraland scenes need two packages:
+This file is used to give information to NPM that allows it to identify the project as well as handle the project's dependencies. Decentraland scenes need two packages:
 
 * `metaverse-api`, which allows the scene to communicate with the world engine
 * `typescript`, to compile the file scene.tsx to javascript
@@ -199,10 +190,10 @@ You can also use the same command line to create Node.js servers for the multipl
 
 ## tsconfig.json
 
-Directories containing a tsconfig.json file are root directories for TypeScript Projects. The tsconfig.json file specifies the root files and options required to compile your project in JavaScript.
+Directories containing a `tsconfig.json` file are root directories for TypeScript Projects. The `tsconfig.json` file specifies the root files and options required to compile your project in JavaScript.
 
 > **Why do we use Typescript?**  
-> TypeScript is a superset of JavaScript and allows you to employ object oriented programming and type declaration. Features like autocomplete and type-checking speed up development times and allow for the creation of a solid codebase. These features are all key components to a positive developer experience.
+> TypeScript is a superset of JavaScript and allows you to employ object-oriented programming and type declaration. Features like autocomplete and type-checking speed up development times and allow for the creation of a solid codebase. These features are all key components to a positive developer experience.
 >
 > You can use another tool or language instead of TypeScript, so long as your scripts are contented within a single Javascript file (scene.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
 
