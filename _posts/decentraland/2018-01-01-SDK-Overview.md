@@ -3,10 +3,10 @@ date: 2018-01-01
 title: SDK Overview
 description: Decentraland Software Development Kit
 categories:
-  - SDK
+  - Decentraland
 type: Document
-set: getting-started-sdk
-set_order: 2
+set: getting-started
+set_order: 1
 ---
 
 # Introduction
@@ -52,19 +52,7 @@ For additional terms, definitions, and explanations, please refer to our [comple
 
 # Installing the SDK
 
-The SDK includes a lot of different parts and components. For detailed, step-by-step instructions on how to download and install everything in the SDK, please refer to the **[Quick Start Guide](https://docs.decentraland.org/docs/sdk-quick-start-guide)**.
-
-# Components of the SDK
-
-The SDK includes the following tools and resources:
-
-* The **Command Line Interface** (CLI)
-* The **API** contained in the package `metaverse-api`
-* Supporting documentation, including:
-  * This Overview
-  * [SDK Quick Start Guide](https://docs.decentraland.org/docs/sdk-quick-start-guide)
-  * [Code and Scene Examples](https://github.com/decentraland/sample-scenes)
-  * [API Reference](https://decentraland.github.io/cli/index.html)
+The SDK includes a lot of different parts and components. For detailed, step-by-step instructions on how to download and install everything in the SDK, please refer to the ** [SDK Quick Start Guide](/documentation/installation-guide)**.
 
 ## CLI
 
@@ -72,7 +60,7 @@ The Decentraland Command Line Interface (CLI) allows you to create, deploy, and 
 
 After generating your new Decentraland scene locally on your own machine, you can immediately begin editing your scene using a text editor of your choice. After testing your scene locally, you can use the CLI to upload your content to IPFS.
 
-For more step-by-step instructions on installing the CLI, please read our [Quick Start Guide](https://docs.decentraland.org/docs/sdk-quick-start-guide) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
+For more step-by-step instructions on installing the CLI, please read our  [SDK Quick Start Guide](/documentation/installation-guide) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
 
 ## API
 
@@ -93,66 +81,3 @@ Internally, the scene you present is generated through a tree of entities.
 ## What are the components?
 
 For a complete reference of the API, with descriptions of every component and method, please see the [API Reference](https://decentraland.github.io/cli/).
-
-The following systems can be accessed from your scene script:
-
-### CharactersIdentity
-
-This exposes the various information describing the player’s location within a parcel or group of parcels (referred to as estates). You can use the CharactersIdentity component to:
-
-* Retrieve the x,y coordinates of a character
-* Retrieve the x,y coordinates of the parcel that a character is currently on
-
-### EntityController
-
-This exposes all of the methods you can use in your scripts to interact with and manipulate the various entities contained in your scene. You can use the EntityController to:
-
-* Render an entity
-* Set the attributes of a given entity specified by its entityID
-* Retrieve the attributes of a given entity specified by its entityID
-* Retrieve the attributes of any entity calling the getOwnAttributes method
-* Tell an entity to begin, or stop, listening for an event
-
-### `EthereumController`
-
-The EthereumController contains all of the logic you can use to require and facilitate Ethereum transactions within a script. You can use the EthereumController to:
-
-* Determine if a specified address is the owner of a specified token
-* Send one or more tokens to a specified address
-
-### ParcelIdentity
-
-The ParcelIdentity component can be used to obtain the definition of any parcel in Decentraland. You can use the ParcelIdentity component to:
-
-* Retrieve the x,y coordinates of any parcel in Decentraland
-
-### SoundController
-
-This component contains all of the methods you can use to play or trigger sounds in your scenes, while controlling the volume, looping, etc.
-
-### UserIdentity
-
-The UserIdentity component allows you to retrieve the public key of a user provided by their MetaMask account.
-
-# Interactive start kits
-
-We’ve put together some example scenes to help show you what sort of content and experiences you can build using the SDK.
-
-## [Static Scene](https://github.com/decentraland/sample-scenes/tree/master/01-static-scene)
-
-This is an example of a completely static scene. We've laid out a sample space to show off how you can use a layout from blender or a resource like [Sketchfab](https://sketchfab.com/) to build your first static Decentraland scene.
-
-## [Dynamic Animation](https://github.com/decentraland/sample-scenes/tree/master/02-dynamic-animation)
-
-With this Dynamic Animation, we demonstrate how to employ simple data binding to objects in your scene. Translation, rotation, and scale are all properties you can bind to state values.
-
-## [Interactive Content](https://github.com/decentraland/sample-scenes/tree/master/03-interactive-door)
-
-The interactive door in this example shows how to handle reticle click input events from the user. The large, red dot in the center of the viewport determines which object you're currently focused on.
-
-## [Skeletal Animations](https://github.com/decentraland/sample-scenes/tree/master/04-skeletal-animation)
-In your scenes, you can load up an interactive GLTF model and trigger its animations. This is an example of how to do that.
-
-## [Multiplayer Content](https://github.com/decentraland/sample-scenes/tree/master/08-multiuser-EXPERIMENTAL)
-
-In this example, you can interact with a door by opening and closing it, while another player is in the same room. This simple example is built to give you a glimpse into how a multi-user environment will work where each user is able to interact with the same entities.

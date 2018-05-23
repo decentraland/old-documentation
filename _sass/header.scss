@@ -37,6 +37,7 @@ header {
 		}
 
     .logo-name {
+      color: #000;
       display: inline-block;
       vertical-align: top;
       margin-top: 23px;
@@ -174,10 +175,6 @@ header {
 			height: 40px;
 			cursor: pointer;
 		}
-	}
-
-	h1 {
-		// font-size: 2.4em;
 	}
 
 	input[type=search] {

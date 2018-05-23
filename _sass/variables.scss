@@ -7,7 +7,6 @@ $desktop: "(min-width: 1150px)";
 // Colors
 
 $primary-color: #4B4F56;
-$action-color: $primary-color;
 $white-color: #fff;
 $black-color: #000;
 $blue-color: #4080FF;
@@ -16,6 +15,8 @@ $dark-grey: #222;
 $medium-grey: #777;
 $light-grey: #ccc;
 $header-color: rgba(255,255,255,.98);
+
+$action-color: $blue-color;
 
 // Typography
 $base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

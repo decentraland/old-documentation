@@ -20,7 +20,11 @@
 }
 
 .category {
-	flex: 0 0 100%;
+  flex: 0 0 100%;
+  
+  a {
+    color: $primary-color;
+  }
 
 	h3 {
 		text-transform:capitalize;
