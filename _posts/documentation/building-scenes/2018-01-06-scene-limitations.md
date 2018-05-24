@@ -15,7 +15,7 @@ allowed:
 
 * **Triangles:** `log2(n+1) x 10000` Amount of triangles of all the scene models
 * **Entities:** `log2(n+1) x 200` Amount entities of the scene
-* **Bodies:** `log2(n+1) x 200` Amount of meshes of the scene
+* **Bodies:** `log2(n+1) x 300` Amount of meshes of the scene
 * **Materials:** `log2(n+1) x 20` Amount of materials of the scene, will take into account materials from models
 * **Textures:** `log2(n+1) x 10` Amount of textures of the scene, will take into account the textures from the models's materials
 * **Height:** `log2(n+1) x 20` Height in meters
