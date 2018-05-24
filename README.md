@@ -1,5 +1,6 @@
 # Decentraland documentation
 
+
 ## Setup
 
 1.  Add your site and author details in `_config.yml`.
