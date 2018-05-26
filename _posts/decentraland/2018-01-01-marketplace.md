@@ -11,7 +11,9 @@ set_order: 1
 
 ## What is it?
 
-The Marketplace allows you to view a two-dimensional map of every LAND parcel in Decentraland, helping you visualize Genesis City. Specifically, the Marketplace allows you to:
+The Marketplace is the go-to place to trade and manage all your Decentraland's assets. 
+
+Specifically, the Marketplace allows you to:
 
 * **Publish** a parcel of LAND for sale, setting your own price in MANA and an expiration date for the offer.
 * **Buy** a parcel that is for sale.
@@ -28,7 +30,7 @@ You can access the Marketplace at [market.decentraland.org](https://market.decen
 
 # How do I use it?
 
-## Unlock your wallet
+## Your Wallet
 
 Before using [market.decentraland.org](https://market.decentraland.org), connect and unlock your [MetaMask](https://metamask.io/) account or [Mist](https://github.com/ethereum/mist) account. We also support the use of a [Ledger](https://www.ledgerwallet.com/) hardware wallet.
 
@@ -76,7 +78,7 @@ If you have another account that you want to move your LAND to, or if you want t
 
 ## Providing Feedback
 
-We’ve worked to ensure that the Marketplace is simple and easy to use, but if you ever have questions or feedback, please reach out to us using the in-app Intercom widget.
+We’ve worked to ensure that the Marketplace is simple and easy to use but if you ever have questions or feedback please reach out to us using the in-app Intercom widget.
 
 For a more in-depth orientation to the Marketplace, [checkout our video tutorial here](/decentraland/getting-started-marketplace-video)!
 
