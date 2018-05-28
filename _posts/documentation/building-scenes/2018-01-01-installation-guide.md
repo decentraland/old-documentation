@@ -1,7 +1,7 @@
 ---
 date: 2018-01-01
-title: Installation guide
-description: Setting up the environment
+title: Installation Guide
+description: Step-by-step guide to installing the SDK
 categories:
   - documentation
 type: Document
@@ -9,11 +9,15 @@ set: building-scenes
 set_order: 0
 ---
 
-To build scenes for Decentraland you will need our CLI tool, it provides compilation, publication and preview commands.
+To build scenes for Decentraland you will need to install the Command Line Interface (CLI).
 
-Currently, you can only create Typescript scenes using our SDK, this series of documents will guide you thru the basic concepts of our SDK.
+The CLI allows you to compile and preview your scene in an "off-chain" development environment. After testing your scene locally, you can use the CLI to upload your content to IPFS, linking it with your LAND.
+
+**Please note:** Currently, the Decentraland SDK only supports TypeScript.
 
 The Decentraland CLI is distributed via [npm](https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm).
+
+## Basic installation
 
 You can install the CLI with:
 
@@ -21,14 +25,22 @@ You can install the CLI with:
 npm install -g decentraland
 ```
 
-Once you finish, you should have the `dcl` command available globally.
-
-> Please make sure that you have the following dependencies installed before beginning your CLI installation
+> Please install the following dependences before you install the SDK:
 >  * [Node.js](https://github.com/decentraland/cli#nodejs-installation) (version 8)
 >  * [IPFS](https://dist.ipfs.io/#go-ipfs)
 >  * [Python 2.7.14](https://www.python.org/downloads/)
 
-## Windows installing notes
+Once the installation is complete, the `dcl` command will be globally available.
+
+## Installing the SDK on Linux
+
+If you are installing the CLI on a Linux-based operating system, run
+
+```bash
+npm i -g --unsafe-perm decentraland
+```
+
+## Installing the SDK on Windows
 
 1. Install [Node.js v8 LTS](https://nodejs.org/en/download/)
 2. Find the Command Prompt app and select **Run as Administrator**
@@ -47,11 +59,3 @@ Once you finish, you should have the `dcl` command available globally.
   * **Enable file system caching**
   * **Enable Git Credential Manager**
   * **Enable symbolic links**
-
-## Linux installing notes
-
-If you are installing the CLI on a Linux-based operating system, run
-
-```bash
-npm i -g --unsafe-perm decentraland
-```
