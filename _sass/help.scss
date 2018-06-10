@@ -1,0 +1,61 @@
+.help-section {
+  padding-top: 96px;
+}
+
+.help-intro-title {
+  margin: 0 0 8px;
+  font-size: 32px;
+  color: #0A0F1F;
+}
+
+.help-intro-desc {
+  margin: 0;
+  font-size: 17px;
+  line-height: 26px;
+  letter-spacing: -0.4px;
+  color: #7D8499;
+}
+
+.help-listing {
+  padding: 24px 0 0 0;
+  margin: 0;
+  list-style: none;
+
+  @media #{$mid-point} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  li {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    background-color: #F2F3F5;
+
+    @media #{$mid-point} {
+      flex: 0 0 32%;
+    }
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 24px;
+    border-radius: 8px;
+  }
+
+  h3 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    line-height: 32px;
+    color: #0A0F1F;
+  }
+
+  p {
+    margin: 0;
+    font-size: 15px;
+    color: #0A0F1F;
+    letter-spacing: -0.3px;
+    line-height: 24px;
+  }
+}

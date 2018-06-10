@@ -1,9 +1,11 @@
 .wrapper {
-	margin: 0 auto;
-  padding: 0 30px;
   position: relative;
-
-  max-width: 1150px;
+	max-width: 1150px;
+  padding: 0 15px;
+	margin: 0 auto;
+	@media #{$mid-point} {
+		padding: 0 30px;
+	}
 }
 
 .logo {
@@ -14,7 +16,9 @@
 
 .content {
 	background: #fff;
-	padding: 120px 0 60px;
+	// padding: 120px 0 60px;
+	padding: 72px 0 60px;
+
 }
 
 .show_hero_search .content {

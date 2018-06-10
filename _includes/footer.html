@@ -1,5 +1,19 @@
 <footer>
 	<div class="wrapper">
+		<div class="footer-lang-selector">
+			<select name="lang-selector" id="lang">
+				<option value="english">English</option>
+			</select>
+		</div>
+		<nav class="footer-nav">
+			<ul>
+				<li><a href="">Home</a></li>
+				<li><a href="">Blog</a></li>
+				<li><a href="">FAQ</a></li>
+				<li><a href="">Privacy Policy</a></li>
+				<li><a href="">Tems & Conditions</a></li>
+			</ul>
+		</nav>
 		<p class="edit-footer"><a class="editor-link btn" href="cloudcannon:collections/_data/footer.yml" class="btn" style="padding: 5px;"><strong>&#9998;</strong> Edit footer</a></p>
 		<ul class="footer-links">
 			{% for link in site.data.footer %}

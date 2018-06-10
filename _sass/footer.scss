@@ -1,7 +1,7 @@
 footer {
-	background: #343642;
-	color: #fff;
-	padding: 20px 0;
+	// background: #343642;
+	// color: #fff;
+	padding: 40px 0 48px;
 
 	.edit-footer {
 		text-align: center;
@@ -11,7 +11,6 @@ footer {
 	.copyright {
 		color: $medium-grey;
 		margin: 0;
-		text-align: center;
 		font-size: .9em;
 	}
 
@@ -28,12 +27,17 @@ footer {
 		padding: 0;
 		list-style: none;
 		margin: 0;
-		text-align: center;
 	}
 
-	li {
-		display: inline-block;
-		margin: 0 6px 15px 0;
+	.footer-links {
+		padding: 0;
+		list-style: none;
+		margin: 0 0 40px;
+
+		li {
+			display: inline-block;
+			margin: 0 20px 0 0;
+		}
 	}
 
 	svg {
@@ -41,5 +45,48 @@ footer {
 		position: relative;
 		top: 5px;
 		transition: fill 200ms ease-in;
+	}
+
+	.footer-lang-selector {
+		margin-bottom: 24px;
+
+		select {
+			margin: 0;
+			border: 0;
+			font-size: 17px;
+			line-height: 26px;
+			letter-spacing: -0.57px;
+			color: #0A0F1F;
+			margin-left: -3.5px;
+			background-color: transparent;
+		}
+
+		option {
+			padding: 0;
+		}
+	}
+
+	.footer-nav {
+		padding-bottom: 40px;
+
+		ul {
+			display: flex;
+			flex-direction: column;
+			text-align: left;
+		}
+
+		li {
+			margin: 0 0 5px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		a {
+			font-size: 17px;
+			line-height: 36px;
+			letter-spacing: -0.4px;
+			color: #7D8499;
+		}
 	}
 }
