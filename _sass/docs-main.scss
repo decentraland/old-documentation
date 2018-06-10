@@ -44,14 +44,16 @@
 
     @media #{$mid-point} {
       flex-direction: row;
-      justify-content: space-between;
+      // justify-content: space-between;
+      margin: 0 -12px;
     }
 
     li {
       margin: 12px 0;
 
       @media #{$mid-point} {
-        flex: 0 0 32%;
+        flex: 0 0 33.33%;
+        padding: 0 12px;
       }
     }
 

@@ -73,12 +73,19 @@ footer {
 			display: flex;
 			flex-direction: column;
 			text-align: left;
+			@media #{$mid-point} {
+				flex-direction: row;
+			}
 		}
 
 		li {
 			margin: 0 0 5px;
 			&:last-child {
-				margin-bottom: 0;
+				margin: 0;
+			}
+
+			@media #{$mid-point} {
+				margin: 0 20px 0 0;
 			}
 		}
 
