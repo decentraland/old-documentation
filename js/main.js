@@ -23,14 +23,14 @@ jQuery(function() {
 	}
 
 	function setSidebar() {
-		var offset = 85,
+		var offset = 110,
 			bottom = $tutorial.offset().top + $tutorial.outerHeight() - $sidebar.outerHeight() - offset;
 		if (window.scrollY > bottom) {
 			$sidebar.css("position", "absolute").css("top", $tutorial.outerHeight() - $sidebar.outerHeight());
 		} else if (window.scrollY > $tutorial.offset().top) {
 			$sidebar.css("position", "fixed").css("top", offset);
 		} else {
-			$sidebar.css("position", "absolute").css("top", offset);
+			$sidebar.css("position", "absolute").css("top", 188);
 		}
 	}
 

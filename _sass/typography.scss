@@ -113,7 +113,7 @@ dl {
 
   font-family: $monospace-font-family;
 
-  code { 
+  code {
     display: block;
   }
 
@@ -141,7 +141,7 @@ dl {
     .light-theme {
       padding: $base-spacing;
       margin: 0;
-      background: #f6f8fa;
+      background: $docs_medium_grey;
       overflow-x: scroll;
     }
 

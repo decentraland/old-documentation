@@ -53,13 +53,42 @@
 
 	.close {
 		position: absolute;
-		top: 33px;
-		right: 35px;
-		font-size: 1.5em;
-		width: 25px;
-		height: 25px;
-		cursor: pointer;
-		z-index: 99;
+		top: 16px;
+		right: 16px;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		background-color: #F2F3F5;
 		font-size: 30px;
+		line-height: 1;
+		text-align: center;
+		color: $docs_primary_black;
+		z-index: 99;
+		cursor: pointer;
+	}
+
+	&.index-modal {
+		.modal-body {
+			min-height: 100vh;
+			padding: 76px 15px 40px;
+			margin: 0;
+		}
+
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+
+			li {
+				margin-bottom: 20px;
+			}
+
+			a {
+				font-size: 15px;
+				letter-spacing: -0.3px;
+				line-height: 24px;
+				color: #7D8499;
+			}
+		}
 	}
 }

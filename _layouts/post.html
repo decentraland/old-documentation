@@ -1,19 +1,27 @@
 ---
 layout: default
 ---
-
-<section class="tutorial">
-	<section class="sidebar sticky">
+{% assign tags = page.tags %}
+<div class="wrapper">
+<section class="tutorial {{ tags }}" >
+	<div class="top-section">
+		<a class="back-to-docs" href="/documentation">
+			{% include chevron-left-icon.html %} Documentation
+		</a>
+		<h1>{{ page.title }}</h1>
+		<a class="index-trigger modalOpen no-smooth" href="#index-modal">
+			{% include index-icon.html icon="Index" %} See index
+		</a>
+	</div>
+	<aside class="sidebar sticky">
 		<ul>
 			{% assign sub_navigation = content | extract_element: 'h2' %}
 			{% for item in sub_navigation %}
 				<li><a href="#{{ item.id }}">{{ item.text }}</a></li>
 			{% endfor %}
 		</ul>
-	</section>
+	</aside>
 	<section class="tutorial-content">
-		<h1>{{ page.title }}</h1>
-
 		{% if page.type == "Video" %}
 			{% include youtube.html video_id=page.video_id %}
 
@@ -27,7 +35,7 @@ layout: default
 				</div>
 			{% endif %}
 		{% endif %}
-		
+
 		<div class="tutorial-main">
 			{{ content }}
 		</div>
@@ -37,27 +45,30 @@ layout: default
 		</div>
 	</section>
 </section>
+</div>
 
-{% if page.set %}
-	{% assign set_file_name = "_sets/" | append: page.set | append: ".md" %}
-	{% assign set = site.sets | where: "path", set_file_name | first %}
-	{% assign series_posts = site.posts | where: "set", page.set | sort: 'set_order' %}
-	<div class="tutorial-series">
-		<h3>{{ set.title }} - Series</h3>
-		<p>{{ set.description }}</p>
-
-		{% include listings.html listings=series_posts numbered=true%}
+<section class="bottom-navigation">
+	<div class="wrapper">
+	<div class="next">
+		<h2>Next Step</h2>
+		{% if page.next.url %}
+		<a class="next-link" href="{{page.next.url}}">
+			<h3>{{page.next.title}}</h3>
+			<p>{{page.next.description}}</p>
+		</a>
+		{% endif %}
 	</div>
-{% endif %}
-{% assign related_posts = site.related_posts %}
-{% assign related_posts_size = related_posts | size %}
-{% if related_posts_size > 0 %}
-	<div class="related">
-		<h3>Related documents</h3>
+	{% assign related_posts = site.related_posts %}
+	{% assign related_posts_size = related_posts | size %}
+	{% if related_posts_size > 0 %}
+		<div class="related">
+			<h2>Related documents</h2>
 
-		{% include listings.html listings=site.related_posts %}
+			{% include related-listing.html listings=site.related_posts %}
+		</div>
+	{% endif %}
 	</div>
-{% endif %}
+</section>
 
 {% if site.disqus_shortname and page.comments %}
 	<div id="disqus_thread"></div>
@@ -76,6 +87,20 @@ layout: default
 	</script>
 	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 {% endif %}
+
+<div id="index-modal" class="modalDialog index-modal">
+	<a title="Close" class="close">&times;</a>
+	<div class="modal-body">
+		<ul>
+			{% assign sub_navigation = content | extract_element: 'h2' %} {% for item in sub_navigation %}
+			<li>
+				<a href="#{{ item.id }}">{{ item.text }}</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+
 
 <div id="subscribe" class="modalDialog">
 	<div>

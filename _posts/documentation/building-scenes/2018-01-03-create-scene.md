@@ -7,6 +7,7 @@ categories:
 type: Document
 set: building-scenes
 set_order: 2
+tag: introduction
 ---
 
 ## Entities
@@ -32,7 +33,7 @@ Since we decoupled the execution of the scenes from the underlying engine, we ha
 
 ## Basic scene structure
 
-For both kinds of scenes, the structure is the same, a tree of entities represented in XML/JSX.  
+For both kinds of scenes, the structure is the same, a tree of entities represented in XML/JSX.
 The root of the tree is always a `<scene>` element like in this demo scene (xml)
 
 ```xml
@@ -57,8 +58,8 @@ Since the scene is a transform node, it can be translated, scaled and rotated. T
 
 #### Data types
 
-> **TL;DR**  
-> in XML you do `position="10 10 10"`  
+> **TL;DR**
+> in XML you do `position="10 10 10"`
 > in JSX you do `position={ { x:10, y: 10, z: 10 } }`
 
 There are subtle differences between the `text/xml` representation and the JSX representation, unlike A-Frame, our
@@ -88,8 +89,8 @@ class Scene extends ScriptableScene {
 
 #### Attribute naming
 
-> **TL;DR**  
-> in XML you do `albedo-color="#ffeeaa"` (kebab-case)  
+> **TL;DR**
+> in XML you do `albedo-color="#ffeeaa"` (kebab-case)
 > in JSX you do `albedoColor="#ffeeaa"` (camelCase)
 
 HTML and XHTML are case insensitive for attributes, that generate conflicts with the implementation of certain attributes like `albedoColor` because reading `albedocolor` sounds weird, and having hardcoded keys with hyphens in the code was so dirty. We followed the React convention of having every property camel cased in code and hyphenated in the HTML/XML representation. Example:
@@ -192,7 +193,7 @@ You can also use the same command line to create Node.js servers for the multipl
 
 Directories containing a `tsconfig.json` file are root directories for TypeScript Projects. The `tsconfig.json` file specifies the root files and options required to compile your project in JavaScript.
 
-> **Why do we use Typescript?**  
+> **Why do we use Typescript?**
 > TypeScript is a superset of JavaScript and allows you to employ object-oriented programming and type declaration. Features like autocomplete and type-checking speed up development times and allow for the creation of a solid codebase. These features are all key components to a positive developer experience.
 >
 > You can use another tool or language instead of TypeScript, so long as your scripts are contented within a single Javascript file (scene.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.

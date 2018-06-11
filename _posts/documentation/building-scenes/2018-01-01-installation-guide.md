@@ -44,7 +44,7 @@ npm i -g --unsafe-perm decentraland
 
 1. Install [Node.js v8 LTS](https://nodejs.org/en/download/)
 2. Find the Command Prompt app and select **Run as Administrator**
-3. Install windows-build-tools by running 
+3. Install windows-build-tools by running
 `npm install --global --production windows-build-tools`
 4. Wait for both the Visual Studio Build Tools and Python installers to both read `Successfully installed xxxx`. Once these have installed successfully, you will be returned to the command prompt.
 5. [Download git](https://git-scm.com/download/win) (you'll likely want the 64-bit Windows version)

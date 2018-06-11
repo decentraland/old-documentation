@@ -4,7 +4,7 @@
   margin: 24px 0 48px;
   font-size: 22px;
   line-height: 32px;
-  color: #0A0F1F;
+  color: $docs_primary_black;
   text-transform: capitalize;
 
   &:before {
@@ -24,7 +24,7 @@
 .docs-intro-title {
   margin: 0 0 8px;
   font-size: 40px;
-  color: #0A0F1F;
+  color: $docs_primary_black;
 }
 
 .docs-intro-desc {
@@ -87,7 +87,7 @@
     h3 {
       margin-bottom: 4px;
       font-size: 22px;
-      color: #0A0F1F;
+      color: $docs_primary_black;
       line-height: 32px;
     }
 
@@ -96,7 +96,7 @@
       font-size: 15px;
       line-height: 24px;
       letter-spacing: -0.3px;
-      color: #0A0F1F;
+      color: $docs_primary_black;
     }
 
     .entry-count {

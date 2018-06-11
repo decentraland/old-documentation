@@ -15,9 +15,9 @@ The content you deploy to your LAND is called **scene**, it is usually an intera
 could be a game, an elevator, a video screen, an art gallery, whatever you want.
 
 If you come from the game development area, you may expect to have some kind of render loop and render elements in the
-screen inside that loop. Decentraland doesn't work that way, we run your scene in a different context from the engine, 
-for safety and performance reasons, also we don't want users to touch the internals of the engine or even know what is 
-inside the engine because we need to ensure a consistent experience for every user and mistakes are more like to happen 
+screen inside that loop. Decentraland doesn't work that way, we run your scene in a different context from the engine,
+for safety and performance reasons, also we don't want users to touch the internals of the engine or even know what is
+inside the engine because we need to ensure a consistent experience for every user and mistakes are more like to happen
 at that "low" level.
 
 Also other main difference with the event-loop based games is we built the API based on events, so we expect the scenes
@@ -26,8 +26,8 @@ to be reacting to events instead of being querying the world repeatedly.
 ## How does the scenes work?
 
 Decoupling, it is all about decoupling. As we said before, your scenes doesn't run inside the same context of the engine
-(a.k.a. main thread), or sometimes in the same computer the engine is running. We created the SDK in a way that is 
-entirely decoupled from the rendering engine. It works using a RPC protocol that controls a little part of the client 
+(a.k.a. main thread), or sometimes in the same computer the engine is running. We created the SDK in a way that is
+entirely decoupled from the rendering engine. It works using a RPC protocol that controls a little part of the client
 only to render the scene and control the events.
 
 ## Decoupling the scene from the engine
@@ -46,7 +46,7 @@ the sphere either. So, you describe the scene in a higher level, like it is an X
 
 Then we need to send the scene to the engine and it will take care of the positions, assets and geometries.
 
-To optimize things a little bit, we only send the differences in the to the actual client, so if you have a shoal of 
+To optimize things a little bit, we only send the differences in the to the actual client, so if you have a shoal of
 fishes and you move only one, the SDK will send only that delta, the moved fish. This makes things faster for the client
 and it is completely transparent to the programmer of the scene.
 
