@@ -30,12 +30,13 @@
   <header>
     <div class="logo">
       <a href="/">{% include logo.html %}</a>
+
     </div>
+    <button class="search_toggle" id="open-search">
+       {% include search-icon.html %}
+    </button>
     <div class="header_search">
-      <button class="search_toggle" id="open-search">
-        {% include search-icon.html %}
-      </button>
-      {% include search.html %}
+       {% include search.html %}
     </div>
   </header>
   <section class="content">
@@ -66,12 +67,8 @@
         event.preventDefault();
         $(".header_search").toggleClass("open");
       });
-
-      $("#close-search").click(function (event) {
-        event.preventDefault();
-        $(".header_search").removeClass("open");
-      });
     });
+
   </script>
 </body>
 

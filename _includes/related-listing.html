@@ -1,4 +1,4 @@
-<ul class="">
+<ul class="related-list">
   {% for item in include.listings limit:2 %}
     <li {% if item.url == page.url %}class="active" {% endif %}>
       <a href="{{ site.baseurl }}{{ item.url }}">

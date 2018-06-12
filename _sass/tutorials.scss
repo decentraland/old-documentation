@@ -459,10 +459,18 @@
 	}
 
 	.related {
-		ul {
+		.related-list {
 			padding: 0;
 			margin: 0;
 			list-style: none;
+
+			li {
+				margin-bottom: 24px;
+
+				&:last-child{
+					margin-bottom: 0;
+				}
+			}
 		}
 
 		h2 {
