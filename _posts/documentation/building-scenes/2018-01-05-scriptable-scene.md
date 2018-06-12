@@ -90,6 +90,15 @@ export default class Scene extends ScriptableScene<Props, State> {
   async sceneWillUnmount() {
     // gracefully tear down created things
   }
+
+  /**
+   * It makes a subscription to remote events, those events occur in the context of the game and are sent thru the wire
+   * protocol.
+   *
+   * @param event name of the remote event to listen
+   * @param handler an async
+   */
+  subscribeTo<T extends IEventNames>(event: T, handler: (data: IEvents[T]) => void | Promise<void>)
 }
 ```
 
