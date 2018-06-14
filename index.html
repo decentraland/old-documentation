@@ -6,7 +6,7 @@
 			Documentation
 		</h2>
 		<div class="docs-top-search">
-			 {% include search.html %}
+			{% include search.html %}
 		</div>
 	</section>
 	<section>
@@ -22,7 +22,9 @@
 				{% assign posts = category[1] %}
 				{% assign size = posts | size %}
 				<li>
-					<a class="docs-wrapper" href="{{ site.baseurl }}/category/{{ name | slugify }}/">
+					{% for post in posts limit:1 %}
+					<a class="docs-wrapper" href="{{ post.url }}">
+					{% endfor %}
 						<div class="icon">{% include document-icon.html icon=item.type %}</div>
 						<article>
 							<div>
@@ -30,7 +32,7 @@
 								<p class="description">
 									Brief description for the content. Two lines max.
 								</p>
-								<span class="entry-count">4 entry</span>
+								<span class="entry-count">{{size}} entry</span>
 							</div>
 						</article>
 					</a>

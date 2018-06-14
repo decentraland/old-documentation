@@ -195,6 +195,10 @@ header {
 	cursor: pointer;
 	transform: translateY(-50%);
 	margin-top: 2px;
+
+	@media #{$mid-point} {
+		display: none;
+	}
 }
 
 .header_search {

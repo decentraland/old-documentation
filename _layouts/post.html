@@ -5,20 +5,42 @@ layout: docs_default
 <div class="wrapper">
 <section class="tutorial {{ tags }}" >
 	<div class="top-section">
-		<a class="back-to-docs" href="/documentation">
+		<a class="back-to-docs" href="/">
 			{% include chevron-left-icon.html %} Documentation
 		</a>
-		<h1>{{ page.title }}</h1>
-		<a class="index-trigger modalOpen no-smooth" href="#index-modal">
-			{% include index-icon.html icon="Index" %} See index
-		</a>
+		<div class="title-search-wrapper">
+			<h1>{{ page.title }}</h1>
+			<a class="index-trigger modalOpen no-smooth" href="#index-modal">
+				{% include index-icon.html icon="Index" %} See index
+			</a>
+			<div class="post-top-search">
+				{% include search.html %}
+			</div>
+		</div>
 	</div>
 	<aside class="sidebar sticky">
 		<ul>
-			{% assign sub_navigation = content | extract_element: 'h2' %}
-			{% for item in sub_navigation %}
-				<li><a href="#{{ item.id }}">{{ item.text }}</a></li>
+		{% if page.set %}
+			{% assign set_file_name = "_sets/" | append: page.set | append: ".md" %}
+			{% assign set = site.sets | where: "path", set_file_name | first %}
+			{% assign series_posts = site.posts | where: "set", page.set | sort: 'set_order' %}
+			{% for series_post in series_posts %}
+			<li>
+				<h3>
+					<a href="{{ site.baseurl }}{{ series_post.url }}">
+						{{ series_post.title }}
+					</a>
+				</h3>
+				<ul>
+					{% assign sub_navigation = content | extract_element: 'h2' %} {% for item in sub_navigation %}
+					<li>
+						<a href="#{{ item.id }}">{{ item.text }}</a>
+					</li>
+					{% endfor %}
+				</ul>
+			</li>
 			{% endfor %}
+		{% endif %}
 		</ul>
 	</aside>
 	<section class="tutorial-content">
