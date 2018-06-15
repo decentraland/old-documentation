@@ -28,6 +28,7 @@
 
 <body class="{{ page.body_class }}">
   <header>
+    <h1 class="logo-title">{{ page.title }}</h1>
     <div class="logo">
       <a href="/">{% include logo.html %}</a>
     </div>
@@ -38,9 +39,8 @@
       {% include search.html %}
     </div>
   </header>
-  <section class="content">
-    {{ content }}
-  </section>
+
+  {{ content }}
 
   {% include footer.html %}
   <script>

@@ -42,7 +42,12 @@ small, .font_small {font-size: 0.833em;}
 p {
   font-weight: $text-font-weight;
   margin: 0 0 $base-spacing;
+
   text-align: justify;
+
+  @media #{$desktop} {
+    text-align: left;
+  }
 }
 
 .lead {

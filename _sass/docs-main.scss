@@ -45,15 +45,23 @@
 .docs-intro-title {
   margin: 0 0 8px;
   font-size: 40px;
-  color: $docs_primary_black;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  color: #0a0f1f;
 }
 
 .docs-intro-desc {
   margin: 0;
-  font-size: 17px;
-  line-height: 26px;
-  letter-spacing: -0.4px;
-  color: #7D8499;
+  font-size: 22px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  color: #7d8499;
 }
 
 .docs-listing {
@@ -79,12 +87,12 @@
     }
 
     // temporal implementation of bg colors
-    li:nth-child(1n+1) .icon { background-color: #FFD2DE; }
-    li:nth-child(2n+2) .icon { background-color: #F7D1FF; }
-    li:nth-child(3n+3) .icon { background-color: #D5D2FF; }
-    li:nth-child(4n+4) .icon { background-color: #D2E7FF; }
-    li:nth-child(5n+5) .icon { background-color: #FFE8D2; }
-    li:nth-child(6n+6) .icon { background-color: #FFDBD1; }
+    li:nth-child(1n+1) .icon { background-color: $docs_highlight_1; }
+    li:nth-child(2n+2) .icon { background-color: $docs_highlight_2; }
+    li:nth-child(3n+3) .icon { background-color: $docs_highlight_3; }
+    li:nth-child(4n+4) .icon { background-color: $docs_highlight_4; }
+    li:nth-child(5n+5) .icon { background-color: $docs_highlight_5; }
+    li:nth-child(6n+6) .icon { background-color: $docs_highlight_6; }
 
     .docs-wrapper {
       display: flex;
@@ -101,15 +109,20 @@
     }
 
     article {
-      padding: 20px 24px;
+      padding: 20px 24px 44px;
       flex: 1;
+      position: relative;
     }
 
     h3 {
       margin-bottom: 4px;
       font-size: 22px;
-      line-height: 32px;
-      text-transform: capitalize;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.45;
+      letter-spacing: normal;
+      color: #0a0f1f;
       color: $docs_primary_black;
     }
 
@@ -122,10 +135,17 @@
     }
 
     .entry-count {
-      font-size: 12px;
-      line-height: 20px;
       text-transform: uppercase;
-      color: #7D8499;
+      font-size: 12px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.67;
+      letter-spacing: normal;
+      color: #7d8499;
+      position: absolute;
+      bottom: 20px;
+      left: 24px;
     }
   }
 }

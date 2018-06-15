@@ -17,27 +17,24 @@
 		<div class="docs-listing">
 			<ul class="listing">
 			{% assign categories = site.categories | sort %}
-			{% for category in categories %}
-				{% assign name = category[0] %}
-				{% assign posts = category[1] %}
-				{% assign size = posts | size %}
-
-				<li>
-					{% for post in posts limit:1 %}
-					<a class="docs-wrapper" href="{{ post.url }}">
-					{% endfor %}
-						<div class="icon">{% include document-icon.html icon=item.type %}</div>
-						<article>
-							<div>
-								<h3>{{ name | replace: "-", " " }}</h3>
-								<p class="description">
-									Brief description for the content. Two lines max.
-								</p>
-								<span class="entry-count">{{size}} entry</span>
-							</div>
-						</article>
-					</a>
-				</li>
+      {% for set in site.sets %}
+        {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+        {% assign post = series_posts[0] %}
+				{% assign size = series_posts | size %}
+        {% if size > 0 %}
+          <li>
+            <a class="docs-wrapper" href="{{ post.url }}">
+              <div class="icon">{% include document-icon.html icon=item.type %}</div>
+              <article>
+                <h3>{{ set.title | replace: "-", " " }}</h3>
+                <p class="description">
+                  {{ set.description }}
+                </p>
+                <span class="entry-count">{{size}} entries</span>
+              </article>
+            </a>
+          </li>
+        {% endif %}
 			{% endfor %}
 			</ul>
 		</div>
