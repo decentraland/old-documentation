@@ -8,8 +8,7 @@ type: Document
 set: building-scenes
 set_order: 1
 ---
-First of all, we will guide you thru some concepts that will help you understand how things work with the scene you will
-create.
+Welcome to our introduction on how to build on Decentraland. Allow us to start by introducing the concepts behind how the decentralized metaverse works.
 
 The content you deploy to your LAND is called **scene**, it is usually an interactive program that renders content. It
 could be a game, an elevator, a video screen, an art gallery, whatever you want.
