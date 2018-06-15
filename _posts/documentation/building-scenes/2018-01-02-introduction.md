@@ -41,7 +41,17 @@ Once you send the scene to the engine, it takes care of the positions, assets an
 To optimize things, we only send the differences in the scene to the actual client. So if the scene has a shoal of 
 fish and only one of them moves, the SDK will send only that delta to the client, the fish that moved. This makes things faster for the client and is completely transparent to the developer of the scene.
 
-### Removing code friction
+## Supported languages and syntax
+
+
+* To create scenes with only static content, use [XML](https://en.wikipedia.org/wiki/XML).
+* To create dynamic scenes, you must use [TypeScript (.tsx)](https://www.typescriptlang.org/docs/handbook/jsx.html).
+* In Typescript scenes, XML assets are handled in a way that resembles [React](https://reactjs.org/docs/hello-world.html).
+
+> **Note:** Even though dynamic scenes are written in a way that intentionally looks a lot like React, **our SDK DOES NOT USE REACT**.
+
+
+### Programming principles
 
 One of the goals we had when designing our SDK was to reduce the learning curve as much as possible. We also wanted to incentive good practices and the writing of maintainable code, respecting the remote async-rpc constraints in every case. 
 
@@ -94,7 +104,7 @@ In this example, we're just telling the system the desired state, instead of des
 ---
 
 
-We went for the React way, for several reasons:
+We went for the React approach, for several reasons:
 
 - It takes advantage of the evolution of web technologies that occured in the past 10 years. 
 - It's simpler to understand, it removes tons of boilerplate code that's not related to the business logic of the scene.
@@ -103,4 +113,4 @@ We went for the React way, for several reasons:
 - The pattern is well known and well documented, getting help should be easy.
 - It has a low memory footprint and it makes it easy to do garbage collection.
 
-> **Note:** Even though it intentionally looks a lot like React, **our SDK DOES NOT USE REACT**.
+
