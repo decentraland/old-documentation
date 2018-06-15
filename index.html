@@ -21,6 +21,7 @@
 				{% assign name = category[0] %}
 				{% assign posts = category[1] %}
 				{% assign size = posts | size %}
+
 				<li>
 					{% for post in posts limit:1 %}
 					<a class="docs-wrapper" href="{{ post.url }}">

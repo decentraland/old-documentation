@@ -1,9 +1,9 @@
 ---
-layout: docs_default
+layout: default
 ---
 {% assign tags = page.tags %}
 <div class="wrapper">
-<section class="tutorial {{ tags }}" >
+<section class="tutorial {{ page.set }}" >
 	<div class="top-section">
 		<a class="back-to-docs" href="/">
 			{% include chevron-left-icon.html %} Documentation
@@ -25,19 +25,21 @@ layout: docs_default
 			{% assign set = site.sets | where: "path", set_file_name | first %}
 			{% assign series_posts = site.posts | where: "set", page.set | sort: 'set_order' %}
 			{% for series_post in series_posts %}
-			<li>
+			<li {% if series_post.url == page.url %}class="active"{% endif %}>
 				<h3>
 					<a href="{{ site.baseurl }}{{ series_post.url }}">
 						{{ series_post.title }}
 					</a>
 				</h3>
-				<ul>
+				{% if series_post.url == page.url %}
+				<ul class="current-post-list">
 					{% assign sub_navigation = content | extract_element: 'h2' %} {% for item in sub_navigation %}
 					<li>
 						<a href="#{{ item.id }}">{{ item.text }}</a>
 					</li>
 					{% endfor %}
 				</ul>
+				{% endif %}
 			</li>
 			{% endfor %}
 		{% endif %}
@@ -112,15 +114,31 @@ layout: docs_default
 
 <div id="index-modal" class="modalDialog index-modal">
 	<a title="Close" class="close">&times;</a>
-	<div class="modal-body">
-		<ul>
-			{% assign sub_navigation = content | extract_element: 'h2' %} {% for item in sub_navigation %}
-			<li>
-				<a href="#{{ item.id }}">{{ item.text }}</a>
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
+	<ul>
+	{% if page.set %}
+		{% assign set_file_name = "_sets/" | append: page.set | append: ".md" %}
+		{% assign set = site.sets | where: "path", set_file_name | first %}
+		{% assign series_posts = site.posts | where: "set", page.set | sort: 'set_order' %}
+		{% for series_post in series_posts %}
+		<li {% if series_post.url == page.url %}class="active"{% endif %}>
+			<h3>
+				<a href="{{ site.baseurl }}{{ series_post.url }}">
+					{{ series_post.title }}
+				</a>
+			</h3>
+			{% if series_post.url == page.url %}
+			<ul class="current-post-list">
+				{% assign sub_navigation = content | extract_element: 'h2' %} {% for item in sub_navigation %}
+				<li>
+					<a href="#{{ item.id }}">{{ item.text }}</a>
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</li>
+		{% endfor %}
+	{% endif %}
+	</ul>
 </div>
 
 

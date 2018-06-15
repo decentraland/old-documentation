@@ -94,14 +94,38 @@
 
 	.title-search-wrapper {
 		display: flex;
-		align-items: center;
+		flex-direction: column;
 		justify-content: space-between;
+		transition: all .25s ease;
+
+		@media #{$mid-point} {
+			flex-direction: row;
+			align-items: center;
+		}
+
+		&.sticky {
+			@media #{$mid-point} {
+				position: fixed;
+				top: 4px;
+				left: calc(15px + 60px);
+				width: calc(100% - 15px - 60px - 28px);
+				z-index: 9999;
+				transition: all .25s ease;
+
+				h1 {
+					margin: 0;
+					font-size: 32px;
+					transition: font-size .25s ease;
+				}
+			}
+		}
 	}
 
 	h1 {
 		margin: 0 0 64px;
 		font-size: 56px;
 		line-height: 60px;
+		transition: font-size .25 ease;
 		color: $docs_primary_black;
 
 		@media #{$mid-point} {
@@ -110,6 +134,12 @@
 	}
 
 	.post-top-search {
+		display: none;
+
+		@media #{$desktop} {
+			display: block;
+		}
+
 		form {
 			position: relative;
 			max-width: 800px;
@@ -250,6 +280,10 @@
 			padding: 0;
 		}
 
+		> ul li.active h3 {
+			font-weight: 500;
+		}
+
 		h3 {
 			margin-top: 0;
 			margin-bottom: 10px;
@@ -290,8 +324,8 @@
 	}
 
 	.tutorial-main {
-		padding-top: 32px;
 		@media #{$mid-point} {
+			padding-top: 32px;
 			padding-top: 16px;
 		}
 	}
@@ -674,7 +708,7 @@
 		color: $docs_primary_black;
 	}
 
-	&.introduction {
+	&.marketplace {
 		.back-to-docs {
 			color: $docs_highlight_1;
 
@@ -701,6 +735,66 @@
 
 		.tutorial-content ul li:before {
 			color: $docs_highlight_1;
+		}
+	}
+
+	&.building-scenes {
+		.back-to-docs {
+			color: $docs_highlight_2;
+
+			svg #icon {
+				fill: $docs_highlight_2;
+			}
+		}
+
+		.index-trigger {
+			color: $docs_highlight_2;
+
+			svg #shape {
+				fill: $docs_highlight_2;
+			}
+		}
+
+		.sidebar a.active {
+			color: $docs_highlight_2;
+		}
+
+		blockquote {
+			border-color: $docs_highlight_2;
+		}
+
+		.tutorial-content ul li:before {
+			color: $docs_highlight_2;
+		}
+	}
+
+	&.sdk-releases {
+		.back-to-docs {
+			color: $docs_highlight_3;
+
+			svg #icon {
+				fill: $docs_highlight_3;
+			}
+		}
+
+		.index-trigger {
+			color: $docs_highlight_3;
+
+			svg #shape {
+				fill: $docs_highlight_3;
+			}
+		}
+
+		.sidebar a.active {
+			color: $docs_highlight_3;
+		}
+
+		blockquote {
+			border-color: $docs_highlight_3;
+		}
+
+		.tutorial-content ul li:before {
+			color: $docs_highlight_3;
 		}
 	}
 }

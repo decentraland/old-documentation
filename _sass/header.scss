@@ -192,9 +192,12 @@ header {
 	position: absolute;
 	top: 50%;
 	right: 16px;
+	border: 0;
+	padding: 0;
+	background-color: transparent;
 	cursor: pointer;
 	transform: translateY(-50%);
-	margin-top: 2px;
+	z-index: 10;
 
 	@media #{$mid-point} {
 		display: none;
@@ -210,6 +213,7 @@ header {
 	height: 48px;
 	padding: 0 15px;
 	background-color: white;
+	z-index: 20;
 
 	@media #{$mid-point} {
 		display: none;

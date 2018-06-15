@@ -3,29 +3,43 @@ jQuery(function() {
 		$content = $('.content'),
 		$tutorial = $('.tutorial-content'),
 		$window = $(window),
+		$postTopBar = $('.tutorial .title-search-wrapper');
+		$postTopBarPosition = $postTopBar.offset();
+		console.log($postTopBarPosition);
 		offset = $content.offset().top + 60;
 
 	var found = true;
 
 	var $el;
 
-	var href = $sidebar.find('a').first().attr("href");
+	var href = $sidebar.find('.current-post-list a').first().attr("href");
 
 	if (href !== undefined && href.charAt(0) === "#") {
 		setActiveSidebarLink();
 
 		$(window).on("scroll", function() {
 			throttle(function(){
+				setHeader();
 				setActiveSidebarLink();
 				setSidebar();
 			}, 100)();
 		});
 	}
 
+	function setHeader(){
+		if (window.scrollY > 200){
+			$postTopBar.addClass('sticky');
+		}
+
+		else {
+			$postTopBar.removeClass('sticky');
+		}
+	}
+
 	function setSidebar() {
 		var offset = 110,
 			bottom = $tutorial.offset().top + $tutorial.outerHeight() - $sidebar.outerHeight() - offset;
-		if (window.scrollY > bottom) {
+			if (window.scrollY > bottom) {
 			$sidebar.css("position", "absolute").css("top", $tutorial.outerHeight() - $sidebar.outerHeight());
 		} else if (window.scrollY > $tutorial.offset().top) {
 			$sidebar.css("position", "fixed").css("top", offset);
@@ -35,14 +49,14 @@ jQuery(function() {
 	}
 
 	function setActiveSidebarLink() {
-		$('.sidebar a').removeClass('active');
+		$('.sidebar .current-post-list a').removeClass('active');
 		var $closest = getClosestHeader();
 		$closest.addClass('active');
 	}
 });
 
 function getClosestHeader() {
-	var $links = $('.sidebar a'),
+	var $links = $('.sidebar .current-post-list a'),
 	top = window.scrollY,
 	$last = $links.first(),
 	$content = $(".tutorial-content");
