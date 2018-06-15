@@ -1,0 +1,14 @@
+<ul class="related-list">
+  {% for item in include.listings limit:2 %}
+    <li {% if item.url == page.url %}class="active" {% endif %}>
+      <a href="{{ site.baseurl }}{{ item.url }}">
+        <article>
+          <h3>{% if include.numbered %}{{ forloop.index }}. {% endif %}{{ item.title }}
+              {% include chevron-right-icon.html  %}
+          </h3>
+          <p class="description">{{ item.description }}</p>
+        </article>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

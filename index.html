@@ -1,26 +1,43 @@
 ---
 ---
-
-<section class="categories">
-	{% assign categories = site.categories | sort %}
-	{% for category in categories %}
-		{% assign name = category[0] %}
-		{% assign posts = category[1] %}
-		{% assign size = posts | size %}
-		<section class="category">
-				<h3>
-					<a href="{{ site.baseurl }}/category/{{ name | slugify }}/">{{ name | replace: "-", " " }}</a>
-				</h3>
-
-			<ul>
-				{% assign tutorials = posts | sort: "set_order" %}
-				{% for tutorial in tutorials limit: 6 %}
-					<li><a href="{{ site.baseurl }}{{ tutorial.url }}">{% include document-icon.html icon=tutorial.type %}{{ tutorial.title }}</a></li>
-				{% endfor %}
-				{% if size > 6 %}
-					<li><a href="{{ site.baseurl }}/category/{{ name | slugify }}/">{{ size | minus: 6 }} more...</a></li>
-				{% endif %}
+<div class="wrapper">
+	<section class="docs-top-section">
+		<h2 class="docs-top-tag">
+			Documentation
+		</h2>
+		<div class="docs-top-search">
+			{% include search.html %}
+		</div>
+	</section>
+	<section>
+		<h1 class="docs-intro-title">
+			Start building the metaverse
+		</h1>
+		<p class="docs-intro-desc">Here you will find everything you need to start building the most amazing scenes for Decentraland</p>
+		<div class="docs-listing">
+			<ul class="listing">
+			{% assign categories = site.categories | sort %}
+      {% for set in site.sets %}
+        {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+        {% assign post = series_posts[0] %}
+				{% assign size = series_posts | size %}
+        {% if size > 0 %}
+          <li>
+            <a class="docs-wrapper" href="{{ post.url }}">
+              <div class="icon">{% include document-icon.html icon=item.type %}</div>
+              <article>
+                <h3>{{ set.title | replace: "-", " " }}</h3>
+                <p class="description">
+                  {{ set.description }}
+                </p>
+                <span class="entry-count">{{size}} entries</span>
+              </article>
+            </a>
+          </li>
+        {% endif %}
+			{% endfor %}
 			</ul>
-		</section>
-	{% endfor %}
-</section>
+		</div>
+		{% include help.html %}
+	</section>
+</div>
