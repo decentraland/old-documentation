@@ -8,68 +8,60 @@ type: Document
 set: building-scenes
 set_order: 1
 ---
-Welcome to our introduction on how to build on Decentraland. Allow us to start by introducing the concepts behind how the decentralized metaverse works.
 
-The content you deploy to your LAND is called **scene**, it is usually an interactive program that renders content. It
-could be a game, an elevator, a video screen, an art gallery, whatever you want.
+In this document, we introduce the concepts behind how the decentralized metaverse works.
 
-If you come from the game development area, you may expect to have some kind of render loop and render elements in the
-screen inside that loop. Decentraland doesn't work that way, we run your scene in a different context from the engine, 
-for safety and performance reasons, also we don't want users to touch the internals of the engine or even know what is 
-inside the engine because we need to ensure a consistent experience for every user and mistakes are more like to happen 
-at that "low" level.
+The content you deploy to your LAND is called a **scene**. It's usually an interactive program that renders content, this could be a game, a video screen, an art gallery, whatever you want!
 
-Also other main difference with the event-loop based games is we built the API based on events, so we expect the scenes
-to be reacting to events instead of being querying the world repeatedly.
+If you have game development experience with other tools, you might expect to find some kind of render loop that periodically renders elements in the screen. Decentraland doesn't work like that, we run your scene in a different context from the engine, for safety and performance reasons. Also, we don't want developers to intervene with the internals of the engine or even need to know what lies inside the engine. We need to ensure a consistent experience for users throughout the Decentraland map, and mistakes are more like to happen at that "low" level.
 
-## How does the scenes work?
+Another key difference with event-loop-based games is that we built the API based on *events*, so we expect scenes to be updated in reaction to events rather than by querying the world repeatedly.
 
-Decoupling, it is all about decoupling. As we said before, your scenes doesn't run inside the same context of the engine
-(a.k.a. main thread), or sometimes in the same computer the engine is running. We created the SDK in a way that is 
-entirely decoupled from the rendering engine. It works using a RPC protocol that controls a little part of the client 
-only to render the scene and control the events.
+## How do scenes run?
 
-## Decoupling the scene from the engine
+Decoupling. It's all about decoupling. Your scenes don't run in the same context as the engine
+(a.k.a. the main thread), they might even not run in the same computer as the engine. We created the SDK in a way that is 
+entirely decoupled from the rendering engine. It works using RPC protocol, this protocol assigns a small part of the client to only render the scene and control events.
 
-Let's do it with an example, imagine you want to render a scene with the following shape
+### Decoupling a scene from the engine
+
+Let's take a look at an example. Suppose you want to render a scene with the following content:
 
 ```xml
 <scene>
-  <obj-model src="a.obj" />
+  <gltf-model src="models/a.gltf" />
   <sphere position="10 10 10" />
 </scene>
 ```
 
-In your scene code, you have no need to actually load the `a.obj` model, you don't need to know the geometry indexes of
-the sphere either. So, you describe the scene in a higher level, like it is an XML.
+While writing your scene's code, you have no need to actually load the `a.gltf` model, and you don't need to know the geometry indexes used by the sphere entity. All you need to do is describe the scene at a higher level, like you do in XML.
 
-Then we need to send the scene to the engine and it will take care of the positions, assets and geometries.
+Once you send the scene to the engine, it takes care of the positions, assets and geometries.
 
-To optimize things a little bit, we only send the differences in the to the actual client, so if you have a shoal of 
-fishes and you move only one, the SDK will send only that delta, the moved fish. This makes things faster for the client
-and it is completely transparent to the programmer of the scene.
+To optimize things, we only send the differences in the scene to the actual client. So if the scene has a shoal of 
+fish and only one of them moves, the SDK will send only that delta to the client, the fish that moved. This makes things faster for the client and is completely transparent to the developer of the scene.
 
-## Removing code friction
+### Removing code friction
 
-One of the design goals of our SDK was to reduce the learning curve as much as possible, as well incentive good
-practices and maintainable code, respecting the remote async-rpc constraints in any case. Roughly, we had two ways
-to achieve this:
+One of the goals we had when designing our SDK was to reduce the learning curve as much as possible. We also wanted to incentive good practices and the writing of maintainable code, respecting the remote async-rpc constraints in every case. 
 
-- **the jQuery way**: tell the computer how to handle entities, create, mutate and try to reach a desired state
-- **the React way**: tell the computer the desired state
+To make a long story short, we were considering two approaches for doing this:
+
+- **the jQuery way**: tell the system how to handle entities, create, mutate and try to reach a desired state.
+- **the React way**: tell the system the desired state and let it figure out how to get there.
 
 ---
 
-If we choose the jQuery way, our code to create the previous scene would look like this:
+If we had chosen the jQuery way (which we didn't), the code we would have needed to create our example scene would look like this:
 
 ```ts
-// IMPORTANT: This code is only an example, it does not exist nor work
+// WARNING: This code sample is only a hypothetical example, it's not supported by our tools
 
 let scene = metaverse.createScene()
 let objModel = metaverse.createObjModel()
 let sphere = metaverse.createSphere()
 
-objModel.setAttribute('src', 'a.obj')
+objModel.setAttribute('src', 'models/a.gltf')
 objModel.appendTo(scene)
 
 sphere.setAttribute('position', {x: 10, y: 10, z: 10})
@@ -78,37 +70,37 @@ sphere.appendTo(scene)
 EntityController.render(scene)
 ```
 
-In the previous example, we are telling the computer how to reach a desired state, the example (ab)uses mutations and
-side effects in code to reach that state.
+In this example, we're telling the system how to reach a desired state, the example (ab)uses mutations and
+side effects of how the code works to reach the desired state.
 
 ---
 
-If we choose the React way, our code to create the previous scene would look like this:
+Thankfully, we chose to do things the React way, so our code for creating the same scene as above looks like this:
 
 ```tsx
 // IMPORTANT: This code is only an example, it does not exist nor work
 
 const scene =
   <scene>
-    <obj-model src="a.obj" />
+    <obj-model src="models/a.gltf" />
     <sphere position={ {x: 10, y: 10, z: 10} } />
   </scene>
 
 EntityController.render(scene)
 ```
 
-In the previous example, we are telling the computer the desired state, instead of all the logic to get that state.
+In this example, we're just telling the system the desired state, instead of describing all of the logic to get to that state.
 
 ---
 
 
-We took advantage of the evolution of web technologies during the last 10 years and went for the React way, for several
-reasons:
+We went for the React way, for several reasons:
 
-- It is simpler to understand, it removes tons of boilerplate code non related to the business logic of the scene
-- It is descriptive, you describe **what** do you want, not **how**
-- It will help onboard React developers
-- The pattern is well known and well documented, getting help should be easy
-- Low memory footprint and easy to do garbage collection
+- It takes advantage of the evolution of web technologies that occured in the past 10 years. 
+- It's simpler to understand, it removes tons of boilerplate code that's not related to the business logic of the scene.
+- It's descriptive. You describe **what** you want, not **how** you want that to happen.
+- It helps onboard developers that are already familiar with React.
+- The pattern is well known and well documented, getting help should be easy.
+- It has a low memory footprint and it makes it easy to do garbage collection.
 
-> **Note:** Even though it looks like React, **our SDK DOES NOT USE REACT**
+> **Note:** Even though it intentionally looks a lot like React, **our SDK DOES NOT USE REACT**.
