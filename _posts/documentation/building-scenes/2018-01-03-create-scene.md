@@ -13,7 +13,7 @@ set_order: 2
 
 ## Kinds of scenes
 
-In Decentraland, a scene is the representation of the content of in an estate/LAND. All scenes are made up of [entities], which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
+In Decentraland, a scene is the representation of the content of in an estate/LAND. All scenes are made up of [entities](../entities/index.html), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
 
 There are essentially two different types of scenes:
 
@@ -46,7 +46,7 @@ Since the root scene element is a transform node, it can also be translated, sca
 
 ## Creating the files
 
-Use our CLI tool to automatically build the initial scaffolding for a scene. To do so, run `dcl init` in an empty folder. See [SDK Overview] for details on how to install and use the CLI.
+Use our CLI tool to automatically build the initial scaffolding for a scene. To do so, run `dcl init` in an empty folder. See [SDK Overview](../../decentraland/SDK-Overview/index.html) for details on how to install and use the CLI.
 
 The `dcl init` command creates a Decentraland **project** in your current working directory containing a **scene**. It prompts you to select a scene type (static, dynamic & singleplayer, or dynamic & multiplayer) and builds a different file structure depending on the case.
 
