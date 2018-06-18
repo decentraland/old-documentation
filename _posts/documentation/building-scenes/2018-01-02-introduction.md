@@ -23,6 +23,8 @@ Decoupling. It's all about decoupling. Your scenes don't run in the same context
 (a.k.a. the main thread), they might even not run in the same computer as the engine. We created the SDK in a way that is 
 entirely decoupled from the rendering engine. It works using RPC protocol, this protocol assigns a small part of the client to only render the scene and control events.
 
+We have also abstracted the communication protocol. This allows us to run the scenes both locally in a WebWorker and remotely in a Node.js server thru WebSockets.
+
 ### Decoupling a scene from the engine
 
 Let's take a look at an example. Suppose you want to render a scene with the following content:
@@ -41,7 +43,25 @@ Once you send the scene to the engine, it takes care of the positions, assets an
 To optimize things, we only send the differences in the scene to the actual client. So if the scene has a shoal of 
 fish and only one of them moves, the SDK will send only that delta to the client, the fish that moved. This makes things faster for the client and is completely transparent to the developer of the scene.
 
-### Removing code friction
+## Supported languages and syntax
+
+
+* To create scenes with only static content, use [XML](https://en.wikipedia.org/wiki/XML).
+* To create dynamic scenes, you must use [TypeScript (.tsx)](https://www.typescriptlang.org/docs/handbook/jsx.html).
+* In Typescript scenes, XML assets are handled in a way that resembles [React](https://reactjs.org/docs/hello-world.html).
+
+> **Note:** Even though dynamic scenes are written in a way that intentionally looks a lot like React, **our SDK DOES NOT USE REACT**.
+
+
+### Programming principles
+
+**Why do we use Typescript?**  
+
+TypeScript is a superset of JavaScript and allows you to employ object-oriented programming and type declaration. Features like autocomplete and type-checking speed up development times and allow for the creation of a solid codebase. These features are all key components to a positive developer experience.
+
+> You can use another tool or language instead of TypeScript, so long as your scripts are contained within a single Javascript file (scene.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
+
+**Taking Inspiration from React**
 
 One of the goals we had when designing our SDK was to reduce the learning curve as much as possible. We also wanted to incentive good practices and the writing of maintainable code, respecting the remote async-rpc constraints in every case. 
 
@@ -94,7 +114,7 @@ In this example, we're just telling the system the desired state, instead of des
 ---
 
 
-We went for the React way, for several reasons:
+We went for the React approach, for several reasons:
 
 - It takes advantage of the evolution of web technologies that occured in the past 10 years. 
 - It's simpler to understand, it removes tons of boilerplate code that's not related to the business logic of the scene.
@@ -103,4 +123,4 @@ We went for the React way, for several reasons:
 - The pattern is well known and well documented, getting help should be easy.
 - It has a low memory footprint and it makes it easy to do garbage collection.
 
-> **Note:** Even though it intentionally looks a lot like React, **our SDK DOES NOT USE REACT**.
+
