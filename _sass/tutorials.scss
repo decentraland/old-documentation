@@ -68,11 +68,25 @@
   }
 }
 
+.main-container {
+  position: relative;
+  width: 100%;
+}
+
 .top-section {
   flex: 1 0 100%;
-  height: 160px;
 
-  padding-bottom: 32px;
+  @media #{$desktop} {
+    height: 160px;
+  }
+  
+  margin-top: 24px;
+
+  padding-bottom: 16px;
+  @media #{$desktop} {
+    padding-bottom: 32px;
+  }
+
   border-bottom: 1px solid rgba(125, 132, 153, 0.24);
 
   .back-to-docs {
@@ -205,9 +219,12 @@
   }
 
   .index-trigger {
+    font-weight: bold;
     display: flex;
     align-items: center;
-    margin: 0 0 16px;
+    @media #{$desktop} {
+      margin: 0 0 16px;
+    }
     font-size: 14px;
     line-height: 24px;
     text-transform: uppercase;
@@ -261,16 +278,23 @@
     }
   }
 
-  .tutorial-main {
-    @media #{$mid-point} {
-      padding-top: 32px;
-      padding-top: 16px;
+  // .tutorial-main {
+  //   // @media #{$mid-point} {
+  //   //   padding-top: 32px;
+  //   //   padding-top: 16px;
+  //   // }
+  // }
+
+  .tutorial-main:first-child {
+    margin-top: 32px;
+
+    @media #{$desktop} {
+      margin-top: 56px;
     }
   }
 
   .tutorial-content {
     width: 100%;
-    max-width: 900px;
 
     @media #{$desktop} {
       margin-left: auto;
@@ -281,31 +305,25 @@
 
 .sidebar {
   display: none;
-  padding: 0 20px 0 0;
+  padding: 56px 20px 0 0;
   position: absolute;
-  top: 188px;
   width: 200px;
 
   @media #{$desktop} {
     display: block;
     width: 220px;
-    padding: 0;
+    padding: 56px 0 0 0;
   }
 
-  > ul li.active h3 {
-    font-weight: 500;
-  }
-
-  h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-  }
-
-  h3 a {
-    margin-top: 0;
+  .sidebar-h3 {
     font-size: 22px;
-    line-height: 32px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
     color: #0a0f1f;
+    margin-bottom: 16px;
   }
 
   ul {
@@ -378,7 +396,6 @@
         width: 35px;
         height: 35px;
         fill: $link-color;
-        -webkit-transition: all 0.2s ease;
         margin: 0 auto;
       }
     }
@@ -703,7 +720,6 @@
 
 //Highligh icon colors based on tag on post
 .tutorial {
-  padding-bottom: 96px;
 
   .back-to-docs {
     color: $docs_primary_black;
@@ -727,95 +743,5 @@
 
   .tutorial-content ul li:before {
     color: $docs_primary_black;
-  }
-
-  &.marketplace {
-    .back-to-docs {
-      color: $docs_highlight_1;
-
-      svg #icon {
-        fill: $docs_highlight_1;
-      }
-    }
-
-    .index-trigger {
-      color: $docs_highlight_1;
-
-      svg #shape {
-        fill: $docs_highlight_1;
-      }
-    }
-
-    .sidebar a.active {
-      color: $docs_highlight_1;
-    }
-
-    blockquote {
-      border-color: $docs_highlight_1;
-    }
-
-    .tutorial-content ul li:before {
-      color: $docs_highlight_1;
-    }
-  }
-
-  &.building-scenes {
-    .back-to-docs {
-      color: $docs_highlight_2;
-
-      svg #icon {
-        fill: $docs_highlight_2;
-      }
-    }
-
-    .index-trigger {
-      color: $docs_highlight_2;
-
-      svg #shape {
-        fill: $docs_highlight_2;
-      }
-    }
-
-    .sidebar a.active {
-      color: $docs_highlight_2;
-    }
-
-    blockquote {
-      border-color: $docs_highlight_2;
-    }
-
-    .tutorial-content ul li:before {
-      color: $docs_highlight_2;
-    }
-  }
-
-  &.sdk-releases {
-    .back-to-docs {
-      color: $docs_highlight_3;
-
-      svg #icon {
-        fill: $docs_highlight_3;
-      }
-    }
-
-    .index-trigger {
-      color: $docs_highlight_3;
-
-      svg #shape {
-        fill: $docs_highlight_3;
-      }
-    }
-
-    .sidebar a.active {
-      color: $docs_highlight_3;
-    }
-
-    blockquote {
-      border-color: $docs_highlight_3;
-    }
-
-    .tutorial-content ul li:before {
-      color: $docs_highlight_3;
-    }
   }
 }

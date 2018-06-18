@@ -1,5 +1,5 @@
 .modalDialog {
-	position: fixed;
+  position: fixed;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -13,7 +13,7 @@
 	pointer-events: none;
 
 	&.show {
-		opacity:1;
+		opacity: 1;
 		pointer-events: auto;
 	}
 
@@ -64,14 +64,23 @@
 		text-align: center;
 		color: $docs_primary_black;
 		z-index: 99;
-		cursor: pointer;
-	}
+    cursor: pointer;
+  }
 
 	&.index-modal {
 		min-height: 100vh;
 		padding: 76px 15px 40px;
 		margin: 0;
 		background-color: white;
+
+    overflow-y: scroll;
+
+    .close {
+      position: fixed;
+      font-size: 27px;
+      padding-top: 5px;
+      padding-right: 1px;
+    }
 
 		> ul li.active h3 {
 			font-weight: 500;
@@ -114,21 +123,5 @@
 				transform: translateX(10px);
 			}
 		}
-		// ul {
-		// 	padding: 0;
-		// 	margin: 0;
-		// 	list-style: none;
-
-		// 	li {
-		// 		margin-bottom: 20px;
-		// 	}
-
-		// 	a {
-		// 		font-size: 15px;
-		// 		letter-spacing: -0.3px;
-		// 		line-height: 24px;
-		// 		color: #7D8499;
-		// 	}
-		// }
 	}
 }

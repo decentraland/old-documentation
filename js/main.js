@@ -1,7 +1,7 @@
 jQuery(function() {
   var $sidebar = $(".sidebar"),
     $content = $(".wrapper"),
-    $tutorial = $(".tutorial-content"),
+    $tutorial = $(".main-container"),
     $header = $('header'),
     $postTopBar = $(".tutorial .title-search-wrapper");
   $postTopBarPosition = $postTopBar.offset();
@@ -38,18 +38,21 @@ jQuery(function() {
   }
 
   function setSidebar() {
-    var offset = 121;
-    var headerHeight = 96;
+    var headerHeight = 96; // header of the whole page, with logo
+    var offset = headerHeight;
     $header.toggleClass('overflow', window.scrollY > headerHeight)
 
     var bottom = $tutorial.offset().top + $tutorial.outerHeight() - $sidebar.outerHeight() - offset;
 
     if (window.scrollY > bottom) {
+      // sticky at the bottom
       $sidebar.css("position", "absolute").css("top", $tutorial.outerHeight() - $sidebar.outerHeight());
-    } else if (window.scrollY > ($tutorial.offset().top - headerHeight)) {
+    } else if (window.scrollY > ($tutorial.offset().top - offset)) {
+      // sticky at the top
       $sidebar.css("position", "fixed").css("top", offset);
     } else {
-      $sidebar.css("position", "absolute").css("top", 188);
+      // normal no sticky
+      $sidebar.css("position", "absolute").css("top", 0);
     }
   }
 
