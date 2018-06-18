@@ -19,7 +19,7 @@ In Decentraland, a scene is the representation of the content of in an estate/LA
 There are essentially two different types of scenes:
 
 * **Static scenes**: An [XML](https://en.wikipedia.org/wiki/XML) file describes static objects in the scene.
-* **Dynamic scenes**: A [TypeScript (TSJ)](https://www.typescriptlang.org/docs/handbook/jsx.html) file, with a `.tsx` extension, that has dynamic content. Through these you can create, move and mutate the entities in the scene.
+* **Dynamic scenes**: A [TypeScript (TSX)](https://www.typescriptlang.org/docs/handbook/jsx.html) file, with a `.tsx` extension, that has dynamic content. Through these you can create, move and mutate the entities in the scene.
 
 
 ## Basic scene structure
