@@ -23,6 +23,8 @@ Decoupling. It's all about decoupling. Your scenes don't run in the same context
 (a.k.a. the main thread), they might even not run in the same computer as the engine. We created the SDK in a way that is 
 entirely decoupled from the rendering engine. It works using RPC protocol, this protocol assigns a small part of the client to only render the scene and control events.
 
+We have also abstracted the communication protocol. This allows us to run the scenes both locally in a WebWorker and remotely in a Node.js server thru WebSockets.
+
 ### Decoupling a scene from the engine
 
 Let's take a look at an example. Suppose you want to render a scene with the following content:
@@ -52,6 +54,14 @@ fish and only one of them moves, the SDK will send only that delta to the client
 
 
 ### Programming principles
+
+**Why do we use Typescript?**  
+
+TypeScript is a superset of JavaScript and allows you to employ object-oriented programming and type declaration. Features like autocomplete and type-checking speed up development times and allow for the creation of a solid codebase. These features are all key components to a positive developer experience.
+
+> You can use another tool or language instead of TypeScript, so long as your scripts are contained within a single Javascript file (scene.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
+
+**Taking Inspiration from React**
 
 One of the goals we had when designing our SDK was to reduce the learning curve as much as possible. We also wanted to incentive good practices and the writing of maintainable code, respecting the remote async-rpc constraints in every case. 
 
