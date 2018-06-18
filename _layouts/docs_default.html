@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="{{ site.baseurl }}/css/screen.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/images/fonts/inter-ui.css">
   <link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="{{ site.baseurl }}/touch-icon.png" sizes="192x192">
   <link rel="icon" type="image/png" href="{{ site.baseurl }}/images/favicon.png">
@@ -29,19 +28,19 @@
 
 <body class="{{ page.body_class }}">
   <header>
-    <h1 class="logo-title">{{ page.title }}</h1>
     <div class="logo">
       <a href="/">{% include logo.html %}</a>
     </div>
     <div class="header_search">
       <button class="search_toggle" id="open-search">
-        {% include search-icon.html %}
+         {% include search-icon.html %}
       </button>
-      {% include search.html %}
+       {% include search.html %}
     </div>
   </header>
-
-  {{ content }}
+  <section class="content">
+    {{ content }}
+  </section>
 
   {% include footer.html %}
   <script>
@@ -67,12 +66,8 @@
         event.preventDefault();
         $(".header_search").toggleClass("open");
       });
-
-      $("#close-search").click(function (event) {
-        event.preventDefault();
-        $(".header_search").removeClass("open");
-      });
     });
+
   </script>
 </body>
 

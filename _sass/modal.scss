@@ -1,5 +1,5 @@
 .modalDialog {
-	position: fixed;
+  position: fixed;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -13,7 +13,7 @@
 	pointer-events: none;
 
 	&.show {
-		opacity:1;
+		opacity: 1;
 		pointer-events: auto;
 	}
 
@@ -53,13 +53,75 @@
 
 	.close {
 		position: absolute;
-		top: 33px;
-		right: 35px;
-		font-size: 1.5em;
-		width: 25px;
-		height: 25px;
-		cursor: pointer;
-		z-index: 99;
+		top: 16px;
+		right: 16px;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		background-color: #F2F3F5;
 		font-size: 30px;
+		line-height: 1;
+		text-align: center;
+		color: $docs_primary_black;
+		z-index: 99;
+    cursor: pointer;
+  }
+
+	&.index-modal {
+		min-height: 100vh;
+		padding: 76px 15px 40px;
+		margin: 0;
+		background-color: white;
+
+    overflow-y: scroll;
+
+    .close {
+      position: fixed;
+      font-size: 27px;
+      padding-top: 5px;
+      padding-right: 1px;
+    }
+
+		> ul li.active h3 {
+			font-weight: 500;
+		}
+
+		h3 {
+			margin-top: 0;
+			margin-bottom: 10px;
+		}
+
+		h3 a {
+			margin-top: 0;
+			font-size: 22px;
+			line-height: 32px;
+			color: #0A0F1F;
+		}
+
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+
+			li {
+				margin: 0 0 15px 0;
+			}
+		}
+
+		a {
+			display: block;
+			text-decoration: none;
+			-webkit-transition: transform .2s ease;
+			font-size: 15px;
+			line-height: 24px;
+			letter-spacing: -0.3px;
+			text-transform: capitalize;
+			color: #7D8499;
+
+			&.active {
+				color: #000;
+				transform: translateX(10px);
+			}
+		}
 	}
 }

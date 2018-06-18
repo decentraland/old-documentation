@@ -1,7 +1,36 @@
 footer {
-	background: #343642;
-	color: #fff;
-	padding: 20px 0;
+	// background: #343642;
+	// color: #fff;
+  padding: 10px 0 10px;
+  margin-top: 120px;
+
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.67;
+  letter-spacing: -0.1px;
+  color: #7d8499;
+
+	.footer-wrapper {
+		padding: 0 15px;
+
+		@media #{$mid-point} {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			padding: 0 24px;
+		}
+	}
+
+	.lang-nav-wrapper,
+	.social-copyright-wrapper {
+		@media #{$mid-point} {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+	}
 
 	.edit-footer {
 		text-align: center;
@@ -9,10 +38,15 @@ footer {
 	}
 
 	.copyright {
-		color: $medium-grey;
+		color: #7D8499;
 		margin: 0;
-		text-align: center;
 		font-size: .9em;
+
+		@media #{$mid-point} {
+			font-size: 12px;
+			letter-spacing: -0.1px;
+			line-height: 20px;
+		}
 	}
 
 	a {
@@ -28,12 +62,21 @@ footer {
 		padding: 0;
 		list-style: none;
 		margin: 0;
-		text-align: center;
 	}
 
-	li {
-		display: inline-block;
-		margin: 0 6px 15px 0;
+	.footer-links {
+		padding: 0;
+		list-style: none;
+		margin: 0 0 40px;
+
+		@media #{$mid-point} {
+			margin: 0;
+		}
+
+		li {
+			display: inline-block;
+			margin: 0 20px 0 0;
+		}
 	}
 
 	svg {
@@ -41,5 +84,82 @@ footer {
 		position: relative;
 		top: 5px;
 		transition: fill 200ms ease-in;
+
+		@media #{$mid-point} {
+			top: initial;
+			max-height: 18px;
+		}
+	}
+
+	.footer-lang-selector {
+		display: flex;
+		margin-bottom: 24px;
+
+		@media #{$mid-point} {
+			margin-right: 48px;
+			margin-bottom: 0;
+		}
+
+		select {
+			margin: 0;
+			border: 0;
+			font-size: 17px;
+			line-height: 26px;
+			letter-spacing: -0.57px;
+			color: $docs_primary_black;
+			margin-left: -3.5px;
+			background-color: transparent;
+
+			@media #{$mid-point} {
+				font-size: 12px;
+				line-height: 20px;
+				letter-spacing: -0.1px;
+			}
+		}
+
+		option {
+			padding: 0;
+		}
+	}
+
+	.footer-nav {
+		padding-bottom: 40px;
+
+		@media #{$mid-point} {
+			padding-bottom: 0;
+		}
+
+		ul {
+			display: flex;
+			flex-direction: column;
+			text-align: left;
+			@media #{$mid-point} {
+				flex-direction: row;
+			}
+		}
+
+		li {
+			margin: 0 0 5px;
+			&:last-child {
+				margin: 0;
+			}
+
+			@media #{$mid-point} {
+				margin: 0 20px 0 0;
+			}
+		}
+
+		a {
+			font-size: 17px;
+			line-height: 36px;
+			letter-spacing: -0.4px;
+			color: #7D8499;
+
+			@media #{$mid-point} {
+				font-size: 12px;
+				line-height: 20px;
+				letter-spacing: -0.1px;
+			}
+		}
 	}
 }
