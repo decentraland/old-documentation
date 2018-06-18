@@ -7,6 +7,7 @@ categories:
 type: Document
 set: building-scenes
 set_order: 2
+tag: introduction
 ---
 
 
@@ -43,6 +44,7 @@ Since the root scene element is a transform node, it can also be translated, sca
   <!-- in this example, the box is located at the world position 5 5 5 -->
 </scene>
 ```
+
 
 ## Creating the files
 

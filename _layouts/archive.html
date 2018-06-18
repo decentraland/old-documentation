@@ -1,7 +1,17 @@
 ---
-layout: default
+layout: docs_default
 ---
 {% assign posts = page.posts | sort: "title" %}
-<h2 style="text-transform:capitalize;">{{ page.title | replace: "-", " " }} <span class="count">({{ posts | size }})</span></h2>
-
-{% include listings.html listings=posts %}
+<div class="wrapper">
+  <section>
+    <h2 class="docs-top-tag">{{ page.title | replace: "-", " " }} <span class="count">({{ posts | size }})</span></h2>
+    <h1 class="docs-intro-title">
+      Start building the metaverse
+    </h1>
+    <p class="docs-intro-desc">Here you will find everything you need to start building the most amazing scenes for Decentraland</p>
+    <div class="docs-listing">
+      {% include docs-listing.html listings=posts %}
+    </div>
+  </section>
+  {% include help.html %}
+</div>

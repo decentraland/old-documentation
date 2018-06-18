@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="15px" viewBox="0 0 20 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Docs Icon</title>
+<defs>
+    <linearGradient x1="50%" y1="100%" x2="50%" y2="-2.48949813e-15%" id="linearGradient-1">
+        <stop stop-color="#FF9A74" offset="0%"></stop>
+        <stop stop-color="#FF0044" offset="100%"></stop>
+    </linearGradient>
+</defs>
+<g id="Mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="1.home-mobile" transform="translate(-18.000000, -105.000000)">
+        <g id="header">
+            <g id="title" transform="translate(16.000000, 96.000000)">
+                <g id="mark">
+                    <g id="docs-mark">
+                        <rect id="bounds" x="0" y="0" width="24" height="32"></rect>
+                        <path d="M3,9 L21,9 C21.5522847,9 22,9.44771525 22,10 L22,11 C22,11.5522847 21.5522847,12 21,12 L3,12 C2.44771525,12 2,11.5522847 2,11 L2,10 C2,9.44771525 2.44771525,9 3,9 Z M3,15 L15,15 C15.5522847,15 16,15.4477153 16,16 L16,17 C16,17.5522847 15.5522847,18 15,18 L3,18 C2.44771525,18 2,17.5522847 2,17 L2,16 C2,15.4477153 2.44771525,15 3,15 Z M3,21 L19,21 C19.5522847,21 20,21.4477153 20,22 L20,23 C20,23.5522847 19.5522847,24 19,24 L3,24 C2.44771525,24 2,23.5522847 2,23 L2,22 C2,21.4477153 2.44771525,21 3,21 Z" id="Combined-Shape" fill="url(#linearGradient-1)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</g>
+</svg>

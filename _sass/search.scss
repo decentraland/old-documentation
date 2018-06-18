@@ -1,20 +1,50 @@
+.search-title {
+	margin: 0 0 24px;
+	font-size: 32px;
+	line-height: 44px;
+	color: $docs_primary_black;
+}
+
 #search-results {
 	margin: 0;
 	padding: 0;
 
 	li {
 		list-style: none;
-		margin: 0;
-		padding: 0;
+		margin: 0 0 16px;
+		padding: 20px 24px;
+		border-radius: 8px;
+		background: #F2F3F5;
+
 
 		h4 {
-			margin: 20px 0 10px 0;
+			margin: 0 0 10px;
+			font-size: 22px;
+			line-height: 32px;
+			color: $docs_primary_black;
 		}
 
 		p {
 			line-height: 1.5;
 			padding: 0;
-			margin: 0;
+			margin: 0 0 24px;
+			font-size: 15px;
+			letter-spacing: -0.3px;
+			line-height: 24px;
+			color: $docs_primary_black;
+		}
+
+		.label {
+			display: inline-block;
+			padding: 3px 9px;
+			font-size: 12px;
+			line-height: 20px;
+			color: #FFFFFF;
+			border-radius: 4px;
+
+			&.sometag {
+				background-color: $docs_highlight_1;
+			}
 		}
 	}
 }
