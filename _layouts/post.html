@@ -2,22 +2,22 @@
 layout: default
 ---
 {% assign tags = page.tags %}
-<div class="wrapper post-wrapper">
-  <section class="tutorial {{ page.set }}">
-    <div class="top-section">
-      <a class="back-to-docs" href="/">
-        {% include chevron-left-icon.html %} Documentation
+<div class="tutorial {{ page.set }} wrapper post-wrapper">
+  <div class="top-section">
+    <a class="back-to-docs" href="/">
+      {% include chevron-left-icon.html %} Documentation
+    </a>
+    <div class="title-search-wrapper">
+      <h1><b>{{ page.title }}</b></h1>
+      <a class="index-trigger modalOpen no-smooth" href="#index-modal">
+        {% include index-icon.html icon="Index" %} See index
       </a>
-      <div class="title-search-wrapper">
-        <h1><b>{{ page.title }}</b></h1>
-        <a class="index-trigger modalOpen no-smooth" href="#index-modal">
-          {% include index-icon.html icon="Index" %} See index
-        </a>
-        <div class="post-top-search">
-          {% include search.html %}
-        </div>
+      <div class="post-top-search">
+        {% include search.html %}
       </div>
     </div>
+  </div>
+  <section class="main-container">
     <aside class="sidebar sticky">
       <ul>
         {% if page.set %}
@@ -26,11 +26,9 @@ layout: default
         {% assign series_posts = site.posts | where: "set", page.set | sort: 'set_order' %}
         {% for series_post in series_posts %}
         <li {% if series_post.url==page.url %} class="active" {% endif %} >
-          <h3>
-            <a href="{{ site.baseurl }}{{ series_post.url }}">
-              {{ series_post.title }}
-            </a>
-          </h3>
+          <a href="{{ site.baseurl }}{{ series_post.url }}" class="sidebar-h3">
+            {{ series_post.title }}
+          </a>
           {% if series_post.url == page.url %}
           <ul class="current-post-list">
             {% assign sub_navigation = content | extract_element: 'h2' %}
@@ -46,27 +44,35 @@ layout: default
       </ul>
     </aside>
     <section class="tutorial-content">
-      {% if page.type == "Video" %} {% include youtube.html video_id=page.video_id %} {% if page.resources %}
-      <div class="resources">
-        <ul>
-          {% for resource in page.resources %}
-          <li>
-            <a href="{{ resource.link }}">{{ resource.name }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% endif %} {% endif %}
+
+      {% if page.type == "Video" %}
+        {% include youtube.html video_id=page.video_id %}
+        {% if page.resources %}
+          <div class="resources">
+            <ul>
+              {% for resource in page.resources %}
+              <li>
+                <a href="{{ resource.link }}">{{ resource.name }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endif %}
 
       <div class="tutorial-main">
         {{ content }}
       </div>
+
+      <!--
       <div class="tutorial-share">
         <a class="modalOpen no-smooth" href="#subscribe">{% include social-icon.html icon="Email" %} Subscribe</a>
         <a class="modalOpen no-smooth" href="#share">{% include social-icon.html icon="Share" %} Share</a>
       </div>
+      -->
     </section>
   </section>
+
 </div>
 
 <section class="bottom-navigation">
