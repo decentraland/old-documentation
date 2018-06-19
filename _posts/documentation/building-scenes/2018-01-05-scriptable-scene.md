@@ -9,12 +9,13 @@ set: building-scenes
 set_order: 5
 ---
 
-We provide a high level API to create scenes that mimics the shape of React.Component. It is called ScriptableScene,
-it is a class that hooks the underlying low-level API to a series of lifecycle events you can use for your scenes.
+We provide a high level API to create scenes that mimic the way in which React.Component handles events. We created a class called `ScriptableScene` that hooks the underlying low-level API to a series of lifecycle events you can use for your scenes.
 
-Each `ScriptableScene` has several "lifecycle methods" that you can override to run code at particular times in the process. Methods prefixed with `will` are called right before something happens, and methods prefixed with `did` are called right after something happens.
+Each `ScriptableScene` has several *lifecycle methods*, you can override these to run code at particular times in the process. 
+* Methods prefixed with `will` are called right before something happens.
+* Methods prefixed with `did` are called right after something happens.
 
-Here is an example containing a class and the lifecycle hooks.
+Below is an example containing a class and hooks to lifecycle methods.
 
 ```tsx
 import { ScriptableScene, createElement } from 'metaverse-api'
@@ -33,7 +34,7 @@ export default class Scene extends ScriptableScene<Props, State> {
   state: State = { counter: 0 }
 
   /**
-   * Called immediately after the scene is mounted. Setting state here
+   * Called immediately after the scene is mounted. Setting a state here
    * will trigger re-rendering.
    *
    * You must start your processes, timers, pollers only after this method
@@ -67,16 +68,18 @@ export default class Scene extends ScriptableScene<Props, State> {
   }
 
   /**
-   * Called to determine whether the change in props and state should trigger a re-render.
+   * Called to determine whether a change in state or props should trigger a re-render.
    *
-   * If false is returned, `ScriptableScene#render`, and `sceneDidUpdate` will not be called.
+   * If this method returns `true`, `ScriptableScene#render`, and `sceneDidUpdate` are called.
    */
   async shouldSceneUpdate(newProps: Props) {
     return true
   }
 
   /**
-   * Called immediately after updating occurs. Not called for the initial render.
+   * Called immediately after any change occurs to the state or props, 
+   * unless shouldSceneUpdate == false. 
+   * Not called for the initial render.
    */
   async sceneDidUpdate() {
     // stub
@@ -88,11 +91,11 @@ export default class Scene extends ScriptableScene<Props, State> {
    * `sceneDidMount`.
    */
   async sceneWillUnmount() {
-    // gracefully tear down created things
+    // gracefully tear down created things.
   }
 
   /**
-   * It makes a subscription to remote events, those events occur in the context of the game and are sent thru the wire
+   * Makes a subscription to remote events, those events occur in the context of the game and are sent thru the wire
    * protocol.
    *
    * @param event name of the remote event to listen
@@ -102,8 +105,8 @@ export default class Scene extends ScriptableScene<Props, State> {
 }
 ```
 
-The protocol and internals are explained in the [metaverse-rpc](https://github.com/decentraland/metaverse-rpc
-respository. It is important to understand the way `entityController` gets injected into the class.
+The protocol and internals are explained in the [metaverse-rpc](https://github.com/decentraland/metaverse-rpc)
+respository. It's important to understand the way `entityController` gets injected into the class.
 
 1. The class is decorated with an injected API, like this:
   ```tsx
@@ -112,19 +115,16 @@ class ScriptableScene extends Script {
   entityController: EntityController = null
 }
   ```
-2. An instance of your class is created using a [transport](https://github.com/decentraland/metaverse-rpc#transports) as argument.
-3. Once the class is created, it requires to the host (the engine) an instance of `EntityController`, it is an
-  asynchronous call.
-4. The host responds to that request and a proxy is created and assigned to the property `entityController`
-5. Once all requirements are fulfilled, the scene calls the `sceneDidMount()` method and you can be sure the required
-  apis are loaded in your class instance
+2. An instance of your class is created using a [transport](https://github.com/decentraland/metaverse-rpc#transports) as an argument.
+3. Once the class is created, it requires an instance of `EntityController` to the host (the engine) , this is an asynchronous call.
+4. The host responds to that request and a proxy is created and assigned to the property `entityController`.
+5. Once all requirements are fulfilled, the scene calls the `sceneDidMount()` method and you can be sure the required apis are loaded in your class instance.
 
 ## Client side scenes
 
-Also known as "Local scenes" are compiled using the `metaverse-compiler` into a WebWorker. The `scene.json` points to
-the compilated `scene.js` file.
+Client-side scenes, also known as "Local scenes", are compiled using the `metaverse-compiler` into a WebWorker. The `scene.json` points to the compiled `scene.js` file.
 
-The entry point of the WebWorker is defined in the `build.json`:
+The entry point for the WebWorker is defined in the `build.json`:
 
 ```json
 [{
@@ -135,8 +135,7 @@ The entry point of the WebWorker is defined in the `build.json`:
 }]
 ```
 
-> **Note:** The file `scene.tsx` must `export default` the class of the scene. The loader of the engine knows how to
-  instantiate the scene.
+> **Note:** The file `scene.tsx` must include an `export default` statement for the class of the scene. The loader of the engine requires this statment to instantiate the scene.
 
 ## Server side scenes
 
