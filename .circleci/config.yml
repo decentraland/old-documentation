@@ -49,7 +49,7 @@ jobs:
       - save_cache:
           paths:
             - _site
-        key: build-{{ .Revision }}
+          key: build-{{ .Revision }}
 
   deploy-master:
     docker:
