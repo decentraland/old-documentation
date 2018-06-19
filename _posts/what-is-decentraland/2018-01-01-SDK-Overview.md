@@ -5,7 +5,7 @@ description: Decentraland Software Development Kit
 categories:
   - Decentraland
 type: Document
-set: getting-started
+set: what-is-decentraland
 set_order: 1
 ---
 

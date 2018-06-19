@@ -65,8 +65,6 @@
 }
 
 .docs-listing {
-  margin-top: 64px;
-
   .listing {
     display: flex;
     flex-direction: column;
@@ -105,6 +103,8 @@
     }
 
     .icon {
+      background-repeat: no-repeat;
+      background-position: center bottom;
       min-height: 180px;
     }
 

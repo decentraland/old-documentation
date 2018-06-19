@@ -108,6 +108,11 @@ dt, h2 {
 			letter-spacing: -0.3px;
 			color: #7D8499;
 			background-color: $docs_medium_grey;
-		}
+    }
+    
+    @media #{$desktop} {
+      top: -12px;
+      position: relative;
+    }
 	}
 }

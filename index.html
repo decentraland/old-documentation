@@ -1,5 +1,30 @@
 ---
 ---
+<style>
+  .docs-header {
+    height: 48px;
+    margin-top: 48px;
+    padding:8px 0;
+    position: relative;
+  }
+
+  .docs-header > .index-trigger {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    display: flex!important;
+  }
+
+  .docs-header > span {
+    font-size: 22px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    color: #0a0f1f;
+  }
+</style>
 <div class="wrapper">
 	<section class="docs-top-section">
 		<h2 class="docs-top-tag">
@@ -13,18 +38,26 @@
 		<h1 class="docs-intro-title">
 			Start building the metaverse
 		</h1>
-		<p class="docs-intro-desc">Here you will find everything you need to start building the most amazing scenes for Decentraland</p>
+		<p class="docs-intro-desc">
+      Here you will find everything you need to start building the most amazing scenes for Decentraland
+    </p>
+    <div class="docs-header">
+      <a class="index-trigger no-smooth" href="{{site.baseurl}}/archive" style="">
+        {% include index-icon.html icon="Index" %} See index
+      </a>
+      <span>Categories</span>
+    </div>
 		<div class="docs-listing">
 			<ul class="listing">
-			{% assign categories = site.categories | sort %}
-      {% for set in site.sets %}
+			{% assign sets = site.sets | sort: 'order' %}
+      {% for set in sets %}
         {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
         {% assign post = series_posts[0] %}
 				{% assign size = series_posts | size %}
         {% if size > 0 %}
           <li>
             <a class="docs-wrapper" href="{{ post.url }}">
-              <div class="icon">{% include document-icon.html icon=item.type %}</div>
+              <div class="icon" style="background-color: {{set.color}}; background-image: url({{ site.baseurl }}/images/sets/{{set.img}})">{% include document-icon.html icon=item.type %}</div>
               <article>
                 <h3>{{ set.title | replace: "-", " " }}</h3>
                 <p class="description">
@@ -38,6 +71,9 @@
 			{% endfor %}
 			</ul>
 		</div>
-		{% include help.html %}
-	</section>
+    
+    {% include help.html %}
+    {% include override-color.html accent_color="#ff0044" %}
+  </section>
+  
 </div>

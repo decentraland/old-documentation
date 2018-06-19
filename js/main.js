@@ -1,12 +1,26 @@
 jQuery(function() {
+  var states = {
+    normal: 0,
+    bottom: 1,
+    top: 2
+  };
+  var latestState = states.normal;
   var $sidebar = $(".sidebar"),
     $content = $(".wrapper"),
     $tutorial = $(".main-container"),
-    $header = $('header'),
+    $header = $("header"),
     $postTopBar = $(".tutorial .title-search-wrapper");
   $postTopBarPosition = $postTopBar.offset();
   console.log($postTopBarPosition);
   offset = $content.offset().top + 60;
+
+  var setActiveSidebarLink = throttle(function setActiveSidebarLink() {
+    var $closest = getClosestHeader();
+    if (!$closest.hasClass("active")) {
+      $(".sidebar .current-post-list a").removeClass("active");
+      $closest.addClass("active");
+    }
+  }, 100);
 
   var found = true;
 
@@ -21,50 +35,42 @@ jQuery(function() {
     setActiveSidebarLink();
 
     $(window).on("scroll", function() {
-      throttle(function() {
-        setHeader();
-        setActiveSidebarLink();
-        setSidebar();
-      }, 100)();
+      setActiveSidebarLink();
+      setSidebar();
     });
-  }
-
-  function setHeader() {
-    // if (window.scrollY > 200) {
-    //   $postTopBar.addClass("sticky");
-    // } else {
-    //   $postTopBar.removeClass("sticky");
-    // }
   }
 
   function setSidebar() {
     var headerHeight = 96; // header of the whole page, with logo
     var offset = headerHeight;
-    $header.toggleClass('overflow', window.scrollY > headerHeight)
+    $header.toggleClass("overflow", window.scrollY > headerHeight);
 
     var bottom = $tutorial.offset().top + $tutorial.outerHeight() - $sidebar.outerHeight() - offset;
 
     if (window.scrollY > bottom) {
-      // sticky at the bottom
-      $sidebar.css("position", "absolute").css("top", $tutorial.outerHeight() - $sidebar.outerHeight());
-    } else if (window.scrollY > ($tutorial.offset().top - offset)) {
-      // sticky at the top
-      $sidebar.css("position", "fixed").css("top", offset);
+      if (latestState !== states.bottom) {
+        // sticky at the bottom
+        $sidebar.css("position", "absolute").css("top", $tutorial.outerHeight() - $sidebar.outerHeight());
+        latestState = states.bottom;
+      }
+    } else if (window.scrollY > $tutorial.offset().top - offset) {
+      if (latestState !== states.top) {
+        // sticky at the top
+        $sidebar.css("position", "fixed").css("top", offset);
+        latestState = states.top;
+      }
     } else {
-      // normal no sticky
-      $sidebar.css("position", "absolute").css("top", 0);
+      if (latestState !== states.normal) {
+        // normal no sticky
+        $sidebar.css("position", "absolute").css("top", 0);
+        latestState = states.normal;
+      }
     }
-  }
-
-  function setActiveSidebarLink() {
-    $(".sidebar .current-post-list a").removeClass("active");
-    var $closest = getClosestHeader();
-    $closest.addClass("active");
   }
 });
 
 function getClosestHeader() {
-  var $links = $(".sidebar .current-post-list a"),
+  var $links = $(".internal-href"),
     top = window.scrollY,
     $last = $links.first(),
     $content = $(".tutorial-content");

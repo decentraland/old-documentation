@@ -1,0 +1,54 @@
+---
+---
+{% assign posts = site.posts | sort: "title" %}
+
+
+
+{% for post in site.posts %}
+  {% assign c = post.categories | join: "," %}
+  {% if c != "" %}
+    {% capture categories %}{{categories}},{{c}}{% endcapture %}
+  {% endif %}
+  {% endfor %}
+{% assign categories = categories | split: "," | uniq | sort: self %}
+
+<div class="wrapper">
+  <section class="docs-top-section">
+    <h2 class="docs-top-tag">
+      Documentation
+    </h2>
+    <div class="docs-top-search">
+      {% include search.html %}
+    </div>
+  </section>
+  <section>
+    <h1 class="docs-intro-title">
+      General index
+    </h1>
+    <p class="docs-intro-desc">
+      Here you will find every page of the documentation, organized in categories.
+    </p>
+  </section>
+  <div>
+
+
+    {% for cat in categories %}
+    {% assign posts = site.categories[cat] %}
+    {% assign len = posts | size %}
+    
+    {% if len > 0 %}
+    <h2 style="text-transform:capitalize;">
+      {{ cat | replace: "-", " " }} <span class="count">({{ posts | size }})</span>
+    </h2>
+    <ul>    
+      {% for post in posts %}
+      <li>
+        <a href="{{ site.baseurl }}{{post.url}}">{{post.title}}</a>
+        <p>{{post.description}}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>

@@ -58,7 +58,7 @@
         fill: $link-color;
         width: 25px;
         height: 25px;
-        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
       }
 
       &:hover {
@@ -152,6 +152,8 @@
 
   .post-top-search {
     display: none;
+    top: -11px;
+    position: relative;
 
     @media #{$desktop} {
       display: block;
@@ -209,6 +211,26 @@
   }
 }
 
+.index-trigger {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  @media #{$desktop} {
+    margin: 0 0 16px;
+  }
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: uppercase;
+
+  @media #{$desktop} {
+    display: none;
+  }
+
+  > svg {
+    margin-right: 6px;
+  }
+}
+
 .tutorial {
   display: flex;
   flex-wrap: wrap;
@@ -218,25 +240,6 @@
     flex-direction: row;
   }
 
-  .index-trigger {
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    @media #{$desktop} {
-      margin: 0 0 16px;
-    }
-    font-size: 14px;
-    line-height: 24px;
-    text-transform: uppercase;
-
-    @media #{$desktop} {
-      display: none;
-    }
-
-    > svg {
-      margin-right: 6px;
-    }
-  }
 
   .tutorial-content {
     h2 {
@@ -715,33 +718,5 @@
 
   li {
     margin: 0;
-  }
-}
-
-//Highligh icon colors based on tag on post
-.tutorial {
-
-  .back-to-docs {
-    color: $docs_primary_black;
-
-    svg #icon {
-      fill: $docs_primary_black;
-    }
-  }
-
-  .index-trigger {
-    color: $docs_primary_black;
-
-    svg #shape {
-      fill: $docs_primary_black;
-    }
-  }
-
-  blockquote {
-    border-color: $docs_primary_black;
-  }
-
-  .tutorial-content ul li:before {
-    color: $docs_primary_black;
   }
 }

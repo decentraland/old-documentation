@@ -2,7 +2,7 @@
 # Site
 
 title: Decentraland
-url: "https://docs.decentraland.org/"
+url: "https://docs.decentraland.org"
 baseurl:
 google_analytics_key: UA-63691338-8
 disqus_shortname:
@@ -12,8 +12,8 @@ newsletter_action:
 logo: /images/logo.png
 description: Decentraland documentation
 author:
-  name:
-  email:
+  name: Decentraland
+  email: hello@decentraland.org
   twitter: decentraland
 social:
   name: Decentraland Documentation
@@ -53,7 +53,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-feed
-  - jekyll-archives
 
 exclude:
   - Gemfile
@@ -64,9 +63,6 @@ exclude:
 collections:
   sets:
 
-
-jekyll-archives:
-  enabled: ['categories']
 
 defaults:
   -
@@ -79,7 +75,6 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      comments: true
   -
     scope:
       type: "sets"
@@ -90,9 +85,6 @@ defaults:
       path: "index.html"
     values:
       body_class: "show_hero_search"
-
-# -----------
-# CloudCannon
 
 social_icons:
   - Facebook

@@ -14,7 +14,7 @@ header {
   @media #{$desktop} {
     position: fixed;
   }
-  
+
   top: 0;
   width: 100%;
   padding: 24px;
@@ -214,6 +214,8 @@ header.overflow {
       line-height: 24px;
       text-transform: uppercase;
       color: #7d8499;
+      border: none;
+      background: none;
     }
   }
 
