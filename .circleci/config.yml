@@ -33,11 +33,6 @@ jobs:
 
       # run tests!
       - run:
-          name: pwd
-          command: |
-            pwd
-
-      - run:
           name: run tests
           command: |
             JEKYLL_ENV=production bundle exec jekyll doctor
@@ -49,7 +44,7 @@ jobs:
       - run:
           name: run build
           command: |
-            bundle exec jekyll build
+            JEKYLL_ENV=production bundle exec jekyll build
 
       - save_cache:
           paths:
