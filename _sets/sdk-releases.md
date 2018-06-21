@@ -1,6 +1,6 @@
 ---
 title: SDK Release Notes
-description: Follow our SDK release notes to stay on top of the latest changes, updates, and warnings.
+description: Release notes for the SDK highlighting the latest changes, updates, and warnings.
 color: '#D2E7FF'
 accent_color: '#85BEFF'
 order: 3
