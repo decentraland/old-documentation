@@ -43,6 +43,18 @@ Once you send the scene to the engine, it takes care of the positions, assets an
 To optimize things, we only send the differences in the scene to the actual client. So if the scene has a shoal of 
 fish and only one of them moves, the SDK will send only that delta to the client, the fish that moved. This makes things faster for the client and is completely transparent to the developer of the scene.
 
+## Entities and Components
+
+Entities are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All entities share the same base constructor, they all have a tag, attributes, and children entitiies. 
+
+Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an *entity*, and each entity can include *components* that shape its characteristics and functionality. 
+
+For example, you can include the `color` component on an entity to set its color, or include the `ignoreCollision` component to change how it reponds to collisions with other entities.
+
+An entity can have other entities as children, these inherit the components from the parent. If a parent entity is positioned, scaled or rotated, its children are also affected. Thanks to this, we can arrange entities into trees.
+
+
+
 ## Supported languages and syntax
 
 

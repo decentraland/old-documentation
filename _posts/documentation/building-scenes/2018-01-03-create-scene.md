@@ -23,30 +23,7 @@ There are essentially two different types of scenes:
 * **Dynamic scenes**: A [TypeScript (TSX)](https://www.typescriptlang.org/docs/handbook/jsx.html) file, with a `.tsx` extension, that has dynamic content. Through these you can create, move and mutate the entities in the scene.
 
 
-## Basic scene structure
-
-For both static and dynamic scenes, the structure is the same: a tree of entities represented in XML/JSX.  
-The root of the tree is always a `<scene>` element.
-
-```xml
-<scene>
-  <sphere position="1 1 1"></sphere>
-  <box position="3.789 2.3 4.065" scale="1 10 1"></box>
-  <box position="2.212 7.141 4.089" scale="2.5 0.2 1"></box>
-  <gitf-model src="crate/crate.gitf" position="5 1 5"></box>
-</scene>
-```
-
-Since the root scene element is a transform node, it can also be translated, scaled and rotated. Those capabilities are useful to, for example, change the center of coordinates of the entire parcel:
-
-```xml
-<scene position="5 5 5">
-  <box position="0 0 0"></box>
-  <!-- in this example, the box is located at the world position 5 5 5 -->
-</scene>
-```
-
-## Creating the files
+## Creating the file structure
 
 Use our CLI tool to automatically build the initial scaffolding for a scene. To do so, run `dcl init` in an empty folder. See [SDK Overview](../../decentraland/SDK-Overview/index.html) for details on how to install and use the CLI.
 
@@ -71,12 +48,30 @@ metadata is optional for building a scene locally, except for scene type.
 
 > If you run `dcl init` in a folder containing other Decentraland projects, any existing files with duplicate names will be overwritten with the new, initialized project files.
 
-## scene.json
+## Scene.xml (static scenes)
 
-The `scene.json` file is a JSON formatted manifest for a scene in the world. A scene can span a single or multiple LAND parcels. The `scene.json` manifest describes what objects exist in the scene, a list of any assets needed to render it, contact information for the parcel owner, and security settings. For more information and an example of a
-`scene.json` file, please visit the [Decentraland specification proposal](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki).
+For both static and dynamic scenes, the end result is the same: a tree of entities. The root of the tree is always a `<scene>` element. XML scenes call out this structure explicitly, Type Script scenes provide the script to build and update this structure.  
 
-## scene.tsx
+
+```xml
+<scene>
+  <sphere position="1 1 1"></sphere>
+  <box position="3.789 2.3 4.065" scale="1 10 1"></box>
+  <box position="2.212 7.141 4.089" scale="2.5 0.2 1"></box>
+  <gitf-model src="crate/crate.gitf" position="5 1 5"></box>
+</scene>
+```
+
+Since the root scene element is a transform node, it can also be translated, scaled and rotated. Those capabilities are useful to, for example, change the center of coordinates of the entire parcel:
+
+```xml
+<scene position="5 5 5">
+  <box position="0 0 0"></box>
+  <!-- in this example, the box is located at the world position 5 5 5 -->
+</scene>
+```
+
+## scene.tsx (dynamic scenes)
 
 This file contains the code that generates an entity tree, which is what end users of your parsel will see. Below is a basic example of a `scene.tsx` file:
 
@@ -96,6 +91,12 @@ export default class MyScene extends ScriptableScene<any, any> {
 ```
 
 > **Important note:** Your `scene.tsx` must always include an `export default class`, that's how our SDK finds the class to initialize the scene.
+
+
+## scene.json
+
+The `scene.json` file is a JSON formatted manifest for a scene in the world. A scene can span a single or multiple LAND parcels. The `scene.json` manifest describes what objects exist in the scene, a list of any assets needed to render it, contact information for the parcel owner, and security settings. For more information and an example of a
+`scene.json` file, please visit the [Decentraland specification proposal](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki).
 
 ## package.json
 
@@ -136,17 +137,17 @@ Running a preview also provides some useful debugging information and tools to h
 
 
 
-## Migrating XML to JSX
+## Migrating XML to Type Script
 
-If you have a static XML scene and want to add dynamic capabilities to it, you must migrate it to JSX format.
+If you have a static XML scene and want to add dynamic capabilities to it, you must migrate it to TSX format.
 
 ### Data types
 
 > **TL;DR**  
 > in XML you do `position="10 10 10"`  
-> in JSX you do `position={ { x:10, y: 10, z: 10 } }`
+> in TSX you do `position={ { x:10, y: 10, z: 10 } }`
 
-There are subtle differences between the `text/xml` representation and the JSX representation of a scene. Unlike A-Frame, our approach is JSX-first, and the XML representation of the scene is only a compatibility view. Because of this, attributes must be objects, not
+There are subtle differences between the `text/xml` representation and the TSX representation of a scene. Unlike A-Frame, our approach is TSX-first, and the XML representation of the scene is only a compatibility view. Because of this, attributes must be objects, not
 plain text.
 
 
@@ -157,7 +158,7 @@ plain text.
 </scene>
 ```
 
-After migrating the XML to JSX, the static scene above becomes the dynamic scene below:
+After migrating the XML to TSX, the static scene above becomes the dynamic scene below:
 
 ```tsx
 class Scene extends ScriptableScene {
@@ -175,7 +176,7 @@ class Scene extends ScriptableScene {
 
 > **TL;DR**  
 > in XML you use `albedo-color="#ffeeaa"` (kebab-case)  
-> in JSX you use `albedoColor="#ffeeaa"` (camelCase)
+> in TSX you use `albedoColor="#ffeeaa"` (camelCase)
 
 HTML and XHTML are case insensitive for attributes, that generates conflicts with the implementation of certain attributes like `albedoColor`. Because reading `albedocolor` was confusing, and having hardcoded keys with hyphens in the code was so dirty, we decided to follow the React convention of having every property camel cased in code and hyphenated in the HTML/XML representation. 
 
@@ -186,7 +187,7 @@ HTML and XHTML are case insensitive for attributes, that generates conflicts wit
 </scene>
 ```
 
-The static scene above becomes the following dynamic schen when migrating it to JSX:
+The static scene above becomes the following dynamic schen when migrating it to TSX:
 
 ```tsx
 class Scene extends ScriptableScene {
