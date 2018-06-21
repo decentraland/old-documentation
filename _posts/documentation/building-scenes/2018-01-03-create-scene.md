@@ -133,8 +133,14 @@ dcl preview
 
 Running a preview also provides some useful debugging information and tools to help you understand how different entities are rendered. The preview mode provides information that describes parcel boundaries, the environment and resources, for example the number of entities being rendered, the current FPS rate, user position, and whether or not different elements are exceeding parcel boundaries.
 
-> To preview old scenes that were built for older versions of the SDK, you must install the latest versions of the `metaverse-api` and `metaverse-rpc` packages in your project.
+Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to launch it again.
 
+You can add the following flags to the command:
+* ` --no-browser` to prevent the preview from opening a new browser tab.
+* `--port` to assign a specific to run the scene. Otherwise it will use whatever port is available.
+* `--skip` to skip the confirmation prompt.
+
+> To preview old scenes that were built for older versions of the SDK, you must install the latest versions of the `metaverse-api` and `metaverse-rpc` packages in your project. Check the CLI version via the command `dcl -v`
 
 
 ## Migrating XML to Type Script
