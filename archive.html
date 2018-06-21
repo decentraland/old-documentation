@@ -23,10 +23,9 @@
   </section>
   <section>
     <h1 class="docs-intro-title">
-      General index
+      Site map
     </h1>
     <p class="docs-intro-desc">
-      Here you will find every page of the documentation, organized in categories.
     </p>
   </section>
   <div>
@@ -41,7 +40,8 @@
       {{ cat | replace: "-", " " }} <span class="count">({{ posts | size }})</span>
     </h2>
     <ul>    
-      {% for post in posts %}
+      {% assign posts_sorted = posts | sort: 'date' %}
+      {% for post in posts_sorted %}
       <li>
         <a href="{{ site.baseurl }}{{post.url}}">{{post.title}}</a>
         <p>{{post.description}}</p>
