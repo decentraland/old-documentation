@@ -35,6 +35,7 @@
     {% for cat in categories %}
     {% assign posts = site.categories[cat] %}
     {% assign len = posts | size %}
+    {% if cat != 'releases' %}
     
     {% if len > 0 %}
     <h2 style="text-transform:capitalize;">
@@ -48,6 +49,7 @@
       </li>
       {% endfor %}
     </ul>
+    {% endif %}
     {% endif %}
     {% endfor %}
   </div>
