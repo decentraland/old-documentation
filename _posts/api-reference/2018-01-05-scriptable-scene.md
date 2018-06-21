@@ -3,9 +3,9 @@ date: 2018-01-05
 title: Scriptable scene
 description: Learn how to make a scriptable scene and its events
 categories:
-  - documentation
+  - api-reference
 type: Document
-set: building-scenes
+set: api-reference
 set_order: 5
 ---
 

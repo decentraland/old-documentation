@@ -3,10 +3,10 @@ date: 2018-01-01
 title: Entities
 description: Entities and the available interfaces for constructing entities.
 categories:
-  - Decentraland
+  - api-reference
 type: Document
 set: api-reference
-set_order: 1
+set_order: 2
 ---
 
 
@@ -14,8 +14,7 @@ set_order: 1
 
 Entities are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All entities share the same base constructor, they all have a tag, attributes, and children entitiies. 
 
-
-Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an *entity*, and each entity can include *components* that shape its characteristics and functionality. 
+> Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an *entity*, and each entity can include *components* that shape its characteristics and functionality. 
 
 `<entity>` is the base element of Decentraland, all elements are built by extending the base `entity` object. An `<entity>` can contain several components, each component introduces attributes that modify the entity in different ways. For example, you can include the `color` component on an entity to set its color, or include the `ignoreCollision` component to change how it reponds to collisions with other entities.
 
@@ -315,27 +314,11 @@ const example =
   />
 ```
 
-### Why use glTF?
 
-Compared to the older *OBJ format*, which supports only vertices, normals, texture coordinates, and basic materials,
-glTF provides a more powerful set of features. In addition to all of the features we just named, glTF also offers:
-
-- Hierarchical objects
-- Scene information (light sources, cameras)
-- Skeletal structure and animation
-- More robust materials and shaders
-
-OBJ can currently be used for simple models that have no animations, but we will probably stop supporting it in the future.
-
-Compared to *COLLADA*, the supported features are very similar. However, because glTF focuses on providing a
-"transmission format" rather than an editor format, it is more interoperable with web technologies.
-
-Consider this analogy: the .PSD (Adobe Photoshop) format is helpful for editing 2D images, but images must then be converted to .JPG for use
-on the web. In the same way, COLLADA may be used to edit a 3D asset, but glTF is a simpler way of transmitting it while rendering the same result.
 
 ## Obj
 
-We only support the `obj-model` interface for legacy compatibility. We will probably get rid of it in the future, please use GLTF when
+> WARNING: We only support the `obj-model` interface for legacy compatibility. We will probably get rid of it in the future, please use GLTF when
 possible.
 
 ```tsx
