@@ -51,19 +51,25 @@ Once the installation is complete, the `dcl` command will be globally available.
 2. Install windows-build-tools by running :
 `npm install --global --production windows-build-tools`
 ... Wait for both the Visual Studio Build Tools and Python installers to both read `Successfully installed xxxx`. Once these have installed successfully, you will be returned to the command prompt.
-3. Install the CLI by running:
+1. Install the CLI by running:
 `npm install -g decentraland`
-4. Download and install [git](https://git-scm.com/download/win) (you'll likely want the 64-bit Windows version):
-   1. When prompted choose to install **git bash**
-   2. When prompted for a default text editor select **Use the Nano editor by default**
-   3. When prompted to adjust your path environment, select **Use Git from the Windows Command Prompt**
-   4. When prompted to choose the SSH executable, select **Use OpenSSH**
-   5. When prompted to choose the HTTPS transport backend, select **Use the OpenSSL library**
-   6. When prompted to configure the line ending conversions, select **Checkout Windows-style, commit Unix-style line endings**
-   7. When prompted to configure the terminal emulator to use with Git Bash select **Use MinTTY**
-   8. On the final installation screen select the following options
-      * **Enable file system caching**
-      * **Enable Git Credential Manager**
-      * **Enable symbolic links**
+
 
 Once the installation is complete, the `dcl` command will be globally available.
+
+#### Optional: Install Git
+
+Since Windows machines don't use bash, we recommend that you install git and include git bash. You can otherwise run the CLI commands on the Windows command prompt.
+
+1. Download [git](https://git-scm.com/download/win) (you'll likely want the 64-bit Windows version):
+2. When prompted choose to install **git bash**
+3. When prompted for a default text editor select **Use the Nano editor by default**
+4. When prompted to adjust your path environment, select **Use Git from the Windows Command Prompt**
+5. When prompted to choose the SSH executable, select **Use OpenSSH**
+6. When prompted to choose the HTTPS transport backend, select **Use the OpenSSL library**
+7. When prompted to configure the line ending conversions, select **Checkout Windows-style, commit Unix-style line endings**
+8. When prompted to configure the terminal emulator to use with Git Bash select **Use MinTTY**
+9. On the final installation screen select the following options
+    * **Enable file system caching**
+    * **Enable Git Credential Manager**
+    * **Enable symbolic links**
