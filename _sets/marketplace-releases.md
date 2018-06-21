@@ -1,6 +1,6 @@
 ---
 title: Marketplace Release Notes
-description: Keep up to date with the latest version of the Marketplace by reading our release notes.
+description: Release notes for the latest versions of the Marketplace.
 color: '#ff00ff'
 
 ---
