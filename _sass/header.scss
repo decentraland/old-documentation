@@ -43,6 +43,11 @@ header {
     fill: #eee;
   }
 
+  .header-wrapper {
+      max-width: 1196px;
+      margin: auto;
+  }
+
   .logo-title {
     display: none;
   }
@@ -80,11 +85,11 @@ header.overflow {
 
   @media #{$mid-point} {
     .logo-title {
-      position: absolute;
-      left: 96px;
-      top: 26px;
+      position: relative;
+      left: 64px;
+      top: -46px;
       display: block;
-      height: 44px;
+      height: 0px;
       font-size: 32px;
       font-weight: bold;
       font-style: normal;
