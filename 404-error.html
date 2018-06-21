@@ -1,0 +1,20 @@
+---
+title: Not found
+sitemap: false
+---
+<div class="wrapper">
+  <section>
+    <h1 class="docs-intro-title">
+      Not found
+    </h1>
+    <p class="docs-intro-desc">
+      The site you requested was not found. <br/>
+      You will be redirected to the general index in 5 seconds. <br/>
+      Or <a href="'{{ site.baseurl }}/'">click here</a>
+    </p>
+  </section>
+  <div>
+</div>
+<script>
+  setTimeout(function(){ document.location.assign('{{ site.baseurl }}/')}, 5000)
+</script>

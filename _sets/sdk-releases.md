@@ -4,5 +4,5 @@ description: Release notes, changes and warnings for the current and previous SD
 color: '#D2E7FF'
 accent_color: '#85BEFF'
 order: 3
-img: rocket-4.png
+img: rocket@3x.png
 ---
