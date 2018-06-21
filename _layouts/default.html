@@ -27,15 +27,17 @@
 
 <body class="{{ page.body_class }}">
   <header>
-    <h1 class="logo-title">{{ page.title }}</h1>
-    <div class="logo">
-      <a href="/">{% include logo.html %}</a>
-    </div>
-    <div class="header_search">
-      <button class="search_toggle" id="open-search">
-        {% include search-icon.html %}
-      </button>
-      {% include search.html %}
+    <div class="header-wrapper">
+      <div class="logo">
+        <a href="/">{% include logo.html %}</a>
+      </div>
+      <h1 class="logo-title">{{ page.title }}</h1>
+      <div class="header_search">
+        <button class="search_toggle" id="open-search">
+          {% include search-icon.html %}
+        </button>
+        {% include search.html %}
+      </div>
     </div>
   </header>
 

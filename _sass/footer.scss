@@ -11,9 +11,12 @@ footer {
   line-height: 1.67;
   letter-spacing: -0.1px;
   color: #7d8499;
+  width: 100%;
 
 	.footer-wrapper {
 		padding: 0 15px;
+        max-width: $page-width;
+        margin: auto;
 
 		@media #{$mid-point} {
 			display: flex;
