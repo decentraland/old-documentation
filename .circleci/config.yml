@@ -59,8 +59,11 @@ jobs:
       - restore_cache:
           keys:
           - build-{{ .Revision }}
-      - run: sudo apt-get update
-      - run: sudo apt-get -y -qq install awscli
+      - run:
+          name: install aws
+          command: |
+            sudo apt-get install python-dev python-pip
+            sudo pip install awscli
       - run:
           name: Deploy to S3 if tests pass and branch is Master
           command: aws s3 sync _site s3://docs.decentraland.org/ --acl public-read
