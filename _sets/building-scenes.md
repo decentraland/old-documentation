@@ -1,6 +1,6 @@
 ---
 title: Building scenes
-description: Reference guide for using the SDK to build experiences on LAND.
+description: Learn how to build experiences using the SDK by digging into the reference guide, or following along with our tutorials.
 color: '#F7D1FF'
 accent_color: '#EB85FF'
 order: 1
