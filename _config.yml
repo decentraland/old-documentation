@@ -10,7 +10,7 @@ newsletter_action:
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /images/logo.png
-description: Decentraland documentation
+description: Decentraland Documentation
 author:
   name: Decentraland
   email: hello@decentraland.org
