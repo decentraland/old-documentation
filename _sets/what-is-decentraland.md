@@ -1,6 +1,6 @@
 ---
 title: What is Decentraland?
-description: An introduction to the Decentraland project and its technology stack.
+description: Read more about the Decentraland project, its philosophy, and technical foundation.
 color: '#FFD1DD'
 accent_color: '#FF85A5'
 order: 0

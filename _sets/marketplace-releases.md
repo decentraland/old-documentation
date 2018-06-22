@@ -1,6 +1,6 @@
 ---
 title: Marketplace Release Notes
-description: Release notes for the current and previous Marketplace dApp versions.
+description: Release notes for the latest versions of the Marketplace.
 color: '#ff00ff'
 
 ---
