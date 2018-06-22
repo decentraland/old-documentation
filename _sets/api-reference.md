@@ -1,6 +1,6 @@
 ---
 title: API Reference
-description: Reference info about the API.
+description: Learn about the SDK and what you can do with it.
 color: '#D2E7FF'
 accent_color: '#85BEFF'
 order: 3

@@ -30,15 +30,240 @@ interface IEntity {
 
 
 
+## Box
+
+Creates a cube geometry.
+
+Example:
+
+```xml
+<box position={vector} color="#ff00aa" scale={2} />
+```
+
+Interface reference:
+
+```tsx
+interface BoxEntity extends BaseEntity {
+  /** Color of the vertices */
+  color?: string
+  /** Material selector */
+  material?: string
+  /** Set to true to turn off the collider for the entity. */
+  ignoreCollisions?: boolean
+}
+```
+
+## Sphere
+
+Creates a sphere geometry.
+
+Example:
+
+```xml
+<sphere position={vector} color="#ff00aa" scale={2} />
+```
+
+Interface reference:
+
+
+```tsx
+interface SphereEntity extends BaseEntity {
+  /** Color of the vertices */
+  color?: string
+  /** Material selector */
+  material?: string
+  /** Set to true to turn off the collider for the entity. */
+  ignoreCollisions?: boolean
+}
+
+```
+
+
+## Plane
+
+Creates a plane geometry.
+
+
+Example:
+
+```xml
+<plane position={vector} color="#ff00aa" scale={ { x: 10, y: 5, z: 1 } } />
+```
+
+Interface reference:
+
+
+```tsx
+interface PlaneEntity extends BaseEntity {
+  /** Color of the vertices */
+  color?: string
+
+  /** Material selector */
+  material?: string
+
+  /** Set to true to turn off the collider for the entity. */
+  ignoreCollisions?: boolean
+}
+
+```
+
+## Cylinder and Cone
+
+Creates a cone geometry. A cylinder is defined as a cone with the same base and top radius.
+
+
+
+Example cone:
+
+```xml
+  <cone
+    radiusTop={0}
+    radiusBottom={1}
+    position={vector}
+    color="#ff00aa"
+    scale={2}
+  />
+```
+
+
+Example cylinder:
+
+```xml
+  <cylinder
+    openEnded
+    arc={180}
+    radius={0.5}    
+    position={vector}
+    color="#ff00aa"
+    scale={2}
+  />
+```
+
+
+
+Interface reference:
+
+```tsx
+interface CylinderEntity extends BaseEntity {
+  /** Color of the vertices */
+  color?: string
+
+  /** Material selector */
+  material?: string
+
+  /** Set to true to turn off the collider for the entity. */
+  ignoreCollisions?: boolean
+
+  /** Radius (meters) */
+  radius?: number
+
+  /** How much of the arc should be rendered, 360 by default (degrees) */
+  arc?: number
+
+  /** Radius of the top face (meters) */
+  radiusTop?: number
+
+  /** Radius of the bottom face (meters) */
+  radiusBottom?: number
+
+  /** Radial segments of the geometry. 4 will render a tetrahedron. */
+  segmentsRadial?: number
+
+  /** Vertical segments of the geometry */
+  segmentsHeight?: number
+
+  /** Render caps */
+  openEnded?: boolean
+}
+
+```
+
+## glTF models
+
+[glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common,
+extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
+
+The `gltf-model` entity loads a 3D model using a glTF (`.gltf` or `.glb`) file.
+
+Simple example:
+
+```xml
+  <gltf-model
+    position={ { x: 5, y: 3, z: 5 } }
+    scale={0.5}
+    src="models/shark_anim.gltf"
+  />
+```
+
+
+Example with animations:
+
+```xml
+  <gltf-model
+    position={ { x: 5, y: 3, z: 5 } }
+    scale={0.5}
+    src="models/shark_anim.gltf"
+    skeletalAnimation={[
+      { clip: 'shark_skeleton_bite', playing: false },
+      { clip: 'shark_skeleton_swim', weight: 0.2, playing: true }
+    ]}
+  />
+```
+
+
+Interface reference:
+
+
+```tsx
+interface GltfEntity extends BaseEntity {
+  /**
+   * The source URL of the .gltf or .glb model, required
+   */
+  src: string
+
+  /**
+   * List of weighted skeletal animations
+   */
+  skeletalAnimation?: Array<SkeletalAnimation>
+}
+
+interface SkeletalAnimation {
+  /**
+   * Name or index of the animation in the model
+   */
+  clip: string | number
+  /**
+   * Does the animation loop?, default: true
+   */
+  loop?: boolean
+  /**
+   * Weight of the animation, values from 0 to 1, used to blend several animations. default: 1
+   */
+  weight?: number
+
+  /**
+   * Is the animation playing? default: true
+   */
+  playing?: boolean
+}
+
+```
+
 ## Base Entity
 
-
 The `BaseEntity` interface is the most flexible of all, as it comes with no predefined components and lets you set values for any of the possible components.
+
+Example:
+
+```xml
+ <entity position={ { x: 2, y: 1, z: 0 } } scale={ { x: 2, y: 2, z: 0.05 } }>
+```
 
 You add a base entity to a scene via the XML tag `<entity>`. You can add an entity with no components to a scene to act as a container. The `<entity>` element has no components by default, so it's invisible and has no direct effect on the scene, but it can be positioned, scaled, and rotated and it can contain other child entities in it. Child entities are scaled, rotated, and positioned relative to the parent entity. 
 
 Entities with no components can also be added to a scene to group entities into a single object that can then be passed as an input for certain functions.
 
+Interface reference:
 
 ```tsx
 
@@ -154,172 +379,21 @@ type TimingFunction =
   | 'back-inout'
 ```
 
-## Box
-
-Creates a cube geometry.
-
-```tsx
-interface BoxEntity extends BaseEntity {
-  /** Color of the vertices */
-  color?: string
-  /** Material selector */
-  material?: string
-  /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean
-}
-
-const example = <box position={vector} color="#ff00aa" scale={2} />
-```
-
-## Sphere
-
-Creates a sphere geometry.
-
-```tsx
-interface SphereEntity extends BaseEntity {
-  /** Color of the vertices */
-  color?: string
-  /** Material selector */
-  material?: string
-  /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean
-}
-
-const example = <sphere position={vector} color="#ff00aa" scale={2} />
-```
-
-
-## Plane
-
-Creates a plane geometry
-
-```tsx
-interface PlaneEntity extends BaseEntity {
-  /** Color of the vertices */
-  color?: string
-
-  /** Material selector */
-  material?: string
-
-  /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean
-}
-
-const example = <plane position={vector} color="#ff00aa" scale={ { x: 10, y: 5, z: 1 } } />
-```
-
-## Cylinder and Cone
-
-Creates a cone geometry, a cylinder is a cone with the same base and top radius
-
-```tsx
-interface CylinderEntity extends BaseEntity {
-  /** Color of the vertices */
-  color?: string
-
-  /** Material selector */
-  material?: string
-
-  /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean
-
-  /** Radius (meters) */
-  radius?: number
-
-  /** How much of the arc should be rendered, 360 by default (degrees) */
-  arc?: number
-
-  /** Radius of the top face (meters) */
-  radiusTop?: number
-
-  /** Radius of the bottom face (meters) */
-  radiusBottom?: number
-
-  /** Radial segments of the geometry. 4 will render a tetrahedron. */
-  segmentsRadial?: number
-
-  /** Vertical segments of the geometry */
-  segmentsHeight?: number
-
-  /** Render caps */
-  openEnded?: boolean
-}
-
-const example1 =
-  <cylinder
-    position={vector}
-    color="#ff00aa"
-    scale={2}
-    openEnded
-    arc={180}
-    radius={0.5}
-  />
-
-const example2 =
-  <cone
-    radiusTop={0}
-    radiusBottom={1}
-  />
-```
-
-## glTF models
-
-[glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common,
-extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
-
-The `gltf-model` entity loads a 3D model using a glTF (`.gltf` or `.glb`) file.
-
-```tsx
-interface GltfEntity extends BaseEntity {
-  /**
-   * The source URL of the .gltf or .glb model, required
-   */
-  src: string
-
-  /**
-   * List of weighted skeletal animations
-   */
-  skeletalAnimation?: Array<SkeletalAnimation>
-}
-
-interface SkeletalAnimation {
-  /**
-   * Name or index of the animation in the model
-   */
-  clip: string | number
-  /**
-   * Does the animation loop?, default: true
-   */
-  loop?: boolean
-  /**
-   * Weight of the animation, values from 0 to 1, used to blend several animations. default: 1
-   */
-  weight?: number
-
-  /**
-   * Is the animation playing? default: true
-   */
-  playing?: boolean
-}
-
-const example =
-  <gltf-model
-    position={ { x: 5, y: 3, z: 5 } }
-    scale={0.5}
-    src="models/shark_anim.gltf"
-    skeletalAnimation={[
-      { clip: 'shark_skeleton_bite', playing: false },
-      { clip: 'shark_skeleton_swim', weight: 0.2, playing: true }
-    ]}
-  />
-```
-
-
 
 ## Obj
 
 > WARNING: We only support the `obj-model` interface for legacy compatibility. We will probably get rid of it in the future, please use GLTF when
 possible.
+
+Example: 
+
+```xml
+<obj-model src="models/shark.obj" />
+```
+
+
+Interface reference:
+
 
 ```tsx
 interface ObjEntity extends BaseEntity {
@@ -328,8 +402,7 @@ interface ObjEntity extends BaseEntity {
    */
   src: string
 }
-
-const example = <obj-model src="models/shark.obj" />
+ 
 ```
 
 ## Custom Interfaces
