@@ -118,7 +118,7 @@ We went for the React approach, for several reasons:
 
 - It takes advantage of the evolution of web technologies that occured in the past 10 years. 
 - It's simpler to understand, it removes tons of boilerplate code that's not related to the business logic of the scene.
-- It's descriptive. You describe **what** you want, not **how** you want that to happen.
+- It's declarative. You describe **what** you want, not **how** you want that to happen.
 - It helps onboard developers that are already familiar with React.
 - The pattern is well known and well documented, getting help should be easy.
 - It has a low memory footprint and it makes it easy to do garbage collection.
