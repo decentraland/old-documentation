@@ -51,7 +51,7 @@ For example, you can include the `color` component on an entity to set its color
 
 An entity can have other entities as children, these inherit the components from the parent. If a parent entity is positioned, scaled or rotated, its children are also affected. Thanks to this, we can arrange entities into trees.
 
-See [Entity interfaces](../../api-reference/entity-interfaces/index.html) for a more information on entities, a reference of all the available constructors for predefined entities and how to define your own types.
+See [Entity interfaces](../../sdk-reference/entity-interfaces/index.html) for a more information on entities, a reference of all the available constructors for predefined entities and how to define your own types.
 
 
 ## Supported languages and syntax

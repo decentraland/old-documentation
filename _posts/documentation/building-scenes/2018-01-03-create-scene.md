@@ -14,7 +14,7 @@ tag: introduction
 
 ## Kinds of scenes
 
-In Decentraland, a scene is the representation of the content of in an estate/LAND. All scenes are made up of [entities](../../api-reference/entity-interfaces/index.html), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
+In Decentraland, a scene is the representation of the content of in an estate/LAND. All scenes are made up of [entities](../../sdk-reference/entity-interfaces/index.html), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
 
 
 There are essentially two different types of scenes:
@@ -25,7 +25,7 @@ There are essentially two different types of scenes:
 
 ## Creating the file structure
 
-Use our CLI tool to automatically build the initial scaffolding for a scene. To do so, run `dcl init` in an empty folder. See [SDK Overview](../../api-reference/SDK-Overview/index.html) for details on how to install and use the CLI.
+Use our CLI tool to automatically build the initial scaffolding for a scene. To do so, run `dcl init` in an empty folder. See [SDK Overview](../../sdk-reference/SDK-Overview/index.html) for details on how to install and use the CLI.
 
 The `dcl init` command creates a Decentraland **project** in your current working directory containing a **scene**. It prompts you to select a scene type (static, dynamic & singleplayer, or dynamic & multiplayer) and builds a different file structure depending on the case.
 
@@ -143,66 +143,4 @@ You can add the following flags to the command:
 > To preview old scenes that were built for older versions of the SDK, you must install the latest versions of the `metaverse-api` and `metaverse-rpc` packages in your project. Check the CLI version via the command `dcl -v`
 
 
-## Migrating XML to Type Script
 
-If you have a static XML scene and want to add dynamic capabilities to it, you must migrate it to TSX format.
-
-### Data types
-
-> **TL;DR**  
-> in XML you do `position="10 10 10"`  
-> in TSX you do `position={ { x:10, y: 10, z: 10 } }`
-
-There are subtle differences between the `text/xml` representation and the TSX representation of a scene. Unlike A-Frame, our approach is TSX-first, and the XML representation of the scene is only a compatibility view. Because of this, attributes must be objects, not
-plain text.
-
-
-```xml
-<scene>
-  <!-- XML -->
-  <box position="10 10 10" />
-</scene>
-```
-
-After migrating the XML to TSX, the static scene above becomes the dynamic scene below:
-
-```tsx
-class Scene extends ScriptableScene {
-  async render() {
-    return (
-      <scene>
-        <box position={ { x: 10, y: 10, z: 10 } } />
-      </scene>
-    );
-  }
-}
-```
-
-#### Attribute naming
-
-> **TL;DR**  
-> in XML you use `albedo-color="#ffeeaa"` (kebab-case)  
-> in TSX you use `albedoColor="#ffeeaa"` (camelCase)
-
-HTML and XHTML are case insensitive for attributes, that generates conflicts with the implementation of certain attributes like `albedoColor`. Because reading `albedocolor` was confusing, and having hardcoded keys with hyphens in the code was so dirty, we decided to follow the React convention of having every property camel cased in code and hyphenated in the HTML/XML representation. 
-
-```xml
-<scene>
-  <!-- XML -->
-  <material id="test" albedo-color="#ffeeaa" />
-</scene>
-```
-
-The static scene above becomes the following dynamic schen when migrating it to TSX:
-
-```tsx
-class Scene extends ScriptableScene {
-  async render() {
-    return (
-      <scene>
-        <material id="test" albedoColor="#ffeeaa" />
-      </scene>
-    );
-  }
-}
-```

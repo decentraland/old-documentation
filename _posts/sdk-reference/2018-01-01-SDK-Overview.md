@@ -3,9 +3,9 @@ date: 2018-01-01
 title: SDK Overview
 description: Decentraland Software Development Kit
 categories:
-  - api-reference
+  - sdk-reference
 type: Document
-set: api-reference
+set: sdk-reference
 set_order: 1
 ---
 
