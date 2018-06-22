@@ -14,7 +14,7 @@ tag: introduction
 
 ## Kinds of scenes
 
-In Decentraland, a scene is the representation of the content of in an estate/LAND. All scenes are made up of [entities](../../sdk-reference/entity-interfaces/index.html), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
+In Decentraland, a scene is the representation of the content of in an estate/LAND. All scenes are made up of [entities]({ { site.baseurl } }{% (../../sdk-reference/entity-interfaces %}), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
 
 
 There are essentially two different types of scenes:
@@ -25,7 +25,7 @@ There are essentially two different types of scenes:
 
 ## Creating the file structure
 
-Use our CLI tool to automatically build the initial scaffolding for a scene. To do so, run `dcl init` in an empty folder. See [SDK Overview](../../sdk-reference/SDK-Overview/index.html) for details on how to install and use the CLI.
+Use our CLI tool to automatically build the initial scaffolding for a scene. To do so, run `dcl init` in an empty folder. See [SDK Overview]({ { site.baseurl } }{% ../../sdk-reference/SDK-Overview %}) for details on how to install and use the CLI.
 
 The `dcl init` command creates a Decentraland **project** in your current working directory containing a **scene**. It prompts you to select a scene type (static, dynamic & singleplayer, or dynamic & multiplayer) and builds a different file structure depending on the case.
 
@@ -48,7 +48,7 @@ metadata is optional for building a scene locally, except for scene type.
 
 > If you run `dcl init` in a folder containing other Decentraland projects, any existing files with duplicate names will be overwritten with the new, initialized project files.
 
-## Scene.xml (static scenes)
+## scene.xml (static scenes)
 
 For both static and dynamic scenes, the end result is the same: a tree of entities. The root of the tree is always a `<scene>` element. XML scenes call out this structure explicitly, Type Script scenes provide the script to build and update this structure.  
 
@@ -136,7 +136,8 @@ Running a preview also provides some useful debugging information and tools to h
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to launch it again.
 
 You can add the following flags to the command:
-* ` --no-browser` to prevent the preview from opening a new browser tab.
+
+* `--no-browser` to prevent the preview from opening a new browser tab.
 * `--port` to assign a specific to run the scene. Otherwise it will use whatever port is available.
 * `--skip` to skip the confirmation prompt.
 

@@ -250,7 +250,7 @@ interface SkeletalAnimation {
 
 ```
 
-> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations](../../building-scenes/scene-limitations/index.html).
+> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({ { site.baseurl } }{% ../../building-scenes/scene-limitations %}).
 
 ## Base Entity
 
