@@ -249,6 +249,8 @@ interface SkeletalAnimation {
 
 ```
 
+> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations](../../building-scenes/scene-limitations/index.html).
+
 ## Base Entity
 
 The `BaseEntity` interface is the most flexible of all, as it comes with no predefined components and lets you set values for any of the possible components.
@@ -405,7 +407,7 @@ interface ObjEntity extends BaseEntity {
  
 ```
 
-## Custom Interfaces
+## Creating Custom Interfaces
 
 You can create your own interface to create entities with customized default behavior and characteristics. To define the interface, create a new *.tsx* file that includes all the components and methods needed to construct and handle the entity.
 

@@ -73,3 +73,12 @@ Since Windows machines don't use bash, we recommend that you install git and inc
     * **Enable file system caching**
     * **Enable Git Credential Manager**
     * **Enable symbolic links**
+
+
+## Update the CLI on any platform
+
+To update the CLI to the latest supported version, run the following command:
+
+``bash
+npm update -g decentraland
+```
