@@ -10,9 +10,10 @@ set_order: 7
 ---
 To publish your scene:
 
-* Log into the Metamask account with the same public address associated with your parcel.
-* Start up an IPFS daemon by following [these instructions](https://ipfs.io/docs/getting-started/).
-* Finally, run `dcl deploy` from the scene's folder.
+1. Make sure the scene has been locally built with your latest changes. If not, run `npm run build`.
+2. Log into the Metamask account with the same public address associated with your parcel.
+3. Start up an IPFS daemon by following [these instructions](https://ipfs.io/docs/getting-started/).
+4. Finally, run `dcl deploy` from the scene's folder.
 
 This updates your parcel with your latest changes in addition to uploading your content to IPFS. 
 
