@@ -34,7 +34,7 @@ Any of these can be added to your scene, they can all include basic components l
 <box position={vector} color="#ff00aa" scale={2} />
 ```
 
-See [Entity interfaces]({ { site.baseurl } }{% (../../sdk-reference/entity-interfaces %}) for more details on these types of entities.
+See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}) for more details on these types of entities.
 
 > Tip: When editing the code via a IDE (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and pressing *Ctrl + Space bar*.
 
@@ -55,7 +55,7 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 
 glTF models can also include their own textures and animations. 
 
-> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({ { site.baseurl } }{% (../../building-scenes/scene-limitations %}).
+> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /building-scenes/2018-01-06-scene-limitations %}).
 
 
 The example below imports a model that includes animations and configures them:
