@@ -9,6 +9,7 @@ set: building-scenes
 set_order: 0
 ---
 
+
 To build scenes for Decentraland you will need to install the Command Line Interface (CLI).
 
 The CLI allows you to compile and preview your scene in an "off-chain" development environment. After testing your scene locally, you can use the CLI to upload your content to IPFS, linking it with your LAND.
