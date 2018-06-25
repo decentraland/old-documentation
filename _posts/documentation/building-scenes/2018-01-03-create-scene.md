@@ -154,4 +154,4 @@ To edit a scene, we recommend using an IDE like [Visual Studio Code](https://cod
 
 See [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-04-scene-content-guide %}) for simple instructions about adding content to your scene.
 
-> Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /building-scenes/2018-01-07-publishing %}).
+Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /building-scenes/2018-01-07-publishing %}).
