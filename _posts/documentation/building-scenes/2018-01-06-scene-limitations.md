@@ -11,6 +11,8 @@ set_order: 6
 In order to improve performance in the metaverse, we have established a set of limits that every scene must follow. If a
 scene exceeds these limitations, then the parcel won't be loaded and the preview will display an error message.
 
+## Entity number constraints
+
 Below are the maximum number of elements allowed allowed in a scene:
 > *n* represents the number of parcels that a scene occupies. 
 

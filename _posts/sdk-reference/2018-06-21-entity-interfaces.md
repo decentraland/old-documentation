@@ -10,7 +10,7 @@ set_order: 2
 ---
 
 
-# Introduction
+## Introduction
 
 Entities are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All entities share the same base constructor, they all have a tag, attributes, and children entitiies. 
 
