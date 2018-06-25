@@ -55,7 +55,7 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 
 glTF models can also include their own textures and animations. 
 
-> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /building-scenes/2018-01-06-scene-limitations %}).
+> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
 
 
 The example below imports a model that includes animations and configures them:
