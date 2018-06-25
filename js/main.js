@@ -31,19 +31,16 @@ jQuery(function() {
     .first()
     .attr("href");
 
-  if (href !== undefined && href.charAt(0) === "#") {
-    setActiveSidebarLink();
-
+  if (href !== undefined) {
     $(window).on("scroll", function() {
-      setActiveSidebarLink();
       setSidebar();
     });
   }
 
   function setSidebar() {
-    var headerHeight = 96; // header of the whole page, with logo
+    var headerHeight = 48; // header of the whole page, with logo
     var offset = headerHeight;
-    $header.toggleClass("overflow", window.scrollY > headerHeight);
+    // $header.toggleClass("overflow", window.scrollY > headerHeight);
 
     var bottom = $tutorial.offset().top + $tutorial.outerHeight() - $sidebar.outerHeight() - offset;
 
@@ -67,6 +64,13 @@ jQuery(function() {
       }
     }
   }
+
+    $('.toggle-item').click(function(ev) {
+        ev.preventDefault();
+        var data = $(ev.target).attr('data-toggle')
+        $('.toggle[data-id!="' + data + '"]').hide('fast')
+        $('.toggle[data-id="' + data + '"]').toggle('fast')
+    })
 });
 
 function getClosestHeader() {

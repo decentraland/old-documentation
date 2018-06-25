@@ -5,11 +5,9 @@ description: Decentraland Software Development Kit
 categories:
   - Decentraland
 type: Document
-set: what-is-decentraland
+set: general
 set_order: 1
 ---
-
-# Introduction
 
 The **Decentraland Software Development Kit** includes the alpha version of our API, tools like the CLI, and all of the supporting documentation and examples that you need in order to create, test, manage, and deploy 3D content in Decentraland. The SDK allows content creators and developers to create either static or dynamic scenes that will run on the Decentraland platform.
 

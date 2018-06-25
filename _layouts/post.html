@@ -4,11 +4,26 @@ layout: default
 {% assign tags = page.tags %}
 <div class="tutorial {{ page.set }} wrapper post-wrapper">
   <div class="top-section">
-    <a class="back-to-docs" href="/">
-      {% include chevron-left-icon.html %} Documentation
-    </a>
+    <div class="back-to-docs">
+    </div>
     <div class="title-search-wrapper">
-      <h1><b>{{ page.title }}</b></h1>
+      <h1><b>
+      {% assign sets = site.sets | sort: 'order' %}
+      {% for set in sets %}
+      {% assign page_set_id = '/sets/' | append: page.set %}
+        {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+        {% assign first = series_posts[0] %}
+        {% assign size = series_posts | size %}
+        {% if size > 0 %}
+          {% if page_set_id==set.id %}
+          {{ set.title }}
+
+          {% endif %}
+        {%endif %}
+      {% endfor %}
+          
+          
+          </b></h1>
       <a class="index-trigger modalOpen no-smooth" href="#index-modal">
         {% include index-icon.html icon="Index" %} See index
       </a>
@@ -20,29 +35,42 @@ layout: default
   <section class="main-container">
     <aside class="sidebar sticky">
       <ul>
-        {% if page.set %}
-          {% assign set_file_name = "_sets/" | append: page.set | append: ".md" %}
-          {% assign set = site.sets | where: "path", set_file_name | first %}
-          {% assign series_posts = site.posts | where: "set", page.set | sort: 'set_order' %}
-          {% for series_post in series_posts %}
-          <li {% if series_post.url==page.url %} class="active" {% endif %} >
-            <a href="{{ site.baseurl }}{{ series_post.url }}" class="sidebar-h3">
-              {{ series_post.title }}
-            </a>
-            {% if series_post.url == page.url %}
-            <ul class="current-post-list">
-              {% assign sub_navigation = content | extract_element: 'h2' %}
-              {% for item in sub_navigation %}
-              <li>
-                <a class="internal-href" href="#{{ item.id }}">{{ item.text }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-            {% endif %}
-          </li>
+      {% assign sets = site.sets | sort: 'order' %}
+      {% for set in sets %}
+      {% assign page_set_id = '/sets/' | append: page.set %}
+        {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+        {% assign first = series_posts[0] %}
+        {% assign size = series_posts | size %}
+        {% if size > 0 %}
+          {% if page_set_id==set.id %}
+            <li class="active"><span style="display: block" class="sidebar-h3">{{ set.title }}</span>
+          {% else %}
+            <li>
+                <a href="{{ first.url }}" class="sidebar-h3 toggle-item" data-toggle="{{set.id}}">{{ set.title }}</a>
+          {% endif %}
+          {% if page_set_id==set.id %}
+          <ul class="current-post-list">
+          {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+          {% for post in series_posts %}
+
+            <li >
+                <a  {% if post.url==page.url %} class="override-color-set active" {% endif %} href="{{ post.url }}">{{ post.title }}</a>
+            </li>
           {% endfor %}
-          {% include override-color.html accent_color=set.accent_color %}
+          </ul>
+          {% else %}
+          <ul class="toggle" style="display: none" data-id="{{set.id}}">
+          {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+          {% for post in series_posts %}
+            <li >
+                <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
+          {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
         {% endif %}
+      {% endfor %}
       </ul>
     </aside>
     <section class="tutorial-content">
@@ -63,6 +91,7 @@ layout: default
       {% endif %}
 
       <div class="tutorial-main">
+        <h1>{{page.title}}</h1>
         {{ content }}
       </div>
 
@@ -122,6 +151,7 @@ layout: default
           <a href="#{{ item.id }}">{{ item.text }}</a>
         </li>
         {% endfor %}
+        {% include override-color.html accent_color=set.accent_color %}
       </ul>
       {% endif %}
     </li>
