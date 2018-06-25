@@ -1,6 +1,6 @@
 ---
 date: 2018-01-01
-title: Marketplace
+title: Overview
 description: Meet the LAND marketplace
 categories:
   - Decentraland

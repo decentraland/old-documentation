@@ -1,15 +1,13 @@
 ---
 date: 2018-01-01
-title: Welcome to Decentraland
+title: Introduction
 description: Decentraland is a virtual reality platform powered by Ethereum.
 categories:
   - Decentraland
 type: Document
-set: what-is-decentraland
+set: general
 set_order: 0
 ---
-
-# What is decentraland?
 
 **Decentraland is a virtual reality platform powered by the Ethereum blockchain. Within the Decentraland platform, users will be able to create, experience, and monetize content and applications.**
 
