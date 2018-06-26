@@ -152,6 +152,6 @@ You can add the following flags to the command:
 
 To edit a scene, we recommend using an IDE like [Visual Studio Code](https://code.visualstudio.com/). An IDE helps you create scenes a lot faster and with less errors, as it marks errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in.
 
-See [scene content guide]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-21-04-scene-content-guide %}) for simple instructions about adding content to your scene.
+See [scene content guide]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-21-scene-content-guide %}) for simple instructions about adding content to your scene.
 
 Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-07-publishing %}).
