@@ -10,7 +10,7 @@ set_order: 2
 ---
 
 
-# Introduction
+## Introduction
 
 Entities are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All entities share the same base constructor, they all have a tag, attributes, and children entitiies. 
 
@@ -250,7 +250,7 @@ interface SkeletalAnimation {
 
 ```
 
-> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url documentation/building-scenes/2018-01-06-scene-limitations %}).
+> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-06-scene-limitations %}).
 
 ## Base Entity
 
