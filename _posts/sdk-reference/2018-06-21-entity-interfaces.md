@@ -184,7 +184,10 @@ interface CylinderEntity extends BaseEntity {
 [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common,
 extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
-The `gltf-model` entity loads a 3D model using a glTF (`.gltf` or `.glb`) file.
+The `gltf-model` entity loads a 3D model using a glTF file. It supports both `.gltf` or `.glb` extensions.
+
+> `.gltf` is a more human-readable format, `.glb` is a more compact version of the same.
+
 
 Simple example:
 
@@ -259,7 +262,10 @@ The `BaseEntity` interface is the most flexible of all, as it comes with no pred
 Example:
 
 ```xml
- <entity position={ { x: 2, y: 1, z: 0 } } scale={ { x: 2, y: 2, z: 0.05 } }>
+  <entity 
+    position={ { x: 2, y: 1, z: 0 } } 
+    scale={ { x: 2, y: 2, z: 0.0  5 } }
+  />
 ```
 
 You add a base entity to a scene via the XML tag `<entity>`. You can add an entity with no components to a scene to act as a container. The `<entity>` element has no components by default, so it's invisible and has no direct effect on the scene, but it can be positioned, scaled, and rotated and it can contain other child entities in it. Child entities are scaled, rotated, and positioned relative to the parent entity. 
@@ -301,6 +307,17 @@ interface BaseEntity {
    * Used to differentiate similar entities in lists
    */
   key?: string | number
+
+
+/**
+   * Used to play a sound file, originating from the entity's center
+   */
+  sound?: {
+    src: string
+    loop?: boolean
+  }
+
+
 
   /**
    * Used to animate the transitions in the same fashion as CSS
