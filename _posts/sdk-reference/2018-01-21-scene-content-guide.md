@@ -42,6 +42,9 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
  
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in glTF format.  [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
+> Note: When using Blender, you need an add-on to export glTF files. For models that don't include animations we recommend installing the add-on by [Kronos group](https://github.com/KhronosGroup/glTF-Blender-Exporter). To export glTFs that include animations, you should instead install the add-on by [Kupoman](https://github.com/Kupoman/blendergltf).
+
+
 To add an external model into a scene, add a `<gltf-model>` element and set its `src` component to the path of the glTF file containing the model.
 
 ```xml
@@ -52,13 +55,27 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
   />
 ```
 
-
-glTF models can also include their own textures and animations. 
-
-
-> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
+> TIP: glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance. For this reason, we recommend using `.gltf` while you're working on a scene, but then switching to `.glb` when uploading it.
 
 
+glTF models can also include their own textures and animations.
+
+
+
+
+
+> Note: Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
+
+
+> Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity. 
+
+### Animations
+
+glTF models can include embedded animations in them. 
+
+Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations and how they're named.
+
+In a dynamic scene, you reference an animation by its armature name, an underscore and its animation name. For example `myArmature_animation1`. You activate an animation by setting its `playing` property to `true`.
 
 The example below imports a model that includes animations and configures them:
 
@@ -73,17 +90,9 @@ The example below imports a model that includes animations and configures them:
     ]}
   />
 ```
+In this example, the armature is named `shark_skeleton` and the two animations contained in it are named `bite` and `swim`.
 
-> Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity. 
-
-
-
-<!---
-
-### glb models
-
--->
-
+An animation can be set to loop continuously by setting its `loop` property. If `loop:false` then the animation will be called only once when activated.
 
 
 ### Why we use glTF?
@@ -117,7 +126,11 @@ how to add collider meshes into GLTF models
 
 ## Sound
 
+Src
 
+Loop
+
+> Note: Setting loop to false stops the audio, it doesn't pause it. So when setting loop to true the audio will start from the beginning.
 
 
 
