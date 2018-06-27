@@ -1,6 +1,8 @@
 ---
 date: 2018-01-01
 title: Overview
+redirect_from:
+  - /docs/land-manager
 description: Meet the LAND marketplace
 categories:
   - Decentraland
