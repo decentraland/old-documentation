@@ -9,6 +9,7 @@ group :jekyll_plugins do
   gem 'jekyll-feed', '0.9.3'
   gem 'jekyll-seo-tag', '2.4.0'
   gem 'jekyll-sitemap', '1.2.0'
+  gem 'jekyll-redirect-from', '0.13.0'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
