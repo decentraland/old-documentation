@@ -47,6 +47,10 @@ For more complex shapes, you can build a 3D model in an external tool like Blend
 
 To add an external model into a scene, add a `<gltf-model>` element and set its `src` component to the path of the glTF file containing the model.
 
+> Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
+
+
+
 ```xml
 <gltf-model
     position={ { x: 5, y: 3, z: 5 } }
@@ -55,16 +59,12 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
   />
 ```
 
-> TIP: glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance. For this reason, we recommend using `.gltf` while you're working on a scene, but then switching to `.glb` when uploading it.
+glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance. 
+
+> Tip: We recommend using `.gltf` while you're working on a scene, but then switching to `.glb` when uploading it.
 
 
-glTF models can also include their own textures and animations.
-
-
-
-
-
-> Note: Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
+glTF models can also include their own textures and animations. Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
 
 
 > Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity. 
@@ -73,7 +73,7 @@ glTF models can also include their own textures and animations.
 
 glTF models can include embedded animations in them. 
 
-Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations and how they're named.
+Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named.
 
 In a dynamic scene, you reference an animation by its armature name, an underscore and its animation name. For example `myArmature_animation1`. You activate an animation by setting its `playing` property to `true`.
 
@@ -113,6 +113,28 @@ Compared to *COLLADA*, the supported features are very similar. However, because
 Consider this analogy: the .PSD (Adobe Photoshop) format is helpful for editing 2D images, but images must then be converted to .JPG for use
 on the web. In the same way, COLLADA may be used to edit a 3D asset, but glTF is a simpler way of transmitting it while rendering the same result.
 
+## Sound
+
+You can add sound to your scene by including sound components in any entity. The entity that holds the sound component will be the emiter of the sound.
+
+> Tip: We recommend keeping your sound files separate in a `/sounds` folder inside your scene.
+
+
+```xml
+  <sphere 
+    position="3 1.25 5"  
+    color="#EF2D5E" 
+    sound="src: sounds/carnivalrides.ogg; loop: true;"
+  />
+```
+The `src` property points to the location of the sound file.
+
+Supported sound formats vary depending on the browser, but it's safe to use `.mp3`, `.accc` and  `.ogg`. `.wav` files are also supported but not generally recommended as they are significantly larger.
+
+Each entity can only play a single sound file. This limitation can easily be overcome by including multiple invisible entities, each with their own sound file.
+
+
+> Note: Setting loop to false stops the audio, it doesn't pause it. So when setting loop to true the audio will start from the beginning.
 
 <!---
 ### How to use Blender with the SDK
@@ -124,13 +146,7 @@ how to add collider meshes into GLTF models
 ## Entity collision
 
 
-## Sound
 
-Src
-
-Loop
-
-> Note: Setting loop to false stops the audio, it doesn't pause it. So when setting loop to true the audio will start from the beginning.
 
 
 
