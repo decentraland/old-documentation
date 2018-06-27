@@ -13,7 +13,13 @@ tag: introduction
 
 ## Before you begin
 
-Please make sure you first install the CLI tools. See the [Installation Guide]({{ site.baseurl }}{% post_url /building-scenes/2018-01-01-installation-guide %}) for details on how to do this.
+Please make sure you first install the CLI tools. In Mac OS, you do this by running the following command:
+
+```bash
+npm install -g decentraland
+```
+
+See the [Installation Guide]({{ site.baseurl }}{% post_url /building-scenes/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
 
 
 ## Kinds of scenes
@@ -29,7 +35,7 @@ There are essentially two different types of scenes:
 
 ## Creating the file structure
 
-Use our CLI tool to automatically build the initial scaffolding for a scene. To do so, run `dcl init` in an empty folder. See [SDK Overview]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-01-SDK-Overview %}) for details on how to install and use the CLI.
+Use our CLI tool to automatically build the initial boilerplate scene. To do so, run `dcl init` in an empty folder. See [SDK Overview]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-01-SDK-Overview %}) for details on how to install and use the CLI.
 
 The `dcl init` command creates a Decentraland **project** in your current working directory containing a **scene**. It prompts you to select a scene type (static, dynamic & singleplayer, or dynamic & multiplayer) and builds a different file structure depending on the case.
 
@@ -134,10 +140,12 @@ To preview your rendered scene locally (without uploading it to IPFS) run the fo
 ```bash
 dcl preview
 ```
+Note that the preview command runs only on your local system, it creates a web server and opens a new web browser tab pointing at its local address.
+
+Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
 Running a preview also provides some useful debugging information and tools to help you understand how different entities are rendered. The preview mode provides information that describes parcel boundaries, the environment and resources, for example the number of entities being rendered, the current FPS rate, user position, and whether or not different elements are exceeding parcel boundaries.
 
-Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to launch it again.
 
 You can add the following flags to the command:
 
