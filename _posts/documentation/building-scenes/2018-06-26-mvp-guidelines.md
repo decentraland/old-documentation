@@ -15,7 +15,7 @@ _Note: We originally wrote this document to help guide Decentraland's Community 
 
 The purpose of this document is to help guide districts through the process of building their initial experiences and environments. We’ll refer to these initial experiences and environments as the Minimum Viable Product (MVP). 
 
-**When creating your MVP, you need to think about two areas of focus: **
+**When creating your MVP, you need to think about two areas of focus:**
 
 1. The basic user experience and functionality in your district
 2. The creation of a basic "pipeline", or team workflow and content management system for building your district and iteratively improving it.
