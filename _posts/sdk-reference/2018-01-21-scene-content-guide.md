@@ -18,7 +18,7 @@ This document covers how to achieve common objectives by using different types o
 
 ## Create simple geometric shapes
 
-Several different types of predefined entities can be added to a scene, these already have certain components defined (like their shape) and let you set others (like their rotation and color).
+Several basic shapes, often called *primitives*, can be added to a scene as predefined entity types. These already have certain components defined (like their shape) and let you set others (like their rotation and color).
 
 The following types of entities are available:
 
@@ -93,6 +93,24 @@ The example below imports a model that includes animations and configures them:
 In this example, the armature is named `shark_skeleton` and the two animations contained in it are named `bite` and `swim`.
 
 An animation can be set to loop continuously by setting its `loop` property. If `loop:false` then the animation will be called only once when activated.
+
+### Free libraries for 3D models
+
+Instead of building your own 3d models, you can also download them from several free or paid libraries.
+
+To get you started, below is a list of libraries that have free or relatively inexpensive content:
+
+* [Google Poly](https://poly.google.com)
+* [SketchFab](https://sketchfab.com/)
+* [Clara.io](https://clara.io/)
+* [Archive3D](https://archive3d.net/)
+* [SketchUp 3D Warehouse](https://3dwarehouse.sketchup.com/)
+* [Thingiverse](https://www.thingiverse.com/) (3D models made primarily for 3D printing, but adaptable to Virtual Worlds)
+* [ShareCG](https://www.sharecg.com/)
+
+> Note: Pay attention to the licence restrictions that the content you download has.
+
+Note that most of the models that you can download from these sites won't be in glTF. If that's the case, you must convert them to glTF before you can use them in a scene. We recommend importing them into Blender and exporting them with one of the available glTF export add-ons.
 
 
 ### Why we use glTF?
