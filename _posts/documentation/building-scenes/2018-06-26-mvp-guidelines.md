@@ -6,7 +6,7 @@ categories:
   - documentation
 type: Document
 set: building-scenes
-set_order: 8
+set_order: 9
 ---
 
 _Note: We originally wrote this document to help guide Decentraland's Community Districts through the process of creating their initial "minimum viable products". Building such large and comprehensive projects successfully will require an approach broken into different stages, with each stage building upon the last. We feel that this development philosophy can prove valuable to anyone creating games and experiences using the SDK, so we would like to share it with the entire developer community._
