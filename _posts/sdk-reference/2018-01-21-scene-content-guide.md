@@ -74,59 +74,66 @@ You can also set a position, rotation and scale for the entire <scene/> entity a
 
 
 
-<!---
+
 ### Transitions
 
+In dynamic scenes, you can configure an entity to affect the way in which it moves. By default, all changes to an entity are rendered as a sudden shift from one state to another. By adding a transition component, you can make the change be gradual and more natural.
 
-transition?: {
-    position?: TransitionValue
-    rotation?: TransitionValue
-    scale?: TransitionValue
-    color?: TransitionValue
-  }
+The example below shows a box entity that is configured to rotate smoothly. 
 
-interface TransitionValue {
-  duration: number
-  timing?: TimingFunction
-  delay?: number
-}
 
-type TimingFunction =
-    'linear'
-  | 'ease-in'
-  | 'ease-out'
-  | 'ease-in-out'
-  | 'quadratic-in'
-  | 'quadratic-out'
-  | 'quadratic-inout'
-  | 'cubic-in'
-  | 'cubic-out'
-  | 'cubic-inout'
-  | 'quartic-in'
-  | 'quartic-out'
-  | 'quartic-inout'
-  | 'quintic-in'
-  | 'quintic-out'
-  | 'quintic-inout'
-  | 'sin-in'
-  | 'sin-out'
-  | 'sin-inout'
-  | 'exponential-in'
-  | 'exponential-out'
-  | 'exponential-inout'
-  | 'bounce-in'
-  | 'bounce-out'
-  | 'bounce-inout'
-  | 'elastic-in'
-  | 'elastic-out'
-  | 'elastic-inout'
-  | 'circular-in'
-  | 'circular-out'
-  | 'circular-inout'
-  | 'back-in'
-  | 'back-out'
-  | 'back-inout'
--->
+```xml
+ <box 
+    rotation={currnetRotation}
+    transition={ { rotation: { duration: 1000, timing: "ease-in" } } }
+  />
+```
+> Note: The transition component doesn't make the box rotate, it just sets the way it rotates whenever the value of the entity's rotation changes, usually as the result of an event.
+
+The transition component can be added to affect the following properties of an entity:
+
+* position
+* rotation
+* scale
+* color
+
+Note that the transition for each of these properties is configured separately.
+
+```xml
+ <box 
+    rotation={currnetRotation}
+    color={currnetColor}
+    scale={currnetScale}
+    transition={ 
+        { rotation: { duration: 1000, timing: "ease-in" } }
+        { color: { duration: 3000, timing: "exponential-in" } }
+        { scale: { duration: 300, timing: "bounce-in" } }
+        }
+  />
+```
+
+The transition component allows you to set:
+
+* A delay: milliseconds to wait before the change begins occuring.
+* A duration: milliseconds from when the change begins to when it ends.
+* Timing: select a function to shape the transition. For example, the transition could be `linear`, `ease-in`, `ease-out`, `exponential-in` or `bounce-in`, among other options.
+
+In the example below, a transition is applied to the rotation of an invisible entity that wraps a box. As the box is off-center from the parent entity, the box pivots like an opening door.
+
+```xml
+
+<entity 
+    rotation={currentRotation}  
+    transition={ { rotation: { duration: 1000, timing: "ease-in" } } }>
+        <box 
+          id="door" 
+          scale={ { x: 1, y: 2, z: 0.05 } } 
+          position={ { x: 0.5, y: 1, z: 0 } } 
+        />
+</entity>
+```
+
+
 
 ## Import 3D Models
  
