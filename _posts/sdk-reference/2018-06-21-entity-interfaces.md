@@ -270,7 +270,7 @@ Example:
 
 You add a base entity to a scene via the XML tag `<entity>`. You can add an entity with no components to a scene to act as a container. The `<entity>` element has no components by default, so it's invisible and has no direct effect on the scene, but it can be positioned, scaled, and rotated and it can contain other child entities in it. Child entities are scaled, rotated, and positioned relative to the parent entity. 
 
-Entities with no components can also be added to a scene to group entities into a single object that can then be passed as an input for certain functions.
+In dynamic scenes, it's also useful to include entities with no components as wrappers to group entities into a single object that can then be passed as an input for certain functions.
 
 Interface reference:
 
@@ -315,6 +315,8 @@ interface BaseEntity {
   sound?: {
     src: string
     loop?: boolean
+    autoplay?: boolean
+    volume?: number
   }
 
 

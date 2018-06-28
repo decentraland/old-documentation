@@ -38,6 +38,96 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 
 > Tip: When editing the code via a IDE (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and pressing *Ctrl + Space bar*.
 
+## Position entities
+
+All entities can have a position, a rotation and a scale. These can be easily set as components, as shown below:
+
+
+```xml
+<box
+    position={ { x: 5, y: 3, z: 5 } }
+    rotation={ { x: 180, y: 90, z: 0 } }
+    scale={0.5}
+  />
+```
+
+* `position` is a *3D vector*, it sets the position on all three axes. 
+* `rotation` is a *3D vector* too, but where each component represents the rotation in that axis.
+* `scale` can either be a *number* or a *3D vector*, in case you want to scale the axis in different proportions. 
+
+When an entity is nested inside another, the child entities inherit components from the parents. This means that if a parent entity is positioned, scaled or rotated, its children are also affected. The position, rotation and scale values of children entities don't override those of the parents, instead these are compounded.
+
+You can include an invisible base entity to wrap a set of other entities and define their positioning as a group.
+
+```xml
+  <entity
+      position={ { x: 0, y: 0, z: 1 } }
+      rotation={ { x: 45, y: 0, z: 0 } }
+  >
+    <box position={ { x: 10, y: 0, z: 0 } } scale={2} />
+    <box position={ { x: 10, y: 10, z: 0 } } scale={1} />
+    <box position={ { x: 0, y: 10, z: 0 } } scale={2} />
+  </entity>
+```
+
+You can also set a position, rotation and scale for the entire <scene/> entity and affect everything in the scene.
+
+
+
+<!---
+### Transitions
+
+
+transition?: {
+    position?: TransitionValue
+    rotation?: TransitionValue
+    scale?: TransitionValue
+    color?: TransitionValue
+  }
+
+interface TransitionValue {
+  duration: number
+  timing?: TimingFunction
+  delay?: number
+}
+
+type TimingFunction =
+    'linear'
+  | 'ease-in'
+  | 'ease-out'
+  | 'ease-in-out'
+  | 'quadratic-in'
+  | 'quadratic-out'
+  | 'quadratic-inout'
+  | 'cubic-in'
+  | 'cubic-out'
+  | 'cubic-inout'
+  | 'quartic-in'
+  | 'quartic-out'
+  | 'quartic-inout'
+  | 'quintic-in'
+  | 'quintic-out'
+  | 'quintic-inout'
+  | 'sin-in'
+  | 'sin-out'
+  | 'sin-inout'
+  | 'exponential-in'
+  | 'exponential-out'
+  | 'exponential-inout'
+  | 'bounce-in'
+  | 'bounce-out'
+  | 'bounce-inout'
+  | 'elastic-in'
+  | 'elastic-out'
+  | 'elastic-inout'
+  | 'circular-in'
+  | 'circular-out'
+  | 'circular-inout'
+  | 'back-in'
+  | 'back-out'
+  | 'back-inout'
+-->
+
 ## Import 3D Models
  
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in glTF format.  [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
