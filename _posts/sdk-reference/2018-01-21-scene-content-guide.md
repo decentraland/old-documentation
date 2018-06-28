@@ -146,14 +146,12 @@ Color is set in hexadecimal values. To set an entity's color, simply set its `co
 
 > Tip: There are many online color-pickers you can use to find a specific color graphically. To name one, you can try the color picker on [W 3 Schools](https://www.w3schools.com/colors/colors_picker.asp).
 
-<!---
 
 ## Materials
 
 Materials are defined as separate entities in a scene, this prevents material definitions from being duplicated, keeping the scene's code lighter.
 
-Materials can be applied to primitive entities and to planes.
-
+Materials can be applied to primitive entities and to planes, simply by setting the `material` component.
 
 
 ```xml
@@ -161,7 +159,8 @@ Materials can be applied to primitive entities and to planes.
   <sphere material="#reusable_material" />
 ```
 
--->
+Materials are also implicitly imported into a scene when you import a gtLF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
+
 
 ## Import 3D Models
  
