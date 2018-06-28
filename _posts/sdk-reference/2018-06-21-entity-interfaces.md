@@ -440,7 +440,138 @@ interface ObjEntity extends BaseEntity {
  
 ```
 
-## Creating Custom Interfaces
+## Materials
+
+Materials are defined as separate entities in a scene, this prevents material definitions from being duplicated, keeping the scene's code lighter.
+
+Materials can then be applied to any entity that is a child of MaterialEntity (which is itself a child of BaseEntity). All primitives and plane entities can have a material, which is set by adding a `material` component to it.
+
+Example:
+
+
+```xml
+  <material id="reusable_material" albedo-color="materials/wood.png" roughness="0.5" />
+  <sphere material="#reusable_material" />
+```
+
+This example shows the definition of a new material and then a shpere entity that uses it.
+
+Interface reference:
+
+```tsx
+
+   export type MaterialDescriptorEntity = {
+      /**
+       * Id of the material, it will be used to pick this material from other entities
+       */
+      id: string
+      /**
+       * Opacity.
+       */
+      alpha?: number
+      /**
+       * The color of a material in ambient lighting.
+       */
+      ambientColor?: ColorComponent
+      /**
+       * AKA Diffuse Color in other nomenclature.
+       */
+      albedoColor?: ColorComponent
+      /**
+       * AKA Specular Color in other nomenclature.
+       */
+      reflectivityColor?: ColorComponent
+      /**
+       * The color reflected from the material.
+       */
+      reflectionColor?: ColorComponent
+      /**
+       * The color emitted from the material.
+       */
+      emissiveColor?: ColorComponent
+      /**
+       * Specifies the metallic scalar of the metallic/roughness workflow.
+       * Can also be used to scale the metalness values of the metallic texture.
+       */
+      metallic?: number
+      /**
+       * Specifies the roughness scalar of the metallic/roughness workflow.
+       * Can also be used to scale the roughness values of the metallic texture.
+       */
+      roughness?: number
+      /**
+       * Texture applied as material.
+       */
+      albedoTexture?: string
+      /**
+       * Texture applied as opacity. Default: the same texture used in albedoTexture.
+       */
+      alphaTexture?: string
+      /**
+       * Emmisive texture.
+       */
+      emisiveTexture?: string
+      /**
+       * Stores surface normal data used to displace a mesh in a texture.
+       */
+      bumpTexture?: string
+      /**
+       * Stores the refracted light information in a texture.
+       */
+      refractionTexture?: string
+      /**
+       * Intensity of the direct lights e.g. the four lights available in scene.
+       * This impacts both the direct diffuse and specular highlights.
+       */
+      directIntensity?: number
+      /**
+       * Intensity of the emissive part of the material.
+       * This helps controlling the emissive effect without modifying the emissive color.
+       */
+      emissiveIntensity?: number
+      /**
+       * Intensity of the environment e.g. how much the environment will light the object
+       * either through harmonics for rough material or through the refelction for shiny ones.
+       */
+      environmentIntensity?: number
+      /**
+       * This is a special control allowing the reduction of the specular highlights coming from the
+       * four lights of the scene. Those highlights may not be needed in full environment lighting.
+       */
+      specularIntensity?: number
+      /**
+       * AKA Glossiness in other nomenclature.
+       */
+      microSurface?: number
+      /**
+       * If sets to true, disables all the lights affecting the material.
+       */
+      disableLighting?: boolean
+    }
+
+    export type MaterialEntity = BaseEntity & {
+      /**
+       * Color of the vertices
+       */
+      color?: string | number
+
+      /**
+       * Material selector
+       */
+      material?: string
+
+      /**
+       * Set to true to turn off the collider for the entity.
+       */
+      ignoreCollisions?: boolean
+    }
+
+
+```
+
+
+
+## Creating custom interfaces
 
 You can create your own interface to create entities with customized default behavior and characteristics. To define the interface, create a new *.tsx* file that includes all the components and methods needed to construct and handle the entity.
 
