@@ -38,7 +38,7 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 
 > Tip: When editing the code via a IDE (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and pressing *Ctrl + Space bar*.
 
-## Position entities
+## Entity ppositioning
 
 All entities can have a position, a rotation and a scale. These can be easily set as components, as shown below:
 
@@ -133,7 +133,35 @@ In the example below, a transition is applied to the rotation of an invisible en
 </entity>
 ```
 
+## Color
 
+Color is set in hexadecimal values. To set an entity's color, simply set its `color` component to the corresponding hexadecimal value.
+
+```xml
+  <sphere 
+    position={ { x: 0.5, y: 1, z: 0 } }   
+    color="#EF2D5E"
+  />
+```
+
+> Tip: There are many online color-pickers you can use to find a specific color graphically. To name one, you can try the color picker on [W 3 Schools](https://www.w3schools.com/colors/colors_picker.asp).
+
+<!---
+
+## Materials
+
+Materials are defined as separate entities in a scene, this prevents material definitions from being duplicated, keeping the scene's code lighter.
+
+Materials can be applied to primitive entities and to planes.
+
+
+
+```xml
+  <material id="reusable_material" albedo-color="materials/wood.png" roughness="0.5" />
+  <sphere material="#reusable_material" />
+```
+
+-->
 
 ## Import 3D Models
  
@@ -235,8 +263,7 @@ You can add sound to your scene by including a sound component in any entity.
 
 ```xml
   <sphere 
-    position="3 1.25 5"  
-    color="#EF2D5E" 
+    position="3 1.25 5" 
     sound="
       src: sounds/carnivalrides.ogg; 
       loop: true; 
@@ -257,7 +284,9 @@ The `distanceModel` property of the sound component conditions how the user's di
 
 <!---
 
-> Note: Setting loop to false stops the audio, it doesn't pause it. So when setting loop to true the audio will start from the beginning.
+Setting loop to false stops the audio, it doesn't pause it. So when setting loop to true the audio will start from the beginning.
+
+Setting playing to false pauses??????
 
 
 ### How to use Blender with the SDK
@@ -277,7 +306,7 @@ how to add collider meshes into GLTF models
 -->
 
 
-## Migrating XML to Type Script
+## Migrating XML to type script
 
 If you have a static XML scene and want to add dynamic capabilities to it, you must migrate it to TSX format. This implies making some minor changes to the entity syntax.
 
