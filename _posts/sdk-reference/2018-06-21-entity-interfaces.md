@@ -309,18 +309,6 @@ interface BaseEntity {
   key?: string | number
 
 
-/**
-   * Used to play a sound file, originating from the entity's center
-   */
-  sound?: {
-    src: string
-    loop?: boolean
-    autoplay?: boolean
-    volume?: number
-  }
-
-
-
   /**
    * Used to animate the transitions in the same fashion as CSS
    */
@@ -344,6 +332,13 @@ interface BaseEntity {
    *   BillboardModes.BILLBOARDMODE_X | BillboardModes.BILLBOARDMODE_Y
    */
   billboard?: IBillboardModes
+
+
+  
+  /**
+  * Adds spatial sound to the entities
+  */
+  sound?: SoundComponent
 }
 
 /**
@@ -399,6 +394,24 @@ type TimingFunction =
   | 'back-in'
   | 'back-out'
   | 'back-inout'
+
+
+export type SoundComponent = {
+  /** Distance fading model, default: 'linear' */
+  distanceModel?: 'linear' | 'inverse' | 'exponential'
+  /** Does the sound loop? default: false */
+  loop?: boolean
+  /** The src of the sound to be played */
+  src: string
+  /** Volume of the sound, values 0 to 1, default: 1 */
+  volume?: number
+  /** Used in inverse and exponential distance models, default: 1 */
+  rolloffFactor?: number
+  /** Is the sound playing?, default: true */
+  playing?: boolean
+}
+
+
 ```
 
 

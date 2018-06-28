@@ -230,28 +230,36 @@ on the web. In the same way, COLLADA may be used to edit a 3D asset, but glTF is
 
 ## Sound
 
-You can add sound to your scene by including sound components in any entity. The entity that holds the sound component will be the emiter of the sound.
-
-> Tip: We recommend keeping your sound files separate in a `/sounds` folder inside your scene.
+You can add sound to your scene by including a sound component in any entity.
 
 
 ```xml
   <sphere 
     position="3 1.25 5"  
     color="#EF2D5E" 
-    sound="src: sounds/carnivalrides.ogg; loop: true;"
+    sound="
+      src: sounds/carnivalrides.ogg; 
+      loop: true; 
+      playing: true
+      volume: 0.5
+      "
   />
 ```
 The `src` property points to the location of the sound file.
+
+> Tip: We recommend keeping your sound files separate in a `/sounds` folder inside your scene.
 
 Supported sound formats vary depending on the browser, but it's safe to use `.mp3`, `.accc` and  `.ogg`. `.wav` files are also supported but not generally recommended as they are significantly larger.
 
 Each entity can only play a single sound file. This limitation can easily be overcome by including multiple invisible entities, each with their own sound file.
 
+The `distanceModel` property of the sound component conditions how the user's distance to the sound's source affects its volume. The model can be `linear`, `exponential` or `inverse`. When using the liner or exponential model, you can also set the `rolloffFactor` property to set the steepness of the curve. 
+
+<!---
 
 > Note: Setting loop to false stops the audio, it doesn't pause it. So when setting loop to true the audio will start from the beginning.
 
-<!---
+
 ### How to use Blender with the SDK
 
 
