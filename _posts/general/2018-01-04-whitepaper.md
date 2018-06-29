@@ -1,6 +1,8 @@
 ---
 date: 2018-01-01
 title: Whitepaper
+redirect_from:
+  - /docs/whitepaper
 description: Read more about the philosophy and design of Decentraland in our white paper.
 categories:
   - Decentraland
