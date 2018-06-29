@@ -18,7 +18,7 @@ This document covers how to achieve common objectives by using different types o
 
 ## Create simple geometric shapes
 
-Several different types of predefined entities can be added to a scene, these already have certain components defined (like their shape) and let you set others (like their rotation and color).
+Several basic shapes, often called *primitives*, can be added to a scene as predefined entity types. These already have certain components defined (like their shape) and let you set others (like their rotation and color).
 
 The following types of entities are available:
 
@@ -38,11 +38,142 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 
 > Tip: When editing the code via a IDE (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and pressing *Ctrl + Space bar*.
 
+## Entity positioning
+
+All entities can have a position, a rotation and a scale. These can be easily set as components, as shown below:
+
+
+```xml
+<box
+    position={ { x: 5, y: 3, z: 5 } }
+    rotation={ { x: 180, y: 90, z: 0 } }
+    scale={0.5}
+  />
+```
+
+* `position` is a *3D vector*, it sets the position on all three axes. 
+* `rotation` is a *3D vector* too, but where each component represents the rotation in that axis.
+* `scale` can either be a *number* or a *3D vector*, in case you want to scale the axis in different proportions. 
+
+When an entity is nested inside another, the child entities inherit components from the parents. This means that if a parent entity is positioned, scaled or rotated, its children are also affected. The position, rotation and scale values of children entities don't override those of the parents, instead these are compounded.
+
+You can include an invisible base entity to wrap a set of other entities and define their positioning as a group.
+
+```xml
+  <entity
+      position={ { x: 0, y: 0, z: 1 } }
+      rotation={ { x: 45, y: 0, z: 0 } }
+  >
+    <box position={ { x: 10, y: 0, z: 0 } } scale={2} />
+    <box position={ { x: 10, y: 10, z: 0 } } scale={1} />
+    <box position={ { x: 0, y: 10, z: 0 } } scale={2} />
+  </entity>
+```
+
+You can also set a position, rotation and scale for the entire <scene/> entity and affect everything in the scene.
+
+
+
+
+### Transitions
+
+In dynamic scenes, you can configure an entity to affect the way in which it moves. By default, all changes to an entity are rendered as a sudden shift from one state to another. By adding a transition component, you can make the change be gradual and more natural.
+
+The example below shows a box entity that is configured to rotate smoothly. 
+
+
+```xml
+ <box 
+    rotation={currnetRotation}
+    transition={ { rotation: { duration: 1000, timing: "ease-in" } } }
+  />
+```
+> Note: The transition component doesn't make the box rotate, it just sets the way it rotates whenever the value of the entity's rotation changes, usually as the result of an event.
+
+The transition component can be added to affect the following properties of an entity:
+
+* position
+* rotation
+* scale
+* color
+
+Note that the transition for each of these properties is configured separately.
+
+```xml
+ <box 
+    rotation={currnetRotation}
+    color={currnetColor}
+    scale={currnetScale}
+    transition={ 
+        { rotation: { duration: 1000, timing: "ease-in" } }
+        { color: { duration: 3000, timing: "exponential-in" } }
+        { scale: { duration: 300, timing: "bounce-in" } }
+        }
+  />
+```
+
+The transition component allows you to set:
+
+* A delay: milliseconds to wait before the change begins occuring.
+* A duration: milliseconds from when the change begins to when it ends.
+* Timing: select a function to shape the transition. For example, the transition could be `linear`, `ease-in`, `ease-out`, `exponential-in` or `bounce-in`, among other options.
+
+In the example below, a transition is applied to the rotation of an invisible entity that wraps a box. As the box is off-center from the parent entity, the box pivots like an opening door.
+
+```xml
+
+<entity 
+    rotation={currentRotation}  
+    transition={ { rotation: { duration: 1000, timing: "ease-in" } } }>
+        <box 
+          id="door" 
+          scale={ { x: 1, y: 2, z: 0.05 } } 
+          position={ { x: 0.5, y: 1, z: 0 } } 
+        />
+</entity>
+```
+
+## Color
+
+Color is set in hexadecimal values. To set an entity's color, simply set its `color` component to the corresponding hexadecimal value.
+
+```xml
+  <sphere 
+    position={ { x: 0.5, y: 1, z: 0 } }   
+    color="#EF2D5E"
+  />
+```
+
+> Tip: There are many online color-pickers you can use to find a specific color graphically. To name one, you can try the color picker on [W 3 Schools](https://www.w3schools.com/colors/colors_picker.asp).
+
+
+## Materials
+
+Materials are defined as separate entities in a scene, this prevents material definitions from being duplicated, keeping the scene's code lighter.
+
+Materials can be applied to primitive entities and to planes, simply by setting the `material` component.
+
+
+```xml
+  <material id="reusable_material" albedo-color="materials/wood.png" roughness="0.5" />
+  <sphere material="#reusable_material" />
+```
+
+Materials are also implicitly imported into a scene when you import a gtLF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
+
+
 ## Import 3D Models
  
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in glTF format.  [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
+> Note: When using Blender, you need an add-on to export glTF files. For models that don't include animations we recommend installing the add-on by [Kronos group](https://github.com/KhronosGroup/glTF-Blender-Exporter). To export glTFs that include animations, you should instead install the add-on by [Kupoman](https://github.com/Kupoman/blendergltf).
+
+
 To add an external model into a scene, add a `<gltf-model>` element and set its `src` component to the path of the glTF file containing the model.
+
+> Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
+
+
 
 ```xml
 <gltf-model
@@ -52,13 +183,23 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
   />
 ```
 
+glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance. 
 
-glTF models can also include their own textures and animations. 
+> Tip: We recommend using `.gltf` while you're working on a scene, but then switching to `.glb` when uploading it.
 
+
+glTF models can also include their own textures and animations. Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
+
+
+> Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity. 
+
+### Animations
 
 > Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
 
+Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named.
 
+In a dynamic scene, you reference an animation by its armature name, an underscore and its animation name. For example `myArmature_animation1`. You activate an animation by setting its `playing` property to `true`.
 
 The example below imports a model that includes animations and configures them:
 
@@ -73,17 +214,27 @@ The example below imports a model that includes animations and configures them:
     ]}
   />
 ```
+In this example, the armature is named `shark_skeleton` and the two animations contained in it are named `bite` and `swim`.
 
-> Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity. 
+An animation can be set to loop continuously by setting its `loop` property. If `loop:false` then the animation will be called only once when activated.
 
+### Free libraries for 3D models
 
+Instead of building your own 3d models, you can also download them from several free or paid libraries.
 
-<!---
+To get you started, below is a list of libraries that have free or relatively inexpensive content:
 
-### glb models
+* [Google Poly](https://poly.google.com)
+* [SketchFab](https://sketchfab.com/)
+* [Clara.io](https://clara.io/)
+* [Archive3D](https://archive3d.net/)
+* [SketchUp 3D Warehouse](https://3dwarehouse.sketchup.com/)
+* [Thingiverse](https://www.thingiverse.com/) (3D models made primarily for 3D printing, but adaptable to Virtual Worlds)
+* [ShareCG](https://www.sharecg.com/)
 
--->
+> Note: Pay attention to the licence restrictions that the content you download has.
 
+Note that most of the models that you can download from these sites won't be in glTF. If that's the case, you must convert them to glTF before you can use them in a scene. We recommend importing them into Blender and exporting them with one of the available glTF export add-ons.
 
 
 ### Why we use glTF?
@@ -104,8 +255,39 @@ Compared to *COLLADA*, the supported features are very similar. However, because
 Consider this analogy: the .PSD (Adobe Photoshop) format is helpful for editing 2D images, but images must then be converted to .JPG for use
 on the web. In the same way, COLLADA may be used to edit a 3D asset, but glTF is a simpler way of transmitting it while rendering the same result.
 
+## Sound
+
+You can add sound to your scene by including a sound component in any entity.
+
+
+```xml
+  <sphere 
+    position="3 1.25 5" 
+    sound="
+      src: sounds/carnivalrides.ogg; 
+      loop: true; 
+      playing: true
+      volume: 0.5
+      "
+  />
+```
+The `src` property points to the location of the sound file.
+
+> Tip: We recommend keeping your sound files separate in a `/sounds` folder inside your scene.
+
+Supported sound formats vary depending on the browser, but it's safe to use `.mp3`, `.accc` and  `.ogg`. `.wav` files are also supported but not generally recommended as they are significantly larger.
+
+Each entity can only play a single sound file. This limitation can easily be overcome by including multiple invisible entities, each with their own sound file.
+
+The `distanceModel` property of the sound component conditions how the user's distance to the sound's source affects its volume. The model can be `linear`, `exponential` or `inverse`. When using the liner or exponential model, you can also set the `rolloffFactor` property to set the steepness of the curve. 
 
 <!---
+
+Setting loop to false stops the audio, it doesn't pause it. So when setting loop to true the audio will start from the beginning.
+
+Setting playing to false pauses??????
+
+
 ### How to use Blender with the SDK
 
 
@@ -115,8 +297,6 @@ how to add collider meshes into GLTF models
 ## Entity collision
 
 
-## Sound
-
 
 
 
@@ -125,7 +305,7 @@ how to add collider meshes into GLTF models
 -->
 
 
-## Migrating XML to Type Script
+## Migrating XML to type script
 
 If you have a static XML scene and want to add dynamic capabilities to it, you must migrate it to TSX format. This implies making some minor changes to the entity syntax.
 

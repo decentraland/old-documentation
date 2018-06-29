@@ -186,7 +186,10 @@ interface CylinderEntity extends BaseEntity {
 [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common,
 extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
-The `gltf-model` entity loads a 3D model using a glTF (`.gltf` or `.glb`) file.
+The `gltf-model` entity loads a 3D model using a glTF file. It supports both `.gltf` or `.glb` extensions.
+
+> `.gltf` is a more human-readable format, `.glb` is a more compact version of the same.
+
 
 Simple example:
 
@@ -261,12 +264,15 @@ The `BaseEntity` interface is the most flexible of all, as it comes with no pred
 Example:
 
 ```xml
- <entity position={ { x: 2, y: 1, z: 0 } } scale={ { x: 2, y: 2, z: 0.05 } }>
+  <entity 
+    position={ { x: 2, y: 1, z: 0 } } 
+    scale={ { x: 2, y: 2, z: 0.0  5 } }
+  />
 ```
 
 You add a base entity to a scene via the XML tag `<entity>`. You can add an entity with no components to a scene to act as a container. The `<entity>` element has no components by default, so it's invisible and has no direct effect on the scene, but it can be positioned, scaled, and rotated and it can contain other child entities in it. Child entities are scaled, rotated, and positioned relative to the parent entity. 
 
-Entities with no components can also be added to a scene to group entities into a single object that can then be passed as an input for certain functions.
+In dynamic scenes, it's also useful to include entities with no components as wrappers to group entities into a single object that can then be passed as an input for certain functions.
 
 Interface reference:
 
@@ -304,6 +310,7 @@ interface BaseEntity {
    */
   key?: string | number
 
+
   /**
    * Used to animate the transitions in the same fashion as CSS
    */
@@ -327,6 +334,13 @@ interface BaseEntity {
    *   BillboardModes.BILLBOARDMODE_X | BillboardModes.BILLBOARDMODE_Y
    */
   billboard?: IBillboardModes
+
+
+  
+  /**
+  * Adds spatial sound to the entities
+  */
+  sound?: SoundComponent
 }
 
 /**
@@ -382,6 +396,24 @@ type TimingFunction =
   | 'back-in'
   | 'back-out'
   | 'back-inout'
+
+
+export type SoundComponent = {
+  /** Distance fading model, default: 'linear' */
+  distanceModel?: 'linear' | 'inverse' | 'exponential'
+  /** Does the sound loop? default: false */
+  loop?: boolean
+  /** The src of the sound to be played */
+  src: string
+  /** Volume of the sound, values 0 to 1, default: 1 */
+  volume?: number
+  /** Used in inverse and exponential distance models, default: 1 */
+  rolloffFactor?: number
+  /** Is the sound playing?, default: true */
+  playing?: boolean
+}
+
+
 ```
 
 
@@ -410,7 +442,138 @@ interface ObjEntity extends BaseEntity {
  
 ```
 
-## Creating Custom Interfaces
+## Materials
+
+Materials are defined as separate entities in a scene, this prevents material definitions from being duplicated, keeping the scene's code lighter.
+
+Materials can then be applied to any entity that is a child of MaterialEntity (which is itself a child of BaseEntity). All primitives and plane entities can have a material, which is set by adding a `material` component to it.
+
+Example:
+
+
+```xml
+  <material id="reusable_material" albedo-color="materials/wood.png" roughness="0.5" />
+  <sphere material="#reusable_material" />
+```
+
+This example shows the definition of a new material and then a shpere entity that uses it.
+
+Interface reference:
+
+```tsx
+
+   export type MaterialDescriptorEntity = {
+      /**
+       * Id of the material, it will be used to pick this material from other entities
+       */
+      id: string
+      /**
+       * Opacity.
+       */
+      alpha?: number
+      /**
+       * The color of a material in ambient lighting.
+       */
+      ambientColor?: ColorComponent
+      /**
+       * AKA Diffuse Color in other nomenclature.
+       */
+      albedoColor?: ColorComponent
+      /**
+       * AKA Specular Color in other nomenclature.
+       */
+      reflectivityColor?: ColorComponent
+      /**
+       * The color reflected from the material.
+       */
+      reflectionColor?: ColorComponent
+      /**
+       * The color emitted from the material.
+       */
+      emissiveColor?: ColorComponent
+      /**
+       * Specifies the metallic scalar of the metallic/roughness workflow.
+       * Can also be used to scale the metalness values of the metallic texture.
+       */
+      metallic?: number
+      /**
+       * Specifies the roughness scalar of the metallic/roughness workflow.
+       * Can also be used to scale the roughness values of the metallic texture.
+       */
+      roughness?: number
+      /**
+       * Texture applied as material.
+       */
+      albedoTexture?: string
+      /**
+       * Texture applied as opacity. Default: the same texture used in albedoTexture.
+       */
+      alphaTexture?: string
+      /**
+       * Emmisive texture.
+       */
+      emisiveTexture?: string
+      /**
+       * Stores surface normal data used to displace a mesh in a texture.
+       */
+      bumpTexture?: string
+      /**
+       * Stores the refracted light information in a texture.
+       */
+      refractionTexture?: string
+      /**
+       * Intensity of the direct lights e.g. the four lights available in scene.
+       * This impacts both the direct diffuse and specular highlights.
+       */
+      directIntensity?: number
+      /**
+       * Intensity of the emissive part of the material.
+       * This helps controlling the emissive effect without modifying the emissive color.
+       */
+      emissiveIntensity?: number
+      /**
+       * Intensity of the environment e.g. how much the environment will light the object
+       * either through harmonics for rough material or through the refelction for shiny ones.
+       */
+      environmentIntensity?: number
+      /**
+       * This is a special control allowing the reduction of the specular highlights coming from the
+       * four lights of the scene. Those highlights may not be needed in full environment lighting.
+       */
+      specularIntensity?: number
+      /**
+       * AKA Glossiness in other nomenclature.
+       */
+      microSurface?: number
+      /**
+       * If sets to true, disables all the lights affecting the material.
+       */
+      disableLighting?: boolean
+    }
+
+    export type MaterialEntity = BaseEntity & {
+      /**
+       * Color of the vertices
+       */
+      color?: string | number
+
+      /**
+       * Material selector
+       */
+      material?: string
+
+      /**
+       * Set to true to turn off the collider for the entity.
+       */
+      ignoreCollisions?: boolean
+    }
+
+
+```
+
+
+
+## Creating custom interfaces
 
 You can create your own interface to create entities with customized default behavior and characteristics. To define the interface, create a new *.tsx* file that includes all the components and methods needed to construct and handle the entity.
 
