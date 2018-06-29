@@ -13,7 +13,7 @@ tag: introduction
 
 ## Before you begin
 
-Please make sure you first install the CLI tools. See the [Installation Guide]({{ site.baseurl }}{% post_url /building-scenes/2018-01-01-installation-guide %}) for details on how to do this.
+Please make sure you first install the CLI tools. See the [Installation Guide]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-01-installation-guide %}) for details on how to do this.
 
 
 ## Kinds of scenes
