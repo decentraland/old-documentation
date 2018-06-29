@@ -38,7 +38,7 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 
 > Tip: When editing the code via a IDE (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and pressing *Ctrl + Space bar*.
 
-## Entity ppositioning
+## Entity positioning
 
 All entities can have a position, a rotation and a scale. These can be easily set as components, as shown below:
 

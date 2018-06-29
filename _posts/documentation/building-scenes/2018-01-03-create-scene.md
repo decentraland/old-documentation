@@ -19,7 +19,7 @@ Please make sure you first install the CLI tools. In Mac OS, you do this by runn
 npm install -g decentraland
 ```
 
-See the [Installation Guide]({{ site.baseurl }}{% post_url /building-scenes/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
+See the [Installation Guide]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
 
 
 ## Kinds of scenes
