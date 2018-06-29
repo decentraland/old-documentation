@@ -154,8 +154,8 @@ Materials are defined as separate entities in a scene, this prevents material de
 Materials can be applied to primitive entities and to planes, simply by setting the `material` component.
 
 
-```xml
-  <material id="reusable_material" albedo-color="materials/wood.png" roughness="0.5" />
+```tsx
+  <material id="reusable_material" albedoColor="materials/wood.png" roughness="0.5" />
   <sphere material="#reusable_material" />
 ```
 
@@ -321,7 +321,6 @@ plain text.
 
 ```xml
 <scene>
-  <!-- XML -->
   <box position="10 10 10" />
 </scene>
 ```
@@ -358,6 +357,7 @@ HTML and XHTML are case insensitive for attributes, this generates conflicts wit
 The static scene above becomes the following dynamic schen when migrating it to TSX:
 
 ```tsx
+<!-- TSX -->
 class Scene extends ScriptableScene {
   async render() {
     return (

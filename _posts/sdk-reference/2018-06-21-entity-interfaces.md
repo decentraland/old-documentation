@@ -39,8 +39,12 @@ Creates a cube geometry.
 
 Example:
 
-```xml
-<box position={vector} color="#ff00aa" scale={2} />
+```tsx
+<box 
+  position={ { x: 5, y: 0, z: 2 } } 
+  color="#ff00aa" 
+  scale={2} 
+/>
 ```
 
 Interface reference:
@@ -62,8 +66,12 @@ Creates a sphere geometry.
 
 Example:
 
-```xml
-<sphere position={vector} color="#ff00aa" scale={2} />
+```tsx
+<sphere 
+  position={ { x: 5, y: 0, z: 2 } } 
+  color="#ff00aa" 
+  scale={2} 
+/>
 ```
 
 Interface reference:
@@ -89,8 +97,12 @@ Creates a plane geometry.
 
 Example:
 
-```xml
-<plane position={vector} color="#ff00aa" scale={ { x: 10, y: 5, z: 1 } } />
+```tsx
+<plane 
+  position={ { x: 5, y: 0, z: 2 } } 
+  color="#ff00aa" 
+  scale={ { x: 10, y: 5, z: 1 } } 
+/>
 ```
 
 Interface reference:
@@ -118,7 +130,7 @@ Creates a cone geometry. A cylinder is defined as a cone with the same base and 
 
 Example cone:
 
-```xml
+```tsx
   <cone
     radiusTop={0}
     radiusBottom={1}
@@ -131,7 +143,7 @@ Example cone:
 
 Example cylinder:
 
-```xml
+```tsx
   <cylinder
     openEnded
     arc={180}
@@ -193,7 +205,7 @@ The `gltf-model` entity loads a 3D model using a glTF file. It supports both `.g
 
 Simple example:
 
-```xml
+```tsx
   <gltf-model
     position={ { x: 5, y: 3, z: 5 } }
     scale={0.5}
@@ -204,7 +216,7 @@ Simple example:
 
 Example with animations:
 
-```xml
+```tsx
   <gltf-model
     position={ { x: 5, y: 3, z: 5 } }
     scale={0.5}
@@ -263,7 +275,7 @@ The `BaseEntity` interface is the most flexible of all, as it comes with no pred
 
 Example:
 
-```xml
+```tsx
   <entity 
     position={ { x: 2, y: 1, z: 0 } } 
     scale={ { x: 2, y: 2, z: 0.0  5 } }
@@ -424,7 +436,7 @@ possible.
 
 Example: 
 
-```xml
+```tsx
 <obj-model src="models/shark.obj" />
 ```
 
@@ -451,7 +463,7 @@ Materials can then be applied to any entity that is a child of MaterialEntity (w
 Example:
 
 
-```xml
+```tsx
   <material id="reusable_material" albedo-color="materials/wood.png" roughness="0.5" />
   <sphere material="#reusable_material" />
 ```
@@ -603,6 +615,7 @@ export const Button = (props: IProps) => {
 {% endraw %}
 
 Before you can use this entity type, save it as a *.tsx* file and import it to *scene.tsx*:
+
 ```tsx
 import { Button } from "./src/Button";
 ```
