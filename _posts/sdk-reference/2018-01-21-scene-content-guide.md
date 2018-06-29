@@ -293,16 +293,41 @@ Setting playing to false pauses??????
 
 how to add collider meshes into GLTF models
 
+-->
 
 ## Entity collision
 
+Entities that have collision disabled can walked through by a user`s avatar, entities that do have collisions enabled occupy space and block a user's path.
+
+
+```tsx
+<box 
+  position={ { x: 10, y: 0, z: 0 } } 
+  scale={2} 
+  ignoreCollisions="true"
+/>
+
+```
+The example above defines a box entity that can be walked through.
+
+Depending on the type of entity, collision settings have different defaul values and are set in following ways:
+
+* *Primitive entities* (boxes, spheres, etc) have collisions enabled by default. To disable collisions, set the `ignoreCollisions` component to `true`.
+* *Base entities* (invisible by default) have collisions disabled by default. To enable collisions, set the `ignoreCollisions` component to `false`. 
+* *glTF models* have collisions disabled by default. To add collisions to them, you can either:
+
+  *   Edit them in an external tool like Blender to include a *nav mesh*.
+  *   Overlay an invisible entity with the `ignoreCollisions` component set to `true`.
+
+A *nav mesh* is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the nav mesh is usually a lot simpler (with less vertices) than the original model.
+
+Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the avatar.
+
+Decentralan currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
 
 
 
-
-
--->
 
 
 ## Migrating XML to type script
