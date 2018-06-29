@@ -304,22 +304,22 @@ Entities that have collision disabled can walked through by a user`s avatar, ent
 <box 
   position={ { x: 10, y: 0, z: 0 } } 
   scale={2} 
-  ignoreCollisions="true"
+  ignoreCollisions="false"
 />
 
 ```
-The example above defines a box entity that can be walked through.
 
-Depending on the type of entity, collision settings have different defaul values and are set in following ways:
+The example above defines a box entity that can't be walked through.
 
-* *Primitive entities* (boxes, spheres, etc) have collisions enabled by default. To disable collisions, set the `ignoreCollisions` component to `true`.
-* *Base entities* (invisible by default) have collisions disabled by default. To enable collisions, set the `ignoreCollisions` component to `false`. 
-* *glTF models* have collisions disabled by default. To add collisions to them, you can either:
+All entities have collisions disabled by default. Depending on the type of entity, collisions are enabled as follows:
 
-  *   Edit them in an external tool like Blender to include a *nav mesh*.
+* For most entities, including *primitives* (boxes, spheres, etc), planes and base entities, you enable collisions by setting the `ignoreCollisions` component to `false`. 
+* To enable collisions in *glTF models*, you can either:
+
+  *   Edit them in an external tool like Blender to include a *collission mesh*.
   *   Overlay an invisible entity with the `ignoreCollisions` component set to `true`.
 
-A *nav mesh* is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the nav mesh is usually a lot simpler (with less vertices) than the original model.
+A *collision mesh* is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision mesh is usually a lot simpler (with less vertices) than the original model.
 
 Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the avatar.
 
