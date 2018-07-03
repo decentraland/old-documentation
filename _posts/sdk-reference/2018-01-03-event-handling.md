@@ -54,8 +54,8 @@ export default class LastClicked extends ScriptableScene {
   async render() {
     return (
       <scene>
-        <box id="box1" position={{ x: 2, y: 1, z: 0 }} color="ff0000" />
-        <box id="box2" position={{ x: 4, y: 1, z: 0 }} color="00ff00" />
+        <box id="box1" position={ { x: 2, y: 1, z: 0 } } color="ff0000" />
+        <box id="box2" position={ { x: 4, y: 1, z: 0 } } color="00ff00" />
       </scene>
     )
   }
@@ -122,7 +122,7 @@ export default class bigButton extends ScriptableScene {
     return (
       <scene>
           <box id="button" 
-              position={{ x: 3, y: this.state.buttonState, z: 3 }} 
+              position={ { x: 3, y: this.state.buttonState, z: 3 } } 
               transition={ { position: { duration: 200, timing: "linear" } } } 
           />
       </scene>
@@ -161,7 +161,7 @@ export default class BoxFollower extends ScriptableScene {
   async render() {
     return (
       <scene>
-        <box position={this.state.boxPosition} ignoreCollisions />
+        <box position= {this.state.boxPosition} ignoreCollisions />
       </scene>
     )
   }
@@ -199,7 +199,7 @@ export default class ConeHead extends ScriptableScene {
   async render() {
     return (
       <scene>
-      <cone position={{ x: 0, y: 1, z: 2 }} rotation={this.state.rotation}/>
+      <cone position={ { x: 0, y: 1, z: 2 } } rotation={this.state.rotation}/>
       </scene>
     )
   }
