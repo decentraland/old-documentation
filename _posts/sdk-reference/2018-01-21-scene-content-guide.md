@@ -154,8 +154,8 @@ Materials are defined as separate entities in a scene, this prevents material de
 Materials can be applied to primitive entities and to planes, simply by setting the `material` component.
 
 
-```xml
-  <material id="reusable_material" albedo-color="materials/wood.png" roughness="0.5" />
+```tsx
+  <material id="reusable_material" albedoColor="materials/wood.png" roughness="0.5" />
   <sphere material="#reusable_material" />
 ```
 
@@ -293,16 +293,41 @@ Setting playing to false pauses??????
 
 how to add collider meshes into GLTF models
 
+-->
 
 ## Entity collision
 
+Entities that have collision disabled can walked through by a user`s avatar, entities that do have collisions enabled occupy space and block a user's path.
+
+
+```tsx
+<box 
+  position={ { x: 10, y: 0, z: 0 } } 
+  scale={2} 
+  ignoreCollisions="false"
+/>
+
+```
+
+The example above defines a box entity that can't be walked through.
+
+All entities have collisions disabled by default. Depending on the type of entity, collisions are enabled as follows:
+
+* For most entities, including *primitives* (boxes, spheres, etc), planes and base entities, you enable collisions by setting the `ignoreCollisions` component to `false`. 
+* To enable collisions in *glTF models*, you can either:
+
+  *   Edit them in an external tool like Blender to include a *collission mesh*.
+  *   Overlay an invisible entity with the `ignoreCollisions` component set to `true`.
+
+A *collision mesh* is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision mesh is usually a lot simpler (with less vertices) than the original model.
+
+Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the avatar.
+
+Decentralan currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
 
 
 
-
-
--->
 
 
 ## Migrating XML to type script
@@ -321,7 +346,6 @@ plain text.
 
 ```xml
 <scene>
-  <!-- XML -->
   <box position="10 10 10" />
 </scene>
 ```
@@ -358,6 +382,7 @@ HTML and XHTML are case insensitive for attributes, this generates conflicts wit
 The static scene above becomes the following dynamic schen when migrating it to TSX:
 
 ```tsx
+<!-- TSX -->
 class Scene extends ScriptableScene {
   async render() {
     return (
