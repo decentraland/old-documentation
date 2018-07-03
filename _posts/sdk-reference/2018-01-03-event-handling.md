@@ -36,6 +36,7 @@ The generic `click` event represents all clicks done on valid entities. The even
 * `elementId`: the Id of the entity that was clicked.
 * `pointerId`: the id for the user who performed the click.
 
+{% raw %}
 ```tsx
 import { createElement, ScriptableScene } from 'metaverse-api'
 
@@ -61,6 +62,7 @@ export default class LastClicked extends ScriptableScene {
   }
 }
 ```
+{% endraw %}
 
 The example above uses the `subscribeTo` to initiate a listener that checks for all click events. When the user clicks on either of the two boxes, the scene stores the id of the clicked entity in the `lastClicked` state variable and prints it to console.
 
@@ -70,6 +72,7 @@ A simpler way to deal with clicks that are done on a single entity is to listen 
 
 > Note:Entity-specific click events have no properties, so you can't access the user's id from this event.
 
+{% raw %}
 ```tsx
 import { createElement, ScriptableScene } from 'metaverse-api'
 
@@ -94,6 +97,7 @@ export default class RedButton extends ScriptableScene {
   }
 }
 ```
+{% endraw %}
 
 The scene above uses an `eventSubscriber` to initiate a listener that checks for click events done on the `redButton` entity. Whenever this occurs, the state of `buttonState` is toggled.
 
@@ -101,6 +105,7 @@ The scene above uses an `eventSubscriber` to initiate a listener that checks for
 
 The pointer down and pointer up events are fired whenever the user presses or releases an input controler. This could be a mouse, a touch screen, a VR controller or another kind of controller. It doesn't matter where the user's avatar is pointing at, the event is triggered every time.
 
+{% raw %}
 ```tsx
 import { createElement, ScriptableScene } from 'metaverse-api'
 
@@ -123,13 +128,14 @@ export default class bigButton extends ScriptableScene {
       <scene>
           <box id="button" 
               position={{ x: 3, y: this.state.buttonState, z: 3 }} 
-              transition={ { position: { duration: 200, timing: "linear" } } } 
+              transition={{ position: { duration: 200, timing: "linear" }}} 
           />
       </scene>
     )
   }
 }
 ```
+{% endraw %}
 
 The scene above uses two `subscribeTo` functions to initiate listeners that check both when the user clicks or releases a pointer button. Both listener functions alter the `buttonState` state variable in the scene. This variable is then used to set the height of a box that mimics the pressing of the user's button.
 
@@ -143,7 +149,7 @@ The `positionChanged` event has the following properties:
 * `cameraPosition`: a Vector3Component with the user's absolute position relative to the world.
 * `playerHeight`: the eye height of the user, in meters.
 
-
+{% raw %}
 ```tsx
 import { createElement, ScriptableScene } from 'metaverse-api'
 
@@ -161,12 +167,13 @@ export default class BoxFollower extends ScriptableScene {
   async render() {
     return (
       <scene>
-        <box position={this.state.boxPosition} ignoreCollisions />
+        <box position= {this.state.boxPosition} ignoreCollisions />
       </scene>
     )
   }
 }
 ```
+{% endraw %}
 
 The scene above uses a `subscribeTo` function to initiate a listener to track when the position of the user changes. When the user moves, the scene stores the current position in the state variable `boxPosition`, which is used to set the position of a box that follows the user around.
 
@@ -182,12 +189,12 @@ The `rotationChanged` event has the following properties:
 
 * `quaternion`: the rotation of the user expressed as a quaternion.
 
-
+{% raw %}
 ```tsx
 import { createElement, ScriptableScene } from 'metaverse-api'
 
 export default class ConeHead extends ScriptableScene {
-  state = { rotation: { x: 0, y: 0, z: 0 } }
+  state = { rotation: { x: 0, y: 0, z: 0 }}
 
   async sceneDidMount() {
       this.subscribeTo('positionChanged', e => {
@@ -205,6 +212,7 @@ export default class ConeHead extends ScriptableScene {
   }
 }
 ```
+{% endraw %}
 
 The scene above uses a `subscribeTo` function to initiate a listener to track the user's rotation. When the user looks in a different direction, the scene stores the current angle in the state variable `rotation`. This example adds another 90 degrees to the X axis of this angle just to make the output more fun to play with. This angle is used to orient a cone that faces and mimics the user.
 

@@ -84,6 +84,7 @@ Since the root scene element is a transform node, it can also be translated, sca
 
 This file contains the code that generates an entity tree, which is what end users of your parsel will see. Below is a basic example of a `scene.tsx` file:
 
+{% raw %}
 ```tsx
 import { ScriptableScene, createElement } from "metaverse-api";
 
@@ -92,12 +93,13 @@ export default class MyScene extends ScriptableScene<any, any> {
   async render() {
     return (
       <scene>
-        <box position={ { x: 5, y: 0, z: 5 } } scale={ { x: 1, y: 1, z: 1 } } />
+        <box position={{ x: 5, y: 0, z: 5 }} scale={{ x: 1, y: 1, z: 1 }} />
       </scene>
     );
   }
 }
 ```
+{% endraw %}
 
 > **Important note:** Your `scene.tsx` must always include an `export default class`, that's how our SDK finds the class to initialize the scene.
 

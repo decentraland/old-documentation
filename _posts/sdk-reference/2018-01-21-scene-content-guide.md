@@ -42,14 +42,15 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 
 All entities can have a position, a rotation and a scale. These can be easily set as components, as shown below:
 
-
+{% raw %}
 ```xml
 <box
-    position={ { x: 5, y: 3, z: 5 } }
-    rotation={ { x: 180, y: 90, z: 0 } }
+    position={{ x: 5, y: 3, z: 5 }}
+    rotation={{ x: 180, y: 90, z: 0 }}
     scale={0.5}
   />
 ```
+{% endraw %}
 
 * `position` is a *3D vector*, it sets the position on all three axes. 
 * `rotation` is a *3D vector* too, but where each component represents the rotation in that axis.
@@ -59,16 +60,18 @@ When an entity is nested inside another, the child entities inherit components f
 
 You can include an invisible base entity to wrap a set of other entities and define their positioning as a group.
 
+{% raw %}
 ```xml
   <entity
-      position={ { x: 0, y: 0, z: 1 } }
-      rotation={ { x: 45, y: 0, z: 0 } }
+      position={{ x: 0, y: 0, z: 1 }}
+      rotation={{ x: 45, y: 0, z: 0 }}
   >
-    <box position={ { x: 10, y: 0, z: 0 } } scale={2} />
-    <box position={ { x: 10, y: 10, z: 0 } } scale={1} />
-    <box position={ { x: 0, y: 10, z: 0 } } scale={2} />
+    <box position={{ x: 10, y: 0, z: 0 }} scale={2} />
+    <box position={{ x: 10, y: 10, z: 0 }} scale={1} />
+    <box position={{ x: 0, y: 10, z: 0 }} scale={2} />
   </entity>
 ```
+{% raw %}
 
 You can also set a position, rotation and scale for the entire <scene/> entity and affect everything in the scene.
 
@@ -81,13 +84,15 @@ In dynamic scenes, you can configure an entity to affect the way in which it mov
 
 The example below shows a box entity that is configured to rotate smoothly. 
 
-
+{% raw %}
 ```xml
  <box 
     rotation={currnetRotation}
-    transition={ { rotation: { duration: 1000, timing: "ease-in" } } }
+    transition={{ rotation: { duration: 1000, timing: "ease-in" }}}
   />
 ```
+{% endraw %}
+
 > Note: The transition component doesn't make the box rotate, it just sets the way it rotates whenever the value of the entity's rotation changes, usually as the result of an event.
 
 The transition component can be added to affect the following properties of an entity:
@@ -99,18 +104,20 @@ The transition component can be added to affect the following properties of an e
 
 Note that the transition for each of these properties is configured separately.
 
+{% raw %}
 ```xml
  <box 
     rotation={currnetRotation}
     color={currnetColor}
     scale={currnetScale}
     transition={ 
-        { rotation: { duration: 1000, timing: "ease-in" } }
-        { color: { duration: 3000, timing: "exponential-in" } }
-        { scale: { duration: 300, timing: "bounce-in" } }
+        { rotation: { duration: 1000, timing: "ease-in" }}
+        { color: { duration: 3000, timing: "exponential-in" }}
+        { scale: { duration: 300, timing: "bounce-in" }}
         }
   />
 ```
+{% endraw %}
 
 The transition component allows you to set:
 
@@ -120,29 +127,33 @@ The transition component allows you to set:
 
 In the example below, a transition is applied to the rotation of an invisible entity that wraps a box. As the box is off-center from the parent entity, the box pivots like an opening door.
 
+{% raw %}
 ```xml
 
 <entity 
     rotation={currentRotation}  
-    transition={ { rotation: { duration: 1000, timing: "ease-in" } } }>
+    transition={{ rotation: { duration: 1000, timing: "ease-in" }}}>
         <box 
           id="door" 
-          scale={ { x: 1, y: 2, z: 0.05 } } 
-          position={ { x: 0.5, y: 1, z: 0 } } 
+          scale={{ x: 1, y: 2, z: 0.05 }} 
+          position={{ x: 0.5, y: 1, z: 0 }} 
         />
 </entity>
 ```
+{% endraw %}
 
 ## Color
 
 Color is set in hexadecimal values. To set an entity's color, simply set its `color` component to the corresponding hexadecimal value.
 
+{% raw %}
 ```xml
   <sphere 
-    position={ { x: 0.5, y: 1, z: 0 } }   
+    position={{ x: 0.5, y: 1, z: 0 }}   
     color="#EF2D5E"
   />
 ```
+{% endraw %}
 
 > Tip: There are many online color-pickers you can use to find a specific color graphically. To name one, you can try the color picker on [W 3 Schools](https://www.w3schools.com/colors/colors_picker.asp).
 
@@ -153,11 +164,12 @@ Materials are defined as separate entities in a scene, this prevents material de
 
 Materials can be applied to primitive entities and to planes, simply by setting the `material` component.
 
-
+{% raw %}
 ```tsx
   <material id="reusable_material" albedoColor="materials/wood.png" roughness="0.5" />
   <sphere material="#reusable_material" />
 ```
+{% endraw %}
 
 Materials are also implicitly imported into a scene when you import a gtLF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
 
@@ -174,14 +186,15 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 > Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
 
 
-
+{% raw %}
 ```xml
 <gltf-model
-    position={ { x: 5, y: 3, z: 5 } }
+    position={{ x: 5, y: 3, z: 5 }}
     scale={0.5}
     src="models/myModel.gltf"
   />
 ```
+{% endraw %}
 
 glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance. 
 
@@ -203,9 +216,10 @@ In a dynamic scene, you reference an animation by its armature name, an undersco
 
 The example below imports a model that includes animations and configures them:
 
+{% raw %}
 ```xml
 <gltf-model
-    position={ { x: 5, y: 3, z: 5 } }
+    position={{ x: 5, y: 3, z: 5 }}
     scale={0.5}
     src="models/shark_anim.gltf"
     skeletalAnimation={[
@@ -214,6 +228,8 @@ The example below imports a model that includes animations and configures them:
     ]}
   />
 ```
+{% endraw %}
+
 In this example, the armature is named `shark_skeleton` and the two animations contained in it are named `bite` and `swim`.
 
 An animation can be set to loop continuously by setting its `loop` property. If `loop:false` then the animation will be called only once when activated.
@@ -299,15 +315,16 @@ how to add collider meshes into GLTF models
 
 Entities that have collision disabled can walked through by a user`s avatar, entities that do have collisions enabled occupy space and block a user's path.
 
-
+{% raw %}
 ```tsx
 <box 
-  position={ { x: 10, y: 0, z: 0 } } 
+  position={{ x: 10, y: 0, z: 0 }} 
   scale={2} 
   ignoreCollisions="false"
 />
 
 ```
+{% endraw %}
 
 The example above defines a box entity that can't be walked through.
 
@@ -352,17 +369,19 @@ plain text.
 
 The static scene above becomes the following dynamic schen when migrating it to TSX:
 
+{% raw %}
 ```tsx
 class Scene extends ScriptableScene {
   async render() {
     return (
       <scene>
-        <box position={ { x: 10, y: 10, z: 10 } } />
+        <box position={{ x: 10, y: 10, z: 10 }} />
       </scene>
     );
   }
 }
 ```
+{% endraw %}
 
 #### Attribute naming
 
@@ -372,15 +391,19 @@ class Scene extends ScriptableScene {
 
 HTML and XHTML are case insensitive for attributes, this generates conflicts with the implementation of certain attributes like `albedoColor`. Because reading `albedocolor` was confusing, and having hardcoded keys with hyphens in the code was so dirty, we decided to follow the React convention of having every property camel cased in code and hyphenated in the HTML/XML representation. 
 
+{% raw %}
 ```xml
 <scene>
   <!-- XML -->
   <material id="test" albedo-color="#ffeeaa" />
 </scene>
 ```
+{% endraw %}
 
 The static scene above becomes the following dynamic schen when migrating it to TSX:
 
+
+{% raw %}
 ```tsx
 <!-- TSX -->
 class Scene extends ScriptableScene {
@@ -393,3 +416,4 @@ class Scene extends ScriptableScene {
   }
 }
 ```
+{% endraw %}
