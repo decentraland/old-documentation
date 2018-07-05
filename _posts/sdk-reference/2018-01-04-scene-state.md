@@ -11,7 +11,7 @@ set_order: 4
 
 
 
-The scene state is made up of a series of variables that change over time. State variables are usually changed by the occurance of [events]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-03-event-handling %}) that are triggered by the user, and their values can have an effect on how the scene is rendered. 
+The scene state is made up of a series of variables that change over time. State variables are usually changed by the occurance of [events]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-03-event-handling %}) that are triggered by the user, and their values can have an effect on how the scene is rendered. 
 
 If you're familiar with the [React](https://reactjs.org/docs/thinking-in-react.html) framework, you'll find that the scene handles its states in a way that's very similar to how components in React do this.
 
