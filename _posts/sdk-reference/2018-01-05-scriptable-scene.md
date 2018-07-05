@@ -10,19 +10,19 @@ set_order: 5
 ---
 
 
-The `ScriptableScene` object is the base template for all Decentraland scenes. By working with this object, you can ignore the complexities of the low-level API below it. You build your scene by creating your custom type that extends `ScriptableScene`.
+The `ScriptableScene` object is the base template for all Decentraland scenes. By working with this object, you can ignore the complexities of the low-level API below it. You build your scene by creating a custom class that extends `ScriptableScene`. Your custom class uses the parent's default functions except for the functions you want to override and define explicitly.
 
 The way that `ScriptableScene` works mimics the way in which a [React component](https://reactjs.org/docs/thinking-in-react.html) works. Like when defining a React component, the scene object has:
 
-* State: variables for data that is meant to chang over time.
-* Props: porperties used to pass on information from parent to child.
-* Lifecycle methods: a series of default methods that are executed at different times that are relative to when the scene is mounted, is updated and is unmounted.
+* State: variables for data that is meant to change over time.
+* Props: porperties used to pass information on from parent to child.
+* Lifecycle methods: a series of default methods that are executed at different times relative to when the scene is mounted, updated and unmounted.
 
 
 
 ## Scene state
 
-The scene state is made up of a series of variables that change over time. State variables usually change by the occurance of [events]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-03-event-handling %}) that are triggered by the user, and they can have an effect on how the scene is rendered.
+The scene state is made up of a series of variables that change over time. State variables are usually changed by the occurance of [events]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-03-event-handling %}) that are triggered by the user, and they can have an effect on how the scene is rendered.
 
 
 ```tsx
@@ -32,7 +32,7 @@ The scene state is made up of a series of variables that change over time. State
         boxPosition: { x: 0, y: 0, z: 0 },
     };
 ```
-Each state variable must be given an intial value for when the scene is mounted. You can set a fixed type for the state by defining a custom interface; this is optional but we recommend doing it, especially for more complex scenes, as it helps validate inputs and makes debugging easier.
+Each state variable must be given an intial value for when the scene is first rendered. You can define the type for the state object by declaring a custom interface. Doing this is optional but we recommend it, especially for complex scenes, as it helps validate inputs and makes debugging easier.
 
 ```tsx
 
@@ -53,12 +53,14 @@ export default class Scene extends ScriptableScene<any, myState> {
 (...)
 ```
 
-The variables you choose to make up your scene's state should be the minimal possible set that represents the scene, you shouldn't add redundant information. It's generally better to compute certain values on demand than holding an additional variable. For example, if your scene has a pond with a set of fish that can be fished out of the water and the scene's state has an array to represent the remaining fish, you don't need an additional state variable to keep track of the number of fish remaining in the pond, you can obtain this information by taking the length of the fish array.
+>Note: The `ScriptableScene` class optionally takes two arguments: the properties (`any` in this case, as none are used) and the scene state, which in this case must match the type `myState`, described in the custom interface.
+
+The variables you choose to make up your scene's state should be the minimal possible set that represents the scene, you shouldn't add redundant information. It's generally better to compute certain values on demand than to hold an additional variable. For example, if your scene has a pond with a set of fish that can be fished out of the water and the scene's state has an array to represent the remaining fish, you don't need an additional variable to keep track of the number of fish remaining in the pond, you can obtain this information by taking the length of the fish array that already exists.
 
 To determine if you should include a piece of information as part of the state, ask yourself:
 
 * Does this information change over time? If it doesn't, it probably shouldn't be part of the state.
-* Is this information passed in when instancing the scene class, if so it probably should be part of `Props` rather than the state.
+* Is this information passed in when instantiating the scene class, if so it probably should be part of `Props` rather than of the state.
 * Can you compute this information based on other state variables or the props? If so, don't include it.
 
 
@@ -73,11 +75,12 @@ async buttonPressed()
    this.setState({buttonState : 1 });
   };
 ```
-Unless explicitly stated, each time the scene's state is updated, the `render()` function is called to render the scene with the new state.
 
-If the state has multiple variables and your `setState` statement only affects one, it will leave all other variables untouched.
+Unless intentionally set, each time the scene's state is updated, the `render()` function is called to render the scene using the new state.
 
-It's important that each time you change the state you do it through the `setState` function, NEVER do it by directly setting a value. Otherwise this will cause problems to the lifecycle of the scene.
+If the state holds multiple variables and your `setState` statement only affects one of them, it will leave all other variables untouched.
+
+It's important that each time you change the state you do it through the `setState` function, NEVER do it by directly setting a value. Otherwise this will cause problems with the lifecycle of the scene.
 
 ```tsx
 // Wrong
@@ -89,7 +92,7 @@ this.setState({buttonState: 1});
 
 ### Reference the state
 
-You can reference the value a state variable from anywhere in the scene object by writing this.state.<variable name>.
+You can reference the value a state variable from anywhere in the scene object by writing `this.state.<variable name>`.
 
 ```tsx
 async checkDoor()
@@ -98,14 +101,14 @@ async checkDoor()
   };
 ```
 
-In the example below, the `render()` method draws a dynamic scene where the position of a component changes each time the scene state changes.
+In the example below, the `render()` method draws a dynamic scene where the position of an entity is based on a variable in the status. As soon as the value of that variable changes, the rendered scene changes as well.
 
 {% raw %}
 ```tsx
 async render() {
   return (
     <scene>
-          <box position={this.state.boxPosition} ignoreCollisions />
+          <box position={this.state.boxPosition} />
     </scene>
     );
   }
@@ -114,20 +117,20 @@ async render() {
 
 #### Reference the state from a child component
 
-Unlinke React, where all components can have a state, only your custom scene class can have a state. In react terms, all child components of your scene are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), this means that they can have properties but no state of their own. 
+Unlinke React, where all components can have their own state, only your custom scene class is allowed to have a state. In react terms, all child components of your scene are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), this means that they can have properties but no state of their own, and they are controlled by their parent component. 
 
-For example, you could declare a type of entity called `classRoom`, and embed a series of child entities in it to make up the chairs and a button to turn on the projector. If you're planning to have many classRooms in your scene, that would make the code for your scene a lot cleaner. The downside is that this entity would no longer have easy access to the scene's state. From this child entity, it would not be valid to use the expression `this.state`, as `this` no longer refers to your custom scene class, it refers to the instance of the `classRoom` entity. In order to access the information stored in the scene's state you can:
+For example, you could declare a type of entity called `elevator`, and embed a series of child entities in it and define its own functions to open and close the doors and handle the buttons. If you're planning to have many elevators in your scene, that would make the code for your scene a lot more efficient and cleaner. The downside is that any functions in this child entity would no longer have easy access to the scene's state. From the `elevator` entity, it would not be valid to use the expression `this.state`, as `this` no longer refers to your custom scene class, it refers to the current instance of the `elevator` entity. In order to access the information stored in the scene's state you can:
 
-* Set the values of the scene state into the properties of the child component. In this way, you can then access this data by writing `props.<propertyName>` in the child component. If there are multiple levels of inheritance, this practice can be done recurrently, but it can get difficult to follow.
+* Copy the values of the scene state in the properties of the child component. Functions in the elevator could then access this data via `props.<propertyName>`. If there are multiple levels of inheritance in your scene, for example if the elevator's buttons are custom entities with their own functions, the state data can be passed down from the properties of the parent to the properties of the children recurrently as many times as necessary, but by doing this the code can get difficult to read.
 
-* Import a library like [Redux](https://redux.js.org/) to create a univesal state that can be consistently referenced from anywhere. If you have multiple levels of child components, this might be ideal.
+* Import a library like [Redux](https://redux.js.org/) to create a univesal store that can hold the state data and that can be consistently referenced from anywhere. If your scene has multiple levels of inheritance, this might be ideal.
 
 
 
 
 ## Props
 
-Properties are used for passing information from parent to child when instancing a class. In a scene object, they should be used for information that is meant to remain unchanged as the user interacts with the scene. Information that is meant to be changed should be part of the scene *status*.
+Properties are used for passing information from parent to child when instancing a class. In a scene object, they should be used for information that is meant to remain unchanged as the user interacts with the scene. Information that is meant to be changed should be part of the scene *state*.
 
 You can pass props as an argument when instancing your custom scene class:
 
@@ -138,22 +141,22 @@ export default class Scene extends ScriptableScene<Props, State> {
 (...)
 ```
 
-In the example above, the first argument represents the incoming properties. If you're using properties in your class, we recommend defining a custom interface, specifying what parameters are expected and their types, this helps validate inputs and makes debugging easier.
+If you're using properties in your class, we recommend defining a custom interface for the properties, specifying what properties are expected and their types, this helps validate inputs and makes debugging easier.
 
-You can access the scene's properties by writing `props.<propertyName>`.
+You can access the scene's properties by writing `props.<propertyName>` anywhere in the scnee object.
 
 
 ## Lifecycle methods
 
-The `ScriptableScene` object has several *lifecycle methods* that are executed on specific moments relative to when the scene is loaded, interacted with or abandoned. The scene object you define can override the default lifecycle methods, which leys you run code at particular times in the process. 
+The `ScriptableScene` object has several *lifecycle methods* that are executed at different times relative to when the scene is loaded, interacted with or abandoned. When you define your custom scene class, you override the default lifecycle methods of the `ScriptableScene` class, this lets you write code that runs at particular times in the process. 
+
+As general rules, remember that:
 
 * Methods prefixed with `will` are called right before something happens.
 * Methods prefixed with `did` are called right after something happens.
 
-Below is an example containing a class and hooks to lifecycle methods. 
+Below is an example containing a class and hooks to lifecycle methods.
 
-
-Note that all these methods are asynchronous
 
 ```tsx
 import { ScriptableScene, createElement } from 'metaverse-api'
@@ -244,19 +247,16 @@ export default class Scene extends ScriptableScene<Props, State> {
 }
 ```
 
-The following steps summarize when the methods referenced above are called:
+These steps summarize when each of the methods above are called:
 
-1. The user enters a scene, a series of processes run in the backround.
+1. The user enters your scene, a series of processes are run in the backround by the low level API.
 2. After all requirements are fulfilled, `sceneDidMount()` is called.
 2. `render()` is then called for the first time.
-3. The user then navigates the scene, creating various events through its interactions. If any of those events leads to a change in the scene's state, then `shouldSceneUpdate()` is called. If this function returns `true`, then:
+3. The user then navigates the scene, creating various events by interacting with it. If any of those events leads to a change in the scene's state, then `shouldSceneUpdate()` is called. If this function returns `true`, then:
 
     1. `sceneDidUpdate()` is called.
     2. `render()` is called again.
 5. If the user then leaves the scene, then `sceneWillUnmount()` is called to gracefully clean up the scene before it is unmounted.
-
-
-
 
 
 ## Client side scenes
