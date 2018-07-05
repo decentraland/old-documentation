@@ -71,7 +71,7 @@ You can include an invisible base entity to wrap a set of other entities and def
     <box position={{ x: 0, y: 10, z: 0 }} scale={2} />
   </entity>
 ```
-{% raw %}
+{% endraw %}
 
 You can also set a position, rotation and scale for the entire <scene/> entity and affect everything in the scene.
 
