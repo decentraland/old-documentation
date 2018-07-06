@@ -11,7 +11,11 @@ set_order: 4
 
 
 
-The scene state is made up of a series of variables that change over time. State variables are usually changed by the occurance of [events]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-03-event-handling %}) that are triggered by the user, and their values can have an effect on how the scene is rendered. 
+The scene state is made up of a series of variables that change over time. The state changes by the occurance of [events]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state. 
+
+
+![](/images/media/events_state_diagram.jpeg)
+
 
 If you're familiar with the [React](https://reactjs.org/docs/thinking-in-react.html) framework, you'll find that the scene handles its states in a way that's very similar to how components in React do this.
 
@@ -65,9 +69,9 @@ async buttonPressed()
   };
 ```
 
-Unless intentionally set, each time the scene's state is updated, the `render()` function is called to render the scene using the new state.
+Each time the scene's state is updated, the `render()` function is called to render the scene using the new state. The only exception to this is if the [`shouldSceneUpdate()` function]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) is set up to prevent. 
 
-If the state holds multiple variables and your `setState` statement only affects one of them, it will leave all other variables untouched.
+If the state holds multiple variables and your `setState()` statement only affects one of them, it will leave all other variables untouched.
 
 It's important that each time you change the state you do it through the `setState` function, NEVER do it by directly setting a value. Otherwise this will cause problems with the lifecycle of the scene.
 
