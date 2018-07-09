@@ -8,7 +8,7 @@ categories:
   - sdk-reference
 type: Document
 set: sdk-reference
-set_order: 2
+set_order: 4
 ---
 
 
@@ -39,6 +39,7 @@ Creates a cube geometry.
 
 Example:
 
+{% raw %}
 ```tsx
 <box 
   position={ { x: 5, y: 0, z: 2 } } 
@@ -46,6 +47,8 @@ Example:
   scale={2} 
 />
 ```
+{% endraw %}
+
 
 Interface reference:
 
@@ -66,13 +69,16 @@ Creates a sphere geometry.
 
 Example:
 
+
+{% raw %}
 ```tsx
 <sphere 
-  position={ { x: 5, y: 0, z: 2 } } 
+  position={{ x: 5, y: 0, z: 2 }} 
   color="#ff00aa" 
   scale={2} 
 />
 ```
+{% endraw %}
 
 Interface reference:
 
@@ -97,17 +103,19 @@ Creates a plane geometry.
 
 Example:
 
+{% raw %}
 ```tsx
 <plane 
-  position={ { x: 5, y: 0, z: 2 } } 
+  position={{ x: 5, y: 0, z: 2 }} 
   color="#ff00aa" 
-  scale={ { x: 10, y: 5, z: 1 } } 
+  scale={{ x: 10, y: 5, z: 1 }} 
 />
 ```
+{% endraw %}
 
 Interface reference:
 
-
+{% raw %}
 ```tsx
 interface PlaneEntity extends BaseEntity {
   /** Color of the vertices */
@@ -119,8 +127,8 @@ interface PlaneEntity extends BaseEntity {
   /** Set to true to turn off the collider for the entity. */
   ignoreCollisions?: boolean
 }
-
 ```
+{% endraw %}
 
 ## Cylinder and Cone
 
@@ -205,20 +213,22 @@ The `gltf-model` entity loads a 3D model using a glTF file. It supports both `.g
 
 Simple example:
 
+{% raw %}
 ```tsx
   <gltf-model
-    position={ { x: 5, y: 3, z: 5 } }
+    position={{ x: 5, y: 3, z: 5 }}
     scale={0.5}
     src="models/shark_anim.gltf"
   />
 ```
-
+{% endraw %}
 
 Example with animations:
 
+{% raw %}
 ```tsx
   <gltf-model
-    position={ { x: 5, y: 3, z: 5 } }
+    position={{ x: 5, y: 3, z: 5 }}
     scale={0.5}
     src="models/shark_anim.gltf"
     skeletalAnimation={[
@@ -227,7 +237,7 @@ Example with animations:
     ]}
   />
 ```
-
+{% endraw %}
 
 Interface reference:
 
@@ -275,12 +285,14 @@ The `BaseEntity` interface is the most flexible of all, as it comes with no pred
 
 Example:
 
+{% raw %}
 ```tsx
   <entity 
-    position={ { x: 2, y: 1, z: 0 } } 
-    scale={ { x: 2, y: 2, z: 0.0  5 } }
+    position={{ x: 2, y: 1, z: 0 }} 
+    scale={{ x: 2, y: 2, z: 0.0  5 }}
   />
 ```
+{% endraw %}
 
 You add a base entity to a scene via the XML tag `<entity>`. You can add an entity with no components to a scene to act as a container. The `<entity>` element has no components by default, so it's invisible and has no direct effect on the scene, but it can be positioned, scaled, and rotated and it can contain other child entities in it. Child entities are scaled, rotated, and positioned relative to the parent entity. 
 
