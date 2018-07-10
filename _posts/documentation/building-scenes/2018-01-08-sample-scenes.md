@@ -30,13 +30,13 @@ This simple example shows a scene that you can interact with by opening and clos
 
 ### Skeletal Animations
 
-In your scenes, you can load up an interactive [GLTF model]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide#Import-3D-models %}) and trigger its animations. This is an example of how to do that. [Link](https://github.com/decentraland/sample-scene-skeletal-animation)
+In your scenes, you can load up an interactive [GLTF model]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide#import-3d-models %}) and trigger its animations. This is an example of how to do that. [Link](https://github.com/decentraland/sample-scene-skeletal-animation)
 
 ## Intermediate samples
 
 ### Sound Support
 
-This example features [sound]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide#Isound %}) coming out of an entity, notice how the volume diminishes relative to distance from it. It also includes an animated GLTF object and a floor that randomly changes color. [Link](https://github.com/decentraland/sample-scene-sound-support)
+This example features [sound]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide#sound %}) coming out of an entity, notice how the volume diminishes relative to distance from it. It also includes an animated GLTF object and a floor that randomly changes color. [Link](https://github.com/decentraland/sample-scene-sound-support)
 
 ### Video Support
 
