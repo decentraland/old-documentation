@@ -174,7 +174,7 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 Materials are also implicitly imported into a scene when you import a gtLF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
 
 
-## Import 3D Models
+## Import 3D models
  
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in glTF format.  [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
