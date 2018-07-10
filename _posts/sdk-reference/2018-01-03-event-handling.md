@@ -20,6 +20,7 @@ Generally, a good way of detecting these events is to set up a listener to be in
 ```
 
 
+To debug a scene, you can use `console.log()` to keep track of the occurance of events or to verify that the event's parameters are what you expected.
 
 
 ## Clicking
@@ -197,7 +198,7 @@ export default class ConeHead extends ScriptableScene {
   state = { rotation: { x: 0, y: 0, z: 0 }}
 
   async sceneDidMount() {
-      this.subscribeTo('rotationChanged', e => {
+      this.subscribeTo('positionChanged', e => {
           this.setState({ rotation: e.rotation });  
           this.state.rotation.x +=  90 ;       
       });
