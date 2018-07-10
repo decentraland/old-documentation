@@ -108,6 +108,18 @@ async render() {
 ```
 {% endraw %}
 
+To debug a scene, you can use `console.log(this.state)` to log the entire scene state at key moments in the scene's execution. You can also use `console.log` to log a specific variable from the state.
+
+{% raw %}
+```tsx
+ async sceneDidMount() {  
+    this.subscribeTo("pointerDown", e => {
+       console.log(this.state);
+    }); 
+    (...)
+```
+{% endraw %}
+
 #### Reference the state from a child component
 
 Unlinke React, where all components can have their own state, only your custom scene class is allowed to have a state. In react terms, all child components of your scene are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), this means that they can have properties but no state of their own, and they are controlled by their parent component. 
