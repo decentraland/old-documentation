@@ -30,7 +30,7 @@ This simple example shows a scene that you can interact with by opening and clos
 
 ### Skeletal Animations
 
-In your scenes, you can load up an interactive [GLTF model]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide#import-3d-models %}) and trigger its animations. This is an example of how to do that. [Link](https://github.com/decentraland/sample-scene-skeletal-animation)
+In your scenes, you can load up an interactive [GLTF model]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide#import3dmodels %}) and trigger its animations. This is an example of how to do that. [Link](https://github.com/decentraland/sample-scene-skeletal-animation)
 
 ## Intermediate samples
 
