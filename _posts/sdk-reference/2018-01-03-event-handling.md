@@ -201,7 +201,7 @@ export default class ConeHead extends ScriptableScene {
   state = { rotation: { x: 0, y: 0, z: 0 }}
 
   async sceneDidMount() {
-      this.subscribeTo('positionChanged', e => {
+      this.subscribeTo('rotationChanged', e => {
           this.setState({ rotation: e.rotation });  
           this.state.rotation.x +=  90 ;       
       });
