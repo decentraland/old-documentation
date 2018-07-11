@@ -234,6 +234,8 @@ In this example, the armature is named `shark_skeleton` and the two animations c
 
 An animation can be set to loop continuously by setting its `loop` property. If `loop:false` then the animation will be called only once when activated.
 
+The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance the given animation will be given.
+
 ### Free libraries for 3D models
 
 Instead of building your own 3d models, you can also download them from several free or paid libraries.

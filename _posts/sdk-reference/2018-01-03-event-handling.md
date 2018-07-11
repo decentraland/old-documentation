@@ -24,6 +24,7 @@ Generally, a good way of having your scene respond to events is to set up a list
 ```
 
 
+To debug a scene, you can use `console.log()` to keep track of the occurance of events or to verify that the event's parameters are what you expected.
 
 
 ## Clicking
