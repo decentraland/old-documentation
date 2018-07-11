@@ -1,6 +1,6 @@
 ---
 date: 2018-01-01
-title: Entities
+title: Entity reference
 redirect_from:
   - /docs/entities
 description: Entities and the available interfaces for constructing entities.

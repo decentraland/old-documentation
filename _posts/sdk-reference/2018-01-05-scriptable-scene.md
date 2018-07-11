@@ -1,6 +1,6 @@
 ---
 date: 2018-01-05
-title: Scriptable scene
+title: Scriptable scene object
 description: Learn how to make a scriptable scene and its events
 categories:
   - sdk-reference
@@ -9,13 +9,77 @@ set: sdk-reference
 set_order: 5
 ---
 
-We provide a high level API to create scenes that mimic the way in which React.Component handles events. We created a class called `ScriptableScene` that hooks the underlying low-level API to a series of lifecycle events you can use for your scenes.
 
-Each `ScriptableScene` has several *lifecycle methods*, you can override these to run code at particular times in the process. 
+The `ScriptableScene` object is the base template for all Decentraland scenes. By working with this object, you can ignore the complexities of the low-level API below it. You build your scene by creating a custom class that extends `ScriptableScene`. Your custom class uses the parent's default functions except for the functions you want to override and define explicitly.
+
+The way that `ScriptableScene` works mimics the way in which a [React component](https://reactjs.org/docs/thinking-in-react.html) works. Like when defining a React component, the scene object has:
+
+* State: variables for data that is meant to change over time.
+* Props: porperties used to pass information on from parent to child.
+* Lifecycle methods: a series of default methods that are executed at different times relative to when the scene is mounted, updated and unmounted.
+
+
+
+## Scene state
+
+The scene state is made up of a series of variables that change over time.
+
+You can define the type for the state object by declaring a custom interface. Doing this is optional but we recommend it, especially for complex scenes, as it helps validate inputs and makes debugging easier.
+
+```tsx
+
+export interface myState {
+    buttonState: number;
+    isDoorClosed: boolean;
+    boxPosition: vector3
+}
+
+export default class Scene extends ScriptableScene<any, myState> {
+ 
+    state = {
+        buttonState: 0
+        isDoorClosed: false,
+        queboxPosition: { x: 0, y: 0, z: 0 },
+    };
+
+(...)
+```
+
+The `ScriptableScene` class optionally takes two arguments: the properties (`any` in this case, as none are used) and the scene state, which in this case must match the type `myState`, described in the custom interface.
+
+You can access the scene's state by writing `this.scene.<variableName>` anywhere in the scene object.
+
+See [scene state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}) for more on how to work with the scene state.
+
+## Props
+
+Properties are used for passing information from parent to child when instancing a class. In a scene object, they should be used for information that is meant to remain unchanged as the user interacts with the scene. Information that is meant to be changed should be part of the scene *state*.
+
+You can pass props as an argument when instancing your custom scene class:
+
+```tsx
+export default class Scene extends ScriptableScene<Props, State> {
+{
+
+(...)
+```
+
+If you're using properties in your class, we recommend defining a custom interface for the properties, specifying what properties are expected and their types, this helps validate inputs and makes debugging easier.
+
+You can access the scene's properties by writing `props.<propertyName>` anywhere in the scene object.
+
+
+## Lifecycle methods
+
+The `ScriptableScene` object has several *lifecycle methods* that are executed at different times relative to when the scene is loaded, interacted with or abandoned. When you define your custom scene class, you override the default lifecycle methods of the `ScriptableScene` class, this lets you write code that runs at particular times in the process. 
+
+As general rules, remember that:
+
 * Methods prefixed with `will` are called right before something happens.
 * Methods prefixed with `did` are called right after something happens.
 
 Below is an example containing a class and hooks to lifecycle methods.
+
 
 ```tsx
 import { ScriptableScene, createElement } from 'metaverse-api'
@@ -34,11 +98,10 @@ export default class Scene extends ScriptableScene<Props, State> {
   state: State = { counter: 0 }
 
   /**
-   * Called immediately after the scene is mounted. Setting a state here
-   * will trigger re-rendering.
+   * Called immediately after the scene is mounted. You must start your processes, timers, pollers in this method.
+   * Setting the value of a state variable here would trigger re-rendering of the scene.
    *
-   * You must start your processes, timers, pollers only after this method
-   * is called
+   * 
    */
   async sceneDidMount() {
     this.eventSubscriber = new EventSubscriber(this.entityController)
@@ -49,8 +112,9 @@ export default class Scene extends ScriptableScene<Props, State> {
   }
 
   /**
-   * The render function should return a tree of entities to be serialized and sent
-   * to the engine.
+   * This method is called when the scene is initially created and then each time the scene's state or props are updated, unless the `shouldSceneUpdate` method prevents it.
+   * This method should return a tree of entities to be serialized and sent
+   * to the engine. This tree should have a single <scene> as the root entity.
    */
   async render() {
     const barScale = {
@@ -70,15 +134,16 @@ export default class Scene extends ScriptableScene<Props, State> {
   /**
    * Called to determine whether a change in state or props should trigger a re-render.
    *
-   * If this method returns `true`, `ScriptableScene#render`, and `sceneDidUpdate` are called.
+   * If this method returns `true`, `render`, and `sceneDidUpdate` are called.
    */
   async shouldSceneUpdate(newProps: Props) {
-    return true
+    if (this.state.counter < 20 )
+      { return true } else { return false }
   }
 
   /**
    * Called immediately after any change occurs to the state or props, 
-   * unless shouldSceneUpdate == false. 
+   * unless shouldSceneUpdate returns false. 
    * Not called for the initial render.
    */
   async sceneDidUpdate() {
@@ -105,20 +170,17 @@ export default class Scene extends ScriptableScene<Props, State> {
 }
 ```
 
-The protocol and internals are explained in the [metaverse-rpc](https://github.com/decentraland/metaverse-rpc)
-respository. It's important to understand the way `entityController` gets injected into the class.
+These steps summarize when each of the methods above are called:
 
-1. The class is decorated with an injected API, like this:
-  ```tsx
-class ScriptableScene extends Script {
-  @inject('EntityController')
-  entityController: EntityController = null
-}
-  ```
-2. An instance of your class is created using a [transport](https://github.com/decentraland/metaverse-rpc#transports) as an argument.
-3. Once the class is created, it requires an instance of `EntityController` to the host (the engine) , this is an asynchronous call.
-4. The host responds to that request and a proxy is created and assigned to the property `entityController`.
-5. Once all requirements are fulfilled, the scene calls the `sceneDidMount()` method and you can be sure the required apis are loaded in your class instance.
+1. The user enters your scene, a series of processes are run in the backround by the low level API.
+2. After all requirements are fulfilled, `sceneDidMount()` is called.
+2. `render()` is then called for the first time.
+3. The user then navigates the scene, creating various events by interacting with it. If any of those events leads to a change in the scene's state, then `shouldSceneUpdate()` is called. If this function returns `true`, then:
+
+    1. `sceneDidUpdate()` is called.
+    2. `render()` is called again.
+5. If the user then leaves the scene, then `sceneWillUnmount()` is called to gracefully clean up the scene before it is unmounted.
+
 
 ## Client side scenes
 
@@ -144,3 +206,23 @@ For local scenes, all of the components that describe your experience are compil
 When you create a multiplayer scene, your `scene.json` will point to a host URL. The `scene.json` script will communicate with the host application through a RPC based protocol using a defined transport.  The CLI bootstraps a server that configures a `WebSocketTransport` and inits a RemoteScene.  For running this scene you should start the WebSocket server first.
 
 You can take a look at the [remote scene sample code](https://github.com/decentraland/sample-scene-server) for more implementation details.
+
+
+## Low level API
+
+The protocol and internals that the `ScriptableScene` object interfaces with in the background are explained in the [metaverse-rpc](https://github.com/decentraland/metaverse-rpc)
+respository. 
+
+It's important to understand the way `entityController` gets injected into the class.
+
+1. The `ScriptableScene` class is decorated with the `EntityController` as an injected API, like this:
+  ```tsx
+class ScriptableScene extends Script {
+  @inject('EntityController')
+  entityController: EntityController = null
+}
+  ```
+2. An instance of the scene class you defined is created using a [transport](https://github.com/decentraland/metaverse-rpc#transports) as an argument.
+3. Once the class is created, it requires an instance of `EntityController` to the host (the engine) , this is an asynchronous call.
+4. The host responds to that request and a proxy is created and assigned to the property `entityController`.
+5. Once all requirements are fulfilled, the scene object calls the `sceneDidMount()` method. At this point, you can be sure the required APIs are loaded in your class instance.
