@@ -71,7 +71,7 @@ You can include an invisible base entity to wrap a set of other entities and def
     <box position={{ x: 0, y: 10, z: 0 }} scale={2} />
   </entity>
 ```
-{% raw %}
+{% endraw %}
 
 You can also set a position, rotation and scale for the entire <scene/> entity and affect everything in the scene.
 
@@ -166,7 +166,7 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 
 {% raw %}
 ```tsx
-  <material id="reusable_material" albedoColor="materials/wood.png" roughness="0.5" />
+  <material id="reusable_material" albedoTexture="materials/wood.png" roughness="0.5" />
   <sphere material="#reusable_material" />
 ```
 {% endraw %}
@@ -174,7 +174,7 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 Materials are also implicitly imported into a scene when you import a gtLF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
 
 
-## Import 3D Models
+## Import 3D models
  
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in glTF format.  [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
@@ -233,6 +233,8 @@ The example below imports a model that includes animations and configures them:
 In this example, the armature is named `shark_skeleton` and the two animations contained in it are named `bite` and `swim`.
 
 An animation can be set to loop continuously by setting its `loop` property. If `loop:false` then the animation will be called only once when activated.
+
+The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance the given animation will be given.
 
 ### Free libraries for 3D models
 

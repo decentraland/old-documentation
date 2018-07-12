@@ -8,20 +8,43 @@ type: Document
 set: building-scenes
 set_order: 7
 ---
-To publish your scene:
 
-1. Make sure the scene has been locally built with your latest changes. If not, run `npm run build`.
-2. Log into the Metamask account with the same public address associated with your parcel.
+
+## Before you begin
+
+Make sure of the following:
+
+* Your scene's `scene.json` file reflects the correct properties, including your Metamask public address, and the LAND parcels where you want to upload the scene. 
+
+> Note: The CLI prompts you to provide this information when creating the scene, but you can also modify the file manually at any time. 
+
+* Your scene complies with all of the [scene limitations](({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %})). Most of these are validated each time you run a preview of your scene.
+
+
+* You installed IPFS correctly. To do so, follow [these steps](https://ipfs.io/docs/install/).
+
+* You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it. The account must also hold a minimum amount of Ether to pay a transaction gas fee.
+
+* You own the necessary ammount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market](({{ site.baseurl }}{% post_url /marketplace/2018-01-01-marketplace %})).
+
+
+## To publish the scene
+
+
+
+1. To make sure the scene has been locally built with your latest changes, run `npm run build`.
+2. Log into your Metamask account with the same public address associated with your parcel.
 3. Start up an IPFS daemon by following [these instructions](https://ipfs.io/docs/getting-started/).
-4. Finally, run `dcl deploy` from the scene's folder.
+4. Finally, run `dcl deploy` from the scene's folder. 
+
+If this is your first time uploading this scene to the selected parcels,Metamask will ask you to approve a transaction for paying the gas fee after the file upload is completed. You only make this payment the first time you deploy content, as the smart contract for your LAND is only updated when you link your content to IPNS, the naming service for IPFS.
 
 This updates your parcel with your latest changes in addition to uploading your content to IPFS. 
 
 Currently, as a measure to improve performance and your visitor's experience, your content will be pinned to Decentraland’s main IPFS server to ensure that the data needed to render your parcel is always readily available.
 
-> You don’t have to pay an Ethereum gas fee everytime you deploy your content. The smart contract for your LAND is only updated when you link your content to IPNS, the naming service for IPFS.
 
-While this command deploys your scene to your parcel, remember that users can’t currently explore Decentraland, so your content won’t be discoverable “in-world”.
+> Note: While this command deploys your scene to your parcel, remember that users can’t currently explore Decentraland, so your content won’t be discoverable “in-world”.
 
 ## What is IPFS?
 

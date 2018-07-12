@@ -9,9 +9,13 @@ set: sdk-reference
 set_order: 3
 ---
 
-Users of your scene generate several types of events as they interact with it. 
+When users interact with the entities in your scene, these generate several types of events. These events can have an effect on the scene [state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}), which triggers a new rendering of the scene.
 
-Generally, a good way of detecting these events is to set up a listener to be initiated in the `sceneDidMount()` method of the [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}).
+![](/images/media/events_state_diagram.jpeg)
+
+
+
+Generally, a good way of having your scene respond to events is to set up a listener in the `sceneDidMount()` method. See [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) for more context about when this method is executed.
 
 ```tsx
    async sceneDidMount() {
@@ -20,6 +24,7 @@ Generally, a good way of detecting these events is to set up a listener to be in
 ```
 
 
+To debug a scene, you can use `console.log()` to keep track of the occurance of events or to verify that the event's parameters are what you expected.
 
 
 ## Clicking
@@ -197,7 +202,7 @@ export default class ConeHead extends ScriptableScene {
   state = { rotation: { x: 0, y: 0, z: 0 }}
 
   async sceneDidMount() {
-      this.subscribeTo('positionChanged', e => {
+      this.subscribeTo('rotationChanged', e => {
           this.setState({ rotation: e.rotation });  
           this.state.rotation.x +=  90 ;       
       });
