@@ -11,7 +11,7 @@ set_order: 6
 In order to improve performance in the metaverse, we have established a set of limits that every scene must follow. If a
 scene exceeds these limitations, then the parcel won't be loaded and the preview will display an error message.
 
-## Entity number constraints
+## Entity constraints
 
 Below are the maximum number of elements allowed allowed in a scene:
 > *n* represents the number of parcels that a scene occupies. 
@@ -29,13 +29,13 @@ When your parcel is rendered, any static content extending beyond your parcel's 
 
 ## Texture size constraints
 
-Texture sizes must use width and height numbers (in pixels) that belong to the sequence of powers of two. `f(x) = 2 ^ x`
+Texture sizes must use width and height numbers (in pixels) that match the following numbers:
 
 ```
-1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024
+1, 2, 4, 8, 16, 32, 64, 128, 256, 512
 ```
 
-> This is a fairly common requirement that several other rendering engines enforce, it's there due internal optimizations of the graphics processors.  
+>  This sequence is made up of powers of two: `f(x) = 2 ^ x` . 512 is the maximum number we allow for a texture size. This is a fairly common requirement among other rendering engines, it's there due internal optimizations of the graphics processors.
 
 The width and height don't need to have the same number, but they both need to belong to this sequence.
 
