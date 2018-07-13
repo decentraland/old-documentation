@@ -23,7 +23,7 @@ See the [Installation Guide]({{ site.baseurl }}{% post_url /documentation/buildi
 
 ## Kinds of scenes
 
-In Decentraland, a scene is the representation of the content of in an estate/LAND. All scenes are made up of [entities]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
+In Decentraland, a scene is the representation of the content of an estate/LAND. All scenes are made up of [entities]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
 
 
 There are essentially two different types of scenes:
@@ -59,7 +59,7 @@ metadata is optional for building a scene locally, except for scene type.
 
 ## scene.xml (static scenes)
 
-For both static and dynamic scenes, the end result is the same: a tree of entities. The root of the tree is always a `<scene>` element. XML scenes call out this structure explicitly, Type Script scenes provide the script to build and update this structure.  
+For both static and dynamic scenes, the end result is the same: a tree of entities. The root of the tree is always a `<scene>` element. XML scenes call out this structure explicitly, TypeScript scenes provide the script to build and update this structure.  
 
 
 ```xml
@@ -82,7 +82,7 @@ Since the root scene element is a transform node, it can also be translated, sca
 
 ## scene.tsx (dynamic scenes)
 
-This file contains the code that generates an entity tree, which is what end users of your parsel will see. Below is a basic example of a `scene.tsx` file:
+This file contains the code that generates an entity tree, which is what end users of your parcel will see. Below is a basic example of a `scene.tsx` file:
 
 {% raw %}
 ```tsx
@@ -123,7 +123,7 @@ This file provides information to NPM that allows it to identify the project, as
 This is the Decentraland build configuration file.
 
 We provide a tool called `metaverse-compiler`, it comes with the `metaverse-api` package. This tool is in charge of
-reading the `build.json` file and compile your scene in a way that the client can run it. The only thing it really does is to bundle Typescript code into a WebWorker using WebPack.
+reading the `build.json` file and compile your scene in a way that the client can run it. All it really does is bundle Typescript code into a WebWorker using WebPack.
 
 > You can also use the CLI to create Node.js servers for multiplayer experiences.
 
@@ -136,7 +136,7 @@ Directories containing a `tsconfig.json` file are root directories for TypeScrip
 
 ## Preview your scene
 
-To preview your rendered scene locally (without uploading it to IPFS) run the following command on the scene's main folder:
+To preview your rendered scene locally (without [uploading it to IPFS]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-07-publishing %}) ) run the following command on the scene's main folder:
 
 ```bash
 dcl preview
@@ -159,7 +159,7 @@ You can add the following flags to the command:
 
 ## Edit your scene
 
-To edit a scene, we recommend using an IDE like [Visual Studio Code](https://code.visualstudio.com/). An IDE helps you create scenes a lot faster and with less errors, as it marks errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in.
+To edit scenes, we recommend using a source code editor like [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/). An editor like this helps you create scenes a lot faster and with less errors, as it marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. With Visual Studio Code you can even click on an object to see the full definition of its class.
 
 See [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide %}) for simple instructions about adding content to your scene.
 

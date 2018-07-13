@@ -89,6 +89,8 @@ Failing quickly allows you to develop your experience by creating successive pro
 
 In game design, a persistent core loop is the fundamental “game loop” that drives player actions and the game’s response to those actions. These persistent loops extend to any form of virtual experience (like those provided by Districts).
 
+> Note: The Decentraland client borrows some architectural ideas from [React.js](https://reactjs.org/) and only renders a scene when a change has taken place, not at a constant rate. 
+
 **What are transactional layers?**
 
 The transactional layers are the interfaces between systems like an update to the blockchain or another application that has been interfaced with your experience to maintain a persistent record of player actions. Creating and maintaining this persistent record is what builds a personal and immersive experience. 

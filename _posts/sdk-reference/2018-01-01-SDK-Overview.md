@@ -36,9 +36,9 @@ At a very high level, the SDK allows you to do the following:
 ### What are scenes?
 
 **Scenes** in Decentraland are the collections of 3D objects, textures, and audio rendered on one or more LAND parcels. Scenes can be:
+* **Dynamic scenes (single player)**  singleplayer scenes built using the SDK that allow a single player to interact with content in the scene. The script is run on a web worker.
+* **Dynamic scenes (multiplayer)** - multiplayer scenes executing the script on a remote server to make it easier to have more than one player interacting with the content and other users in the scene. The server connects with the clients through a WebSockets interface.
 * **Static** - containing only 3D objects and audio
-* **Locally-run scenes** - or dynamic, singleplayer scenes built using the SDK that allow a single player to interact with content in the scene. The script is run on a web worker.
-* **Remotely-run scenes** - or dynamic, multiplayer scenes executing the script on a remote server to make it easier to have more than one player interacting with the content and other users in the scene. The server connects with the clients through a WebSockets interface.
 
 Scenes are created in “projects” using the CLI.
 
@@ -52,11 +52,11 @@ We are developing the web client that will allow users to explore Decentraland. 
 
 **The Decentraland client is still under active development. We're shooting for a public release by the end of 2018. Stay tuned for future updates!**
 
-For additional terms, definitions, and explanations, please refer to our [complete Glossary](https://docs.decentraland.org/docs/glossary).
+For additional terms, definitions, and explanations, please refer to our [complete Glossary]({{ site.baseurl }}{% post_url /general/2018-01-03-glossary %}).
 
 ## Installing the SDK
 
-The SDK includes a lot of different parts and components. For detailed, step-by-step instructions on how to download and install everything in the SDK, please refer to the ** [SDK Quick Start Guide](/documentation/installation-guide)**.
+The SDK includes a lot of different parts and components. For detailed, step-by-step instructions on how to download and install everything in the SDK, please refer to the [SDK Quick Start Guide]({{ site.baseurl }}{% post_url /building-scenes/2018-01-01-installation-guide %}).
 
 ### CLI
 
@@ -64,7 +64,7 @@ The Decentraland Command Line Interface (CLI) allows you to create, deploy, and 
 
 After generating your new Decentraland scene locally on your own machine, you can immediately begin editing your scene using a text editor of your choice. After testing your scene locally, you can use the CLI to upload your content to IPFS.
 
-For more step-by-step instructions on installing the CLI, please read our  [SDK Quick Start Guide](/documentation/installation-guide) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
+For more step-by-step instructions on installing the CLI, please read our   [SDK Quick Start Guide]({{ site.baseurl }}{% post_url /building-scenes/2018-01-01-installation-guide %}) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
 
 ### API
 
