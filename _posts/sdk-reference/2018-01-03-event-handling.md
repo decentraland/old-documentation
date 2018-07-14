@@ -73,9 +73,9 @@ The example above uses the `subscribeTo` to initiate a listener that checks for 
 
 ### Entity-specific click events
 
-A simpler way to deal with clicks that are done on a single entity is to listen for click events that are specific for that entity. The names of entity-specific click events are as follows: the id of the entity, an underscore and then *click*. For example, the event created from clicking an entity called `redButton` is named `redButton_click`.
+A simpler way to deal with clicks that are made on a single entity is to listen for click events that are specific for that entity. The names of entity-specific click events are as follows: the id of the entity, an underscore and then *click*. For example, the event created from clicking an entity called `redButton` is named `redButton_click`.
 
-> Note:Entity-specific click events have no properties, so you can't access the user's id from this event.
+> Note: Entity-specific click events have no properties, so you can't access the user's id from this event.
 
 {% raw %}
 ```tsx
@@ -91,7 +91,7 @@ export default class RedButton extends ScriptableScene {
       this.setState({ buttonState: !this.state.buttonState });
       console.log(this.state.buttonState);
     })
-  }
+  };
 
   async render() {
     return (
@@ -203,8 +203,8 @@ export default class ConeHead extends ScriptableScene {
 
   async sceneDidMount() {
       this.subscribeTo('rotationChanged', e => {
-          this.setState({ rotation: e.rotation });  
-          this.state.rotation.x +=  90 ;       
+          e.rotation.x +=  90 ;
+          this.setState({ rotation: e.rotation });
       });
   }
 
