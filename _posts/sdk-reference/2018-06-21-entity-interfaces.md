@@ -18,7 +18,7 @@ Entities are the basic unit for building everything in Decentraland scenes, thin
 
 `<entity>` is the base element of Decentraland, all elements are built by extending the base `entity` object. An `<entity>` can contain several components, each component introduces attributes that modify the entity in different ways. For example, you can include the `color` component on an entity to set its color, or include the `ignoreCollision` component to change how it reponds to collisions with other entities.
 
-> Tip: When editing the code via a IDE (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and pressing *Ctrl + Space bar*.
+> Tip: When editing the code via a source code editor (like Visual Studio Code or Atom), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and pressing *Ctrl + Space bar*.
 
 
 An entity can have other entities as children, these inherit the components from the parent. If a parent entity is positioned, scaled or rotated, its children are also affected. Thanks to this, we can arrange entities into trees.
@@ -42,7 +42,7 @@ Example:
 {% raw %}
 ```tsx
 <box 
-  position={ { x: 5, y: 0, z: 2 } } 
+  position={{ x: 5, y: 0, z: 2 }} 
   color="#ff00aa" 
   scale={2} 
 />
@@ -289,7 +289,7 @@ Example:
 ```tsx
   <entity 
     position={{ x: 2, y: 1, z: 0 }} 
-    scale={{ x: 2, y: 2, z: 0.0  5 }}
+    scale={{ x: 2, y: 2, z: 0.05 }}
   />
 ```
 {% endraw %}
@@ -476,8 +476,14 @@ Example:
 
 
 ```tsx
-  <material id="reusable_material" albedo-color="materials/wood.png" roughness="0.5" />
-  <sphere material="#reusable_material" />
+  <material 
+    id="reusable_material" 
+    albedo-color="materials/wood.png" 
+    roughness="0.5" 
+    />
+  <sphere 
+    material="#reusable_material" 
+    />
 ```
 
 This example shows the definition of a new material and then a shpere entity that uses it.

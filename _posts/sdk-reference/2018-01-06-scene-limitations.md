@@ -55,7 +55,7 @@ Examples of other valid sizes:
 
 Not all shaders can be used in models that are imported into Decentraland. If you're working with Blender, you can either use:
 
-* Using Blender Render, any of its shaders are supported, that includes diffuse, specular, transparency, etc.
+* Using Blender Render, any of its shaders are supported, for example diffuse, specular, transparency, etc.
 * Using the Cycles renderer, you can *only* use PBR (Physically Based Rendering). That's done by using the `Principled BSDF` shader. This shader is extremely flexible, as it includes properties like diffuse, roughness, metalness and emission that allow you to configure how a material interacts with light.
 
 > None of the other shaders of the Cycles renderer are supported.

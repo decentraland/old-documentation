@@ -29,12 +29,14 @@ We have also abstracted the communication protocol. This allows us to run the sc
 
 Let's take a look at an example. Suppose you want to render a scene with the following content:
 
-```xml
+{% raw %}
+```tsx
 <scene>
   <gltf-model src="models/a.gltf" />
-  <sphere position="10 10 10" />
+  <sphere position={{ x: 10, y: 10, z: 10 }} />
 </scene>
 ```
+{% endraw %}
 
 While writing your scene's code, you have no need to actually load the `a.gltf` model, and you don't need to know the geometry indexes used by the sphere entity. All you need to do is describe the scene at a higher level, like you do in XML.
 

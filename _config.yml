@@ -4,9 +4,10 @@
 title: Decentraland
 url: "https://docs.decentraland.org"
 baseurl:
-google_analytics_key: UA-63691338-8
+#google_analytics_key: UA-63691338-8
 disqus_shortname:
 newsletter_action:
+segment_write_key: ZHLrnVct1IQCx7yLeOzxSic7G1Duy0HH
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /images/logo.png
