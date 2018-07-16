@@ -43,7 +43,7 @@ The generic `click` event represents all clicks done on valid entities. The even
 
 {% raw %}
 ```tsx
-import { createElement, ScriptableScene } from 'metaverse-api'
+import { createElement, ScriptableScene } from 'metaverse-api';
 
 export default class LastClicked extends ScriptableScene {
   state = { 
@@ -79,7 +79,7 @@ A simpler way to deal with clicks that are made on a single entity is to listen 
 
 {% raw %}
 ```tsx
-import { createElement, ScriptableScene } from 'metaverse-api'
+import { createElement, ScriptableScene } from 'metaverse-api';
 
 export default class RedButton extends ScriptableScene {
   state = { 
@@ -90,7 +90,7 @@ export default class RedButton extends ScriptableScene {
     this.eventSubscriber.on('redButton_click', ()) => {
       this.setState({ buttonState: !this.state.buttonState });
       console.log(this.state.buttonState);
-    })
+    });
   };
 
   async render() {
@@ -112,11 +112,11 @@ The pointer down and pointer up events are fired whenever the user presses or re
 
 {% raw %}
 ```tsx
-import { createElement, ScriptableScene } from 'metaverse-api'
+import { createElement, ScriptableScene } from 'metaverse-api';
 
-export default class bigButton extends ScriptableScene {
+export default class BigButton extends ScriptableScene {
   state = { 
-      buttonState: false
+      buttonState: 0
    }
 
   async sceneDidMount() {  
@@ -156,7 +156,7 @@ The `positionChanged` event has the following properties:
 
 {% raw %}
 ```tsx
-import { createElement, ScriptableScene } from 'metaverse-api'
+import { createElement, ScriptableScene } from 'metaverse-api';
 
 export default class BoxFollower extends ScriptableScene {
   state = { 
@@ -196,14 +196,16 @@ The `rotationChanged` event has the following properties:
 
 {% raw %}
 ```tsx
-import { createElement, ScriptableScene } from 'metaverse-api'
+import { createElement, ScriptableScene } from 'metaverse-api';
 
 export default class ConeHead extends ScriptableScene {
-  state = { rotation: { x: 0, y: 0, z: 0 }}
+  state = { 
+    rotation: { x: 0, y: 0, z: 0 } 
+  }
 
   async sceneDidMount() {
       this.subscribeTo('rotationChanged', e => {
-          e.rotation.x +=  90 ;
+          e.rotation.x +=  90;
           this.setState({ rotation: e.rotation });
       });
   }

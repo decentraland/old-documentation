@@ -30,7 +30,7 @@ The following types of entities are available:
 
 Any of these can be added to your scene, they can all include basic components like position, scale or color.
 
-```xml
+```tsx
 <box position={vector} color="#ff00aa" scale={2} />
 ```
 
@@ -43,7 +43,7 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 All entities can have a position, a rotation and a scale. These can be easily set as components, as shown below:
 
 {% raw %}
-```xml
+```tsx
 <box
     position={{ x: 5, y: 3, z: 5 }}
     rotation={{ x: 180, y: 90, z: 0 }}
@@ -61,7 +61,7 @@ When an entity is nested inside another, the child entities inherit components f
 You can include an invisible base entity to wrap a set of other entities and define their positioning as a group.
 
 {% raw %}
-```xml
+```tsx
   <entity
       position={{ x: 0, y: 0, z: 1 }}
       rotation={{ x: 45, y: 0, z: 0 }}
@@ -85,7 +85,7 @@ In dynamic scenes, you can configure an entity to affect the way in which it mov
 The example below shows a box entity that is configured to rotate smoothly. 
 
 {% raw %}
-```xml
+```tsx
  <box 
     rotation={currentRotation}
     transition={{ rorotation: { duration: 1000, timing: "ease-in" }}}
@@ -105,7 +105,7 @@ The transition component can be added to affect the following properties of an e
 Note that the transition for each of these properties is configured separately.
 
 {% raw %}
-```xml
+```tsx
  <box 
     rotation={currentRotation}
     color={currentColor}
@@ -128,7 +128,7 @@ The transition component allows you to set:
 In the example below, a transition is applied to the rotation of an invisible entity that wraps a box. As the box is off-center from the parent entity, the box pivots like an opening door.
 
 {% raw %}
-```xml
+```tsx
 
 <entity 
     rotation={currentRotation}  
@@ -147,7 +147,7 @@ In the example below, a transition is applied to the rotation of an invisible en
 Color is set in hexadecimal values. To set an entity's color, simply set its `color` component to the corresponding hexadecimal value.
 
 {% raw %}
-```xml
+```tsx
   <sphere 
     position={{ x: 0.5, y: 1, z: 0 }}   
     color="#EF2D5E"
@@ -187,7 +187,7 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 
 
 {% raw %}
-```xml
+```tsx
 <gltf-model
     position={{ x: 5, y: 3, z: 5 }}
     scale={0.5}
@@ -217,7 +217,7 @@ In a dynamic scene, you reference an animation by its armature name, an undersco
 The example below imports a model that includes animations and configures them:
 
 {% raw %}
-```xml
+```tsx
 <gltf-model
     position={{ x: 5, y: 3, z: 5 }}
     scale={0.5}
@@ -279,7 +279,7 @@ You can add sound to your scene by including a sound component in any entity.
 
 
 {% raw %}
-```xml
+```tsx
   <sphere 
     position={{ x: 5, y: 3, z: 5 }}
     sound={{
