@@ -166,8 +166,14 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 
 {% raw %}
 ```tsx
-  <material id="reusable_material" albedoTexture="materials/wood.png" roughness="0.5" />
-  <sphere material="#reusable_material" />
+  <material 
+    id="reusable_material" 
+    albedoTexture="materials/wood.png" 
+    roughness="0.5" 
+  />
+  <sphere
+    material="#reusable_material" 
+  />
 ```
 {% endraw %}
 
