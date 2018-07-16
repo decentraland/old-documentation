@@ -31,13 +31,13 @@ Each state variable must be given an intial value for when the scene is first re
 
 ```tsx
 
-export interface myState {
+export interface IState {
     buttonState: number;
     isDoorClosed: boolean;
     boxPosition: vector3
 }
 
-export default class Scene extends ScriptableScene<any, myState> {
+export default class Scene extends ScriptableScene<any, IState> {
  
     state = {
         buttonState: 0
@@ -48,7 +48,7 @@ export default class Scene extends ScriptableScene<any, myState> {
 (...)
 ```
 
-The `ScriptableScene` class optionally takes two arguments: the properties (`any` in this case, as none are used) and the scene state, which in this case must match the type `myState`, described in the custom interface.
+The `ScriptableScene` class optionally takes two arguments: the properties (`any` in this case, as none are used) and the scene state, which in this case must match the type `IState`, described in the custom interface.
 
 The variables you choose to make up your scene's state should be the minimal possible set that represents the scene, you shouldn't add redundant information. To determine if you should include a piece of information as part of the state, ask yourself:
 
@@ -63,13 +63,14 @@ You can set the value of a state variable from any method in the scene object. T
 
 ```tsx
 
-async buttonPressed()
- {
-   this.setState({buttonState : 1 });
-  };
+async buttonPressed(){
+     this.setState({buttonState : 1 });
+};
 ```
 
-Each time the scene's state is updated, the `render()` function is called to render the scene using the new state. The only exception to this is if the [`shouldSceneUpdate()` function]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) is set up to prevent. 
+Each time the scene's state is updated, the `render()` function is called to render the scene using the new state. 
+
+> Note: To prevent the scene from being rendered every time, you can use the [`shouldSceneUpdate()` function]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) so that it only runs the `Render()` function conditionally based on some rule. 
 
 If the state holds multiple variables and your `setState()` statement only affects one of them, it will leave all other variables untouched.
 
@@ -88,13 +89,12 @@ this.setState({buttonState: 1});
 You can reference the value a state variable from anywhere in the scene object by writing `this.state.<variable name>`.
 
 ```tsx
-async checkDoor()
- {
-   return this.state.isDoorClosed;
-  };
+async checkDoor(){
+     return this.state.isDoorClosed;
+};
 ```
 
-In the example below, the `render()` method draws a dynamic scene where the position of an entity is based on a variable in the status. As soon as the value of that variable changes, the rendered scene changes as well.
+In the example below, the `render()` method draws a dynamic scene where the position of an entity is based on a variable in the state. As soon as the value of that variable changes, the rendered scene changes as well.
 
 {% raw %}
 ```tsx

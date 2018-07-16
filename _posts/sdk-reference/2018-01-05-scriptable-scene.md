@@ -28,13 +28,13 @@ You can define the type for the state object by declaring a custom interface. Do
 
 ```tsx
 
-export interface myState {
+export interface IState {
     buttonState: number;
     isDoorClosed: boolean;
     boxPosition: vector3
 }
 
-export default class Scene extends ScriptableScene<any, myState> {
+export default class Scene extends ScriptableScene<any, IState> {
  
     state = {
         buttonState: 0
@@ -45,7 +45,7 @@ export default class Scene extends ScriptableScene<any, myState> {
 (...)
 ```
 
-The `ScriptableScene` class optionally takes two arguments: the properties (`any` in this case, as none are used) and the scene state, which in this case must match the type `myState`, described in the custom interface.
+The `ScriptableScene` class optionally takes two arguments: the properties (`any` in this case, as none are used) and the scene state, which in this case must match the type `IState`, described in the custom interface.
 
 You can access the scene's state by writing `this.scene.<variableName>` anywhere in the scene object.
 
@@ -100,8 +100,6 @@ export default class Scene extends ScriptableScene<Props, State> {
   /**
    * Called immediately after the scene is mounted. You must start your processes, timers, pollers in this method.
    * Setting the value of a state variable here would trigger re-rendering of the scene.
-   *
-   * 
    */
   async sceneDidMount() {
     this.eventSubscriber = new EventSubscriber(this.entityController)
@@ -137,8 +135,7 @@ export default class Scene extends ScriptableScene<Props, State> {
    * If this method returns `true`, `render`, and `sceneDidUpdate` are called.
    */
   async shouldSceneUpdate(newProps: Props) {
-    if (this.state.counter < 20 )
-      { return true } else { return false }
+    return this.state.counter < 20;
   }
 
   /**
@@ -174,8 +171,8 @@ These steps summarize when each of the methods above are called:
 
 1. The user enters your scene, a series of processes are run in the backround by the low level API.
 2. After all requirements are fulfilled, `sceneDidMount()` is called.
-2. `render()` is then called for the first time.
-3. The user then navigates the scene, creating various events by interacting with it. If any of those events leads to a change in the scene's state, then `shouldSceneUpdate()` is called. If this function returns `true`, then:
+3. `render()` is then called for the first time.
+4. The user then navigates the scene, creating various events by interacting with it. If any of those events leads to a change in the scene's state, then `shouldSceneUpdate()` is called. If this function returns `true`, then:
 
     1. `sceneDidUpdate()` is called.
     2. `render()` is called again.
@@ -223,6 +220,6 @@ class ScriptableScene extends Script {
 }
   ```
 2. An instance of the scene class you defined is created using a [transport](https://github.com/decentraland/metaverse-rpc#transports) as an argument.
-3. Once the class is created, it requires an instance of `EntityController` to the host (the engine) , this is an asynchronous call.
+3. Once the class is created, it requires an instance of `EntityController` from the host (the engine), this is an asynchronous call.
 4. The host responds to that request and a proxy is created and assigned to the property `entityController`.
 5. Once all requirements are fulfilled, the scene object calls the `sceneDidMount()` method. At this point, you can be sure the required APIs are loaded in your class instance.

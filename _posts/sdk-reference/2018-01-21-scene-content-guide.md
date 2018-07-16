@@ -30,20 +30,20 @@ The following types of entities are available:
 
 Any of these can be added to your scene, they can all include basic components like position, scale or color.
 
-```xml
+```tsx
 <box position={vector} color="#ff00aa" scale={2} />
 ```
 
 See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}) for more details on these types of entities.
 
-> Tip: When editing the code via a IDE (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and pressing *Ctrl + Space bar*.
+> Tip: When editing the code via a source code editor (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and typing *Ctrl + Space bar*.
 
 ## Entity positioning
 
 All entities can have a position, a rotation and a scale. These can be easily set as components, as shown below:
 
 {% raw %}
-```xml
+```tsx
 <box
     position={{ x: 5, y: 3, z: 5 }}
     rotation={{ x: 180, y: 90, z: 0 }}
@@ -61,7 +61,7 @@ When an entity is nested inside another, the child entities inherit components f
 You can include an invisible base entity to wrap a set of other entities and define their positioning as a group.
 
 {% raw %}
-```xml
+```tsx
   <entity
       position={{ x: 0, y: 0, z: 1 }}
       rotation={{ x: 45, y: 0, z: 0 }}
@@ -85,10 +85,10 @@ In dynamic scenes, you can configure an entity to affect the way in which it mov
 The example below shows a box entity that is configured to rotate smoothly. 
 
 {% raw %}
-```xml
+```tsx
  <box 
-    rotation={currnetRotation}
-    transition={{ rotation: { duration: 1000, timing: "ease-in" }}}
+    rotation={currentRotation}
+    transition={{ rorotation: { duration: 1000, timing: "ease-in" }}}
   />
 ```
 {% endraw %}
@@ -105,11 +105,11 @@ The transition component can be added to affect the following properties of an e
 Note that the transition for each of these properties is configured separately.
 
 {% raw %}
-```xml
+```tsx
  <box 
-    rotation={currnetRotation}
-    color={currnetColor}
-    scale={currnetScale}
+    rotation={currentRotation}
+    color={currentColor}
+    scale={currentScale}
     transition={ 
         { rotation: { duration: 1000, timing: "ease-in" }}
         { color: { duration: 3000, timing: "exponential-in" }}
@@ -128,7 +128,7 @@ The transition component allows you to set:
 In the example below, a transition is applied to the rotation of an invisible entity that wraps a box. As the box is off-center from the parent entity, the box pivots like an opening door.
 
 {% raw %}
-```xml
+```tsx
 
 <entity 
     rotation={currentRotation}  
@@ -147,7 +147,7 @@ In the example below, a transition is applied to the rotation of an invisible en
 Color is set in hexadecimal values. To set an entity's color, simply set its `color` component to the corresponding hexadecimal value.
 
 {% raw %}
-```xml
+```tsx
   <sphere 
     position={{ x: 0.5, y: 1, z: 0 }}   
     color="#EF2D5E"
@@ -171,7 +171,7 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 ```
 {% endraw %}
 
-Materials are also implicitly imported into a scene when you import a gtLF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
+Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
 
 
 ## Import 3D models
@@ -187,7 +187,7 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 
 
 {% raw %}
-```xml
+```tsx
 <gltf-model
     position={{ x: 5, y: 3, z: 5 }}
     scale={0.5}
@@ -196,7 +196,7 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 ```
 {% endraw %}
 
-glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance. 
+glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and to check for their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance. 
 
 > Tip: We recommend using `.gltf` while you're working on a scene, but then switching to `.glb` when uploading it.
 
@@ -217,7 +217,7 @@ In a dynamic scene, you reference an animation by its armature name, an undersco
 The example below imports a model that includes animations and configures them:
 
 {% raw %}
-```xml
+```tsx
 <gltf-model
     position={{ x: 5, y: 3, z: 5 }}
     scale={0.5}
@@ -278,17 +278,21 @@ on the web. In the same way, COLLADA may be used to edit a 3D asset, but glTF is
 You can add sound to your scene by including a sound component in any entity.
 
 
-```xml
+{% raw %}
+```tsx
   <sphere 
-    position="3 1.25 5" 
-    sound="
-      src: sounds/carnivalrides.ogg; 
-      loop: true; 
-      playing: true
+    position={{ x: 5, y: 3, z: 5 }}
+    sound={{
+      src: "sounds/carnivalrides.ogg", 
+      loop: true, 
+      playing: true,
       volume: 0.5
-      "
+      }}
   />
 ```
+
+{% endraw %}
+
 The `src` property points to the location of the sound file.
 
 > Tip: We recommend keeping your sound files separate in a `/sounds` folder inside your scene.
@@ -297,7 +301,7 @@ Supported sound formats vary depending on the browser, but it's safe to use `.mp
 
 Each entity can only play a single sound file. This limitation can easily be overcome by including multiple invisible entities, each with their own sound file.
 
-The `distanceModel` property of the sound component conditions how the user's distance to the sound's source affects its volume. The model can be `linear`, `exponential` or `inverse`. When using the liner or exponential model, you can also set the `rolloffFactor` property to set the steepness of the curve. 
+The `distanceModel` property of the sound component conditions how the user's distance to the sound's source affects its volume. The model can be `linear`, `exponential` or `inverse`. When using the linear or exponential model, you can also set the `rolloffFactor` property to set the steepness of the curve. 
 
 <!---
 
@@ -315,14 +319,14 @@ how to add collider meshes into GLTF models
 
 ## Entity collision
 
-Entities that have collision disabled can walked through by a user`s avatar, entities that do have collisions enabled occupy space and block a user's path.
+Entities that have collision disabled can be walked through by a user`s avatar, entities that do have collisions enabled occupy space and block a user's path.
 
 {% raw %}
 ```tsx
 <box 
   position={{ x: 10, y: 0, z: 0 }} 
   scale={2} 
-  ignoreCollisions="false"
+  ignoreCollisions={false}
 />
 
 ```
@@ -342,7 +346,7 @@ A *collision mesh* is a set of planes or geometric shapes that define which part
 
 Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the avatar.
 
-Decentralan currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
+Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
 
 
