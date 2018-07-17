@@ -146,27 +146,15 @@ Since the root scene element is a transform node, it can also be translated, sca
 
 ## Preview your scene
 
-To preview your rendered scene locally (without [uploading it to IPFS]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-07-publishing %}) ) run the following command on the scene's main folder:
+To preview your rendered scene locally, run the following command on the scene's main folder:
 
 ```bash
 dcl preview
 ```
-Note that the preview command runs only on your local system, it creates a web server and opens a new web browser tab pointing at its local address.
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
-Running a preview also provides some useful debugging information and tools to help you understand how different entities are rendered. The preview mode provides information that describes parcel boundaries, the environment and resources, for example the number of entities being rendered, the current FPS rate, user position, and whether or not different elements are exceeding parcel boundaries.
-
-
-You can add the following flags to the command:
-
-* `--no-browser` to prevent the preview from opening a new browser tab.
-* `--port` to assign a specific to run the scene. Otherwise it will use whatever port is available.
-* `--skip` to skip the confirmation prompt.
-
-> To preview old scenes that were built for older versions of the SDK, you must install the latest versions of the `metaverse-api` and `metaverse-rpc` packages in your project. Check the CLI version via the command `dcl -v`
-
-
+For more about what you can see in a scene preview, and instructions for how to run a preview of a remote scene, see [preview your scene]({{ site.baseurl }}{% post_url /building-scenes/2018-04-21-preview-scene %}).
 
 
 ## Edit your scene

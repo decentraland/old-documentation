@@ -180,6 +180,24 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
 
 
+### Basic Materials
+
+Instead of the <material/> entity, you can define a material through the <basic-material> entity. This creates materials that have flat simple shades.
+
+
+{% raw %}
+```tsx
+  <basic-material 
+    id="basic_material" 
+    texture="profile_avatar.png"
+  />
+  <sphere
+    material="#basic_material" 
+  />
+```
+{% endraw %}
+
+
 ## Import 3D models
  
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in glTF format.  [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
