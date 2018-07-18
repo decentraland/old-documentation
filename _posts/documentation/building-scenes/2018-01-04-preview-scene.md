@@ -111,3 +111,11 @@ While viewing the preview, you can press `c` to view any collision meshes loaded
 ![](/images/media/collision-meshes.png)
 
 Collision meshes can be added to any model in an external 3D modeling tool like Blender. Large models like houses often include these, they are usually a lot simpler geometrically than the original shape, as this implies much less computational requirements. Stairs typically use a simplified collision mesh like a ramp to make it easier to climb, otherwise a character would have to jump up every step.
+
+
+## View bounding boxes
+
+While viewing the preview, you can press `b` to view any bounding boxes. Bounding boxes show the space occupied by an entity, it's especially useful to see these when dealing with invisible entities.
+
+
+
