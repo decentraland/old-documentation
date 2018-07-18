@@ -40,7 +40,7 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 
 ## Entity positioning
 
-All entities can have a position, a rotation and a scale. These can be easily set as components, as shown below:
+All entities can have a *position*, a *rotation* and a *scale*. These can be easily set as components, as shown below:
 
 {% raw %}
 ```tsx
@@ -80,7 +80,7 @@ You can also set a position, rotation and scale for the entire <scene/> entity a
 
 ### Transitions
 
-In dynamic scenes, you can configure an entity to affect the way in which it moves. By default, all changes to an entity are rendered as a sudden shift from one state to another. By adding a transition component, you can make the change be gradual and more natural.
+In dynamic scenes, you can configure an entity to affect the way in which it moves. By default, all changes to an entity are rendered as a sudden shift from one state to another. By adding a *transition*, you can make the change be gradual and more natural.
 
 The example below shows a box entity that is configured to rotate smoothly. 
 
@@ -93,14 +93,15 @@ The example below shows a box entity that is configured to rotate smoothly.
 ```
 {% endraw %}
 
-> Note: The transition component doesn't make the box rotate, it just sets the way it rotates whenever the value of the entity's rotation changes, usually as the result of an event.
+> Note: The transition doesn't make the box rotate, it just sets the way it rotates whenever the value of the entity's rotation changes, usually as the result of an event.
 
-The transition component can be added to affect the following properties of an entity:
+The transition can be added to affect the following properties of an entity:
 
 * position
 * rotation
 * scale
 * color
+* lookAt
 
 Note that the transition for each of these properties is configured separately.
 
@@ -119,7 +120,7 @@ Note that the transition for each of these properties is configured separately.
 ```
 {% endraw %}
 
-The transition component allows you to set:
+The transition allows you to set:
 
 * A delay: milliseconds to wait before the change begins occuring.
 * A duration: milliseconds from when the change begins to when it ends.
@@ -141,6 +142,50 @@ In the example below, a transition is applied to the rotation of an invisible en
 </entity>
 ```
 {% endraw %}
+
+### Turn to face the avatar
+
+You can set an entity to act as a *billboard*, this means that it will always rotate to face the user. This was a common technique used in 3D games of the 90s, where most entities were planes that always faced the player, but the same can be used with and 3D model.
+
+{% raw %}
+```tsx
+ <box 
+    color={currentColor}
+    billboard={7}
+  />
+```
+{% endraw %}
+
+You must provide this setting with a number that selects between the following modes:
+
+*  0: No movement on any axis
+*  1: Only move in the **X** axis, the rotation on other axis is fixed.
+*  2: Only move in the **Y** axis, the rotation on other axis is fixed.
+*  4: Only move in the **Z** axis, the rotation on other axis is fixed.
+*  7: Rotate on all axis to follow the user.
+
+
+If the entitiy is configured with both a specific rotation and a billboard setting, it uses the rotation set on by its billboard behavior.
+
+### Turn to face a position
+
+You can set an entity to face a specific position in the scene using *lookAt*. This can be used to easily have an entity follow another with its glance by updating the position that the entity looks at with the other's location.
+
+{% raw %}
+```tsx
+ <box 
+    color={currentColor}
+    lookAt={this.state.sphere}
+    transition={{ lookAt: { duration: 500 } }}
+  />
+```
+{% endraw %}
+
+This setting needs a vector3Component as a value, this vector indicates the coordinates of the point in the scene that it will look at.
+
+You can use a transition to make lookAt any movements smoother and more natural.
+
+If the entitiy is configured with both a specific rotation and a lookAt setting, it uses the rotation set on by its lookAt behavior.
 
 ## Color
 
@@ -200,7 +245,7 @@ Instead of the <material/> entity, you can define a material through the <basic-
 
 ## Import 3D models
  
-For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in glTF format.  [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
+For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in *glTF* format.  [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
 > Note: When using Blender, you need an add-on to export glTF files. For models that don't include animations we recommend installing the add-on by [Kronos group](https://github.com/KhronosGroup/glTF-Blender-Exporter). To export glTFs that include animations, you should instead install the add-on by [Kupoman](https://github.com/Kupoman/blendergltf).
 
@@ -228,15 +273,16 @@ glTF models can have either a `.gltf` or a `.glb` extension. glTF files are huma
 glTF models can also include their own textures and animations. Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
 
 
+> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
+
 > Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity. 
 
 ### Animations
 
-> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
+Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`. 
 
-Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named.
 
-In a dynamic scene, you reference an animation by its armature name, an underscore and its animation name. For example `myArmature_animation1`. You activate an animation by setting its `playing` property to `true`.
+You activate an animation by adding *skeletalAnimation* settings to a gltf model and setting the `playing` property of one of its clips to `true`.
 
 The example below imports a model that includes animations and configures them:
 
@@ -259,6 +305,8 @@ In this example, the armature is named `shark_skeleton` and the two animations c
 An animation can be set to loop continuously by setting its `loop` property. If `loop:false` then the animation will be called only once when activated.
 
 The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance the given animation will be given.
+
+
 
 ### Free libraries for 3D models
 
@@ -339,6 +387,8 @@ Setting playing to false pauses??????
 
 how to add collider meshes into GLTF models
 
+## Video
+
 -->
 
 ## Entity collision
@@ -373,7 +423,7 @@ Collision settings currently don't affect how other entities interact with each 
 Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
 
-
+> Tip: To view the limits of a collision mesh, launch your scene preview with `dcl preview` and click `c`. This draws blue that delimit all collision meshes in the scene.
 
 
 
