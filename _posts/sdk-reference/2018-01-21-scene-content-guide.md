@@ -393,14 +393,14 @@ how to add collider meshes into GLTF models
 
 ## Entity collision
 
-Entities that have collision disabled can be walked through by a user`s avatar, entities that do have collisions enabled occupy space and block a user's path.
+Entities that have collisions enabled occupy space and block a user's path, objects without collisions can be walked through by a user`s avatar.
 
 {% raw %}
 ```tsx
 <box 
   position={{ x: 10, y: 0, z: 0 }} 
   scale={2} 
-  ignoreCollisions={false}
+  withCollisions={true}
 />
 
 ```
@@ -410,11 +410,11 @@ The example above defines a box entity that can't be walked through.
 
 All entities have collisions disabled by default. Depending on the type of entity, collisions are enabled as follows:
 
-* For most entities, including *primitives* (boxes, spheres, etc), planes and base entities, you enable collisions by setting the `ignoreCollisions` component to `false`. 
+* For most entities, including *primitives* (boxes, spheres, etc), planes and base entities, you enable collisions by setting the `withCollisions` component to `true`. 
 * To enable collisions in *glTF models*, you can either:
 
   *   Edit them in an external tool like Blender to include a *collission mesh*.
-  *   Overlay an invisible entity with the `ignoreCollisions` component set to `true`.
+  *   Overlay an invisible entity with the `withCollisions` component set to `true`.
 
 A *collision mesh* is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision mesh is usually a lot simpler (with less vertices) than the original model.
 
@@ -423,7 +423,7 @@ Collision settings currently don't affect how other entities interact with each 
 Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
 
-> Tip: To view the limits of a collision mesh, launch your scene preview with `dcl preview` and click `c`. This draws blue that delimit all collision meshes in the scene.
+> Tip: To view the limits of all collision meshes in the scene, launch your scene preview with `dcl preview` and click `c`. This draws blue lines that delimit collision areas.
 
 
 
