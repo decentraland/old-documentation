@@ -169,21 +169,21 @@ If the entitiy is configured with both a specific rotation and a billboard setti
 
 ### Turn to face a position
 
-You can set an entity to face a specific position in the scene using *lookAt*. This can be used to easily have an entity follow another with its glance by updating the position that the entity looks at with the other's location.
+You can set an entity to face a specific position in the scene using *lookAt*. This is a way to set the rotation of an entity without having to deal with angles.
 
 {% raw %}
 ```tsx
  <box 
     color={currentColor}
-    lookAt={this.state.sphere}
+    lookAt={{x:2, y:1, z:3}}
     transition={{ lookAt: { duration: 500 } }}
   />
 ```
 {% endraw %}
 
-This setting needs a vector3Component as a value, this vector indicates the coordinates of the point in the scene that it will look at.
+This setting needs a vector3Component as a value, this vector indicates the coordinates of the point in the scene that it will look at. You can, for example, set this value to a variable in the scene state that is updated with another entity's position.
 
-You can use a transition to make lookAt any movements smoother and more natural.
+You can use a transition to make movements caused by lookAt smoother and more natural.
 
 If the entitiy is configured with both a specific rotation and a lookAt setting, it uses the rotation set on by its lookAt behavior.
 
