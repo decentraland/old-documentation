@@ -73,7 +73,7 @@ You can include an invisible base entity to wrap a set of other entities and def
 ```
 {% endraw %}
 
-You can also set a position, rotation and scale for the entire <scene/> entity and affect everything in the scene.
+You can also set a position, rotation and scale for the entire `<scene/>` entity and affect everything in the scene.
 
 
 
