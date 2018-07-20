@@ -76,6 +76,7 @@ defaults:
       path: ""
     values:
       layout: "default"
+      image: "/images/thumb.jpg"
   -
     scope:
       type: "posts"
