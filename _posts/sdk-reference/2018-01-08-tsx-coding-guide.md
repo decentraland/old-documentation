@@ -9,14 +9,14 @@ set: sdk-reference
 set_order: 8
 ---
 
-The Decentraland SDK is meant to be used with TypeScript. There are a number of tips and tricks you can take advantage of when building your scene, these don’t relate directly to the SDK, but they are part of the context and tools that are available to you.
+The Decentraland SDK is meant to be used via TypeScript (.tsx) files. This section introduces a number of tips and tricks you can take advantage of when building your scene. What's discussed here isn't directly related to the features of the SDK, but rather about ways in which you can use the TypeScript language and context to make the most out of it.
 
 
 ## Log to Console
 
 You can log messages to the JavaScript console of the browser while viewing a scene.
 
-You don’t need to import any special libraries, simply write console.log() in any part of your scene.tsx file. You can use log messages, for example, to confirm the occurrence of events, or to verify that the value of a variable changes in the way you expected.
+You don’t need to import any additional libraries to do this, simply write `console.log()` in any part of your scene.tsx file. You can use log messages, for example, to confirm the occurrence of events, or to verify that the value of a variable changes in the way you expected.
 
 {% raw %}
 ```tsx
@@ -26,15 +26,16 @@ You don’t need to import any special libraries, simply write console.log() in 
 ```
 {% endraw %}
 
-To view the logged messages while running a preview of your scene, you need to look at your browser’s JavaScript console, which you can open in the developer settings of your browser.
+To view logged messages while running a preview of your scene, look at the JavaScript console, which you can open in the developer settings of your browser.
 
-[screenshot]
+![](/images/media/console_log.png)
+
 
 ## Create a global constant
 
-You can define global constants at the root level of a .tsx file. Once defined, they can be referenced throughout the entire file.
+You can define global constants at the root level of a *.tsx* file. Once defined, they can be referenced throughout the entire file.
 
-This is useful for values that are used multiple times in your scene and need to be used consistently. This makes it easier to maintain your code, as you only need to change one line and be sure that all the code will be adjusted consistently.
+This is useful for values that are used multiple times in your scene and need to have consistency. This makes it easier to maintain your code, as you only need to change one line.
 
 
 {% raw %}
@@ -55,7 +56,7 @@ export default class myScene extends ScriptableScene{
 
 ## Define custom data types
 
-You can define your own custom data type, these are useful for using with variables that can only capable of having certain values in your scene. Using these makes your code more readable, and it’s better than setting the variable as a string because the code editor you use provides autocomplete options and validation.
+You can define your own custom data type in a *.tsx* file, these are useful for using with variables that are only capable of holding certain values in your scene. Using custom types makes your code more readable. If you’re working with an advanced code editor like Visual Studio Code or Atom, it also makes writing your code easier since the code editor provides autocomplete options and validation.
 
 {% raw %}
 ```tsx
@@ -63,7 +64,7 @@ export type characterState = 'walking' | 'won' | 'falling'
 ```
 {% endraw %}
 
-The custom type defined above can only have the three possible values listed above. You can then use it, for example, for a variable in the scene state.
+The custom type defined above can only hold the three possible values listed above. You can then use it, for example, for a variable in the scene state.
 
 {% raw %}
 ```tsx
@@ -74,7 +75,6 @@ state = {
 {% endraw %}
 
 When setting a value for this variable, your code editor will now suggest only the valid values for its type.
-
 
 ![](/images/media/autocomplete_types.png)
 
@@ -154,17 +154,16 @@ When having the code for your scene distributed amongst multiple separate files 
 
 ## Handle all elements of an array
 
-There are two array methods that deal with each element in the array separately: `map` and `forEach`. They are both similar in that they run a function once per each element in the array. The main difference is that `map` returns a new array without affecting the original array, `forEach` doesn't return anything by default. If the function carried out by the `forEach` has a `return` statement, it overwrites the values in the original array.
-
+There are two array methods you can use to run a same function on each element of an array separately: `map` and `forEach`. The main difference between them is that `map` returns a new array without affecting the original array, but `forEach` can overwrite the values in the original array.
 
 
 ### The map operation
 
-The`map` operation also runs a function on each element of the array, but it returns a new array with the results.
+The`map` operation runs a function on each element of the array, it returns a new array with the results.
 
 {% raw %}
 ```tsx
-  return this.state.fallingLeaves.map( leaf=>
+  const renderedLeaves = this.state.fallingLeaves.map( leaf=>
     {
       return <plane 
               position={{x:leaf.x , y: leaf.y, z:leaf.z}}
@@ -175,18 +174,18 @@ The`map` operation also runs a function on each element of the array, but it ret
 ```
 {% endraw %}
 
-This example creates a plane entity for each element in the `fallingLeaves` array, the array is of type `vector3Component`, so each element in the array has values for *x*, *y* and *z* coordinates. These coordinates are used to set the position of each leaf. 
+This example goes over the elements of the `fallingLeaves` array running the same function with each, this array is of type `vector3Component` so each element in the array has values for *x*, *y* and *z* coordinates. The function that runs for each element in the array returns a plane entity that uses the position stored in the array.
 
 
 
 ### Combine with filter array
 
-You can combine a `map` or a `forEach` operation with a `filter` operation to only deal with array elements that meet a certain criteria.
+You can combine a `map` or a `forEach` operation with a `filter` operation to only handle the array elements that meet a certain criteria.
 
 {% raw %}
 ```tsx
- return this.state.fallingLeaves
-  .filter(pos => pos.y >0 )
+ const renderedLeaves = this.state.fallingLeaves
+  .filter(pos => pos.x >0 )
   .map( leaf=>
     {
       return <plane 
@@ -198,26 +197,33 @@ You can combine a `map` or a `forEach` operation with a `filter` operation to on
 ```
 {% endraw %}
 
-This example is like the one used above, but it first filters the `fallingLeaves` array to only handle leaves that have a *y* position greater than 0. The `fallingLeaves` array is of type `vector3Component`, so each element in the array has values for *x*, *y* and *z* coordinates. 
+This example is like the one used above, but it first filters the `fallingLeaves` array to only handle leaves that have a *x* position greater than 0. The `fallingLeaves` array is of type `vector3Component`, so each element in the array has values for *x*, *y* and *z* coordinates. 
 
-<!---
 
 ### The forEach operation
 
-The `forEach` operation runs a function on every element of the array.
+The `forEach` operation runs a same function on every element of the array.
 
 
 {% raw %}
 ```tsx
-trees.forEach(pos => {
-        tiles.push(<Tile position={{ x: x * 2, y: 0, z: z * 2 }} />)
-    })
+addFallingLeaves(){
+  var leavesToAdd:Vector3Component[] = this.state.fallingLeaves;
+  this.state.trees.forEach(tree => {
+    const xOff = tree.x + Math.random() - 0.5;
+    const zOff = tree.z + Math.random() - 0.5 ;  
+    leavesToAdd.push( {x:tree.x + xOff , y:4, z:tree.z + zOff});
+  })
+  this.setState({fallingLeaves: leavesToAdd});
+}
 ```
 {% endraw %}
 
+This example goes over the elements of the `trees` array running the same function with each, this array is of type `vector3Component` so each element in the array has values for *x*, *y* and *z* coordinates. The function that runs for each element in the array pushes a new set of randomized coordinates to the leavesToAdd array.
+ 
+> Note: If the function performed by forEach includes a `return` statement, this overrides the original array. Keep in mind that when dealing with a variable from the scene state, you can't change its value by setting it directly. You must always change the value of a scene state variable through the `this.setState()` operation.
 
-
-In this example, the `fallingLeaves` variable in the scene state contains an array of type `vector3Component`, representing the position of each falling leaf in the scene. The function updates the position of the
+<!---
 
 -->
 
