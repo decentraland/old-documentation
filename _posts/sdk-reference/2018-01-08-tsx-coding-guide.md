@@ -81,7 +81,7 @@ When setting a value for this variable, your code editor will now suggest only t
 
 <!---
 
-## Define a custom enum type ???
+## Define a custom enum  ???
 
 With TypeScript, you can create custom string enums. These can be thought of as dictionaries that can only contain specific string fields.
 
@@ -114,14 +114,15 @@ The scene state object can be defined as a type of its own. This ensures that th
 {% raw %}
 ```tsx
 interface IState {
- doorState:true,
- boxes: number,
- userPos : vector3Component
+    doorState:true,
+    boxes: number,
+    userPos : vector3Component
 }
 ```
 {% endraw %}
 
 Once you defined an interface, you can pass it to the custom scene class as the second argument, which sets the type for the scene's state object.
+
 {% raw %}
 ```tsx
 export default class ArtPiece extends ScriptableScene <any, IState>{
@@ -148,4 +149,115 @@ You can import javascript libraries to enable you to perform mathematical operat
 ## Accessing variables globally
 
 When having the code for your scene distributed amongst multiple separate files with child objects, you need to take care of how to reference 
+
 -->
+
+## Handle all elements of an array
+
+There are two array methods that deal with each element in the array separately: `map` and `forEach`. They are both similar in that they run a function once per each element in the array. The main difference is that `map` returns a new array without affecting the original array, `forEach` doesn't return anything by default. If the function carried out by the `forEach` has a `return` statement, it overwrites the values in the original array.
+
+
+
+### The map operation
+
+The`map` operation also runs a function on each element of the array, but it returns a new array with the results.
+
+{% raw %}
+```tsx
+  return this.state.fallingLeaves.map( leaf=>
+    {
+      return <plane 
+              position={{x:leaf.x , y: leaf.y, z:leaf.z}}
+              scale={0.2}  
+              />
+    }
+    )
+```
+{% endraw %}
+
+This example creates a plane entity for each element in the `fallingLeaves` array, the array is of type `vector3Component`, so each element in the array has values for *x*, *y* and *z* coordinates. These coordinates are used to set the position of each leaf. 
+
+
+
+### Combine with filter array
+
+You can combine a `map` or a `forEach` operation with a `filter` operation to only deal with array elements that meet a certain criteria.
+
+{% raw %}
+```tsx
+ return this.state.fallingLeaves
+  .filter(pos => pos.y >0 )
+  .map( leaf=>
+    {
+      return <plane 
+              position={{x:leaf.x , y: leaf.y, z:leaf.z}}
+              scale={0.2}  
+              />
+    }
+    )
+```
+{% endraw %}
+
+This example is like the one used above, but it first filters the `fallingLeaves` array to only handle leaves that have a *y* position greater than 0. The `fallingLeaves` array is of type `vector3Component`, so each element in the array has values for *x*, *y* and *z* coordinates. 
+
+<!---
+
+### The forEach operation
+
+The `forEach` operation runs a function on every element of the array.
+
+
+{% raw %}
+```tsx
+trees.forEach(pos => {
+        tiles.push(<Tile position={{ x: x * 2, y: 0, z: z * 2 }} />)
+    })
+```
+{% endraw %}
+
+
+
+In this example, the `fallingLeaves` variable in the scene state contains an array of type `vector3Component`, representing the position of each falling leaf in the scene. The function updates the position of the
+
+-->
+
+## Keep the render function readable
+
+The output of the render() function can include calls to other functions. Since render() is called each time that the scene state is updated, so will all the functions that are called by render().
+
+Doing this keeps the code in render() more readable. In simple scenarios it's mostly reocomendable to define all the entities of the scene within the `render()` function, but when dealing with a varying number of entities or a large number that can be treated as an array, it's often useful to handle this behavior in a function outside render(). 
+
+{% raw %}
+```tsx
+
+  async render() {
+    return (
+      <scene>
+        {this.renderObstacles()}
+        {this.renderFruit()}
+        {this.renderEnemies()}
+      </scene>
+    )
+  }
+```
+{% endraw %}
+
+The functions that are called as part of the return satement must, of course, return values that combine well with the rest of what's being rendered to produce a valid XML output. In the example above, the `renderObstacles()` function can contain the following:
+
+{% raw %}
+```tsx
+ renderObstacles() {
+    return this.state.secuence.map( num=>
+            {return <box 
+                      position={{x:num, y:1, z:1}}
+                      scale={0.5}
+                      withCollisions={true} 
+                      />
+            })
+    ))
+  }
+```
+{% endraw %}
+
+This function uses a `map` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This doesn't only shorten the code, it enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
+
