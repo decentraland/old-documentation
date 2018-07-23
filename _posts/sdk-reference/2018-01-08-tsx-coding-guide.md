@@ -163,18 +163,19 @@ The`map` operation runs a function on each element of the array, it returns a ne
 
 {% raw %}
 ```tsx
-  const renderedLeaves = this.state.fallingLeaves.map( leaf=>
-    {
+renderLeaves(){
+  return renderedLeaves = this.state.fallingLeaves.map( leaf=>{
       return <plane 
               position={{x:leaf.x , y: leaf.y, z:leaf.z}}
               scale={0.2}  
               />
     }
     )
+}
 ```
 {% endraw %}
 
-This example goes over the elements of the `fallingLeaves` array running the same function with each, this array is of type `vector3Component` so each element in the array has values for *x*, *y* and *z* coordinates. The function that runs for each element in the array returns a plane entity that uses the position stored in the array.
+This example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `vector3Component` so each element in it has values for *x*, *y* and *z* coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
 
 
 
@@ -184,20 +185,20 @@ You can combine a `map` or a `forEach` operation with a `filter` operation to on
 
 {% raw %}
 ```tsx
- const renderedLeaves = this.state.fallingLeaves
+renderLeaves(){
+ return renderedLeaves = this.state.fallingLeaves
   .filter(pos => pos.x >0 )
-  .map( leaf=>
-    {
+  .map( leaf=>{
       return <plane 
               position={{x:leaf.x , y: leaf.y, z:leaf.z}}
               scale={0.2}  
               />
-    }
-    )
+    })
+}
 ```
 {% endraw %}
 
-This example is like the one used above, but it first filters the `fallingLeaves` array to only handle leaves that have a *x* position greater than 0. The `fallingLeaves` array is of type `vector3Component`, so each element in the array has values for *x*, *y* and *z* coordinates. 
+This example is like the one above, but it first filters the `fallingLeaves` array to only handle leaves that have a *x* position greater than 0. The `fallingLeaves` array is of type `vector3Component`, so each element in the array has values for *x*, *y* and *z* coordinates.
 
 
 ### The forEach operation
@@ -207,25 +208,27 @@ The `forEach` operation runs a same function on every element of the array.
 
 {% raw %}
 ```tsx
-addFallingLeaves(){
-  var leavesToAdd:Vector3Component[] = this.state.fallingLeaves;
-  this.state.trees.forEach(tree => {
-    const xOff = tree.x + Math.random() - 0.5;
-    const zOff = tree.z + Math.random() - 0.5 ;  
-    leavesToAdd.push( {x:tree.x + xOff , y:4, z:tree.z + zOff});
-  })
-  this.setState({fallingLeaves: leavesToAdd});
+renderLeaves()
+{
+  var leaves:ISimplifiedNode[] = [];
+  this.state.fallingLeaves.forEach( leaf=>{
+      leaves.push( <plane 
+                    position={{x:leaf.x , y: leaf.y, z:leaf.z}}
+                    scale={0.2}  
+                    />
+       );
+    });
+    return leaves;
 }
 ```
 {% endraw %}
 
-This example goes over the elements of the `trees` array running the same function with each, this array is of type `vector3Component` so each element in the array has values for *x*, *y* and *z* coordinates. The function that runs for each element in the array pushes a new set of randomized coordinates to the leavesToAdd array.
+Like the example used for the map operator, this example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `vector3Component` so each element in it has values for *x*, *y* and *z* coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
  
-> Note: If the function performed by forEach includes a `return` statement, this overrides the original array. Keep in mind that when dealing with a variable from the scene state, you can't change its value by setting it directly. You must always change the value of a scene state variable through the `this.setState()` operation.
+The function performed by the `ForEach()` function doesnt' have a `return` statement. If it did, it would overwrite the content of the `this.state.fallingLeaves` array. Instead, we create a new array called `leaves` and push elements to it, then we return the full array that at the end.
 
-<!---
+> Note: Keep in mind that when dealing with a variable from the scene state, you can't change its value by setting it directly. You must always change the value of a scene state variable through the `this.setState()` operation.
 
--->
 
 ## Keep the render function readable
 
