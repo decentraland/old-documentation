@@ -154,7 +154,7 @@ dcl preview
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
-For more about what you can see in a scene preview, and instructions for how to run a preview of a remote scene, see [preview your scene]({{ site.baseurl }}{% post_url /building-scenes/2018-04-21-preview-scene %}).
+For more about what you can see in a scene preview, and instructions for how to run a preview of a remote scene, see [preview your scene]({{ site.baseurl }}{% post_url /building-scenes/2018-01-04-preview-scene %}).
 
 
 ## Edit your scene
