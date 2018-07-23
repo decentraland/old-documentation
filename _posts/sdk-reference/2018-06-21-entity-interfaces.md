@@ -11,27 +11,27 @@ set: sdk-reference
 set_order: 4
 ---
 
-
 ## Introduction
 
-Entities are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All entities share the same base constructor, they all have a tag, attributes, and children entitiies. 
+Entities are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All entities share the same base constructor, they all have a tag, attributes, and children entitiies.
 
-`<entity>` is the base element of Decentraland, all elements are built by extending the base `entity` object. An `<entity>` can contain several components, each component introduces attributes that modify the entity in different ways. For example, you can include the `color` component on an entity to set its color, or include the `ignoreCollision` component to change how it reponds to collisions with other entities.
 
-> Tip: When editing the code via a source code editor (like Visual Studio Code or Atom), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and pressing *Ctrl + Space bar*.
+`<entity>` is the base element of Decentraland, all elements are built by extending the base `entity` object. An `<entity>` can contain several components, each component introduces attributes that modify the entity in different ways. For example, you can include the `color` component on an entity to set its color, or include the `withCollisions` component to make it collidable.
 
+> Tip: When editing the code via a source code editor (like Visual Studio Code or Atom), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and pressing _Ctrl + Space bar_.
 
 An entity can have other entities as children, these inherit the components from the parent. If a parent entity is positioned, scaled or rotated, its children are also affected. Thanks to this, we can arrange entities into trees.
 
 ```ts
 interface IEntity {
-  tag: string;                 // name of the entity
-  attributes: Dictionary<any>; // dictionary of attributes a.k.a.: properties
-  children: IEntity[];         // children entities
+  /** name of the entity */
+  tag: string;
+  /** dictionary of attributes a.k.a.: properties */
+  attributes: Dictionary<any>;
+  /** children entities */
+  children: IEntity[];
 }
 ```
-
-
 
 ## Box
 
@@ -40,6 +40,7 @@ Creates a cube geometry.
 Example:
 
 {% raw %}
+
 ```tsx
 <box 
   position={{ x: 5, y: 0, z: 2 }} 
@@ -47,19 +48,19 @@ Example:
   scale={2} 
 />
 ```
-{% endraw %}
 
+{% endraw %}
 
 Interface reference:
 
 ```tsx
 interface BoxEntity extends BaseEntity {
   /** Color of the vertices */
-  color?: string
+  color?: string;
   /** Material selector */
-  material?: string
+  material?: string;
   /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean
+  ignoreCollisions?: boolean;
 }
 ```
 
@@ -69,136 +70,110 @@ Creates a sphere geometry.
 
 Example:
 
-
 {% raw %}
+
 ```tsx
-<sphere 
-  position={{ x: 5, y: 0, z: 2 }} 
-  color="#ff00aa" 
-  scale={2} 
-/>
+<sphere position={{ x: 5, y: 0, z: 2 }} color="#ff00aa" scale={2} />
 ```
+
 {% endraw %}
 
 Interface reference:
 
-
 ```tsx
 interface SphereEntity extends BaseEntity {
   /** Color of the vertices */
-  color?: string
+  color?: string;
   /** Material selector */
-  material?: string
+  material?: string;
   /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean
+  ignoreCollisions?: boolean;
 }
-
 ```
-
 
 ## Plane
 
 Creates a plane geometry.
 
-
 Example:
 
 {% raw %}
+
 ```tsx
-<plane 
-  position={{ x: 5, y: 0, z: 2 }} 
-  color="#ff00aa" 
-  scale={{ x: 10, y: 5, z: 1 }} 
-/>
+<plane position={{ x: 5, y: 0, z: 2 }} color="#ff00aa" scale={{ x: 10, y: 5, z: 1 }} />
 ```
+
 {% endraw %}
 
 Interface reference:
 
 {% raw %}
+
 ```tsx
 interface PlaneEntity extends BaseEntity {
   /** Color of the vertices */
-  color?: string
+  color?: string;
 
   /** Material selector */
-  material?: string
+  material?: string;
 
   /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean
+  ignoreCollisions?: boolean;
 }
 ```
+
 {% endraw %}
 
 ## Cylinder and Cone
 
 Creates a cone geometry. A cylinder is defined as a cone with the same base and top radius.
 
-
-
 Example cone:
 
 ```tsx
-  <cone
-    radiusTop={0}
-    radiusBottom={1}
-    position={vector}
-    color="#ff00aa"
-    scale={2}
-  />
+<cone radiusTop={0} radiusBottom={1} position={vector} color="#ff00aa" scale={2} />
 ```
-
 
 Example cylinder:
 
 ```tsx
-  <cylinder
-    openEnded
-    arc={180}
-    radius={0.5}    
-    position={vector}
-    color="#ff00aa"
-    scale={2}
-  />
+<cylinder openEnded arc={180} radius={0.5} position={vector} color="#ff00aa" scale={2} />
 ```
-
-
 
 Interface reference:
 
 ```tsx
 interface CylinderEntity extends BaseEntity {
   /** Color of the vertices */
-  color?: string
+  color?: string;
 
   /** Material selector */
-  material?: string
+  material?: string;
 
   /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean
+  ignoreCollisions?: boolean;
 
   /** Radius (meters) */
-  radius?: number
+  radius?: number;
 
   /** How much of the arc should be rendered, 360 by default (degrees) */
-  arc?: number
+  arc?: number;
 
   /** Radius of the top face (meters) */
-  radiusTop?: number
+  radiusTop?: number;
 
   /** Radius of the bottom face (meters) */
-  radiusBottom?: number
+  radiusBottom?: number;
 
   /** Radial segments of the geometry. 4 will render a tetrahedron. */
-  segmentsRadial?: number
+  segmentsRadial?: number;
 
   /** Vertical segments of the geometry */
-  segmentsHeight?: number
+  segmentsHeight?: number;
 
   /** Render caps */
-  openEnded?: boolean
+  openEnded?: boolean;
 }
-
 ```
 
 ## glTF models
@@ -210,71 +185,68 @@ The `gltf-model` entity loads a 3D model using a glTF file. It supports both `.g
 
 > `.gltf` is a more human-readable format, `.glb` is a more compact version of the same.
 
-
 Simple example:
 
 {% raw %}
+
 ```tsx
-  <gltf-model
-    position={{ x: 5, y: 3, z: 5 }}
-    scale={0.5}
-    src="models/shark_anim.gltf"
-  />
+<gltf-model position={{ x: 5, y: 3, z: 5 }} scale={0.5} src="models/shark_anim.gltf" />
 ```
+
 {% endraw %}
 
 Example with animations:
 
 {% raw %}
+
 ```tsx
-  <gltf-model
-    position={{ x: 5, y: 3, z: 5 }}
-    scale={0.5}
-    src="models/shark_anim.gltf"
-    skeletalAnimation={[
-      { clip: 'shark_skeleton_bite', playing: false },
-      { clip: 'shark_skeleton_swim', weight: 0.2, playing: true }
-    ]}
-  />
+<gltf-model
+  position={{ x: 5, y: 3, z: 5 }}
+  scale={0.5}
+  src="models/shark_anim.gltf"
+  skeletalAnimation={[
+    { clip: "shark_skeleton_bite", playing: false },
+    { clip: "shark_skeleton_swim", weight: 0.2, playing: true }
+  ]}
+/>
 ```
+
 {% endraw %}
 
 Interface reference:
-
 
 ```tsx
 interface GltfEntity extends BaseEntity {
   /**
    * The source URL of the .gltf or .glb model, required
    */
-  src: string
+  src: string;
 
   /**
    * List of weighted skeletal animations
    */
-  skeletalAnimation?: Array<SkeletalAnimation>
+  skeletalAnimation?: Array<SkeletalAnimation>;
 }
 
 interface SkeletalAnimation {
   /**
    * Name or index of the animation in the model
    */
-  clip: string | number
+  clip: string | number;
   /**
    * Does the animation loop?, default: true
    */
-  loop?: boolean
+  loop?: boolean;
   /**
    * Weight of the animation, values from 0 to 1, used to blend several animations. default: 1
    */
-  weight?: number
+  weight?: number;
 
   /**
    * Is the animation playing? default: true
    */
-  playing?: boolean
+  playing?: boolean;
 }
-
 ```
 
 > Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
@@ -286,64 +258,64 @@ The `BaseEntity` interface is the most flexible of all, as it comes with no pred
 Example:
 
 {% raw %}
+
 ```tsx
   <entity 
     position={{ x: 2, y: 1, z: 0 }} 
     scale={{ x: 2, y: 2, z: 0.05 }}
   />
 ```
+
 {% endraw %}
 
-You add a base entity to a scene via the XML tag `<entity>`. You can add an entity with no components to a scene to act as a container. The `<entity>` element has no components by default, so it's invisible and has no direct effect on the scene, but it can be positioned, scaled, and rotated and it can contain other child entities in it. Child entities are scaled, rotated, and positioned relative to the parent entity. 
+You add a base entity to a scene via the XML tag `<entity>`. You can add an entity with no components to a scene to act as a container. The `<entity>` element has no components by default, so it's invisible and has no direct effect on the scene, but it can be positioned, scaled, and rotated and it can contain other child entities in it. Child entities are scaled, rotated, and positioned relative to the parent entity.
 
 In dynamic scenes, it's also useful to include entities with no components as wrappers to group entities into a single object that can then be passed as an input for certain functions.
 
 Interface reference:
 
 ```tsx
-
 interface BaseEntity {
   /**
    * Moves the entity center to a given point in the scene or relative to a parent entity
    */
-  position?: Vector3
+  position?: Vector3;
 
   /**
    * Rotates the entity
    * The `x,y,z` components are degrees (0°-360°), and every component represents the rotation in that axis
    */
-  rotation?: Vector3
+  rotation?: Vector3;
 
   /**
    * Scales the entity in three dimensions
    */
-  scale?: Vector3 | number
+  scale?: Vector3 | number;
 
   /**
    * Defines if the entity and its children should be rendered
    */
-  visible?: string
+  visible?: string;
 
   /**
    * The ID is used to attach events and identify the entity in the scene tree
    */
-  id?: string
+  id?: string;
 
   /**
    * Used to differentiate similar entities in lists
    */
-  key?: string | number
-
+  key?: string | number;
 
   /**
    * Used to animate the transitions in the same fashion as CSS
    */
   transition?: {
-    position?: TransitionValue
-    rotation?: TransitionValue
-    scale?: TransitionValue
-    color?: TransitionValue
-  }
+    position?: TransitionValue;
+    rotation?: TransitionValue;
+    scale?: TransitionValue;
+    color?: TransitionValue;
+  };
 
   /**
    * Billboard defines a behavior that makes the entity face the camera in any moment.
@@ -357,113 +329,104 @@ interface BaseEntity {
    * To combine billboard types, write those in the form:
    *   BillboardModes.BILLBOARDMODE_X | BillboardModes.BILLBOARDMODE_Y
    */
-  billboard?: IBillboardModes
+  billboard?: IBillboardModes;
 
-
-  
   /**
-  * Adds spatial sound to the entities
-  */
-  sound?: SoundComponent
+   * Adds spatial sound to the entities
+   */
+  sound?: SoundComponent;
 }
 
 /**
  * This data type defines a three component vector. It is used for scaling, positioning and rotations
  */
 interface Vector3 {
-  x: number
-  y: number
-  z: number
+  x: number;
+  y: number;
+  z: number;
 }
 
 /**
  * This data type defines the configurations for the animations of some components like "position".
  */
 interface TransitionValue {
-  duration: number
-  timing?: TimingFunction
-  delay?: number
+  duration: number;
+  timing?: TimingFunction;
+  delay?: number;
 }
 
 type TimingFunction =
-    'linear'
-  | 'ease-in'
-  | 'ease-out'
-  | 'ease-in-out'
-  | 'quadratic-in'
-  | 'quadratic-out'
-  | 'quadratic-inout'
-  | 'cubic-in'
-  | 'cubic-out'
-  | 'cubic-inout'
-  | 'quartic-in'
-  | 'quartic-out'
-  | 'quartic-inout'
-  | 'quintic-in'
-  | 'quintic-out'
-  | 'quintic-inout'
-  | 'sin-in'
-  | 'sin-out'
-  | 'sin-inout'
-  | 'exponential-in'
-  | 'exponential-out'
-  | 'exponential-inout'
-  | 'bounce-in'
-  | 'bounce-out'
-  | 'bounce-inout'
-  | 'elastic-in'
-  | 'elastic-out'
-  | 'elastic-inout'
-  | 'circular-in'
-  | 'circular-out'
-  | 'circular-inout'
-  | 'back-in'
-  | 'back-out'
-  | 'back-inout'
-
+  | "linear"
+  | "ease-in"
+  | "ease-out"
+  | "ease-in-out"
+  | "quadratic-in"
+  | "quadratic-out"
+  | "quadratic-inout"
+  | "cubic-in"
+  | "cubic-out"
+  | "cubic-inout"
+  | "quartic-in"
+  | "quartic-out"
+  | "quartic-inout"
+  | "quintic-in"
+  | "quintic-out"
+  | "quintic-inout"
+  | "sin-in"
+  | "sin-out"
+  | "sin-inout"
+  | "exponential-in"
+  | "exponential-out"
+  | "exponential-inout"
+  | "bounce-in"
+  | "bounce-out"
+  | "bounce-inout"
+  | "elastic-in"
+  | "elastic-out"
+  | "elastic-inout"
+  | "circular-in"
+  | "circular-out"
+  | "circular-inout"
+  | "back-in"
+  | "back-out"
+  | "back-inout";
 
 export type SoundComponent = {
   /** Distance fading model, default: 'linear' */
-  distanceModel?: 'linear' | 'inverse' | 'exponential'
+  distanceModel?: "linear" | "inverse" | "exponential";
   /** Does the sound loop? default: false */
-  loop?: boolean
+  loop?: boolean;
   /** The src of the sound to be played */
-  src: string
+  src: string;
   /** Volume of the sound, values 0 to 1, default: 1 */
-  volume?: number
+  volume?: number;
   /** Used in inverse and exponential distance models, default: 1 */
-  rolloffFactor?: number
+  rolloffFactor?: number;
   /** Is the sound playing?, default: true */
-  playing?: boolean
-}
-
-
+  playing?: boolean;
+};
 ```
-
 
 ## Obj
 
 > WARNING: We only support the `obj-model` interface for legacy compatibility. We will probably get rid of it in the future, please use GLTF when
-possible.
+> possible.
 
-Example: 
+Example:
 
 ```tsx
 <obj-model src="models/shark.obj" />
 ```
 
-
 Interface reference:
-
 
 ```tsx
 interface ObjEntity extends BaseEntity {
   /**
    * The source URL of the .obj model, required
    */
-  src: string
+  src: string;
 }
- 
 ```
 
 ## Materials
@@ -474,15 +437,14 @@ Materials can then be applied to any entity that is a child of MaterialEntity (w
 
 Example:
 
-
 ```tsx
-  <material 
-    id="reusable_material" 
-    albedo-color="materials/wood.png" 
-    roughness="0.5" 
+  <material
+    id="reusable_material"
+    albedo-color="materials/wood.png"
+    roughness="0.5"
     />
-  <sphere 
-    material="#reusable_material" 
+  <sphere
+    material="#reusable_material"
     />
 ```
 
@@ -491,125 +453,185 @@ This example shows the definition of a new material and then a shpere entity tha
 Interface reference:
 
 ```tsx
+export type MaterialDescriptorEntity = {
+  /**
+   * Id of the material, it will be used to pick this material from other entities
+   */
+  id: string;
 
-   export type MaterialDescriptorEntity = {
-      /**
-       * Id of the material, it will be used to pick this material from other entities
-       */
-      id: string
-      /**
-       * Opacity.
-       */
-      alpha?: number
-      /**
-       * The color of a material in ambient lighting.
-       */
-      ambientColor?: ColorComponent
-      /**
-       * AKA Diffuse Color in other nomenclature.
-       */
-      albedoColor?: ColorComponent
-      /**
-       * AKA Specular Color in other nomenclature.
-       */
-      reflectivityColor?: ColorComponent
-      /**
-       * The color reflected from the material.
-       */
-      reflectionColor?: ColorComponent
-      /**
-       * The color emitted from the material.
-       */
-      emissiveColor?: ColorComponent
-      /**
-       * Specifies the metallic scalar of the metallic/roughness workflow.
-       * Can also be used to scale the metalness values of the metallic texture.
-       */
-      metallic?: number
-      /**
-       * Specifies the roughness scalar of the metallic/roughness workflow.
-       * Can also be used to scale the roughness values of the metallic texture.
-       */
-      roughness?: number
-      /**
-       * Texture applied as material.
-       */
-      albedoTexture?: string
-      /**
-       * Texture applied as opacity. Default: the same texture used in albedoTexture.
-       */
-      alphaTexture?: string
-      /**
-       * Emmisive texture.
-       */
-      emisiveTexture?: string
-      /**
-       * Stores surface normal data used to displace a mesh in a texture.
-       */
-      bumpTexture?: string
-      /**
-       * Stores the refracted light information in a texture.
-       */
-      refractionTexture?: string
-      /**
-       * Intensity of the direct lights e.g. the four lights available in scene.
-       * This impacts both the direct diffuse and specular highlights.
-       */
-      directIntensity?: number
-      /**
-       * Intensity of the emissive part of the material.
-       * This helps controlling the emissive effect without modifying the emissive color.
-       */
-      emissiveIntensity?: number
-      /**
-       * Intensity of the environment e.g. how much the environment will light the object
-       * either through harmonics for rough material or through the refelction for shiny ones.
-       */
-      environmentIntensity?: number
-      /**
-       * This is a special control allowing the reduction of the specular highlights coming from the
-       * four lights of the scene. Those highlights may not be needed in full environment lighting.
-       */
-      specularIntensity?: number
-      /**
-       * AKA Glossiness in other nomenclature.
-       */
-      microSurface?: number
-      /**
-       * If sets to true, disables all the lights affecting the material.
-       */
-      disableLighting?: boolean
-    }
+  /**
+   * Opacity.
+   */
+  alpha?: number;
 
-    export type MaterialEntity = BaseEntity & {
-      /**
-       * Color of the vertices
-       */
-      color?: string | number
+  /**
+   * The color of a material in ambient lighting.
+   */
+  ambientColor?: ColorComponent;
 
-      /**
-       * Material selector
-       */
-      material?: string
+  /**
+   * AKA Diffuse Color in other nomenclature.
+   */
+  albedoColor?: ColorComponent;
 
-      /**
-       * Set to true to turn off the collider for the entity.
-       */
-      ignoreCollisions?: boolean
-    }
+  /**
+   * AKA Specular Color in other nomenclature.
+   */
+  reflectivityColor?: ColorComponent;
 
+  /**
+   * The color reflected from the material.
+   */
+  reflectionColor?: ColorComponent;
 
+  /**
+   * The color emitted from the material.
+   */
+  emissiveColor?: ColorComponent;
+
+  /**
+   * Specifies the metallic scalar of the metallic/roughness workflow.
+   * Can also be used to scale the metalness values of the metallic texture.
+   */
+  metallic?: number;
+
+  /**
+   * Specifies the roughness scalar of the metallic/roughness workflow.
+   * Can also be used to scale the roughness values of the metallic texture.
+   */
+  roughness?: number;
+
+  /**
+   * Texture applied as material.
+   */
+  albedoTexture?: string;
+
+  /**
+   * Texture applied as opacity. Default: the same texture used in albedoTexture.
+   */
+  alphaTexture?: string;
+
+  /**
+   * Emmisive texture.
+   */
+  emisiveTexture?: string;
+
+  /**
+   * Stores surface normal data used to displace a mesh in a texture.
+   */
+  bumpTexture?: string;
+
+  /**
+   * Stores the refracted light information in a texture.
+   */
+  refractionTexture?: string;
+
+  /**
+   * Intensity of the direct lights e.g. the four lights available in scene.
+   * This impacts both the direct diffuse and specular highlights.
+   */
+  directIntensity?: number;
+
+  /**
+   * Intensity of the emissive part of the material.
+   * This helps controlling the emissive effect without modifying the emissive color.
+   */
+  emissiveIntensity?: number;
+
+  /**
+   * Intensity of the environment e.g. how much the environment will light the object
+   * either through harmonics for rough material or through the refelction for shiny ones.
+   */
+  environmentIntensity?: number;
+
+  /**
+   * This is a special control allowing the reduction of the specular highlights coming from the
+   * four lights of the scene. Those highlights may not be needed in full environment lighting.
+   */
+  specularIntensity?: number;
+
+  /**
+   * AKA Glossiness in other nomenclature.
+   */
+  microSurface?: number;
+
+  /**
+   * If sets to true, disables all the lights affecting the material.
+   */
+  disableLighting?: boolean;
+
+  /**
+   * Sets the transparency mode of the material.
+   *
+   * | Value | Type                                |
+   * | ----- | ----------------------------------- |
+   * | 0     | OPAQUE  (default)                   |
+   * | 1     | ALPHATEST                           |
+   * | 2     | ALPHABLEND                          |
+   * | 3     | ALPHATESTANDBLEND                   |
+   */
+  transparencyMode?: ITransparencyModes;
+
+  /**
+   * Does the albedo texture has alpha?
+   */
+  hasAlpha?: boolean;
+};
+
+export type MaterialEntity = BaseEntity & {
+  /**
+   * Color of the vertices
+   */
+  color?: string | number;
+
+  /**
+   * Material selector
+   */
+  material?: string;
+
+  /**
+   * Set to true to turn off the collider for the entity.
+   */
+  ignoreCollisions?: boolean;
+};
+
+export type BasicMaterialEntity = {
+  /**
+   * Id of the material, it will be used to pick this material from other entities
+   */
+  id: string;
+
+  /**
+   * The source of the texture image
+   */
+  texture: string;
+
+  /**
+   * Enabled crisper images based on the provided sampling mode
+   * | Value | Type      |
+   * |-------|-----------|
+   * |     1 | NEAREST   |
+   * |     2 | BILINEAR  |
+   * |     3 | TRILINEAR |
+   */
+  samplingMode?: number;
+
+  /**
+   * A number between 0 and 1.
+   * Any pixel with an alpha lower than this value will be shown as transparent.
+   */
+  alphaTest?: number;
+};
 ```
-
-
 
 ## Creating custom interfaces
 
-You can create your own interface to create entities with customized default behavior and characteristics. To define the interface, create a new *.tsx* file that includes all the components and methods needed to construct and handle the entity.
+You can create your own interface to create entities with customized default behavior and characteristics. To define the interface, create a new _.tsx_ file that includes all the components and methods needed to construct and handle the entity.
 
 For example, the sample below defines an entity type `button`:
 
 {% raw %}
+
 ```tsx
 import { createElement, Vector3Component } from "metaverse-api";
 
@@ -630,9 +652,10 @@ export const Button = (props: IProps) => {
   );
 };
 ```
+
 {% endraw %}
 
-Before you can use this entity type, save it as a *.tsx* file and import it to *scene.tsx*:
+Before you can use this entity type, save it as a _.tsx_ file and import it to _scene.tsx_:
 
 ```tsx
 import { Button } from "./src/Button";
@@ -641,7 +664,9 @@ import { Button } from "./src/Button";
 After importing the file, you can add buttons to a scene by simply writing the following:
 
 {% raw %}
+
 ```tsx
 <Button position={{ x: 0, y: 1.5, z: 0 }} />
 ```
+
 {% endraw %}
