@@ -41,7 +41,7 @@ Texture sizes must use width and height numbers (in pixels) that match the follo
 
 The width and height don't need to have the same number, but they both need to belong to this sequence.
 
-**The recommended size for textures is 512x512**, we have found this to be the optimal size to be transported thru domestic networks and to provide reasonable loading/quality experiences.
+**The recommended size for textures is 512x512**, we have found this to be the optimal size to be transported through domestic networks and to provide reasonable loading/quality experiences.
 
 Examples of other valid sizes:
 
