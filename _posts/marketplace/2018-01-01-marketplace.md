@@ -13,16 +13,16 @@ set_order: 1
 
 ## What is it?
 
-The Marketplace is the go-to place to trade and manage all your Decentraland's assets. 
+The Marketplace is the go-to place to trade and manage all your Decentraland's assets.
 
 Specifically, the Marketplace allows you to:
 
-* **Publish** a parcel of LAND for sale, setting your own price in MANA and an expiration date for the offer.
-* **Buy** a parcel that is for sale.
-* **Name** your parcel and give it a description.
-* **Transfer** your LAND to a different user.
-* **Control** the parcels you own and visualize the contributions you’ve made to districts.
-* **Explore** the world through a map to see who owns what.
+- **Publish** a parcel of LAND for sale, setting your own price in MANA and an expiration date for the offer.
+- **Buy** a parcel that is for sale.
+- **Name** your parcel and give it a description.
+- **Transfer** your LAND to a different user.
+- **Control** the parcels you own and visualize the contributions you’ve made to districts.
+- **Explore** the world through a map to see who owns what.
 
 > Please remember that this is a beta release, and the Marketplace might contain a few bugs. We kindly ask that you protect your personal information, property, and content. If you run into any issues or would like to provide feedback, click on the Intercom Widget right in the Marketplace.
 

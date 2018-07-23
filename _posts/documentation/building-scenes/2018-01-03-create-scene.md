@@ -61,7 +61,7 @@ metadata is optional for building a scene locally, except for scene type.
 
 ### scene.tsx
 
-This [TypeScript (TSX)](https://www.typescriptlang.org/docs/handbook/jsx.html) file contains the code that generates an entity tree, which is what end users of your parcel will see. Below is a basic example of a `scene.tsx` file:
+This file contains the code that generates an entity tree, which is what end users of your parcel will see. Below is a basic example of a `scene.tsx` file:
 
 {% raw %}
 ```tsx
