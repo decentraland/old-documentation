@@ -27,18 +27,19 @@ This SDK is intended to be used by developers or users comfortable working with 
 
 At a very high level, the SDK allows you to do the following:
 
-* Generate a default *project* containing your first scene, the collection of assets needed to render and run your content.
-* Build, test, and preview the content of your scene in your web browser - completely offline, and without having to make any Ethereum transactions or own LAND.
-* Write TypeScript scripts using the API to add interactive and dynamic behavior to your scenes.
-* Upload the content of your scene to [IPFS](https://ipfs.io).
-* Link your LAND with the IPFS URL of the content you have uploaded.
+- Generate a default _project_ containing your first scene, the collection of assets needed to render and run your content.
+- Build, test, and preview the content of your scene in your web browser - completely offline, and without having to make any Ethereum transactions or own LAND.
+- Write TypeScript scripts using the API to add interactive and dynamic behavior to your scenes.
+- Upload the content of your scene to [IPFS](https://ipfs.io).
+- Link your LAND with the IPFS URL of the content you have uploaded.
 
 ### What are scenes?
 
 **Scenes** in Decentraland are the collections of 3D objects, textures, and audio rendered on one or more LAND parcels. Scenes can be:
-* **Dynamic scenes (single player)**  singleplayer scenes built using the SDK that allow a single player to interact with content in the scene. The script is run on a web worker.
-* **Dynamic scenes (multiplayer)** - multiplayer scenes executing the script on a remote server to make it easier to have more than one player interacting with the content and other users in the scene. The server connects with the clients through a WebSockets interface.
-* **Static** - containing only 3D objects and audio
+
+- **Dynamic scenes (single player)** singleplayer scenes built using the SDK that allow a single player to interact with content in the scene. The script is run on a web worker.
+- **Dynamic scenes (multiplayer)** - multiplayer scenes executing the script on a remote server to make it easier to have more than one player interacting with the content and other users in the scene. The server connects with the clients through a WebSockets interface.
+- **Static** - containing only 3D objects and audio
 
 Scenes are created in “projects” using the CLI.
 
@@ -64,11 +65,11 @@ The Decentraland Command Line Interface (CLI) allows you to create, deploy, and 
 
 After generating your new Decentraland scene locally on your own machine, you can immediately begin editing your scene using a text editor of your choice. After testing your scene locally, you can use the CLI to upload your content to IPFS.
 
-For more step-by-step instructions on installing the CLI, please read our   [SDK Quick Start Guide]({{ site.baseurl }}{% post_url /building-scenes/2018-01-01-installation-guide %}) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
+For more step-by-step instructions on installing the CLI, please read our [SDK Quick Start Guide]({{ site.baseurl }}{% post_url /building-scenes/2018-01-01-installation-guide %}) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
 
 ### API
 
-`metaverse-api`  (commonly referred to as the API) is the name for the TypeScript package containing the library of helper methods that allows you to create interactive singleplayer and multiplayer experiences. The API includes methods allowing you to create and manipulate objects on your LAND, in addition to methods that help facilitate in-world transactions between users or other applications.
+`metaverse-api` (commonly referred to as the API) is the name for the TypeScript package containing the library of helper methods that allows you to create interactive singleplayer and multiplayer experiences. The API includes methods allowing you to create and manipulate objects on your LAND, in addition to methods that help facilitate in-world transactions between users or other applications.
 
 ## Elements of the API
 
