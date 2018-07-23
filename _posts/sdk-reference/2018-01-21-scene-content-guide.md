@@ -414,9 +414,10 @@ All entities have collisions disabled by default. Depending on the type of entit
 * To enable collisions in *glTF models*, you can either:
 
   *   Edit them in an external tool like Blender to include a *collission mesh*.
-  *   Overlay an invisible entity with the `withCollisions` component set to `true`.
+  *   Overlay an invisible entity that has `withCollisions` set to `true`.
 
-A *collision mesh* is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision mesh is usually a lot simpler (with less vertices) than the original model.
+A *collision mesh* is an invisible geometry that gets added to a 3D model to define what parts of it can be collided with. Usually this geometry is a lot simpler than the original model, making collisions require less processing power. With a collision mesh you can also intentionally only make parts of a model have collisions, for example you might want the trunk of a tree to have them but not its leaves. glTF files support including collision meshes, keep in mind that these are added to the total number of vertexes in the scene.
+
 
 Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the avatar.
 
