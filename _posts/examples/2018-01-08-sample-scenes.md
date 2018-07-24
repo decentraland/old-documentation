@@ -8,10 +8,10 @@ type: Document
 set: examples
 set_order: 1
 ---
+
 To get you up and running, and to illustrate what kind of experiences you can build using the SDK, we’ve put together some [code and scene examples](https://github.com/decentraland/sample-scenes).
 
 ## Beginner samples
-
 
 ### Static Scene
 
@@ -23,10 +23,8 @@ With this Dynamic Animation, we're demonstrating how to employ simple data bindi
 
 ### Interactive Content
 
-
 This simple example shows a scene that you can interact with by opening and closing a door. Clicking the door creates an [event]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-03-event-handling %}), which changes the scene's state. The scene's state then changes the rotation of the door, which rotates smoothly thanks to a transition.
 [Link](https://github.com/decentraland/sample-scene-script)
-
 
 ### Skeletal Animations
 
@@ -42,21 +40,17 @@ This example features [sound]({{ site.baseurl }}{% post_url /sdk-reference/2018-
 
 In this example, you can interact with two video players. One loads the video company into the scene's assets, the other streams it from an external source. You can also pause, stop and change the volume of the video players. [Link](https://github.com/decentraland/sample-scene-video-support)
 
-
 ### Multiplayer Content
 
 In this example, based on the door example in the beginner samples, you interact with a door by opening and closing it, while another player is in the same room seeing the door's state changes. This simple example is built to give you a glimpse into how a multi-user environment works where multiple users interact with the same entities. [Link](https://github.com/decentraland/sample-scene-server)
 
 Note: A similar sample is discussed in greater detail in a [blogpost](https://blog.decentraland.org/sdk-highlight-building-an-underwater-landscape-5bfcce73ff35).
 
-
 ## Advanced samples
 
 ### Simple Memory Game
 
 In this example, that's described in greater detail in a [blogpost](https://blog.decentraland.org/building-a-memory-game-using-decentralands-sdk-87ee35968f8d), you play with a "Simon Says" game. This game is a good example of how to add more complex logic into a scene and how to change its state based on how the user interacts with it. [link](https://github.com/decentraland/sample-scene-memory-game)
-
-
 
 ### Pay to open
 

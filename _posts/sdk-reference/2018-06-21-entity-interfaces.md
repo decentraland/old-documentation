@@ -41,11 +41,7 @@ Example:
 {% raw %}
 
 ```tsx
-<box 
-  position={{ x: 5, y: 0, z: 2 }} 
-  color="#ff00aa" 
-  scale={2} 
-/>
+<box position={{ x: 5, y: 0, z: 2 }} color="#ff00aa" scale={2} />
 ```
 
 {% endraw %}
@@ -99,7 +95,11 @@ Example:
 {% raw %}
 
 ```tsx
-<plane position={{ x: 5, y: 0, z: 2 }} color="#ff00aa" scale={{ x: 10, y: 5, z: 1 }} />
+<plane
+  position={{ x: 5, y: 0, z: 2 }}
+  color="#ff00aa"
+  scale={{ x: 10, y: 5, z: 1 }}
+/>
 ```
 
 {% endraw %}
@@ -130,13 +130,26 @@ Creates a cone geometry. A cylinder is defined as a cone with the same base and 
 Example cone:
 
 ```tsx
-<cone radiusTop={0} radiusBottom={1} position={vector} color="#ff00aa" scale={2} />
+<cone
+  radiusTop={0}
+  radiusBottom={1}
+  position={vector}
+  color="#ff00aa"
+  scale={2}
+/>
 ```
 
 Example cylinder:
 
 ```tsx
-<cylinder openEnded arc={180} radius={0.5} position={vector} color="#ff00aa" scale={2} />
+<cylinder
+  openEnded
+  arc={180}
+  radius={0.5}
+  position={vector}
+  color="#ff00aa"
+  scale={2}
+/>
 ```
 
 Interface reference:
@@ -189,7 +202,11 @@ Simple example:
 {% raw %}
 
 ```tsx
-<gltf-model position={{ x: 5, y: 3, z: 5 }} scale={0.5} src="models/shark_anim.gltf" />
+<gltf-model
+  position={{ x: 5, y: 3, z: 5 }}
+  scale={0.5}
+  src="models/shark_anim.gltf"
+/>
 ```
 
 {% endraw %}
@@ -205,7 +222,11 @@ Example with animations:
   src="models/shark_anim.gltf"
   skeletalAnimation={[
     { clip: "shark_skeleton_bite", playing: false },
-    { clip: "shark_skeleton_swim", weight: 0.2, playing: true }
+    {
+      clip: "shark_skeleton_swim",
+      weight: 0.2,
+      playing: true
+    }
   ]}
 />
 ```
@@ -259,10 +280,7 @@ Example:
 {% raw %}
 
 ```tsx
-  <entity 
-    position={{ x: 2, y: 1, z: 0 }} 
-    scale={{ x: 2, y: 2, z: 0.05 }}
-  />
+<entity position={{ x: 2, y: 1, z: 0 }} scale={{ x: 2, y: 2, z: 0.05 }} />
 ```
 
 {% endraw %}
@@ -437,13 +455,13 @@ Materials can then be applied to any entity that is a child of MaterialEntity (w
 Example:
 
 ```tsx
-  <material 
-    id="reusable_material" 
-    albedo-color="materials/wood.png" 
-    roughness="0.5" 
+  <material
+    id="reusable_material"
+    albedo-color="materials/wood.png"
+    roughness="0.5"
     />
-  <sphere 
-    material="#reusable_material" 
+  <sphere
+    material="#reusable_material"
     />
 ```
 

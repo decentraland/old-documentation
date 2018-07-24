@@ -45,7 +45,11 @@ All entities can have a position, a rotation and a scale. These can be easily se
 {% raw %}
 
 ```tsx
-<box position={{ x: 5, y: 3, z: 5 }} rotation={{ x: 180, y: 90, z: 0 }} scale={0.5} />
+<box
+  position={{ x: 5, y: 3, z: 5 }}
+  rotation={{ x: 180, y: 90, z: 0 }}
+  scale={0.5}
+/>
 ```
 
 {% endraw %}
@@ -81,7 +85,12 @@ The example below shows a box entity that is configured to rotate smoothly.
 {% raw %}
 
 ```tsx
-<box rotation={currentRotation} transition={{ rorotation: { duration: 1000, timing: "ease-in" } }} />
+<box
+  rotation={currentRotation}
+  transition={{
+    rorotation: { duration: 1000, timing: "ease-in" }
+  }}
+/>
 ```
 
 {% endraw %}
@@ -125,8 +134,17 @@ In the example below, a transition is applied to the rotation of an invisible en
 {% raw %}
 
 ```tsx
-<entity rotation={currentRotation} transition={{ rotation: { duration: 1000, timing: "ease-in" } }}>
-  <box id="door" scale={{ x: 1, y: 2, z: 0.05 }} position={{ x: 0.5, y: 1, z: 0 }} />
+<entity
+  rotation={currentRotation}
+  transition={{
+    rotation: { duration: 1000, timing: "ease-in" }
+  }}
+>
+  <box
+    id="door"
+    scale={{ x: 1, y: 2, z: 0.05 }}
+    position={{ x: 0.5, y: 1, z: 0 }}
+  />
 </entity>
 ```
 
@@ -182,7 +200,11 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 {% raw %}
 
 ```tsx
-<gltf-model position={{ x: 5, y: 3, z: 5 }} scale={0.5} src="models/myModel.gltf" />
+<gltf-model
+  position={{ x: 5, y: 3, z: 5 }}
+  scale={0.5}
+  src="models/myModel.gltf"
+/>
 ```
 
 {% endraw %}
@@ -206,6 +228,7 @@ In a dynamic scene, you reference an animation by its armature name, an undersco
 The example below imports a model that includes animations and configures them:
 
 {% raw %}
+
 ```tsx
 <gltf-model
   position={{ x: 5, y: 3, z: 5 }}
@@ -213,7 +236,11 @@ The example below imports a model that includes animations and configures them:
   src="models/shark_anim.gltf"
   skeletalAnimation={[
     { clip: "shark_skeleton_bite", playing: false },
-    { clip: "shark_skeleton_swim", weight: 0.2, playing: true }
+    {
+      clip: "shark_skeleton_swim",
+      weight: 0.2,
+      playing: true
+    }
   ]}
 />
 ```
