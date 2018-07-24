@@ -106,3 +106,99 @@ const myWallet = ‘0x0123456789...’;
 ```
 
 The example above first requires the user to accept a transaction, if the user accepts it, then the function will wait until the transaction is effectively mined by a miner in the Ethereum network. Once that happens the isDoorClosed variable in the scene state is changed.
+
+## Signing messages
+
+There could be a case where you want to add another layer of protection. If your script wants to communicate with an external service or API, you can let the user sign the information he is being requested to send.
+
+Messages that you want to sign needs to come in a specific formatted text to match our safety precautions. They have to include “Decentraland signed header” at the top. This way we cut out the possibility of any mismanagement of user’s wallet.
+
+Messages should come in this format: 
+
+```
+# DCL Signed message
+First: something
+Second: another thing
+Key: value
+Timestamp: 1512345678
+```
+
+To sign a message, you first need to convert it into object with `convertMessageToObject` function and then you can proceed to signing:
+
+```tsx
+const messageToSign = `# DCL Signed message
+Attacker: 10
+Defender: 123
+Timestamp: 1512345678`
+
+const convertedMessage = await this.eth!.convertMessageToObject(messageToSign)
+const { message, signature } = await this.eth!.signMessage(convertedMessage)
+// … do something with message and signature
+```
+
+### Checking if message is correct
+
+To check if the message user signed is the one that you want to send, you can use our utility function from `decentraland-eth` package:
+
+```tsx
+import { eth } from 'decentraland-eth'
+
+// inside your scene
+await eth.utils.toHex(messageToSign)
+
+// (...)
+
+const { message, signature } = await this.eth!.signMessage(convertedMessage)
+
+const messageHex = await eth.utils.toHex(messageToSign)
+const isEqual = message === messageHex
+console.log(‘Is the message correct?’, isEqual)
+```
+
+### Example:
+
+```tsx
+import { inject, EthereumController, createElement, ScriptableScene } from 'metaverse-api/src'
+import { eth } from 'decentraland-eth'
+
+const messageToSign = `# DCL Signed message
+Attacker: 10
+Defender: 123
+Timestamp: 1512345678`
+
+export default class SignMessage extends ScriptableScene {
+ @inject('experimentalEthereumController')
+ eth: EthereumController | null = null
+
+ async sceneDidMount() {
+   this.subscribeTo('click', async e => {
+     if (e.elementId === 'button-sign') {
+       await this.signMessage()
+     }
+   })
+ }
+
+ async signMessage() {
+   const convertedMessage = await this.eth!.convertMessageToObject(messageToSign)
+   const { message, signature } = await this.eth!.signMessage(convertedMessage)
+
+   console.log({ message, signature })
+
+   const messageHex = await eth.utils.toHex(messageToSign)
+
+   const isEqual = message === messageHex
+   console.log(‘Is the message correct?’, isEqual)
+ }
+
+ async render() {
+   return (
+     <scene position={{ x: 5, y: 0, z: 5 }}>
+       <entity position={{ x: -3, y: 1.4, z: -3 }}>
+         <plane id="button-sign" scale={{ x: 0.8, y: 0.2, z: 1 }} color="#bada55" />
+         <text value="Sign message" fontSize={60} color="black" />
+       </entity>
+     </scene>
+   )
+ }
+
+```
