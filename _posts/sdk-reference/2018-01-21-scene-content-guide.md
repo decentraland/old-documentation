@@ -40,15 +40,16 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 
 ## Entity positioning
 
-All entities can have a *position*, a *rotation* and a *scale*. These can be easily set as components, as shown below:
+All entities can have a _position_, a _rotation_ and a _scale_. These can be easily set as components, as shown below:
 
 {% raw %}
+
 ```tsx
 <box
-    position={{ x: 5, y: 3, z: 5 }}
-    rotation={{ x: 180, y: 90, z: 0 }}
-    scale={0.5}
-  />
+  position={{ x: 5, y: 3, z: 5 }}
+  rotation={{ x: 180, y: 90, z: 0 }}
+  scale={0.5}
+/>
 ```
 
 {% endraw %}
@@ -77,16 +78,17 @@ You can also set a position, rotation and scale for the entire `<scene/>` entity
 
 ### Transitions
 
-In dynamic scenes, you can configure an entity to affect the way in which it moves. By default, all changes to an entity are rendered as a sudden shift from one state to another. By adding a *transition*, you can make the change be gradual and more natural.
+In dynamic scenes, you can configure an entity to affect the way in which it moves. By default, all changes to an entity are rendered as a sudden shift from one state to another. By adding a _transition_, you can make the change be gradual and more natural.
 
 The example below shows a box entity that is configured to rotate smoothly.
 
 {% raw %}
+
 ```tsx
- <box 
-    rotation={currentRotation}
-    transition={{ rorotation: { duration: 1000, timing: "ease-in" }}}
-  />
+<box
+  rotation={currentRotation}
+  transition={{ rotation: { duration: 1000, timing: "ease-in" } }}
+/>
 ```
 
 {% endraw %}
@@ -131,8 +133,15 @@ In the example below, a transition is applied to the rotation of an invisible en
 {% raw %}
 
 ```tsx
-<entity rotation={currentRotation} transition={{ rotation: { duration: 1000, timing: "ease-in" } }}>
-  <box id="door" scale={{ x: 1, y: 2, z: 0.05 }} position={{ x: 0.5, y: 1, z: 0 }} />
+<entity
+  rotation={currentRotation}
+  transition={{ rotation: { duration: 1000, timing: "ease-in" } }}
+>
+  <box
+    id="door"
+    scale={{ x: 1, y: 2, z: 0.05 }}
+    position={{ x: 0.5, y: 1, z: 0 }}
+  />
 </entity>
 ```
 
@@ -140,40 +149,40 @@ In the example below, a transition is applied to the rotation of an invisible en
 
 ### Turn to face the avatar
 
-You can set an entity to act as a *billboard*, this means that it will always rotate to face the user. This was a common technique used in 3D games of the 90s, where most entities were planes that always faced the player, but the same can be used with and 3D model.
+You can set an entity to act as a _billboard_, this means that it will always rotate to face the user. This was a common technique used in 3D games of the 90s, where most entities were planes that always faced the player, but the same can be used with and 3D model.
 
 {% raw %}
+
 ```tsx
- <box 
-    color={currentColor}
-    billboard={7}
-  />
+<box color={currentColor} billboard={7} />
 ```
+
 {% endraw %}
 
 You must provide this setting with a number that selects between the following modes:
 
-*  0: No movement on any axis
-*  1: Only move in the **X** axis, the rotation on other axis is fixed.
-*  2: Only move in the **Y** axis, the rotation on other axis is fixed.
-*  4: Only move in the **Z** axis, the rotation on other axis is fixed.
-*  7: Rotate on all axis to follow the user.
-
+- 0: No movement on any axis
+- 1: Only move in the **X** axis, the rotation on other axis is fixed.
+- 2: Only move in the **Y** axis, the rotation on other axis is fixed.
+- 4: Only move in the **Z** axis, the rotation on other axis is fixed.
+- 7: Rotate on all axis to follow the user.
 
 If the entitiy is configured with both a specific rotation and a billboard setting, it uses the rotation set on by its billboard behavior.
 
 ### Turn to face a position
 
-You can set an entity to face a specific position in the scene using *lookAt*. This is a way to set the rotation of an entity without having to deal with angles.
+You can set an entity to face a specific position in the scene using _lookAt_. This is a way to set the rotation of an entity without having to deal with angles.
 
 {% raw %}
+
 ```tsx
-<box 
+<box
   color={currentColor}
   lookAt={{ x: 2, y: 1, z: 3 }}
   transition={{ lookAt: { duration: 500 } }}
 />
 ```
+
 {% endraw %}
 
 This setting needs a `Vector3Component` as a value, this vector indicates the coordinates of the point in the scene that it will look at. You can, for example, set this value to a variable in the scene state that is updated with another entity's position.
@@ -187,11 +196,9 @@ If the entitiy is configured with both a specific rotation and a lookAt setting,
 Color is set in hexadecimal values. To set an entity's color, simply set its `color` component to the corresponding hexadecimal value.
 
 {% raw %}
+
 ```tsx
-<sphere 
-  position={{ x: 0.5, y: 1, z: 0 }}   
-  color="#EF2D5E"
-/>
+<sphere position={{ x: 0.5, y: 1, z: 0 }} color="#EF2D5E" />
 ```
 
 {% endraw %}
@@ -207,10 +214,10 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 {% raw %}
 
 ```tsx
-<material 
-  id="reusable_material" 
-  albedoTexture="materials/wood.png" 
-  roughness="0.5" 
+<material
+  id="reusable_material"
+  albedoTexture="materials/wood.png"
+  roughness="0.5"
 />
 <sphere material="#reusable_material" />
 ```
@@ -274,43 +281,42 @@ To make a material transparent, you must add an alpha channel to the image you u
 {% raw %}
 
 ```tsx
-<material 
-  albedoTexture="semiTransparentTexture.png" 
-  hasAlpha 
+<material
+  albedoTexture="semiTransparentTexture.png"
+  hasAlpha
 />
 // or
-<material 
+<material
   albedoTexture="semiTransparentTexture.png"
-  alphaTexture="semiTransparentTexture.png" 
+  alphaTexture="semiTransparentTexture.png"
 />
 ```
 
 {% endraw %}
-
-
 
 ### Basic materials
 
 Instead of the `<material />` entity, you can define a material through the `<basic-material />` entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistenlty bright, it can also be used to give your scene a more minimalistic look.
 
-
 {% raw %}
+
 ```tsx
-<basic-material 
-  id="basic_material" 
+<basic-material
+  id="basic_material"
   texture="profile_avatar.png"
 />
 <sphere
-  material="#basic_material" 
+  material="#basic_material"
 />
 ```
+
 {% endraw %}
 
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
 
 ## Import 3D models
- 
-For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in *glTF* format.  [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
+
+For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in _glTF_ format. [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in glTF format. [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
@@ -321,6 +327,7 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 > Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
 
 {% raw %}
+
 ```tsx
 <gltf-model
   position={{ x: 5, y: 3, z: 5 }}
@@ -331,7 +338,7 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 
 {% endraw %}
 
-glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and to check for their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance. 
+glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and to check for their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance.
 
 > Tip: We recommend using `.gltf` while you're working on a scene, but then switching to `.glb` when uploading it.
 
@@ -339,18 +346,18 @@ glTF models can also include their own textures and animations. Keep in mind tha
 
 > Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
 
-> Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity. 
+> Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity.
 
 ### Animations
 
-Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`. 
+Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-
-You activate an animation by adding *skeletalAnimation* settings to a gltf model and setting the `playing` property of one of its clips to `true`.
+You activate an animation by adding _skeletalAnimation_ settings to a gltf model and setting the `playing` property of one of its clips to `true`.
 
 The example below imports a model that includes animations and configures them:
 
 {% raw %}
+
 ```tsx
 <gltf-model
   position={{ x: 5, y: 3, z: 5 }}
@@ -370,8 +377,6 @@ In this example, the armature is named `shark_skeleton` and the two animations c
 An animation can be set to loop continuously by setting its `loop` property. If `loop:false` then the animation will be called only once when activated.
 
 The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance the given animation will be given.
-
-
 
 ### Free libraries for 3D models
 
@@ -460,13 +465,9 @@ how to add collider meshes into GLTF models
 Entities that have collisions enabled occupy space and block a user's path, objects without collisions can be walked through by a user`s avatar.
 
 {% raw %}
-```tsx
-<box 
-  position={{ x: 10, y: 0, z: 0 }} 
-  scale={2} 
-  withCollisions={true}
-/>
 
+```tsx
+<box position={{ x: 10, y: 0, z: 0 }} scale={2} withCollisions={true} />
 ```
 
 {% endraw %}
@@ -487,10 +488,7 @@ Collision settings currently don't affect how other entities interact with each 
 
 Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
-
 > Tip: To view the limits of all collider meshes in the scene, launch your scene preview with `dcl preview` and click `c`. This draws blue lines that delimit collision areas.
-
-
 
 ## Migrating an XML scene to TypeScript
 
