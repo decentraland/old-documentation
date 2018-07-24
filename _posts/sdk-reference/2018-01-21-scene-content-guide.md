@@ -221,6 +221,51 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
 
+### Texture mapping
+
+An entity that uses a material can be configured to map specific regions of the texture to its faces. You do this by setting _u_ and _v_ coordinates on the 2D image of the texture to correspond to the vertices of the entity. The more vertices the entity has, the more _uv_ coordinates need to be defined on the texture, a plane for example needs to have 8 _uv_ points defined, 4 for each of its two faces.
+
+{% raw %}
+
+```tsx
+  async render() {
+    return (
+      <scene position={{ x: 5, y: 1.5, z: 5 }}>
+        <basic-material
+          id="sprite001"
+          texture="atlas.png"
+          samplingMode={DCL.TextureSamplingMode.NEAREST}
+        />
+        <plane
+          material="#sprite001"
+          uvs={[
+            0,
+            0.75,
+            0.25,
+            0.75,
+            0.25,
+            1,
+            0,
+            1,
+            0,
+            0.75,
+            0.25,
+            0.75,
+            0.25,
+            1,
+            0,
+            1
+          ]}
+        />
+      </scene>
+    );
+  }
+```
+
+{% endraw %}
+
+To create an animated sprite, use texture mapping to change the selected regions of a same texture that holds all the frames.
+
 ### Transparent materials
 
 To make a material transparent, you must add an alpha channel to the image you use for the texture. The `material` entity ignores the alpha channel of the texture image by default, so you must either:
@@ -450,7 +495,7 @@ Decentraland currently doesn't have a physics engine, so if you want entities to
 
 
 
-## Migrating XML to type script
+## Migrating an XML scene to TypeScript
 
 If you have a static XML scene and want to add dynamic capabilities to it, you must migrate it to TSX format. This implies making some minor changes to the entity syntax.
 
