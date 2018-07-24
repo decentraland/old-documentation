@@ -10,7 +10,7 @@ set_order: 4
 tag: introduction
 ---
 
-Once you have [built a new scene]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-03-create-scene %}) ) or downloaded a [sample scene]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-08-sample-scenes %}) ) you can preview it locally.
+Once you have [built a new scene]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-03-create-scene %}) ) or downloaded a [sample scene]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) ) you can preview it locally.
 
 ## Before you begin
 
