@@ -9,31 +9,34 @@ set: sdk-reference
 set_order: 7
 ---
 
-
-
 The SDK includes an _ethereum controller_ that can call a series of functions on your secene to perform actions on the Ethereum blockchain. For example, you can require that a user pays a fee before actioning something in your scene.
 
 ## Importing the Ethereum Controller
 
 All of the operations that are possible on the Ethereum blockchain are done through the ethereum controller. You must first import it into your scene:
 
-1) Import the ethereumController to the .tsx file:
+1.  Import the ethereumController to the .tsx file:
 
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene, EthereumController, inject } from "metaverse-api"
+import {
+  createElement,
+  ScriptableScene,
+  EthereumController,
+  inject
+} from "metaverse-api";
 ```
 
 {% endraw %}
 
-2) Then inject the ethereum controller as a decorator into your custom scene class:
+2.  Then inject the ethereum controller as a decorator into your custom scene class:
 
 {% raw %}
 
 ```tsx
 export default class myScene extends ScriptableScene {
- @inject('experimentalEthereumController') 
+ @inject('experimentalEthereumController')
  eth: EthereumController
 
 (...)
@@ -43,17 +46,12 @@ export default class myScene extends ScriptableScene {
 
 ## Require a payment
 
-
 Once the ethereumController has been imported, you can run the requirePayment function. This function prompts the user to accept a paying a sum to an Ethereum wallet of your choice. Users must always accept payments manually, a payment can never be implied directly from the user's actions in the scene.
 
 {% raw %}
 
 ```tsx
-this.eth!.requirePayment(
-        receivingAddress,
-        amount, 
-        currency
-    );
+this.eth!.requirePayment(receivingAddress, amount, currency);
 ```
 
 {% endraw %}
@@ -89,14 +87,13 @@ The example above listens for clicks on a `door` entity. When clicked, the user 
 
 ## Using the Ethereum test network
 
-While testing your scene, to avoid transfering real MANA currency, you can use the _Ethereum Ropsten test network_ and transfer fake MANA instead. 
+While testing your scene, to avoid transfering real MANA currency, you can use the _Ethereum Ropsten test network_ and transfer fake MANA instead.
 
 To use the test network you must set your Metamask Chrome extension to use the _Ropsten test network_ instead of _Main network_. You must also own MANA in the Ropsten blockchain, which you can aquire for free from Decentraland.
 
 To preview your scene using the test network, add the `DEBUG` property to the URL you're using to access the scene preview on your browser. For example, if you're accessing the scene via `http://127.0.0.1:8000/?position=0%2C-1`, you should set the URL to `http://127.0.0.1:8000/?DEBUG&position=0%2C-1`.
 
 Any transactions that you accept while viewing the scene in this mode will only occur in the test network and not affect the MANA balance in your real wallet.
-
 
 ## Wait for a transaction
 
@@ -105,11 +102,7 @@ Another thing that the ethereum controller allows you to do is check if a specif
 {% raw %}
 
 ```tsx
-this.eth!.waitForMinedTx(
-       currency,
-       tx,
-       receivingAddress
-     );
+this.eth!.waitForMinedTx(currency, tx, receivingAddress);
 ```
 
 {% endraw %}
@@ -136,16 +129,15 @@ const myWallet = ‘0x0123456789...’;
 
 The example above first requires the user to accept a transaction, if the user accepts it, then `requirePayment` returns a hash that can be used to track the transaction and see if it's been mined. Once the transaction is mined and accepted as part of the blockchain, the `isDoorClosed` variable in the scene state is changed.
 
+<!--
 
 ## Signing messages
-
-There could be a case where you want to add another layer of protection. If your script wants to communicate with an external service or API, you can let the user sign the information he is being requested to send.
 
 A user can sign a message using their Ethereum public key. This signature is a secure way to give consent or to register an accomplishment or action that is registered with the block chain. The signing of a message doesn't imply paying any gas fees on the Ethereum network.
 
 Messages that can be signed need to be follow a specific format to match safety requirements. They must include the “Decentraland signed header” at the top, this prevents the possibility of any mismanagement of the user’s wallet.
 
-Signable messages should follow this format: 
+Signable messages should follow this format:
 
 ```
 # DCL Signed message
@@ -154,8 +146,8 @@ Signable messages should follow this format:
 <key n>: <value n>
 Timestamp: <time stamp>
 ```
-For example, a signable message might look like this:
 
+For example, a signable message might look like this:
 
 ```tsx
 # DCL Signed message
@@ -172,7 +164,7 @@ Before a user can sign a message, you must first convert it into an object using
 const messageToSign = `# DCL Signed message
 Attacker: 10
 Defender: 123
-Timestamp: 1512345678`
+Timestamp: 1512345678`;
 
 const convertedMessage = await this.eth!.convertMessageToObject(messageToSign);
 const { message, signature } = await this.eth!.signMessage(convertedMessage);
@@ -189,13 +181,13 @@ To use this, you must first install some dependencies manually in your scene's d
 ```bash
 npm install --save decentraland-eth
 ```
+
 You must then import these dependencies on the _.tsx_ file
 
 {% raw %}
 
 ```tsx
-import { eth } from 'decentraland-eth'
-
+import { eth } from "decentraland-eth";
 ```
 
 {% endraw %}
@@ -203,7 +195,6 @@ import { eth } from 'decentraland-eth'
 {% raw %}
 
 ```tsx
-
 const { message, signature } = await this.eth!.signMessage(convertedMessage);
 
 const messageHex = await eth.utils.toHex(messageToSign);
@@ -218,7 +209,7 @@ console.log(‘Is the message correct?’, isEqual);
 {% raw %}
 
 ```tsx
-import { inject, EthereumController, createElement, ScriptableScene } from 'metaverse-api/src'
+import { inject, EthereumController, createElement, ScriptableScene } from 'metaverse-api'
 import { eth } from 'decentraland-eth'
 
 const messageToSign = `# DCL Signed message
@@ -247,7 +238,7 @@ export default class SignMessage extends ScriptableScene {
    const messageHex = await eth.utils.toHex(messageToSign);
 
    const isEqual = message === messageHex;
-   console.log(‘Is the message correct?’, isEqual);
+   console.log("Is the message correct?", isEqual);
  }
 
  async render() {
@@ -260,7 +251,7 @@ export default class SignMessage extends ScriptableScene {
      </scene>
    )
  }
-
 ```
 
 {% endraw %}
+-->
