@@ -87,7 +87,9 @@ The example below shows a box entity that is configured to rotate smoothly.
 ```tsx
 <box
   rotation={currentRotation}
-  transition={{ rotation: { duration: 1000, timing: "ease-in" } }}
+  transition={{
+    rotation: { duration: 1000, timing: "ease-in" }
+  }}
 />
 ```
 
@@ -135,7 +137,9 @@ In the example below, a transition is applied to the rotation of an invisible en
 ```tsx
 <entity
   rotation={currentRotation}
-  transition={{ rotation: { duration: 1000, timing: "ease-in" } }}
+  transition={{
+    rotation: { duration: 1000, timing: "ease-in" }
+  }}
 >
   <box
     id="door"
@@ -365,7 +369,11 @@ The example below imports a model that includes animations and configures them:
   src="models/shark_anim.gltf"
   skeletalAnimation={[
     { clip: "shark_skeleton_bite", playing: false },
-    { clip: "shark_skeleton_swim", weight: 0.2, playing: true }
+    {
+      clip: "shark_skeleton_swim",
+      weight: 0.2,
+      playing: true
+    }
   ]}
 />
 ```
