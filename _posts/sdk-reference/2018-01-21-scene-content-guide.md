@@ -53,7 +53,7 @@ All entities can have a *position*, a *rotation* and a *scale*. These can be eas
 
 {% endraw %}
 
-- `position` is a _3D vector_, it sets the position on all three axes.
+- `position` is a _3D vector_, it sets the position on all three axes. These coordinates are measured in _meters_, unless you're positioning a child of a parent entity that has a scale that's different from 1, in which case the position is also scaled accordingly.
 - `rotation` is a _3D vector_ too, but where each component represents the rotation in that axis.
 - `scale` can either be a _number_ or a _3D vector_, in case you want to scale the axis in different proportions.
 
@@ -480,18 +480,17 @@ All entities have collisions disabled by default. Depending on the type of entit
 - For most entities, including _primitives_ (boxes, spheres, etc), planes and base entities, you enable collisions by setting the `ignoreCollisions` component to `false`.
 - To enable collisions in _glTF models_, you can either:
 
-  - Edit them in an external tool like Blender to include a _collission mesh_.
   - Overlay an invisible entity with the `ignoreCollisions` component set to `true`.
+  - Edit the model in an external tool like Blender to include a _collider mesh_. The collider mesh must be named _x_collider_, where _x_ is the name of the model. So for a model named _house_, the collider mesh must be named _house_collider_.
 
-A _collision mesh_ is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision mesh is usually a lot simpler (with less vertices) than the original model.
-
+A _collider mesh_ is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision mesh is usually a lot simpler (with less vertices) than the original model.
 
 Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the avatar.
 
 Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
 
-> Tip: To view the limits of all collision meshes in the scene, launch your scene preview with `dcl preview` and click `c`. This draws blue lines that delimit collision areas.
+> Tip: To view the limits of all collider meshes in the scene, launch your scene preview with `dcl preview` and click `c`. This draws blue lines that delimit collision areas.
 
 
 
