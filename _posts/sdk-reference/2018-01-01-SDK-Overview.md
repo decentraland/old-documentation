@@ -37,11 +37,11 @@ At a very high level, the SDK allows you to do the following:
 
 **Scenes** in Decentraland are the collections of 3D objects, textures, and audio rendered on one or more LAND parcels. Scenes can be:
 
-- **Dynamic scenes (single player)** singleplayer scenes built using the SDK that allow a single player to interact with content in the scene. The script is run on a web worker.
-- **Dynamic scenes (multiplayer)** - multiplayer scenes executing the script on a remote server to make it easier to have more than one player interacting with the content and other users in the scene. The server connects with the clients through a WebSockets interface.
-- **Static** - containing only 3D objects and audio
+- **Local scenes**: singleplayer scenes built using the SDK that allow a single player to interact with content in the scene. The script is run on a WebWorker.
+- **Remote scenes**: multiplayer scenes executing the script on a remote server to make it easier to have more than one player interacting with the content and other users in the scene. The server connects with the clients through a WebSockets interface.
+- **Static**: containing only 3D objects and audio
 
-Scenes are created in “projects” using the CLI.
+Scenes are created in "projects" using the CLI.
 
 #### Where will these scenes be hosted?
 
