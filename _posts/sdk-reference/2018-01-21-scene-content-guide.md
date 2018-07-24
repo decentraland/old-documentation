@@ -36,29 +36,19 @@ Any of these can be added to your scene, they can all include basic components l
 
 See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}) for more details on these types of entities.
 
-<<<<<<< HEAD
-> Tip: When editing the code via a source code editor (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and typing *Ctrl + Space bar*.
-=======
 > Tip: When editing the code via a source code editor (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and typing _Ctrl + Space bar_.
->>>>>>> master
 
 ## Entity positioning
 
 All entities can have a *position*, a *rotation* and a *scale*. These can be easily set as components, as shown below:
 
 {% raw %}
-<<<<<<< HEAD
 ```tsx
 <box
     position={{ x: 5, y: 3, z: 5 }}
     rotation={{ x: 180, y: 90, z: 0 }}
     scale={0.5}
   />
-=======
-
-```tsx
-<box position={{ x: 5, y: 3, z: 5 }} rotation={{ x: 180, y: 90, z: 0 }} scale={0.5} />
->>>>>>> master
 ```
 
 {% endraw %}
@@ -72,17 +62,6 @@ When an entity is nested inside another, the child entities inherit components f
 You can include an invisible base entity to wrap a set of other entities and define their positioning as a group.
 
 {% raw %}
-<<<<<<< HEAD
-```tsx
-  <entity
-      position={{ x: 0, y: 0, z: 1 }}
-      rotation={{ x: 45, y: 0, z: 0 }}
-  >
-    <box position={{ x: 10, y: 0, z: 0 }} scale={2} />
-    <box position={{ x: 10, y: 10, z: 0 }} scale={1} />
-    <box position={{ x: 0, y: 10, z: 0 }} scale={2} />
-  </entity>
-=======
 
 ```tsx
 <entity position={{ x: 0, y: 0, z: 1 }} rotation={{ x: 45, y: 0, z: 0 }}>
@@ -90,7 +69,6 @@ You can include an invisible base entity to wrap a set of other entities and def
   <box position={{ x: 10, y: 10, z: 0 }} scale={1} />
   <box position={{ x: 0, y: 10, z: 0 }} scale={2} />
 </entity>
->>>>>>> master
 ```
 
 {% endraw %}
@@ -104,17 +82,11 @@ In dynamic scenes, you can configure an entity to affect the way in which it mov
 The example below shows a box entity that is configured to rotate smoothly.
 
 {% raw %}
-<<<<<<< HEAD
 ```tsx
  <box 
     rotation={currentRotation}
     transition={{ rorotation: { duration: 1000, timing: "ease-in" }}}
   />
-=======
-
-```tsx
-<box rotation={currentRotation} transition={{ rorotation: { duration: 1000, timing: "ease-in" } }} />
->>>>>>> master
 ```
 
 {% endraw %}
@@ -123,30 +95,15 @@ The example below shows a box entity that is configured to rotate smoothly.
 
 The transition can be added to affect the following properties of an entity:
 
-<<<<<<< HEAD
-* position
-* rotation
-* scale
-* color
-* lookAt
-=======
 - position
 - rotation
 - scale
 - color
->>>>>>> master
+- lookAt
 
 Note that the transition for each of these properties is configured separately.
 
 {% raw %}
-<<<<<<< HEAD
-```tsx
- <box 
-    rotation={currentRotation}
-    color={currentColor}
-    scale={currentScale}
-    transition={ 
-=======
 
 ```tsx
  <box
@@ -154,7 +111,6 @@ Note that the transition for each of these properties is configured separately.
     color={currentColor}
     scale={currentScale}
     transition={
->>>>>>> master
         { rotation: { duration: 1000, timing: "ease-in" }}
         { color: { duration: 3000, timing: "exponential-in" }}
         { scale: { duration: 300, timing: "bounce-in" }}
@@ -235,17 +191,11 @@ If the entitiy is configured with both a specific rotation and a lookAt setting,
 Color is set in hexadecimal values. To set an entity's color, simply set its `color` component to the corresponding hexadecimal value.
 
 {% raw %}
-<<<<<<< HEAD
 ```tsx
   <sphere 
     position={{ x: 0.5, y: 1, z: 0 }}   
     color="#EF2D5E"
   />
-=======
-
-```tsx
-<sphere position={{ x: 0.5, y: 1, z: 0 }} color="#EF2D5E" />
->>>>>>> master
 ```
 
 {% endraw %}
@@ -261,7 +211,6 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 {% raw %}
 
 ```tsx
-<<<<<<< HEAD
   <material 
     id="reusable_material" 
     albedoTexture="materials/wood.png" 
@@ -269,19 +218,9 @@ Materials can be applied to primitive entities and to planes, simply by setting 
   />
   <sphere
     material="#reusable_material" 
-=======
-  <material
-    id="reusable_material"
-    albedoTexture="materials/wood.png"
-    roughness="0.5"
-  />
-  <sphere
-    material="#reusable_material"
->>>>>>> master
   />
 ```
 
-<<<<<<< HEAD
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
 
 
@@ -300,18 +239,13 @@ Instead of the <material/> entity, you can define a material through the <basic-
     material="#basic_material" 
   />
 ```
-=======
->>>>>>> master
 {% endraw %}
 
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
 
 ## Import 3D models
-<<<<<<< HEAD
  
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in *glTF* format.  [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
-=======
->>>>>>> master
 
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in glTF format. [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
@@ -322,40 +256,25 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 > Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
 
 {% raw %}
-<<<<<<< HEAD
 ```tsx
 <gltf-model
     position={{ x: 5, y: 3, z: 5 }}
     scale={0.5}
     src="models/myModel.gltf"
   />
-=======
-
-```tsx
-<gltf-model position={{ x: 5, y: 3, z: 5 }} scale={0.5} src="models/myModel.gltf" />
->>>>>>> master
 ```
 
 {% endraw %}
 
-<<<<<<< HEAD
 glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and to check for their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance. 
-=======
-glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and to check for their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance.
->>>>>>> master
 
 > Tip: We recommend using `.gltf` while you're working on a scene, but then switching to `.glb` when uploading it.
 
 glTF models can also include their own textures and animations. Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
 
-<<<<<<< HEAD
-
 > Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
 
 > Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity. 
-=======
-> Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity.
->>>>>>> master
 
 ### Animations
 
@@ -367,10 +286,6 @@ You activate an animation by adding *skeletalAnimation* settings to a gltf model
 The example below imports a model that includes animations and configures them:
 
 {% raw %}
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 ```tsx
 <gltf-model
   position={{ x: 5, y: 3, z: 5 }}
