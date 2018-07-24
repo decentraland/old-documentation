@@ -41,7 +41,11 @@ Example:
 {% raw %}
 
 ```tsx
-<box position={{ x: 5, y: 0, z: 2 }} color="#ff00aa" scale={2} />
+<box 
+  position={{ x: 5, y: 0, z: 2 }} 
+  color="#ff00aa" 
+  scale={2} 
+/>
 ```
 
 {% endraw %}
@@ -280,7 +284,10 @@ Example:
 {% raw %}
 
 ```tsx
-<entity position={{ x: 2, y: 1, z: 0 }} scale={{ x: 2, y: 2, z: 0.05 }} />
+  <entity 
+    position={{ x: 2, y: 1, z: 0 }} 
+    scale={{ x: 2, y: 2, z: 0.05 }}
+  />
 ```
 
 {% endraw %}

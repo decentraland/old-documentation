@@ -37,9 +37,9 @@ At a very high level, the SDK allows you to do the following:
 
 **Scenes** in Decentraland are the collections of 3D objects, textures, and audio rendered on one or more LAND parcels. Scenes can be:
 
-- **Local scenes**: singleplayer scenes built using the SDK that allow a single player to interact with content in the scene. The script is run on a WebWorker.
-- **Remote scenes**: multiplayer scenes executing the script on a remote server to make it easier to have more than one player interacting with the content and other users in the scene. The server connects with the clients through a WebSockets interface.
-- **Static**: containing only 3D objects and audio
+- _Local scenes_: intended to run inside the user's client. Your scenes run inside a WebWorker, that means you don't need any server to create an experience.
+- _Remote scenes_: useful to create richer experiences that require a centralized coordination of the scene's state or that are too sensible to execute in every user's computers. These scenes run in a Node.js server and connect with the clients through a WebSockets interface.
+- _Static_: containing only 3D objects and audio, but no interaction.
 
 Scenes are created in "projects" using the CLI.
 
