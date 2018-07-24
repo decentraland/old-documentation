@@ -129,10 +129,6 @@ The transition allows you to set:
 In the example below, a transition is applied to the rotation of an invisible entity that wraps a box. As the box is off-center from the parent entity, the box pivots like an opening door.
 
 {% raw %}
-<<<<<<< HEAD
-```tsx
-=======
->>>>>>> master
 
 ```tsx
 <entity rotation={currentRotation} transition={{ rotation: { duration: 1000, timing: "ease-in" } }}>
@@ -221,12 +217,38 @@ Materials can be applied to primitive entities and to planes, simply by setting 
   />
 ```
 
+{% endraw %}
+
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
 
+### Transparent materials
 
-### Basic Materials
+To make a material transparent, you must add an alpha channel to the image you use for the texture. The `material` entity ignores the alpha channel of the texture image by default, so you must either:
 
-Instead of the <material/> entity, you can define a material through the <basic-material> entity. This creates materials that have flat simple shades.
+- Set `hasAlpha` to true.
+- Set an image in `alphaTexture`, which can be the same or a different image.
+
+{% raw %}
+
+```tsx
+  <material 
+    albedoTexture="semiTransparentTexture.png" 
+    hasAlpha 
+  />
+// or
+  <material 
+    albedoTexture="semiTransparentTexture.png"
+    alphaTexture="semiTransparentTexture.png" 
+  />
+```
+
+{% endraw %}
+
+
+
+### Basic materials
+
+Instead of the <material/> entity, you can define a material through the <basic-material> entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistenlty bright, it can also be used to give your scene a more minimalistic look.
 
 
 {% raw %}
