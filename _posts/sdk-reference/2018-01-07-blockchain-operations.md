@@ -37,7 +37,7 @@ export default class myScene extends ScriptableScene {
 ## Require a payment
 
 
-Once the ethereumController has been imported, you can run the requirePayment function. This function prompts the user to accept a payment. The acceptance of a payments must always be manual, it can never be implied directly from the user's actions in the scene.
+Once the ethereumController has been imported, you can run the requirePayment function. This function prompts the user to accept a paying a sum to an Ethereum wallet of your choice. Users must always accept payments manually, a payment can never be implied directly from the user's actions in the scene.
 
 
 ```tsx
@@ -106,11 +106,11 @@ const myWallet = ‘0x0123456789...’;
 
 The example above first requires the user to accept a transaction, if the user accepts it, then `requirePayment` returns a hash that can be used to track the transaction and see if it's been mined. Once the transaction is mined and accepted as part of the blockchain, the `isDoorClosed` variable in the scene state is changed.
 
-
+<!--
 
 ## Signing messages
 
-// There could be a case where you want to add another layer of protection. If your script wants to communicate with an external service or API, you can let the user sign the information he is being requested to send.
+There could be a case where you want to add another layer of protection. If your script wants to communicate with an external service or API, you can let the user sign the information he is being requested to send.
 
 A user can sign a message using their Ethereum public key. This signature is a secure way to give consent or to register an accomplishment or action that is registered with the block chain. The signing of a message doesn't imply paying any gas fees on the Ethereum network.
 
@@ -213,3 +213,4 @@ export default class SignMessage extends ScriptableScene {
  }
 
 ```
+-->
