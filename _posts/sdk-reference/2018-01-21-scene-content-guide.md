@@ -168,15 +168,15 @@ You can set an entity to face a specific position in the scene using *lookAt*. T
 
 {% raw %}
 ```tsx
- <box 
-    color={currentColor}
-    lookAt={{x:2, y:1, z:3}}
-    transition={{ lookAt: { duration: 500 } }}
-  />
+<box 
+  color={currentColor}
+  lookAt={{ x: 2, y: 1, z: 3 }}
+  transition={{ lookAt: { duration: 500 } }}
+/>
 ```
 {% endraw %}
 
-This setting needs a vector3Component as a value, this vector indicates the coordinates of the point in the scene that it will look at. You can, for example, set this value to a variable in the scene state that is updated with another entity's position.
+This setting needs a `Vector3Component` as a value, this vector indicates the coordinates of the point in the scene that it will look at. You can, for example, set this value to a variable in the scene state that is updated with another entity's position.
 
 You can use a transition to make movements caused by lookAt smoother and more natural.
 
@@ -188,10 +188,10 @@ Color is set in hexadecimal values. To set an entity's color, simply set its `co
 
 {% raw %}
 ```tsx
-  <sphere 
-    position={{ x: 0.5, y: 1, z: 0 }}   
-    color="#EF2D5E"
-  />
+<sphere 
+  position={{ x: 0.5, y: 1, z: 0 }}   
+  color="#EF2D5E"
+/>
 ```
 
 {% endraw %}
@@ -207,19 +207,17 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 {% raw %}
 
 ```tsx
-  <material 
-    id="reusable_material" 
-    albedoTexture="materials/wood.png" 
-    roughness="0.5" 
-  />
-  <sphere
-    material="#reusable_material" 
-  />
+<material 
+  id="reusable_material" 
+  albedoTexture="materials/wood.png" 
+  roughness="0.5" 
+/>
+<sphere material="#reusable_material" />
 ```
 
 {% endraw %}
 
-Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
+Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material />` entity declared.
 
 ### Texture mapping
 
@@ -228,38 +226,38 @@ An entity that uses a material can be configured to map specific regions of the 
 {% raw %}
 
 ```tsx
-  async render() {
-    return (
-      <scene position={{ x: 5, y: 1.5, z: 5 }}>
-        <basic-material
-          id="sprite001"
-          texture="atlas.png"
-          samplingMode={DCL.TextureSamplingMode.NEAREST}
-        />
-        <plane
-          material="#sprite001"
-          uvs={[
-            0,
-            0.75,
-            0.25,
-            0.75,
-            0.25,
-            1,
-            0,
-            1,
-            0,
-            0.75,
-            0.25,
-            0.75,
-            0.25,
-            1,
-            0,
-            1
-          ]}
-        />
-      </scene>
-    );
-  }
+async render() {
+  return (
+    <scene position={{ x: 5, y: 1.5, z: 5 }}>
+      <basic-material
+        id="sprite001"
+        texture="atlas.png"
+        samplingMode={DCL.TextureSamplingMode.NEAREST}
+      />
+      <plane
+        material="#sprite001"
+        uvs={[
+          0,
+          0.75,
+          0.25,
+          0.75,
+          0.25,
+          1,
+          0,
+          1,
+          0,
+          0.75,
+          0.25,
+          0.75,
+          0.25,
+          1,
+          0,
+          1
+        ]}
+      />
+    </scene>
+  );
+}
 ```
 
 {% endraw %}
@@ -276,15 +274,15 @@ To make a material transparent, you must add an alpha channel to the image you u
 {% raw %}
 
 ```tsx
-  <material 
-    albedoTexture="semiTransparentTexture.png" 
-    hasAlpha 
-  />
+<material 
+  albedoTexture="semiTransparentTexture.png" 
+  hasAlpha 
+/>
 // or
-  <material 
-    albedoTexture="semiTransparentTexture.png"
-    alphaTexture="semiTransparentTexture.png" 
-  />
+<material 
+  albedoTexture="semiTransparentTexture.png"
+  alphaTexture="semiTransparentTexture.png" 
+/>
 ```
 
 {% endraw %}
@@ -293,18 +291,18 @@ To make a material transparent, you must add an alpha channel to the image you u
 
 ### Basic materials
 
-Instead of the <material/> entity, you can define a material through the <basic-material> entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistenlty bright, it can also be used to give your scene a more minimalistic look.
+Instead of the `<material />` entity, you can define a material through the `<basic-material />` entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistenlty bright, it can also be used to give your scene a more minimalistic look.
 
 
 {% raw %}
 ```tsx
-  <basic-material 
-    id="basic_material" 
-    texture="profile_avatar.png"
-  />
-  <sphere
-    material="#basic_material" 
-  />
+<basic-material 
+  id="basic_material" 
+  texture="profile_avatar.png"
+/>
+<sphere
+  material="#basic_material" 
+/>
 ```
 {% endraw %}
 
@@ -325,10 +323,10 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 {% raw %}
 ```tsx
 <gltf-model
-    position={{ x: 5, y: 3, z: 5 }}
-    scale={0.5}
-    src="models/myModel.gltf"
-  />
+  position={{ x: 5, y: 3, z: 5 }}
+  scale={0.5}
+  src="models/myModel.gltf"
+/>
 ```
 
 {% endraw %}
@@ -555,7 +553,7 @@ The static scene above becomes the following dynamic schen when migrating it to 
 {% raw %}
 
 ```tsx
-<!-- TSX -->
+// TSX
 class Scene extends ScriptableScene {
   async render() {
     return (
