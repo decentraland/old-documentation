@@ -15,7 +15,7 @@ The SDK includes an _ethereum controller_ that can call a series of functions on
 
 All of the operations that are possible on the Ethereum blockchain are done through the ethereum controller. You must first import it into your scene:
 
-1.  Import the ethereumController to the .tsx file:
+1.  Import the `EthereumController` to the .tsx file:
 
 {% raw %}
 
@@ -36,22 +36,23 @@ import {
 
 ```tsx
 export default class myScene extends ScriptableScene {
- @inject('experimentalEthereumController')
- eth: EthereumController
+  @inject('experimentalEthereumController')
+  eth: EthereumController
 
-(...)
+  // (...)
+}
 ```
 
 {% endraw %}
 
 ## Require a payment
 
-Once the ethereumController has been imported, you can run the requirePayment function. This function prompts the user to accept a paying a sum to an Ethereum wallet of your choice. Users must always accept payments manually, a payment can never be implied directly from the user's actions in the scene.
+Once the `EthereumController` has been imported, you can run the `requirePayment` function. This function prompts the user to accept a paying a sum to an Ethereum wallet of your choice. Users must always accept payments manually, a payment can never be implied directly from the user's actions in the scene.
 
 {% raw %}
 
 ```tsx
-this.eth!.requirePayment(receivingAddress, amount, currency);
+this.eth.requirePayment(receivingAddress, amount, currency);
 ```
 
 {% endraw %}
@@ -66,15 +67,15 @@ If accepted by the user, the function returns the hash number of the transaction
 const myWallet = ‘0x0123456789...’;
 const enterPrice = 10;
 
-(...)
+// (...)
 
-    async sceneDidMount() {
-        this.eventSubscriber.on(‘door_click’, async () => {
-            await this.eth!.requirePayment(myWallet, entrancePrice, ‘MANA’);
+async sceneDidMount() {
+  this.eventSubscriber.on(‘door_click’, async () => {
+    await this.eth!.requirePayment(myWallet, entrancePrice, ‘MANA’);
 
-            this.setState(isDoorClosed: !this.state.isDoorClosed);
-        }
-    }
+    this.setState(isDoorClosed: !this.state.isDoorClosed);
+  }
+}
 ```
 
 {% endraw %}
@@ -102,7 +103,7 @@ Another thing that the ethereum controller allows you to do is check if a specif
 {% raw %}
 
 ```tsx
-this.eth!.waitForMinedTx(currency, tx, receivingAddress);
+await this.eth.waitForMinedTx(currency, tx, receivingAddress);
 ```
 
 {% endraw %}
@@ -114,15 +115,15 @@ The function requires that you specify a currency to use (for example, MANA or E
 ```tsx
 const myWallet = ‘0x0123456789...’;
 
-(...)
+// (...)
 
-    async sceneDidMount() {
-        this.eventSubscriber.on(‘door_click’, async () => {
-            const tx = await this.eth!.requirePayment(myWallet, entrancePrice, ‘MANA’);
-            const userPaid = await this.eth!.waitForMinedTx(currency,tx, receivingAddress);
-            this.setState(isDoorClosed: !this.state.isDoorClosed);
-        }
-    }
+async sceneDidMount() {
+  this.eventSubscriber.on(‘door_click’, async () => {
+    const tx = await this.eth!.requirePayment(myWallet, entrancePrice, ‘MANA’);
+    const userPaid = await this.eth!.waitForMinedTx(currency,tx, receivingAddress);
+    this.setState(isDoorClosed: !this.state.isDoorClosed);
+  }
+}
 ```
 
 {% endraw %}
