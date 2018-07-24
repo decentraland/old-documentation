@@ -10,7 +10,6 @@ set_order: 2
 tag: introduction
 ---
 
-
 ## Before you begin
 
 Please make sure you first install the CLI tools. In Mac OS, you do this by running the following command:
@@ -25,12 +24,10 @@ See the [Installation Guide]({{ site.baseurl }}{% post_url /documentation/buildi
 
 In Decentraland, a scene is the representation of the content of an estate/LAND. All scenes are made up of [entities]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
 
-
 There are essentially two different types of scenes:
 
-* **Static scenes**: An [XML](https://en.wikipedia.org/wiki/XML) file describes static objects in the scene.
-* **Dynamic scenes**: A [TypeScript (TSX)](https://www.typescriptlang.org/docs/handbook/jsx.html) file, with a `.tsx` extension, that has dynamic content. Through these you can create, move and mutate the entities in the scene.
-
+- **Static scenes**: An [XML](https://en.wikipedia.org/wiki/XML) file describes static objects in the scene.
+- **Dynamic scenes**: A [TypeScript (TSX)](https://www.typescriptlang.org/docs/handbook/jsx.html) file, with a `.tsx` extension, that has dynamic content. Through these you can create, move and mutate the entities in the scene.
 
 ## Creating the file structure
 
@@ -38,18 +35,17 @@ Use our CLI tool to automatically build the initial boilerplate scene. To do so,
 
 The `dcl init` command creates a Decentraland **project** in your current working directory containing a **scene**. It prompts you to select a scene type (static, dynamic & singleplayer, or dynamic & multiplayer) and builds a different file structure depending on the case.
 
-*A static scene* includes the following files:
+_A static scene_ includes the following files:
 
 1.  `scene.json`: The manifest that contains metadata for the scene.
 2.  `scene.xml`: The content of the static scene.
 
-*A dynamic scene* incldes the following files:
+_A dynamic scene_ incldes the following files:
 
 1.  `scene.json`: The manifest that contains metadata for the scene.
 2.  `build.json`: The file with the instructions to build the scene.
 3.  `tsconfig.json`: Typescript configuration file.
 4.  `scene.tsx`: The entry point of the scene.
-
 
 The `dcl init` command also prompts you to enter some descriptive metadata, these datais are stored in
 the [scene.json](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki) manifest file for the scene. All of this
@@ -59,8 +55,7 @@ metadata is optional for building a scene locally, except for scene type.
 
 ## scene.xml (static scenes)
 
-For both static and dynamic scenes, the end result is the same: a tree of entities. The root of the tree is always a `<scene>` element. XML scenes call out this structure explicitly, TypeScript scenes provide the script to build and update this structure.  
-
+For both static and dynamic scenes, the end result is the same: a tree of entities. The root of the tree is always a `<scene>` element. XML scenes call out this structure explicitly, TypeScript scenes provide the script to build and update this structure.
 
 ```xml
 <scene>
@@ -85,6 +80,7 @@ Since the root scene element is a transform node, it can also be translated, sca
 This file contains the code that generates an entity tree, which is what end users of your parcel will see. Below is a basic example of a `scene.tsx` file:
 
 {% raw %}
+
 ```tsx
 import { ScriptableScene, createElement } from "metaverse-api";
 
@@ -99,10 +95,10 @@ export default class MyScene extends ScriptableScene<any, any> {
   }
 }
 ```
+
 {% endraw %}
 
 > **Important note:** Your `scene.tsx` must always include an `export default class`, that's how our SDK finds the class to initialize the scene.
-
 
 ## scene.json
 
@@ -113,8 +109,8 @@ The `scene.json` file is a JSON formatted manifest for a scene in the world. A s
 
 This file provides information to NPM that allows it to identify the project, as well as handle the project's dependencies. Decentraland scenes need two packages:
 
-* `metaverse-api`, which allows the scene to communicate with the world engine.
-* `typescript`, to compile the file `scene.tsx` to javascript.
+- `metaverse-api`, which allows the scene to communicate with the world engine.
+- `typescript`, to compile the file `scene.tsx` to javascript.
 
 > You don’t need the `typescript` package when creating static scenes. This is only required when you are building remote and interactive scenes.
 
@@ -133,7 +129,6 @@ Directories containing a `tsconfig.json` file are root directories for TypeScrip
 
 > You can use another tool or language instead of TypeScript, so long as your scripts are contained within a single Javascript file (scene.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
 
-
 ## Preview your scene
 
 To preview your rendered scene locally (without [uploading it to IPFS]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-07-publishing %}) ) run the following command on the scene's main folder:
@@ -141,21 +136,20 @@ To preview your rendered scene locally (without [uploading it to IPFS]({{ site.b
 ```bash
 dcl preview
 ```
+
 Note that the preview command runs only on your local system, it creates a web server and opens a new web browser tab pointing at its local address.
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
 Running a preview also provides some useful debugging information and tools to help you understand how different entities are rendered. The preview mode provides information that describes parcel boundaries, the environment and resources, for example the number of entities being rendered, the current FPS rate, user position, and whether or not different elements are exceeding parcel boundaries.
 
-
 You can add the following flags to the command:
 
-* `--no-browser` to prevent the preview from opening a new browser tab.
-* `--port` to assign a specific to run the scene. Otherwise it will use whatever port is available.
-* `--skip` to skip the confirmation prompt.
+- `--no-browser` to prevent the preview from opening a new browser tab.
+- `--port` to assign a specific to run the scene. Otherwise it will use whatever port is available.
+- `--skip` to skip the confirmation prompt.
 
 > To preview old scenes that were built for older versions of the SDK, you must install the latest versions of the `metaverse-api` and `metaverse-rpc` packages in your project. Check the CLI version via the command `dcl -v`
-
 
 ## Edit your scene
 
