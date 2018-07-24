@@ -39,9 +39,7 @@ The generic `click` event represents all clicks done on valid entities. The even
 {% raw %}
 
 ```tsx
-
 import { createElement, ScriptableScene } from "metaverse-api";
-
 
 export default class LastClicked extends ScriptableScene {
   state = {
@@ -71,7 +69,6 @@ export default class LastClicked extends ScriptableScene {
 The example above uses the `subscribeTo` to initiate a listener that checks for all click events. When the user clicks on either of the two boxes, the scene stores the id of the clicked entity in the `lastClicked` state variable and prints it to console.
 
 ### Entity-specific click events
-
 
 A simpler way to deal with clicks that are made on a single entity is to listen for click events that are specific for that entity. The names of entity-specific click events are as follows: the id of the entity, an underscore and then _click_. For example, the event created from clicking an entity called `redButton` is named `redButton_click`.
 
@@ -115,7 +112,6 @@ The pointer down and pointer up events are fired whenever the user presses or re
 {% raw %}
 
 ```tsx
-
 import { createElement, ScriptableScene } from "metaverse-api";
 
 export default class BigButton extends ScriptableScene {
@@ -163,7 +159,6 @@ The `positionChanged` event has the following properties:
 {% raw %}
 
 ```tsx
-
 import { createElement, ScriptableScene } from "metaverse-api";
 
 export default class BoxFollower extends ScriptableScene {

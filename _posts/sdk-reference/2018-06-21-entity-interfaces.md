@@ -15,7 +15,6 @@ set_order: 4
 
 Entities are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All entities share the same base constructor, they all have a tag, attributes, and children entitiies.
 
-
 `<entity>` is the base element of Decentraland, all elements are built by extending the base `entity` object. An `<entity>` can contain several components, each component introduces attributes that modify the entity in different ways. For example, you can include the `color` component on an entity to set its color, or include the `withCollisions` component to make it collidable.
 
 > Tip: When editing the code via a source code editor (like Visual Studio Code or Atom), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and pressing _Ctrl + Space bar_.
@@ -42,11 +41,7 @@ Example:
 {% raw %}
 
 ```tsx
-<box 
-  position={{ x: 5, y: 0, z: 2 }} 
-  color="#ff00aa" 
-  scale={2} 
-/>
+<box position={{ x: 5, y: 0, z: 2 }} color="#ff00aa" scale={2} />
 ```
 
 {% endraw %}
@@ -260,10 +255,7 @@ Example:
 {% raw %}
 
 ```tsx
-  <entity 
-    position={{ x: 2, y: 1, z: 0 }} 
-    scale={{ x: 2, y: 2, z: 0.05 }}
-  />
+<entity position={{ x: 2, y: 1, z: 0 }} scale={{ x: 2, y: 2, z: 0.05 }} />
 ```
 
 {% endraw %}

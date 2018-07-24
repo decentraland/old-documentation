@@ -41,8 +41,7 @@ At a very high level, the SDK allows you to do the following:
 - **Dynamic scenes (multiplayer)** - multiplayer scenes executing the script on a remote server to make it easier to have more than one player interacting with the content and other users in the scene. The server connects with the clients through a WebSockets interface.
 - **Static** - containing only 3D objects and audio
 
-
-Scenes are created in “projects” using the CLI.
+Scenes are created in "projects" using the CLI.
 
 #### Where will these scenes be hosted?
 
@@ -66,9 +65,7 @@ The Decentraland Command Line Interface (CLI) allows you to create, deploy, and 
 
 After generating your new Decentraland scene locally on your own machine, you can immediately begin editing your scene using a text editor of your choice. After testing your scene locally, you can use the CLI to upload your content to IPFS.
 
-
 For more step-by-step instructions on installing the CLI, please read our [SDK Quick Start Guide]({{ site.baseurl }}{% post_url /building-scenes/2018-01-01-installation-guide %}) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
-
 
 ### API
 

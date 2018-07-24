@@ -43,12 +43,9 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 All entities can have a position, a rotation and a scale. These can be easily set as components, as shown below:
 
 {% raw %}
+
 ```tsx
-<box
-    position={{ x: 5, y: 3, z: 5 }}
-    rotation={{ x: 180, y: 90, z: 0 }}
-    scale={0.5}
-  />
+<box position={{ x: 5, y: 3, z: 5 }} rotation={{ x: 180, y: 90, z: 0 }} scale={0.5} />
 ```
 
 {% endraw %}
@@ -62,15 +59,13 @@ When an entity is nested inside another, the child entities inherit components f
 You can include an invisible base entity to wrap a set of other entities and define their positioning as a group.
 
 {% raw %}
+
 ```tsx
-  <entity
-      position={{ x: 0, y: 0, z: 1 }}
-      rotation={{ x: 45, y: 0, z: 0 }}
-  >
-    <box position={{ x: 10, y: 0, z: 0 }} scale={2} />
-    <box position={{ x: 10, y: 10, z: 0 }} scale={1} />
-    <box position={{ x: 0, y: 10, z: 0 }} scale={2} />
-  </entity>
+<entity position={{ x: 0, y: 0, z: 1 }} rotation={{ x: 45, y: 0, z: 0 }}>
+  <box position={{ x: 10, y: 0, z: 0 }} scale={2} />
+  <box position={{ x: 10, y: 10, z: 0 }} scale={1} />
+  <box position={{ x: 0, y: 10, z: 0 }} scale={2} />
+</entity>
 ```
 
 {% endraw %}
@@ -84,11 +79,9 @@ In dynamic scenes, you can configure an entity to affect the way in which it mov
 The example below shows a box entity that is configured to rotate smoothly.
 
 {% raw %}
+
 ```tsx
- <box 
-    rotation={currentRotation}
-    transition={{ rorotation: { duration: 1000, timing: "ease-in" }}}
-  />
+<box rotation={currentRotation} transition={{ rorotation: { duration: 1000, timing: "ease-in" } }} />
 ```
 
 {% endraw %}
@@ -144,11 +137,9 @@ In the example below, a transition is applied to the rotation of an invisible en
 Color is set in hexadecimal values. To set an entity's color, simply set its `color` component to the corresponding hexadecimal value.
 
 {% raw %}
+
 ```tsx
-  <sphere 
-    position={{ x: 0.5, y: 1, z: 0 }}   
-    color="#EF2D5E"
-  />
+<sphere position={{ x: 0.5, y: 1, z: 0 }} color="#EF2D5E" />
 ```
 
 {% endraw %}
@@ -173,6 +164,7 @@ Materials can be applied to primitive entities and to planes, simply by setting 
     material="#reusable_material"
   />
 ```
+
 {% endraw %}
 
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
@@ -188,12 +180,9 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 > Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
 
 {% raw %}
+
 ```tsx
-<gltf-model
-    position={{ x: 5, y: 3, z: 5 }}
-    scale={0.5}
-    src="models/myModel.gltf"
-  />
+<gltf-model position={{ x: 5, y: 3, z: 5 }} scale={0.5} src="models/myModel.gltf" />
 ```
 
 {% endraw %}
@@ -325,11 +314,7 @@ Entities that have collision disabled can be walked through by a user`s avatar, 
 {% raw %}
 
 ```tsx
-<box 
-  position={{ x: 10, y: 0, z: 0 }} 
-  scale={2} 
-  ignoreCollisions={false}
-/>
+<box position={{ x: 10, y: 0, z: 0 }} scale={2} ignoreCollisions={false} />
 ```
 
 {% endraw %}
@@ -349,7 +334,6 @@ A _collision mesh_ is a set of planes or geometric shapes that define which part
 Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the avatar.
 
 Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
-
 
 ## Migrating XML to type script
 
