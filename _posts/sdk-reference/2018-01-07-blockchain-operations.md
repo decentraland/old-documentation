@@ -11,11 +11,11 @@ set_order: 7
 
 
 
-The SDK includes a series of functions that you can run in your project that perform actions on the Ethereum blockchain. For example, you can require that a user pays a fee before actioning something in your scene.
+The SDK includes an _ethereum controller_ that can call a series of functions on your secene to perform actions on the Ethereum blockchain. For example, you can require that a user pays a fee before actioning something in your scene.
 
 ## Importing the Ethereum Controller
 
-To use any of the operations on the Ethereum blockchain, you must first import the ethereum controller into your scene, to do this:
+All of the operations that are possible on the Ethereum blockchain are done through the ethereum controller. You must first import it into your scene:
 
 1) Import the ethereumController to the .tsx file:
 
@@ -26,7 +26,7 @@ import { createElement, ScriptableScene, EthereumController, inject } from "meta
 2) Then inject the ethereum controller as a decorator into your custom scene class:
 
 ```tsx
-export default class Scene extends ScriptableScene {
+export default class myScene extends ScriptableScene {
  @inject('experimentalEthereumController') 
  eth: EthereumController
 
@@ -37,7 +37,7 @@ export default class Scene extends ScriptableScene {
 ## Require a payment
 
 
-Once the ethereumController has been imported, you can run the requirePayment function. This function prompts the user to accept a payment. The user must always manually accept this payment, the acceptance of a payment can never be implied directly from the user's actions in the scene.
+Once the ethereumController has been imported, you can run the requirePayment function. This function prompts the user to accept a payment. The acceptance of a payments must always be manual, it can never be implied directly from the user's actions in the scene.
 
 
 ```tsx
@@ -50,6 +50,7 @@ this.eth!.requirePayment(
 
 The function requires that you specify an Ethereum wallet address to receive the payment, an ammount for the transaction and a specific currency to use (for example, MANA or ETH).
 
+If accepted by the user, the function returns the hash number of the transaction that has been started.
 
 
 ```tsx
@@ -67,16 +68,16 @@ const enterPrice = 10;
     }
 ```
 
-The example above listens for clicks on a `door` entity. When clicked, the user is prompted to make a payment in MANA to a specific wallet for a given ammount. Once the user accepts this payment, the `isDoorClosed` variable in the scene's state is changed. If the user doesn't accept the payment, the rest of the function won't be executed and the variable's state won't change.
+The example above listens for clicks on a `door` entity. When clicked, the user is prompted to make a payment in MANA to a specific wallet for a given ammount. Once the user accepts this payment, the rest of the function can be executed, in this case the `isDoorClosed` variable in the scene's state is changed. If the user doesn't accept the payment, the rest of the function won't be executed and the variable's state won't change.
 
 ![](/images/media/metamask_confirm.png)
 
-> Tip: We recommend setting the wallet address and the ammount to pay as global constants in your scene. These are values you might need to change in the future, this makes it easier to update the code.
+> Tip: We recommend defining the wallet address and the ammount to pay as global constants at the start of the _.tsx_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
 
 
 ## Wait for a transaction
 
-Another thing you can do, once the ethereum controller is imported, is check if a transaction has been already mined. This looks for a specific transaction and verifies that it has been validated by a miner and added to the blockchain.
+Another thing that the ethereum controller allows you to do is check if a specific transaction has been already mined. This looks for a specific transaction's hash number and verifies that it has been validated by a miner and added to the blockchain.
 
 ```tsx
 this.eth!.waitForMinedTx(
@@ -103,15 +104,17 @@ const myWallet = ‘0x0123456789...’;
     }
 ```
 
-The example above first requires the user to accept a transaction, if the user accepts it, then the function will wait until the transaction is effectively mined by a miner in the Ethereum network. Once that happens the isDoorClosed variable in the scene state is changed.
+The example above first requires the user to accept a transaction, if the user accepts it, then `requirePayment` returns a hash that can be used to track the transaction and see if it's been mined. Once the transaction is mined and accepted as part of the blockchain, the `isDoorClosed` variable in the scene state is changed.
+
+
 
 ## Signing messages
 
 // There could be a case where you want to add another layer of protection. If your script wants to communicate with an external service or API, you can let the user sign the information he is being requested to send.
 
-You can use a user's public key to sign a message in a secure way that is registered in the block chain. This can be used, for example, for users to vote or leave proof that they were at a certain place or did a certain thing.
+A user can sign a message using their Ethereum public key. This signature is a secure way to give consent or to register an accomplishment or action that is registered with the block chain. The signing of a message doesn't imply paying any gas fees on the Ethereum network.
 
-Messages that can be signed need to be follow a specific format text to match safety validations. They must include the “Decentraland signed header” at the top, this prevents the possibility of any mismanagement of the user’s wallet.
+Messages that can be signed need to be follow a specific format to match safety requirements. They must include the “Decentraland signed header” at the top, this prevents the possibility of any mismanagement of the user’s wallet.
 
 Signable messages should follow this format: 
 
@@ -132,7 +135,7 @@ Defender: 123
 Timestamp: 1512345678
 ```
 
-Before you can sign a message, you must first convert it into an object using the `convertMessageToObject()` function, then you can sign it with the `signMessage()` function.
+Before a user can sign a message, you must first convert it into an object using the `convertMessageToObject()` function, then it can be signed with the `signMessage()` function.
 
 ```tsx
 const messageToSign = `# DCL Signed message
@@ -142,7 +145,6 @@ Timestamp: 1512345678`
 
 const convertedMessage = await this.eth!.convertMessageToObject(messageToSign);
 const { message, signature } = await this.eth!.signMessage(convertedMessage);
-// … do something with message and signature
 ```
 
 ### Checking if a message is correct
@@ -182,21 +184,21 @@ export default class SignMessage extends ScriptableScene {
  async sceneDidMount() {
    this.subscribeTo('click', async e => {
      if (e.elementId === 'button-sign') {
-       await this.signMessage()
+       await this.signMessage();
      }
    })
  }
 
  async signMessage() {
-   const convertedMessage = await this.eth!.convertMessageToObject(messageToSign)
-   const { message, signature } = await this.eth!.signMessage(convertedMessage)
+   const convertedMessage = await this.eth!.convertMessageToObject(messageToSign);
+   const { message, signature } = await this.eth!.signMessage(convertedMessage);
 
-   console.log({ message, signature })
+   console.log({ message, signature });
 
-   const messageHex = await eth.utils.toHex(messageToSign)
+   const messageHex = await eth.utils.toHex(messageToSign);
 
-   const isEqual = message === messageHex
-   console.log(‘Is the message correct?’, isEqual)
+   const isEqual = message === messageHex;
+   console.log(‘Is the message correct?’, isEqual);
  }
 
  async render() {
