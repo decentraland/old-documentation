@@ -16,31 +16,31 @@ The scene state is made up of a series of variables that change over time. The s
 If you're familiar with the [React](https://reactjs.org/docs/thinking-in-react.html) framework, you'll find that the scene handles its states in a way that's very similar to how components in React do this.
 
 ```tsx
-    state = {
-        buttonState: 0
-        isDoorClosed: false,
-        boxPosition: { x: 0, y: 0, z: 0 },
-    };
+state = {
+  buttonState: 0,
+  isDoorClosed: false,
+  boxPosition: { x: 0, y: 0, z: 0 }
+};
 ```
 
 Each state variable must be given an intial value for when the scene is first rendered. You can define the type for the state object by declaring a custom interface. Doing this is optional but we recommend it, especially for complex scenes, as it helps validate inputs and makes debugging easier.
 
 ```tsx
 export interface IState {
-    buttonState: number;
-    isDoorClosed: boolean;
-    boxPosition: vector3
+  buttonState: number;
+  isDoorClosed: boolean;
+  boxPosition: vector3;
 }
 
 export default class Scene extends ScriptableScene<any, IState> {
+  state = {
+    buttonState: 0,
+    isDoorClosed: false,
+    queboxPosition: { x: 0, y: 0, z: 0 }
+  };
 
-    state = {
-        buttonState: 0
-        isDoorClosed: false,
-        queboxPosition: { x: 0, y: 0, z: 0 },
-    };
-
-(...)
+  // (...)
+}
 ```
 
 The `ScriptableScene` class optionally takes two arguments: the properties (`any` in this case, as none are used) and the scene state, which in this case must match the type `IState`, described in the custom interface.
@@ -57,7 +57,7 @@ You can set the value of a state variable from any method in the scene object. T
 
 ```tsx
 async buttonPressed(){
-     this.setState({buttonState : 1 });
+  this.setState({buttonState : 1 });
 };
 ```
 
@@ -83,7 +83,7 @@ You can reference the value a state variable from anywhere in the scene object b
 
 ```tsx
 async checkDoor(){
-     return this.state.isDoorClosed;
+  return this.state.isDoorClosed;
 };
 ```
 
@@ -95,10 +95,10 @@ In the example below, the `render()` method draws a dynamic scene where the posi
 async render() {
   return (
     <scene>
-          <box position={this.state.boxPosition} />
+      <box position={this.state.boxPosition} />
     </scene>
-    );
-  }
+  );
+}
 ```
 
 {% endraw %}
@@ -108,11 +108,12 @@ To debug a scene, you can use `console.log(this.state)` to log the entire scene 
 {% raw %}
 
 ```tsx
- async sceneDidMount() {  
-    this.subscribeTo("pointerDown", e => {
-       console.log(this.state);
-    });
-    (...)
+async sceneDidMount() {  
+  this.subscribeTo("pointerDown", e => {
+    console.log(this.state);
+  });
+  // (...)
+}
 ```
 
 {% endraw %}
