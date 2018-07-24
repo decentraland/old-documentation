@@ -19,11 +19,17 @@ All of the operations that are possible on the Ethereum blockchain are done thro
 
 1) Import the ethereumController to the .tsx file:
 
+{% raw %}
+
 ```tsx
 import { createElement, ScriptableScene, EthereumController, inject } from "metaverse-api"
 ```
 
+{% endraw %}
+
 2) Then inject the ethereum controller as a decorator into your custom scene class:
+
+{% raw %}
 
 ```tsx
 export default class myScene extends ScriptableScene {
@@ -33,12 +39,14 @@ export default class myScene extends ScriptableScene {
 (...)
 ```
 
+{% endraw %}
 
 ## Require a payment
 
 
 Once the ethereumController has been imported, you can run the requirePayment function. This function prompts the user to accept a paying a sum to an Ethereum wallet of your choice. Users must always accept payments manually, a payment can never be implied directly from the user's actions in the scene.
 
+{% raw %}
 
 ```tsx
 this.eth!.requirePayment(
@@ -48,10 +56,13 @@ this.eth!.requirePayment(
     );
 ```
 
+{% endraw %}
+
 The function requires that you specify an Ethereum wallet address to receive the payment, an ammount for the transaction and a specific currency to use (for example, MANA or ETH).
 
 If accepted by the user, the function returns the hash number of the transaction that has been started.
 
+{% raw %}
 
 ```tsx
 const myWallet = ‘0x0123456789...’;
@@ -67,6 +78,8 @@ const enterPrice = 10;
         }
     }
 ```
+
+{% endraw %}
 
 The example above listens for clicks on a `door` entity. When clicked, the user is prompted to make a payment in MANA to a specific wallet for a given ammount. Once the user accepts this payment, the rest of the function can be executed, in this case the `isDoorClosed` variable in the scene's state is changed. If the user doesn't accept the payment, the rest of the function won't be executed and the variable's state won't change.
 
@@ -89,6 +102,8 @@ Any transactions that you accept while viewing the scene in this mode will only 
 
 Another thing that the ethereum controller allows you to do is check if a specific transaction has been already mined. This looks for a specific transaction's hash number and verifies that it has been validated by a miner and added to the blockchain.
 
+{% raw %}
+
 ```tsx
 this.eth!.waitForMinedTx(
        currency,
@@ -97,8 +112,11 @@ this.eth!.waitForMinedTx(
      );
 ```
 
+{% endraw %}
+
 The function requires that you specify a currency to use (for example, MANA or ETH), a transaction hash number and the Ethereum wallet address that received the payment.
 
+{% raw %}
 
 ```tsx
 const myWallet = ‘0x0123456789...’;
@@ -114,9 +132,10 @@ const myWallet = ‘0x0123456789...’;
     }
 ```
 
+{% endraw %}
+
 The example above first requires the user to accept a transaction, if the user accepts it, then `requirePayment` returns a hash that can be used to track the transaction and see if it's been mined. Once the transaction is mined and accepted as part of the blockchain, the `isDoorClosed` variable in the scene state is changed.
 
-<!--
 
 ## Signing messages
 
@@ -147,6 +166,8 @@ Timestamp: 1512345678
 
 Before a user can sign a message, you must first convert it into an object using the `convertMessageToObject()` function, then it can be signed with the `signMessage()` function.
 
+{% raw %}
+
 ```tsx
 const messageToSign = `# DCL Signed message
 Attacker: 10
@@ -157,17 +178,31 @@ const convertedMessage = await this.eth!.convertMessageToObject(messageToSign);
 const { message, signature } = await this.eth!.signMessage(convertedMessage);
 ```
 
+{% endraw %}
+
 ### Checking if a message is correct
 
-To verify that the message that the user signed is in fact the one that you want to send, you can use the `utils.toHex` function, from the `decentraland-eth` package, to convert it and easily compare it:
+To verify that the message that the user signed is in fact the one that you want to send, you can use the `utils.toHex` function, from the `decentraland-eth` package, to convert it and easily compare it.
+
+To use this, you must first install some dependencies manually in your scene's directory. Navigate to your scene's folder and run the following:
+
+```bash
+npm install --save decentraland-eth
+```
+You must then import these dependencies on the _.tsx_ file
+
+{% raw %}
 
 ```tsx
 import { eth } from 'decentraland-eth'
 
-// inside your scene
-await eth.utils.toHex(messageToSign)
+```
 
-// (...)
+{% endraw %}
+
+{% raw %}
+
+```tsx
 
 const { message, signature } = await this.eth!.signMessage(convertedMessage);
 
@@ -176,7 +211,11 @@ const isEqual = message === messageHex;
 console.log(‘Is the message correct?’, isEqual);
 ```
 
+{% endraw %}
+
 ### Example:
+
+{% raw %}
 
 ```tsx
 import { inject, EthereumController, createElement, ScriptableScene } from 'metaverse-api/src'
@@ -223,4 +262,5 @@ export default class SignMessage extends ScriptableScene {
  }
 
 ```
--->
+
+{% endraw %}
