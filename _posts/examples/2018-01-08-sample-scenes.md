@@ -3,10 +3,10 @@ date: 2018-01-06
 title: Sample scenes
 description: Code and scene examples using our SDK
 categories:
-  - documentation
+  - examples
 type: Document
-set: building-scenes
-set_order: 8
+set: examples
+set_order: 1
 ---
 
 To get you up and running, and to illustrate what kind of experiences you can build using the SDK, we’ve put together some [code and scene examples](https://github.com/decentraland/sample-scenes).

@@ -57,7 +57,7 @@ You can set the value of a state variable from any method in the scene object. T
 
 ```tsx
 async buttonPressed(){
-  this.setState({ buttonState : 1 });
+  this.setState({buttonState : 1 });
 };
 ```
 
