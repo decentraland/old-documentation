@@ -37,9 +37,7 @@ export default class Scene extends ScriptableScene {
 ## Require a payment
 
 
-Once the ethereumController has been imported, you can run the requirePayment function. This function prompts the user to accept a payment,
-
-The user must always manually accept this payment, the acceptance of a payment can never be implied directly from the user's actions in the scene.
+Once the ethereumController has been imported, you can run the requirePayment function. This function prompts the user to accept a payment. The user must always manually accept this payment, the acceptance of a payment can never be implied directly from the user's actions in the scene.
 
 
 ```tsx
@@ -88,7 +86,7 @@ this.eth!.waitForMinedTx(
      );
 ```
 
-The function requires that you specify a currency to use (for example, MANA or ETH), a transaction number and the Ethereum wallet address that received the payment.
+The function requires that you specify a currency to use (for example, MANA or ETH), a transaction hash number and the Ethereum wallet address that received the payment.
 
 
 ```tsx
@@ -109,21 +107,32 @@ The example above first requires the user to accept a transaction, if the user a
 
 ## Signing messages
 
-There could be a case where you want to add another layer of protection. If your script wants to communicate with an external service or API, you can let the user sign the information he is being requested to send.
+// There could be a case where you want to add another layer of protection. If your script wants to communicate with an external service or API, you can let the user sign the information he is being requested to send.
 
-Messages that you want to sign needs to come in a specific formatted text to match our safety precautions. They have to include “Decentraland signed header” at the top. This way we cut out the possibility of any mismanagement of user’s wallet.
+You can use a user's public key to sign a message in a secure way that is registered in the block chain. This can be used, for example, for users to vote or leave proof that they were at a certain place or did a certain thing.
 
-Messages should come in this format: 
+Messages that can be signed need to be follow a specific format text to match safety validations. They must include the “Decentraland signed header” at the top, this prevents the possibility of any mismanagement of the user’s wallet.
+
+Signable messages should follow this format: 
 
 ```
 # DCL Signed message
-First: something
-Second: another thing
-Key: value
+<key 1>: <value 1>
+<key 2>: <value 2>
+<key n>: <value n>
+Timestamp: <time stamp>
+```
+For example, a signable message might look like this:
+
+
+```tsx
+# DCL Signed message
+Attacker: 10
+Defender: 123
 Timestamp: 1512345678
 ```
 
-To sign a message, you first need to convert it into object with `convertMessageToObject` function and then you can proceed to signing:
+Before you can sign a message, you must first convert it into an object using the `convertMessageToObject()` function, then you can sign it with the `signMessage()` function.
 
 ```tsx
 const messageToSign = `# DCL Signed message
@@ -131,14 +140,14 @@ Attacker: 10
 Defender: 123
 Timestamp: 1512345678`
 
-const convertedMessage = await this.eth!.convertMessageToObject(messageToSign)
-const { message, signature } = await this.eth!.signMessage(convertedMessage)
+const convertedMessage = await this.eth!.convertMessageToObject(messageToSign);
+const { message, signature } = await this.eth!.signMessage(convertedMessage);
 // … do something with message and signature
 ```
 
-### Checking if message is correct
+### Checking if a message is correct
 
-To check if the message user signed is the one that you want to send, you can use our utility function from `decentraland-eth` package:
+To verify that the message that the user signed is in fact the one that you want to send, you can use the `utils.toHex` function, from the `decentraland-eth` package, to convert it and easily compare it:
 
 ```tsx
 import { eth } from 'decentraland-eth'
@@ -148,11 +157,11 @@ await eth.utils.toHex(messageToSign)
 
 // (...)
 
-const { message, signature } = await this.eth!.signMessage(convertedMessage)
+const { message, signature } = await this.eth!.signMessage(convertedMessage);
 
-const messageHex = await eth.utils.toHex(messageToSign)
-const isEqual = message === messageHex
-console.log(‘Is the message correct?’, isEqual)
+const messageHex = await eth.utils.toHex(messageToSign);
+const isEqual = message === messageHex;
+console.log(‘Is the message correct?’, isEqual);
 ```
 
 ### Example:
