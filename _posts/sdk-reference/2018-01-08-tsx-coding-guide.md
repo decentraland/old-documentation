@@ -21,7 +21,7 @@ You don’t need to import any additional libraries to do this, simply write `co
 
 ```tsx
 this.subscribeTo("pointerDown", e => {
-  console.log(“click”);
+  console.log("click");
 });
 ```
 
@@ -43,7 +43,15 @@ This is useful for values that are used multiple times in your scene and need to
 import { createElement, ScriptableScene } from "metaverse-api";
 
 const updateRate = 300;
-const myColors = ["#3d9693", "#e8daa0", "#968fb7", "#966161", "#879e91", "#66656b", "#6699cc"];
+const myColors = [
+  "#3d9693",
+  "#e8daa0",
+  "#968fb7",
+  "#966161",
+  "#879e91",
+  "#66656b",
+  "#6699cc"
+];
 
 export default class myScene extends ScriptableScene {
   state = {
