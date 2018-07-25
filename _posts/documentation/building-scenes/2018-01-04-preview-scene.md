@@ -62,7 +62,7 @@ Once the websocket server is up and the scene is properly pointing at it, fire u
 From the scene directory run the following bash command:
 
 ```bash
-$:  dcl preview
+dcl preview
 ```
 
 Any missing dependencies are installed and then the CLI opens the scene in a new browser tab automatically.

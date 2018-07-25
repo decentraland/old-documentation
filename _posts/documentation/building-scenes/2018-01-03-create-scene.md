@@ -26,7 +26,7 @@ See the [Installation Guide]({{ site.baseurl }}{% post_url /documentation/buildi
 
 Use our CLI tool to automatically build the initial boilerplate scene. To do so, run `dcl init` in an empty folder. See [SDK Overview]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-01-SDK-Overview %}) for details on how to install and use the CLI.
 
-The `dcl init` command creates a Decentraland **project** in your current working directory containing a **scene**. It prompts you to anser a series of optional questions about the scene's ownership and where in Decentraland to eventually upload it, then it asks you to select a scene template to start from. Depending on what you choose for this option, the CLI builds a different file structure with different default content.
+The `dcl init` command creates a Decentraland **project** in your current working directory containing a **scene**. It prompts you to answer a series of optional questions about the scene's ownership and where in Decentraland to eventually upload it, then it asks you to select a scene template to start from. Depending on what you choose for this option, the CLI builds a different file structure with different default content.
 
 There are four different scene templates that you can use as a starting point:
 
