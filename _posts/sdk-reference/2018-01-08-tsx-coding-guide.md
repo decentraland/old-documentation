@@ -249,7 +249,102 @@ The function performed by the `forEach()` function doesn't have a `return` state
 
 > Note: Keep in mind that when dealing with a variable from the scene state, you can't change its value by setting it directly. You must always change the value of a scene state variable through the `this.setState()` operation.
 
-## Keep the render function readable
+## Make the render function dynamic
+
+The `render()` function draws what users see in your scene. In its simplest form, its `return` statement contains what resembles a literal XML definition for a set of entities with fixed values. An essential part of making a scene interactive is to have the render function change its output in response to changes in the scene state.
+
+Although what's typically in the `return` statement of render() may resemble pure XML, everything that goes in between `{ }` is being processed as TypeScript. This means that you can interrupt the tag and attribute syntax of XML with curly brackets to add JSX logic anywhere you choose.
+
+### Reference variables from render
+
+The simplest way to change how something is rendered is to reference the value of a variable from the value of one of the XML attributes.
+
+{% raw %}
+
+```tsx
+async render() {
+  return (
+    <scene>
+      <box
+        color= {this.state.boxColor}
+        scale={this.state.boxSize}
+      />
+    </scene>
+  )
+}
+```
+
+{% endraw %}
+
+### Add conditional logic to render
+
+Another simple way to make render() respond to changes in variables is to add conditional logic.
+
+{% raw %}
+
+```tsx
+async render() {
+  return (
+    <scene>
+      {this.state.boxOrSphere == sphere
+        ?<sphere />
+        :<box />
+      }
+    </scene>
+  )
+}
+```
+
+{% endraw %}
+
+In the example above, the render function either returns a box or a sphere depending on the value of a `boxOrSphere` variable. Note that we needed to wrap the entire conditional expression in `{ }` for it to be processed correctly as TypeScript.
+
+{% raw %}
+
+```tsx
+async render() {
+  return (
+    <scene>
+      <box
+          position={{x: 2, y: this.state.liftBox ? 5:0 , z:1}}
+          transition={{ position:
+            { duration: 300, timing: this.state.bounce? "bounce-in" : "linear" }
+          }}
+      />  
+    </scene>
+  )
+}
+```
+
+{% endraw %}
+
+In this second example, the _y_ position of the box is determined based on the value of `liftBox` and the timing of its transition is based on the value of `bounce`. Note that both of these conditional expressions were added in parts of the code that were already being processed as TypeScript, so no aditional `{ }` were needed.
+
+### Define an undetermined number of entities
+
+For scenes where the number of entities isn't fixed, use an array to represent these entities and their attributes and then use a `map` operation within the `render()` function.
+
+{% raw %}
+
+```tsx
+async render() {
+  return (
+    <scene>
+      { this.state.secuence.map(num =>
+        <box
+          position={{ x: num * 2, y: 1, z: 1 }}
+        />
+      }
+    </scene>
+  )
+}
+```
+
+{% endraw %}
+
+This function uses a `map` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
+
+### Keep the render function readable
 
 The output of the render() function can include calls to other functions. Since render() is called each time that the scene state is updated, so will all the functions that are called by render().
 
@@ -279,14 +374,10 @@ The functions that are called as part of the return satement must, of course, re
 renderObstacles() {
   return this.state.secuence.map(num =>
     <box
-      position={{ x: num, y: 1, z: 1 }}
-      scale={0.5}
-      withCollisions
+      position={{ x: num * 2, y: 1, z: 1 }}
     />
   )
 }
 ```
 
 {% endraw %}
-
-This function uses a `map` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This doesn't only shorten the code, it enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
