@@ -200,6 +200,27 @@ setInterval(() => {
 
 This sample initiates a loop that sets a `randomNumber` variable in the scene state to a new random number every 1000 milliseconds.
 
+### End a loop
+
+The `setInterval()` function returns an id for the loop, you can terminate the execution of this loop by running the `clearInterval()` function, passing it the loop's id.
+
+{% raw %}
+
+```tsx
+  let count = 0;
+  const loopId = setInterval(() => {
+    count += 1 ;
+    console.log(count);
+    count == 5?
+    clearInterval(loopId)
+    : null
+  }
+```
+
+{% endraw %}
+
+This example iterates over a loop until a condition is met, in which case `clearInterval()` is called to stop the loop.
+
 ### Delay an execution
 
 The `setTimeout()` function delays the execution of a statement or function.
