@@ -168,6 +168,121 @@ You can import javascript libraries to enable you to perform mathematical operat
 
 When having the code for your scene distributed amongst multiple separate files with child objects, you need to take care of how to reference
 
+## Create a node
+
+createElement() creates an ISimplifiedNode
+
+you don’t need to delete a node. Nodes will be deleted whenever they don’t appear during a render call.
+
+-->
+
+## Execution timing
+
+TypeScript provides various ways you can control when parts of your code are executed.
+
+The scriptableScene object comes with a number of default functions that are executed at different times of the scene life cycle, for example `sceneDidMount()` is called once when the scene starts and `render()` is called each time the that the scene state changes. See [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) for more information.
+
+Entities can include a _transition_ component to make any changes occur gradually, see [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-content-guide %}) for more information.
+
+### Start a loop
+
+The `setInterval()` function initiates a loop that executes a function repeatedly at a set interval
+
+{% raw %}
+
+```tsx
+setInterval(() => {
+  this.setState({ randomNumber: Math.random() });
+}, 1000);
+```
+
+{% endraw %}
+
+This sample initiates a loop that sets a `randomNumber` variable in the scene state to a new random number every 1000 milliseconds.
+
+### Delay an execution
+
+The `setTimeout()` function delays the execution of a statement or function.
+
+{% raw %}
+
+```tsx
+setTimeout(f => {
+  console.log("you'll have to wait for this message");
+}, 3000);
+```
+
+{% endraw %}
+
+The setTimeout function requires that you pass a function or statement to execute, followed by the ammount of milliseconds to delay that execution.
+
+### Freeze till complete
+
+Adding `await` at the start of a statement stops all execution of the current thread until that statement returns a value.
+
+{% raw %}
+
+```tsx
+await this.runImportantProcess();
+```
+
+{% endraw %}
+
+In this example, execution of the thread is delayed until the function `runImportantProcess()` has returned a value.
+
+When needing to store the value of the return statement, the `await` goes after the equals sign like this:
+
+{% raw %}
+
+```tsx
+const importantValue = await this.runImportantProcess();
+```
+
+{% endraw %}
+
+`await` can only be used within the context of an async function, as otherwise it would freeze the main thread of execution of the scene, which is never desirable.
+
+<!--
+
+Not getting the expected results from testing it!!!
+
+### Async functions
+
+Functions run synchronously by default, but you can make them run asynchronously when defining them by adding `async` before the name. An asynchronous function isn't executed as part of the same execution thread, but instead a new thread is created to process it in parallel.
+
+
+{% raw %}
+
+```tsx
+  testTiming(){}
+    this.syncLogger();
+    this.asyncLogger();
+    setTimeout(function(){
+      console.log("main thread");
+    }, 500);
+  }
+
+
+  syncLogger()
+  {
+    setTimeout(function(){
+      console.log("sync function");
+
+     }, 2000);
+
+  }
+
+  async asyncLogger()
+  {
+    setTimeout(function(){
+      console.log("async function");
+
+     }, 2000);
+  }
+
+```
+
+{% endraw %}
 -->
 
 ## Handle arrays in the scene state
