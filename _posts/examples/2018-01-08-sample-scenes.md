@@ -9,7 +9,7 @@ set: examples
 set_order: 1
 ---
 
-To get you up and running, and to illustrate what kind of experiences you can build using the SDK, we’ve put together some [code and scene examples](https://github.com/decentraland/sample-scenes).
+To get you up and running, and to illustrate what kind of experiences you can build using the SDK, we’ve put together some code and scene examples.
 
 ## Beginner samples
 
