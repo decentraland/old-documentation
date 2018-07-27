@@ -170,11 +170,99 @@ When having the code for your scene distributed amongst multiple separate files 
 
 -->
 
-## Handle all elements of an array
+## Handle arrays in the scene state
 
-There are two array methods you can use to run a same function on each element of an array separately: `map` and `forEach`. The main difference between them is that `map` returns a new array without affecting the original array, but `forEach` can overwrite the values in the original array.
+There are a number of things you need to take into account when working with arrays that belong to the scene state of a Decentraland scene.
+
+Since you must always update the scene state through the method `.setState()`, you can't just use array methods like `.push()` or `pop()` that would change this variable directly. You must call `setState()` to pass it the full array you want to have after implementing the change.
+
+If you're making a copy of an array that's meant to be modified, make sure you're cloning it entirely and not merely referencing its values. Otherwise changes to that array will also affect the original. To copy an array's values rather than the array itself, use the _spread operator_ (three dots).
+
+{% raw %}
+
+```tsx
+const newArray = [...this.state.myArray];
+```
+
+{% endraw %}
+
+### Add to an array in the scene state
+
+This example adds a new element at the end of the array:
+
+{% raw %}
+
+```tsx
+this.setState({ myArray: [...this.state.myArray, newValue] });
+```
+
+{% endraw %}
+
+This example adds a new element at the at the start of the array:
+
+{% raw %}
+
+```tsx
+this.setState({ myArray: [newValue, ...myArray.state.list] });
+```
+
+{% endraw %}
+
+### Update an element on an array
+
+This example changes the value of the element that's at `valueIndex`:
+
+{% raw %}
+
+```tsx
+this.setState({
+  myArray: [
+    ...this.state.myArray.slice(0, valueIndex),
+    newValue,
+    ...this.state.myArray.slice(valueIndex + 1)
+  ]
+});
+```
+
+{% endraw %}
+
+### Remove an element from an array
+
+This example pops the first element of the array, all other elements are shifted to fill in the space.
+
+{% raw %}
+
+```tsx
+const [_, ...rest] = this.state.list;
+this.setState({ list: [...rest] });
+```
+
+{% endraw %}
+
+This example removes the last element of the array:
+
+{% raw %}
+
+```tsx
+const [...rest, _] = this.state.list;
+this.setState({ list: [...rest] });
+```
+
+{% endraw %}
+
+This example removing all elements that match a certain condition. In this case, that their `id` matches the value of the variable `toRemove`.
+
+{% raw %}
+
+```tsx
+this.setState({ myArray: ...myArray.state.list.filter(x => x.id === toRemove) })
+```
+
+{% endraw %}
 
 ### The map operation
+
+There are two array methods you can use to run a same function on each element of an array separately: `map` and `forEach`. The main difference between them is that `map` returns a new array without affecting the original array, but `forEach` can overwrite the values in the original array.
 
 The `map` operation runs a function on each element of the array, it returns a new array with the results.
 
@@ -243,7 +331,7 @@ renderLeaves() {
 
 {% endraw %}
 
-Like the example used for the map operator, this example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
+Like the example used to explain the map operator above, this example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
 
 The function performed by the `forEach()` function doesn't have a `return` statement. If it did, it would overwrite the content of the `this.state.fallingLeaves` array. Instead, we create a new array called `leaves` and push elements to it, then we return the full array that at the end.
 
