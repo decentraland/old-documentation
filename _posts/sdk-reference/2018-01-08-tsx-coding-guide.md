@@ -186,7 +186,7 @@ const newArray = [...this.state.myArray];
 
 {% endraw %}
 
-### Add to an array in the scene state
+### Add to an array
 
 This example adds a new element at the end of the array:
 
@@ -226,7 +226,7 @@ this.setState({
 
 {% endraw %}
 
-### Remove an element from an array
+### Remove from an array
 
 This example pops the first element of the array, all other elements are shifted to fill in the space.
 
@@ -283,7 +283,7 @@ renderLeaves(){
 
 This example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
 
-### Combine with filter array
+### Combine with filter
 
 You can combine a `map` or a `forEach` operation with a `filter` operation to only handle the array elements that meet a certain criteria.
 
