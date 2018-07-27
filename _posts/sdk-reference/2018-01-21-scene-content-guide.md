@@ -464,7 +464,7 @@ same for video??
 
 ## Video
 
-You can add video to your scene by including a `video` entity in any entity.
+You can add video to your scene by including a `video` entity.
 
 {% raw %}
 
