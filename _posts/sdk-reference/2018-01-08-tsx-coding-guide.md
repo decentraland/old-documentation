@@ -168,11 +168,7 @@ You can import javascript libraries to enable you to perform mathematical operat
 
 When having the code for your scene distributed amongst multiple separate files with child objects, you need to take care of how to reference
 
-## Create a node
 
-createElement() creates an ISimplifiedNode
-
-you don’t need to delete a node. Nodes will be deleted whenever they don’t appear during a render call.
 
 -->
 
@@ -184,7 +180,7 @@ The scriptableScene object comes with a number of default functions that are exe
 
 Entities can include a _transition_ component to make any changes occur gradually, see [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide %}) for more information.
 
-### Start a loop
+### Start a time-based loop
 
 The `setInterval()` function initiates a loop that executes a function repeatedly at a set interval
 
@@ -211,9 +207,9 @@ The `setInterval()` function returns an id for the loop, you can terminate the e
   const loopId = setInterval(() => {
     count += 1 ;
     console.log(count);
-    count == 5?
-    clearInterval(loopId)
-    : null
+    if (count === 5) {
+      clearInterval(loopId)
+    }
   }
 ```
 
