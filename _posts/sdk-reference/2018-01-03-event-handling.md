@@ -29,7 +29,7 @@ Clicks can be done either with a mouse, a touch screen, a VR controller or some 
 
 > Note: Only entities that have an id can generate click events. Clicks can be made from a maximum distance of 10 meters away from the entity.
 
-### The click event
+#### The click event
 
 The generic `click` event represents all clicks done on valid entities. The event has two parameters:
 
@@ -68,7 +68,7 @@ export default class LastClicked extends ScriptableScene {
 
 The example above uses the `subscribeTo` to initiate a listener that checks for all click events. When the user clicks on either of the two boxes, the scene stores the id of the clicked entity in the `lastClicked` state variable and prints it to console.
 
-### Entity-specific click events
+#### Entity-specific click events
 
 A simpler way to deal with clicks that are made on a single entity is to listen for click events that are specific for that entity. The names of entity-specific click events are as follows: the id of the entity, an underscore and then _click_. For example, the event created from clicking an entity called `redButton` is named `redButton_click`.
 

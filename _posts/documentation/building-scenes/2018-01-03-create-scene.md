@@ -51,7 +51,7 @@ metadata is optional for building a scene locally, except for scene type.
 
 > If you run `dcl init` in a folder containing other Decentraland projects, any existing files with duplicate names will be overwritten with the new, initialized project files.
 
-### scene.tsx
+#### scene.tsx
 
 This file contains the code that generates an entity tree, which is what end users of your parcel will see. Below is a basic example of a `scene.tsx` file:
 
@@ -76,12 +76,12 @@ export default class MyScene extends ScriptableScene<any, any> {
 
 > **Important note:** Your `scene.tsx` must always include an `export default class`, that's how our SDK finds the class to initialize the scene.
 
-### scene.json
+#### scene.json
 
 The `scene.json` file is a JSON formatted manifest for a scene in the world. A scene can span a single or multiple LAND parcels. The `scene.json` manifest describes what objects exist in the scene, a list of any assets needed to render it, contact information for the parcel owner, and security settings. For more information and an example of a
 `scene.json` file, please visit the [Decentraland specification proposal](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki).
 
-### package.json
+#### package.json
 
 This file provides information to NPM that allows it to identify the project, as well as handle the project's dependencies. Decentraland scenes need two packages:
 
@@ -90,7 +90,7 @@ This file provides information to NPM that allows it to identify the project, as
 
 > You don’t need the `typescript` package when creating static scenes. This is only required when you are building remote and interactive scenes.
 
-### build.json
+#### build.json
 
 This is the Decentraland build configuration file.
 
@@ -99,7 +99,7 @@ reading the `build.json` file and compile your scene in a way that the client ca
 
 > You can also use the CLI to create Node.js servers for multiplayer experiences.
 
-### tsconfig.json
+#### tsconfig.json
 
 Directories containing a `tsconfig.json` file are root directories for TypeScript Projects. The `tsconfig.json` file specifies the root files and options required to compile your project in JavaScript.
 
@@ -112,7 +112,7 @@ _A static scene_ includes the following files:
 1.  `scene.json`: The manifest that contains metadata for the scene.
 2.  `scene.xml`: The content of the static scene.
 
-### scene.xml (static scenes)
+#### scene.xml (static scenes)
 
 For both static and dynamic scenes, the end result is the same: a tree of entities. The root of the tree is always a `<scene>` element. XML scenes call out this structure explicitly, TypeScript scenes provide the script to build and update this structure.
 

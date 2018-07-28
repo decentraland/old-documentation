@@ -36,8 +36,7 @@ import {
 
 ```tsx
 export default class myScene extends ScriptableScene {
-  @inject('experimentalEthereumController')
-  eth: EthereumController
+  @inject("experimentalEthereumController") eth: EthereumController;
 
   // (...)
 }
@@ -173,7 +172,7 @@ const { message, signature } = await this.eth!.signMessage(convertedMessage);
 
 {% endraw %}
 
-### Checking if a message is correct
+#### Checking if a message is correct
 
 To verify that the message that the user signed is in fact the one that you want to send, you can use the `utils.toHex` function, from the `decentraland-eth` package, to convert it and easily compare it.
 
@@ -205,7 +204,7 @@ console.log(‘Is the message correct?’, isEqual);
 
 {% endraw %}
 
-### Example:
+#### Example:
 
 {% raw %}
 

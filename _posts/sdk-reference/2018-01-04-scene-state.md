@@ -51,7 +51,7 @@ The variables you choose to make up your scene's state should be the minimal pos
 - Is this information passed in when instantiating the scene class, if so it probably should be part of `Props` rather than of the state.
 - Can you compute this information based on other state variables or the props? If so, don't include it.
 
-### Set the state
+#### Set the state
 
 You can set the value of a state variable from any method in the scene object. To do so, use `this.setState` as shown below:
 
@@ -77,7 +77,7 @@ this.state.buttonState = 1;
 this.setState({ buttonState: 1 });
 ```
 
-### Reference the state
+#### Reference the state
 
 You can reference the value a state variable from anywhere in the scene object by writing `this.state.<variable name>`.
 

@@ -144,7 +144,7 @@ If you plan to include a number of applications within your experience, then you
 
 Given this complexity and stakes of security, please allocate the time and attention to these processes. Do not rush your security architecture to delivery.
 
-### Persistence factors to consider
+#### Persistence factors to consider
 
 1.  **Account information**: login name, time zone, location for your specific experience/game
 2.  **Leaderboard stats**: previous game play results, global/regional standings, competitions
