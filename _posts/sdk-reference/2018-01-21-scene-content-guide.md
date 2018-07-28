@@ -456,15 +456,35 @@ Setting loop to false stops the audio, it doesn't pause it. So when setting loop
 
 Setting playing to false pauses??????
 
+same for video??
 
-### How to use Blender with the SDK
-
-
-how to add collider meshes into GLTF models
+-->
 
 ## Video
 
--->
+You can add video to your scene by including a `video` entity.
+
+{% raw %}
+
+```tsx
+<video
+  id="myVideo"
+  position={{ x: 2, y: 3, z: 1 }}
+  width={4}
+  height={2.5}
+  volume={currentVolume}
+  src="video/myVideo.mp4"
+  play={true}
+/>
+```
+
+{% endraw %}
+
+The `video` entity needs to have a video selected in `src`, this can either be a local file or a url to a remote video to stream.
+
+Supported video formats vary depending on the browser, but it's safe to use `.mp4` and `.avi`.
+
+With `volume` you set the volume from 0 to 100.
 
 ## Entity collision
 
