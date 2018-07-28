@@ -168,13 +168,233 @@ You can import javascript libraries to enable you to perform mathematical operat
 
 When having the code for your scene distributed amongst multiple separate files with child objects, you need to take care of how to reference
 
+
+
 -->
 
-## Handle all elements of an array
+## Execution timing
 
-There are two array methods you can use to run a same function on each element of an array separately: `map` and `forEach`. The main difference between them is that `map` returns a new array without affecting the original array, but `forEach` can overwrite the values in the original array.
+TypeScript provides various ways you can control when parts of your code are executed.
+
+The scriptableScene object comes with a number of default functions that are executed at different times of the scene life cycle, for example `sceneDidMount()` is called once when the scene starts and `render()` is called each time the that the scene state changes. See [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) for more information.
+
+Entities can include a _transition_ component to make any changes occur gradually, see [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide %}) for more information.
+
+### Start a time-based loop
+
+The `setInterval()` function initiates a loop that executes a function repeatedly at a set interval
+
+{% raw %}
+
+```tsx
+setInterval(() => {
+  this.setState({ randomNumber: Math.random() });
+}, 1000);
+```
+
+{% endraw %}
+
+This sample initiates a loop that sets a `randomNumber` variable in the scene state to a new random number every 1000 milliseconds.
+
+### End a loop
+
+The `setInterval()` function returns an id for the loop, you can terminate the execution of this loop by running the `clearInterval()` function, passing it the loop's id.
+
+{% raw %}
+
+```tsx
+  let count = 0;
+  const loopId = setInterval(() => {
+    count += 1 ;
+    console.log(count);
+    if (count === 5) {
+      clearInterval(loopId)
+    }
+  }
+```
+
+{% endraw %}
+
+This example iterates over a loop until a condition is met, in which case `clearInterval()` is called to stop the loop.
+
+### Delay an execution
+
+The `setTimeout()` function delays the execution of a statement or function.
+
+{% raw %}
+
+```tsx
+setTimeout(f => {
+  console.log("you'll have to wait for this message");
+}, 3000);
+```
+
+{% endraw %}
+
+The setTimeout function requires that you pass a function or statement to execute, followed by the ammount of milliseconds to delay that execution.
+
+### Freeze till complete
+
+Adding `await` at the start of a statement stops all execution of the current thread until that statement returns a value.
+
+{% raw %}
+
+```tsx
+await this.runImportantProcess();
+```
+
+{% endraw %}
+
+In this example, execution of the thread is delayed until the function `runImportantProcess()` has returned a value.
+
+When needing to store the value of the return statement, the `await` goes after the equals sign like this:
+
+{% raw %}
+
+```tsx
+const importantValue = await this.runImportantProcess();
+```
+
+{% endraw %}
+
+`await` can only be used within the context of an async function, as otherwise it would freeze the main thread of execution of the scene, which is never desirable.
+
+<!--
+
+Not getting the expected results from testing it!!!
+
+### Async functions
+
+Functions run synchronously by default, but you can make them run asynchronously when defining them by adding `async` before the name. An asynchronous function isn't executed as part of the same execution thread, but instead a new thread is created to process it in parallel.
+
+
+{% raw %}
+
+```tsx
+  testTiming(){}
+    this.syncLogger();
+    this.asyncLogger();
+    setTimeout(function(){
+      console.log("main thread");
+    }, 500);
+  }
+
+
+  syncLogger()
+  {
+    setTimeout(function(){
+      console.log("sync function");
+
+     }, 2000);
+
+  }
+
+  async asyncLogger()
+  {
+    setTimeout(function(){
+      console.log("async function");
+
+     }, 2000);
+  }
+
+```
+
+{% endraw %}
+-->
+
+## Handle arrays in the scene state
+
+There are a number of things you need to take into account when working with arrays that belong to the scene state of a Decentraland scene.
+
+Since you must always update the scene state through the method `.setState()`, you can't just use array methods like `.push()` or `pop()` that would change this variable directly. You must call `setState()` to pass it the full array you want to have after implementing the change.
+
+If you're making a copy of an array that's meant to be modified, make sure you're cloning it entirely and not merely referencing its values. Otherwise changes to that array will also affect the original. To copy an array's values rather than the array itself, use the _spread operator_ (three dots).
+
+{% raw %}
+
+```tsx
+const newArray = [...this.state.myArray];
+```
+
+{% endraw %}
+
+### Add to an array
+
+This example adds a new element at the end of the array:
+
+{% raw %}
+
+```tsx
+this.setState({ myArray: [...this.state.myArray, newValue] });
+```
+
+{% endraw %}
+
+This example adds a new element at the at the start of the array:
+
+{% raw %}
+
+```tsx
+this.setState({ myArray: [newValue, ...myArray.state.list] });
+```
+
+{% endraw %}
+
+### Update an element on an array
+
+This example changes the value of the element that's at `valueIndex`:
+
+{% raw %}
+
+```tsx
+this.setState({
+  myArray: [
+    ...this.state.myArray.slice(0, valueIndex),
+    newValue,
+    ...this.state.myArray.slice(valueIndex + 1)
+  ]
+});
+```
+
+{% endraw %}
+
+### Remove from an array
+
+This example pops the first element of the array, all other elements are shifted to fill in the space.
+
+{% raw %}
+
+```tsx
+const [_, ...rest] = this.state.list;
+this.setState({ list: [...rest] });
+```
+
+{% endraw %}
+
+This example removes the last element of the array:
+
+{% raw %}
+
+```tsx
+const [...rest, _] = this.state.list;
+this.setState({ list: [...rest] });
+```
+
+{% endraw %}
+
+This example removing all elements that match a certain condition. In this case, that their `id` matches the value of the variable `toRemove`.
+
+{% raw %}
+
+```tsx
+this.setState({ myArray: ...myArray.state.list.filter(x => x.id === toRemove) })
+```
+
+{% endraw %}
 
 ### The map operation
+
+There are two array methods you can use to run a same function on each element of an array separately: `map` and `forEach`. The main difference between them is that `map` returns a new array without affecting the original array, but `forEach` can overwrite the values in the original array.
 
 The `map` operation runs a function on each element of the array, it returns a new array with the results.
 
@@ -195,7 +415,7 @@ renderLeaves(){
 
 This example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
 
-### Combine with filter array
+### Combine with filter
 
 You can combine a `map` or a `forEach` operation with a `filter` operation to only handle the array elements that meet a certain criteria.
 
@@ -243,7 +463,7 @@ renderLeaves() {
 
 {% endraw %}
 
-Like the example used for the map operator, this example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
+Like the example used to explain the map operator above, this example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
 
 The function performed by the `forEach()` function doesn't have a `return` statement. If it did, it would overwrite the content of the `this.state.fallingLeaves` array. Instead, we create a new array called `leaves` and push elements to it, then we return the full array that at the end.
 
