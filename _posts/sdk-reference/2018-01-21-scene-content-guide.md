@@ -43,7 +43,6 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 All entities can have a _position_, a _rotation_ and a _scale_. These can be easily set as components, as shown below:
 
 {% raw %}
-
 ```tsx
 <box
   position={{ x: 5, y: 3, z: 5 }}
@@ -83,7 +82,6 @@ In dynamic scenes, you can configure an entity to affect the way in which it mov
 The example below shows a box entity that is configured to rotate smoothly.
 
 {% raw %}
-
 ```tsx
 <box
   rotation={currentRotation}
@@ -200,9 +198,11 @@ If the entitiy is configured with both a specific rotation and a lookAt setting,
 Color is set in hexadecimal values. To set an entity's color, simply set its `color` component to the corresponding hexadecimal value.
 
 {% raw %}
-
 ```tsx
-<sphere position={{ x: 0.5, y: 1, z: 0 }} color="#EF2D5E" />
+  <sphere 
+    position={{ x: 0.5, y: 1, z: 0 }}   
+    color="#EF2D5E"
+  />
 ```
 
 {% endraw %}
@@ -331,7 +331,6 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 > Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
 
 {% raw %}
-
 ```tsx
 <gltf-model
   position={{ x: 5, y: 3, z: 5 }}
@@ -361,7 +360,6 @@ You activate an animation by adding _skeletalAnimation_ settings to a gltf model
 The example below imports a model that includes animations and configures them:
 
 {% raw %}
-
 ```tsx
 <gltf-model
   position={{ x: 5, y: 3, z: 5 }}
@@ -493,9 +491,12 @@ With `volume` you set the volume from 0 to 100.
 Entities that have collisions enabled occupy space and block a user's path, objects without collisions can be walked through by a user`s avatar.
 
 {% raw %}
-
 ```tsx
-<box position={{ x: 10, y: 0, z: 0 }} scale={2} withCollisions={true} />
+<box 
+  position={{ x: 10, y: 0, z: 0 }} 
+  scale={2} 
+  ignoreCollisions={false}
+/>
 ```
 
 {% endraw %}
