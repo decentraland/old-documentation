@@ -178,7 +178,7 @@ TypeScript provides various ways you can control when parts of your code are exe
 
 The scriptableScene object comes with a number of default functions that are executed at different times of the scene life cycle, for example `sceneDidMount()` is called once when the scene starts and `render()` is called each time the that the scene state changes. See [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) for more information.
 
-Entities can include a _transition_ component to make any changes occur gradually, see [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide %}) for more information.
+Entities can include a _transition_ component to make any changes occur gradually, this works very much like transitions in CSS. See [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide %}) for more information.
 
 #### Start a time-based loop
 
@@ -259,48 +259,9 @@ const importantValue = await this.runImportantProcess()
 
 `await` can only be used within the context of an async function, as otherwise it would freeze the main thread of execution of the scene, which is never desirable.
 
-<!--
+If you're familiar with C# language, you'll see that asyncrhonous functions in TypeScript behave just the same. Functions run synchronously by default, but you can make them run asynchronously by adding `async` before the name when defining them.
 
-Not getting the expected results from testing it!!!
-
-#### Async functions
-
-Functions run synchronously by default, but you can make them run asynchronously when defining them by adding `async` before the name. An asynchronous function isn't executed as part of the same execution thread, but instead a new thread is created to process it in parallel.
-
-
-{% raw %}
-
-```tsx
-  testTiming(){}
-    this.syncLogger()
-    this.asyncLogger()
-    setTimeout(function(){
-      console.log("main thread")
-    }, 500)
-  }
-
-
-  syncLogger()
-  {
-    setTimeout(function(){
-      console.log("sync function")
-
-     }, 2000)
-
-  }
-
-  async asyncLogger()
-  {
-    setTimeout(function(){
-      console.log("async function")
-
-     }, 2000)
-  }
-
-```
-
-{% endraw %}
--->
+> Tip: If you want to understand the reasoning behind JavaScript promises, async and await, we recommend reading [this article](https://zeit.co/blog/async-and-await).
 
 ## Handle arrays in the scene state
 
