@@ -20,16 +20,16 @@ state = {
   buttonState: 0,
   isDoorClosed: false,
   boxPosition: { x: 0, y: 0, z: 0 }
-};
+}
 ```
 
 Each state variable must be given an intial value for when the scene is first rendered. You can define the type for the state object by declaring a custom interface. Doing this is optional but we recommend it, especially for complex scenes, as it helps validate inputs and makes debugging easier.
 
 ```tsx
 export interface IState {
-  buttonState: number;
-  isDoorClosed: boolean;
-  boxPosition: Vector3Component;
+  buttonState: number
+  isDoorClosed: boolean
+  boxPosition: Vector3Component
 }
 
 export default class Scene extends ScriptableScene<any, IState> {
@@ -37,7 +37,7 @@ export default class Scene extends ScriptableScene<any, IState> {
     buttonState: 0,
     isDoorClosed: false,
     queboxPosition: { x: 0, y: 0, z: 0 }
-  };
+  }
 
   // (...)
 }
@@ -57,8 +57,8 @@ You can set the value of a state variable from any method in the scene object. T
 
 ```tsx
 async buttonPressed(){
-  this.setState({buttonState : 1 });
-};
+  this.setState({buttonState : 1 })
+}
 ```
 
 Each time the scene's state is updated, the `render()` function is called to render the scene using the new state.
@@ -71,10 +71,10 @@ It's important that each time you change the state you do it through the `setSta
 
 ```tsx
 // Wrong
-this.state.buttonState = 1;
+this.state.buttonState = 1
 
 // Correct
-this.setState({ buttonState: 1 });
+this.setState({ buttonState: 1 })
 ```
 
 #### Reference the state
@@ -83,8 +83,8 @@ You can reference the value a state variable from anywhere in the scene object b
 
 ```tsx
 async checkDoor(){
-  return this.state.isDoorClosed;
-};
+  return this.state.isDoorClosed
+}
 ```
 
 In the example below, the `render()` method draws a dynamic scene where the position of an entity is based on a variable in the state. As soon as the value of that variable changes, the rendered scene changes as well.
@@ -97,7 +97,7 @@ async render() {
     <scene>
       <box position={this.state.boxPosition} />
     </scene>
-  );
+  )
 }
 ```
 
@@ -110,8 +110,8 @@ To debug a scene, you can use `console.log(this.state)` to log the entire scene 
 ```tsx
 async sceneDidMount() {  
   this.subscribeTo("pointerDown", e => {
-    console.log(this.state);
-  });
+    console.log(this.state)
+  })
   // (...)
 }
 ```

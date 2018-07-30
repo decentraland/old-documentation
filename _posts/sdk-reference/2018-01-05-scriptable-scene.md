@@ -25,9 +25,9 @@ You can define the type for the state object by declaring a custom interface. Do
 
 ```tsx
 export interface IState {
-  buttonState: number;
-  isDoorClosed: boolean;
-  boxPosition: Vector3Component;
+  buttonState: number
+  isDoorClosed: boolean
+  boxPosition: Vector3Component
 }
 
 export default class Scene extends ScriptableScene<any, IState> {
@@ -35,7 +35,7 @@ export default class Scene extends ScriptableScene<any, IState> {
     buttonState: 0,
     isDoorClosed: false,
     queboxPosition: { x: 0, y: 0, z: 0 }
-  };
+  }
   // (...)
 }
 ```
@@ -74,18 +74,18 @@ As general rules, remember that:
 Below is an example containing a class and hooks to lifecycle methods.
 
 ```tsx
-import { ScriptableScene, createElement } from "metaverse-api";
+import { ScriptableScene, createElement } from "metaverse-api"
 
 interface State {
-  counter: number;
+  counter: number
 }
 
 interface Props {}
 
 export default class Scene extends ScriptableScene<Props, State> {
-  eventSubscriber: EventSubscriber;
-  timer: number;
-  state: State = { counter: 0 };
+  eventSubscriber: EventSubscriber
+  timer: number
+  state: State = { counter: 0 }
 
   /**
    * Called immediately after the scene is mounted. You must start your
@@ -94,11 +94,11 @@ export default class Scene extends ScriptableScene<Props, State> {
    * the scene.
    */
   async sceneDidMount() {
-    this.eventSubscriber = new EventSubscriber(this.entityController);
+    this.eventSubscriber = new EventSubscriber(this.entityController)
 
     this.eventSubscriber.on("button_click", evt => {
-      this.setState({ counter: this.state.counter + 1 });
-    });
+      this.setState({ counter: this.state.counter + 1 })
+    })
   }
 
   /**
@@ -113,14 +113,14 @@ export default class Scene extends ScriptableScene<Props, State> {
       x: 1,
       y: 1 + this.state.counter,
       z: 1
-    };
+    }
 
     return (
       <scene>
         <box id="button" color="#ff0000" scale={2} />
         <box scale={barScale} />
       </scene>
-    );
+    )
   }
 
   /**
@@ -130,7 +130,7 @@ export default class Scene extends ScriptableScene<Props, State> {
    * If this method returns `true`, `render`, and `sceneDidUpdate` are called.
    */
   async shouldSceneUpdate(newProps: Props) {
-    return this.state.counter < 20;
+    return this.state.counter < 20
   }
 
   /**
@@ -159,7 +159,10 @@ export default class Scene extends ScriptableScene<Props, State> {
    * @param event name of the remote event to listen
    * @param handler an async
    */
-  subscribeTo<T extends IEventNames>(event: T, handler: (data: IEvents[T]) => void | Promise<void>);
+  subscribeTo<T extends IEventNames>(
+    event: T,
+    handler: (data: IEvents[T]) => void | Promise<void>
+  )
 }
 ```
 
@@ -213,7 +216,7 @@ It's important to understand the way `entityController` gets injected into the c
 
     ```tsx
     class ScriptableScene extends Script {
-      @inject("EntityController") entityController: EntityController = null;
+      @inject("EntityController") entityController: EntityController = null
     }
     ```
 

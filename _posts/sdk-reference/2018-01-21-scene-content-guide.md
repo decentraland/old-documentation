@@ -267,7 +267,7 @@ async render() {
         ]}
       />
     </scene>
-  );
+  )
 }
 ```
 
@@ -548,7 +548,7 @@ class Scene extends ScriptableScene {
       <scene>
         <box position={{ x: 10, y: 10, z: 10 }} />
       </scene>
-    );
+    )
   }
 }
 ```
@@ -586,7 +586,7 @@ class Scene extends ScriptableScene {
       <scene>
         <material id="test" albedoColor="#ffeeaa" />
       </scene>
-    );
+    )
   }
 }
 ```
