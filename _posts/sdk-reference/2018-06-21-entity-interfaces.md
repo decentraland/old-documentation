@@ -54,8 +54,8 @@ interface BoxEntity extends BaseEntity {
   color?: string;
   /** Material selector */
   material?: string;
-  /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean;
+  /** Set to true to turn on the collider for the entity. */
+  withCollisions?: boolean;
 }
 ```
 
@@ -81,8 +81,8 @@ interface SphereEntity extends BaseEntity {
   color?: string;
   /** Material selector */
   material?: string;
-  /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean;
+  /** Set to true to turn on the collider for the entity. */
+  withCollisions?: boolean;
 }
 ```
 
@@ -116,8 +116,8 @@ interface PlaneEntity extends BaseEntity {
   /** Material selector */
   material?: string;
 
-  /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean;
+  /** Set to true to turn on the collider for the entity. */
+  withCollisions?: boolean;
 }
 ```
 
@@ -162,8 +162,8 @@ interface CylinderEntity extends BaseEntity {
   /** Material selector */
   material?: string;
 
-  /** Set to true to turn off the collider for the entity. */
-  ignoreCollisions?: boolean;
+  /** Set to true to turn on the collider for the entity. */
+  withCollisions?: boolean;
 
   /** Radius (meters) */
   radius?: number;
@@ -607,9 +607,9 @@ export type MaterialEntity = BaseEntity & {
   material?: string;
 
   /**
-   * Set to true to turn off the collider for the entity.
+   * Set to true to turn on the collider for the entity.
    */
-  ignoreCollisions?: boolean;
+  withCollisions?: boolean;
 };
 
 export type BasicMaterialEntity = {

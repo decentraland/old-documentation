@@ -9,7 +9,6 @@ set: building-scenes
 set_order: 0
 ---
 
-
 To build scenes for Decentraland you will need to install the Command Line Interface (CLI).
 
 The CLI allows you to compile and preview your scene in an "off-chain" development environment. After testing your scene locally, you can use the CLI to upload your content to IPFS, linking it with your LAND.
@@ -21,10 +20,10 @@ The Decentraland CLI is distributed via [npm](https://www.npmjs.com/get-npm?utm_
 ## Before you Begin
 
 Please install the following dependences before you install the CLI:
-* [Node.js](https://github.com/decentraland/cli#nodejs-installation) (version 8)
-* [IPFS](https://dist.ipfs.io/#go-ipfs)
-* [Python 2.7.x](https://www.python.org/downloads/)
 
+- [Node.js](https://github.com/decentraland/cli#nodejs-installation) (version 8)
+- [IPFS](https://dist.ipfs.io/#go-ipfs)
+- [Python 2.7.x](https://www.python.org/downloads/)
 
 ## To install the CLI on Mac OS
 
@@ -48,13 +47,12 @@ Once the installation is complete, the `dcl` command will be globally available.
 
 ## To install the CLI on Windows
 
-1. Find the Command Prompt app and select **Run as Administrator**
-2. Install windows-build-tools by running :
-`npm install --global --production windows-build-tools`
-... Wait for both the Visual Studio Build Tools and Python installers to both read `Successfully installed xxxx`. Once these have installed successfully, you will be returned to the command prompt.
-1. Install the CLI by running:
-`npm install -g decentraland`
-
+1.  Find the Command Prompt app and select **Run as Administrator**
+2.  Install windows-build-tools by running :
+    `npm install --global --production windows-build-tools`
+    ... Wait for both the Visual Studio Build Tools and Python installers to both read `Successfully installed xxxx`. Once these have installed successfully, you will be returned to the command prompt.
+3.  Install the CLI by running:
+    `npm install -g decentraland`
 
 Once the installation is complete, the `dcl` command will be globally available.
 
@@ -62,24 +60,23 @@ Once the installation is complete, the `dcl` command will be globally available.
 
 Since Windows machines don't use bash, we recommend that you install git and include git bash. You can otherwise run the CLI commands on the Windows command prompt.
 
-1. Download [git](https://git-scm.com/download/win) (you'll likely want the 64-bit Windows version):
-2. When prompted choose to install **git bash**
-3. When prompted for a default text editor select **Use the Nano editor by default**
-4. When prompted to adjust your path environment, select **Use Git from the Windows Command Prompt**
-5. When prompted to choose the SSH executable, select **Use OpenSSH**
-6. When prompted to choose the HTTPS transport backend, select **Use the OpenSSL library**
-7. When prompted to configure the line ending conversions, select **Checkout Windows-style, commit Unix-style line endings**
-8. When prompted to configure the terminal emulator to use with Git Bash select **Use MinTTY**
-9. On the final installation screen select the following options
-    * **Enable file system caching**
-    * **Enable Git Credential Manager**
-    * **Enable symbolic links**
-
+1.  Download [git](https://git-scm.com/download/win) (you'll likely want the 64-bit Windows version):
+2.  When prompted choose to install **git bash**
+3.  When prompted for a default text editor select **Use the Nano editor by default**
+4.  When prompted to adjust your path environment, select **Use Git from the Windows Command Prompt**
+5.  When prompted to choose the SSH executable, select **Use OpenSSH**
+6.  When prompted to choose the HTTPS transport backend, select **Use the OpenSSL library**
+7.  When prompted to configure the line ending conversions, select **Checkout Windows-style, commit Unix-style line endings**
+8.  When prompted to configure the terminal emulator to use with Git Bash select **Use MinTTY**
+9.  On the final installation screen select the following options
+    - **Enable file system caching**
+    - **Enable Git Credential Manager**
+    - **Enable symbolic links**
 
 ## Update the CLI on any platform
 
 To update the CLI to the latest supported version, run the following command:
 
-``bash
+```bash
 npm update -g decentraland
 ```

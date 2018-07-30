@@ -29,7 +29,7 @@ Each state variable must be given an intial value for when the scene is first re
 export interface IState {
   buttonState: number;
   isDoorClosed: boolean;
-  boxPosition: vector3;
+  boxPosition: Vector3Component;
 }
 
 export default class Scene extends ScriptableScene<any, IState> {

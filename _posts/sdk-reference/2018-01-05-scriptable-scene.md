@@ -27,16 +27,15 @@ You can define the type for the state object by declaring a custom interface. Do
 export interface IState {
   buttonState: number;
   isDoorClosed: boolean;
-  boxPosition: vector3
+  boxPosition: Vector3Component;
 }
 
 export default class Scene extends ScriptableScene<any, IState> {
   state = {
-    buttonState: 0
+    buttonState: 0,
     isDoorClosed: false,
-    queboxPosition: { x: 0, y: 0, z: 0 },
+    queboxPosition: { x: 0, y: 0, z: 0 }
   };
-
   // (...)
 }
 ```
