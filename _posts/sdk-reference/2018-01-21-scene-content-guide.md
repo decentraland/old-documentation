@@ -43,6 +43,7 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 All entities can have a _position_, a _rotation_ and a _scale_. These can be easily set as components, as shown below:
 
 {% raw %}
+
 ```tsx
 <box
   position={{ x: 5, y: 3, z: 5 }}
@@ -75,13 +76,14 @@ You can include an invisible base entity to wrap a set of other entities and def
 
 You can also set a position, rotation and scale for the entire `<scene/>` entity and affect everything in the scene.
 
-### Transitions
+#### Transitions
 
 In dynamic scenes, you can configure an entity to affect the way in which it moves. By default, all changes to an entity are rendered as a sudden shift from one state to another. By adding a _transition_, you can make the change be gradual and more natural.
 
 The example below shows a box entity that is configured to rotate smoothly.
 
 {% raw %}
+
 ```tsx
 <box
   rotation={currentRotation}
@@ -149,7 +151,7 @@ In the example below, a transition is applied to the rotation of an invisible en
 
 {% endraw %}
 
-### Turn to face the avatar
+#### Turn to face the avatar
 
 You can set an entity to act as a _billboard_, this means that it will always rotate to face the user. This was a common technique used in 3D games of the 90s, where most entities were planes that always faced the player, but the same can be used with and 3D model.
 
@@ -171,7 +173,7 @@ You must provide this setting with a number that selects between the following m
 
 If the entitiy is configured with both a specific rotation and a billboard setting, it uses the rotation set on by its billboard behavior.
 
-### Turn to face a position
+#### Turn to face a position
 
 You can set an entity to face a specific position in the scene using _lookAt_. This is a way to set the rotation of an entity without having to deal with angles.
 
@@ -198,11 +200,9 @@ If the entitiy is configured with both a specific rotation and a lookAt setting,
 Color is set in hexadecimal values. To set an entity's color, simply set its `color` component to the corresponding hexadecimal value.
 
 {% raw %}
+
 ```tsx
-  <sphere 
-    position={{ x: 0.5, y: 1, z: 0 }}   
-    color="#EF2D5E"
-  />
+<sphere position={{ x: 0.5, y: 1, z: 0 }} color="#EF2D5E" />
 ```
 
 {% endraw %}
@@ -230,7 +230,7 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material />` entity declared.
 
-### Texture mapping
+#### Texture mapping
 
 An entity that uses a material can be configured to map specific regions of the texture to its faces. You do this by setting _u_ and _v_ coordinates on the 2D image of the texture to correspond to the vertices of the entity. The more vertices the entity has, the more _uv_ coordinates need to be defined on the texture, a plane for example needs to have 8 _uv_ points defined, 4 for each of its two faces.
 
@@ -267,7 +267,7 @@ async render() {
         ]}
       />
     </scene>
-  );
+  )
 }
 ```
 
@@ -275,7 +275,7 @@ async render() {
 
 To create an animated sprite, use texture mapping to change the selected regions of a same texture that holds all the frames.
 
-### Transparent materials
+#### Transparent materials
 
 To make a material transparent, you must add an alpha channel to the image you use for the texture. The `material` entity ignores the alpha channel of the texture image by default, so you must either:
 
@@ -298,7 +298,7 @@ To make a material transparent, you must add an alpha channel to the image you u
 
 {% endraw %}
 
-### Basic materials
+#### Basic materials
 
 Instead of the `<material />` entity, you can define a material through the `<basic-material />` entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistenlty bright, it can also be used to give your scene a more minimalistic look.
 
@@ -331,6 +331,7 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 > Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
 
 {% raw %}
+
 ```tsx
 <gltf-model
   position={{ x: 5, y: 3, z: 5 }}
@@ -351,7 +352,7 @@ glTF models can also include their own textures and animations. Keep in mind tha
 
 > Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity.
 
-### Animations
+#### Animations
 
 Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
@@ -360,6 +361,7 @@ You activate an animation by adding _skeletalAnimation_ settings to a gltf model
 The example below imports a model that includes animations and configures them:
 
 {% raw %}
+
 ```tsx
 <gltf-model
   position={{ x: 5, y: 3, z: 5 }}
@@ -402,7 +404,7 @@ To get you started, below is a list of libraries that have free or relatively in
 
 Note that most of the models that you can download from these sites won't be in glTF. If that's the case, you must convert them to glTF before you can use them in a scene. We recommend importing them into Blender and exporting them with one of the available glTF export add-ons.
 
-### Why we use glTF?
+#### Why we use glTF?
 
 Compared to the older _OBJ format_, which supports only vertices, normals, texture coordinates, and basic materials,
 glTF provides a more powerful set of features. In addition to all of the features we just named, glTF also offers:
@@ -480,7 +482,7 @@ You can add video to your scene by including a `video` entity.
 
 {% endraw %}
 
-The `video` entity needs to have a video selected in `src`, this can either be a local file or a url to a remote video to stream.
+The `video` entity needs to have a video selected in `src`, this can either be a local file or a url pointing to a remote video for streaming.
 
 Supported video formats vary depending on the browser, but it's safe to use `.mp4` and `.avi`.
 
@@ -491,12 +493,9 @@ With `volume` you set the volume from 0 to 100.
 Entities that have collisions enabled occupy space and block a user's path, objects without collisions can be walked through by a user`s avatar.
 
 {% raw %}
+
 ```tsx
-<box 
-  position={{ x: 10, y: 0, z: 0 }} 
-  scale={2} 
-  ignoreCollisions={false}
-/>
+<box position={{ x: 10, y: 0, z: 0 }} scale={2} ignoreCollisions={false} />
 ```
 
 {% endraw %}
@@ -523,7 +522,7 @@ Decentraland currently doesn't have a physics engine, so if you want entities to
 
 If you have a static XML scene and want to add dynamic capabilities to it, you must migrate it to TSX format. This implies making some minor changes to the entity syntax.
 
-### Data types
+#### Data types
 
 > **TL;DR**  
 > in XML: `position="10 10 10"`  
@@ -549,7 +548,7 @@ class Scene extends ScriptableScene {
       <scene>
         <box position={{ x: 10, y: 10, z: 10 }} />
       </scene>
-    );
+    )
   }
 }
 ```
@@ -587,7 +586,7 @@ class Scene extends ScriptableScene {
       <scene>
         <material id="test" albedoColor="#ffeeaa" />
       </scene>
-    );
+    )
   }
 }
 ```

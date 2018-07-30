@@ -26,13 +26,13 @@ $ bundle exec jekyll serve --incremental
 
 Please use Visual Studio Code with Prettier extension to have a consistent coding style
 
-### Posts
+#### Posts
 
 - Add, update or remove a post in the _Posts_ collection.
 - The tutorials page is organised by categories.
 - Change the defaults when new posts are created in `_posts/_defaults.md`.
 
-### Post Series
+#### Post Series
 
 To create a new series:
 
@@ -44,12 +44,12 @@ To add a tutorial/post to a series:
 - Add a `set` field to the tutorial front matter which points to the file name of the desired set without the `.md` extention. e.g. If I have a set at `_sets/getting-started.md` I would use this in my tutorial front matter: `set: getting-started`.
 - Add a `set_order` field to the tutorial front matter and specify a number. This is the tutorials order in the set.
 
-### Navigation
+#### Navigation
 
 - Exposed as a data file to give clients better access.
 - Set in the _Data_ / _Navigation_ section.
 
-### Footer
+#### Footer
 
 - Exposed as a data file to give clients better access.
 - Set in the _Data_ / _Footer_ section.

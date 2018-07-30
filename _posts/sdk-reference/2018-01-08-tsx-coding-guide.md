@@ -21,8 +21,8 @@ You don’t need to import any additional libraries to do this, simply write `co
 
 ```tsx
 this.subscribeTo("pointerDown", e => {
-  console.log("click");
-});
+  console.log("click")
+})
 ```
 
 {% endraw %}
@@ -40,9 +40,9 @@ This is useful for values that are used multiple times in your scene and need to
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api";
+import { createElement, ScriptableScene } from "metaverse-api"
 
-const updateRate = 300;
+const updateRate = 300
 const myColors = [
   "#3d9693",
   "#e8daa0",
@@ -51,14 +51,14 @@ const myColors = [
   "#879e91",
   "#66656b",
   "#6699cc"
-];
+]
 
 export default class myScene extends ScriptableScene {
   state = {
     interval: updateRate,
     boxColor: myColors[1],
     doorColor: myColors[4]
-  };
+  }
 
   // (...)
 }
@@ -73,7 +73,7 @@ You can define your own custom data type in a _.tsx_ file, these are useful for 
 {% raw %}
 
 ```tsx
-export type characterState = "walking" | "won" | "falling";
+export type characterState = "walking" | "won" | "falling"
 ```
 
 {% endraw %}
@@ -85,7 +85,7 @@ The custom type defined above can only hold the three possible values listed abo
 ```tsx
 state = {
   characterNow: (characterState = "walking")
-};
+}
 ```
 
 {% endraw %}
@@ -130,9 +130,9 @@ The scene state object can be defined as a type of its own. This ensures that th
 
 ```tsx
 interface IState {
-  doorState: boolean;
-  boxes: number;
-  userPos: Vector3Component;
+  doorState: boolean
+  boxes: number
+  userPos: Vector3Component
 }
 ```
 
@@ -148,7 +148,7 @@ export default class ArtPiece extends ScriptableScene<any, IState> {
     pedestalColor: "#3d30ec",
     dogAngle: 0,
     donutAngle: 0
-  };
+  }
 
   // (...)
 }
@@ -180,7 +180,7 @@ The scriptableScene object comes with a number of default functions that are exe
 
 Entities can include a _transition_ component to make any changes occur gradually, see [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide %}) for more information.
 
-### Start a time-based loop
+#### Start a time-based loop
 
 The `setInterval()` function initiates a loop that executes a function repeatedly at a set interval
 
@@ -188,25 +188,25 @@ The `setInterval()` function initiates a loop that executes a function repeatedl
 
 ```tsx
 setInterval(() => {
-  this.setState({ randomNumber: Math.random() });
-}, 1000);
+  this.setState({ randomNumber: Math.random() })
+}, 1000)
 ```
 
 {% endraw %}
 
 This sample initiates a loop that sets a `randomNumber` variable in the scene state to a new random number every 1000 milliseconds.
 
-### End a loop
+#### End a loop
 
 The `setInterval()` function returns an id for the loop, you can terminate the execution of this loop by running the `clearInterval()` function, passing it the loop's id.
 
 {% raw %}
 
 ```tsx
-  let count = 0;
+  let count = 0
   const loopId = setInterval(() => {
-    count += 1 ;
-    console.log(count);
+    count += 1
+    console.log(count)
     if (count === 5) {
       clearInterval(loopId)
     }
@@ -217,7 +217,7 @@ The `setInterval()` function returns an id for the loop, you can terminate the e
 
 This example iterates over a loop until a condition is met, in which case `clearInterval()` is called to stop the loop.
 
-### Delay an execution
+#### Delay an execution
 
 The `setTimeout()` function delays the execution of a statement or function.
 
@@ -225,22 +225,22 @@ The `setTimeout()` function delays the execution of a statement or function.
 
 ```tsx
 setTimeout(f => {
-  console.log("you'll have to wait for this message");
-}, 3000);
+  console.log("you'll have to wait for this message")
+}, 3000)
 ```
 
 {% endraw %}
 
 The setTimeout function requires that you pass a function or statement to execute, followed by the ammount of milliseconds to delay that execution.
 
-### Freeze till complete
+#### Freeze till complete
 
 Adding `await` at the start of a statement stops all execution of the current thread until that statement returns a value.
 
 {% raw %}
 
 ```tsx
-await this.runImportantProcess();
+await this.runImportantProcess()
 ```
 
 {% endraw %}
@@ -252,7 +252,7 @@ When needing to store the value of the return statement, the `await` goes after 
 {% raw %}
 
 ```tsx
-const importantValue = await this.runImportantProcess();
+const importantValue = await this.runImportantProcess()
 ```
 
 {% endraw %}
@@ -263,7 +263,7 @@ const importantValue = await this.runImportantProcess();
 
 Not getting the expected results from testing it!!!
 
-### Async functions
+#### Async functions
 
 Functions run synchronously by default, but you can make them run asynchronously when defining them by adding `async` before the name. An asynchronous function isn't executed as part of the same execution thread, but instead a new thread is created to process it in parallel.
 
@@ -272,29 +272,29 @@ Functions run synchronously by default, but you can make them run asynchronously
 
 ```tsx
   testTiming(){}
-    this.syncLogger();
-    this.asyncLogger();
+    this.syncLogger()
+    this.asyncLogger()
     setTimeout(function(){
-      console.log("main thread");
-    }, 500);
+      console.log("main thread")
+    }, 500)
   }
 
 
   syncLogger()
   {
     setTimeout(function(){
-      console.log("sync function");
+      console.log("sync function")
 
-     }, 2000);
+     }, 2000)
 
   }
 
   async asyncLogger()
   {
     setTimeout(function(){
-      console.log("async function");
+      console.log("async function")
 
-     }, 2000);
+     }, 2000)
   }
 
 ```
@@ -313,19 +313,19 @@ If you're making a copy of an array that's meant to be modified, make sure you'r
 {% raw %}
 
 ```tsx
-const newArray = [...this.state.myArray];
+const newArray = [...this.state.myArray]
 ```
 
 {% endraw %}
 
-### Add to an array
+#### Add to an array
 
 This example adds a new element at the end of the array:
 
 {% raw %}
 
 ```tsx
-this.setState({ myArray: [...this.state.myArray, newValue] });
+this.setState({ myArray: [...this.state.myArray, newValue] })
 ```
 
 {% endraw %}
@@ -335,12 +335,12 @@ This example adds a new element at the at the start of the array:
 {% raw %}
 
 ```tsx
-this.setState({ myArray: [newValue, ...myArray.state.list] });
+this.setState({ myArray: [newValue, ...myArray.state.list] })
 ```
 
 {% endraw %}
 
-### Update an element on an array
+#### Update an element on an array
 
 This example changes the value of the element that's at `valueIndex`:
 
@@ -353,20 +353,20 @@ this.setState({
     newValue,
     ...this.state.myArray.slice(valueIndex + 1)
   ]
-});
+})
 ```
 
 {% endraw %}
 
-### Remove from an array
+#### Remove from an array
 
 This example pops the first element of the array, all other elements are shifted to fill in the space.
 
 {% raw %}
 
 ```tsx
-const [_, ...rest] = this.state.list;
-this.setState({ list: [...rest] });
+const [_, ...rest] = this.state.list
+this.setState({ list: [...rest] })
 ```
 
 {% endraw %}
@@ -376,8 +376,8 @@ This example removes the last element of the array:
 {% raw %}
 
 ```tsx
-const [...rest, _] = this.state.list;
-this.setState({ list: [...rest] });
+const [...rest, _] = this.state.list
+this.setState({ list: [...rest] })
 ```
 
 {% endraw %}
@@ -392,7 +392,7 @@ this.setState({ myArray: ...myArray.state.list.filter(x => x.id === toRemove) })
 
 {% endraw %}
 
-### The map operation
+#### The map operation
 
 There are two array methods you can use to run a same function on each element of an array separately: `map` and `forEach`. The main difference between them is that `map` returns a new array without affecting the original array, but `forEach` can overwrite the values in the original array.
 
@@ -415,7 +415,7 @@ renderLeaves(){
 
 This example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
 
-### Combine with filter
+#### Combine with filter
 
 You can combine a `map` or a `forEach` operation with a `filter` operation to only handle the array elements that meet a certain criteria.
 
@@ -438,7 +438,7 @@ renderLeaves(){
 
 This example is like the one above, but it first filters the `fallingLeaves` array to only handle leaves that have a _x_ position greater than 0. The `fallingLeaves` array is of type `Vector3Component`, so each element in the array has values for _x_, _y_ and _z_ coordinates.
 
-### The forEach operation
+#### The forEach operation
 
 The `forEach` operation runs a same function on every element of the array.
 
@@ -446,7 +446,7 @@ The `forEach` operation runs a same function on every element of the array.
 
 ```tsx
 renderLeaves() {
-  var leaves: ISimplifiedNode[] = [];
+  var leaves: ISimplifiedNode[] = []
 
   this.state.fallingLeaves.forEach(leaf => {
     leaves.push(
@@ -454,10 +454,10 @@ renderLeaves() {
         position={{ x: leaf.x, y: leaf.y, z: leaf.z }}
         scale={0.2}
       />
-    );
-  });
+    )
+  })
 
-  return leaves;
+  return leaves
 }
 ```
 
@@ -475,7 +475,7 @@ The `render()` function draws what users see in your scene. In its simplest form
 
 Although what's typically in the `return` statement of render() may resemble pure XML, everything that goes in between `{ }` is being processed as TypeScript. This means that you can interrupt the tag and attribute syntax of XML with curly brackets to add JSX logic anywhere you choose.
 
-### Reference variables from render
+#### Reference variables from render
 
 The simplest way to change how something is rendered is to reference the value of a variable from the value of one of the XML attributes.
 
@@ -496,7 +496,7 @@ async render() {
 
 {% endraw %}
 
-### Add conditional logic to render
+#### Add conditional logic to render
 
 Another simple way to make render() respond to changes in variables is to add conditional logic.
 
@@ -540,7 +540,7 @@ async render() {
 
 In this second example, the _y_ position of the box is determined based on the value of `liftBox` and the timing of its transition is based on the value of `bounce`. Note that both of these conditional expressions were added in parts of the code that were already being processed as TypeScript, so no aditional `{ }` were needed.
 
-### Define an undetermined number of entities
+#### Define an undetermined number of entities
 
 For scenes where the number of entities isn't fixed, use an array to represent these entities and their attributes and then use a `map` operation within the `render()` function.
 
@@ -564,7 +564,7 @@ async render() {
 
 This function uses a `map` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
 
-### Keep the render function readable
+#### Keep the render function readable
 
 The output of the render() function can include calls to other functions. Since render() is called each time that the scene state is updated, so will all the functions that are called by render().
 
@@ -578,7 +578,10 @@ async render() {
     <scene>
       {this.renderObstacles()}
       {this.renderFruit()}
-      {this.renderEnemies()}
+      {this.status.difficulty === 'hard' ?
+        this.renderHardEnemies()
+        : this.renderEasyEnemies()
+      }
     </scene>
   )
 }

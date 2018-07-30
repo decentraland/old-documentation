@@ -17,13 +17,13 @@ set_order: 1
 
 The **Decentraland Software Development Kit** includes the alpha version of our API, tools like the CLI, and all of the supporting documentation and examples that you need in order to create, test, manage, and deploy 3D content in Decentraland. The SDK allows content creators and developers to create either static or dynamic scenes that will run on the Decentraland platform.
 
-### Requirements
+#### Requirements
 
 Please note that it’s not required to have LAND to develop a scene. Developing and testing a scene can be done completely offline, without the need to deploy a scene to the Ethereum network (the system Decentraland uses to establish ownership of LAND), or IPFS (the P2P network we use for distribution and delivery of content).
 
 This SDK is intended to be used by developers or users comfortable working with code and a terminal. Most of our tools are built on top of the TypeScript and node.js ecosystem. That’s why you’ll need to have **npm** (the node packaging system) installed to develop a scene, even for basic static scenes built using markup instead of code.
 
-### Capabilities
+#### Capabilities
 
 At a very high level, the SDK allows you to do the following:
 
@@ -33,7 +33,7 @@ At a very high level, the SDK allows you to do the following:
 - Upload the content of your scene to [IPFS](https://ipfs.io).
 - Link your LAND with the IPFS URL of the content you have uploaded.
 
-### What are scenes?
+#### What are scenes?
 
 **Scenes** in Decentraland are the collections of 3D objects, textures, and audio rendered on one or more LAND parcels. Scenes can be:
 
@@ -43,11 +43,11 @@ At a very high level, the SDK allows you to do the following:
 
 Scenes are created in "projects" using the CLI.
 
-#### Where will these scenes be hosted?
+##### Where will these scenes be hosted?
 
 Scenes are deployed to **parcels**, the 10 meter by 10 meter pieces of virtual LAND, the scarce and non-fungible asset maintained in an Ethereum smart contract. These parcels of virtual space are where you will eventually upload and interact with the content you create using the SDK.
 
-#### How will users be able to see and interact with these scenes?
+##### How will users be able to see and interact with these scenes?
 
 We are developing the web client that will allow users to explore Decentraland. All of the content you upload to your LAND will be rendered and viewable through this client. We have included a preview tool in the SDK so that you can preview, test, and interact with your content in the meantime.
 
@@ -59,7 +59,7 @@ For additional terms, definitions, and explanations, please refer to our [comple
 
 The SDK includes a lot of different parts and components. For detailed, step-by-step instructions on how to download and install everything in the SDK, please refer to the [SDK Quick Start Guide]({{ site.baseurl }}{% post_url /building-scenes/2018-01-01-installation-guide %}).
 
-### CLI
+#### CLI
 
 The Decentraland Command Line Interface (CLI) allows you to create, deploy, and manage your scenes in a development environment that does not reside on the block-chain or IPFS (InterPlanetary File System).
 
@@ -67,7 +67,7 @@ After generating your new Decentraland scene locally on your own machine, you ca
 
 For more step-by-step instructions on installing the CLI, please read our [SDK Quick Start Guide]({{ site.baseurl }}{% post_url /building-scenes/2018-01-01-installation-guide %}) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
 
-### API
+#### API
 
 `metaverse-api` (commonly referred to as the API) is the name for the TypeScript package containing the library of helper methods that allows you to create interactive singleplayer and multiplayer experiences. The API includes methods allowing you to create and manipulate objects on your LAND, in addition to methods that help facilitate in-world transactions between users or other applications.
 
@@ -77,12 +77,12 @@ The API includes everything within the package `metaverse-api`. This is all of t
 
 We have designed the Decentraland API to enable scene development using the Entity Component System, where **entities** include all of the assets that users will be able to interact with within their web browser (like audio files, video files, and 3D objects) and **components** function as the bridge between the low-level functionality of the client and the scripts that you write to control the entities in your scene.
 
-### What are entities?
+#### What are entities?
 
 Entities are all of the assets that you include in your scenes that users will be able to render, view, and interact with from their web browser. These include audio files and 3D objects.
 
 Internally, the scene you present is generated through a tree of entities.
 
-### What are the components?
+#### What are the components?
 
 For a complete reference of the API, with descriptions of every component and method, please see the [API Reference](https://decentraland.github.io/cli/).

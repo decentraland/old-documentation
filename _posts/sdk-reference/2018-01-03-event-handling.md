@@ -17,7 +17,7 @@ Generally, a good way of having your scene respond to events is to set up a list
 
 ```tsx
 async sceneDidMount() {
-  this.eventSubscriber.on(`pointerDown`, () => console.log("pointer down"));
+  this.eventSubscriber.on(`pointerDown`, () => console.log("pointer down"))
 }
 ```
 
@@ -29,7 +29,7 @@ Clicks can be done either with a mouse, a touch screen, a VR controller or some 
 
 > Note: Only entities that have an id can generate click events. Clicks can be made from a maximum distance of 10 meters away from the entity.
 
-### The click event
+#### The click event
 
 The generic `click` event represents all clicks done on valid entities. The event has two parameters:
 
@@ -39,18 +39,18 @@ The generic `click` event represents all clicks done on valid entities. The even
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api";
+import { createElement, ScriptableScene } from "metaverse-api"
 
 export default class LastClicked extends ScriptableScene {
   state = {
     lastClicked: "none"
-  };
+  }
 
   async sceneDidMount() {
     this.subscribeTo("click", e => {
-      this.setState({ lastClicked: e.elementId });
-      console.log(this.state.lastClicked);
-    });
+      this.setState({ lastClicked: e.elementId })
+      console.log(this.state.lastClicked)
+    })
   }
 
   async render() {
@@ -59,7 +59,7 @@ export default class LastClicked extends ScriptableScene {
         <box id="box1" position={{ x: 2, y: 1, z: 0 }} color="ff0000" />
         <box id="box2" position={{ x: 4, y: 1, z: 0 }} color="00ff00" />
       </scene>
-    );
+    )
   }
 }
 ```
@@ -68,7 +68,7 @@ export default class LastClicked extends ScriptableScene {
 
 The example above uses the `subscribeTo` to initiate a listener that checks for all click events. When the user clicks on either of the two boxes, the scene stores the id of the clicked entity in the `lastClicked` state variable and prints it to console.
 
-### Entity-specific click events
+#### Entity-specific click events
 
 A simpler way to deal with clicks that are made on a single entity is to listen for click events that are specific for that entity. The names of entity-specific click events are as follows: the id of the entity, an underscore and then _click_. For example, the event created from clicking an entity called `redButton` is named `redButton_click`.
 
@@ -77,7 +77,7 @@ A simpler way to deal with clicks that are made on a single entity is to listen 
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from 'metaverse-api';
+import { createElement, ScriptableScene } from 'metaverse-api'
 
 export default class RedButton extends ScriptableScene {
   state = {
@@ -86,10 +86,10 @@ export default class RedButton extends ScriptableScene {
 
   async sceneDidMount() {
     this.eventSubscriber.on('redButton_click', ()) => {
-      this.setState({ buttonState: !this.state.buttonState });
-      console.log(this.state.buttonState);
-    });
-  };
+      this.setState({ buttonState: !this.state.buttonState })
+      console.log(this.state.buttonState)
+    })
+  }
 
   async render() {
     return (
@@ -112,20 +112,20 @@ The pointer down and pointer up events are fired whenever the user presses or re
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api";
+import { createElement, ScriptableScene } from "metaverse-api"
 
 export default class BigButton extends ScriptableScene {
   state = {
     buttonState: 0
-  };
+  }
 
   async sceneDidMount() {
     this.subscribeTo("pointerDown", e => {
-      this.setState({ buttonState: 0 });
-    });
+      this.setState({ buttonState: 0 })
+    })
     this.subscribeTo("pointerUp", e => {
-      this.setState({ buttonState: 1 });
-    });
+      this.setState({ buttonState: 1 })
+    })
   }
 
   async render() {
@@ -137,7 +137,7 @@ export default class BigButton extends ScriptableScene {
           transition={{ position: { duration: 200, timing: "linear" } }}
         />
       </scene>
-    );
+    )
   }
 }
 ```
@@ -159,17 +159,17 @@ The `positionChanged` event has the following properties:
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api";
+import { createElement, ScriptableScene } from "metaverse-api"
 
 export default class BoxFollower extends ScriptableScene {
   state = {
     boxPosition: { x: 0, y: 0, z: 0 }
-  };
+  }
 
   async sceneDidMount() {
     this.subscribeTo("positionChanged", e => {
-      this.setState({ boxPosition: e.position });
-    });
+      this.setState({ boxPosition: e.position })
+    })
   }
 
   async render() {
@@ -177,7 +177,7 @@ export default class BoxFollower extends ScriptableScene {
       <scene>
         <box position={this.state.boxPosition} />
       </scene>
-    );
+    )
   }
 }
 ```
@@ -199,18 +199,18 @@ The `rotationChanged` event has the following properties:
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api";
+import { createElement, ScriptableScene } from "metaverse-api"
 
 export default class ConeHead extends ScriptableScene {
   state = {
     rotation: { x: 0, y: 0, z: 0 }
-  };
+  }
 
   async sceneDidMount() {
     this.subscribeTo("rotationChanged", e => {
-      e.rotation.x += 90;
-      this.setState({ rotation: e.rotation });
-    });
+      e.rotation.x += 90
+      this.setState({ rotation: e.rotation })
+    })
   }
 
   async render() {
@@ -218,7 +218,7 @@ export default class ConeHead extends ScriptableScene {
       <scene>
         <cone position={{ x: 0, y: 1, z: 2 }} rotation={this.state.rotation} />
       </scene>
-    );
+    )
   }
 }
 ```
