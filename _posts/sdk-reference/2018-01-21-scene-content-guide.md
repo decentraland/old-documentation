@@ -58,6 +58,8 @@ All entities can have a _position_, a _rotation_ and a _scale_. These can be eas
 - `rotation` is a _3D vector_ too, but where each component represents the rotation in that axis.
 - `scale` can either be a _number_ or a _3D vector_, in case you want to scale the axis in different proportions.
 
+> Tip: When previewing a scene locally, a compass appears in the (0,0,0) point of the scene twith labels for each axis.
+
 When an entity is nested inside another, the child entities inherit components from the parents. This means that if a parent entity is positioned, scaled or rotated, its children are also affected. The position, rotation and scale values of children entities don't override those of the parents, instead these are compounded.
 
 You can include an invisible base entity to wrap a set of other entities and define their positioning as a group.
