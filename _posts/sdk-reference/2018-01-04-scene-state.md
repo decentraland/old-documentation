@@ -77,6 +77,8 @@ this.state.buttonState = 1
 this.setState({ buttonState: 1 })
 ```
 
+When dealing with arrays in the scene state, you can't update a single element in the array at a time. You must set a new value for the variable consiting of an entire new array, including any elements that haven't changed.
+
 #### Reference the state
 
 You can reference the value a state variable from anywhere in the scene object by writing `this.state.<variable name>`.
