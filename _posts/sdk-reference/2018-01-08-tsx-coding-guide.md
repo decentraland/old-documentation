@@ -363,10 +363,11 @@ The `map` operation runs a function on each element of the array, it returns a n
 
 ```tsx
 renderLeaves(){
-  return this.state.fallingLeaves.map(leaf =>
+  return this.state.fallingLeaves.map((leaf, leafIndex) =>
     <plane
       position={{ x: leaf.x , y: leaf.y, z:leaf.z }}
       scale={0.2}
+      key={leafIndex.toString()}
     />
   )
 }
@@ -374,7 +375,7 @@ renderLeaves(){
 
 {% endraw %}
 
-This example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
+This example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array and has a key based on the array index.
 
 #### Combine with filter
 
@@ -386,10 +387,11 @@ You can combine a `map` or a `forEach` operation with a `filter` operation to on
 renderLeaves(){
   return this.state.fallingLeaves
     .filter(pos => pos.x > 0)
-    .map(leaf =>
+    .map( (leaf, leafIndex) =>
       <plane
         position={{ x: leaf.x , y: leaf.y, z: leaf.z }}
         scale={0.2}
+        key={leafIndex.toString()}
       />
     )
 }
@@ -409,11 +411,12 @@ The `forEach` operation runs a same function on every element of the array.
 renderLeaves() {
   var leaves: ISimplifiedNode[] = []
 
-  this.state.fallingLeaves.forEach(leaf => {
+  this.state.fallingLeaves.forEach( (leaf,leafIndex) => {
     leaves.push(
       <plane
         position={{ x: leaf.x, y: leaf.y, z: leaf.z }}
         scale={0.2}
+        key={leafIndex.toString()}
       />
     )
   })
