@@ -24,9 +24,9 @@ See the [Installation Guide]({{ site.baseurl }}{% post_url /documentation/buildi
 
 ## Creating the file structure
 
-Use our CLI tool to automatically build the initial boilerplate scene. To do so, run `dcl start` in an empty folder. See [SDK Overview]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-01-SDK-Overview %}) for details on how to install and use the CLI.
+Use our CLI tool to automatically build the initial boilerplate scene. To do so, run `dcl init` in an empty folder. See [SDK Overview]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-01-SDK-Overview %}) for details on how to install and use the CLI.
 
-The `dcl start` command creates a Decentraland **project** in your current working directory containing a **scene**. It prompts you to answer a series of optional questions about the scene's ownership and where in Decentraland to eventually upload it, then it asks you to select a scene template to start from. Depending on what you choose for this option, the CLI builds a different file structure with different default content.
+The `dcl init` command creates a Decentraland **project** in your current working directory containing a **scene**. It prompts you to answer a series of optional questions about the scene's ownership and where in Decentraland to eventually upload it, then it asks you to select a scene template to start from. Depending on what you choose for this option, the CLI builds a different file structure with different default content.
 
 There are four different scene templates that you can use as a starting point:
 
@@ -45,11 +45,11 @@ _A local scene_ incldes the following files:
 4.  `build.json`: The file with the instructions to build the scene.
 5.  `tsconfig.json`: Typescript configuration file.
 
-The `dcl start` command also prompts you to enter some descriptive metadata, these datais are stored in
+The `dcl init` command also prompts you to enter some descriptive metadata, these datais are stored in
 the [scene.json](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki) manifest file for the scene. All of this
 metadata is optional for building a scene locally, except for scene type.
 
-> If you run `dcl start` in a folder containing other Decentraland projects, any existing files with duplicate names will be overwritten with the new, initialized project files.
+> If you run `dcl init` in a folder containing other Decentraland projects, any existing files with duplicate names will be overwritten with the new, initialized project files.
 
 #### scene.tsx
 
@@ -139,7 +139,7 @@ Since the root scene element is a transform node, it can also be translated, sca
 To preview your rendered scene locally, run the following command on the scene's main folder:
 
 ```bash
-dcl preview
+dcl start
 ```
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
