@@ -51,7 +51,7 @@ The variables you choose to make up your scene's state should be the minimal pos
 - Is this information passed in when instantiating the scene class, if so it probably should be part of `Props` rather than of the state.
 - Can you compute this information based on other state variables or the props? If so, don't include it.
 
-#### Set the state
+## Set the state
 
 You can set the value of a state variable from any method in the scene object. To do so, use `this.setState` as shown below:
 
@@ -79,7 +79,15 @@ this.setState({ buttonState: 1 })
 
 When dealing with arrays in the scene state, you can't update a single element in the array at a time. You must set a new value for the variable consiting of an entire new array, including any elements that haven't changed.
 
-#### Reference the state
+## Force update
+
+If you always change the scene state through `setState()`, the rendering of your scene should always be in sync with the scene state. However, for exceptional cases you might need to refresh the rendering of the scene manually. To do this, call the `forceUdate()` method.
+
+```
+this.forceUpdate()
+```
+
+## Reference the state
 
 You can reference the value a state variable from anywhere in the scene object by writing `this.state.<variable name>`.
 
@@ -120,7 +128,7 @@ async sceneDidMount() {
 
 {% endraw %}
 
-#### Reference the state from a child component
+## Reference the state from a child component
 
 Unlinke React, where all components can have their own state, only your custom scene class is allowed to have a state. In react terms, all child components of your scene are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), this means that they can have properties but no state of their own, and they are controlled by their parent component.
 
