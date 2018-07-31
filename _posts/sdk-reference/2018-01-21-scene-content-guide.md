@@ -38,6 +38,22 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 
 > Tip: When editing the code via a source code editor (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and typing _Ctrl + Space bar_.
 
+## Text blocks
+
+You can add text as an entity in a Decentraland scene. You can use these text entities as labels in your scene, display them momentarily as error messages, or whatever you wish.
+
+{% raw %}
+
+```tsx
+<text
+  value="Users will see this text floating in space in your scene."
+  hAlign="left"
+  position={{ x: 5, y: 1, z: 5 }}
+/>
+```
+
+{% endraw %}
+
 ## Entity positioning
 
 All entities can have a _position_, a _rotation_ and a _scale_. These can be easily set as components, as shown below:
@@ -155,7 +171,7 @@ In the example below, a transition is applied to the rotation of an invisible en
 
 #### Turn to face the avatar
 
-You can set an entity to act as a _billboard_, this means that it will always rotate to face the user. This was a common technique used in 3D games of the 90s, where most entities were planes that always faced the player, but the same can be used with and 3D model.
+You can set an entity to act as a _billboard_, this means that it will always rotate to face the user. This was a common technique used in 3D games of the 90s, where most entities were planes that always faced the player, but the same can be used with and 3D model. This is also very handy to add to `text` entities, since it makes them always legible.
 
 {% raw %}
 
