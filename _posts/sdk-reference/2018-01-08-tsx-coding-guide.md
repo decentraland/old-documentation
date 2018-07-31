@@ -263,6 +263,7 @@ If you're familiar with C# language, you'll see that asyncrhonous functions in T
 
 > Tip: If you want to understand the reasoning behind JavaScript promises, async and await, we recommend reading [this article](https://zeit.co/blog/async-and-await).
 
+
 ## Handle arrays in the scene state
 
 There are a number of things you need to take into account when working with arrays that belong to the scene state of a Decentraland scene.

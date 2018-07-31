@@ -89,6 +89,7 @@ this.forceUpdate()
 
 ## Reference the state
 
+
 You can reference the value a state variable from anywhere in the scene object by writing `this.state.<variable name>`.
 
 ```tsx
