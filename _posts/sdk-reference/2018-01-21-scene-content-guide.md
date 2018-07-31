@@ -534,7 +534,7 @@ Collision settings currently don't affect how other entities interact with each 
 
 Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
-> Tip: To view the limits of all collider meshes in the scene, launch your scene preview with `dcl preview` and click `c`. This draws blue lines that delimit collision areas.
+> Tip: To view the limits of all collider meshes in the scene, launch your scene preview with `dcl start` and click `c`. This draws blue lines that delimit collision areas.
 
 ## Migrating an XML scene to TypeScript
 
