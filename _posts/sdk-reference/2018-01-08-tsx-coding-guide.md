@@ -21,8 +21,8 @@ You don’t need to import any additional libraries to do this, simply write `co
 
 ```tsx
 this.subscribeTo("pointerDown", e => {
-  console.log("click");
-});
+  console.log("click")
+})
 ```
 
 {% endraw %}
@@ -40,9 +40,9 @@ This is useful for values that are used multiple times in your scene and need to
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api";
+import { createElement, ScriptableScene } from "metaverse-api"
 
-const updateRate = 300;
+const updateRate = 300
 const myColors = [
   "#3d9693",
   "#e8daa0",
@@ -51,14 +51,14 @@ const myColors = [
   "#879e91",
   "#66656b",
   "#6699cc"
-];
+]
 
 export default class myScene extends ScriptableScene {
   state = {
     interval: updateRate,
     boxColor: myColors[1],
     doorColor: myColors[4]
-  };
+  }
 
   // (...)
 }
@@ -73,7 +73,7 @@ You can define your own custom data type in a _.tsx_ file, these are useful for 
 {% raw %}
 
 ```tsx
-export type characterState = "walking" | "won" | "falling";
+export type characterState = "walking" | "won" | "falling"
 ```
 
 {% endraw %}
@@ -85,7 +85,7 @@ The custom type defined above can only hold the three possible values listed abo
 ```tsx
 state = {
   characterNow: (characterState = "walking")
-};
+}
 ```
 
 {% endraw %}
@@ -130,9 +130,9 @@ The scene state object can be defined as a type of its own. This ensures that th
 
 ```tsx
 interface IState {
-  doorState: boolean;
-  boxes: number;
-  userPos: Vector3Component;
+  doorState: boolean
+  boxes: number
+  userPos: Vector3Component
 }
 ```
 
@@ -148,7 +148,7 @@ export default class ArtPiece extends ScriptableScene<any, IState> {
     pedestalColor: "#3d30ec",
     dogAngle: 0,
     donutAngle: 0
-  };
+  }
 
   // (...)
 }
@@ -188,8 +188,8 @@ The `setInterval()` function initiates a loop that executes a function repeatedl
 
 ```tsx
 setInterval(() => {
-  this.setState({ randomNumber: Math.random() });
-}, 1000);
+  this.setState({ randomNumber: Math.random() })
+}, 1000)
 ```
 
 {% endraw %}
@@ -203,10 +203,10 @@ The `setInterval()` function returns an id for the loop, you can terminate the e
 {% raw %}
 
 ```tsx
-  let count = 0;
+  let count = 0
   const loopId = setInterval(() => {
-    count += 1 ;
-    console.log(count);
+    count += 1
+    console.log(count)
     if (count === 5) {
       clearInterval(loopId)
     }
@@ -225,8 +225,8 @@ The `setTimeout()` function delays the execution of a statement or function.
 
 ```tsx
 setTimeout(f => {
-  console.log("you'll have to wait for this message");
-}, 3000);
+  console.log("you'll have to wait for this message")
+}, 3000)
 ```
 
 {% endraw %}
@@ -240,7 +240,7 @@ Adding `await` at the start of a statement stops all execution of the current th
 {% raw %}
 
 ```tsx
-await this.runImportantProcess();
+await this.runImportantProcess()
 ```
 
 {% endraw %}
@@ -252,7 +252,7 @@ When needing to store the value of the return statement, the `await` goes after 
 {% raw %}
 
 ```tsx
-const importantValue = await this.runImportantProcess();
+const importantValue = await this.runImportantProcess()
 ```
 
 {% endraw %}
@@ -272,29 +272,29 @@ Functions run synchronously by default, but you can make them run asynchronously
 
 ```tsx
   testTiming(){}
-    this.syncLogger();
-    this.asyncLogger();
+    this.syncLogger()
+    this.asyncLogger()
     setTimeout(function(){
-      console.log("main thread");
-    }, 500);
+      console.log("main thread")
+    }, 500)
   }
 
 
   syncLogger()
   {
     setTimeout(function(){
-      console.log("sync function");
+      console.log("sync function")
 
-     }, 2000);
+     }, 2000)
 
   }
 
   async asyncLogger()
   {
     setTimeout(function(){
-      console.log("async function");
+      console.log("async function")
 
-     }, 2000);
+     }, 2000)
   }
 
 ```
@@ -313,7 +313,7 @@ If you're making a copy of an array that's meant to be modified, make sure you'r
 {% raw %}
 
 ```tsx
-const newArray = [...this.state.myArray];
+const newArray = [...this.state.myArray]
 ```
 
 {% endraw %}
@@ -325,7 +325,7 @@ This example adds a new element at the end of the array:
 {% raw %}
 
 ```tsx
-this.setState({ myArray: [...this.state.myArray, newValue] });
+this.setState({ myArray: [...this.state.myArray, newValue] })
 ```
 
 {% endraw %}
@@ -335,7 +335,7 @@ This example adds a new element at the at the start of the array:
 {% raw %}
 
 ```tsx
-this.setState({ myArray: [newValue, ...myArray.state.list] });
+this.setState({ myArray: [newValue, ...myArray.state.list] })
 ```
 
 {% endraw %}
@@ -353,7 +353,7 @@ this.setState({
     newValue,
     ...this.state.myArray.slice(valueIndex + 1)
   ]
-});
+})
 ```
 
 {% endraw %}
@@ -365,8 +365,8 @@ This example pops the first element of the array, all other elements are shifted
 {% raw %}
 
 ```tsx
-const [_, ...rest] = this.state.list;
-this.setState({ list: [...rest] });
+const [_, ...rest] = this.state.list
+this.setState({ list: [...rest] })
 ```
 
 {% endraw %}
@@ -376,8 +376,8 @@ This example removes the last element of the array:
 {% raw %}
 
 ```tsx
-const [...rest, _] = this.state.list;
-this.setState({ list: [...rest] });
+const [...rest, _] = this.state.list
+this.setState({ list: [...rest] })
 ```
 
 {% endraw %}
@@ -446,7 +446,7 @@ The `forEach` operation runs a same function on every element of the array.
 
 ```tsx
 renderLeaves() {
-  var leaves: ISimplifiedNode[] = [];
+  var leaves: ISimplifiedNode[] = []
 
   this.state.fallingLeaves.forEach(leaf => {
     leaves.push(
@@ -454,10 +454,10 @@ renderLeaves() {
         position={{ x: leaf.x, y: leaf.y, z: leaf.z }}
         scale={0.2}
       />
-    );
-  });
+    )
+  })
 
-  return leaves;
+  return leaves
 }
 ```
 

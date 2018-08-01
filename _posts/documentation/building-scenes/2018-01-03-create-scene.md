@@ -58,7 +58,7 @@ This file contains the code that generates an entity tree, which is what end use
 {% raw %}
 
 ```tsx
-import { ScriptableScene, createElement } from "metaverse-api";
+import { ScriptableScene, createElement } from "metaverse-api"
 
 // The ScriptableScene class is a React-style component.
 export default class MyScene extends ScriptableScene<any, any> {
@@ -67,7 +67,7 @@ export default class MyScene extends ScriptableScene<any, any> {
       <scene>
         <box position={{ x: 5, y: 0, z: 5 }} scale={{ x: 1, y: 1, z: 1 }} />
       </scene>
-    );
+    )
   }
 }
 ```

@@ -24,11 +24,11 @@ An entity can have other entities as children, these inherit the components from
 ```ts
 interface IEntity {
   /** name of the entity */
-  tag: string;
+  tag: string
   /** dictionary of attributes a.k.a.: properties */
-  attributes: Dictionary<any>;
+  attributes: Dictionary<any>
   /** children entities */
-  children: IEntity[];
+  children: IEntity[]
 }
 ```
 
@@ -51,11 +51,11 @@ Interface reference:
 ```tsx
 interface BoxEntity extends BaseEntity {
   /** Color of the vertices */
-  color?: string;
+  color?: string
   /** Material selector */
-  material?: string;
+  material?: string
   /** Set to true to turn on the collider for the entity. */
-  withCollisions?: boolean;
+  withCollisions?: boolean
 }
 ```
 
@@ -78,11 +78,11 @@ Interface reference:
 ```tsx
 interface SphereEntity extends BaseEntity {
   /** Color of the vertices */
-  color?: string;
+  color?: string
   /** Material selector */
-  material?: string;
+  material?: string
   /** Set to true to turn on the collider for the entity. */
-  withCollisions?: boolean;
+  withCollisions?: boolean
 }
 ```
 
@@ -111,13 +111,13 @@ Interface reference:
 ```tsx
 interface PlaneEntity extends BaseEntity {
   /** Color of the vertices */
-  color?: string;
+  color?: string
 
   /** Material selector */
-  material?: string;
+  material?: string
 
   /** Set to true to turn on the collider for the entity. */
-  withCollisions?: boolean;
+  withCollisions?: boolean
 }
 ```
 
@@ -157,34 +157,34 @@ Interface reference:
 ```tsx
 interface CylinderEntity extends BaseEntity {
   /** Color of the vertices */
-  color?: string;
+  color?: string
 
   /** Material selector */
-  material?: string;
+  material?: string
 
   /** Set to true to turn on the collider for the entity. */
-  withCollisions?: boolean;
+  withCollisions?: boolean
 
   /** Radius (meters) */
-  radius?: number;
+  radius?: number
 
   /** How much of the arc should be rendered, 360 by default (degrees) */
-  arc?: number;
+  arc?: number
 
   /** Radius of the top face (meters) */
-  radiusTop?: number;
+  radiusTop?: number
 
   /** Radius of the bottom face (meters) */
-  radiusBottom?: number;
+  radiusBottom?: number
 
   /** Radial segments of the geometry. 4 will render a tetrahedron. */
-  segmentsRadial?: number;
+  segmentsRadial?: number
 
   /** Vertical segments of the geometry */
-  segmentsHeight?: number;
+  segmentsHeight?: number
 
   /** Render caps */
-  openEnded?: boolean;
+  openEnded?: boolean
 }
 ```
 
@@ -240,32 +240,32 @@ interface GltfEntity extends BaseEntity {
   /**
    * The source URL of the .gltf or .glb model, required
    */
-  src: string;
+  src: string
 
   /**
    * List of weighted skeletal animations
    */
-  skeletalAnimation?: Array<SkeletalAnimation>;
+  skeletalAnimation?: Array<SkeletalAnimation>
 }
 
 interface SkeletalAnimation {
   /**
    * Name or index of the animation in the model
    */
-  clip: string | number;
+  clip: string | number
   /**
    * Does the animation loop?, default: true
    */
-  loop?: boolean;
+  loop?: boolean
   /**
    * Weight of the animation, values from 0 to 1, used to blend several animations. default: 1
    */
-  weight?: number;
+  weight?: number
 
   /**
    * Is the animation playing? default: true
    */
-  playing?: boolean;
+  playing?: boolean
 }
 ```
 
@@ -296,43 +296,43 @@ interface BaseEntity {
   /**
    * Moves the entity center to a given point in the scene or relative to a parent entity
    */
-  position?: Vector3;
+  position?: Vector3
 
   /**
    * Rotates the entity
    * The `x,y,z` components are degrees (0°-360°), and every component represents the rotation in that axis
    */
-  rotation?: Vector3;
+  rotation?: Vector3
 
   /**
    * Scales the entity in three dimensions
    */
-  scale?: Vector3 | number;
+  scale?: Vector3 | number
 
   /**
    * Defines if the entity and its children should be rendered
    */
-  visible?: string;
+  visible?: string
 
   /**
    * The ID is used to attach events and identify the entity in the scene tree
    */
-  id?: string;
+  id?: string
 
   /**
    * Used to differentiate similar entities in lists
    */
-  key?: string | number;
+  key?: string | number
 
   /**
    * Used to animate the transitions in the same fashion as CSS
    */
   transition?: {
-    position?: TransitionValue;
-    rotation?: TransitionValue;
-    scale?: TransitionValue;
-    color?: TransitionValue;
-  };
+    position?: TransitionValue
+    rotation?: TransitionValue
+    scale?: TransitionValue
+    color?: TransitionValue
+  }
 
   /**
    * Billboard defines a behavior that makes the entity face the camera in any moment.
@@ -346,30 +346,30 @@ interface BaseEntity {
    * To combine billboard types, write those in the form:
    *   BillboardModes.BILLBOARDMODE_X | BillboardModes.BILLBOARDMODE_Y
    */
-  billboard?: IBillboardModes;
+  billboard?: IBillboardModes
 
   /**
    * Adds spatial sound to the entities
    */
-  sound?: SoundComponent;
+  sound?: SoundComponent
 }
 
 /**
  * This data type defines a three component vector. It is used for scaling, positioning and rotations
  */
 interface Vector3 {
-  x: number;
-  y: number;
-  z: number;
+  x: number
+  y: number
+  z: number
 }
 
 /**
  * This data type defines the configurations for the animations of some components like "position".
  */
 interface TransitionValue {
-  duration: number;
-  timing?: TimingFunction;
-  delay?: number;
+  duration: number
+  timing?: TimingFunction
+  delay?: number
 }
 
 type TimingFunction =
@@ -406,22 +406,22 @@ type TimingFunction =
   | "circular-inout"
   | "back-in"
   | "back-out"
-  | "back-inout";
+  | "back-inout"
 
 export type SoundComponent = {
   /** Distance fading model, default: 'linear' */
-  distanceModel?: "linear" | "inverse" | "exponential";
+  distanceModel?: "linear" | "inverse" | "exponential"
   /** Does the sound loop? default: false */
-  loop?: boolean;
+  loop?: boolean
   /** The src of the sound to be played */
-  src: string;
+  src: string
   /** Volume of the sound, values 0 to 1, default: 1 */
-  volume?: number;
+  volume?: number
   /** Used in inverse and exponential distance models, default: 1 */
-  rolloffFactor?: number;
+  rolloffFactor?: number
   /** Is the sound playing?, default: true */
-  playing?: boolean;
-};
+  playing?: boolean
+}
 ```
 
 ## Obj
@@ -442,7 +442,7 @@ interface ObjEntity extends BaseEntity {
   /**
    * The source URL of the .obj model, required
    */
-  src: string;
+  src: string
 }
 ```
 
@@ -474,108 +474,108 @@ export type MaterialDescriptorEntity = {
   /**
    * Id of the material, it will be used to pick this material from other entities
    */
-  id: string;
+  id: string
 
   /**
    * Opacity.
    */
-  alpha?: number;
+  alpha?: number
 
   /**
    * The color of a material in ambient lighting.
    */
-  ambientColor?: ColorComponent;
+  ambientColor?: ColorComponent
 
   /**
    * AKA Diffuse Color in other nomenclature.
    */
-  albedoColor?: ColorComponent;
+  albedoColor?: ColorComponent
 
   /**
    * AKA Specular Color in other nomenclature.
    */
-  reflectivityColor?: ColorComponent;
+  reflectivityColor?: ColorComponent
 
   /**
    * The color reflected from the material.
    */
-  reflectionColor?: ColorComponent;
+  reflectionColor?: ColorComponent
 
   /**
    * The color emitted from the material.
    */
-  emissiveColor?: ColorComponent;
+  emissiveColor?: ColorComponent
 
   /**
    * Specifies the metallic scalar of the metallic/roughness workflow.
    * Can also be used to scale the metalness values of the metallic texture.
    */
-  metallic?: number;
+  metallic?: number
 
   /**
    * Specifies the roughness scalar of the metallic/roughness workflow.
    * Can also be used to scale the roughness values of the metallic texture.
    */
-  roughness?: number;
+  roughness?: number
 
   /**
    * Texture applied as material.
    */
-  albedoTexture?: string;
+  albedoTexture?: string
 
   /**
    * Texture applied as opacity. Default: the same texture used in albedoTexture.
    */
-  alphaTexture?: string;
+  alphaTexture?: string
 
   /**
    * Emmisive texture.
    */
-  emisiveTexture?: string;
+  emisiveTexture?: string
 
   /**
    * Stores surface normal data used to displace a mesh in a texture.
    */
-  bumpTexture?: string;
+  bumpTexture?: string
 
   /**
    * Stores the refracted light information in a texture.
    */
-  refractionTexture?: string;
+  refractionTexture?: string
 
   /**
    * Intensity of the direct lights e.g. the four lights available in scene.
    * This impacts both the direct diffuse and specular highlights.
    */
-  directIntensity?: number;
+  directIntensity?: number
 
   /**
    * Intensity of the emissive part of the material.
    * This helps controlling the emissive effect without modifying the emissive color.
    */
-  emissiveIntensity?: number;
+  emissiveIntensity?: number
 
   /**
    * Intensity of the environment e.g. how much the environment will light the object
    * either through harmonics for rough material or through the refelction for shiny ones.
    */
-  environmentIntensity?: number;
+  environmentIntensity?: number
 
   /**
    * This is a special control allowing the reduction of the specular highlights coming from the
    * four lights of the scene. Those highlights may not be needed in full environment lighting.
    */
-  specularIntensity?: number;
+  specularIntensity?: number
 
   /**
    * AKA Glossiness in other nomenclature.
    */
-  microSurface?: number;
+  microSurface?: number
 
   /**
    * If sets to true, disables all the lights affecting the material.
    */
-  disableLighting?: boolean;
+  disableLighting?: boolean
 
   /**
    * Sets the transparency mode of the material.
@@ -587,41 +587,41 @@ export type MaterialDescriptorEntity = {
    * | 2     | ALPHABLEND                          |
    * | 3     | ALPHATESTANDBLEND                   |
    */
-  transparencyMode?: ITransparencyModes;
+  transparencyMode?: ITransparencyModes
 
   /**
    * Does the albedo texture has alpha?
    */
-  hasAlpha?: boolean;
-};
+  hasAlpha?: boolean
+}
 
 export type MaterialEntity = BaseEntity & {
   /**
    * Color of the vertices
    */
-  color?: string | number;
+  color?: string | number
 
   /**
    * Material selector
    */
-  material?: string;
+  material?: string
 
   /**
    * Set to true to turn on the collider for the entity.
    */
-  withCollisions?: boolean;
-};
+  withCollisions?: boolean
+}
 
 export type BasicMaterialEntity = {
   /**
    * Id of the material, it will be used to pick this material from other entities
    */
-  id: string;
+  id: string
 
   /**
    * The source of the texture image
    */
-  texture: string;
+  texture: string
 
   /**
    * Enabled crisper images based on the provided sampling mode
@@ -631,14 +631,14 @@ export type BasicMaterialEntity = {
    * |     2 | BILINEAR  |
    * |     3 | TRILINEAR |
    */
-  samplingMode?: number;
+  samplingMode?: number
 
   /**
    * A number between 0 and 1.
    * Any pixel with an alpha lower than this value will be shown as transparent.
    */
-  alphaTest?: number;
-};
+  alphaTest?: number
+}
 ```
 
 ## Creating custom interfaces
@@ -650,10 +650,10 @@ For example, the sample below defines an entity type `button`:
 {% raw %}
 
 ```tsx
-import { createElement, Vector3Component } from "metaverse-api";
+import { createElement, Vector3Component } from "metaverse-api"
 
 export interface IProps {
-  position: Vector3Component;
+  position: Vector3Component
 }
 
 export const Button = (props: IProps) => {
@@ -666,8 +666,8 @@ export const Button = (props: IProps) => {
         scale={{ x: 0.5, y: 0.5, z: 0.5 }}
       />
     </entity>
-  );
-};
+  )
+}
 ```
 
 {% endraw %}
@@ -675,7 +675,7 @@ export const Button = (props: IProps) => {
 Before you can use this entity type, save it as a _.tsx_ file and import it to _scene.tsx_:
 
 ```tsx
-import { Button } from "./src/Button";
+import { Button } from "./src/Button"
 ```
 
 After importing the file, you can add buttons to a scene by simply writing the following:

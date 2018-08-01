@@ -25,7 +25,7 @@ import {
   ScriptableScene,
   EthereumController,
   inject
-} from "metaverse-api";
+} from "metaverse-api"
 ```
 
 {% endraw %}
@@ -36,8 +36,7 @@ import {
 
 ```tsx
 export default class myScene extends ScriptableScene {
-  @inject("experimentalEthereumController") eth: EthereumController;
-
+  @inject("experimentalEthereumController") eth: EthereumController
   // (...)
 }
 ```
@@ -51,7 +50,7 @@ Once the `EthereumController` has been imported, you can run the `requirePayment
 {% raw %}
 
 ```tsx
-this.eth.requirePayment(receivingAddress, amount, currency);
+this.eth.requirePayment(receivingAddress, amount, currency)
 ```
 
 {% endraw %}
@@ -63,16 +62,16 @@ If accepted by the user, the function returns the hash number of the transaction
 {% raw %}
 
 ```tsx
-const myWallet = ‘0x0123456789...’;
-const enterPrice = 10;
+const myWallet = ‘0x0123456789...’
+const enterPrice = 10
 
 // (...)
 
 async sceneDidMount() {
   this.eventSubscriber.on(‘door_click’, async () => {
-    await this.eth!.requirePayment(myWallet, entrancePrice, ‘MANA’);
+    await this.eth!.requirePayment(myWallet, entrancePrice, ‘MANA’)
 
-    this.setState(isDoorClosed: !this.state.isDoorClosed);
+    this.setState(isDoorClosed: !this.state.isDoorClosed)
   }
 }
 ```
@@ -102,7 +101,7 @@ Another thing that the ethereum controller allows you to do is check if a specif
 {% raw %}
 
 ```tsx
-await this.eth.waitForMinedTx(currency, tx, receivingAddress);
+await this.eth.waitForMinedTx(currency, tx, receivingAddress)
 ```
 
 {% endraw %}
@@ -112,15 +111,15 @@ The function requires that you specify a currency to use (for example, MANA or E
 {% raw %}
 
 ```tsx
-const myWallet = ‘0x0123456789...’;
+const myWallet = ‘0x0123456789...’
 
 // (...)
 
 async sceneDidMount() {
   this.eventSubscriber.on(‘door_click’, async () => {
-    const tx = await this.eth!.requirePayment(myWallet, entrancePrice, ‘MANA’);
-    const userPaid = await this.eth!.waitForMinedTx(currency,tx, receivingAddress);
-    this.setState(isDoorClosed: !this.state.isDoorClosed);
+    const tx = await this.eth!.requirePayment(myWallet, entrancePrice, ‘MANA’)
+    const userPaid = await this.eth!.waitForMinedTx(currency,tx, receivingAddress)
+    this.setState(isDoorClosed: !this.state.isDoorClosed)
   }
 }
 ```
@@ -164,10 +163,10 @@ Before a user can sign a message, you must first convert it into an object using
 const messageToSign = `# DCL Signed message
 Attacker: 10
 Defender: 123
-Timestamp: 1512345678`;
+Timestamp: 1512345678`
 
-const convertedMessage = await this.eth!.convertMessageToObject(messageToSign);
-const { message, signature } = await this.eth!.signMessage(convertedMessage);
+const convertedMessage = await this.eth!.convertMessageToObject(messageToSign)
+const { message, signature } = await this.eth!.signMessage(convertedMessage)
 ```
 
 {% endraw %}
@@ -187,7 +186,7 @@ You must then import these dependencies on the _.tsx_ file
 {% raw %}
 
 ```tsx
-import { eth } from "decentraland-eth";
+import { eth } from "decentraland-eth"
 ```
 
 {% endraw %}
@@ -197,9 +196,9 @@ import { eth } from "decentraland-eth";
 ```tsx
 const { message, signature } = await this.eth!.signMessage(convertedMessage);
 
-const messageHex = await eth.utils.toHex(messageToSign);
-const isEqual = message === messageHex;
-console.log(‘Is the message correct?’, isEqual);
+const messageHex = await eth.utils.toHex(messageToSign)
+const isEqual = message === messageHex
+console.log(‘Is the message correct?’, isEqual)
 ```
 
 {% endraw %}
@@ -224,21 +223,21 @@ export default class SignMessage extends ScriptableScene {
  async sceneDidMount() {
    this.subscribeTo('click', async e => {
      if (e.elementId === 'button-sign') {
-       await this.signMessage();
+       await this.signMessage()
      }
    })
  }
 
  async signMessage() {
-   const convertedMessage = await this.eth!.convertMessageToObject(messageToSign);
-   const { message, signature } = await this.eth!.signMessage(convertedMessage);
+   const convertedMessage = await this.eth!.convertMessageToObject(messageToSign)
+   const { message, signature } = await this.eth!.signMessage(convertedMessage)
 
-   console.log({ message, signature });
+   console.log({ message, signature })
 
-   const messageHex = await eth.utils.toHex(messageToSign);
+   const messageHex = await eth.utils.toHex(messageToSign)
 
-   const isEqual = message === messageHex;
-   console.log("Is the message correct?", isEqual);
+   const isEqual = message === messageHex
+   console.log("Is the message correct?", isEqual)
  }
 
  async render() {
