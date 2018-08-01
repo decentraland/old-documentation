@@ -139,7 +139,7 @@ Since the root scene element is a transform node, it can also be translated, sca
 To preview your rendered scene locally, run the following command on the scene's main folder:
 
 ```bash
-dcl preview
+dcl start
 ```
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
