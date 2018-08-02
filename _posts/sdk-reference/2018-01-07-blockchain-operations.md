@@ -17,6 +17,38 @@ By interacting with the Ethereum blochchain you can, for example, require that a
 
 > IMPORTANT: At the present time, none of these three solutions are fully supported by the SDK, and the way in which they are implemented is very likely to change. For this reason, we advise that you only try these out for proofs of concept, but not to develop final experiences.
 
+## Obtain a user's public key
+
+You can obtain a user's public Ethereum key by using `getUserPublicKey()`. You can then use this information to send payments to the user, or as a way to recognize users.
+
+The example below imports the `UserIdentity` library and runs `getUserPublicKey()` to get the public key of the user's Metamask account and log it to console. The user must be logged into their Metamask account on their browser for this to work.
+
+{% raw %}
+
+```tsx
+import { createElement, inject, UserIdentity } from "metaverse-api/src"
+
+export default class Scene extends ScriptableScene<any, any> {
+  @inject("Identity") userIdentity: UserIdentity
+
+  state = {
+    publicKey: ""
+  }
+
+  async sceneDidMount() {
+    const publicKey = await this.userIdentity!.getUserPublicKey()
+    this.setState({ publicKey })
+    console.log(this.state.publicKey)
+  }
+
+  render() {
+    return <scene />
+  }
+}
+```
+
+{% endraw %}
+
 ## Web3 API
 
 The SDK includes an interface for the Web3 API. You can use it to call methods of this API from your scene's code. The interface includes two methods: `send` and `sendAsync`, which can be used to call the methods from the API. We have only whitelisted the following methods from the API, all others are currently not supported:
