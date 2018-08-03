@@ -9,11 +9,110 @@ set: sdk-reference
 set_order: 7
 ---
 
-The SDK includes an _ethereum controller_ that can call a series of functions on your secene to perform actions on the Ethereum blockchain. For example, you can require that a user pays a fee before actioning something in your scene.
+By interacting with the Ethereum blochchain you can, for example, require that a user pays a fee before actioning something in your scene. The SDK is currently experimenting with different ways to interface with the Ethereum blockchain. Currently there are three ways you can achieve this:
 
-## Importing the Ethereum Controller
+- Using the Web3 API
+- Using the `ethjs` library
+- Using the _ethereum controller_
 
-All of the operations that are possible on the Ethereum blockchain are done through the ethereum controller. You must first import it into your scene:
+> IMPORTANT: At the present time, none of these three solutions are fully supported by the SDK, and the way in which they are implemented is very likely to change. For this reason, we advise that you only try these out for proofs of concept, but not to develop final experiences.
+
+## Obtain a user's public key
+
+You can obtain a user's public Ethereum key by using `getUserPublicKey()`. You can then use this information to send payments to the user, or as a way to recognize users.
+
+The example below imports the `UserIdentity` library and runs `getUserPublicKey()` to get the public key of the user's Metamask account and log it to console. The user must be logged into their Metamask account on their browser for this to work.
+
+{% raw %}
+
+```tsx
+import { createElement, inject, UserIdentity } from "metaverse-api/src"
+
+export default class Scene extends ScriptableScene<any, any> {
+  @inject("Identity") userIdentity: UserIdentity
+
+  state = {
+    publicKey: ""
+  }
+
+  async sceneDidMount() {
+    const publicKey = await this.userIdentity!.getUserPublicKey()
+    this.setState({ publicKey })
+    console.log(this.state.publicKey)
+  }
+
+  render() {
+    return <scene />
+  }
+}
+```
+
+{% endraw %}
+
+## Web3 API
+
+The SDK includes an interface for the Web3 API. You can use it to call methods of this API from your scene's code. The interface includes two methods: `send` and `sendAsync`, which can be used to call the methods from the API. We have only whitelisted the following methods from the API, all others are currently not supported:
+
+- eth_sendTransaction
+- eth_getTransactionReceipt
+- eth_estimateGas
+- eth_call
+- eth_getBalance
+- eth_getStorageAt
+- eth_blockNumber
+- eth_gasPrice
+- eth_protocolVersion
+- net_version
+- eth_getTransactionCount
+- eth_getBlockByNumber
+
+To use it, you must first install web3 in your local machine. To do so, run the following:
+
+```bash
+npm i web3
+```
+
+Below is a sample that uses this API to get the contents of a block in the blockchain.
+
+{% raw %}
+
+```tsx
+import { createElement, ScriptableScene } from "metaverse-api"
+import Web3 = require("web3")
+
+export default class EthereumProvider extends ScriptableScene {
+  async sceneDidMount() {
+    const provider = await this.getEthereumProvider()
+    const web3 = new Web3(provider)
+
+    web3.eth.getBlock(48, function(error: Error, result: any) {
+      console.log("Eth block 48 (from scene)", result)
+    })
+  }
+
+  async render() {
+    return <scene />
+  }
+}
+```
+
+{% endraw %}
+
+For more details and a full reference of what's possible with this API, see [Web3's documentation](https://web3js.readthedocs.io/en/1.0/)
+
+## ethjs library
+
+To use it, you must first install ethjs in your local machine. To do so, run the following:
+
+```bash
+npm install --save ethjs
+```
+
+For more details and a full reference of what's possible with this library, see [ethjs's documentation](https://github.com/ethjs/ethjs)
+
+## The Ethereum Controller
+
+Another way to perform operations on the Ethereum blockchain is through the ethereum controller. This controller is packaged with the SDK, so you don't need to run any manual instalations. You must first import it into your scene:
 
 1.  Import the `EthereumController` to the .tsx file:
 
@@ -43,7 +142,9 @@ export default class myScene extends ScriptableScene {
 
 {% endraw %}
 
-## Require a payment
+The examples below show some of the things you can do with this controller.
+
+#### Require a payment
 
 Once the `EthereumController` has been imported, you can run the `requirePayment` function. This function prompts the user to accept a paying a sum to an Ethereum wallet of your choice. Users must always accept payments manually, a payment can never be implied directly from the user's actions in the scene.
 
@@ -84,7 +185,7 @@ The example above listens for clicks on a `door` entity. When clicked, the user 
 
 > Tip: We recommend defining the wallet address and the ammount to pay as global constants at the start of the _.tsx_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
 
-## Using the Ethereum test network
+#### Using the Ethereum test network
 
 While testing your scene, to avoid transfering real MANA currency, you can use the _Ethereum Ropsten test network_ and transfer fake MANA instead.
 
@@ -130,7 +231,7 @@ The example above first requires the user to accept a transaction, if the user a
 
 <!--
 
-## Signing messages
+#### Signing messages
 
 A user can sign a message using their Ethereum public key. This signature is a secure way to give consent or to register an accomplishment or action that is registered with the block chain. The signing of a message doesn't imply paying any gas fees on the Ethereum network.
 
