@@ -169,7 +169,7 @@ In the example below, a transition is applied to the rotation of an invisible en
 
 {% endraw %}
 
-#### Turn to face the avatar
+#### Turn to face the user
 
 You can set an entity to act as a _billboard_, this means that it will always rotate to face the user. This was a common technique used in 3D games of the 90s, where most entities were planes that always faced the player, but the same can be used with and 3D model. This is also very handy to add to `text` entities, since it makes them always legible.
 
@@ -229,7 +229,7 @@ Color is set in hexadecimal values. To set an entity's color, simply set its `co
 
 ## Materials
 
-Materials are defined as separate entities in a scene, this prevents material definitions from being duplicated, keeping the scene's code lighter.
+Materials are defined as separate entities in a scene, this prevents material definitions from being duplicated when multiple entities use them, keeping the scene's code lighter.
 
 Materials can be applied to primitive entities and to planes, simply by setting the `material` component.
 
@@ -246,7 +246,11 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 
 {% endraw %}
 
-Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material />` entity declared.
+Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, you don't need to declare a `<material />` entity.
+
+Not all shaders are supported by the Decentraland engine. For example, all blender render materials should be supported, in Cycles render only PBR (phisically based rendering) materials are supported.
+
+See [entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material. Keep in mind that all materials and textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
 
 #### Texture mapping
 
@@ -365,8 +369,6 @@ glTF models can have either a `.gltf` or a `.glb` extension. glTF files are huma
 > Tip: We recommend using `.gltf` while you're working on a scene, but then switching to `.glb` when uploading it.
 
 glTF models can also include their own textures and animations. Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
-
-> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
 
 > Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity.
 
