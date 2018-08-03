@@ -250,7 +250,7 @@ Materials are also implicitly imported into a scene when you import a glTF model
 
 Not all shaders are supported by the Decentraland engine. For example, all blender render materials should be supported, in Cycles render only PBR (phisically based rendering) materials are supported.
 
-See [entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material. Keep in mind that all materials and textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
+See [entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material. Keep in mind that all materials and textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
 
 #### Texture mapping
 
