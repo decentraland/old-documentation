@@ -136,7 +136,6 @@ import {
 ```tsx
 export default class myScene extends ScriptableScene {
   @inject("experimentalEthereumController") eth: EthereumController
-
   // (...)
 }
 ```

@@ -27,7 +27,7 @@ See the [Installation Guide]({{ site.baseurl }}{% post_url /documentation/buildi
 To preview a local scene run the following command on the scene's main folder:
 
 ```bash
-dcl preview
+dcl start
 ```
 
 Any dependencies that are missing are installed and then the CLI opens the scene in a new browser tab automatically. It creates a local web server in your system and points the web browser tab to this local address.
@@ -62,7 +62,7 @@ Once the websocket server is up and the scene is properly pointing at it, fire u
 From the scene directory run the following bash command:
 
 ```bash
-dcl preview
+dcl start
 ```
 
 Any missing dependencies are installed and then the CLI opens the scene in a new browser tab automatically.
