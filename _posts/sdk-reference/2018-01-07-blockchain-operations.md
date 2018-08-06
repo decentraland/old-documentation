@@ -72,6 +72,8 @@ To use it, you must first install web3 in your local machine. To do so, run the 
 npm i web3
 ```
 
+> IMPORTANT: The SDK works with version _0.20.6_ of the Web3 library. It doesn't currently support newer versions.
+
 Below is a sample that uses this API to get the contents of a block in the blockchain.
 
 {% raw %}
