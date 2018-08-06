@@ -229,15 +229,18 @@ Entities in decentraland accept variables of type _Vector3_ for setting position
 
 Keep in mind that some events in a Decentraland scene, like the `positionChanged` event, have attributes that are of type _Vector3Component_. If you wish to use methods from _Vector3_ on this information, you must first change its type.
 
-<!---
+## Access data accross objects
 
-## Accessing variables globally
+When your scene reaches a certain level of complexity, it's convenient to break the code out into several separate objects instead of having all of the logic inside the [`scriptableScene` class]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}).
 
-When having the code for your scene distributed amongst multiple separate files with child objects, you need to take care of how to reference
+The downside is that information becomes harder to pass on. If all of your logic occurs inside the `scriptableScene` class, you can keep track of all information using the [scene state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}) and scene properties. But if that's not the case, then you must keep in mind that you can't reference the scene state or scene properties from outside the `scriptableScene` class.
 
+You can eitehr:
 
+- Pass information from the main `scriptableScene` class as properties of child objects.
+- Use a library like [Redux](https://redux.js.org/) to create a univesal data store that can be referenced from anywhere.
 
--->
+See [scene state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}) for more details.
 
 ## Execution timing
 

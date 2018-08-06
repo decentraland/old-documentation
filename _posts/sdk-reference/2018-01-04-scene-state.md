@@ -89,7 +89,6 @@ this.forceUpdate()
 
 ## Reference the state
 
-
 You can reference the value a state variable from anywhere in the scene object by writing `this.state.<variable name>`.
 
 ```tsx
@@ -129,11 +128,11 @@ async sceneDidMount() {
 
 {% endraw %}
 
-## Reference the state from a child component
+## Reference the state from a child object
 
 Unlinke React, where all components can have their own state, only your custom scene class is allowed to have a state. In react terms, all child components of your scene are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), this means that they can have properties but no state of their own, and they are controlled by their parent component.
 
-For example, you could declare a type of entity called `elevator`, and embed a series of child entities in it and define its own functions to open and close the doors and handle the buttons. If you're planning to have many elevators in your scene, that would make the code for your scene a lot more efficient and cleaner. The downside is that any functions in this child entity would no longer have easy access to the scene's state. From the `elevator` entity, it would not be valid to use the expression `this.state`, as `this` no longer refers to your custom scene class, it refers to the current instance of the `elevator` entity. In order to access the information stored in the scene's state you can:
+For example, you could declare a type of entity called `elevator`, and embed a series of child entities in it and define its own functions to open and close the doors and handle the buttons. If you're planning to have many elevators in your scene, that would make the code for your scene a lot more efficient and cleaner. The downside is that any functions in this child entity would no longer have easy access to the scene's state. From the `elevator` entity, it would not be valid to use the expression `this.state`, as `this` no longer refers to the instance of your custom scene class, it refers to an instance of the `elevator` entity. In order to access the information stored in the scene's state you can:
 
 - Copy the values of the scene state in the properties of the child component. Functions in the elevator could then access this data via `props.<propertyName>`. If there are multiple levels of inheritance in your scene, for example if the elevator's buttons are custom entities with their own functions, the state data can be passed down from the properties of the parent to the properties of the children recurrently as many times as necessary, but by doing this the code can get difficult to read.
 
