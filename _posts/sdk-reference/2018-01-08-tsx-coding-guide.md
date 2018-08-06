@@ -169,7 +169,7 @@ export default class ArtPiece extends ScriptableScene<any, IState> {
 
 ## Import external libraries
 
-You can import most any JavaScript library to your `scene.tsx` file. Use external libraries to help you with advanced mathematical operations, call APIs, run predefined AI scripts or whatever your scene needs.
+You can import most any JavaScript library to your _scene.tsx_ file. Use external libraries to help you with advanced mathematical operations, call APIs, run predefined AI scripts or whatever your scene needs.
 
 For example, this line imports quaternion and vector types from Babylonjs.
 
@@ -199,7 +199,7 @@ To use this, you must first install babylonjs in the project folder. Run the fol
 npm install babylonjs
 ```
 
-You can then import elements of the Babylon js library into your scene's `.tsx` files.
+You can then import elements of the Babylon js library into your scene's _.tsx_ files.
 
 {% raw %}
 
@@ -422,9 +422,9 @@ this.setState({ myArray: ...myArray.state.list.filter(x => x.id === toRemove) })
 
 #### The map operation
 
-There are two array methods you can use to run a same function on each element of an array separately: `map` and `forEach`. The main difference between them is that `map` returns a new array without affecting the original array, but `forEach` can overwrite the values in the original array.
+There are two array methods you can use to run a same function on each element of an array separately: `map()` and `forEach()`. The main difference between them is that `map()` returns a new array without affecting the original array, but `forEach()` can overwrite the values in the original array.
 
-The `map` operation runs a function on each element of the array, it returns a new array with the results.
+The `map()` operation runs a function on each element of the array, it returns a new array with the results.
 
 {% raw %}
 
@@ -442,11 +442,11 @@ renderLeaves(){
 
 {% endraw %}
 
-This example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array and has a key based on the array index.
+This example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type _Vector3Component_ so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array and has a key based on the array index.
 
 #### Combine with filter
 
-You can combine a `map` or a `forEach` operation with a `filter` operation to only handle the array elements that meet a certain criteria.
+You can combine a `map()` or a `forEach()` operation with a `filter()` operation to only handle the array elements that meet a certain criteria.
 
 {% raw %}
 
@@ -466,11 +466,11 @@ renderLeaves(){
 
 {% endraw %}
 
-This example is like the one above, but it first filters the `fallingLeaves` array to only handle leaves that have a _x_ position greater than 0. The `fallingLeaves` array is of type `Vector3Component`, so each element in the array has values for _x_, _y_ and _z_ coordinates.
+This example is like the one above, but it first filters the `fallingLeaves` array to only handle leaves that have a _x_ position greater than 0. The `fallingLeaves` array is of type _Vector3Component_, so each element in the array has values for _x_, _y_ and _z_ coordinates.
 
 #### The forEach operation
 
-The `forEach` operation runs a same function on every element of the array.
+The `forEach()` operation runs a same function on every element of the array.
 
 {% raw %}
 
@@ -494,7 +494,7 @@ renderLeaves() {
 
 {% endraw %}
 
-Like the example used to explain the map operator above, this example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
+Like the example used to explain the map operator above, this example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type _Vector3Component_ so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
 
 The function performed by the `forEach()` function doesn't have a `return` statement. If it did, it would overwrite the content of the `this.state.fallingLeaves` array. Instead, we create a new array called `leaves` and push elements to it, then we return the full array that at the end.
 
@@ -573,7 +573,7 @@ In this second example, the _y_ position of the box is determined based on the v
 
 #### Define an undetermined number of entities
 
-For scenes where the number of entities isn't fixed, use an array to represent these entities and their attributes and then use a `map` operation within the `render()` function.
+For scenes where the number of entities isn't fixed, use an array to represent these entities and their attributes and then use a `map()` operation within the `render()` function.
 
 {% raw %}
 
@@ -593,7 +593,7 @@ async render() {
 
 {% endraw %}
 
-This function uses a `map` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
+This function uses a `map()` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
 
 #### Keep the render function readable
 

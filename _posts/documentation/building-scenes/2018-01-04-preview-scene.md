@@ -55,7 +55,7 @@ npm start
 
 Note that when the server is running, the command informs you what port that the server is running on, take note of this. It will probably be 8087.
 
-Check that the `scene.json` file in your scene has the same websocket port set up, otherwise change the file so that it matches the local server you're running.
+Check that the _scene.json_ file in your scene has the same websocket port set up, otherwise change the file so that it matches the local server you're running.
 
 Once the websocket server is up and the scene is properly pointing at it, fire up the preview as you would with a local scene.
 
@@ -91,7 +91,7 @@ Running a preview provides some useful debugging information and tools to help y
 
 When viewing a preview, you can press the Esc key to disengage the mouse and use it normally.
 
-If an entity is located or extends beyond the limits of the scene, it will flash with red color to indicate this. Nothing in your scene can extend beyond the scene limits. If you're building a scene to be uploaded to an estate that occupies more parcels than the preview shows, you can edit the `scene.json` file to reflect this, listing multiple parcels in the "parcels" field.
+If an entity is located or extends beyond the limits of the scene, it will flash with red color to indicate this. Nothing in your scene can extend beyond the scene limits. If you're building a scene to be uploaded to an estate that occupies more parcels than the preview shows, you can edit the _scene.json_ file to reflect this, listing multiple parcels in the "parcels" field.
 
 If your scene excedes any of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-06-scene-limitations %}) ), for example if there are too many triangles in it, the scene won't be rendered.
 
@@ -109,7 +109,7 @@ Click on the graph to switch through these metrics.
 
 The scene size shown in the preview is based on the scene's configuration, you set this when building the scene using the CLI. By default, the scene occupies a single parcel (10 x 10 meters).
 
-To change the size of a scene that has already been built, open the `scene.json` file and add multiple adjacent parcel coordinates.
+To change the size of a scene that has already been built, open the _scene.json_ file and add multiple adjacent parcel coordinates.
 
 ```json
  "scene": {

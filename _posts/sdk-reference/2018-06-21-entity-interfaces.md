@@ -193,9 +193,9 @@ interface CylinderEntity extends BaseEntity {
 [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common,
 extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
-The `gltf-model` entity loads a 3D model using a glTF file. It supports both `.gltf` or `.glb` extensions.
+The _gltf-model_ entity loads a 3D model using a glTF file. It supports both _.gltf_ or _.glb_ extensions.
 
-> `.gltf` is a more human-readable format, `.glb` is a more compact version of the same.
+> _.gltf_ is a more human-readable format, _.glb_ is a more compact version of the same.
 
 Simple example:
 
