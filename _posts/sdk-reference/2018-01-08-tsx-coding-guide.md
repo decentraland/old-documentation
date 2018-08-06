@@ -167,11 +167,39 @@ export default class ArtPiece extends ScriptableScene<any, IState> {
 
 {% endraw %}
 
+## Import external libraries
+
+You can import most any JavaScript library to your `scene.tsx` file. Use external libraries to help you with advanced mathematical operations, call APIs, run predefined AI scripts or whatever your scene needs.
+
+For example, this line imports quaternion and vector types from Babylonjs.
+
+{% raw %}
+
+```tsx
+import { Vector3, Quaternion } from "babylonjs"
+```
+
+{% endraw %}
+
+For most 3D math operations, we recommend importing [Babylonjs](https://www.babylonjs.com/), because much of Decentraland's SDK uses it, making compatibility safer. Other libraries with similar capabilities are available too and can also be imported.
+
+Before a library can be used by your scene, it must be installed with _npm_ in the scene's folder. This is important because when the scene is deployed to Decentraland, all of its dependencies must be uploaded as well.
+
+When importing from large libraries like Babylonjs, we recommend only ipmporting the elements that you need for your scene, instead of importing the entire library.
+
 ## Vector math operations
 
 Vectors in decentraland are of type _Vector3Component_, this type is very lightweight and doesn't include any methods.
 
 To avoid doing vector math manually, we recommend importing the _Vector3_ type from Babylonjs. This type comes with a lot of handy operations like scaling, substracting and more.
+
+To use this, you must first install babylonjs in the project folder. Run the following command from a terminal in the scene's main folder.
+
+```bash
+npm install babylonjs
+```
+
+You can then import elements of the Babylon js library into your scene's `.tsx` files.
 
 {% raw %}
 
@@ -202,14 +230,6 @@ Entities in decentraland accept variables of type _Vector3_ for setting position
 Keep in mind that some events in a Decentraland scene, like the `positionChanged` event, have attributes that are of type _Vector3Component_. If you wish to use methods from _Vector3_ on this information, you must first change its type.
 
 <!---
-
-## Import other libraries
-
-We recommend only importing the elements from Babylonjs that you need for your scene, as the entire library is quite large.
-
-You can import javascript libraries to enable you to perform mathematical operations that the SDK doesn’t cover. For example, for vector operations, you can import
-
-  babylon's library. only
 
 ## Accessing variables globally
 
