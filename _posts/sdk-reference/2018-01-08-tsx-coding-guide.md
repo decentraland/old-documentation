@@ -167,9 +167,45 @@ export default class ArtPiece extends ScriptableScene<any, IState> {
 
 {% endraw %}
 
+## Vector math operations
+
+Vectors in decentraland are of type _Vector3Component_, this type is very lightweight and doesn't include any methods.
+
+To avoid doing vector math manually, we recommend importing the _Vector3_ type from Babylonjs. This type comes with a lot of handy operations like scaling, substracting and more.
+
+{% raw %}
+
+```tsx
+import { Vector3 } from "babylonjs"
+```
+
+{% endraw %}
+
+Once imported to your _.tsx_ file, you can assign the _Vector3_ type to any variable. Variables of this type will then have access to all of the type methods.
+
+The example below deals with _Vector3_ variables and a few of the functions that come with this type.
+
+{% raw %}
+
+```tsx
+moveToGoal(){
+  const delta = this.state.goalPosition.subtract(this.state.dogPosition)
+  delta = delta.normalize().scale(.015)
+  this.setState(dogPosition: this.state.dogPosition.add(delta))
+}
+```
+
+{% endraw %}
+
+Entities in decentraland accept variables of type _Vector3_ for setting position, rotation and scale. There's no need to convert a variable to _Vector3Component_ type when applying it to an entity.
+
+Keep in mind that some events in a Decentraland scene, like the `positionChanged` event, have attributes that are of type _Vector3Component_. If you wish to use methods from _Vector3_ on this information, you must first change its type.
+
 <!---
 
-## Advanced 3D math operations
+## Import other libraries
+
+We recommend only importing the elements from Babylonjs that you need for your scene, as the entire library is quite large.
 
 You can import javascript libraries to enable you to perform mathematical operations that the SDK doesn’t cover. For example, for vector operations, you can import
 
