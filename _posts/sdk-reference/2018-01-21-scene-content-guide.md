@@ -376,9 +376,9 @@ glTF models can also include their own textures and animations. Keep in mind tha
 
 Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-You activate an animation by adding _skeletalAnimation_ settings to a gltf model and setting the `playing` property of one of its clips to _true_.
+You handle animations to a _gltf-model_ entity by adding _skeletalAnimation_ settings to it. This setting receives an array of JSON entries, where each entry handles one of the animations in the model. For an animation to be activated, you must set the `playing` property of a clip to _true_.
 
-The example below imports a model that includes animations and configures them:
+The example below imports a model that includes animations and configures them.
 
 {% raw %}
 
@@ -388,9 +388,13 @@ The example below imports a model that includes animations and configures them:
   scale={0.5}
   src="models/shark_anim.gltf"
   skeletalAnimation={[
-    { clip: "shark_skeleton_bite", playing: false },
     {
-      clip: "shark_skeleton_swim",
+      clip: "shark_bite",
+      weight: 0.8,
+      playing: false
+    },
+    {
+      clip: "shark_swim",
       weight: 0.2,
       playing: true
     }
@@ -400,11 +404,17 @@ The example below imports a model that includes animations and configures them:
 
 {% endraw %}
 
-In this example, the armature is named _shark_skeleton_ and the two animations contained in it are named _bite_ and _swim_.
+In this example, the armature is named _shark_ and the two animations contained in it are named _bite_ and _swim_.
 
 An animation can be set to loop continuously by setting its `loop` property. If `loop:false` then the animation will be called only once when activated.
 
-The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance the given animation will be given.
+The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance the animation will be given in the average.
+
+The `weight` value of all active animations should add up to 1 at all times. If it adds up to less than 1, the weighted average will be referencing the default position of the armature for the remaining part of the calculation.
+
+For example, in the code example above, if only _shark_swim_ is active with a `weight` of 0.2, then the swiming movements are quite subtle, only 20% of what the animation says it should move. The other 80% of what's averaged represents the default position of the armature.
+
+The `weight` property can be used in interesting ways, for example the `weight` property of _shark_swim_ could be set in proportion to how fast the shark is swimming, so you don't need to create multiple animations for fast and slow swimming. You could also change the `weight` value gradually when starting and stoping the animation to give it a more natural transition and avoid jumps from one pose to another.
 
 ### Free libraries for 3D models
 
