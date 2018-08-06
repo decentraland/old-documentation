@@ -66,9 +66,52 @@ export default class myScene extends ScriptableScene {
 
 {% endraw %}
 
+## Define an enum
+
+TypeScript allows you to define custom string enums. They are useful for assigning to variables that are only allowed to hold certain specific values in your scene.
+
+Using string enums makes your code more readable. If you’re working with an advanced code editor like Visual Studio Code or Atom, it also makes writing your code easier, since the code editor provides autocomplete options and validation.
+
+For example, the example below defines a custom enum with three possible values. It then uses the enum as a type for a variable when defining an interface for the scene state.
+
+{% raw %}
+
+```tsx
+export enum Goal {
+  Idle,
+  Walk,
+  Sit
+}
+
+export interface IState {
+  dogGoal: Goal
+  dogPosition: Vector3Component
+  catGoal: Goal
+  catPosition: Vector3Component
+}
+```
+
+{% endraw %}
+
+Each time you want to refer to a value in an enum, you must write it as `<enum name>.<value>`. For example, `Goal.Walk` refers to the `Walk` value, from the `Goal` enum.
+
+{% raw %}
+
+```tsx
+  if (this.state.dogGoal == Goal.Walk){
+   this.setState(catGoal: Goal.Sit)
+  }
+```
+
+{% endraw %}
+
+Your code editor suggests the possible values for the enum as soon as you refer to it, making your scene easier to write.
+
+![](/images/media/autocomplete_enum.png)
+
 ## Define custom data types
 
-You can define your own custom data type in a _.tsx_ file, these are useful for using with variables that are only capable of holding certain values in your scene. Using custom types makes your code more readable. If you’re working with an advanced code editor like Visual Studio Code or Atom, it also makes writing your code easier since the code editor provides autocomplete options and validation.
+Defining a custom type has similar advantages to defining an enum, but is a bit less verbose and you might find its syntax more familiar, depending on what coding languages you're more experienced in using.
 
 {% raw %}
 
@@ -89,38 +132,6 @@ state = {
 ```
 
 {% endraw %}
-
-When setting a value for this variable, your code editor will now suggest only the valid values for its type.
-
-![](/images/media/autocomplete_types.png)
-
-<!---
-
-## Define a custom enum  ???
-
-With TypeScript, you can create custom string enums. These can be thought of as dictionaries that can only contain specific string fields.
-
-https://blog.decentraland.org/building-a-memory-game-using-decentralands-sdk-87ee35968f8d
-
-
-
-{% raw %}
-```tsx
-export enum characterStates {
-
-}
-```
-{% endraw %}
-
-[definition]
-
-You can then set this type as the type of a variable
-
-[scene state definition that sets this as a type]
-
-When using that variable, the code editor then
-[screenshot]
--->
 
 ## Scene state interfaces
 
@@ -156,21 +167,80 @@ export default class ArtPiece extends ScriptableScene<any, IState> {
 
 {% endraw %}
 
-<!---
+## Import external libraries
 
-## Advanced 3D math operations
+You can import most any JavaScript library to your _scene.tsx_ file. Use external libraries to help you with advanced mathematical operations, call APIs, run predefined AI scripts or whatever your scene needs.
 
-You can import javascript libraries to enable you to perform mathematical operations that the SDK doesn’t cover. For example, for vector operations, you can import
+For example, this line imports quaternion and vector types from Babylonjs.
 
-  babylon's library. only
+{% raw %}
 
-## Accessing variables globally
+```tsx
+import { Vector3, Quaternion } from "babylonjs"
+```
 
-When having the code for your scene distributed amongst multiple separate files with child objects, you need to take care of how to reference
+{% endraw %}
 
+For most 3D math operations, we recommend importing [Babylonjs](https://www.babylonjs.com/), because much of Decentraland's SDK uses it, making compatibility safer. Other libraries with similar capabilities are available too and can also be imported.
 
+Before a library can be used by your scene, it must be installed with _npm_ in the scene's folder. This is important because when the scene is deployed to Decentraland, all of its dependencies must be uploaded as well.
 
--->
+When importing from large libraries like Babylonjs, we recommend only ipmporting the elements that you need for your scene, instead of importing the entire library.
+
+## Vector math operations
+
+Vectors in decentraland are of type _Vector3Component_, this type is very lightweight and doesn't include any methods.
+
+To avoid doing vector math manually, we recommend importing the _Vector3_ type from Babylonjs. This type comes with a lot of handy operations like scaling, substracting and more.
+
+To use this, you must first install babylonjs in the project folder. Run the following command from a terminal in the scene's main folder.
+
+```bash
+npm install babylonjs
+```
+
+You can then import elements of the Babylon js library into your scene's _.tsx_ files.
+
+{% raw %}
+
+```tsx
+import { Vector3 } from "babylonjs"
+```
+
+{% endraw %}
+
+Once imported to your _.tsx_ file, you can assign the _Vector3_ type to any variable. Variables of this type will then have access to all of the type methods.
+
+The example below deals with _Vector3_ variables and a few of the functions that come with this type.
+
+{% raw %}
+
+```tsx
+moveToGoal(){
+  const delta = this.state.goalPosition.subtract(this.state.dogPosition)
+  delta = delta.normalize().scale(.015)
+  this.setState(dogPosition: this.state.dogPosition.add(delta))
+}
+```
+
+{% endraw %}
+
+Entities in decentraland accept variables of type _Vector3_ for setting position, rotation and scale. There's no need to convert a variable to _Vector3Component_ type when applying it to an entity.
+
+Keep in mind that some events in a Decentraland scene, like the `positionChanged` event, have attributes that are of type _Vector3Component_. If you wish to use methods from _Vector3_ on this information, you must first change its type.
+
+## Access data accross objects
+
+When your scene reaches a certain level of complexity, it's convenient to break the code out into several separate objects instead of having all of the logic inside the [`scriptableScene` class]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}).
+
+The downside is that information becomes harder to pass on. If all of your logic occurs inside the `scriptableScene` class, you can keep track of all information using the [scene state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}) and scene properties. But if that's not the case, then you must keep in mind that you can't reference the scene state or scene properties from outside the `scriptableScene` class.
+
+You can eitehr:
+
+- Pass information from the main `scriptableScene` class as properties of child objects.
+- Use a library like [Redux](https://redux.js.org/) to create a univesal data store that can be referenced from anywhere.
+
+See [scene state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}) for more details.
 
 ## Execution timing
 
@@ -262,7 +332,6 @@ const importantValue = await this.runImportantProcess()
 If you're familiar with C# language, you'll see that asyncrhonous functions in TypeScript behave just the same. Functions run synchronously by default, but you can make them run asynchronously by adding `async` before the name when defining them.
 
 > Tip: If you want to understand the reasoning behind JavaScript promises, async and await, we recommend reading [this article](https://zeit.co/blog/async-and-await).
-
 
 ## Handle arrays in the scene state
 
@@ -356,9 +425,9 @@ this.setState({ myArray: ...myArray.state.list.filter(x => x.id === toRemove) })
 
 #### The map operation
 
-There are two array methods you can use to run a same function on each element of an array separately: `map` and `forEach`. The main difference between them is that `map` returns a new array without affecting the original array, but `forEach` can overwrite the values in the original array.
+There are two array methods you can use to run a same function on each element of an array separately: `map()` and `forEach()`. The main difference between them is that `map()` returns a new array without affecting the original array, but `forEach()` can overwrite the values in the original array.
 
-The `map` operation runs a function on each element of the array, it returns a new array with the results.
+The `map()` operation runs a function on each element of the array, it returns a new array with the results.
 
 {% raw %}
 
@@ -376,11 +445,11 @@ renderLeaves(){
 
 {% endraw %}
 
-This example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array and has a key based on the array index.
+This example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type _Vector3Component_ so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array and has a key based on the array index.
 
 #### Combine with filter
 
-You can combine a `map` or a `forEach` operation with a `filter` operation to only handle the array elements that meet a certain criteria.
+You can combine a `map()` or a `forEach()` operation with a `filter()` operation to only handle the array elements that meet a certain criteria.
 
 {% raw %}
 
@@ -400,11 +469,11 @@ renderLeaves(){
 
 {% endraw %}
 
-This example is like the one above, but it first filters the `fallingLeaves` array to only handle leaves that have a _x_ position greater than 0. The `fallingLeaves` array is of type `Vector3Component`, so each element in the array has values for _x_, _y_ and _z_ coordinates.
+This example is like the one above, but it first filters the `fallingLeaves` array to only handle leaves that have a _x_ position greater than 0. The `fallingLeaves` array is of type _Vector3Component_, so each element in the array has values for _x_, _y_ and _z_ coordinates.
 
 #### The forEach operation
 
-The `forEach` operation runs a same function on every element of the array.
+The `forEach()` operation runs a same function on every element of the array.
 
 {% raw %}
 
@@ -428,7 +497,7 @@ renderLeaves() {
 
 {% endraw %}
 
-Like the example used to explain the map operator above, this example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type `Vector3Component` so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
+Like the example used to explain the map operator above, this example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type _Vector3Component_ so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
 
 The function performed by the `forEach()` function doesn't have a `return` statement. If it did, it would overwrite the content of the `this.state.fallingLeaves` array. Instead, we create a new array called `leaves` and push elements to it, then we return the full array that at the end.
 
@@ -507,7 +576,7 @@ In this second example, the _y_ position of the box is determined based on the v
 
 #### Define an undetermined number of entities
 
-For scenes where the number of entities isn't fixed, use an array to represent these entities and their attributes and then use a `map` operation within the `render()` function.
+For scenes where the number of entities isn't fixed, use an array to represent these entities and their attributes and then use a `map()` operation within the `render()` function.
 
 {% raw %}
 
@@ -527,7 +596,7 @@ async render() {
 
 {% endraw %}
 
-This function uses a `map` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
+This function uses a `map()` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
 
 #### Keep the render function readable
 

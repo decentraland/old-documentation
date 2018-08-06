@@ -13,7 +13,7 @@ set_order: 7
 
 Make sure of the following:
 
-- Your scene's `scene.json` file reflects the correct properties, including your Metamask public address, and the LAND parcels where you want to upload the scene.
+- Your scene's _scene.json_ file reflects the correct properties, including your Metamask public address, and the LAND parcels where you want to upload the scene.
 
 > Note: The CLI prompts you to provide this information when creating the scene, but you can also modify the file manually at any time.
 
