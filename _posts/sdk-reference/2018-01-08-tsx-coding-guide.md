@@ -66,9 +66,52 @@ export default class myScene extends ScriptableScene {
 
 {% endraw %}
 
+## Define an enum
+
+TypeScript allows you to define custom string enums. They are useful for assigning to variables that are only allowed to hold certain specific values in your scene.
+
+Using string enums makes your code more readable. If you’re working with an advanced code editor like Visual Studio Code or Atom, it also makes writing your code easier, since the code editor provides autocomplete options and validation.
+
+For example, the example below defines a custom enum with three possible values. It then uses the enum as a type for a variable when defining an interface for the scene state.
+
+{% raw %}
+
+```tsx
+export enum Goal {
+  Idle,
+  Walk,
+  Sit
+}
+
+export interface IState {
+  dogGoal: Goal
+  dogPosition: Vector3Component
+  catGoal: Goal
+  catPosition: Vector3Component
+}
+```
+
+{% endraw %}
+
+Each time you want to refer to a value in an enum, you must write it as `<enum name>.<value>`. For example, `Goal.Walk` refers to the `Walk` value, from the `Goal` enum.
+
+{% raw %}
+
+```tsx
+  if (this.state.dogGoal == Goal.Walk){
+   this.setState(catGoal: Goal.Sit)
+  }
+```
+
+{% endraw %}
+
+Your code editor suggests the possible values for the enum as soon as you refer to it, making your scene easier to write.
+
+![](/images/media/autocomplete_enum.png)
+
 ## Define custom data types
 
-You can define your own custom data type in a _.tsx_ file, these are useful for using with variables that are only capable of holding certain values in your scene. Using custom types makes your code more readable. If you’re working with an advanced code editor like Visual Studio Code or Atom, it also makes writing your code easier since the code editor provides autocomplete options and validation.
+Defining a custom type has similar advantages to defining an enum, but is a bit less verbose and you might find its syntax more familiar, depending on what coding languages you're more experienced in using.
 
 {% raw %}
 
@@ -89,38 +132,6 @@ state = {
 ```
 
 {% endraw %}
-
-When setting a value for this variable, your code editor will now suggest only the valid values for its type.
-
-![](/images/media/autocomplete_types.png)
-
-<!---
-
-## Define a custom enum  ???
-
-With TypeScript, you can create custom string enums. These can be thought of as dictionaries that can only contain specific string fields.
-
-https://blog.decentraland.org/building-a-memory-game-using-decentralands-sdk-87ee35968f8d
-
-
-
-{% raw %}
-```tsx
-export enum characterStates {
-
-}
-```
-{% endraw %}
-
-[definition]
-
-You can then set this type as the type of a variable
-
-[scene state definition that sets this as a type]
-
-When using that variable, the code editor then
-[screenshot]
--->
 
 ## Scene state interfaces
 
@@ -262,7 +273,6 @@ const importantValue = await this.runImportantProcess()
 If you're familiar with C# language, you'll see that asyncrhonous functions in TypeScript behave just the same. Functions run synchronously by default, but you can make them run asynchronously by adding `async` before the name when defining them.
 
 > Tip: If you want to understand the reasoning behind JavaScript promises, async and await, we recommend reading [this article](https://zeit.co/blog/async-and-await).
-
 
 ## Handle arrays in the scene state
 
