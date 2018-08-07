@@ -8,6 +8,17 @@
     @media #{$mid-point} {
       display: block;
     }
+    .docs-top-languages{
+      display:inline-block;
+      margin-right: 15px;
+      a{
+        text-decoration: none;
+        color: #0A0F1F;
+      }
+    }
+    form{
+      display:inline-block;
+    }
   }
 }
 
