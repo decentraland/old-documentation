@@ -39,11 +39,11 @@ There are four different scene templates that you can use as a starting point:
 
 _A local scene_ incldes the following files:
 
-1.  `scene.tsx`: The entry point of the scene.
-2.  `scene.json`: The manifest that contains metadata for the scene.
-3.  `package.json`:
-4.  `build.json`: The file with the instructions to build the scene.
-5.  `tsconfig.json`: Typescript configuration file.
+1.  **scene.tsx**: The entry point of the scene.
+2.  **scene.json**: The manifest that contains metadata for the scene.
+3.  **package.json**:
+4.  **build.json**: The file with the instructions to build the scene.
+5.  **tsconfig.json**: Typescript configuration file.
 
 The `dcl init` command also prompts you to enter some descriptive metadata, these datais are stored in
 the [scene.json](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki) manifest file for the scene. All of this
@@ -53,7 +53,7 @@ metadata is optional for building a scene locally, except for scene type.
 
 #### scene.tsx
 
-This file contains the code that generates an entity tree, which is what end users of your parcel will see. Below is a basic example of a `scene.tsx` file:
+This file contains the code that generates an entity tree, which is what end users of your parcel will see. Below is a basic example of a _scene.tsx_ file:
 
 {% raw %}
 
@@ -74,34 +74,34 @@ export default class MyScene extends ScriptableScene<any, any> {
 
 {% endraw %}
 
-> **Important note:** Your `scene.tsx` must always include an `export default class`, that's how our SDK finds the class to initialize the scene.
+> **Important note:** Your _scene.tsx_ file must always include an `export default class`, that's how our SDK finds the class to initialize the scene.
 
 #### scene.json
 
-The `scene.json` file is a JSON formatted manifest for a scene in the world. A scene can span a single or multiple LAND parcels. The `scene.json` manifest describes what objects exist in the scene, a list of any assets needed to render it, contact information for the parcel owner, and security settings. For more information and an example of a
-`scene.json` file, please visit the [Decentraland specification proposal](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki).
+The _scene.json_ file is a JSON formatted manifest for a scene in the world. A scene can span a single or multiple LAND parcels. The _scene.json_ manifest describes what objects exist in the scene, a list of any assets needed to render it, contact information for the parcel owner, and security settings. For more information and an example of a
+_scene.json_ file, please visit the [Decentraland specification proposal](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki).
 
 #### package.json
 
 This file provides information to NPM that allows it to identify the project, as well as handle the project's dependencies. Decentraland scenes need two packages:
 
-- `metaverse-api`, which allows the scene to communicate with the world engine.
-- `typescript`, to compile the file `scene.tsx` to javascript.
+- **metaverse-api**: allows the scene to communicate with the world engine.
+- **typescript**: used to compile the file _scene.tsx_ to javascript.
 
-> You don’t need the `typescript` package when creating static scenes. This is only required when you are building remote and interactive scenes.
+> If you're creating a static _XML_ scene, you don’t need the `typescript` package.
 
 #### build.json
 
 This is the Decentraland build configuration file.
 
-We provide a tool called `metaverse-compiler`, it comes with the `metaverse-api` package. This tool is in charge of
-reading the `build.json` file and compile your scene in a way that the client can run it. All it really does is bundle Typescript code into a WebWorker using WebPack.
+We provide a tool called _metaverse-compiler_, it comes with the _metaverse-api_ package. This tool is in charge of
+reading the _build.json_ file and compile your scene in a way that the client can run it. All it really does is bundle Typescript code into a WebWorker using WebPack.
 
 > You can also use the CLI to create Node.js servers for multiplayer experiences.
 
 #### tsconfig.json
 
-Directories containing a `tsconfig.json` file are root directories for TypeScript Projects. The `tsconfig.json` file specifies the root files and options required to compile your project in JavaScript.
+Directories containing a _tsconfig.json_ file are root directories for TypeScript Projects. The _tsconfig.json_ file specifies the root files and options required to compile your project in JavaScript.
 
 > You can use another tool or language instead of TypeScript, so long as your scripts are contained within a single Javascript file (scene.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
 
@@ -109,8 +109,8 @@ Directories containing a `tsconfig.json` file are root directories for TypeScrip
 
 _A static scene_ includes the following files:
 
-1.  `scene.json`: The manifest that contains metadata for the scene.
-2.  `scene.xml`: The content of the static scene.
+1.  **scene.json**: The manifest that contains metadata for the scene.
+2.  **scene.xml**: The content of the static scene.
 
 #### scene.xml (static scenes)
 
@@ -139,7 +139,7 @@ Since the root scene element is a transform node, it can also be translated, sca
 To preview your rendered scene locally, run the following command on the scene's main folder:
 
 ```bash
-dcl preview
+dcl start
 ```
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.

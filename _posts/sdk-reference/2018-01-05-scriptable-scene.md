@@ -68,8 +68,8 @@ The `ScriptableScene` object has several _lifecycle methods_ that are executed a
 
 As general rules, remember that:
 
-- Methods prefixed with `will` are called right before something happens.
-- Methods prefixed with `did` are called right after something happens.
+- Methods prefixed with **will** are called right before something happens.
+- Methods prefixed with **did** are called right after something happens.
 
 Below is an example containing a class and hooks to lifecycle methods.
 
@@ -103,7 +103,7 @@ export default class Scene extends ScriptableScene<Props, State> {
 
   /**
    * This method is called when the scene is initially created and then each
-   * time the scene's state or props are updated, unless the `shouldSceneUpdate`
+   * time the scene's state or props are updated, unless the `shouldSceneUpdate()`
    * method prevents it.
    * This method should return a tree of entities to be serialized and sent
    * to the engine. This tree should have a single <scene> as the root entity.
@@ -127,7 +127,7 @@ export default class Scene extends ScriptableScene<Props, State> {
    * Called to determine whether a change in state or props should trigger a
    * re-render.
    *
-   * If this method returns `true`, `render`, and `sceneDidUpdate` are called.
+   * If this method returns _true_, `render()`, and `sceneDidUpdate()` are called.
    */
   async shouldSceneUpdate(newProps: Props) {
     return this.state.counter < 20
@@ -135,7 +135,7 @@ export default class Scene extends ScriptableScene<Props, State> {
 
   /**
    * Called immediately after any change occurs to the state or props,
-   * unless shouldSceneUpdate returns false.
+   * unless `shouldSceneUpdate()` returns _false_.
    * Not called for the initial render.
    */
   async sceneDidUpdate() {
@@ -146,7 +146,7 @@ export default class Scene extends ScriptableScene<Props, State> {
    * Called immediately before a scene is destroyed. Perform any necessary
    * cleanup in this method, such as cancelled network requests, or cleaning up
    * any elements created in
-   * `sceneDidMount`.
+   * `sceneDidMount()`.
    */
   async sceneWillUnmount() {
     // gracefully tear down created things.
@@ -180,9 +180,9 @@ These steps summarize when each of the methods above are called:
 
 ## Client side scenes
 
-Client-side scenes, also known as "Local scenes", are compiled using the `metaverse-compiler` into a WebWorker. The `scene.json` points to the compiled `scene.js` file.
+Client-side scenes, also known as "Local scenes", are compiled using the `metaverse-compiler` into a WebWorker. The _scene.json_ points to the compiled _scene.js_ file.
 
-The entry point for the WebWorker is defined in the `build.json`:
+The entry point for the WebWorker is defined in the _build.json_:
 
 ```json
 [
@@ -195,13 +195,13 @@ The entry point for the WebWorker is defined in the `build.json`:
 ]
 ```
 
-> **Note:** The file `scene.tsx` must include an `export default` statement for the class of the scene. The loader of the engine requires this statment to instantiate the scene.
+> **Note:** The file _scene.tsx_ must include an `export default` statement for the class of the scene. The loader of the engine requires this statment to instantiate the scene.
 
 ## Server side scenes
 
 For local scenes, all of the components that describe your experience are compiled into one script. When your parcels are rendered in the client, this script runs in the context of a WebWorker, or remotely in a server. This makes it possible for you to run custom logic inside the player's client, allowing you to create richer experiences in Decentraland.
 
-When you create a multiplayer scene, your `scene.json` will point to a host URL. The `scene.json` script will communicate with the host application through a RPC based protocol using a defined transport. The CLI bootstraps a server that configures a `WebSocketTransport` and inits a RemoteScene. For running this scene you should start the WebSocket server first.
+When you create a multiplayer scene, your _scene.json_ will point to a host URL. The _scene.json_ script will communicate with the host application through a RPC based protocol using a defined transport. The CLI bootstraps a server that configures a `WebSocketTransport` and inits a RemoteScene. For running this scene you should start the WebSocket server first.
 
 You can take a look at the [remote scene sample code](https://github.com/decentraland/sample-scene-server) for more implementation details.
 
