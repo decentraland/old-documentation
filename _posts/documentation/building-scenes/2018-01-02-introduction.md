@@ -86,21 +86,25 @@ To make a long story short, we were considering two approaches for doing this:
 
 If we had chosen the jQuery way (which we didn't), the code we would have needed to create our example scene would look like this:
 
+{% raw %}
+
 ```ts
 // WARNING: This code sample is only a hypothetical example, it's not supported by our tools
 
-let scene = metaverse.createScene();
-let objModel = metaverse.createObjModel();
-let sphere = metaverse.createSphere();
+let scene = metaverse.createScene()
+let objModel = metaverse.createObjModel()
+let sphere = metaverse.createSphere()
 
-objModel.setAttribute("src", "models/a.gltf");
-objModel.appendTo(scene);
+objModel.setAttribute("src", "models/a.gltf")
+objModel.appendTo(scene)
 
-sphere.setAttribute("position", { x: 10, y: 10, z: 10 });
-sphere.appendTo(scene);
+sphere.setAttribute("position", { x: 10, y: 10, z: 10 })
+sphere.appendTo(scene)
 
-EntityController.render(scene);
+EntityController.render(scene)
 ```
+
+{% endraw %}
 
 In this example, we're telling the system how to reach a desired state, the example (ab)uses mutations and
 side effects of how the code works to reach the desired state.
@@ -108,6 +112,8 @@ side effects of how the code works to reach the desired state.
 ---
 
 Thankfully, we chose to do things the React way, so our code for creating the same scene as above looks like this:
+
+{% raw %}
 
 ```tsx
 // IMPORTANT: This code is only an example, it does not exist nor work
@@ -117,10 +123,12 @@ const scene = (
     <obj-model src="models/a.gltf" />
     <sphere position={{ x: 10, y: 10, z: 10 }} />
   </scene>
-);
+)
 
-EntityController.render(scene);
+EntityController.render(scene)
 ```
+
+{% endraw %}
 
 In this example, we're just telling the system the desired state, instead of describing all of the logic to get to that state.
 

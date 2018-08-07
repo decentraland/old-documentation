@@ -12,7 +12,7 @@ tag: introduction
 
 Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an _entity_, and each entity can include _components_ that shape its characteristics and functionality.
 
-Entities can be nested inside others to create a tree structure. In fact, all scenes must output a tree of nested entities. `.xml` scenes explicitly define this tree, `.xlt` scenes define typescript code that builds and updates this tree.
+Entities can be nested inside others to create a tree structure. In fact, all scenes must output a tree of nested entities. _.xml_ scenes explicitly define this tree, _.xlt_ scenes define typescript code that builds and updates this tree.
 
 This document covers how to achieve common objectives by using different types of entities and components in a scene's tree.
 
@@ -38,6 +38,22 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 
 > Tip: When editing the code via a source code editor (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and typing _Ctrl + Space bar_.
 
+## Text blocks
+
+You can add text as an entity in a Decentraland scene. You can use these text entities as labels in your scene, display them momentarily as error messages, or whatever you wish.
+
+{% raw %}
+
+```tsx
+<text
+  value="Users will see this text floating in space in your scene."
+  hAlign="left"
+  position={{ x: 5, y: 1, z: 5 }}
+/>
+```
+
+{% endraw %}
+
 ## Entity positioning
 
 All entities can have a _position_, a _rotation_ and a _scale_. These can be easily set as components, as shown below:
@@ -57,6 +73,8 @@ All entities can have a _position_, a _rotation_ and a _scale_. These can be eas
 - `position` is a _3D vector_, it sets the position on all three axes. These coordinates are measured in _meters_, unless you're positioning a child of a parent entity that has a scale that's different from 1, in which case the position is also scaled accordingly.
 - `rotation` is a _3D vector_ too, but where each component represents the rotation in that axis.
 - `scale` can either be a _number_ or a _3D vector_, in case you want to scale the axis in different proportions.
+
+> Tip: When previewing a scene locally, a compass appears in the (0,0,0) point of the scene twith labels for each axis.
 
 When an entity is nested inside another, the child entities inherit components from the parents. This means that if a parent entity is positioned, scaled or rotated, its children are also affected. The position, rotation and scale values of children entities don't override those of the parents, instead these are compounded.
 
@@ -128,7 +146,7 @@ The transition allows you to set:
 
 - A delay: milliseconds to wait before the change begins occuring.
 - A duration: milliseconds from when the change begins to when it ends.
-- Timing: select a function to shape the transition. For example, the transition could be `linear`, `ease-in`, `ease-out`, `exponential-in` or `bounce-in`, among other options.
+- Timing: select a function to shape the transition. For example, the transition could be _linear_, _ease-in_, _ease-out_, _exponential-in_ or _bounce-in_, among other options.
 
 In the example below, a transition is applied to the rotation of an invisible entity that wraps a box. As the box is off-center from the parent entity, the box pivots like an opening door.
 
@@ -151,9 +169,9 @@ In the example below, a transition is applied to the rotation of an invisible en
 
 {% endraw %}
 
-#### Turn to face the avatar
+#### Turn to face the user
 
-You can set an entity to act as a _billboard_, this means that it will always rotate to face the user. This was a common technique used in 3D games of the 90s, where most entities were planes that always faced the player, but the same can be used with and 3D model.
+You can set an entity to act as a _billboard_, this means that it will always rotate to face the user. This was a common technique used in 3D games of the 90s, where most entities were planes that always faced the player, but the same can be used with and 3D model. This is also very handy to add to _text_ entities, since it makes them always legible.
 
 {% raw %}
 
@@ -175,7 +193,7 @@ If the entitiy is configured with both a specific rotation and a billboard setti
 
 #### Turn to face a position
 
-You can set an entity to face a specific position in the scene using _lookAt_. This is a way to set the rotation of an entity without having to deal with angles.
+You can set an entity to face a specific position in the scene using `lookAt`. This is a way to set the rotation of an entity without having to deal with angles.
 
 {% raw %}
 
@@ -189,7 +207,7 @@ You can set an entity to face a specific position in the scene using _lookAt_. T
 
 {% endraw %}
 
-This setting needs a `Vector3Component` as a value, this vector indicates the coordinates of the point in the scene that it will look at. You can, for example, set this value to a variable in the scene state that is updated with another entity's position.
+This setting needs a _Vector3Component_ as a value, this vector indicates the coordinates of the point in the scene that it will look at. You can, for example, set this value to a variable in the scene state that is updated with another entity's position.
 
 You can use a transition to make movements caused by lookAt smoother and more natural.
 
@@ -197,7 +215,7 @@ If the entitiy is configured with both a specific rotation and a lookAt setting,
 
 ## Color
 
-Color is set in hexadecimal values. To set an entity's color, simply set its `color` component to the corresponding hexadecimal value.
+Color is set in hexadecimal values. To set an entity's color, simply set its `color` to the corresponding hexadecimal value.
 
 {% raw %}
 
@@ -211,9 +229,9 @@ Color is set in hexadecimal values. To set an entity's color, simply set its `co
 
 ## Materials
 
-Materials are defined as separate entities in a scene, this prevents material definitions from being duplicated, keeping the scene's code lighter.
+Materials are defined as separate entities in a scene, this prevents material definitions from being duplicated when multiple entities use them, keeping the scene's code lighter.
 
-Materials can be applied to primitive entities and to planes, simply by setting the `material` component.
+Materials can be applied to primitive entities and to planes, simply by setting the `material`.
 
 {% raw %}
 
@@ -228,7 +246,11 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 
 {% endraw %}
 
-Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material />` entity declared.
+Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, you don't need to declare a `<material />` entity.
+
+Not all shaders are supported by the Decentraland engine. For example, all blender render materials should be supported, in Cycles render only PBR (phisically based rendering) materials are supported.
+
+See [entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material. Keep in mind that all materials and textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
 
 #### Texture mapping
 
@@ -277,7 +299,7 @@ To create an animated sprite, use texture mapping to change the selected regions
 
 #### Transparent materials
 
-To make a material transparent, you must add an alpha channel to the image you use for the texture. The `material` entity ignores the alpha channel of the texture image by default, so you must either:
+To make a material transparent, you must add an alpha channel to the image you use for the texture. The _material_ entity ignores the alpha channel of the texture image by default, so you must either:
 
 - Set `hasAlpha` to true.
 - Set an image in `alphaTexture`, which can be the same or a different image.
@@ -300,7 +322,7 @@ To make a material transparent, you must add an alpha channel to the image you u
 
 #### Basic materials
 
-Instead of the `<material />` entity, you can define a material through the `<basic-material />` entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistenlty bright, it can also be used to give your scene a more minimalistic look.
+Instead of the _material_ entity, you can define a material through the _basic-material_ entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistenlty bright, it can also be used to give your scene a more minimalistic look.
 
 {% raw %}
 
@@ -316,7 +338,7 @@ Instead of the `<material />` entity, you can define a material through the `<ba
 
 {% endraw %}
 
-Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a `<material/>` entity declared.
+Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a _material_ entity declared.
 
 ## Import 3D models
 
@@ -326,7 +348,7 @@ For more complex shapes, you can build a 3D model in an external tool like Blend
 
 > Note: When using Blender, you need an add-on to export glTF files. For models that don't include animations we recommend installing the add-on by [Kronos group](https://github.com/KhronosGroup/glTF-Blender-Exporter). To export glTFs that include animations, you should instead install the add-on by [Kupoman](https://github.com/Kupoman/blendergltf).
 
-To add an external model into a scene, add a `<gltf-model>` element and set its `src` component to the path of the glTF file containing the model.
+To add an external model into a scene, add a _gltf-model_ element and set its `src` to the path of the glTF file containing the model.
 
 > Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
 
@@ -342,13 +364,11 @@ To add an external model into a scene, add a `<gltf-model>` element and set its 
 
 {% endraw %}
 
-glTF models can have either a `.gltf` or a `.glb` extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and to check for their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance.
+glTF models can have either a _.gltf_ or a _.glb_ extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and to check for their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance.
 
-> Tip: We recommend using `.gltf` while you're working on a scene, but then switching to `.glb` when uploading it.
+> Tip: We recommend using _.gltf_ while you're working on a scene, but then switching to _.glb_ when uploading it.
 
 glTF models can also include their own textures and animations. Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
-
-> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
 
 > Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity.
 
@@ -356,9 +376,9 @@ glTF models can also include their own textures and animations. Keep in mind tha
 
 Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-You activate an animation by adding _skeletalAnimation_ settings to a gltf model and setting the `playing` property of one of its clips to `true`.
+You handle animations to a _gltf-model_ entity by adding _skeletalAnimation_ settings to it. This setting receives an array of JSON entries, where each entry handles one of the animations in the model. For an animation to be activated, you must set the `playing` property of a clip to _true_.
 
-The example below imports a model that includes animations and configures them:
+The example below imports a model that includes animations and configures them.
 
 {% raw %}
 
@@ -368,9 +388,13 @@ The example below imports a model that includes animations and configures them:
   scale={0.5}
   src="models/shark_anim.gltf"
   skeletalAnimation={[
-    { clip: "shark_skeleton_bite", playing: false },
     {
-      clip: "shark_skeleton_swim",
+      clip: "shark_bite",
+      weight: 0.8,
+      playing: false
+    },
+    {
+      clip: "shark_swim",
       weight: 0.2,
       playing: true
     }
@@ -380,11 +404,17 @@ The example below imports a model that includes animations and configures them:
 
 {% endraw %}
 
-In this example, the armature is named `shark_skeleton` and the two animations contained in it are named `bite` and `swim`.
+In this example, the armature is named _shark_ and the two animations contained in it are named _bite_ and _swim_.
 
 An animation can be set to loop continuously by setting its `loop` property. If `loop:false` then the animation will be called only once when activated.
 
-The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance the given animation will be given.
+The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance the animation will be given in the average.
+
+The `weight` value of all active animations should add up to 1 at all times. If it adds up to less than 1, the weighted average will be referencing the default position of the armature for the remaining part of the calculation.
+
+For example, in the code example above, if only _shark_swim_ is active with a `weight` of 0.2, then the swiming movements are quite subtle, only 20% of what the animation says it should move. The other 80% of what's averaged represents the default position of the armature.
+
+The `weight` property can be used in interesting ways, for example the `weight` property of _shark_swim_ could be set in proportion to how fast the shark is swimming, so you don't need to create multiple animations for fast and slow swimming. You could also change the `weight` value gradually when starting and stoping the animation to give it a more natural transition and avoid jumps from one pose to another.
 
 ### Free libraries for 3D models
 
@@ -446,11 +476,13 @@ The `src` property points to the location of the sound file.
 
 > Tip: We recommend keeping your sound files separate in a `/sounds` folder inside your scene.
 
-Supported sound formats vary depending on the browser, but it's safe to use `.mp3`, `.accc` and `.ogg`. `.wav` files are also supported but not generally recommended as they are significantly larger.
+Supported sound formats vary depending on the browser, but it's safe to use _.mp3_, _.accc_ and _.ogg_.
+
+_.wav_ files are also supported but not generally recommended as they are significantly larger.
 
 Each entity can only play a single sound file. This limitation can easily be overcome by including multiple invisible entities, each with their own sound file.
 
-The `distanceModel` property of the sound component conditions how the user's distance to the sound's source affects its volume. The model can be `linear`, `exponential` or `inverse`. When using the linear or exponential model, you can also set the `rolloffFactor` property to set the steepness of the curve.
+The `distanceModel` property of the sound component conditions how the user's distance to the sound's source affects its volume. The model can be _linear_, _exponential_ or _inverse_. When using the linear or exponential model, you can also set the `rolloffFactor` property to set the steepness of the curve.
 
 <!---
 
@@ -464,7 +496,7 @@ same for video??
 
 ## Video
 
-You can add video to your scene by including a `video` entity.
+You can add video to your scene by including a _video_ entity.
 
 {% raw %}
 
@@ -482,9 +514,9 @@ You can add video to your scene by including a `video` entity.
 
 {% endraw %}
 
-The `video` entity needs to have a video selected in `src`, this can either be a local file or a url pointing to a remote video for streaming.
+The _video_ entity needs to have a video selected in `src`, this can either be a local file or a url pointing to a remote video for streaming.
 
-Supported video formats vary depending on the browser, but it's safe to use `.mp4` and `.avi`.
+Supported video formats vary depending on the browser, but it's safe to use _.mp4_ and _.avi_.
 
 With `volume` you set the volume from 0 to 100.
 
@@ -504,10 +536,10 @@ The example above defines a box entity that can't be walked through.
 
 All entities have collisions disabled by default. Depending on the type of entity, collisions are enabled as follows:
 
-- For most entities, including _primitives_ (boxes, spheres, etc), planes and base entities, you enable collisions by setting the `ignoreCollisions` component to `false`.
+- For most entities, including _primitives_ (boxes, spheres, etc), planes and base entities, you enable collisions by setting the `ignoreCollisions` component to _false_.
 - To enable collisions in _glTF models_, you can either:
 
-  - Overlay an invisible entity with the `ignoreCollisions` component set to `true`.
+  - Overlay an invisible entity with the `ignoreCollisions` component set to _true_.
   - Edit the model in an external tool like Blender to include a _collider mesh_. The collider mesh must be named _x_collider_, where _x_ is the name of the model. So for a model named _house_, the collider mesh must be named _house_collider_.
 
 A _collider mesh_ is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision mesh is usually a lot simpler (with less vertices) than the original model.
@@ -516,7 +548,7 @@ Collision settings currently don't affect how other entities interact with each 
 
 Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
-> Tip: To view the limits of all collider meshes in the scene, launch your scene preview with `dcl preview` and click `c`. This draws blue lines that delimit collision areas.
+> Tip: To view the limits of all collider meshes in the scene, launch your scene preview with `dcl start` and click `c`. This draws blue lines that delimit collision areas.
 
 ## Migrating an XML scene to TypeScript
 
@@ -528,7 +560,7 @@ If you have a static XML scene and want to add dynamic capabilities to it, you m
 > in XML: `position="10 10 10"`  
 > in TSX: `position={ { x:10, y: 10, z: 10 } }`
 
-There are subtle differences between the `text/xml` representation and the TSX representation of a scene. Our approach is TSX-first, and the XML representation of the scene is only a compatibility view. Because of this, attributes in TSX must be objects, not
+There are subtle differences between the _text/xml_ representation and the _.tsx_ representation of a scene. Our approach is _TSX-first_, and the _XML_ representation of the scene is only a compatibility view. Because of this, attributes in _TSX_ must be objects, not
 plain text.
 
 ```xml
@@ -537,7 +569,7 @@ plain text.
 </scene>
 ```
 
-The static scene above becomes the following dynamic schen when migrating it to TSX:
+The static scene above becomes the following dynamic schen when migrating it to _TSX_:
 
 {% raw %}
 

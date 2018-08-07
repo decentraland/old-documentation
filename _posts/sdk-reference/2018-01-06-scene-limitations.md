@@ -60,5 +60,6 @@ Not all shaders can be used in models that are imported into Decentraland. If yo
 
 - Using Blender Render, any of its shaders are supported, for example diffuse, specular, transparency, etc.
 - Using the Cycles renderer, you can _only_ use PBR (Physically Based Rendering). That's done by using the `Principled BSDF` shader. This shader is extremely flexible, as it includes properties like diffuse, roughness, metalness and emission that allow you to configure how a material interacts with light.
+  > None of the other shaders of the Cycles renderer are supported.
 
-> None of the other shaders of the Cycles renderer are supported.
+See [entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material.
