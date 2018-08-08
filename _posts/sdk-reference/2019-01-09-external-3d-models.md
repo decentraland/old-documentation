@@ -11,9 +11,9 @@ set_order: 9
 
 3D models are imported into decentraland in glTF format. There are a number of supported features that these models can include. This section goes over ways to make them compatible with Decentraland and best practices.
 
-See [Scene content guide]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-21-scene-content-guide %}) for information on how you can configure a 3D model in a Decentraland scene to set its position, scale, activate its animations, etc.
+See [Scene content guide]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-21-scene-content-guide %}) for information on how you can configure a 3D model in a Decentraland scene to set its position, scale, activate its animations, etc.
 
-Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
+Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-06-scene-limitations %}).
 
 ## 3D model formats
 
@@ -69,7 +69,7 @@ Stairs are a very common use-case for collider objects. In order for users to cl
 
 We recommend using a ramp object for your stair colliders, this provides a much better experience when walking up or down. When they climb up your stairs, it will appear as a smooth ascent or descent, instead of requiring them to “jump” up each individual step.
 
-Using a ramp object also avoids creating unnecessary geometry, saving room for other more complicated models. Keep in mind that collider geometry is also taken into account when calculating the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %})
+Using a ramp object also avoids creating unnecessary geometry, saving room for other more complicated models. Keep in mind that collider geometry is also taken into account when calculating the [scene limitations]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-06-scene-limitations %})
 
 ![](/images/media/collision-stairs-both.png)
 
@@ -95,10 +95,13 @@ Now when users view the stairs in your scene, they’ll see the more elaborate m
 
 - To view the limits of all collider meshes in a Decentraland scene, launch your scene preview with `dcl start` and then click `c`. This draws blue lines that delimit all colliders in place.
 
-<!--
-
-
 ## Animations
+
+3D models can include
+
+any number
+
+deactivated by default, see link
 
 clarificar que animations solo soportamos de armature, no de las otras
 solo skeletal animations
@@ -108,6 +111,8 @@ naming
 no se puede cambiar el frame rate
 
 si se puede cambiar el weight para poner dos o hacer más sutil
+
+<!--
 
 ## Materials
 
