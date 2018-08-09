@@ -412,7 +412,7 @@ For example, in the code example above, if only _shark_swim_ is active with a `w
 
 The `weight` property can be used in interesting ways, for example the `weight` property of _shark_swim_ could be set in proportion to how fast the shark is swimming, so you don't need to create multiple animations for fast and slow swimming. You could also change the `weight` value gradually when starting and stoping the animation to give it a more natural transition and avoid jumps from one pose to another.
 
-### Free libraries for 3D models
+#### Free libraries for 3D models
 
 Instead of building your own 3d models, you can also download them from several free or paid libraries.
 

@@ -15,7 +15,7 @@ See [Scene content guide]({{ site.baseurl }}{% post_url /documentation/sdk-refer
 
 Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-06-scene-limitations %}).
 
-## 3D model formats
+## Supported 3D model formats
 
 All 3D models in Decentraland must be in glTF format. [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
@@ -71,15 +71,17 @@ We recommend using a ramp object for your stair colliders, this provides a much 
 
 Using a ramp object also avoids creating unnecessary geometry, saving room for other more complicated models. Keep in mind that collider geometry is also taken into account when calculating the [scene limitations]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-06-scene-limitations %})
 
+1.  Create a new object in the shape of a ramp that resembles the size and proportions of the original stairs.
+
 ![](/images/media/collision-stairs-both.png)
 
-The image above shows a stairs model on the left, this is what users will see in the scene. On the right, we’ve created a new object in the shape of a ramp that matches the size and height of our stairs.
+2.  Name the ramp object something similar to _stairs_collider_. It must end in \__collider_.
 
-We should name the collider object something like `stairs_collider`.
+3.  Overlay the ramp object to the stairs so that they occupy the same space.
 
 ![](/images/media/collision-stairs-collider.png)
 
-Then overlay the ramp object to the stairs so that they occupy the same space, and export them both together as a single _glTF_ model.
+4.  Export both objects together as a single _glTF_ model.
 
 ![](/images/media/collision-stairs.png)
 
@@ -99,13 +101,11 @@ Now when users view the stairs in your scene, they’ll see the more elaborate m
 
 3D models can be animated in a Decentraland scene using skeletal animations.
 
-Currently, only skeletal animations (based on a an armature) are supported.
+Currently, other forms of animations that aren't based on armatures are not supported.
 
-You can include any number of animations in a _glTF model_. There's no specific rule about the names animations must have.
+There's no specific rule about the names animations must have. You can verify the names of the animations in an exported model by opening the contents of a _.gltf_ file with a text editor. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-You can verify the names of the animations in a model by opening the contents of a _.gltf_ file with a text editor. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
-
-All animations in a _glTF_ model are dissabled by default when loading the model into a Decentraland scene. See [Scene content guide]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-21-scene-content-guide %}) for instructions on how to activate and handle animations in a scene.
+You can include any number of animations in a _glTF model_. All animations in a _glTF_ model are dissabled by default when loading the model into a Decentraland scene. See [Scene content guide]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-21-scene-content-guide %}) for instructions on how to activate and handle animations in a scene.
 
 > Note: There currently isn't a way to change the frame rate of an animation displayed in your scene, the speed is fixed to a default setting. To change an animation's speed, you must change the number of frames.
 
@@ -115,25 +115,33 @@ In a Decentraland scene, you can use `weight` to blend several animations or to 
 
 #### Creating an animation
 
-You can use a tool like Blender to create animations for a model.
+You can use a tool like Blender to create animations for a 3D model.
 
-1.  Create an armature for your model. The bones in the armature define the points that can be articulated.
+1.  Create an armature, following the shape of your model and the parts you wish to move. You do this by adding an initial bone and then extruding all other bones from the vertices of that one. Bones in the armature define the points that can be articulated. The armature must be positioned overlapping the mesh.
 
-2.  Link the armature to the mesh, making it a child asset of the same object.
+![](/images/media/armature_hummingbird1.png)
 
-3.  Check that the model moves naturally when rotating its bones. If the model gets stretched in undesired ways, use weight paint to change what parts of the model are affected by each bone in the armature.
+2.  Make both the armature and the mesh child assets of the same object.
 
-4.  Move the armature into poses and lock the rotation and scale
+3.  Check that the mesh moves naturally when rotating its bones in the ways you plan to move it. If parts of the mesh get stretched in undesired ways, use weight paint to change what parts of the model are affected by each bone in the armature.
 
-5.  Create several frames over time.
+![](/images/media/animations_hummingbird_wp1.png)
 
-6.  Optionally set the transitions between frames.
+![](/images/media/animations_hummingbird_wp2.png)
 
-The transition between each pose occurs as linear by default.
+4.  Move the armature to a desired pose, all bones can be rotated or scaled. Then lock the rotation and scale of the bones you wish to control with this animation.
 
-link the armature to the model by making the armature a child element of the bird mesh. Once matched, move the parts of the armature around to check that the mesh follows it in ways that look natural. If the model gets deformed in weird ways, then you can use weight paint to change what parts of the model are affected by each bone in the armature.
+![](/images/media/armature_hummingbird2.png)
 
-To create several animations, select the Dope-Sheet view, and open the Action Editor. You can also use the Dope-Sheet view to edit the frames, like adjusting the time between two frames or making a frame store only the position of certain bones of the armature.
+5.  Switch to a different frame in the animation, position the armature into a new pose and lock it again. Repeat this process for all the key frames you want to set to describe the animation.
+
+![](/images/media/armature_hummingbird_animation.png)
+
+6.  By default all frames in between the ones you defined will transition linearly from one pose to the next. You can also configure these transitions to behave exponentially, ease-in, bounce, etc.
+
+To create several animations for the same model in Blender, you must select the Dope-Sheet view, and open the Action Editor. You can also edit the animation from the Dope-Sheet view, for example you can adjusting the distance between two key frames.
+
+When adding the model to your Decentraland scene, you must activate animations by configuring the _gltf-model_ entity. See [Scene content guide]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-21-scene-content-guide %}) for instructions.
 
 #### Best practices for animations
 
