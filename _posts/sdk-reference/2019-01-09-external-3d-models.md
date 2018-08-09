@@ -97,7 +97,7 @@ Now when users view the stairs in your scene, they’ll see the more elaborate m
 
 ## Animations
 
-3D models can be animated in a Decentraland scene using skeletal animations.
+3D models can be animated in a Decentraland scene using skeletal animations. All animations of a 3D model must be embedded inside its _glTF_ file, you can't reference animations in separate files.
 
 Currently, other forms of animations that aren't based on armatures are not supported.
 
@@ -147,10 +147,21 @@ When adding the model to your Decentraland scene, you must activate animations b
 - If the animation will be looped in your scene, make sure the final pose is identical to the starting pose to avoid jumps.
 - Sometimes in an animation you might want to only control the movements of parts of the armature, and leave other bones undefined. This can make it easier to combine animations together.
 - Animated characters in your scene sholdn't ever stay completely still, even when they aren't doing anything. It's best to create an "idle" animation to use for when the character is still. The idle animation can include subtle movements like breathing and perhaps occasional glances.
+- Make sure your model only has one armature when you export it. Sometimes, when importing another animation to the program where you're editing your model, it will bring in a copy of the armature. You want all animations of the model to be performed by the same base armature.
+- When exporting the _glTF_ model, make sure you're exporting all the objects and animations. Some exporters will only export the _currently selected_ by default.
 
 <!--
 
 ## Materials
+
+
+textures can be embedded in the gltf or referenced from a file
+
+
+albedo textures: don't use light
+
+transparent materials, use alpha
+
 
 - materials (todo lo que hay en content guide es lo que seteas en los entities)
 
@@ -170,5 +181,11 @@ hay dos tipos de matierol, “standard materials” que es lo mismo que “blend
 
 animations y materials son “assets” para unity
 un collider es ponele un “component”
+
+#### Best practices for materials
+
+- If your scene includes several models that use the same texture, it's useful to reference the texture as an external file. If the texture was embedded, it would be duplicated and add to the scene's weight.
+
+
 
 -->
