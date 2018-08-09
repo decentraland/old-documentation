@@ -1,6 +1,6 @@
 ---
 date: 2018-01-09
-title: External 3D models
+title: 3D model characteristics
 description: Learn what assets and components are supported in external 3D models and how to configure them before importing them to Decentraland.
 categories:
   - sdk-reference
