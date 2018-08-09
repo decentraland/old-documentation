@@ -23,21 +23,19 @@ glTF models can have either a _.gltf_ or a _.glb_ extension. glTF files are huma
 
 We recommend using _.gltf_ while you're working on a scene, but then switching to _.glb_ when uploading it.
 
-When using Blender to create or edit 3D models, you need an add-on to export glTF files. For models that don't include animations we recommend installing the add-on by [Kronos group](https://github.com/KhronosGroup/glTF-Blender-Exporter). To export glTFs that include animations, you should instead install the add-on by [Kupoman](https://github.com/Kupoman/blendergltf).
+> Note: When using Blender to create or edit 3D models, you need an add-on to export glTF files. For models that don't include animations we recommend installing the add-on by [Kronos group](https://github.com/KhronosGroup/glTF-Blender-Exporter). To export glTFs that include animations, you should instead install the add-on by [Kupoman](https://github.com/Kupoman/blendergltf).
 
-> Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer.
-
-#### Why we use glTF?
+#### Why we use glTF
 
 Compared to the older _OBJ format_, which supports only vertices, normals, texture coordinates, and basic materials,
-glTF provides a more powerful set of features. In addition to all of the features we just named, glTF also offers:
+glTF provides a more powerful set of features that includes:
 
 - Hierarchical objects
-- Scene information (light sources, cameras)
 - Skeletal structure and animation
 - More robust materials and shaders
+- Scene information (light sources, cameras)
 
-OBJ can currently be used for simple models that have no animations, but we will probably stop supporting it in the future.
+> Note: _.obj_ models are supported in Decentraland scenes as a legacy feature, but will likely not be supported for much longer.
 
 Compared to _COLLADA_, the supported features are very similar. However, because glTF focuses on providing a
 "transmission format" rather than an editor format, it is more interoperable with web technologies.
