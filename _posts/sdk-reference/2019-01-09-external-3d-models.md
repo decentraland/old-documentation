@@ -145,14 +145,17 @@ When adding the model to your Decentraland scene, you must activate animations b
 
 - Keep the armature simple, only create bones for the parts of the model that you intend to animate.
 - If the animation will be looped in your scene, make sure the final pose is identical to the starting pose to avoid jumps.
-- Sometimes in an animation you might want to only specify positions and rotations for the parts of the armature that will move, and leave bones that don't move undefined. This can make it easier to combine animations together.
-- Animated characters in your scene sholdn't ever stay completely still, even when they aren't doing anything. It's best to create an "idle" animation to use for when the character is till, this can make it perform subtle movements like breathing and perhaps looking around occasionally.
+- Sometimes in an animation you might want to only control the movements of parts of the armature, and leave other bones undefined. This can make it easier to combine animations together.
+- Animated characters in your scene sholdn't ever stay completely still, even when they aren't doing anything. It's best to create an "idle" animation to use for when the character is still. The idle animation can include subtle movements like breathing and perhaps occasional glances.
 
 <!--
 
 ## Materials
 
 - materials (todo lo que hay en content guide es lo que seteas en los entities)
+
+Not all materials are supported by Decentraland.
+
 
 hay dos tipos de matierol, “standard materials” que es lo mismo que “blender render”
 
