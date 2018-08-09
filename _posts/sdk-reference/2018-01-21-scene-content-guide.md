@@ -370,6 +370,8 @@ Keep in mind that all models, their shaders and their textures must be within th
 
 Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
+See [External 3D models]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-09-external-3d-models %}) for information on how to create animations for a 3D model before importing it to a Decentraland scene.
+
 You handle animations to a _gltf-model_ entity by adding _skeletalAnimation_ settings to it. This setting receives an array of JSON entries, where each entry handles one of the animations in the model. For an animation to be activated, you must set the `playing` property of a clip to _true_.
 
 The example below imports a model that includes animations and configures them.

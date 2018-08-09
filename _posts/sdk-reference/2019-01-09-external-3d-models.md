@@ -85,7 +85,7 @@ Then overlay the ramp object to the stairs so that they occupy the same space, a
 
 Now when users view the stairs in your scene, they’ll see the more elaborate model of the stairs, but when they climb them, they’ll collide with the ramp.
 
-#### Collider best practices
+#### Best practices with colliders
 
 - Always use the smallest number of triangles possible when creating colliders. Avoid making a copy of a complex object to use as a collider. Simple colliders guarantee a good user-experience in and keep your scene within the triangle limitations.
 - Collider objects shouln't have any material, as users of your scene will never see it. Colliders are invisible to users.
@@ -97,20 +97,50 @@ Now when users view the stairs in your scene, they’ll see the more elaborate m
 
 ## Animations
 
-3D models can include
+3D models can be animated in a Decentraland scene using skeletal animations.
 
-any number
+Currently, only skeletal animations (based on a an armature) are supported.
 
-deactivated by default, see link
+You can include any number of animations in a _glTF model_. There's no specific rule about the names animations must have.
 
-clarificar que animations solo soportamos de armature, no de las otras
-solo skeletal animations
+You can verify the names of the animations in a model by opening the contents of a _.gltf_ file with a text editor. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-naming
+All animations in a _glTF_ model are dissabled by default when loading the model into a Decentraland scene. See [Scene content guide]({{ site.baseurl }}{% post_url /documentation/sdk-reference/2018-01-21-scene-content-guide %}) for instructions on how to activate and handle animations in a scene.
 
-no se puede cambiar el frame rate
+> Note: There currently isn't a way to change the frame rate of an animation displayed in your scene, the speed is fixed to a default setting. To change an animation's speed, you must change the number of frames.
 
-si se puede cambiar el weight para poner dos o hacer más sutil
+In a Decentraland scene, you can use `weight` to blend several animations or to make an animation more subtle.
+
+> Tip: Instead of creating your own animations, you can also download generic animations and apply them to your model. For example, for 3D characters with human-like characteristics, you can download free or paid animations from [Mixamo](https://www.mixamo.com/#/).
+
+#### Creating an animation
+
+You can use a tool like Blender to create animations for a model.
+
+1.  Create an armature for your model. The bones in the armature define the points that can be articulated.
+
+2.  Link the armature to the mesh, making it a child asset of the same object.
+
+3.  Check that the model moves naturally when rotating its bones. If the model gets stretched in undesired ways, use weight paint to change what parts of the model are affected by each bone in the armature.
+
+4.  Move the armature into poses and lock the rotation and scale
+
+5.  Create several frames over time.
+
+6.  Optionally set the transitions between frames.
+
+The transition between each pose occurs as linear by default.
+
+link the armature to the model by making the armature a child element of the bird mesh. Once matched, move the parts of the armature around to check that the mesh follows it in ways that look natural. If the model gets deformed in weird ways, then you can use weight paint to change what parts of the model are affected by each bone in the armature.
+
+To create several animations, select the Dope-Sheet view, and open the Action Editor. You can also use the Dope-Sheet view to edit the frames, like adjusting the time between two frames or making a frame store only the position of certain bones of the armature.
+
+#### Best practices for animations
+
+- Keep the armature simple, only create bones for the parts of the model that you intend to animate.
+- If the animation will be looped in your scene, make sure the final pose is identical to the starting pose to avoid jumps.
+- Sometimes in an animation you might want to only specify positions and rotations for the parts of the armature that will move, and leave bones that don't move undefined. This can make it easier to combine animations together.
+- Animated characters in your scene sholdn't ever stay completely still, even when they aren't doing anything. It's best to create an "idle" animation to use for when the character is till, this can make it perform subtle movements like breathing and perhaps looking around occasionally.
 
 <!--
 
