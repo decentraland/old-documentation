@@ -246,6 +246,8 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 
 {% endraw %}
 
+In the example above, the image for the material is located in a `materials` folder, which is located at root level of the scene project folder.
+
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, you don't need to declare a `<material />` entity.
 
 Not all shaders are supported by the Decentraland engine. For example, all blender render materials should be supported, in Cycles render only PBR (phisically based rendering) materials are supported.
@@ -264,7 +266,7 @@ async render() {
     <scene position={{ x: 5, y: 1.5, z: 5 }}>
       <basic-material
         id="sprite001"
-        texture="atlas.png"
+        texture="materials/atlas.png"
         samplingMode={DCL.TextureSamplingMode.NEAREST}
       />
       <plane
@@ -308,13 +310,13 @@ To make a material transparent, you must add an alpha channel to the image you u
 
 ```tsx
 <material
-  albedoTexture="semiTransparentTexture.png"
+  albedoTexture="materials/semiTransparentTexture.png"
   hasAlpha
 />
 // or
 <material
-  albedoTexture="semiTransparentTexture.png"
-  alphaTexture="semiTransparentTexture.png"
+  albedoTexture="materials/semiTransparentTexture.png"
+  alphaTexture="materials/semiTransparentTexture.png"
 />
 ```
 
@@ -329,7 +331,7 @@ Instead of the _material_ entity, you can define a material through the _basic-m
 ```tsx
 <basic-material
   id="basic_material"
-  texture="profile_avatar.png"
+  texture="materials/profile_avatar.png"
 />
 <sphere
   material="#basic_material"
@@ -350,8 +352,6 @@ For more complex shapes, you can build a 3D model in an external tool like Blend
 
 To add an external model into a scene, add a _gltf-model_ element and set its `src` to the path of the glTF file containing the model.
 
-> Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
-
 {% raw %}
 
 ```tsx
@@ -363,6 +363,10 @@ To add an external model into a scene, add a _gltf-model_ element and set its `s
 ```
 
 {% endraw %}
+
+In the example above, the model is located in a `models` folder, which is located at root level of the scene project folder.
+
+> Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
 
 glTF models can have either a _.gltf_ or a _.glb_ extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and to check for their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance.
 
@@ -474,6 +478,8 @@ You can add sound to your scene by including a sound component in any entity.
 
 The `src` property points to the location of the sound file.
 
+In the example above, the audio file is located in a `sounds` folder, which is located at root level of the scene project folder.
+
 > Tip: We recommend keeping your sound files separate in a `/sounds` folder inside your scene.
 
 Supported sound formats vary depending on the browser, but it's safe to use _.mp3_, _.accc_ and _.ogg_.
@@ -515,6 +521,8 @@ You can add video to your scene by including a _video_ entity.
 {% endraw %}
 
 The _video_ entity needs to have a video selected in `src`, this can either be a local file or a url pointing to a remote video for streaming.
+
+In the example above, the video is located in a `video` folder, which is located at root level of the scene project folder.
 
 Supported video formats vary depending on the browser, but it's safe to use _.mp4_ and _.avi_.
 
