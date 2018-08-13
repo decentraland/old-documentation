@@ -127,6 +127,10 @@ You can use a tool like Blender to create animations for a 3D model.
 
 ![](/images/media/animations_hummingbird_wp2.png)
 
+> Note: There's a reported bug with Babylon.js that prevents some faces of a mesh from being rendered when they're not related to any bone in the armature. So if you paint some faces with weight 0 and then animate the model, you might see these faces dissappear. To solve this, we recommend making sure that each face is related to at least one bone of the armature and painted with a weight of at least 0.01.
+
+, faces of a mesh that aren't painted for any
+
 4.  Move the armature to a desired pose, all bones can be rotated or scaled. Then lock the rotation and scale of the bones you wish to control with this animation.
 
 ![](/images/media/armature_hummingbird2.png)
@@ -146,7 +150,7 @@ When adding the model to your Decentraland scene, you must activate animations b
 - Keep the armature simple, only create bones for the parts of the model that you intend to animate.
 - If the animation will be looped in your scene, make sure the final pose is identical to the starting pose to avoid jumps.
 - Sometimes in an animation you might want to only control the movements of parts of the armature, and leave other bones undefined. This can make it easier to combine animations together.
-- Animated characters in your scene sholdn't ever stay completely still, even when they aren't doing anything. It's best to create an "idle" animation to use for when the character is still. The idle animation can include subtle movements like breathing and perhaps occasional glances.
+- Animated characters in your scene shouldn't ever stay completely still, even when they aren't doing anything. It's best to create an "idle" animation to use for when the character is still. The idle animation can include subtle movements like breathing and perhaps occasional glances.
 - Make sure your model only has one armature when you export it. Sometimes, when importing another animation to the program where you're editing your model, it will bring in a copy of the armature. You want all animations of the model to be performed by the same base armature.
 - When exporting the _glTF_ model, make sure you're exporting all the objects and animations. Some exporters will only export the _currently selected_ by default.
 
@@ -185,6 +189,7 @@ un collider es ponele un “component”
 #### Best practices for materials
 
 - If your scene includes several models that use the same texture, it's useful to reference the texture as an external file. If the texture was embedded, it would be duplicated and add to the scene's weight.
+
 
 
 
