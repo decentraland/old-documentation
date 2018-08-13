@@ -344,10 +344,6 @@ Materials are also implicitly imported into a scene when you import a glTF model
 
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in _glTF_ format. [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
-For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in glTF format. [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
-
-> Note: When using Blender, you need an add-on to export glTF files. For models that don't include animations we recommend installing the add-on by [Kronos group](https://github.com/KhronosGroup/glTF-Blender-Exporter). To export glTFs that include animations, you should instead install the add-on by [Kupoman](https://github.com/Kupoman/blendergltf).
-
 To add an external model into a scene, add a _gltf-model_ element and set its `src` to the path of the glTF file containing the model.
 
 > Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
@@ -364,17 +360,17 @@ To add an external model into a scene, add a _gltf-model_ element and set its `s
 
 {% endraw %}
 
-glTF models can have either a _.gltf_ or a _.glb_ extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and to check for their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance.
+glTF models can also include their own textures, materials, colliders and animations. See [3D models considerations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-09-external-3d-models %}) for more information on this.
 
-> Tip: We recommend using _.gltf_ while you're working on a scene, but then switching to _.glb_ when uploading it.
-
-glTF models can also include their own textures and animations. Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
+Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-06-scene-limitations %}).
 
 > Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity.
 
 #### Animations
 
 Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
+
+See [3D models considerations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-09-external-3d-models %}) for information on how to create animations for a 3D model before importing it to a Decentraland scene.
 
 You handle animations to a _gltf-model_ entity by adding _skeletalAnimation_ settings to it. This setting receives an array of JSON entries, where each entry handles one of the animations in the model. For an animation to be activated, you must set the `playing` property of a clip to _true_.
 
@@ -416,7 +412,7 @@ For example, in the code example above, if only _shark_swim_ is active with a `w
 
 The `weight` property can be used in interesting ways, for example the `weight` property of _shark_swim_ could be set in proportion to how fast the shark is swimming, so you don't need to create multiple animations for fast and slow swimming. You could also change the `weight` value gradually when starting and stoping the animation to give it a more natural transition and avoid jumps from one pose to another.
 
-### Free libraries for 3D models
+#### Free libraries for 3D models
 
 Instead of building your own 3d models, you can also download them from several free or paid libraries.
 
@@ -433,24 +429,6 @@ To get you started, below is a list of libraries that have free or relatively in
 > Note: Pay attention to the licence restrictions that the content you download has.
 
 Note that most of the models that you can download from these sites won't be in glTF. If that's the case, you must convert them to glTF before you can use them in a scene. We recommend importing them into Blender and exporting them with one of the available glTF export add-ons.
-
-#### Why we use glTF?
-
-Compared to the older _OBJ format_, which supports only vertices, normals, texture coordinates, and basic materials,
-glTF provides a more powerful set of features. In addition to all of the features we just named, glTF also offers:
-
-- Hierarchical objects
-- Scene information (light sources, cameras)
-- Skeletal structure and animation
-- More robust materials and shaders
-
-OBJ can currently be used for simple models that have no animations, but we will probably stop supporting it in the future.
-
-Compared to _COLLADA_, the supported features are very similar. However, because glTF focuses on providing a
-"transmission format" rather than an editor format, it is more interoperable with web technologies.
-
-Consider this analogy: the .PSD (Adobe Photoshop) format is helpful for editing 2D images, but images must then be converted to .JPG for use
-on the web. In the same way, COLLADA may be used to edit a 3D asset, but glTF is a simpler way of transmitting it while rendering the same result.
 
 ## Sound
 
@@ -540,15 +518,17 @@ All entities have collisions disabled by default. Depending on the type of entit
 - To enable collisions in _glTF models_, you can either:
 
   - Overlay an invisible entity with the `ignoreCollisions` component set to _true_.
-  - Edit the model in an external tool like Blender to include a _collider mesh_. The collider mesh must be named _x_collider_, where _x_ is the name of the model. So for a model named _house_, the collider mesh must be named _house_collider_.
+  - Edit the model in an external tool like Blender to include a _collider object_. The collider must be named _x_collider_, where _x_ is the name of the model. So for a model named _house_, the collider must be named _house_collider_.
 
-A _collider mesh_ is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision mesh is usually a lot simpler (with less vertices) than the original model.
+A _collider_ is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision object is usually a lot simpler (with less vertices) than the original model.
 
-Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the avatar.
+See [3D models considerations]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-09-external-3d-models %}) for more details on what colliders are and how to add them.
+
+Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the user's avatar.
 
 Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
-> Tip: To view the limits of all collider meshes in the scene, launch your scene preview with `dcl start` and click `c`. This draws blue lines that delimit collision areas.
+> Tip: To view the limits of all collider meshes in the scene, launch your scene preview with `dcl start` and then click `c`. This draws blue lines that delimit all colliders in place.
 
 ## Migrating an XML scene to TypeScript
 
