@@ -80,3 +80,16 @@ To update the CLI to the latest supported version, run the following command:
 ```bash
 npm update -g decentraland
 ```
+
+## Update the SDK version of a scene
+
+By updating the CLI, the new scenes you create with it will use the latest version of the SDK. Projects that you created before you updated the CLI will keep using the original version of the SDK that they had when you created them. The only way to change this is to manually update the SDK version in the scene.
+
+To update the version of the Decentraland SDK:
+
+1.  Open the file _package-lock.josn_ in the scene folder.
+2.  Look for the version of _metaverse_api_ being used and manually change it to the latest version of the SDK.
+
+> TIp: If you're not sure what's the latest version, check the [release notes]({{ site.baseurl }}{% post_url /documentation/releases/2018-01-01-4.0.0 %}).
+
+> Note: Checking the SDK version you have installed using `npm` won't tell you what version of the SDK is being used when previewing your scenes. The only way to know what version they are using is by checking _package-lock.josn_.
