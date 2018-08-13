@@ -54,6 +54,16 @@ You can add text as an entity in a Decentraland scene. You can use these text en
 
 {% endraw %}
 
+To display a value that isn't of type _string_ in a text entity, use the `toString()` function to convert its type to _string_.
+
+{% raw %}
+
+```tsx
+<text value={this.state.gameScore.toString()} />
+```
+
+{% endraw %}
+
 ## Entity positioning
 
 All entities can have a _position_, a _rotation_ and a _scale_. These can be easily set as components, as shown below:
