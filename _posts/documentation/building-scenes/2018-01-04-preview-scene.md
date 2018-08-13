@@ -77,11 +77,16 @@ Once you're happy with your scene, you can upload it and publish it to Decentral
 
 ## Parameters of the preview command
 
-You can add the following flags to the `dcl prevew` command to change its behavior:
+You can add the following flags to the `dcl start` command to change its behavior:
 
 - `--no-browser` to prevent the preview from opening a new browser tab.
 - `--port` to assign a specific port to run the scene. Otherwise it will use whatever port is available.
+
+<!--
+Seems to be removed:
+
 - `--skip` to skip the confirmation prompt.
+-->
 
 > To preview old scenes that were built for older versions of the SDK, you must install the latest versions of the `metaverse-api` and `metaverse-rpc` packages in your project. Check the CLI version via the command `dcl -v`
 
