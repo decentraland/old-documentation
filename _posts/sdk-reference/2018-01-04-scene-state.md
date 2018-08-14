@@ -23,9 +23,9 @@ state = {
 }
 ```
 
-The state should contain **only** data, and no logic or methods. We don't recommend assigning instances of objects that have methods of their own to variables in the state. All of the logic should be carried out in your custom class that extends the [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) class.
+The state should contain **only** data, and no logic or methods. We don't recommend assigning instances of objects that have methods of their own to variables in the state. All of the scene's logic should be carried out in your custom class that extends the [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) class.
 
-Each state variable must be given an intial value for when the scene is first rendered. You can define the type for the state object by declaring a custom interface. Doing this is optional but we recommend it, especially for complex scenes, as it helps validate inputs and makes debugging easier.
+Each state variable must be given an intial value for when the scene is first rendered.
 
 The variables you choose to make up your scene's state should be the minimal possible set that represents the scene, you shouldn't add redundant information. To determine if you should include a piece of information as part of the state, ask yourself:
 
@@ -35,7 +35,7 @@ The variables you choose to make up your scene's state should be the minimal pos
 
 ## Local and remote scenes
 
-**Local scenes** (like the ones the CLI creates when you select the _Basic_ or _Interactive_) store the scene state as part of the scriptable scene object:
+**Local scenes** store the scene state locally as part of the scriptable scene object. For example, when you create scenes with the Decentraland CLI, the default scenes for the options _Basic_ and _Interactive_ are both local scenes.
 
 {% raw %}
 
@@ -53,15 +53,19 @@ export default class Scene extends ScriptableScene {
 
 {% endraw %}
 
-Local scenes store state information in the user's local client. That means each user might be having a different perception of what the scene looks like, even though they might be seeing each other move through it.
+Local scenes run entirely in the user's local client. When the value of a variable in the scene state changes, it only changes the local representation in the client, and isn't propagated to other users of the scene. That means each user might be having a different perception of what the scene looks like, even though the users might see each other moving around.
 
-For example, if a user opens a door, other users won't see this door open, because their local scene state doesn't change.
+For example, if a user opens a door, other users won't see this door open, because users can only affect their own local representation of the scene state.
 
-**Remote scenes** store the state in a remote server. The local client retrieves information from this server to render the scene and pushes changes to it. The advantage is that all users of the scene share a unique version of the scene state.
+**Remote scenes** store the scene state in a remote server. The local client retrieves information from this server to render the scene lcoally. When the value of a variable in the scene state is changed, this change is pushed to the remote server to update its representation of the scene state. All users of the scene will then render their scenes locally based on the scene state that's stored in the remote server, so all users will see the change.
 
-In a remote scene, if a user opens a door, all other users should see this door open as well.
+Referring back to the previous example: in a remote scene, if a user opens a door, all other users should see this door open as well.
 
-## Pass the state class to the scene object
+## Define an interface for the scene state
+
+You can define the type for the state object by declaring a custom interface. Doing this is optional but we recommend it, especially for complex scenes, as it helps validate inputs and makes debugging easier.
+
+The example bleow defines a custom interface for the scene state and passes it to the scriptable scene object.
 
 {% raw %}
 
@@ -123,7 +127,7 @@ async render() {
 
 #### In a remote scene
 
-In a _remote_ scene the state is stored in a separate _State.ts_ file, so you fetch it by calling the `getState()` method.
+In a _remote_ scene the state is stored in a remote server. This is handled by a file called _State.ts_. You get the state by calling the `getState()` function, that's defined in _State.ts_.
 
 {% raw %}
 
@@ -137,7 +141,7 @@ async checkDoor(){
 
 ## Set the state
 
-You can set the value of a state variable from any method in the scriptable scene object by using `setState()`.
+You can set the value of a state variable by using `setState()`.
 
 `setState()` only affects the variables that are explicitly called out by it. If there are other variables in the scene state that aren't named, these are left untouched.
 
@@ -153,21 +157,27 @@ In a _local_ scene the state is stored in the scriptable scene object, so you se
 
 ```tsx
 async buttonPressed(){
-  this.setState({buttonState : 1 })
+  this.setState({
+    buttonState : 1,
+    isDoorClosed: false
+    })
 }
 ```
 
 #### In a remote scene
 
-In a _remote_ scene the state is stored in an external file called _State.tsx_. You set it by calling the `setState()` function, that's also stored in the _State.tsx_ file.
+In a _remote_ scene the state is stored in a remote server. This is handled by a file called _State.ts_. You set the state by calling the `setState()` function, that's defined in _State.ts_.
 
 ```tsx
 async buttonPressed(){
-  setState({buttonState : 1 })
+  setState({
+    buttonState : 1,
+    isDoorClosed: false
+    })
 }
 ```
 
-#### Always user setState()
+#### Always use setState()
 
 It's important that each time you change the state you do it through the `setState` function, NEVER do it by directly setting a value. Otherwise this will cause problems with the lifecycle of the scene.
 
