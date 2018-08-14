@@ -1,6 +1,6 @@
 ---
 date: 2018-01-10
-title: Default scene contents
+title: Files in a scene
 description: Default files created in a new scene
 categories:
   - documentation
@@ -11,7 +11,7 @@ set_order: 11
 
 After [creating a new scene]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-03-create-scene %}) using the CLI, the scene folder will have a series of files with default content. The file structure and content will vary depending on the type of scene you selected (_basic_, _interactive_, _remote_, or _static_).
 
-## Local scene content
+## Default files in a local scene
 
 When you choose to create a _basic_ or an _interactive_ scene with the CLI, this creates a _local scene_.
 
@@ -25,7 +25,9 @@ Local scenes inclde the following files:
 
 #### scene.tsx
 
-This file contains the code that generates an entity tree, which is what end users of your parcel will see. Below is a basic example of a _scene.tsx_ file:
+In most cases, you'll only need to edit this file to create your scene. It contains the code that generates an entity tree, which is what end users of your parcel will see.
+
+Below is a basic example of a _scene.tsx_ file:
 
 {% raw %}
 
@@ -64,7 +66,112 @@ This file provides information to NPM that allows it to identify the project, as
 - **metaverse-api**: allows the scene to communicate with the world engine.
 - **typescript**: used to compile the file _scene.tsx_ to javascript.
 
-> If you're creating a static _XML_ scene, you don’t need the `typescript` package.
+#### package-lock.json
+
+This file lists the versions of all the other dependencies of the project. These versions are locked, meaning that the compiler will use literally the same minor release listed here.
+
+You can change any package version manually by editing this file.
+
+#### build.json
+
+This is the Decentraland build configuration file.
+
+#### tsconfig.json
+
+Directories containing a _tsconfig.json_ file are root directories for TypeScript Projects. The _tsconfig.json_ file specifies the root files and options required to compile your project from TypeScript into JavaScript.
+
+> You can use another tool or language instead of TypeScript, so long as your scripts are contained within a single Javascript file (scene.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
+
+## Default files in a remote scene
+
+Remote scenes inclde the following files:
+
+1.  **server/RemoteScene.tsx**: The entry point of the scene.
+2.  **server/State.ts**: Handles the scene state. This is executed in the remote server.
+3.  **server/Server.ts**: Configuration for the remote server.
+4.  **server/ConnectedClients.ts**: Handles users of the scene.
+5.  **server/build.json**: Instructions for the scene build.
+6.  **server/tsconfig.json**: Typescript configuration file.
+7.  **server/build.json**: The file with the instructions to build the scene.
+8.  **package.json** and **package-lock.json**: Specify the versions of all dependencies of the scene.
+9.  **scene.json**: The manifest that contains metadata for the scene.
+
+#### RemoteScene.tsx
+
+It contains the code that generates an entity tree, which is what end users of your parcel will see. It differs from the _scene.tsx_ file in static scenes in that it doesn't define a scene state, but instead it imports it from _State.ts_.
+
+Below is a basic example of a _RemoteScene.tsx_ file:
+
+{% raw %}
+
+```tsx
+import * as DCL from "metaverse-api"
+import { setState, getState } from "./State"
+
+// The ScriptableScene class is a React-style component.
+export default class MyScene extends ScriptableScene<any, any> {
+  async render() {
+    return (
+      <scene>
+        <box position={{ x: 5, y: 0, z: 5 }} scale={{ x: 1, y: 1, z: 1 }} />
+      </scene>
+    )
+  }
+}
+```
+
+{% endraw %}
+
+> **Important note:** Your _RemoteScene.tsx_ file must always include an `export default class`, that's how our SDK finds the class to initialize the scene.
+
+#### State.ts
+
+This file handles the scene state, which remote scenes keep stored in a remote server.
+
+It includes the definition of the scene state and two functions that the scriptable scene class will use to get and to set information from this remote state.
+
+Below is a basic example of a _State.ts_ file:
+
+{% raw %}
+
+```tsx
+import { updateAll } from "./ConnectedClients"
+
+let state = {
+  isDoorClosed: false
+}
+
+export function getState(): typeof state {
+  return state
+}
+
+export function setState(deltaState: Partial<typeof state>) {
+  state = { ...state, ...deltaState }
+  console.log("new state:")
+  console.dir(state)
+  updateAll()
+}
+```
+
+{% endraw %}
+
+Learn more about how the scene state works in [scene state]({{ site.baseurl }}{% post_url documentation/sdk-reference/2018-01-04-scene-state %}).
+
+#### scene.json
+
+The _scene.json_ file is a JSON formatted manifest for a scene in the world. A scene can span a single or multiple LAND parcels. The _scene.json_ manifest describes what objects exist in the scene, a list of any assets needed to render it, contact information for the parcel owner, and security settings. For more information and an example of a
+_scene.json_ file, please visit the [Decentraland specification proposal](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki).
+
+When you run the `dcl init` command, it prompts you to enter some descriptive metadata, these datais are stored in
+the scene.json manifest file for the scene. All of this
+metadata is optional for previewing the scene locally, but part of it is needed for deploying. You can change this information manually at any time.
+
+#### package.json
+
+This file provides information to NPM that allows it to identify the project, as well as handle the project's dependencies. Decentraland scenes need two packages:
+
+- **metaverse-api**: allows the scene to communicate with the world engine.
+- **typescript**: used to compile the file _scene.tsx_ to javascript.
 
 #### package-lock.json
 
@@ -76,30 +183,13 @@ You can change any package version manually by editing this file.
 
 This is the Decentraland build configuration file.
 
-We provide a tool called _metaverse-compiler_, it comes with the _metaverse-api_ package. This tool is in charge of
-reading the _build.json_ file and compile your scene in a way that the client can run it. All it really does is bundle Typescript code into a WebWorker using WebPack.
-
-> You can also use the CLI to create Node.js servers for multiplayer experiences.
-
 #### tsconfig.json
 
-Directories containing a _tsconfig.json_ file are root directories for TypeScript Projects. The _tsconfig.json_ file specifies the root files and options required to compile your project in JavaScript.
+Directories containing a _tsconfig.json_ file are root directories for TypeScript Projects. The _tsconfig.json_ file specifies the root files and options required to compile your project from TypeScript into JavaScript.
 
 > You can use another tool or language instead of TypeScript, so long as your scripts are contained within a single Javascript file (scene.js). All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
 
-## Remote scene contents
-
-Remote scenes inclde the following files:
-
-1.  **RemoteScene.tsx**: The entry point of the scene.
-2.  **State.tsx**: Handles the scene state. This is executed in the remote server.
-3.  **Server.ts**: Configuration for the remote server.
-4.  **scene.json**: The manifest that contains metadata for the scene.
-5.  **package.json** and **package-lock.json**: Specify the versions of all dependencies of the scene.
-6.  **build.json**: The file with the instructions to build the scene.
-7.  **tsconfig.json**: Typescript configuration file.
-
-## Static scene contents
+## Default files in a static scene
 
 _A static scene_ includes the following files:
 
@@ -133,3 +223,30 @@ Since the root scene element is a transform node, it can also be translated, sca
 This file provides information to NPM that allows it to identify the project, as well as handle the project's dependencies. Decentraland static scenes need this package:
 
 **metaverse-api**: allows the scene to communicate with the world engine.
+
+## Recommended locations
+
+Keep in mind that, when you deploy your scene to Decentraland, any assets or external libraries that are needed to use your scene must be either packaged inside the scene folder or available via a remote server.
+
+Anything that is meant to run in the user's client must located inside the scene folder. That includes external libraries like Babylon.js. It's not enough to have libraries installed in your local machine, because that information will not be available to the deployed scene.
+
+As a best practices, we recommend using these folder names consistently for storing the different types of assets that your scene might need:
+
+- 3d models: `/models`
+- Videos: `/videos`
+- Sound files: `/sounds`
+- Image files for textures: `/materials`
+- _.tsx_ definitions for reusable components `/components`
+
+## The dclignore file
+
+All scenes include a _.dclignore_ file, this file specifies what files in the scene folder to ignore and when deploying a scene to Decentraland.
+
+For example, you might like to keep the Blender files for the 3D models in your scene inside the scene folder, but you want to prevent those files from being deployed to Decentraland. In that case, you could add `*.blend` to _.dclignore_ to ignore all files with that extension.
+
+| What to ignore | Example      | Description                                                  |
+| -------------- | ------------ | ------------------------------------------------------------ |
+| Specific files | `BACKUP.tsx` | Ignores this specific file                                   |
+| Folders        | `drafts/`    | Ignores entire contents of folder and subfolders             |
+| Extensions     | `*.blend`    | Ignores all files with a _.blend_ extension                  |
+| Name sections  | `test*`      | Ignores all files with names that start with the word _test_ |
