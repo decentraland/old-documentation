@@ -42,11 +42,9 @@ Currently, as a measure to improve performance and your visitor's experience, yo
 
 ## Publish from a physical Ledger device
 
-Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a [Ledger](https://www.ledger.fr/) device that's phyisically plugged in to your computer.
+Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a [Ledger](https://www.ledger.com/) device that's phyisically plugged in to your computer.
 
 If you're using one of these, the process of uploading content to your LAND is slightly different.
-
-The wallet address listed in the scene's _scene.json_ file should match that of the device.
 
 1.  To make sure the scene has been locally built with your latest changes, run `npm run build`.
 2.  Plug your Ledger device in. Your parcels in Decentraland should be associated with that same wallet. The same public address should be listed in the scene's _scene.json_ file.
