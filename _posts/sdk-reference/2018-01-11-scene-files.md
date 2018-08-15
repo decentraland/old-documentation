@@ -98,7 +98,7 @@ Remote scenes inclde the following files:
 
 #### RemoteScene.tsx
 
-It contains the code that generates an entity tree, which is what end users of your parcel will see. It differs from the _scene.tsx_ file in static scenes in that it doesn't define a scene state, but instead it imports it from _State.ts_.
+It contains the code that generates an entity tree, which is what end users of your parcel will see. Its biggest difference with the _scene.tsx_ file of a static scene is that it doesn't define a scene state, but instead it imports the state and functions to access it from _State.ts_.
 
 Below is a basic example of a _RemoteScene.tsx_ file:
 
@@ -126,9 +126,9 @@ export default class MyScene extends ScriptableScene<any, any> {
 
 #### State.ts
 
-This file handles the scene state, which remote scenes keep stored in a remote server.
+This file handles the scene state. Remote scenes keep the state stored in a remote server.
 
-It includes the definition of the scene state and two functions that the scriptable scene class will use to get and to set information from this remote state.
+The file includes the definition of the scene state and two functions that are used to get and to set information from this remote state.
 
 Below is a basic example of a _State.ts_ file:
 
@@ -224,13 +224,13 @@ This file provides information to NPM that allows it to identify the project, as
 
 **metaverse-api**: allows the scene to communicate with the world engine.
 
-## Recommended locations
+## Recommended file locations
 
-Keep in mind that, when you deploy your scene to Decentraland, any assets or external libraries that are needed to use your scene must be either packaged inside the scene folder or available via a remote server.
+Keep in mind that when you deploy your scene to Decentraland, any assets or external libraries that are needed to use your scene must be either packaged inside the scene folder or available via a remote server.
 
-Anything that is meant to run in the user's client must located inside the scene folder. That includes external libraries like Babylon.js. It's not enough to have libraries installed in your local machine, because that information will not be available to the deployed scene.
+Anything that is meant to run in the user's client must located inside the scene folder. That includes external libraries like Babylon.js. You shouldn't reference libraries that are installed elsewhere in your local machine, because they won't not be available to the deployed scene.
 
-As a best practices, we recommend using these folder names consistently for storing the different types of assets that your scene might need:
+We suggest using these folder names consistently for storing the different types of assets that your scene might need:
 
 - 3d models: `/models`
 - Videos: `/videos`
@@ -240,13 +240,13 @@ As a best practices, we recommend using these folder names consistently for stor
 
 ## The dclignore file
 
-All scenes include a _.dclignore_ file, this file specifies what files in the scene folder to ignore and when deploying a scene to Decentraland.
+All scenes include a _.dclignore_ file, this file specifies what files in the scene folder to ignore when deploying a scene to Decentraland.
 
 For example, you might like to keep the Blender files for the 3D models in your scene inside the scene folder, but you want to prevent those files from being deployed to Decentraland. In that case, you could add `*.blend` to _.dclignore_ to ignore all files with that extension.
 
-| What to ignore | Example      | Description                                                  |
-| -------------- | ------------ | ------------------------------------------------------------ |
-| Specific files | `BACKUP.tsx` | Ignores this specific file                                   |
-| Folders        | `drafts/`    | Ignores entire contents of folder and subfolders             |
-| Extensions     | `*.blend`    | Ignores all files with a _.blend_ extension                  |
-| Name sections  | `test*`      | Ignores all files with names that start with the word _test_ |
+| What to ignore | Example      | Description                                                                             |
+| -------------- | ------------ | --------------------------------------------------------------------------------------- |
+| Specific files | `BACKUP.tsx` | Ignores a specific file                                                                 |
+| Folders        | `drafts/`    | Ignores entire contents of a folder and its subfolders                                  |
+| Extensions     | `*.blend`    | Ignores all files with a given extension                                                |
+| Name sections  | `test*`      | Ignores all files with names that match the query. In this case, that start with _test_ |
