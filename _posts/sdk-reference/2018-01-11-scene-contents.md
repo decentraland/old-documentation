@@ -155,7 +155,7 @@ export function setState(deltaState: Partial<typeof state>) {
 
 {% endraw %}
 
-Learn more about how the scene state works in [scene state]({{ site.baseurl }}{% post_url documentation/sdk-reference/2018-01-04-scene-state %}).
+Learn more about how the scene state works in [scene state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}).
 
 #### scene.json
 
