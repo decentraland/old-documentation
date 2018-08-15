@@ -27,11 +27,57 @@ To debug a scene, you can use `console.log()` to keep track of the occurance of 
 
 Clicks can be done either with a mouse, a touch screen, a VR controller or some other device, the events that are generated from this don't make any distinction. When the ray that the avatar casts forward points at a valid entity and the user clicks, this creates a `click` event.
 
-> Note: Only entities that have an id can generate click events. Clicks can be made from a maximum distance of 10 meters away from the entity.
+> Note: Clicks can be made from a maximum distance of 10 meters away from the entity.
 
-#### The click event
+#### onCLick
 
-The generic `click` event represents all clicks done on valid entities. The event has two parameters:
+The easiest way to handle click events is to add an `onClick` component to the entity itself. With this in place, there's no need to add an event subscriber for click events from this entity, that's already implicitly handled.
+
+You can declare what to do in the event of a click by writing it in the `onClick` itself, or you can call a separate function to keep the render method more legible.
+
+{% raw %}
+
+```tsx
+<box onClick={this.handleClicks()} position={{ x: 5, y: 1, z: 5 }} />
+```
+
+{% endraw %}
+
+The click event object is passed as a parameter of the function you call in the `onClick`. This event object contains the following parameters that can be accessed by your function:
+
+- `elementId`: the Id of the entity that was clicked (if the entity has an id).
+- `pointerId`: the id for the user who performed the click.
+
+{% raw %}
+
+```tsx
+import { ScriptableScene, createElement } from "decentraland-api/src"
+
+export default class Scene extends ScriptableScene {
+  async render() {
+    return (
+      <scene>
+        <box
+          position={{ x: 5, y: 0, z: 5 }}
+          id="myBox"
+          onClick={e => {
+            console.log(`elementId: ${e.elementId}`)
+            console.log(`pointerId: ${e.pointerId}`)
+          }}
+        />
+      </scene>
+    )
+  }
+}
+```
+
+{% endraw %}
+
+This example logs both parameters of the click event each time the box entity is clicked.
+
+#### The generic click event
+
+The generic `click` event represents all clicks done on valid entities. Only entities that have an id are considered valid for generating click events. The click event object contains the following parameters:
 
 - `elementId`: the Id of the entity that was clicked.
 - `pointerId`: the id for the user who performed the click.
@@ -94,7 +140,10 @@ export default class RedButton extends ScriptableScene {
   async render() {
     return (
       <scene>
-        <box id="redButton" color="ff0000" />
+        <box
+          id="redButton"
+          color="ff0000"
+          />
       </scene>
     )
   }
