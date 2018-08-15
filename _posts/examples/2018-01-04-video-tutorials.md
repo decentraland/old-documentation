@@ -23,6 +23,12 @@ It then also goes over how you can activate these animations in a Decentraland s
 
 {%  include youtube.html video_id='7RSsBmm-rVs'  %}
 
+## Add a collider to a 3D model
+
+This tutorial shows how you can add a collider to a 3D model. Colliders prevent users of your scene from walking through things. They are separate objects that are invisible but occupy space and stand in for what are often more geometrically complex objects.
+
+{%  include youtube.html video_id='LfrekdeEK2I'  %}
+
 ## Jukebox
 
 This tutorial shows how you can build a jukebox. It includes an array of animated buttons that can be interacted with, each button triggers the playing of a different song.
@@ -43,3 +49,19 @@ This tutorial shows how you can handle some basic behaviors of character in a De
 This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-basic-ai-with-block-dog) to acompany the video.
 
 {%  include youtube.html video_id='61ppyctd-88'  %}
+
+## Tower defense game
+
+This tutorial shows how you can build a simple yet fully functional game in Decentraland. It walks you through how to create a tower defense game that includes:
+
+- A randomly generated path
+- Traps that appear in random positions
+- A series of enemy entities that move down the generated path
+- A way to kill these enemies via traps
+- A score board
+- A reset button
+- Support for multiple players
+
+This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-a-simple-tower-defense-game) to acompany the video.
+
+{%  include youtube.html video_id='XPcMaGtX37k'  %}
