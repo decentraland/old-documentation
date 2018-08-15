@@ -35,7 +35,7 @@ There are four different scene templates that you can use as a starting point:
 - **Remote scene**: Defined in a TypeScript file featuring the same example used for the local scene, but it differs in that the scene state is stored in a remote server that it communicates with over WebSockets. Because of this, all users see the scene rendered identically. If you're developing a game or another kind of interactive experience, this is most likely how you want it to work. To test your scene, you can run both the server and the client locally.
 - **Static scene**: Defined in an **XML** file with a single glTF moel. You can't add any dynamic or interactive content to this type of scene, it can only display static entities in place.
 
-See [scene contents]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-11-scene contents %}) for an overview of the default files that are created in your scene.
+See [scene contents]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-11-scene-files %}) for an overview of the default files that are created in your scene.
 
 ## Preview your scene
 
