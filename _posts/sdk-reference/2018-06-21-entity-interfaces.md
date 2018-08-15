@@ -320,6 +320,11 @@ interface BaseEntity {
   id?: string
 
   /**
+   * The function that handles the click interaction event
+   */
+  onClick?: (e: IEvents["click"]) => void
+
+  /**
    * Used to differentiate similar entities in lists
    */
   key?: string | number
