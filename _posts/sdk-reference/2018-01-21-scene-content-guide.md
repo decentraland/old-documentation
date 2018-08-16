@@ -239,7 +239,7 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 <material
   id="reusable_material"
   albedoTexture="materials/wood.png"
-  roughness="0.5"
+  roughness={0.5}
 />
 <sphere material="#reusable_material" />
 ```

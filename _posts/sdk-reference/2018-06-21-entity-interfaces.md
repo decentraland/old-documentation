@@ -463,7 +463,7 @@ Example:
   <material
     id="reusable_material"
     albedo-color="materials/wood.png"
-    roughness="0.5"
+    roughness={0.5}
     />
   <sphere
     material="#reusable_material"
