@@ -437,7 +437,7 @@ renderLeaves(){
     <plane
       position={{ x: leaf.x , y: leaf.y, z:leaf.z }}
       scale={0.2}
-      key={leafIndex.toString()}
+      key={"leaf" + leafIndex.toString()}
     />
   )
 }
@@ -461,7 +461,7 @@ renderLeaves(){
       <plane
         position={{ x: leaf.x , y: leaf.y, z: leaf.z }}
         scale={0.2}
-        key={leafIndex.toString()}
+        key={"leaf" + leafIndex.toString()}
       />
     )
 }
@@ -486,7 +486,7 @@ renderLeaves() {
       <plane
         position={{ x: leaf.x, y: leaf.y, z: leaf.z }}
         scale={0.2}
-        key={leafIndex.toString()}
+        key={"leaf" + leafIndex.toString()}
       />
     )
   })
@@ -500,6 +500,8 @@ renderLeaves() {
 Like the example used to explain the map operator above, this example goes over the elements of the `fallingLeaves` array running the same function on each. The original array is of type _Vector3Component_ so each element in it has values for _x_, _y_ and _z_ coordinates. The function that runs for each element returns a plane entity that uses the position stored in the array.
 
 The function performed by the `forEach()` function doesn't have a `return` statement. If it did, it would overwrite the content of the `this.state.fallingLeaves` array. Instead, we create a new array called `leaves` and push elements to it, then we return the full array that at the end.
+
+As you can see from comparing this example to the prevous ones , it's a lot simpler to use `map()` to render entities from a list.
 
 > Note: Keep in mind that when dealing with a variable from the scene state, you can't change its value by setting it directly. You must always change the value of a scene state variable through the `this.setState()` operation.
 
@@ -587,6 +589,7 @@ async render() {
       { this.state.secuence.map(num =>
         <box
           position={{ x: num * 2, y: 1, z: 1 }}
+          key={"box" + num.toString()}
         />
       }
     </scene>
@@ -597,6 +600,13 @@ async render() {
 {% endraw %}
 
 This function uses a `map()` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
+
+A few best practices when rendering entities from a list:
+
+- Use `array.map` to go over the list
+- Don't use a `for` loop
+- Give each entity a unique `key`
+- Avoid using the array index as the entity key
 
 #### Keep the render function readable
 
