@@ -69,11 +69,11 @@ For more step-by-step instructions on installing the CLI, please read our [SDK Q
 
 #### API
 
-`metaverse-api` (commonly referred to as the API) is the name for the TypeScript package containing the library of helper methods that allows you to create interactive singleplayer and multiplayer experiences. The API includes methods allowing you to create and manipulate objects on your LAND, in addition to methods that help facilitate in-world transactions between users or other applications.
+`decentraland-api` (formerly `metaverse-api` and still commonly referred to as _the API_) is the name for the TypeScript package containing the library of helper methods that allows you to create interactive singleplayer and multiplayer experiences. The API includes methods allowing you to create and manipulate objects on your LAND, in addition to methods that help facilitate in-world transactions between users or other applications.
 
 ## Elements of the API
 
-The API includes everything within the package `metaverse-api`. This is all of the classes and helper methods that you will need to use when writing your TypeScript scenes, whether your scene is static, dynamic, or remote.
+The API includes everything within the package `decentraland-api`. This is all of the classes and helper methods that you will need to use when writing your TypeScript scenes, whether your scene is static, dynamic, or remote.
 
 We have designed the Decentraland API to enable scene development using the Entity Component System, where **entities** include all of the assets that users will be able to interact with within their web browser (like audio files, video files, and 3D objects) and **components** function as the bridge between the low-level functionality of the client and the scripts that you write to control the entities in your scene.
 

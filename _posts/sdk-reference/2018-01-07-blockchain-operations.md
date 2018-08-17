@@ -26,7 +26,7 @@ The example below imports the `UserIdentity` library and runs `getUserPublicKey(
 {% raw %}
 
 ```tsx
-import { createElement, inject, UserIdentity } from "metaverse-api/src"
+import { createElement, inject, UserIdentity } from "decentraland-api/src"
 
 export default class Scene extends ScriptableScene<any, any> {
   @inject("Identity") userIdentity: UserIdentity
@@ -79,7 +79,7 @@ Below is a sample that uses this API to get the contents of a block in the block
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 import Web3 = require("web3")
 
 export default class EthereumProvider extends ScriptableScene {
@@ -126,7 +126,7 @@ import {
   ScriptableScene,
   EthereumController,
   inject
-} from "metaverse-api"
+} from "decentraland-api"
 ```
 
 {% endraw %}
@@ -311,7 +311,7 @@ console.log(‘Is the message correct?’, isEqual)
 {% raw %}
 
 ```tsx
-import { inject, EthereumController, createElement, ScriptableScene } from 'metaverse-api'
+import { inject, EthereumController, createElement, ScriptableScene } from 'decentraland-api'
 import { eth } from 'decentraland-eth'
 
 const messageToSign = `# DCL Signed message

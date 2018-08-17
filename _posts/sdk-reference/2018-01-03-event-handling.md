@@ -85,7 +85,7 @@ The generic `click` event represents all clicks done on valid entities. Only ent
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 export default class LastClicked extends ScriptableScene {
   state = {
@@ -123,7 +123,7 @@ A simpler way to deal with clicks that are made on a single entity is to listen 
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 export default class RedButton extends ScriptableScene {
   state = {
@@ -140,10 +140,7 @@ export default class RedButton extends ScriptableScene {
   async render() {
     return (
       <scene>
-        <box
-          id="redButton"
-          color="ff0000"
-          />
+        <box id="redButton" color="ff0000" />
       </scene>
     )
   }
@@ -161,7 +158,7 @@ The pointer down and pointer up events are fired whenever the user presses or re
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 export default class BigButton extends ScriptableScene {
   state = {
@@ -208,7 +205,7 @@ The `positionChanged` event has the following properties:
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 export default class BoxFollower extends ScriptableScene {
   state = {
@@ -248,7 +245,7 @@ The `rotationChanged` event has the following properties:
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 export default class ConeHead extends ScriptableScene {
   state = {

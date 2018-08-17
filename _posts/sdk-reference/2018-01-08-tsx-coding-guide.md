@@ -40,7 +40,7 @@ This is useful for values that are used multiple times in your scene and need to
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 const updateRate = 300
 const myColors = [

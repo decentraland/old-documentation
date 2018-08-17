@@ -88,7 +88,7 @@ Seems to be removed:
 - `--skip` to skip the confirmation prompt.
 -->
 
-> To preview old scenes that were built for older versions of the SDK, you must install the latest versions of the `metaverse-api` and `metaverse-rpc` packages in your project. Check the CLI version via the command `dcl -v`
+> To preview old scenes that were built for older versions of the SDK, you must install the latest versions of the `decentraland-api` and `decentraland-rpc` packages in your project. Check the CLI version via the command `dcl -v`
 
 ## Basic usage of the scene preview
 

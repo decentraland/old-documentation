@@ -731,7 +731,7 @@ For example, the sample below defines an entity type `button`:
 {% raw %}
 
 ```tsx
-import { createElement, Vector3Component } from "metaverse-api"
+import { createElement, Vector3Component } from "decentraland-api"
 
 export interface IProps {
   position: Vector3Component
