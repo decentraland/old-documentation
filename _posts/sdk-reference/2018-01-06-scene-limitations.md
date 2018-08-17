@@ -97,9 +97,13 @@ console.log(limits.textures)
 
 For example, if your scene is only rendering one box entity at the time, logging `limits.entities` should print `1`.
 
-## Other limitations
+## Scene boundaries
 
-When running a preview, any content that is located outside the parcel boundaries is highlighted in red when rendered.
+When running a preview, any content that is located outside the parcel boundaries is highlighted in red when rendered. If any content is outside these boundaries, you won't be allowed to deploy this scene to Decentraland.
+
+## Shader limitations
+
+3D models used in decentraland must use supported shaders and materials. See [3D model considerations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-09-external-3d-models %}) for a list of supported shaders.
 
 ## Texture size constraints
 
@@ -125,17 +129,3 @@ Examples of other valid sizes:
 ```
 
 > Although textures of arbitrary sizes work in the alpha release, the engine displays an alert in the console. We will enforce this restriction in coming releases and invalid texture sizes will cease to work.
-
-## Shader support
-
-Not all shaders can be used in models that are imported into Decentraland. Make sure you use one of the following:
-
-- Standard materials: any shaders are supported, for example diffuse, specular, transparency, etc.
-
-  > Tip: When using Blender, these are the materials supported by _Blender Render_ rendering.
-
-- PBR (Physically Based Rendering) materials: This shader is extremely flexible, as it includes properties like diffuse, roughness, metalness and emission that allow you to configure how a material interacts with light.
-
-  > Tip: When using Blender, you can use PBR materials by setting _Cycles_ rendering and adding the _Principled BSDF_ shader. Note that none of the other shaders of the _Cycles_ renderer are supported.
-
-See [entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material.
