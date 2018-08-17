@@ -188,6 +188,82 @@ interface CylinderEntity extends BaseEntity {
 }
 ```
 
+## Text entity
+
+A text entity can display a string of text in your scene. You can configure some basic text properties like the text color, its font, font weight, line spacing, etc.
+
+```tsx
+type TextEntity = BaseEntity & {
+  /**
+   * The width of the texts outline
+   */
+  outlineWidth?: number
+  /**
+   * The outline color in hexadecimal format (`#ff0000`)
+   */
+  outlineColor?: string
+  /**
+   * The text color in hexadecimal format (`#ff0000`)
+   */
+  color?: string
+  /**
+   * The name of the font to be used
+   */
+  fontFamily?: string
+  /**
+   * The text size
+   */
+  fontSize?: number
+  /**
+   * The weight of the text
+   */
+  fontWeight?: string
+  /**
+   * The text size
+   */
+  opacity?: number
+  /**
+   * The content of the text
+   */
+  value: string
+  /**
+   * The size of the space between lines
+   */
+  lineSpacing?: string
+  /**
+   * If set to true the text will wrap to the next line when the maximun width is reached
+   */
+  textWrapping?: boolean
+  /**
+   * Horizontal alignment (`top`, `right`, `bottom` or `left`)
+   */
+  hAlign?: string
+  /**
+   * Vertical alignment (`top`, `right`, `bottom` or `left`)
+   */
+  vAlign?: string
+  /**
+   * The text width
+   */
+  width?: number
+  /**
+   * The text height
+   */
+  height?: number
+  lineCount?: number
+  resizeToFit?: boolean
+  shadowBlur?: number
+  shadowOffsetX?: number
+  shadowOffsetY?: number
+  shadowColor?: string
+  zIndex?: number
+  paddingTop?: number
+  paddingRight?: number
+  paddingBottom?: number
+  paddingLeft?: number
+}
+```
+
 ## glTF models
 
 [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common,

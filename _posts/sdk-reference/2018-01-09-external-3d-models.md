@@ -129,8 +129,6 @@ You can use a tool like Blender to create animations for a 3D model.
 
 > Note: There's a reported bug with Babylon.js that prevents some faces of a mesh from being rendered when they're not related to any bone in the armature. So if you paint some faces with weight 0 and then animate the model, you might see these faces dissappear. To solve this, we recommend making sure that each face is related to at least one bone of the armature and painted with a weight of at least 0.01.
 
-, faces of a mesh that aren't painted for any
-
 4.  Move the armature to a desired pose, all bones can be rotated or scaled. Then lock the rotation and scale of the bones you wish to control with this animation.
 
 ![](/images/media/armature_hummingbird2.png)
