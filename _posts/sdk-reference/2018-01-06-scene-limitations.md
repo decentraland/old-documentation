@@ -31,17 +31,17 @@ From a scene's code, you can query both the limitations that apply to the scene 
 
 #### Obtain scene limitations
 
-Run `this.queryParcelLimits()` to obtain the limits of your scene. The limits are calculated for your scene based on how many parcels it occupies, according to the _scene.json_ file. The values returned by this command don't change over time, as the scene's size is always the same.
+Run `this.querySceneLimits()` to obtain the limits of your scene. The limits are calculated for your scene based on how many parcels it occupies, according to the _scene.json_ file. The values returned by this command don't change over time, as the scene's size is always the same.
 
-The `queryParcelLimits()` is asynchronous, so we recommend calling it with an `await` statement.
+The `querySceneLimits()` is asynchronous, so we recommend calling it with an `await` statement.
 
-The `queryParcelLimits()` function returns a promise of an object with the following properties, all of type _number_.
+The `querySceneLimits()` function returns a promise of an object with the following properties, all of type _number_.
 
 {% raw %}
 
 ```tsx
 //get limits object
-const limits = await this.queryParcelLimits()
+const limits = await this.querySceneLimits()
 
 //print maximum triangles
 console.log(limits.triangles)
@@ -65,17 +65,17 @@ For example, if your scene has only one parcel, logging `limits.triangles` shoul
 
 #### Obtain the current use
 
-Just as you can check via code the maximum allowed values for your scene, you can also check how much of that is currently used by the scene. You do this by running `this.queryParcelMetrics()`. The values returned by this command change over time as your scene renders different content.
+Just as you can check via code the maximum allowed values for your scene, you can also check how much of that is currently used by the scene. You do this by running `this.querySceneMetrics()`. The values returned by this command change over time as your scene renders different content.
 
-The `queryParcelMetrics()` is asynchronous, so we recommend calling it with an `await` statement.
+The `querySceneMetrics()` is asynchronous, so we recommend calling it with an `await` statement.
 
-The `queryParcelMetrics()` function returns a promise of an object with the following properties, all of type _number_.
+The `querySceneMetrics()` function returns a promise of an object with the following properties, all of type _number_.
 
 {% raw %}
 
 ```tsx
 //get metrics object
-const limits = await this.queryParcelMetrics()
+const limits = await this.querySceneMetrics()
 
 //print maximum triangles
 console.log(limits.triangles)
