@@ -1,12 +1,12 @@
 ---
 date: 2018-01-08
-title: TypeScript coding guide
+title: TypeScript tips
 description: Tips and tricks for coding scenes
 categories:
   - documentation
 type: Document
 set: sdk-reference
-set_order: 8
+set_order: 12
 ---
 
 The Decentraland SDK is meant to be used via TypeScript (.tsx) files. This section introduces a number of tips and tricks you can take advantage of when building your scene. What's discussed here isn't directly related to the features of the SDK, but rather about ways in which you can use the TypeScript language and context to make the most out of it.

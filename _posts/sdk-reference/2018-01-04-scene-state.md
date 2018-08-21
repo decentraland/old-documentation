@@ -1,6 +1,6 @@
 ---
 date: 2018-01-05
-title: Scene state
+title: State management
 description: Learn how the scene's state variables are updated and retrieved.
 categories:
   - sdk-reference
