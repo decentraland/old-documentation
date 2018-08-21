@@ -509,7 +509,11 @@ As you can see from comparing this example to the prevous ones , it's a lot simp
 
 The `render()` function draws what users see in your scene. In its simplest form, its `return` statement contains what resembles a literal XML definition for a set of entities with fixed values. An essential part of making a scene interactive is to have the render function change its output in response to changes in the scene state.
 
-Although what's typically in the `return` statement of render() may resemble pure XML, everything that goes in between `{ }` is being processed as TypeScript. This means that you can interrupt the tag and attribute syntax of XML with curly brackets to add JSX logic anywhere you choose.
+Although what's typically in the `return` statement of render() may resemble XML, everything that goes in between `{ }` is being processed as TypeScript. This means that you can interrupt the tag and attribute syntax of XML with curly brackets to add JSX expressions anywhere you choose.
+
+The end result of all the expressions in your `return` statement must always be a set of nested `isSimplifiedObject` entities, nested inside a `scene` entity.
+
+> Note: You are free to add TypeScript _expressions_ to make up the `return` value, but you can't add _statements_. The difference is that expressions always have a return value, but statements might not. You can't use `if/else` or `switch/case` because those are statements, but you can call functions that do the same.
 
 #### Reference variables from render
 
@@ -575,6 +579,8 @@ async render() {
 {% endraw %}
 
 In this second example, the _y_ position of the box is determined based on the value of `liftBox` and the timing of its transition is based on the value of `bounce`. Note that both of these conditional expressions were added in parts of the code that were already being processed as TypeScript, so no aditional `{ }` were needed.
+
+> Note: In these examples we're able to add conditional logic through the use of an `? / :` expression. You can't use an `if` and `else` in this context, because those are statements, and statements aren't supported as part of the `return` value.
 
 #### Define an undetermined number of entities
 
