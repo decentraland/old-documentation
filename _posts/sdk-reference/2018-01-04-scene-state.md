@@ -77,7 +77,7 @@ export interface IState {
 }
 
 export default class Scene extends ScriptableScene<any, IState> {
-  state = {
+  state: IState = {
     buttonState: 0,
     isDoorClosed: false,
     queboxPosition: { x: 0, y: 0, z: 0 }

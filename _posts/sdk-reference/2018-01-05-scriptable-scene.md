@@ -31,7 +31,7 @@ export interface IState {
 }
 
 export default class Scene extends ScriptableScene<any, IState> {
-  state = {
+  state: IState = {
     buttonState: 0,
     isDoorClosed: false,
     queboxPosition: { x: 0, y: 0, z: 0 }
@@ -76,16 +76,16 @@ Below is an example containing a class and hooks to lifecycle methods.
 ```tsx
 import { ScriptableScene, createElement } from "decentraland-api"
 
-interface State {
+interface IState {
   counter: number
 }
 
 interface Props {}
 
-export default class Scene extends ScriptableScene<Props, State> {
+export default class Scene extends ScriptableScene<Props, IState> {
   eventSubscriber: EventSubscriber
   timer: number
-  state: State = { counter: 0 }
+  state: IState = { counter: 0 }
 
   /**
    * Called immediately after the scene is mounted. You must start your

@@ -155,7 +155,7 @@ Once you defined an interface, you can pass it to the custom scene class as the 
 
 ```tsx
 export default class ArtPiece extends ScriptableScene<any, IState> {
-  state = {
+  state: IState = {
     pedestalColor: "#3d30ec",
     dogAngle: 0,
     donutAngle: 0
