@@ -248,7 +248,7 @@ TypeScript provides various ways you can control when parts of your code are exe
 
 The scriptableScene object comes with a number of default functions that are executed at different times of the scene life cycle, for example `sceneDidMount()` is called once when the scene starts and `render()` is called each time the that the scene state changes. See [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) for more information.
 
-Entities can include a _transition_ component to make any changes occur gradually, this works very much like transitions in CSS. See [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide %}) for more information.
+Entities can include a _transition_ component to make any changes occur gradually, this works very much like transitions in CSS. See [Entity positioning]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-12-entity-positioning  %}) for more information.
 
 #### Start a time-based loop
 
