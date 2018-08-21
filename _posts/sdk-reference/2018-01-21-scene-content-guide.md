@@ -80,7 +80,9 @@ All entities can have a _position_, a _rotation_ and a _scale_. These can be eas
 
 {% endraw %}
 
-- `position` is a _3D vector_, it sets the position on all three axes. These coordinates are measured in _meters_, unless you're positioning a child of a parent entity that has a scale that's different from 1, in which case the position is also scaled accordingly.
+- `position` is a _3D vector_, it sets the position of the entity's center on all three axes.
+  - By default, coordinates are measured in _meters_. If you're positioning a child of a parent entity that has a scale that's different from 1, the position vector is scaled accordingly.
+  - `x:0, y:0, z:0` refers is the middle of the scene's base parcel, at ground level. You can change this by setting a different position on the _scene_ entity, or by editing the `base` attribute of _scene.json_. The position of a child entity is relative to the center position of its parent entity, so `x:0, y:0, z:0` always refers to the center of the parent, wherever it is in the scene.
 - `rotation` is a _3D vector_ too, but where each component represents the rotation in that axis.
 - `scale` can either be a _number_ or a _3D vector_, in case you want to scale the axis in different proportions.
 
