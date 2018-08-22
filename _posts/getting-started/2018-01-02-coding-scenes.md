@@ -58,7 +58,7 @@ See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-
 
 ## The Render function
 
-All TypeScript scenes must have a 'render()` function that outputs what users of your scene will see on their browser. This function must always output a hierarchical tree of entities that starts at the root level with a _scene_ entity.
+All [scene objects]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) have a 'render()` method that outputs what users of your scene will see on their browser. This function must always output a hierarchical tree of entities that starts at the root level with a _scene_ entity.
 
 {% raw %}
 
@@ -90,6 +90,8 @@ All TypeScript scenes must have a 'render()` function that outputs what users of
 {% endraw %}
 
 If you have game development experience with other tools, you might expect to find some kind of render loop that periodically renders elements in the screen. Decentraland doesn't work like that. We built the API based on _events_, so the `render()` function is designed to update the scene in reaction to events rather than by querying the world repeatedly.
+
+Scenes have a [state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}), which is a collection of variables that change over time and represent the current disposition of the scene. The state changes by the occurance of [events]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
 
 ## Scene Decoupling
 
