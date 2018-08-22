@@ -6,7 +6,7 @@ categories:
   - documentation
 type: Document
 set: building-scenes
-set_order: 4
+set_order: 3
 tag: introduction
 ---
 

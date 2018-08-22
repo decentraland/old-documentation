@@ -6,15 +6,15 @@ categories:
   - documentation
 type: Document
 set: building-scenes
-set_order: 2
+set_order: 1
 tag: introduction
 ---
 
 In Decentraland, a scene is the representation of the content of an estate/LAND. All scenes are made up of [entities]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
 
-## Before you begin
+## Install the CLI
 
-Please make sure you first install the CLI tools. In Mac OS, you do this by running the following command:
+Make sure you first install the CLI tools. In Mac OS, you do this by running the following command:
 
 ```bash
 npm install -g decentraland
@@ -31,8 +31,8 @@ The `dcl init` command creates a Decentraland **project** in your current workin
 There are four different scene templates that you can use as a starting point:
 
 - **Basic scene**: Defined in a simple TypeScript file that renders a single glTF model.
-- **Local scene**: Defined in a TypeScript file featuring an example with a door that can be opened. This is the best template to start learning how to use the SDK. The scene features a basic state and handles click events. The scene state is stored locally in the users's browser, so a user's actions don't affect how other users see the scene rendered.
-- **Remote scene**: Defined in a TypeScript file featuring the same example used for the local scene, but it differs in that the scene state is stored in a remote server that it communicates with over WebSockets. Because of this, all users see the scene rendered identically. If you're developing a game or another kind of interactive experience, this is most likely how you want it to work. To test your scene, you can run both the server and the client locally.
+- **Interactive scene**: Defined in a TypeScript file featuring an example with a door that can be opened. This is the best template to start learning how to use the SDK. The scene features a basic state and handles click events. The scene state is stored locally in the users's browser, so a user's actions don't affect how other users see the scene rendered.
+- **Remote scene**: Defined in a TypeScript file featuring the same example used for the local scene, but it differs in that the scene state is stored in a remote server that it communicates with over WebSockets. Because of this, all users see the scene rendered identically. To test your scene, you can run both the server and the client locally.
 - **Static scene**: Defined in an **XML** file with a single glTF moel. You can't add any dynamic or interactive content to this type of scene, it can only display static entities in place.
 
 See [scene contents]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-11-scene-files %}) for an overview of the default files that are created in your scene.
@@ -55,8 +55,10 @@ To edit scenes, we recommend using a source code editor like [Visual Studio Code
 
 - In _Basic_ and _Interactive_ scenes, you create the logic of your scene by editing the _Scene.tsx_ file.
 - In _Remote_ scenes, you create the logic of your scene by editing the _RemoteScene.tsx_ file and the _State.tsx_.
-- In _Static_ scenes, you create the content of your scene in the _scene.xm_ file.
+- In _Static_ scenes, you create the content of your scene in the _scene.xml_ file.
 
 See [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide %}) for simple instructions about adding content to your scene.
+
+## Publish your scene
 
 Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-07-publishing %}).
