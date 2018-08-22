@@ -2,10 +2,12 @@
 date: 2018-01-01
 title: Creating your first scene
 description: Learn the basics of Decentraland scenes
+redirect_from:
+  - /documentation/create-scene/
 categories:
   - documentation
 type: Document
-set: building-scenes
+set: getting-started
 set_order: 1
 tag: introduction
 ---
@@ -20,7 +22,7 @@ Make sure you first install the CLI tools. In Mac OS, you do this by running the
 npm install -g decentraland
 ```
 
-See the [Installation Guide]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
+See the [Installation Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
 
 ## Creating the file structure
 
@@ -47,7 +49,7 @@ dcl start
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
-For more about what you can see in a scene preview, and instructions for how to run a preview of a remote scene, see [preview your scene]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-04-preview-scene %}).
+For more about what you can see in a scene preview, and instructions for how to run a preview of a remote scene, see [preview your scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %}).
 
 ## Edit your scene
 
@@ -61,4 +63,4 @@ See [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-2
 
 ## Publish your scene
 
-Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-07-publishing %}).
+Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /getting-started/2018-01-07-publishing %}).

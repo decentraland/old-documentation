@@ -57,7 +57,7 @@ For additional terms, definitions, and explanations, please refer to our [comple
 
 ## Installing the SDK
 
-The SDK includes a lot of different parts and components. For detailed, step-by-step instructions on how to download and install everything in the SDK, please refer to the [SDK Quick Start Guide]({{ site.baseurl }}{% post_url documentation/building-scenes/2018-01-01-installation-guide %}).
+The SDK includes a lot of different parts and components. For detailed, step-by-step instructions on how to download and install everything in the SDK, please refer to the [SDK Quick Start Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}).
 
 #### CLI
 
@@ -65,7 +65,7 @@ The Decentraland Command Line Interface (CLI) allows you to create, deploy, and 
 
 After generating your new Decentraland scene locally on your own machine, you can immediately begin editing your scene using a text editor of your choice. After testing your scene locally, you can use the CLI to upload your content to IPFS.
 
-For more step-by-step instructions on installing the CLI, please read our [SDK Quick Start Guide]({{ site.baseurl }}{% post_url documentation/building-scenes/2018-01-01-installation-guide %}) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
+For more step-by-step instructions on installing the CLI, please read our [SDK Quick Start Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
 
 #### API
 

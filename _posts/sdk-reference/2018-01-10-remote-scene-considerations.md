@@ -29,7 +29,7 @@ async addOne(){
 
 ## Create remote scenes
 
-Use the Decentraland CLI to [create a new scene]({{ site.baseurl }}{% post_url documentation/building-scenes/2018-01-03-create-scene %}) based on the default remote scene. When prompted by the CLI to select the type of scene, select the option _Remote_.
+Use the Decentraland CLI to [create a new scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) based on the default remote scene. When prompted by the CLI to select the type of scene, select the option _Remote_.
 
 To transform an existing local scene into remote, we recommend using the CLI to create a new scene and then copying the contents from the _scene.tsx_ file of the old scene into the _RemoteScene.tsx_ file of the new remote scene.
 
@@ -43,7 +43,7 @@ You should also make the following changes to the scene's code:
 
 To preview a remote scene, you must first launch the server locally. Then you can run `dcl start` as you normally do with local scenes. You can also point multiple browser windows at the same local address to instantiate multiple users in the same scene, these will share the same scene state.
 
-See [preview a scene]({{ site.baseurl }}{% post_url documentation/building-scenes/2018-01-04-preview-scene %}) for more details.
+See [preview a scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %}) for more details.
 
 ## Multiplayer persistance
 

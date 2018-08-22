@@ -2,10 +2,12 @@
 date: 2018-01-06
 title: Publishing the scene
 description: How to publish my project?
+redirect_from:
+  - /documentation/publishing/
 categories:
   - documentation
 type: Document
-set: building-scenes
+set: getting-started
 set_order: 7
 ---
 

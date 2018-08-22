@@ -2,10 +2,12 @@
 date: 2018-01-01
 title: Coding scenes
 description: This set will help you understand how things work in the client and SDK of decentraland.
+redirect_from:
+  - /documentation/introduction/
 categories:
   - documentation
 type: Document
-set: building-scenes
+set: getting-started
 set_order: 4
 ---
 

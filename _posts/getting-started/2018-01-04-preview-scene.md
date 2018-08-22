@@ -2,15 +2,17 @@
 date: 2018-01-01
 title: Preview your scene
 description: What you can see in a scene's preview
+redirect_from:
+  - /documentation//documentation/preview-scene/
 categories:
   - documentation
 type: Document
-set: building-scenes
+set: getting-started
 set_order: 3
 tag: introduction
 ---
 
-Once you have [built a new scene]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-03-create-scene %}) ) or downloaded a [sample scene]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) ) you can preview it locally.
+Once you have [built a new scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) ) or downloaded a [sample scene]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) ) you can preview it locally.
 
 ## Before you begin
 
@@ -20,7 +22,7 @@ Please make sure you first install the CLI tools. In Mac OS, you do this by runn
 npm install -g decentraland
 ```
 
-See the [Installation Guide]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
+See the [Installation Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
 
 ## Preview a local scene
 
@@ -73,7 +75,7 @@ You can point other browser tabs to the same local address and this will add new
 
 ## Upload a scene to decentraland
 
-Once you're happy with your scene, you can upload it and publish it to Decentraland, see [publishing]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-07-publishing %}) ) for instructions on how to do that.
+Once you're happy with your scene, you can upload it and publish it to Decentraland, see [publishing]({{ site.baseurl }}{% post_url /getting-started/2018-01-07-publishing %}) ) for instructions on how to do that.
 
 ## Parameters of the preview command
 
