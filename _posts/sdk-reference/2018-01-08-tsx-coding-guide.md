@@ -11,7 +11,7 @@ set_order: 12
 
 The Decentraland SDK is meant to be used via TypeScript (.tsx) files. This section introduces a number of tips and tricks you can take advantage of when building your scene. What's discussed here isn't directly related to the features of the SDK, but rather about ways in which you can use the TypeScript language and context to make the most out of it.
 
-## Log to Console
+## Log to console
 
 You can log messages to the JavaScript console of the browser while viewing a scene.
 
@@ -30,6 +30,20 @@ this.subscribeTo("pointerDown", e => {
 To view logged messages while running a preview of your scene, look at the JavaScript console, which you can open in the developer settings of your browser.
 
 ![](/images/media/console_log.png)
+
+You can also trace the whole list of commands that were executed leading to a point in the code using `console.trace()`.
+
+{% raw %}
+
+```tsx
+this.subscribeTo("pointerDown", e => {
+  console.trace()
+})
+```
+
+{% endraw %}
+
+The `console.trace()` command prints the list of functions that were called in order before this line was executed.
 
 ## Create a global constant
 
@@ -570,7 +584,7 @@ async render() {
           transition={{ position:
             { duration: 300, timing: this.state.bounce? "bounce-in" : "linear" }
           }}
-      />  
+      />
     </scene>
   )
 }

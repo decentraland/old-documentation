@@ -3,7 +3,7 @@ date: 2018-01-01
 title: Preview your scene
 description: What you can see in a scene's preview
 redirect_from:
-  - /documentation//documentation/preview-scene/
+  - /documentation/preview-scene/
 categories:
   - documentation
 type: Document
@@ -140,6 +140,10 @@ If this occurs, there are several places where you can look for error messages t
 If your scene excedes any of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}), for example if there are too many triangles in it, the scene won't be rendered. If this occurs, a warning sign will be rendered in the space where your scene should be, detailing the problem.
 
 If an entity is located or extends beyond the limits of the scene, it will flash with red color to indicate this. Nothing in your scene can extend beyond the scene limits. This won't stop the scene from being rendered locally, but it will stop it from being deployed to Decentraland.
+
+You can also add `console.log()` and `console.trace()` commands to your code so that they print information to the JavaScript console.
+
+You can also use the `sources` tab in the developer tools menu to add breakpoints and pause execution while you interact with the scene in real time.
 
 ## View collision meshes
 
