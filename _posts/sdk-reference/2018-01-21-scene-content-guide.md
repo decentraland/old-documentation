@@ -364,7 +364,7 @@ Entities that have collisions enabled occupy space and block a user's path, obje
 {% raw %}
 
 ```tsx
-<box position={{ x: 10, y: 0, z: 0 }} scale={2} ignoreCollisions={false} />
+<box position={{ x: 10, y: 0, z: 0 }} scale={2} withCollisions={true} />
 ```
 
 {% endraw %}
@@ -373,10 +373,10 @@ The example above defines a box entity that can't be walked through.
 
 All entities have collisions disabled by default. Depending on the type of entity, collisions are enabled as follows:
 
-- For most entities, including _primitives_ (boxes, spheres, etc), planes and base entities, you enable collisions by setting the `ignoreCollisions` component to _false_.
+- For most entities, including _primitives_ (boxes, spheres, etc), planes and base entities, you enable collisions by setting the `withCollisions` component to _true_.
 - To enable collisions in _glTF models_, you can either:
 
-  - Overlay an invisible entity with the `ignoreCollisions` component set to _true_.
+  - Overlay an invisible entity with the `withCollisions` component set to _true_.
   - Edit the model in an external tool like Blender to include a _collider object_. The collider must be named _x_collider_, where _x_ is the name of the model. So for a model named _house_, the collider must be named _house_collider_.
 
 A _collider_ is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision object is usually a lot simpler (with less vertices) than the original model.
