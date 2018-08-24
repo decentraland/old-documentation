@@ -9,27 +9,41 @@ set: examples
 set_order: 3
 ---
 
-## Simple interactive scene
+## A simple interactive scene
 
 This simple tutorial walks you through creating a simple scene where user clicks can cause an entity to rotate.
 
 {%  include youtube.html video_id='OtkrvHOHIDg'  %}
 
-## Add predefined animations to a 3D model
+## Using 3D models in Decentraland
 
-This tutorial shows you how you can download a feely licenced 3D model in Google Poly, and apply free animations that you can download from Mixamo to it.
+#### Add predefined animations to a 3D model
+
+This tutorial shows you how you can download a feely licenced 3D model from Google Poly, and apply free animations that you can download from Mixamo to it.
 
 It then also goes over how you can activate these animations in a Decentraland scene.
 
 {%  include youtube.html video_id='7RSsBmm-rVs'  %}
 
-## Add a collider to a 3D model
+#### Add animations to a 3D model in Blender
+
+This tutorial shows how you can download a freely licenced 3D model from Google Poly, import it into Blender and then create an _armature_ to manually create your own _animations_ for it.
+
+It then also goes over how you can activate these animations in a Decentraland scene.
+
+{%  include youtube.html video_id='eiHI-B5cH4k'  %}
+
+#### Add a collider to a 3D model
 
 This tutorial shows how you can add a collider to a 3D model. Colliders prevent users of your scene from walking through things. They are separate objects that are invisible but occupy space and stand in for what are often more geometrically complex objects.
 
 {%  include youtube.html video_id='UrByRRwfGjY'  %}
 
-## Jukebox
+## Advanced coding in Decentraland scenes
+
+#### Jukebox
+
+**Buttons, sound, and rendering from arrays**
 
 This tutorial shows how you can build a jukebox. It includes an array of animated buttons that can be interacted with, each button triggers the playing of a different song.
 
@@ -37,7 +51,9 @@ This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydif
 
 {%  include youtube.html video_id='_K8FUg0dl0c'  %}
 
-## Block Dog
+#### Block Dog
+
+**Simple AI for character, event handling and using a state machine**
 
 This tutorial shows how you can handle some basic behaviors of character in a Decentraland scene. The dog in this scene does the following:
 
@@ -50,7 +66,9 @@ This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydif
 
 {%  include youtube.html video_id='61ppyctd-88'  %}
 
-## Tower defense game
+#### Tower defense game
+
+**Random content generation, path following, event handling, rendering from arrays and keeping score**
 
 This tutorial shows how you can build a simple yet fully functional game in Decentraland. It walks you through how to create a tower defense game that includes:
 
