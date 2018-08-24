@@ -5,7 +5,7 @@ description: Recommended guidelines for producing your first MVP scene or experi
 redirect_from:
   - /documentation/mvp-guidelines/
 categories:
-  - documentation
+  - getting-started
 type: Document
 set: getting-started
 set_order: 9

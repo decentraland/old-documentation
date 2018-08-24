@@ -5,7 +5,7 @@ description: Learn the basics of Decentraland scenes
 redirect_from:
   - /documentation/create-scene/
 categories:
-  - documentation
+  - getting-started
 type: Document
 set: getting-started
 set_order: 1

@@ -5,7 +5,7 @@ description: What you can see in a scene's preview
 redirect_from:
   - /documentation/preview-scene/
 categories:
-  - documentation
+  - getting-started
 type: Document
 set: getting-started
 set_order: 3

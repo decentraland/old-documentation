@@ -5,7 +5,7 @@ description: This set will help you understand how things work in the client and
 redirect_from:
   - /documentation/introduction/
 categories:
-  - documentation
+  - getting-started
 type: Document
 set: getting-started
 set_order: 4

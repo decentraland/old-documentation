@@ -5,7 +5,7 @@ description: Step-by-step guide to installing the SDK
 redirect_from:
   - /documentation/installation-guide/
 categories:
-  - documentation
+  - getting-started
 type: Document
 set: getting-started
 set_order: 2
