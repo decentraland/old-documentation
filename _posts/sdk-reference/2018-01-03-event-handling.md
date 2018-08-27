@@ -38,7 +38,7 @@ You can declare what to do in the event of a click by writing it in the `onClick
 {% raw %}
 
 ```tsx
-<box onClick={this.handleClicks()} position={{ x: 5, y: 1, z: 5 }} />
+<box onClick={this.handleClicks} position={{ x: 5, y: 1, z: 5 }} />
 ```
 
 {% endraw %}
