@@ -2,10 +2,12 @@
 date: 2018-01-06
 title: Publishing the scene
 description: How to publish my project?
+redirect_from:
+  - /documentation/publishing/
 categories:
-  - documentation
+  - getting-started
 type: Document
-set: building-scenes
+set: getting-started
 set_order: 7
 ---
 
@@ -28,7 +30,7 @@ Make sure of the following:
 ## To publish the scene
 
 1.  To make sure the scene has been locally built with your latest changes, run `npm run build`.
-2.  Log into your Metamask account with the same public address associated with your parcel.
+2.  Log into your Metamask account with the same public address associated with your parcels in Decentraland. That public address should be listed in the scene's _scene.json_ file.
 3.  Start up an IPFS daemon by following [these instructions](https://ipfs.io/docs/getting-started/).
 4.  Finally, run `dcl deploy` from the scene's folder.
 
@@ -39,6 +41,19 @@ This updates your parcel with your latest changes in addition to uploading your 
 Currently, as a measure to improve performance and your visitor's experience, your content will be pinned to Decentraland’s main IPFS server to ensure that the data needed to render your parcel is always readily available.
 
 > Note: While this command deploys your scene to your parcel, remember that users can’t currently explore Decentraland, so your content won’t be discoverable “in-world”.
+
+## Publish from a physical Ledger device
+
+Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a [Ledger](https://www.ledger.com/) device that's phyisically plugged in to your computer.
+
+If you're using one of these, the process of uploading content to your LAND is slightly different.
+
+1.  To make sure the scene has been locally built with your latest changes, run `npm run build`.
+2.  Plug your Ledger device in. Your parcels in Decentraland should be associated with that same wallet. The same public address should be listed in the scene's _scene.json_ file.
+3.  Start up an IPFS daemon by following [these instructions](https://ipfs.io/docs/getting-started/).
+4.  Run `dcl deploy --https` from the scene's folder. This will open a tab on your browser where you need to confirm this action.
+    > Note: Currently, the certificate is self-signed, so your browser might give you a warning before launching the page. The warning is displayed only because the certificate is self-signed by your machine, please ignore it and carry on.
+5.  The Ledger device will then ask you for a confirmation, which you must give by pushing the device's buttons.
 
 ## What is IPFS?
 

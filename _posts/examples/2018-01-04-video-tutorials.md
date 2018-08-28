@@ -37,7 +37,7 @@ It then also goes over how you can activate these animations in a Decentraland s
 
 This tutorial shows how you can add a collider to a 3D model. Colliders prevent users of your scene from walking through things. They are separate objects that are invisible but occupy space and stand in for what are often more geometrically complex objects.
 
-{%  include youtube.html video_id='LfrekdeEK2I'  %}
+{%  include youtube.html video_id='UrByRRwfGjY'  %}
 
 ## Advanced coding in Decentraland scenes
 

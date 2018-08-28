@@ -15,6 +15,78 @@ See [Scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-2
 
 Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
 
+## Materials
+
+#### Shader support
+
+Not all shaders can be used in models that are imported into Decentraland. Make sure you use one of the following:
+
+- Standard materials: any shaders are supported, for example diffuse, specular, transparency, etc.
+
+  > Tip: When using Blender, these are the materials supported by _Blender Render_ rendering.
+
+- PBR (Physically Based Rendering) materials: This shader is extremely flexible, as it includes properties like diffuse, roughness, metalness and emission that allow you to configure how a material interacts with light.
+
+  > Tip: When using Blender, you can use PBR materials by setting _Cycles_ rendering and adding the _Principled BSDF_ shader. Note that none of the other shaders of the _Cycles_ renderer are supported.
+
+See [entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material.
+
+#### Textures
+
+Textures can be embedded into the exported glTF file or referenced from an external file. Both ways are supported.
+
+<!--
+
+There are different kinds of textures you can use in a 3D model:
+
+- albedo textures: don't use light
+- alpha textures: determine only the transparency regions and its degree
+- bump texture: Stores surface normal data used to displace a mesh in a texture. Used with BPR.
+- emisiveTexture
+- refractionTexture
+
+
+
+link to content guide to show how you set materials for primitives
+
+what extensions are supported for image files?
+anything special to use alpha
+
+what special layers PBR uses?
+
+show how to change a model with an unsopported shader. Delete material, create new and assign the same texture it used to have
+
+-->
+
+#### Texture size constraints
+
+Texture sizes must use width and height numbers (in pixels) that match the following numbers:
+
+```
+1, 2, 4, 8, 16, 32, 64, 128, 256, 512
+```
+
+> This sequence is made up of powers of two: `f(x) = 2 ^ x` . 512 is the maximum number we allow for a texture size. This is a fairly common requirement among other rendering engines, it's there due internal optimizations of the graphics processors.
+
+The width and height don't need to have the same number, but they both need to belong to this sequence.
+
+**The recommended size for textures is 512x512**, we have found this to be the optimal size to be transported through domestic networks and to provide reasonable loading/quality experiences.
+
+Examples of other valid sizes:
+
+```
+32x32
+64x32
+512x256
+512x512
+```
+
+> Although textures of arbitrary sizes work in the alpha release, the engine displays an alert in the console. We will enforce this restriction in coming releases and invalid texture sizes will cease to work.
+
+#### Best practices for materials
+
+- If your scene includes multiple models that use the same texture, reference the texture as an external file instead of having it embedded in the 3D model. Embedded textures get duplicated for each model and add to the scene's size.
+
 ## Supported 3D model formats
 
 All 3D models in Decentraland must be in glTF format. [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
@@ -117,25 +189,25 @@ You can use a tool like Blender to create animations for a 3D model.
 
 1.  Create an armature, following the shape of your model and the parts you wish to move. You do this by adding an initial bone and then extruding all other bones from the vertices of that one. Bones in the armature define the points that can be articulated. The armature must be positioned overlapping the mesh.
 
-![](/images/media/armature_hummingbird1.png)
+    ![](/images/media/armature_hummingbird1.png)
 
 2.  Make both the armature and the mesh child assets of the same object.
 
 3.  Check that the mesh moves naturally when rotating its bones in the ways you plan to move it. If parts of the mesh get stretched in undesired ways, use weight paint to change what parts of the model are affected by each bone in the armature.
 
-![](/images/media/animations_hummingbird_wp1.png)
+    ![](/images/media/animations_hummingbird_wp1.png)
 
-![](/images/media/animations_hummingbird_wp2.png)
+    ![](/images/media/animations_hummingbird_wp2.png)
 
 > Note: There's a reported bug with Babylon.js that prevents some faces of a mesh from being rendered when they're not related to any bone in the armature. So if you paint some faces with weight 0 and then animate the model, you might see these faces dissappear. To solve this, we recommend making sure that each face is related to at least one bone of the armature and painted with a weight of at least 0.01.
 
 4.  Move the armature to a desired pose, all bones can be rotated or scaled. Then lock the rotation and scale of the bones you wish to control with this animation.
 
-![](/images/media/armature_hummingbird2.png)
+    ![](/images/media/armature_hummingbird2.png)
 
 5.  Switch to a different frame in the animation, position the armature into a new pose and lock it again. Repeat this process for all the key frames you want to set to describe the animation.
 
-![](/images/media/armature_hummingbird_animation.png)
+    ![](/images/media/armature_hummingbird_animation.png)
 
 6.  By default all frames in between the ones you defined will transition linearly from one pose to the next. You can also configure these transitions to behave exponentially, ease-in, bounce, etc.
 
@@ -151,44 +223,3 @@ When adding the model to your Decentraland scene, you must activate animations b
 - Animated characters in your scene shouldn't ever stay completely still, even when they aren't doing anything. It's best to create an "idle" animation to use for when the character is still. The idle animation can include subtle movements like breathing and perhaps occasional glances.
 - Make sure your model only has one armature when you export it. Sometimes, when importing another animation to the program where you're editing your model, it will bring in a copy of the armature. You want all animations of the model to be performed by the same base armature.
 - When exporting the _glTF_ model, make sure you're exporting all the objects and animations. Some exporters will only export the _currently selected_ by default.
-
-<!--
-
-## Materials
-
-
-textures can be embedded in the gltf or referenced from a file
-
-
-albedo textures: don't use light
-
-transparent materials, use alpha
-
-
-- materials (todo lo que hay en content guide es lo que seteas en los entities)
-
-Not all materials are supported by Decentraland.
-
-
-hay dos tipos de matierol, “standard materials” que es lo mismo que “blender render”
-
-- diffuse / specular
-  y dps los PBR (phisically based rendering)
-
-- textures
-  aclarar tamaños
-  capaz extensiones de archivos
-  capaz alpha
-  capas especiales para pbr
-
-animations y materials son “assets” para unity
-un collider es ponele un “component”
-
-#### Best practices for materials
-
-- If your scene includes several models that use the same texture, it's useful to reference the texture as an external file. If the texture was embedded, it would be duplicated and add to the scene's weight.
-
-
-
-
--->

@@ -31,7 +31,7 @@ export interface IState {
 }
 
 export default class Scene extends ScriptableScene<any, IState> {
-  state = {
+  state: IState = {
     buttonState: 0,
     isDoorClosed: false,
     queboxPosition: { x: 0, y: 0, z: 0 }
@@ -74,18 +74,18 @@ As general rules, remember that:
 Below is an example containing a class and hooks to lifecycle methods.
 
 ```tsx
-import { ScriptableScene, createElement } from "metaverse-api"
+import { ScriptableScene, createElement } from "decentraland-api"
 
-interface State {
+interface IState {
   counter: number
 }
 
 interface Props {}
 
-export default class Scene extends ScriptableScene<Props, State> {
+export default class Scene extends ScriptableScene<Props, IState> {
   eventSubscriber: EventSubscriber
   timer: number
-  state: State = { counter: 0 }
+  state: IState = { counter: 0 }
 
   /**
    * Called immediately after the scene is mounted. You must start your
@@ -180,7 +180,7 @@ These steps summarize when each of the methods above are called:
 
 ## Client side scenes
 
-Client-side scenes, also known as "Local scenes", are compiled using the `metaverse-compiler` into a WebWorker. The _scene.json_ points to the compiled _scene.js_ file.
+Client-side scenes, also known as "Local scenes", are compiled using the `decentraland-compiler` into a WebWorker. The _scene.json_ points to the compiled _scene.js_ file.
 
 The entry point for the WebWorker is defined in the _build.json_:
 
@@ -207,7 +207,7 @@ You can take a look at the [remote scene sample code](https://github.com/decentr
 
 ## Low level API
 
-The protocol and internals that the `ScriptableScene` object interfaces with in the background are explained in the [metaverse-rpc](https://github.com/decentraland/metaverse-rpc)
+The protocol and internals that the `ScriptableScene` object interfaces with in the background are explained in the [decentraland-rpc](https://github.com/decentraland/decentraland-rpc)
 respository.
 
 It's important to understand the way `entityController` gets injected into the class.
@@ -220,7 +220,7 @@ It's important to understand the way `entityController` gets injected into the c
     }
     ```
 
-2.  An instance of the scene class you defined is created using a [transport](https://github.com/decentraland/metaverse-rpc#transports) as an argument.
+2.  An instance of the scene class you defined is created using a [transport](https://github.com/decentraland/decentraland-rpc#transports) as an argument.
 3.  Once the class is created, it requires an instance of `EntityController` from the host (the engine), this is an asynchronous call.
 4.  The host responds to that request and a proxy is created and assigned to the property `entityController`.
 5.  Once all requirements are fulfilled, the scene object calls the `sceneDidMount()` method. At this point, you can be sure the required APIs are loaded in your class instance.

@@ -26,7 +26,7 @@ The example below imports the `UserIdentity` library and runs `getUserPublicKey(
 {% raw %}
 
 ```tsx
-import { createElement, inject, UserIdentity } from "metaverse-api/src"
+import { createElement, inject, UserIdentity } from "decentraland-api/src"
 
 export default class Scene extends ScriptableScene<any, any> {
   @inject("Identity") userIdentity: UserIdentity
@@ -79,7 +79,7 @@ Below is a sample that uses this API to get the contents of a block in the block
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 import Web3 = require("web3")
 
 export default class EthereumProvider extends ScriptableScene {
@@ -126,7 +126,7 @@ import {
   ScriptableScene,
   EthereumController,
   inject
-} from "metaverse-api"
+} from "decentraland-api"
 ```
 
 {% endraw %}
@@ -191,7 +191,11 @@ The example above listens for clicks on a `door` entity. When clicked, the user 
 
 While testing your scene, to avoid transfering real MANA currency, you can use the _Ethereum Ropsten test network_ and transfer fake MANA instead.
 
-To use the test network you must set your Metamask Chrome extension to use the _Ropsten test network_ instead of _Main network_. You must also own MANA in the Ropsten blockchain, which you can aquire for free from Decentraland.
+To use the test network you must set your Metamask Chrome extension to use the _Ropsten test network_ instead of _Main network_.
+
+You must also own MANA in the Ropsten blockchain. To obtain free Ropsten mana in the test network, go to our [MANA faucet](https://faucet.decentraland.today/).
+
+> Tip: To run the transaction of transfering Ropsten MANA to your wallet, you will need to pay a gas fee in Ropsten Ether. If you don't have Ropsten Ether, you can obtain it for free from various external faucets like [this one](https://faucet.ropsten.be/).
 
 To preview your scene using the test network, add the `DEBUG` property to the URL you're using to access the scene preview on your browser. For example, if you're accessing the scene via `http://127.0.0.1:8000/?position=0%2C-1`, you should set the URL to `http://127.0.0.1:8000/?DEBUG&position=0%2C-1`.
 
@@ -311,7 +315,7 @@ console.log(‘Is the message correct?’, isEqual)
 {% raw %}
 
 ```tsx
-import { inject, EthereumController, createElement, ScriptableScene } from 'metaverse-api'
+import { inject, EthereumController, createElement, ScriptableScene } from 'decentraland-api'
 import { eth } from 'decentraland-eth'
 
 const messageToSign = `# DCL Signed message

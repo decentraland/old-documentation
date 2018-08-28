@@ -15,11 +15,15 @@ When users interact with the entities in your scene, these generate several type
 
 Generally, a good way of having your scene respond to events is to set up a listener in the `sceneDidMount()` method. See [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) for more context about when this method is executed.
 
+{% raw %}
+
 ```tsx
 async sceneDidMount() {
   this.eventSubscriber.on(`pointerDown`, () => console.log("pointer down"))
 }
 ```
+
+{% endraw %}
 
 To debug a scene, you can use `console.log()` to keep track of the occurance of events or to verify that the event's parameters are what you expected.
 
@@ -27,11 +31,77 @@ To debug a scene, you can use `console.log()` to keep track of the occurance of 
 
 Clicks can be done either with a mouse, a touch screen, a VR controller or some other device, the events that are generated from this don't make any distinction. When the ray that the avatar casts forward points at a valid entity and the user clicks, this creates a `click` event.
 
-> Note: Only entities that have an id can generate click events. Clicks can be made from a maximum distance of 10 meters away from the entity.
+> Note: Clicks can be made from a maximum distance of 10 meters away from the entity.
 
-#### The click event
+#### onCLick
 
-The generic `click` event represents all clicks done on valid entities. The event has two parameters:
+The easiest way to handle click events is to add an `onClick` component to the entity itself. With this in place, there's no need to add an event subscriber for click events from this entity, that's already implicitly handled.
+
+You can declare what to do in the event of a click by writing a lambda in the `onClick` itself, or you can call a separate function to keep the render method more legible.
+
+{% raw %}
+
+```tsx
+<box
+  onClick={() => this.handleClicks}
+  position={{ x: 5, y: 1, z: 5 }}
+  scale={{ x: 2, y: 2, z: 1 }}
+/>
+```
+
+{% endraw %}
+
+If you call a function from onClick, any uses of the `this` operator refer to the function itself, not to the [scriptable scene object]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}). It can sometimes be a problem if you need to refer to the scene state or to other functions in the scene. To avoid this problem, you can either define the function as a lambda or call the function through a lambda defined in the `onClick` value (as in the example above). See [TypeScript Tips]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-08-tsx-coding-guide %}) for more complete examples of how to work around this.
+
+If you call a function that requires parameters, you can do it via the alternative `function.call(this, parameters)` syntax:
+
+{% raw %}
+
+```tsx
+<box
+  onClick={() => this.handleClicks.call(this, "parameter string")}
+  position={{ x: 5, y: 1, z: 5 }}
+  scale={{ x: 2, y: 2, z: 1 }}
+/>
+```
+
+{% endraw %}
+
+The click event object is passed as a parameter of the function you call in the `onClick`. This event object contains the following parameters that can be accessed by your function:
+
+- `elementId`: the Id of the entity that was clicked (if the entity has an id).
+- `pointerId`: the id for the user who performed the click.
+
+{% raw %}
+
+```tsx
+import { ScriptableScene, createElement } from "decentraland-api/src"
+
+export default class Scene extends ScriptableScene {
+  async render() {
+    return (
+      <scene>
+        <box
+          position={{ x: 5, y: 0, z: 5 }}
+          id="myBox"
+          onClick={e => {
+            console.log(`elementId: ` + e.elementId)
+            console.log(`pointerId: ` + e.pointerId)
+          }}
+        />
+      </scene>
+    )
+  }
+}
+```
+
+{% endraw %}
+
+This example logs both parameters of the click event each time the box entity is clicked.
+
+#### The generic click event
+
+The generic `click` event represents all clicks done on valid entities. Only entities that have an id are considered valid for generating click events. The click event object contains the following parameters:
 
 - `elementId`: the Id of the entity that was clicked.
 - `pointerId`: the id for the user who performed the click.
@@ -39,7 +109,7 @@ The generic `click` event represents all clicks done on valid entities. The even
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 export default class LastClicked extends ScriptableScene {
   state = {
@@ -77,7 +147,7 @@ A simpler way to deal with clicks that are made on a single entity is to listen 
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 export default class RedButton extends ScriptableScene {
   state = {
@@ -112,7 +182,7 @@ The pointer down and pointer up events are fired whenever the user presses or re
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 export default class BigButton extends ScriptableScene {
   state = {
@@ -159,7 +229,7 @@ The `positionChanged` event has the following properties:
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 export default class BoxFollower extends ScriptableScene {
   state = {
@@ -199,7 +269,7 @@ The `rotationChanged` event has the following properties:
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 export default class ConeHead extends ScriptableScene {
   state = {

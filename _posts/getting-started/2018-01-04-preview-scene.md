@@ -2,15 +2,17 @@
 date: 2018-01-01
 title: Preview your scene
 description: What you can see in a scene's preview
+redirect_from:
+  - /documentation/preview-scene/
 categories:
-  - documentation
+  - getting-started
 type: Document
-set: building-scenes
-set_order: 4
+set: getting-started
+set_order: 3
 tag: introduction
 ---
 
-Once you have [built a new scene]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-03-create-scene %}) ) or downloaded a [sample scene]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) ) you can preview it locally.
+Once you have [built a new scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) ) or downloaded a [sample scene]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) ) you can preview it locally.
 
 ## Before you begin
 
@@ -20,7 +22,7 @@ Please make sure you first install the CLI tools. In Mac OS, you do this by runn
 npm install -g decentraland
 ```
 
-See the [Installation Guide]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
+See the [Installation Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
 
 ## Preview a local scene
 
@@ -73,7 +75,7 @@ You can point other browser tabs to the same local address and this will add new
 
 ## Upload a scene to decentraland
 
-Once you're happy with your scene, you can upload it and publish it to Decentraland, see [publishing]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-07-publishing %}) ) for instructions on how to do that.
+Once you're happy with your scene, you can upload it and publish it to Decentraland, see [publishing]({{ site.baseurl }}{% post_url /getting-started/2018-01-07-publishing %}) ) for instructions on how to do that.
 
 ## Parameters of the preview command
 
@@ -88,7 +90,7 @@ Seems to be removed:
 - `--skip` to skip the confirmation prompt.
 -->
 
-> To preview old scenes that were built for older versions of the SDK, you must install the latest versions of the `metaverse-api` and `metaverse-rpc` packages in your project. Check the CLI version via the command `dcl -v`
+> To preview old scenes that were built for older versions of the SDK, you must install the latest versions of the `decentraland-api` and `decentraland-rpc` packages in your project. Check the CLI version via the command `dcl -v`
 
 ## Basic usage of the scene preview
 
@@ -138,6 +140,10 @@ If this occurs, there are several places where you can look for error messages t
 If your scene excedes any of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}), for example if there are too many triangles in it, the scene won't be rendered. If this occurs, a warning sign will be rendered in the space where your scene should be, detailing the problem.
 
 If an entity is located or extends beyond the limits of the scene, it will flash with red color to indicate this. Nothing in your scene can extend beyond the scene limits. This won't stop the scene from being rendered locally, but it will stop it from being deployed to Decentraland.
+
+You can also add `console.log()` and `console.trace()` commands to your code so that they print information to the JavaScript console.
+
+You can also use the `sources` tab in the developer tools menu to add breakpoints and pause execution while you interact with the scene in real time.
 
 ## View collision meshes
 

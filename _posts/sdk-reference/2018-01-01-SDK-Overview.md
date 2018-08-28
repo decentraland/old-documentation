@@ -57,7 +57,7 @@ For additional terms, definitions, and explanations, please refer to our [comple
 
 ## Installing the SDK
 
-The SDK includes a lot of different parts and components. For detailed, step-by-step instructions on how to download and install everything in the SDK, please refer to the [SDK Quick Start Guide]({{ site.baseurl }}{% post_url documentation/building-scenes/2018-01-01-installation-guide %}).
+The SDK includes a lot of different parts and components. For detailed, step-by-step instructions on how to download and install everything in the SDK, please refer to the [SDK Quick Start Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}).
 
 #### CLI
 
@@ -65,15 +65,15 @@ The Decentraland Command Line Interface (CLI) allows you to create, deploy, and 
 
 After generating your new Decentraland scene locally on your own machine, you can immediately begin editing your scene using a text editor of your choice. After testing your scene locally, you can use the CLI to upload your content to IPFS.
 
-For more step-by-step instructions on installing the CLI, please read our [SDK Quick Start Guide]({{ site.baseurl }}{% post_url documentation/building-scenes/2018-01-01-installation-guide %}) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
+For more step-by-step instructions on installing the CLI, please read our [SDK Quick Start Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) or the [CLI Tutorial](https://docs.decentraland.org/v1.0/docs/command-line-interface)
 
 #### API
 
-`metaverse-api` (commonly referred to as the API) is the name for the TypeScript package containing the library of helper methods that allows you to create interactive singleplayer and multiplayer experiences. The API includes methods allowing you to create and manipulate objects on your LAND, in addition to methods that help facilitate in-world transactions between users or other applications.
+`decentraland-api` (formerly `metaverse-api` and still commonly referred to as _the API_) is the name for the TypeScript package containing the library of helper methods that allows you to create interactive singleplayer and multiplayer experiences. The API includes methods allowing you to create and manipulate objects on your LAND, in addition to methods that help facilitate in-world transactions between users or other applications.
 
 ## Elements of the API
 
-The API includes everything within the package `metaverse-api`. This is all of the classes and helper methods that you will need to use when writing your TypeScript scenes, whether your scene is static, dynamic, or remote.
+The API includes everything within the package `decentraland-api`. This is all of the classes and helper methods that you will need to use when writing your TypeScript scenes, whether your scene is static, dynamic, or remote.
 
 We have designed the Decentraland API to enable scene development using the Entity Component System, where **entities** include all of the assets that users will be able to interact with within their web browser (like audio files, video files, and 3D objects) and **components** function as the bridge between the low-level functionality of the client and the scripts that you write to control the entities in your scene.
 

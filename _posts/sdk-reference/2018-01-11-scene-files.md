@@ -9,7 +9,7 @@ set: sdk-reference
 set_order: 11
 ---
 
-After [creating a new scene]({{ site.baseurl }}{% post_url /documentation/building-scenes/2018-01-03-create-scene %}) using the CLI, the scene folder will have a series of files with default content. The file structure and content will vary depending on the type of scene you selected (_basic_, _interactive_, _remote_, or _static_).
+After [creating a new scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) using the CLI, the scene folder will have a series of files with default content. The file structure and content will vary depending on the type of scene you selected (_basic_, _interactive_, _remote_, or _static_).
 
 ## Default files in a local scene
 
@@ -32,7 +32,7 @@ Below is a basic example of a _scene.tsx_ file:
 {% raw %}
 
 ```tsx
-import { ScriptableScene, createElement } from "metaverse-api"
+import { ScriptableScene, createElement } from "decentraland-api"
 
 // The ScriptableScene class is a React-style component.
 export default class MyScene extends ScriptableScene<any, any> {
@@ -63,7 +63,7 @@ metadata is optional for previewing the scene locally, but part of it is needed 
 
 This file provides information to NPM that allows it to identify the project, as well as handle the project's dependencies. Decentraland scenes need two packages:
 
-- **metaverse-api**: allows the scene to communicate with the world engine.
+- **decentraland-api**: allows the scene to communicate with the world engine.
 - **typescript**: used to compile the file _scene.tsx_ to javascript.
 
 #### package-lock.json
@@ -105,7 +105,7 @@ Below is a basic example of a _RemoteScene.tsx_ file:
 {% raw %}
 
 ```tsx
-import * as DCL from "metaverse-api"
+import * as DCL from "decentraland-api"
 import { setState, getState } from "./State"
 
 // The ScriptableScene class is a React-style component.
@@ -170,7 +170,7 @@ metadata is optional for previewing the scene locally, but part of it is needed 
 
 This file provides information to NPM that allows it to identify the project, as well as handle the project's dependencies. Decentraland scenes need two packages:
 
-- **metaverse-api**: allows the scene to communicate with the world engine.
+- **decentraland-api**: allows the scene to communicate with the world engine.
 - **typescript**: used to compile the file _scene.tsx_ to javascript.
 
 #### package-lock.json
@@ -222,7 +222,7 @@ Since the root scene element is a transform node, it can also be translated, sca
 
 This file provides information to NPM that allows it to identify the project, as well as handle the project's dependencies. Decentraland static scenes need this package:
 
-**metaverse-api**: allows the scene to communicate with the world engine.
+**decentraland-api**: allows the scene to communicate with the world engine.
 
 ## Recommended file locations
 

@@ -1,17 +1,17 @@
 ---
 date: 2018-01-08
-title: TypeScript coding guide
+title: TypeScript tips
 description: Tips and tricks for coding scenes
 categories:
   - documentation
 type: Document
 set: sdk-reference
-set_order: 8
+set_order: 12
 ---
 
 The Decentraland SDK is meant to be used via TypeScript (.tsx) files. This section introduces a number of tips and tricks you can take advantage of when building your scene. What's discussed here isn't directly related to the features of the SDK, but rather about ways in which you can use the TypeScript language and context to make the most out of it.
 
-## Log to Console
+## Log to console
 
 You can log messages to the JavaScript console of the browser while viewing a scene.
 
@@ -31,6 +31,20 @@ To view logged messages while running a preview of your scene, look at the JavaS
 
 ![](/images/media/console_log.png)
 
+You can also trace the whole list of commands that were executed leading to a point in the code using `console.trace()`.
+
+{% raw %}
+
+```tsx
+this.subscribeTo("pointerDown", e => {
+  console.trace()
+})
+```
+
+{% endraw %}
+
+The `console.trace()` command prints the list of functions that were called in order before this line was executed.
+
 ## Create a global constant
 
 You can define global constants at the root level of a _.tsx_ file. Once defined, they can be referenced throughout the entire file.
@@ -40,7 +54,7 @@ This is useful for values that are used multiple times in your scene and need to
 {% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "metaverse-api"
+import { createElement, ScriptableScene } from "decentraland-api"
 
 const updateRate = 300
 const myColors = [
@@ -155,7 +169,7 @@ Once you defined an interface, you can pass it to the custom scene class as the 
 
 ```tsx
 export default class ArtPiece extends ScriptableScene<any, IState> {
-  state = {
+  state: IState = {
     pedestalColor: "#3d30ec",
     dogAngle: 0,
     donutAngle: 0
@@ -248,7 +262,7 @@ TypeScript provides various ways you can control when parts of your code are exe
 
 The scriptableScene object comes with a number of default functions that are executed at different times of the scene life cycle, for example `sceneDidMount()` is called once when the scene starts and `render()` is called each time the that the scene state changes. See [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) for more information.
 
-Entities can include a _transition_ component to make any changes occur gradually, this works very much like transitions in CSS. See [scene content guide]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide %}) for more information.
+Entities can include a _transition_ component to make any changes occur gradually, this works very much like transitions in CSS. See [Entity positioning]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-12-entity-positioning  %}) for more information.
 
 #### Start a time-based loop
 
@@ -437,7 +451,7 @@ renderLeaves(){
     <plane
       position={{ x: leaf.x , y: leaf.y, z:leaf.z }}
       scale={0.2}
-      key={leafIndex.toString()}
+      key={"leaf" + leafIndex.toString()}
     />
   )
 }
@@ -461,7 +475,7 @@ renderLeaves(){
       <plane
         position={{ x: leaf.x , y: leaf.y, z: leaf.z }}
         scale={0.2}
-        key={leafIndex.toString()}
+        key={"leaf" + leafIndex.toString()}
       />
     )
 }
@@ -486,7 +500,7 @@ renderLeaves() {
       <plane
         position={{ x: leaf.x, y: leaf.y, z: leaf.z }}
         scale={0.2}
-        key={leafIndex.toString()}
+        key={"leaf" + leafIndex.toString()}
       />
     )
   })
@@ -501,13 +515,19 @@ Like the example used to explain the map operator above, this example goes over 
 
 The function performed by the `forEach()` function doesn't have a `return` statement. If it did, it would overwrite the content of the `this.state.fallingLeaves` array. Instead, we create a new array called `leaves` and push elements to it, then we return the full array that at the end.
 
+As you can see from comparing this example to the prevous ones , it's a lot simpler to use `map()` to render entities from a list.
+
 > Note: Keep in mind that when dealing with a variable from the scene state, you can't change its value by setting it directly. You must always change the value of a scene state variable through the `this.setState()` operation.
 
 ## Make the render function dynamic
 
 The `render()` function draws what users see in your scene. In its simplest form, its `return` statement contains what resembles a literal XML definition for a set of entities with fixed values. An essential part of making a scene interactive is to have the render function change its output in response to changes in the scene state.
 
-Although what's typically in the `return` statement of render() may resemble pure XML, everything that goes in between `{ }` is being processed as TypeScript. This means that you can interrupt the tag and attribute syntax of XML with curly brackets to add JSX logic anywhere you choose.
+Although what's typically in the `return` statement of render() may resemble XML, everything that goes in between `{ }` is being processed as TypeScript. This means that you can interrupt the tag and attribute syntax of XML with curly brackets to add JSX expressions anywhere you choose.
+
+The end result of all the expressions in your `return` statement must always be a set of nested `isSimplifiedObject` entities, nested inside a `scene` entity.
+
+> Note: You are free to add TypeScript _expressions_ to make up the `return` value, but you can't add _statements_. The difference is that expressions always have a return value, but statements might not. You can't use `if/else` or `switch/case` because those are statements, but you can call functions that do the same.
 
 #### Reference variables from render
 
@@ -564,7 +584,7 @@ async render() {
           transition={{ position:
             { duration: 300, timing: this.state.bounce? "bounce-in" : "linear" }
           }}
-      />  
+      />
     </scene>
   )
 }
@@ -573,6 +593,8 @@ async render() {
 {% endraw %}
 
 In this second example, the _y_ position of the box is determined based on the value of `liftBox` and the timing of its transition is based on the value of `bounce`. Note that both of these conditional expressions were added in parts of the code that were already being processed as TypeScript, so no aditional `{ }` were needed.
+
+> Note: In these examples we're able to add conditional logic through the use of an `? / :` expression. You can't use an `if` and `else` in this context, because those are statements, and statements aren't supported as part of the `return` value.
 
 #### Define an undetermined number of entities
 
@@ -587,6 +609,7 @@ async render() {
       { this.state.secuence.map(num =>
         <box
           position={{ x: num * 2, y: 1, z: 1 }}
+          key={"box" + num.toString()}
         />
       }
     </scene>
@@ -597,6 +620,13 @@ async render() {
 {% endraw %}
 
 This function uses a `map()` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
+
+A few best practices when rendering entities from a list:
+
+- Use `array.map` to go over the list
+- Don't use a `for` loop
+- Give each entity a unique `key`
+- Avoid using the array index as the entity key
 
 #### Keep the render function readable
 
@@ -634,6 +664,71 @@ renderObstacles() {
       position={{ x: num * 2, y: 1, z: 1 }}
     />
   )
+}
+```
+
+{% endraw %}
+
+## The this operator
+
+Most often, when you use `this` in a scene it refers to the instance of the [scriptable scene object]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) that is running the scene.
+
+However, the meaning of `this` in a function is relative to where a function is being called from, not to where the function was defined. The same function could assign different meanings to `this` depending on where it was called from. If a function is defined as part of the scene, but it's called by the onClick component of an entity, any uses of the operator `this` in the function refer to the function itself, not to the scriptable scene object.
+
+It can sometimes be a problem if you need to refer to the scene state or to other functions in the scene. To avoid this problem, you can either define the function as a lambda or call the function through a lambda defined in the `onClick` value.
+
+{% raw %}
+
+```tsx
+import * as DCL from "decentraland-api"
+
+export interface IState {
+  clickCounter: number
+}
+
+export default class clickTest extends DCL.ScriptableScene<any, IState> {
+  state: IState = {
+    clickCounter: 0
+  }
+
+  // is defined as a lambda
+  clickBox = () => {
+    this.setState({ clickCounter: (this.state.clickCounter += 1) })
+    console.log(this.state.clickCounter)
+  }
+
+  // called via a lambda in the onClick
+  clickBox2() {
+    this.setState({ clickCounter: (this.state.clickCounter += 1) })
+    console.log(this.state.clickCounter)
+  }
+
+  // this function is called in a way where 'this' doesn't refer to the scene object
+  clickBox3() {
+    console.log(this)
+  }
+
+  async render() {
+    return (
+      <scene>
+        <box
+          id="function defined as lambda"
+          position={{ x: 3, y: 1, z: 1 }}
+          onClick={this.clickBox}
+        />
+        <box
+          id="lambda in onClick"
+          position={{ x: 1, y: 1, z: 1 }}
+          onClick={() => this.clickBox2}
+        />
+        <box
+          id="`this` doesn't refer to the scene object"
+          position={{ x: 5, y: 1, z: 1 }}
+          onClick={this.clickBox3}
+        />
+      </scene>
+    )
+  }
 }
 ```
 

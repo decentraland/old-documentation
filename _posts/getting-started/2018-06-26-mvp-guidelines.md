@@ -2,16 +2,18 @@
 date: 2018-01-06
 title: Decentraland Experience MVP Guidelines
 description: Recommended guidelines for producing your first MVP scene or experience using the SDK
+redirect_from:
+  - /documentation/mvp-guidelines/
 categories:
-  - documentation
+  - getting-started
 type: Document
-set: building-scenes
+set: getting-started
 set_order: 9
 ---
 
 The purpose of this document is to help guide you through the process of building your initial experiences and environments in Decentraland. We’ll refer to these initial experiences and environments as the Minimum Viable Product (MVP).
 
-**When creating your MVP, you need to think about two areas of focus:**
+**When creating the Minimum Viable Product (MVP) for your scene, you need to think about two areas of focus:**
 
 1.  The basic user experience and functionality in your project
 2.  The creation of a basic "pipeline", or team workflow and content management system for building your experience and iteratively improving it.

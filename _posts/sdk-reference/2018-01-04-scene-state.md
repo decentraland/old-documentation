@@ -1,6 +1,6 @@
 ---
 date: 2018-01-05
-title: Scene state
+title: State management
 description: Learn how the scene's state variables are updated and retrieved.
 categories:
   - sdk-reference
@@ -77,7 +77,7 @@ export interface IState {
 }
 
 export default class Scene extends ScriptableScene<any, IState> {
-  state = {
+  state: IState = {
     buttonState: 0,
     isDoorClosed: false,
     queboxPosition: { x: 0, y: 0, z: 0 }
@@ -155,6 +155,8 @@ Each time the scene's state is updated, the `render()` function is called to ren
 
 In a _local_ scene the state is stored in the scriptable scene object, so you set it with `this.setState()` as shown below:
 
+{% raw %}
+
 ```tsx
 async buttonPressed(){
   this.setState({
@@ -164,9 +166,13 @@ async buttonPressed(){
 }
 ```
 
+{% endraw %}
+
 #### In a remote scene
 
 In a _remote_ scene the state is stored in a remote server. This is handled by a file called _State.ts_. You set the state by calling the `setState()` function, that's defined in _State.ts_.
+
+{% raw %}
 
 ```tsx
 async buttonPressed(){
@@ -177,9 +183,23 @@ async buttonPressed(){
 }
 ```
 
-#### Always use setState()
+{% endraw %}
+
+## Force update
+
+If you always change the scene state through `setState()`, the rendering of your scene should always be in sync with the scene state. However, for exceptional cases you might need to refresh the rendering of the scene manually. To do this, call the `forceUdate()` method.
+
+```
+this.forceUpdate()
+```
+
+## Practices you must avoid
+
+#### Always use setState to change state values
 
 It's important that each time you change the state you do it through the `setState` function, NEVER do it by directly setting a value. Otherwise this will cause problems with the lifecycle of the scene.
+
+{% raw %}
 
 ```tsx
 // Wrong
@@ -192,13 +212,33 @@ this.setState({ buttonState: 1 })
 setState({ buttonState: 1 })
 ```
 
-## Force update
+{% endraw %}
 
-If you always change the scene state through `setState()`, the rendering of your scene should always be in sync with the scene state. However, for exceptional cases you might need to refresh the rendering of the scene manually. To do this, call the `forceUdate()` method.
+#### Avoid making multiple calls to setSate
 
+If you need to set the values of several variables from the scene state at the same time, do them all inline in a single call to `setState()`.
+
+Each time you call `setState()`, the `render()` function is triggered too. So by making several calls to `setState()` you're also running several unnecessary renders of the scene. Each of these renders is asynchronous, so potentially the last render to be finished could be from an older state, leaving your rendered scene outdated.
+
+{% raw %}
+
+```tsx
+// Wrong
+async buttonPressed(){
+  setState({ buttonState : 1 })
+  setState({ isDoorClosed: false })
+}
+
+// Correct
+async buttonPressed(){
+  setState({
+    buttonState : 1,
+    isDoorClosed: false
+    })
+}
 ```
-this.forceUpdate()
-```
+
+{% endraw %}
 
 ## Reference the state from a child object
 
