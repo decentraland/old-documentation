@@ -668,3 +668,66 @@ renderObstacles() {
 ```
 
 {% endraw %}
+
+## The this operator
+
+Most often, when you use `this` in a scene it refers to the instance of the [scriptable scene object]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) that is running the scene.
+
+However, the meaning of `this` in a function is relative to where a function is being called from, not to where the function was defined. The same function could assign different meanings to `this` depending on where it was called from. If a function is defined as part of the scene, but it's called by the onClick component of an entity, any uses of the operator `this` in the function refer to the function itself, not to the scriptable scene object.
+
+It can sometimes be a problem if you need to refer to the scene state or to other functions in the scene. To avoid this problem, you can either define the function as a lambda or call the function through a lambda defined in the `onClick` value.
+
+```tsx
+import * as DCL from "decentraland-api"
+
+export interface IState {
+  clickCounter: number
+}
+
+export default class clickTest extends DCL.ScriptableScene<any, IState> {
+  state: IState = {
+    clickCounter: 0
+  }
+
+  // is defined as a lambda
+  clickBox = () => {
+    this.setState({ clickCounter: (this.state.clickCounter += 1) })
+    console.log(this.state.clickCounter)
+  }
+
+  // called via a lambda in the onClick
+  clickBox2() {
+    this.setState({ clickCounter: (this.state.clickCounter += 1) })
+    console.log(this.state.clickCounter)
+  }
+
+  // this function is called in a way where 'this' doesn't refer to the scene object
+  clickBox3() {
+    console.log(this)
+  }
+
+  async render() {
+    return (
+      <scene>
+        <box
+          id="function defined as lambda"
+          position={{ x: 3, y: 1, z: 1 }}
+          onClick={this.clickBox}
+        />
+        <box
+          id="lambda in onClick"
+          position={{ x: 1, y: 1, z: 1 }}
+          onClick={() => this.clickBox2}
+        />
+        <box
+          id="`this` doesn't refer to the scene object"
+          position={{ x: 5, y: 1, z: 1 }}
+          onClick={this.clickBox3}
+        />
+      </scene>
+    )
+  }
+}
+```
+
+{% endraw %}

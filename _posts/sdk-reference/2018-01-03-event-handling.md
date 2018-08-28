@@ -33,15 +33,31 @@ Clicks can be done either with a mouse, a touch screen, a VR controller or some 
 
 The easiest way to handle click events is to add an `onClick` component to the entity itself. With this in place, there's no need to add an event subscriber for click events from this entity, that's already implicitly handled.
 
-You can declare what to do in the event of a click by writing it in the `onClick` itself, or you can call a separate function to keep the render method more legible.
+You can declare what to do in the event of a click by writing a lambda in the `onClick` itself, or you can call a separate function to keep the render method more legible.
 
 {% raw %}
 
 ```tsx
-<box onClick={this.handleClicks} position={{ x: 5, y: 1, z: 5 }} />
+<box
+  onClick={() => this.handleClicks}
+  position={{ x: 5, y: 1, z: 5 }}
+  scale={{ x: 2, y: 2, z: 1 }}
+/>
 ```
 
 {% endraw %}
+
+If you call a function from onClick, any uses of the `this` operator refer to the function itself, not to the [scriptable scene object]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}). It can sometimes be a problem if you need to refer to the scene state or to other functions in the scene. To avoid this problem, you can either define the function as a lambda or call the function through a lambda defined in the `onClick` value (as in the example above). See [TypeScript Tips]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-08-tsx-coding-guide %}) for more complete examples of how to work around this.
+
+If you call a function that requires parameters, you can do it via the alternative `function.call(this, parameters)` syntax:
+
+```tsx
+<box
+  onClick={() => this.handleClicks.call(this, "parameter string")}
+  position={{ x: 5, y: 1, z: 5 }}
+  scale={{ x: 2, y: 2, z: 1 }}
+/>
+```
 
 The click event object is passed as a parameter of the function you call in the `onClick`. This event object contains the following parameters that can be accessed by your function:
 
@@ -61,8 +77,8 @@ export default class Scene extends ScriptableScene {
           position={{ x: 5, y: 0, z: 5 }}
           id="myBox"
           onClick={e => {
-            console.log(`elementId: ${e.elementId}`)
-            console.log(`pointerId: ${e.pointerId}`)
+            console.log(`elementId: ` + e.elementId)
+            console.log(`pointerId: ` + e.pointerId)
           }}
         />
       </scene>
