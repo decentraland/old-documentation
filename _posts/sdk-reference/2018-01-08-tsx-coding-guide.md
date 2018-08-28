@@ -677,6 +677,8 @@ However, the meaning of `this` in a function is relative to where a function is 
 
 It can sometimes be a problem if you need to refer to the scene state or to other functions in the scene. To avoid this problem, you can either define the function as a lambda or call the function through a lambda defined in the `onClick` value.
 
+{% raw %}
+
 ```tsx
 import * as DCL from "decentraland-api"
 
