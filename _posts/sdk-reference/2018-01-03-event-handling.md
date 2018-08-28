@@ -33,7 +33,7 @@ Clicks can be done either with a mouse, a touch screen, a VR controller or some 
 
 > Note: Clicks can be made from a maximum distance of 10 meters away from the entity.
 
-#### onCLick
+#### onClick
 
 The easiest way to handle click events is to add an `onClick` component to the entity itself. With this in place, there's no need to add an event subscriber for click events from this entity, that's already implicitly handled.
 
@@ -43,7 +43,7 @@ You can declare what to do in the event of a click by writing a lambda in the `o
 
 ```tsx
 <box
-  onClick={() => this.handleClicks}
+  onClick={() => console.log('Clicked!')}
   position={{ x: 5, y: 1, z: 5 }}
   scale={{ x: 2, y: 2, z: 1 }}
 />
@@ -53,24 +53,12 @@ You can declare what to do in the event of a click by writing a lambda in the `o
 
 If you call a function from onClick, any uses of the `this` operator refer to the function itself, not to the [scriptable scene object]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}). It can sometimes be a problem if you need to refer to the scene state or to other functions in the scene. To avoid this problem, you can either define the function as a lambda or call the function through a lambda defined in the `onClick` value (as in the example above). See [TypeScript Tips]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-08-tsx-coding-guide %}) for more complete examples of how to work around this.
 
-If you call a function that requires parameters, you can do it via the alternative `function.call(this, parameters)` syntax:
-
-{% raw %}
-
-```tsx
-<box
-  onClick={() => this.handleClicks.call(this, "parameter string")}
-  position={{ x: 5, y: 1, z: 5 }}
-  scale={{ x: 2, y: 2, z: 1 }}
-/>
-```
-
 {% endraw %}
 
 The click event object is passed as a parameter of the function you call in the `onClick`. This event object contains the following parameters that can be accessed by your function:
 
-- `elementId`: the Id of the entity that was clicked (if the entity has an id).
-- `pointerId`: the id for the user who performed the click.
+- `elementId`: the ID of the entity that was clicked (if the entity has an id).
+- `pointerId`: the ID for the user who performed the click.
 
 {% raw %}
 
