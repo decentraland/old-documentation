@@ -15,11 +15,15 @@ When users interact with the entities in your scene, these generate several type
 
 Generally, a good way of having your scene respond to events is to set up a listener in the `sceneDidMount()` method. See [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) for more context about when this method is executed.
 
+{% raw %}
+
 ```tsx
 async sceneDidMount() {
   this.eventSubscriber.on(`pointerDown`, () => console.log("pointer down"))
 }
 ```
+
+{% endraw %}
 
 To debug a scene, you can use `console.log()` to keep track of the occurance of events or to verify that the event's parameters are what you expected.
 
@@ -51,6 +55,8 @@ If you call a function from onClick, any uses of the `this` operator refer to th
 
 If you call a function that requires parameters, you can do it via the alternative `function.call(this, parameters)` syntax:
 
+{% raw %}
+
 ```tsx
 <box
   onClick={() => this.handleClicks.call(this, "parameter string")}
@@ -58,6 +64,8 @@ If you call a function that requires parameters, you can do it via the alternati
   scale={{ x: 2, y: 2, z: 1 }}
 />
 ```
+
+{% endraw %}
 
 The click event object is passed as a parameter of the function you call in the `onClick`. This event object contains the following parameters that can be accessed by your function:
 
