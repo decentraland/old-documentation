@@ -224,13 +224,13 @@ Each time you call `setState()`, the `render()` function is triggered too. So by
 
 ```tsx
 // Wrong
-async buttonPressed(){
+async buttonPressed() {
   this.setState({ buttonState : 1 })
   this.setState({ isDoorClosed: false })
 }
 
 // Correct
-async buttonPressed(){
+async buttonPressed() {
   this.setState({
     buttonState : 1,
     isDoorClosed: false

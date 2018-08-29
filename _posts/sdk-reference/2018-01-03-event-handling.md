@@ -33,6 +33,7 @@ Clicks can be done either with a mouse, a touch screen, a VR controller or some 
 
 > Note: Clicks can be made from a maximum distance of 10 meters away from the entity.
 
+
 #### onClick
 
 The easiest way to handle click events is to add an `onClick` component to the entity itself. With this in place, there's no need to add an event subscriber for click events from this entity, that's already implicitly handled.
