@@ -31,7 +31,7 @@ From a scene's code, you can query both the limitations that apply to the scene 
 
 #### Obtain scene limitations
 
-Run `this.querySceneLimits()` to obtain the limits of your scene. The limits are calculated for your scene based on how many parcels it occupies, according to the _scene.json_ file. The values returned by this command don't change over time, as the scene's size is always the same.
+Run `this.entityController.querySceneLimits()` to obtain the limits of your scene. The limits are calculated for your scene based on how many parcels it occupies, according to the _scene.json_ file. The values returned by this command don't change over time, as the scene's size is always the same.
 
 The `querySceneLimits()` is asynchronous, so we recommend calling it with an `await` statement.
 
@@ -40,22 +40,22 @@ The `querySceneLimits()` function returns a promise of an object with the follow
 {% raw %}
 
 ```tsx
-//get limits object
-const limits = await this.querySceneLimits()
+// get limits object
+const limits = await this.entityController.querySceneLimits()
 
-//print maximum triangles
+// print maximum triangles
 console.log(limits.triangles)
 
-//print maximum entities
+// print maximum entities
 console.log(limits.entities)
 
-//print maximum bodies
+// print maximum bodies
 console.log(limits.bodies)
 
-//print maximum materials
+// print maximum materials
 console.log(limits.materials)
 
-//print maximum textures
+// print maximum textures
 console.log(limits.textures)
 ```
 
@@ -74,22 +74,22 @@ The `querySceneMetrics()` function returns a promise of an object with the follo
 {% raw %}
 
 ```tsx
-//get metrics object
-const limits = await this.querySceneMetrics()
+// get metrics object
+const limits = await this.entityController.querySceneMetrics()
 
-//print maximum triangles
+// print maximum triangles
 console.log(limits.triangles)
 
-//print maximum entities
+// print maximum entities
 console.log(limits.entities)
 
-//print maximum bodies
+// print maximum bodies
 console.log(limits.bodies)
 
-//print maximum materials
+// print maximum materials
 console.log(limits.materials)
 
-//print maximum textures
+// print maximum textures
 console.log(limits.textures)
 ```
 
