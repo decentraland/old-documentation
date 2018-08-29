@@ -54,8 +54,6 @@ You can declare what to do in the event of a click by writing a lambda in the `o
 
 If you call a function from onClick, any uses of the `this` operator refer to the function itself, not to the [scriptable scene object]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}). It can sometimes be a problem if you need to refer to the scene state or to other functions in the scene. To avoid this problem, you can either define the function as a lambda or call the function through a lambda defined in the `onClick` value (as in the example above). See [TypeScript Tips]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-08-tsx-coding-guide %}) for more complete examples of how to work around this.
 
-{% endraw %}
-
 The click event object is passed as a parameter of the function you call in the `onClick`. This event object contains the following parameters that can be accessed by your function:
 
 - `elementId`: the ID of the entity that was clicked (if the entity has an id).
