@@ -25,7 +25,7 @@ Make sure of the following:
 
 * You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it. The account must also hold a minimum amount of Ether to pay a transaction gas fee.
 
-* You own the necessary ammount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market](({{ site.baseurl }}{% post_url /marketplace/2018-01-01-marketplace %})).
+* You own the necessary ammount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market](({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %})).
 
 ## To publish the scene
 
