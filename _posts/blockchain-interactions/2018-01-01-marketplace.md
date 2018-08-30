@@ -2,7 +2,7 @@
 date: 2018-01-01
 title: Overview
 redirect_from:
-  - /decentraland/getting-started-marketplace-video/
+  - /decentraland/marketplace/
 description: Meet the LAND marketplace
 categories:
   - blockchain-interactions
