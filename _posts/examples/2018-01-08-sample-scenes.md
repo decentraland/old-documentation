@@ -127,7 +127,7 @@ This example, that's described in greater detail in a [video tutorial](https://s
 
 #### Dog, cat, mouse, cheese
 
-This example, that's described in greater detail in a [video tutorial](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-dog-cat-mouse-cheese-using-a-fsm) shows how to build a more complex scene that involves predators and prays, which can interchangably be mice, cats or dogs. Each animal has a stack-based finite state machine (FSM) to manage its AI. Each animal uses the a\* path finding algorythm to find its way around obstacles and othe animals.
+This example, that's described in greater detail in a [video tutorial](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-dog-cat-mouse-cheese-using-a-fsm) shows how to build a more complex scene that involves predators and prays, which can interchangeably be mice, cats or dogs. Each animal has a stack-based finite state machine (FSM) to manage its AI. Each animal uses the a\* path finding algorithm to find its way around obstacles and other animals.
 
 [code](https://dcl-project-bfvkjmdtyf.now.sh)
 
