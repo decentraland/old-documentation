@@ -2,10 +2,12 @@
 date: 2018-01-05
 title: Scriptable scene object
 description: Learn how to make a scriptable scene and its events
+redirect_from:
+  - /sdk-reference/scriptable-scene/
 categories:
-  - sdk-reference
+  - scene-coding-guide
 type: Document
-set: sdk-reference
+set: scene-coding-guide
 set_order: 5
 ---
 
@@ -44,7 +46,7 @@ The `ScriptableScene` class optionally takes two arguments: the properties (`any
 
 You can access the scene's state by writing `this.scene.<variableName>` anywhere in the scene object.
 
-See [scene state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}) for more on how to work with the scene state.
+See [scene state]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-04-scene-state %}) for more on how to work with the scene state.
 
 ## Props
 
@@ -216,7 +218,8 @@ It's important to understand the way `entityController` gets injected into the c
 
     ```tsx
     class ScriptableScene extends Script {
-      @inject("EntityController") entityController: EntityController = null
+      @inject("EntityController")
+      entityController: EntityController = null
     }
     ```
 

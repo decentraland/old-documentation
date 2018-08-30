@@ -2,10 +2,12 @@
 date: 2018-01-06
 title: Scene limitations
 description: How many things can I put on my scene?
+redirect_from:
+  - /documentation/scene-limitations/
 categories:
-  - documentation
+  - scene-coding-guide
 type: Document
-set: sdk-reference
+set: scene-coding-guide
 set_order: 6
 ---
 
@@ -103,7 +105,7 @@ When running a preview, any content that is located outside the parcel boundarie
 
 ## Shader limitations
 
-3D models used in decentraland must use supported shaders and materials. See [3D model considerations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-09-external-3d-models %}) for a list of supported shaders.
+3D models used in decentraland must use supported shaders and materials. See [3D model considerations]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-09-external-3d-models %}) for a list of supported shaders.
 
 ## Texture size constraints
 

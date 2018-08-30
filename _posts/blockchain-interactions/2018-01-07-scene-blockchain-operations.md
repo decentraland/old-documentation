@@ -1,6 +1,6 @@
 ---
 date: 2018-01-07
-title: Blockchain operations
+title: Scene blockchain operations
 description: Learn what the SDK offers for performing operations with the Ethereum blockchain
 redirect_from:
   - /sdk-reference/blockchain-operations/

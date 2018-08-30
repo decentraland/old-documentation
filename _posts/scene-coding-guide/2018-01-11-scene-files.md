@@ -2,10 +2,12 @@
 date: 2018-01-10
 title: Files in a scene
 description: Default files created in a new scene
+redirect_from:
+  - /documentation/scene-files/
 categories:
-  - documentation
+  - scene-coding-guide
 type: Document
-set: sdk-reference
+set: scene-coding-guide
 set_order: 11
 ---
 
@@ -155,7 +157,7 @@ export function setState(deltaState: Partial<typeof state>) {
 
 {% endraw %}
 
-Learn more about how the scene state works in [scene state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}).
+Learn more about how the scene state works in [scene state]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-04-scene-state %}).
 
 #### scene.json
 

@@ -19,7 +19,7 @@ Make sure of the following:
 
 > Note: The CLI prompts you to provide this information when creating the scene, but you can also modify the file manually at any time.
 
-- Your scene complies with all of the [scene limitations](({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %})). Most of these are validated each time you run a preview of your scene.
+- Your scene complies with all of the [scene limitations](({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-06-scene-limitations %})). Most of these are validated each time you run a preview of your scene.
 
 * You installed IPFS correctly. To do so, follow [these steps](https://ipfs.io/docs/install/).
 

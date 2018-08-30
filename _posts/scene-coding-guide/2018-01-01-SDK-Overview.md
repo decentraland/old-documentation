@@ -2,14 +2,15 @@
 date: 2018-01-01
 title: SDK Overview
 redirect_from:
+  - /sdk-reference/SDK-Overview/
   - /docs/sdk-overview
   - /docs/command-line-interface
   - /docs/sdk-quick-start-guide
 description: Decentraland Software Development Kit
 categories:
-  - sdk-reference
+  - scene-coding-guide
 type: Document
-set: sdk-reference
+set: scene-coding-guide
 set_order: 1
 ---
 

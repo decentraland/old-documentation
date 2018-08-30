@@ -2,18 +2,20 @@
 date: 2018-01-05
 title: Event Handling
 description: Learn the different events that can occur in a scene and how to catch them.
+redirect_from:
+  - /sdk-reference/event-handling/
 categories:
-  - sdk-reference
+  - scene-coding-guide
 type: Document
-set: sdk-reference
+set: scene-coding-guide
 set_order: 3
 ---
 
-When users interact with the entities in your scene, these generate several types of events. These events can have an effect on the scene [state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}), which triggers a new rendering of the scene.
+When users interact with the entities in your scene, these generate several types of events. These events can have an effect on the scene [state]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-04-scene-state %}), which triggers a new rendering of the scene.
 
 ![](/images/media/events_state_diagram.jpeg)
 
-Generally, a good way of having your scene respond to events is to set up a listener in the `sceneDidMount()` method. See [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) for more context about when this method is executed.
+Generally, a good way of having your scene respond to events is to set up a listener in the `sceneDidMount()` method. See [scriptable scene]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-05-scriptable-scene %}) for more context about when this method is executed.
 
 {% raw %}
 
@@ -33,7 +35,6 @@ Clicks can be done either with a mouse, a touch screen, a VR controller or some 
 
 > Note: Clicks can be made from a maximum distance of 10 meters away from the entity.
 
-
 #### onClick
 
 The easiest way to handle click events is to add an `onClick` component to the entity itself. With this in place, there's no need to add an event subscriber for click events from this entity, that's already implicitly handled.
@@ -44,7 +45,7 @@ You can declare what to do in the event of a click by writing a lambda in the `o
 
 ```tsx
 <box
-  onClick={() => console.log('Clicked!')}
+  onClick={() => console.log("Clicked!")}
   position={{ x: 5, y: 1, z: 5 }}
   scale={{ x: 2, y: 2, z: 1 }}
 />
@@ -52,7 +53,7 @@ You can declare what to do in the event of a click by writing a lambda in the `o
 
 {% endraw %}
 
-If you call a function from onClick, any uses of the `this` operator refer to the function itself, not to the [scriptable scene object]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}). It can sometimes be a problem if you need to refer to the scene state or to other functions in the scene. To avoid this problem, you can either define the function as a lambda or call the function through a lambda defined in the `onClick` value (as in the example above). See [TypeScript Tips]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-08-tsx-coding-guide %}) for more complete examples of how to work around this.
+If you call a function from onClick, any uses of the `this` operator refer to the function itself, not to the [scriptable scene object]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-05-scriptable-scene %}). It can sometimes be a problem if you need to refer to the scene state or to other functions in the scene. To avoid this problem, you can either define the function as a lambda or call the function through a lambda defined in the `onClick` value (as in the example above). See [TypeScript Tips]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-08-typescript-tips %}) for more complete examples of how to work around this.
 
 The click event object is passed as a parameter of the function you call in the `onClick`. This event object contains the following parameters that can be accessed by your function:
 
