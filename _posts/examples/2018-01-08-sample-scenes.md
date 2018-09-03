@@ -111,7 +111,7 @@ In this example, that's described in greater detail in a [video tutorial](https:
 
 [Code](https://github.com/decentraland/sample-scene-Block-Dog)
 
-[Explore the scene]()
+[Explore the scene](https://dcl-project-yffwbatldi.now.sh/?position=42%2C42)
 
 #### Chess game
 
