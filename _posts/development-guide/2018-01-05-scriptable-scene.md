@@ -5,9 +5,9 @@ description: Learn how to make a scriptable scene and its events
 redirect_from:
   - /sdk-reference/scriptable-scene/
 categories:
-  - scene-coding-guide
+  - development-guide
 type: Document
-set: scene-coding-guide
+set: development-guide
 set_order: 5
 ---
 
@@ -46,7 +46,7 @@ The `ScriptableScene` class optionally takes two arguments: the properties (`any
 
 You can access the scene's state by writing `this.scene.<variableName>` anywhere in the scene object.
 
-See [scene state]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-04-scene-state %}) for more on how to work with the scene state.
+See [scene state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}) for more on how to work with the scene state.
 
 ## Props
 

@@ -5,15 +5,15 @@ description: Tips and tricks for remote scenes with multiple users
 redirect_from:
   - /documentation/remote-scene-considerations/
 categories:
-  - scene-coding-guide
+  - development-guide
 type: Document
-set: scene-coding-guide
+set: development-guide
 set_order: 10
 ---
 
 ## Scene state in remote scenes
 
-Remote scenes store their state in a remote server instead of in each user's local client. This means that all users of the scene share the same state, which allows them to see the same content in the scene and to interact in more meaningful ways. See [scene state]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-04-scene-state %}) for more about the scene state.
+Remote scenes store their state in a remote server instead of in each user's local client. This means that all users of the scene share the same state, which allows them to see the same content in the scene and to interact in more meaningful ways. See [scene state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}) for more about the scene state.
 
 In a remote scene, the state is handled in the _State.ts_ file. This file also exports two functions that must be used to handle the state: `getState()` and `setState()`.
 

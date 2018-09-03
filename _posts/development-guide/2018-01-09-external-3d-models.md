@@ -5,17 +5,17 @@ description: Learn what assets and components are supported in external 3D model
 redirect_from:
   - /sdk-reference/external-3d-models/
 categories:
-  - scene-coding-guide
+  - development-guide
 type: Document
-set: scene-coding-guide
+set: development-guide
 set_order: 9
 ---
 
 3D models are imported into decentraland in glTF format. There are a number of supported features that these models can include. This section goes over ways to make them compatible with Decentraland and best practices.
 
-See [Scene content guide]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-21-scene-content %}) for information on how you can configure a 3D model in a Decentraland scene to set its position, scale, activate its animations, etc.
+See [Scene content guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for information on how you can configure a 3D model in a Decentraland scene to set its position, scale, activate its animations, etc.
 
-Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-06-scene-limitations %}).
+Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
 ## Materials
 
@@ -31,7 +31,7 @@ Not all shaders can be used in models that are imported into Decentraland. Make 
 
   > Tip: When using Blender, you can use PBR materials by setting _Cycles_ rendering and adding the _Principled BSDF_ shader. Note that none of the other shaders of the _Cycles_ renderer are supported.
 
-See [entity interfaces]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material.
+See [entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material.
 
 #### Textures
 
@@ -141,7 +141,7 @@ Stairs are a very common use-case for collider objects. In order for users to cl
 
 We recommend using a ramp object for your stair colliders, this provides a much better experience when walking up or down. When they climb up your stairs, it will appear as a smooth ascent or descent, instead of requiring them to “jump” up each individual step.
 
-Using a ramp object also avoids creating unnecessary geometry, saving room for other more complicated models. Keep in mind that collider geometry is also taken into account when calculating the [scene limitations]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-06-scene-limitations %})
+Using a ramp object also avoids creating unnecessary geometry, saving room for other more complicated models. Keep in mind that collider geometry is also taken into account when calculating the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %})
 
 1.  Create a new object in the shape of a ramp that resembles the size and proportions of the original stairs.
 
@@ -177,7 +177,7 @@ Currently, other forms of animations that aren't based on armatures are not supp
 
 There's no specific rule about the names animations must have. You can verify the names of the animations in an exported model by opening the contents of a _.gltf_ file with a text editor. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-You can include any number of animations in a _glTF model_. All animations in a _glTF_ model are dissabled by default when loading the model into a Decentraland scene. See [Scene content guide]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-21-scene-content %}) for instructions on how to activate and handle animations in a scene.
+You can include any number of animations in a _glTF model_. All animations in a _glTF_ model are dissabled by default when loading the model into a Decentraland scene. See [Scene content guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for instructions on how to activate and handle animations in a scene.
 
 > Note: There currently isn't a way to change the frame rate of an animation displayed in your scene, the speed is fixed to a default setting. To change an animation's speed, you must change the number of frames.
 
@@ -215,7 +215,7 @@ You can use a tool like Blender to create animations for a 3D model.
 
 To create several animations for the same model in Blender, you must select the Dope-Sheet view, and open the Action Editor. You can also edit the animation from the Dope-Sheet view, for example you can adjusting the distance between two key frames.
 
-When adding the model to your Decentraland scene, you must activate animations by configuring the _gltf-model_ entity. See [Scene content guide]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-21-scene-content %}) for instructions.
+When adding the model to your Decentraland scene, you must activate animations by configuring the _gltf-model_ entity. See [Scene content guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for instructions.
 
 #### Best practices for animations
 

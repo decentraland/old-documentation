@@ -25,7 +25,7 @@ This is an example of a completely static scene. We've laid out a sample space t
 
 #### Dynamic Animation
 
-With this Dynamic Animation, we're demonstrating how to employ simple data binding to objects in your scene. [Translation, rotation, and scale]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-12-entity-positioning %}) are all attributes you can bind to state properties.
+With this Dynamic Animation, we're demonstrating how to employ simple data binding to objects in your scene. [Translation, rotation, and scale]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}) are all attributes you can bind to state properties.
 
 [Code](https://github.com/decentraland/sample-scene-dynamic-animation)
 
@@ -33,7 +33,7 @@ With this Dynamic Animation, we're demonstrating how to employ simple data bindi
 
 #### Interactive Content
 
-This simple example shows a scene that you can interact with by opening and closing a door. Clicking the door creates an [event]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-03-event-handling %}), which changes the scene's state. The scene's state then changes the rotation of the door, which rotates smoothly thanks to a transition.
+This simple example shows a scene that you can interact with by opening and closing a door. Clicking the door creates an [event]({{ site.baseurl }}{% post_url /development-guide/2018-01-03-event-handling %}), which changes the scene's state. The scene's state then changes the rotation of the door, which rotates smoothly thanks to a transition.
 
 [Code](https://github.com/decentraland/sample-scene-script)
 
@@ -41,7 +41,7 @@ This simple example shows a scene that you can interact with by opening and clos
 
 #### Skeletal Animations
 
-In your scenes, you can load up an interactive [GLTF model]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-21-scene-content %}) and trigger its animations. This is an example of how to do that.
+In your scenes, you can load up an interactive [GLTF model]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) and trigger its animations. This is an example of how to do that.
 
 [Code](https://github.com/decentraland/sample-scene-skeletal-animation)
 
@@ -51,12 +51,11 @@ In your scenes, you can load up an interactive [GLTF model]({{ site.baseurl }}{%
 
 #### Sound Support
 
-This example features [sound]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-21-scene-content-guide %}) coming out of an entity, notice how the volume diminishes relative to distance from it. It also includes an animated GLTF object and a floor that randomly changes color.
+This example features [sound]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) coming out of an entity, notice how the volume diminishes relative to distance from it. It also includes an animated GLTF object and a floor that randomly changes color.
 
 [Code](https://github.com/decentraland/sample-scene-sound-support)
 
 [Explore the scene](https://dcl-project-lolxizhsmy.now.sh/?position=-1%2C-1)
-
 
 #### Jukebox: Buttons and Sound
 
@@ -66,7 +65,6 @@ This example, that's described in greater detail in a [video tutorial](https://s
 
 [Explore the scene](https://dcl-project-nvahvjzeiz.now.sh/?position=42%2C42)
 
-
 #### Video Support
 
 In this example, you can interact with two video players. One loads the video company into the scene's assets, the other streams it from an external source. You can also pause, stop and change the volume of the video players.
@@ -74,7 +72,6 @@ In this example, you can interact with two video players. One loads the video co
 [Code](https://github.com/decentraland/sample-scene-video-support)
 
 [Explore the scene](https://dcl-project-ffueiuubku.now.sh/?position=0%2C-1)
-
 
 #### Multiplayer Content
 
@@ -91,7 +88,6 @@ In this example, that's described in greater detail in a [blogpost](https://blog
 [Code](https://github.com/decentraland/sample-scene-array-of-entities/blob/master/README.md)
 
 [Explore the scene](https://dcl-project-xdoolmuwqt.now.sh/?position=0%2C-1)
-
 
 ## Advanced samples
 

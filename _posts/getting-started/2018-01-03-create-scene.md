@@ -12,7 +12,7 @@ set_order: 1
 tag: introduction
 ---
 
-In Decentraland, a scene is the representation of the content of an estate/LAND. All scenes are made up of [entities]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-06-21-entity-interfaces %}), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
+In Decentraland, a scene is the representation of the content of an estate/LAND. All scenes are made up of [entities]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
 
 ## Install the CLI
 
@@ -37,7 +37,7 @@ There are four different scene templates that you can use as a starting point:
 - **Remote scene**: Defined in a TypeScript file featuring the same example used for the local scene, but it differs in that the scene state is stored in a remote server that it communicates with over WebSockets. Because of this, all users see the scene rendered identically. To test your scene, you can run both the server and the client locally.
 - **Static scene**: Defined in an **XML** file with a single glTF moel. You can't add any dynamic or interactive content to this type of scene, it can only display static entities in place.
 
-See [scene contents]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-11-scene-files %}) for an overview of the default files that are created in your scene.
+See [scene contents]({{ site.baseurl }}{% post_url /development-guide/2018-01-11-scene-files %}) for an overview of the default files that are created in your scene.
 
 ## Preview your scene
 
@@ -59,7 +59,7 @@ To edit scenes, we recommend using a source code editor like [Visual Studio Code
 - In _Remote_ scenes, you create the logic of your scene by editing the _RemoteScene.tsx_ file and the _State.tsx_.
 - In _Static_ scenes, you create the content of your scene in the _scene.xml_ file.
 
-See [scene content guide]({{ site.baseurl }}{% post_url /scene-coding-guide/2018-01-21-scene-content %}) for simple instructions about adding content to your scene.
+See the [development guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for simple instructions about adding content to your scene.
 
 ## Publish your scene
 

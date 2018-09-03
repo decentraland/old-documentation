@@ -1,5 +1,5 @@
 ---
-title: Scene coding guide
+title: Development guide
 description: Learn about the Decentraland API and what you can do with it.
 color: "#FFE3D2"
 accent_color: "#85BEFF"
