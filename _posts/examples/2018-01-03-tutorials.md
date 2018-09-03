@@ -42,3 +42,9 @@ This blogpost describes the code of a "Simon Says" type game. This game is a goo
 [Chess game](https://blog.decentraland.org/developer-tutorial-port-a-redux-chess-game-to-decentraland-49f509b2eba6)
 
 This blogpost walks you through importing the logic of an existing 2D game built with Redux into a Decentraland scene.
+
+## Call an API from a scene
+
+[Weather from an API](https://blog.decentraland.org/developer-tutorial-simulate-weather-in-decentraland-using-real-world-data-eb1162716d5b)
+
+This blogpost explains how to call a weatheer API from your scene to display different weather conditions based on that.
