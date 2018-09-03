@@ -83,3 +83,13 @@ This tutorial shows how you can build a simple yet fully functional game in Dece
 This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-a-simple-tower-defense-game) to acompany the video.
 
 {%  include youtube.html video_id='XPcMaGtX37k'  %}
+
+#### Dog, cat, mouse, and cheese game
+
+**Stack-based finit state machine, path finding with a\*, random content generation, custom event handling**
+
+This tutorial shows how to build a more complex scene that involves predators and prays, which can interchangably be mice, cats or dogs. Each animal has a stack-based finite state machine (FSM) to manage its AI. Each animal uses the a\* path finding algorythm to find its way around obstacles and othe animals.
+
+This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-dog-cat-mouse-cheese-using-a-fsm) to acompany the video.
+
+{%  include youtube.html video_id='Ur9YyycvhEE'  %}
