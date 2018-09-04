@@ -531,6 +531,15 @@ The end result of all the expressions in your `return` statement must always be 
 
 > Note: You are free to add TypeScript _expressions_ to make up the `return` value, but you can't add _statements_. The difference is that expressions always have a return value, but statements might not. You can't use `if/else` or `switch/case` because those are statements, but you can call functions that do the same.
 
+#### Add or remove entities
+
+Instead of telling the engine what actions to take to reach a desired state, you tell the engine what new state you want to render, and the engine figures out how to get there. If you're familiar with the React framework, you'll note that the Decentraland API is designed around the same ideas.
+
+**Because of this, there is no action to _add_ or _remove_ entities from the scene**. Instead, this is implicitly done when you call the `render()` function telling it to render a different set of entities.
+
+- If the new set includes an entity that wasn't rendered before, it's implicitly added.
+- If an entitiy is missing from the new set, then it's implicitly removed.
+
 #### Reference variables from render
 
 The simplest way to change how something is rendered is to reference the value of a variable from the value of one of the XML attributes.
@@ -598,7 +607,7 @@ In this second example, the _y_ position of the box is determined based on the v
 
 > Note: In these examples we're able to add conditional logic through the use of an `? / :` expression. You can't use an `if` and `else` in this context, because those are statements, and statements aren't supported as part of the `return` value.
 
-#### Define an undetermined number of entities
+#### Render entities from an array
 
 For scenes where the number of entities isn't fixed, use an array to represent these entities and their attributes and then use a `map()` operation within the `render()` function.
 
@@ -629,6 +638,55 @@ A few best practices when rendering entities from a list:
 - Don't use a `for` loop
 - Give each entity a unique `key`
 - Avoid using the array index as the entity key
+
+#### Render entities from an object
+
+When you want to keep track of multiple pieces of information about each entity in a collection, it's useful to store the entities as an object, where each attribute of the object represents one of the entities.
+
+We recommend defining a custom type for the object, to validate that data is being stored in a consistent way.
+
+{% raw %}
+
+```tsx
+export type boxes = {
+  [key: string]: [Vector3Component, Vector3Component, boolean]
+}
+```
+
+{% endraw %}
+
+The following code example renders a collection of boxes from a _secuence_ variable in the scene state.
+
+{% raw %}
+
+```tsx
+ async render() {
+    return (
+      <scene>
+        { this.renderBoxes()}
+      </scene>
+    )
+  }
+
+  renderBoxes(){
+    let boxModels: any[] = []
+    for (var box in this.state.secuence) {
+      boxModels.push(
+        <box
+          key={"box"}
+          position={this.state.secuence[box][0]}
+          rotation={this.state.secuence[box][1]}
+          visible={this.state.secuence[box][2]}
+         />
+      )
+      return boxModels
+  }
+}
+```
+
+{% endraw %}
+
+While iterating through the attributes in the object, `box` refers to the attribute key, and you can use it to access the values under that key via `this.state.secuence[box]`.
 
 #### Keep the render function readable
 
