@@ -4,6 +4,10 @@ title: Coding scenes
 description: This set will help you understand how things work in the client and SDK of decentraland.
 redirect_from:
   - /documentation/introduction/
+  - /docs/sdk-overview/
+  - /docs/command-line-interface/
+  - /docs/sdk-quick-start-guide/
+  - /sdk-reference/introduction/
 categories:
   - getting-started
 type: Document
