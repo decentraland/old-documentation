@@ -3,11 +3,12 @@ date: 2018-01-01
 title: Entity reference
 redirect_from:
   - /docs/entities
+  - /sdk-reference/entity-interfaces/
 description: Entities and the available interfaces for constructing entities.
 categories:
-  - sdk-reference
+  - development-guide
 type: Document
-set: sdk-reference
+set: development-guide
 set_order: 4
 ---
 
@@ -345,7 +346,7 @@ interface SkeletalAnimation {
 }
 ```
 
-> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
+> Note: Keep in mind that all models and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
 ## Base Entity
 

@@ -137,7 +137,7 @@ If this occurs, there are several places where you can look for error messages t
 3.  Check the JavaScript console in the browser for any other error messages. For example, when using Chrome you access this through `View > Developer > JavaScript console`.
 4.  If you're running a preview of a remote scene, check the output of the other command line window, where you ran `npm start` to start the server.
 
-If your scene excedes any of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}), for example if there are too many triangles in it, the scene won't be rendered. If this occurs, a warning sign will be rendered in the space where your scene should be, detailing the problem.
+If your scene excedes any of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}), for example if there are too many triangles in it, the scene won't be rendered. If this occurs, a warning sign will be rendered in the space where your scene should be, detailing the problem.
 
 If an entity is located or extends beyond the limits of the scene, it will flash with red color to indicate this. Nothing in your scene can extend beyond the scene limits. This won't stop the scene from being rendered locally, but it will stop it from being deployed to Decentraland.
 

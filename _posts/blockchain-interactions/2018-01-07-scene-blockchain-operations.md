@@ -1,11 +1,13 @@
 ---
 date: 2018-01-07
-title: Blockchain operations
+title: Scene blockchain operations
 description: Learn what the SDK offers for performing operations with the Ethereum blockchain
+redirect_from:
+  - /sdk-reference/blockchain-operations/
 categories:
-  - sdk-reference
+  - blockchain-interactions
 type: Document
-set: sdk-reference
+set: blockchain-interactions
 set_order: 7
 ---
 
@@ -29,7 +31,8 @@ The example below imports the `UserIdentity` library and runs `getUserPublicKey(
 import { createElement, inject, UserIdentity } from "decentraland-api/src"
 
 export default class Scene extends ScriptableScene<any, any> {
-  @inject("Identity") userIdentity: UserIdentity
+  @inject("Identity")
+  userIdentity: UserIdentity
 
   state = {
     publicKey: ""
@@ -137,7 +140,8 @@ import {
 
 ```tsx
 export default class myScene extends ScriptableScene {
-  @inject("experimentalEthereumController") eth: EthereumController
+  @inject("experimentalEthereumController")
+  eth: EthereumController
   // (...)
 }
 ```
