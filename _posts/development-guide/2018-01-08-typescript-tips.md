@@ -245,6 +245,26 @@ Entities in decentraland accept variables of type _Vector3_ for setting position
 
 Keep in mind that some events in a Decentraland scene, like the `positionChanged` event, have attributes that are of type _Vector3Component_. If you wish to use methods from _Vector3_ on this information, you must first change its type.
 
+## Handle animated 2D sprites
+
+You can add 2D animations in your scene as a way to save on triangle amounts, or as a chosen esthetic.
+
+You'll generally want to apply sprite animations to a _plane_ entity that's configured to behave as a _billboard_. Setting an entity's billboard component makes it rotate to always face the user, learn more about this in [Entity positioning]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}).
+
+We recommend using the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) node package. To install it run the following:
+
+```
+npm i --save dcl-sprites
+```
+
+Then import the library into your scene:
+
+```tsx
+import { createSpriteSheet } from "dcl-sprites"
+```
+
+Read the [library's documentation](https://github.com/decentraland/dcl-sprites) for further instructions on how to use it.
+
 ## Access data accross objects
 
 When your scene reaches a certain level of complexity, it's convenient to break the code out into several separate objects instead of having all of the logic inside the [`scriptableScene` class]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}).
