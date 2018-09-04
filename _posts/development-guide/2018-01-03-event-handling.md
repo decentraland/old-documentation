@@ -284,3 +284,79 @@ export default class ConeHead extends ScriptableScene {
 {% endraw %}
 
 The scene above uses a `subscribeTo` function to initiate a listener to track the user's rotation. When the user looks in a different direction, the scene stores the current angle in the state variable `rotation`. This example adds another 90 degrees to the X axis of this angle just to make the output more fun to play with. This angle is used to orient a cone that faces and mimics the user.
+
+## Create custom events
+
+For scenes that include complex logic like games, it makes sense to create custom events. For example, in a game you might define a custom event called _loose_ and send it whenever a player looses, you can then subscribe different functions to whenever this event occurs.
+
+To enable custom events, you must first create a custom event subscriber and import it into your scene, as described below.
+
+#### Create an event manager
+
+To keep your scene's code cleaner, place the event manager in its own file, we recommend `ts\EventManager.ts`.
+
+{% raw %}
+
+```tsx
+import { EventSubscriber } from "metaverse-api"
+
+export namespace EventManager {
+  let eventSubscriber: EventSubscriber
+
+  export function init(_eventSubscriber: EventSubscriber) {
+    eventSubscriber = _eventSubscriber
+  }
+
+  export function emit(eventType: string, ...params: any[]) {
+    eventSubscriber.emit(eventType, ...params)
+  }
+}
+```
+
+{% endraw %}
+
+The event manager has two simple functions, one to subscribe to initiate the subscriber and the other to emit instances of an event.
+
+#### Subscribe to events
+
+In your scene, you need to initiate the event subscriber before you can use it. We recommend doing that in the `sceneDidMount()` function so that it starts working as soon as the scene is loaded. Don't forget to also import the event subscriber you defined in `EventManager.ts` to the `scene.tsx` file.
+
+{% raw %}
+
+```tsx
+ sceneDidMount() {
+    EventManager.init(this.eventSubscriber);
+    ...
+  }
+```
+
+{% endraw %}
+
+The example below initiates the event subscriber and then subscribes to the custom event _loose_, that is emited when the user looses a game. Whenever the _loose_ event occurs, the function `userLost()` is called.
+
+{% raw %}
+
+```tsx
+ sceneDidMount() {
+    EventManager.init(this.eventSubscriber);
+    this.eventSubscriber.on('loose', e => this.userLost());
+  }
+```
+
+{% endraw %}
+
+#### Emit custom events
+
+You can trigger the emission of custom events at any part of your scen's code. To do so, reach out to the `emit()` function that the event subscriber exposes. If other parts of your scene's code are subscribed to the event you're emitting, they will execute the corresponding code when the event is emitted.
+
+```tsx
+ harmUser(){
+    this.setState({health: this.state.health -= 1})
+    if (this.state.health <= 0)
+    {
+      EventManager.emit("loose")
+    }
+  }
+```
+
+{% endraw %}
