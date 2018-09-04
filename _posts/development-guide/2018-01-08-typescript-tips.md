@@ -305,6 +305,8 @@ This example iterates over a loop until a condition is met, in which case `clear
 
 #### Delay an execution
 
+###### setTimeout()
+
 The `setTimeout()` function delays the execution of a statement or function.
 
 {% raw %}
@@ -318,6 +320,40 @@ setTimeout(f => {
 {% endraw %}
 
 The setTimeout function requires that you pass a function or statement to execute, followed by the ammount of milliseconds to delay that execution.
+
+###### await sleep()
+
+A more elegant way to delay execution is by creating a helper `sleep` function and calling it. The benefit is that if you need to pause execution several times in a process, you don't need to nest multiple statements one inside the other.
+
+Add the following function to your _scene.tsx_ file:
+
+{% raw %}
+
+```tsx
+export function sleep(ms: number = 0) {
+  return new Promise(r => setTimeout(r, ms))
+}
+```
+
+{% endraw %}
+
+Then you can call the `sleep()` function from any asyncronous function in your scene as shown below.
+
+{% raw %}
+
+```tsx
+  async updateAnimation(){
+    this.setState({playAnimation1:true, playAnimation2:false})
+    await sleep(5000)
+    this.setState({playAnimation1:false, playAnimation2:true})
+    await sleep(5000)
+    this.updateAnimation()
+  }
+```
+
+{% endraw %}
+
+> Note: for the code above to work, your TypeScript file must include or import a definition for the `sleep()` function.
 
 #### Freeze till complete
 
