@@ -2,16 +2,18 @@
 date: 2018-01-10
 title: Remote scene considerations
 description: Tips and tricks for remote scenes with multiple users
+redirect_from:
+  - /documentation/remote-scene-considerations/
 categories:
-  - documentation
+  - development-guide
 type: Document
-set: sdk-reference
+set: development-guide
 set_order: 10
 ---
 
 ## Scene state in remote scenes
 
-Remote scenes store their state in a remote server instead of in each user's local client. This means that all users of the scene share the same state, which allows them to see the same content in the scene and to interact in more meaningful ways. See [scene state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}) for more about the scene state.
+Remote scenes store their state in a remote server instead of in each user's local client. This means that all users of the scene share the same state, which allows them to see the same content in the scene and to interact in more meaningful ways. See [scene state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}) for more about the scene state.
 
 In a remote scene, the state is handled in the _State.ts_ file. This file also exports two functions that must be used to handle the state: `getState()` and `setState()`.
 
@@ -104,4 +106,4 @@ You can extract a user's id from an event when listening to events through `subs
 
 {% endraw %}
 
-User id's are assigned to users when they enter Decenrtaland, but they don't persist from session to session. If you care about keeping track of long term user identity, you can identify users through their public wallet address. You can obtain a user's address through the `getPublicKey()` method. See [Blockchain operations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-07-blockchain-operations %}) for details about what you need to import in order to run this method.
+User id's are assigned to users when they enter Decenrtaland, but they don't persist from session to session. If you care about keeping track of long term user identity, you can identify users through their public wallet address. You can obtain a user's address through the `getPublicKey()` method. See [Blockchain operations]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-07-scene-blockchain-operations %}) for details about what you need to import in order to run this method.

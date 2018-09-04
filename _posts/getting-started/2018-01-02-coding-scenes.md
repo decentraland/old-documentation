@@ -4,6 +4,10 @@ title: Coding scenes
 description: This set will help you understand how things work in the client and SDK of decentraland.
 redirect_from:
   - /documentation/introduction/
+  - /docs/sdk-overview/
+  - /docs/command-line-interface/
+  - /docs/sdk-quick-start-guide/
+  - /sdk-reference/introduction/
 categories:
   - getting-started
 type: Document
@@ -11,7 +15,34 @@ set: getting-started
 set_order: 4
 ---
 
-The content you deploy to your LAND is called a **scene**. A scene is an interactive program that renders content, this could be a game, an interactive experience, an art gallery, whatever you want!
+## The development tools
+
+At a very high level, the **Decentraland Software Development Kit** (SDK) allows you to do the following:
+
+- Generate a default _project_ containing a Decentraland scene, including all the assets needed to render and run your content.
+- Build, test, and preview the content of your scene locally in your web browser - completely offline, and without having to make any Ethereum transactions or own LAND.
+- Write TypeScript code using the Decentraland API to add interactive and dynamic behavior to the scene.
+- Upload the content of your scene to [IPFS](https://ipfs.io).
+- Link your LAND tokens to the IPFS URL of the content you have uploaded.
+
+It includes the following components:
+
+- **The Decentraland CLI** (Command Line Interface): Use it to generate new Decentraland scenes locally on your own machine, preview them and upload them to IPFS.
+- **The Decentraland API** (formerly known as _Metaverse API_ and still commonly referred to as _the API_): A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between users or other applications.
+
+- **Scene exapmples**: Take inspiration and coding best practices from the [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
+
+## Requirements
+
+To develop a scene locally, you don't need to own LAND tokens. Developing and testing a scene can be done completely offline, without the need to deploy a scene to the Ethereum network (the system Decentraland uses to establish ownership of LAND), or IPFS (the P2P network we use for distribution and delivery of content).
+
+This SDK is intended to be used by users that are comfortable working with code and a terminal. You must have the following:
+
+- **npm** (Node package manager): Used in the terminal to handle scene dependencies. [Download link](https://www.npmjs.com/)
+
+- **A source code editor**: Helps you create scenes a lot faster and with less errors, as it marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. Click on an object in the code to see the full definition of its class and what attributes it supports. We recommend [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/).
+
+- **The Decentraland CLI**: Used to build, preview and upload scenes. See [Installation guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %})
 
 ## Supported languages and syntax
 
@@ -22,11 +53,11 @@ to create our scenes.
 
 TypeScript is a superset of JavaScript, so if you're familiar with JavaScript you'll find it's almost the same, but TypeScript allows you to employ object-oriented programming and type declarations. Features like autocomplete and type-checking speed up development times and allow for the creation of a solid codebase. These features are all key components to a positive developer experience.
 
-In a Typescript scene, you handle the entities that are rendered in the scene as embedded XML assets. This works a lot like the [React](https://reactjs.org/docs/hello-world.html) framework.
+In a Typescript scene, you handle the entities that are rendered in the scene as embedded XML assets. This works a lot like the [React](https://reactjs.org/docs/hello-world.html) framework. This is why the scene's main file, _scene.tsx_ is a _.tsx_ rather than a _.ts_.
 
-> **Note:** Even though dynamic scenes are written in a way that intentionally looks a lot like React, **our SDK does not use React**.
+> **Note:** Even though scenes are written in a way that intentionally looks a lot like React, **our SDK does not use React**.
 
-See [TypeScript tips]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-08-tsx-coding-guide %}) for best practices and recommendations for writing Decentraland scenes using TypeScript.
+See [TypeScript tips]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %}) for best practices and recommendations for writing Decentraland scenes using TypeScript.
 
 #### XML
 
@@ -34,15 +65,19 @@ For scenes that only render montionless content and that won't be interactive, y
 
 When building your scene with the CLI, select the option _Static_.
 
-We encourage developers to instead build their scenes using TypeScript. TypeScitp scenes use embedded XML tags to handle the rendered entities.
+We encourage developers to instead build their scenes using TypeScript. TypeScipt scenes include embedded XML tags to handle the rendered entities. If you ignore all of the Typescript code in a _Basic_ scene and only edit what's inside the `render()` function, you're dealing with what's essentially XML but with slightly different syntax.
 
 #### Other languages
 
-You can use another tool or language instead of TypeScript and compile it to JavaScript, as long as your compiled scripts are contained within a single JavaScript file named _scene.js_. All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
+You can use another tool or language instead of TypeScript and compile it into JavaScript, as long as your compiled scripts are contained within a single JavaScript file named _scene.js_. All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.
 
-## Code editors
+## Scenes
 
-To edit scenes, we recommend using a source code editor like [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/). An editor like this helps you create scenes a lot faster and with less errors, as it marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. With Visual Studio Code you can even click on an object to see the full definition of its class.
+The content you deploy to your LAND is called a **scene**. A scene is an interactive program that renders content, this could be a game, an interactive experience, an art gallery, whatever you want!
+
+Scenes are deployed to **parcels**, the 10 meter by 10 meter pieces of virtual LAND, the scarce and non-fungible asset maintained in an Ethereum smart contract. These parcels of virtual space are where you will upload and interact with the content you create using the SDK.
+
+We are developing the web client that will allow users to explore Decentraland. All of the content you upload to your LAND will be rendered and viewable through this client. We have included a preview tool in the SDK so that you can preview, test, and interact with your content in the meantime.
 
 ## Entities and Components
 
@@ -50,15 +85,21 @@ Entities are the basic unit for building everything in Decentraland scenes, thin
 
 Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an _entity_, and each entity can include _components_ that shape its characteristics and functionality.
 
-For example, you can include the `color` component on an entity to set its color, or include the `ignoreCollision` component to change how it responds to collisions with other entities.
+Entities are all of the assets that you include in your scenes that users will be able to render, view, and interact with from their web browser. These include 3D objects and audio files.
 
-An entity can have other entities as children, these inherit the components from the parent. If a parent entity is positioned, scaled or rotated, its children are also affected. Thanks to this, we can arrange entities into trees.
+Components define the traits of an entity. For example, you can include the `color` component on an entity to set its color, or include the `lookAt` component to rotate it to face a certain point in space.
 
-See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}) for a reference of all the available constructors for predefined entities.
+> Note: The term _component_ as used in reference to this model differs greatly from how it's used in the _React_ ecosystem, where everything is considered a _component_. Throughout our documentation, we will use the term _component_ as used by the Entity-Component model.
+
+An entity can have other entities as children, these inherit the components from the parent. If a parent entity is positioned, scaled or rotated, its children are also affected. Invisible entities can also be used as wrappers that only exist to handle multiple entities as a group. Thanks to this, we can arrange entities into trees.
+
+For additional terms, definitions, and explanations, please refer to our [complete Glossary]({{ site.baseurl }}{% post_url /general/2018-01-03-glossary %}).
+
+See [Entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a reference of all the available constructors for predefined entities and all of the supported components of each.
 
 ## The Render function
 
-All [scene objects]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) have a 'render()` method that outputs what users of your scene will see on their browser. This function must always output a hierarchical tree of entities that starts at the root level with a _scene_ entity.
+All [scene objects]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) have a 'render()` method that outputs what users of your scene will see on their browser. This function must always output a hierarchical tree of entities that starts at the root level with a _scene_ entity.
 
 {% raw %}
 
@@ -89,9 +130,11 @@ All [scene objects]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scri
 
 {% endraw %}
 
-If you have game development experience with other tools, you might expect to find some kind of render loop that periodically renders elements in the screen. Decentraland doesn't work like that. We built the API based on _events_, so the `render()` function is designed to update the scene in reaction to events rather than by querying the world repeatedly.
+If you have game development experience with other tools, you might expect scenes to have some kind of render loop that periodically renders elements in the screen. Decentraland doesn't work like that. We built the API based on _events_, so the `render()` function is designed to update the scene in reaction to events rather than by querying the world repeatedly.
 
-Scenes have a [state]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-04-scene-state %}), which is a collection of variables that change over time and represent the current disposition of the scene. The state changes by the occurance of [events]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
+Scenes have a [state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}), which is a collection of variables that change over time and represent the current disposition of the scene. The state changes by the occurance of [events]({{ site.baseurl }}{% post_url /development-guide/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
+
+This is inspired by the [React](https://reactjs.org/) framework, most of what you can read about React applies to decentraland scenes as well.
 
 ## Scene Decoupling
 
@@ -124,8 +167,8 @@ While writing your scene's code, you have no need to actually load the `a.gltf` 
 
 Once the `render()` function sends this scene to the engine, the engine takes care of the positions, assets and geometries.
 
-To optimize things, we only send the differences in the scene to the actual client. So if the scene has a shoal of
-fish and only one of them moves, the SDK will send only that delta to the client, the fish that moved. This makes things faster for the client and is completely transparent to the developer of the scene.
+To optimize performance, we only send the changes in the scene to the actual client, not the entire contents of it. So if the scene has a shoal of
+fish and only one of them moves, the API will send only that delta to the client, the one fish that moved. This makes things faster for the client and is completely transparent to the developer of the scene.
 
 ## Taking Inspiration from React
 
@@ -138,12 +181,14 @@ To make a long story short, we were considering two approaches for doing this:
 
 #### The _jQuery_ way
 
-If we had chosen the jQuery way (which we didn't), the code we would have needed to create our example scene would look like this:
+If we had chosen the jQuery way (which we didn't), the code needed to create our example scene would look like this:
 
 {% raw %}
 
 ```ts
-// WARNING: This code sample is only a hypothetical example, it's not supported by our tools
+// WARNING: This code sample is only hypothetical,
+// This is not valid syntax
+// and is not supported by our tools
 
 let scene = metaverse.createScene()
 let objModel = metaverse.createObjModel()
@@ -165,21 +210,20 @@ side effects of how the code works to reach the desired state.
 
 #### The _React_ way
 
-We chose to do things the React way, so our code for creating the same scene as above looks like this:
+We chose to do things the [React](https://reactjs.org/) way, so our code for creating the same scene as above looks like this:
 
 {% raw %}
 
 ```tsx
 // IMPORTANT: This code is only an example, it does not exist nor work
-
-const scene = (
-  <scene>
-    <obj-model src="models/a.gltf" />
-    <sphere position={{ x: 10, y: 10, z: 10 }} />
-  </scene>
-)
-
-EntityController.render(scene)
+ async render() {
+   return (
+    <scene>
+      <obj-model src="models/a.gltf" />
+      <sphere position={{ x: 10, y: 10, z: 10 }} />
+    </scene>
+  )
+}
 ```
 
 {% endraw %}

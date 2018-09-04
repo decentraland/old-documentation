@@ -2,12 +2,13 @@
 date: 2018-01-01
 title: Overview
 redirect_from:
+  - /decentraland/marketplace/
   - /docs/land-manager
 description: Meet the LAND marketplace
 categories:
-  - Decentraland
+  - blockchain-interactions
 type: Document
-set: marketplace
+set: blockchain-interactions
 set_order: 1
 ---
 

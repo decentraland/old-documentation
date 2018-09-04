@@ -9,7 +9,8 @@ resources:
   - name: Marketplace
     link: https://market.decentraland.today
 type: Video
-set: marketplace
+set: general
 set_order: 1
 ---
+
 Video tutorial introducing the Decentraland Marketplace, with step-by-step instructions on how to get started buying, selling, and managing your LAND.

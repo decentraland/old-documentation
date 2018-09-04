@@ -1,11 +1,13 @@
 ---
 date: 2018-06-12
-title: Scene content guide
+title: Scene content
 description: Learn how to import 3D models to use in a scene
+redirect_from:
+  - /sdk-reference/scene-content-guide/
 categories:
-  - sdk-reference
+  - development-guide
 type: Document
-set: sdk-reference
+set: development-guide
 set_order: 2
 tag: introduction
 ---
@@ -34,7 +36,7 @@ Any of these can be added to your scene, they can all include basic components l
 <box position={vector} color="#ff00aa" scale={2} />
 ```
 
-See [Entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}) for more details on these types of entities.
+See [Entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for more details on these types of entities.
 
 > Tip: When editing the code via a source code editor (like Visual Studio Code), you can see the list of components supported by a type of entity. Typically, this is done by placing the cursor in the entity and typing _Ctrl + Space bar_.
 
@@ -103,7 +105,7 @@ Materials are also implicitly imported into a scene when you import a glTF model
 
 Not all shaders are supported by the Decentraland engine. For example, all blender render materials should be supported, in Cycles render only PBR (phisically based rendering) materials are supported.
 
-See [entity interfaces]({{ site.baseurl }}{% post_url /sdk-reference/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material. Keep in mind that all materials and textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-06-scene-limitations %}).
+See [entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material. Keep in mind that all materials and textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
 #### Texture mapping
 

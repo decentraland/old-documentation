@@ -2,14 +2,16 @@
 date: 2018-01-05
 title: State management
 description: Learn how the scene's state variables are updated and retrieved.
+redirect_from:
+  - /sdk-reference/scene-state/
 categories:
-  - sdk-reference
+  - development-guide
 type: Document
-set: sdk-reference
+set: development-guide
 set_order: 4
 ---
 
-The scene state is made up of a series of variables that change over time. The state changes by the occurance of [events]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
+The scene state is made up of a series of variables that change over time. The state changes by the occurance of [events]({{ site.baseurl }}{% post_url /development-guide/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
 
 ![](/images/media/events_state_diagram.jpeg)
 
@@ -23,7 +25,7 @@ state = {
 }
 ```
 
-The state should contain **only** data, and no logic or methods. We don't recommend assigning instances of objects that have methods of their own to variables in the state. All of the scene's logic should be carried out in your custom class that extends the [scriptable scene]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) class.
+The state should contain **only** data, and no logic or methods. We don't recommend assigning instances of objects that have methods of their own to variables in the state. All of the scene's logic should be carried out in your custom class that extends the [scriptable scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) class.
 
 Each state variable must be given an intial value for when the scene is first rendered.
 
@@ -149,7 +151,7 @@ When dealing with arrays in the scene state, you can't update a single element i
 
 Each time the scene's state is updated, the `render()` function is called to render the scene using the new state.
 
-> Note: To prevent the scene from being rendered every time, you can use the [`shouldSceneUpdate()` function]({{ site.baseurl }}{% post_url /sdk-reference/2018-01-05-scriptable-scene %}) so that it only runs the `Render()` function conditionally based on some rule.
+> Note: To prevent the scene from being rendered every time, you can use the [`shouldSceneUpdate()` function]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) so that it only runs the `Render()` function conditionally based on some rule.
 
 #### In a local scene
 

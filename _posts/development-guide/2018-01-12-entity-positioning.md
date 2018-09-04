@@ -2,10 +2,12 @@
 date: 2018-01-12
 title: Entity positioning
 description: How to set the position, rotation and scale of an entity in a scene
+redirect_from:
+  - /documentation/entity-positioning/
 categories:
-  - documentation
+  - development-guide
 type: Document
-set: sdk-reference
+set: development-guide
 set_order: 12
 ---
 
