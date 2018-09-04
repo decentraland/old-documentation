@@ -154,6 +154,8 @@ async render() {
 
 To create an animated sprite, use texture mapping to change the selected regions of a same texture that holds all the frames.
 
+To work with animated sprites, you can install and use the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) node package. Read documentation on how to use it in the provided link.
+
 #### Transparent materials
 
 To make a material transparent, you must add an alpha channel to the image you use for the texture. The _material_ entity ignores the alpha channel of the texture image by default, so you must either:
