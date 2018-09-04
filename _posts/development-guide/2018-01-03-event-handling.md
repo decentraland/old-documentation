@@ -349,6 +349,8 @@ The example below initiates the event subscriber and then subscribes to the cust
 
 You can trigger the emission of custom events at any part of your scen's code. To do so, reach out to the `emit()` function that the event subscriber exposes. If other parts of your scene's code are subscribed to the event you're emitting, they will execute the corresponding code when the event is emitted.
 
+{% raw %}
+
 ```tsx
  harmUser(){
     this.setState({health: this.state.health -= 1})
