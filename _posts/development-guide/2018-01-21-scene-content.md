@@ -101,6 +101,8 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 
 In the example above, the image for the material is located in a `materials` folder, which is located at root level of the scene project folder.
 
+When an entity uses a material, you must refer to it prepending a `#` to the material's id. So if the material's id is `reusable_material`, you must set the `material` on an entity to `#reusable_material`.
+
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, you don't need to declare a `<material />` entity.
 
 Not all shaders are supported by the Decentraland engine. For example, all blender render materials should be supported, in Cycles render only PBR (phisically based rendering) materials are supported.
