@@ -11,7 +11,7 @@ set: development-guide
 set_order: 4
 ---
 
-The scene state is made up of a series of variables that change over time. The state changes by the occurance of [events]({{ site.baseurl }}{% post_url /development-guide/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
+The scene state is made up of a series of variables that change over time. The state changes by the occurrence of [events]({{ site.baseurl }}{% post_url /development-guide/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
 
 ![](/images/media/events_state_diagram.jpeg)
 
@@ -27,7 +27,7 @@ state = {
 
 The state should contain **only** data, and no logic or methods. We don't recommend assigning instances of objects that have methods of their own to variables in the state. All of the scene's logic should be carried out in your custom class that extends the [scriptable scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) class.
 
-Each state variable must be given an intial value for when the scene is first rendered.
+Each state variable must be given an initial value for when the scene is first rendered.
 
 The variables you choose to make up your scene's state should be the minimal possible set that represents the scene, you shouldn't add redundant information. To determine if you should include a piece of information as part of the state, ask yourself:
 
@@ -59,7 +59,7 @@ Local scenes run entirely in the user's local client. When the value of a variab
 
 For example, if a user opens a door, other users won't see this door open, because users can only affect their own local representation of the scene state.
 
-**Remote scenes** store the scene state in a remote server. The local client retrieves information from this server to render the scene lcoally. When the value of a variable in the scene state is changed, this change is pushed to the remote server to update its representation of the scene state. All users of the scene will then render their scenes locally based on the scene state that's stored in the remote server, so all users will see the change.
+**Remote scenes** store the scene state in a remote server. The local client retrieves information from this server to render the scene locally. When the value of a variable in the scene state is changed, this change is pushed to the remote server to update its representation of the scene state. All users of the scene will then render their scenes locally based on the scene state that's stored in the remote server, so all users will see the change.
 
 Referring back to the previous example: in a remote scene, if a user opens a door, all other users should see this door open as well.
 
@@ -67,7 +67,7 @@ Referring back to the previous example: in a remote scene, if a user opens a doo
 
 You can define the type for the state object by declaring a custom interface. Doing this is optional but we recommend it, especially for complex scenes, as it helps validate inputs and makes debugging easier.
 
-The example bleow defines a custom interface for the scene state and passes it to the scriptable scene object.
+The example below defines a custom interface for the scene state and passes it to the scriptable scene object.
 
 {% raw %}
 
@@ -147,7 +147,7 @@ You can set the value of a state variable by using `setState()`.
 
 `setState()` only affects the variables that are explicitly called out by it. If there are other variables in the scene state that aren't named, these are left untouched.
 
-When dealing with arrays in the scene state, you can't update a single element in the array at a time. You must set a new value for the variable consiting of an entire new array, including any elements that haven't changed.
+When dealing with arrays in the scene state, you can't update a single element in the array at a time. You must set a new value for the variable consisting of an entire new array, including any elements that haven't changed.
 
 Each time the scene's state is updated, the `render()` function is called to render the scene using the new state.
 
@@ -189,7 +189,7 @@ async buttonPressed(){
 
 ## Force update
 
-If you always change the scene state through `setState()`, the rendering of your scene should always be in sync with the scene state. However, for exceptional cases you might need to refresh the rendering of the scene manually. To do this, call the `forceUdate()` method.
+If you always change the scene state through `setState()`, the rendering of your scene should always be in sync with the scene state. However, for exceptional cases you might need to refresh the rendering of the scene manually. To do this, call the `forceUpdate()` method.
 
 ```
 this.forceUpdate()
@@ -244,7 +244,7 @@ async buttonPressed() {
 
 ## Reference the state from a child object
 
-Unlinke React, where all components can have their own state, only your custom scene class is allowed to have a state. In react terms, all child components of your scene are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), this means that they can have properties but no state of their own, and they are controlled by their parent component.
+Unlike React, where all components can have their own state, only your custom scene class is allowed to have a state. In react terms, all child components of your scene are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), this means that they can have properties but no state of their own, and they are controlled by their parent component.
 
 For example, you could declare a type of entity called `elevator`, and embed a series of child entities in it and define its own functions to open and close the doors and handle how the buttons are rendered. If you're planning to have many elevators in your scene, that would make the code for your scene a lot more efficient and cleaner. The downside is that any functions in this child entity would no longer have easy access to the scene's state. From the `elevator` entity, it would not be valid to use the expression `this.state`, as `this` no longer refers to the instance of your custom scene class, it refers to an instance of the `elevator` entity. In order to access the information stored in the scene's state you can:
 

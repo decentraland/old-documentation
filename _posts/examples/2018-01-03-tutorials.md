@@ -47,4 +47,4 @@ This blogpost walks you through importing the logic of an existing 2D game built
 
 [Weather from an API](https://blog.decentraland.org/developer-tutorial-simulate-weather-in-decentraland-using-real-world-data-eb1162716d5b)
 
-This blogpost explains how to call a weatheer API from your scene to display different weather conditions based on that.
+This blogpost explains how to call a weather API from your scene to display different weather conditions based on that.

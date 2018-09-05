@@ -201,13 +201,13 @@ For most 3D math operations, we recommend importing [Babylonjs](https://www.baby
 
 Before a library can be used by your scene, it must be installed with _npm_ in the scene's folder. This is important because when the scene is deployed to Decentraland, all of its dependencies must be uploaded as well.
 
-When importing from large libraries like Babylonjs, we recommend only ipmporting the elements that you need for your scene, instead of importing the entire library.
+When importing from large libraries like Babylonjs, we recommend only importing the elements that you need for your scene, instead of importing the entire library.
 
 ## Vector math operations
 
 Vectors in decentraland are of type _Vector3Component_, this type is very lightweight and doesn't include any methods.
 
-To avoid doing vector math manually, we recommend importing the _Vector3_ type from Babylonjs. This type comes with a lot of handy operations like scaling, substracting and more.
+To avoid doing vector math manually, we recommend importing the _Vector3_ type from Babylonjs. This type comes with a lot of handy operations like scaling, subtracting and more.
 
 To use this, you must first install babylonjs in the project folder. Run the following command from a terminal in the scene's main folder.
 
@@ -265,13 +265,13 @@ import { createSpriteSheet } from "dcl-sprites"
 
 Read the [library's documentation](https://github.com/decentraland/dcl-sprites) for further instructions on how to use it.
 
-## Access data accross objects
+## Access data across objects
 
 When your scene reaches a certain level of complexity, it's convenient to break the code out into several separate objects instead of having all of the logic inside the [`scriptableScene` class]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}).
 
 The downside is that information becomes harder to pass on. If all of your logic occurs inside the `scriptableScene` class, you can keep track of all information using the [scene state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}) and scene properties. But if that's not the case, then you must keep in mind that you can't reference the scene state or scene properties from outside the `scriptableScene` class.
 
-You can eitehr:
+You can either:
 
 - Pass information from the main `scriptableScene` class as properties of child objects.
 - Use a library like [Redux](https://redux.js.org/) to create a univesal data store that can be referenced from anywhere.
@@ -339,7 +339,7 @@ setTimeout(f => {
 
 {% endraw %}
 
-The setTimeout function requires that you pass a function or statement to execute, followed by the ammount of milliseconds to delay that execution.
+The setTimeout function requires that you pass a function or statement to execute, followed by the amount of milliseconds to delay that execution.
 
 ###### await sleep()
 
@@ -659,7 +659,7 @@ async render() {
 
 {% endraw %}
 
-In this second example, the _y_ position of the box is determined based on the value of `liftBox` and the timing of its transition is based on the value of `bounce`. Note that both of these conditional expressions were added in parts of the code that were already being processed as TypeScript, so no aditional `{ }` were needed.
+In this second example, the _y_ position of the box is determined based on the value of `liftBox` and the timing of its transition is based on the value of `bounce`. Note that both of these conditional expressions were added in parts of the code that were already being processed as TypeScript, so no additional `{ }` were needed.
 
 > Note: In these examples we're able to add conditional logic through the use of an `? / :` expression. You can't use an `if` and `else` in this context, because those are statements, and statements aren't supported as part of the `return` value.
 
@@ -673,7 +673,7 @@ For scenes where the number of entities isn't fixed, use an array to represent t
 async render() {
   return (
     <scene>
-      { this.state.secuence.map(num =>
+      { this.state.sequence.map(num =>
         <box
           position={{ x: num * 2, y: 1, z: 1 }}
           key={"box" + num.toString()}
@@ -686,7 +686,7 @@ async render() {
 
 {% endraw %}
 
-This function uses a `map()` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
+This function uses a `map()` operation to create a box entity for each element in the `sequence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `sequence` variable in the scene state.
 
 A few best practices when rendering entities from a list:
 
@@ -711,7 +711,7 @@ export type boxes = {
 
 {% endraw %}
 
-The following code example renders a collection of boxes from a _secuence_ variable in the scene state.
+The following code example renders a collection of boxes from a _sequence_ variable in the scene state.
 
 {% raw %}
 
@@ -726,13 +726,13 @@ The following code example renders a collection of boxes from a _secuence_ varia
 
   renderBoxes(){
     let boxModels: any[] = []
-    for (var box in this.state.secuence) {
+    for (var box in this.state.sequence) {
       boxModels.push(
         <box
           key={"box"}
-          position={this.state.secuence[box][0]}
-          rotation={this.state.secuence[box][1]}
-          visible={this.state.secuence[box][2]}
+          position={this.state.sequence[box][0]}
+          rotation={this.state.sequence[box][1]}
+          visible={this.state.sequence[box][2]}
          />
       )
       return boxModels
@@ -742,13 +742,13 @@ The following code example renders a collection of boxes from a _secuence_ varia
 
 {% endraw %}
 
-While iterating through the attributes in the object, `box` refers to the attribute key, and you can use it to access the values under that key via `this.state.secuence[box]`.
+While iterating through the attributes in the object, `box` refers to the attribute key, and you can use it to access the values under that key via `this.state.sequence[box]`.
 
 #### Keep the render function readable
 
 The output of the render() function can include calls to other functions. Since render() is called each time that the scene state is updated, so will all the functions that are called by render().
 
-Doing this keeps the code in render() more readable. In simple scenarios it's mostly reocomendable to define all the entities of the scene within the `render()` function, but when dealing with a varying number of entities or a large number that can be treated as an array, it's often useful to handle this behavior in a function outside render().
+Doing this keeps the code in render() more readable. In simple scenarios it's mostly recommendable to define all the entities of the scene within the `render()` function, but when dealing with a varying number of entities or a large number that can be treated as an array, it's often useful to handle this behavior in a function outside render().
 
 {% raw %}
 
@@ -775,7 +775,7 @@ The functions that are called as part of the return satement must, of course, re
 
 ```tsx
 renderObstacles() {
-  return this.state.secuence.map(num =>
+  return this.state.sequence.map(num =>
     <box
       position={{ x: num * 2, y: 1, z: 1 }}
     />

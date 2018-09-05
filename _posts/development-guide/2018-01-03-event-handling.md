@@ -27,7 +27,7 @@ async sceneDidMount() {
 
 {% endraw %}
 
-To debug a scene, you can use `console.log()` to keep track of the occurance of events or to verify that the event's parameters are what you expected.
+To debug a scene, you can use `console.log()` to keep track of the occurrence of events or to verify that the event's parameters are what you expected.
 
 ## Clicking
 
@@ -165,7 +165,7 @@ The scene above uses an `eventSubscriber` to initiate a listener that checks for
 
 ## Pointer down and pointer up
 
-The pointer down and pointer up events are fired whenever the user presses or releases an input controler. This could be a mouse, a touch screen, a VR controller or another kind of controller. It doesn't matter where the user's avatar is pointing at, the event is triggered every time.
+The pointer down and pointer up events are fired whenever the user presses or releases an input controller. This could be a mouse, a touch screen, a VR controller or another kind of controller. It doesn't matter where the user's avatar is pointing at, the event is triggered every time.
 
 {% raw %}
 
@@ -332,7 +332,7 @@ In your scene, you need to initiate the event subscriber before you can use it. 
 
 {% endraw %}
 
-The example below initiates the event subscriber and then subscribes to the custom event _loose_, that is emited when the user looses a game. Whenever the _loose_ event occurs, the function `userLost()` is called.
+The example below initiates the event subscriber and then subscribes to the custom event _loose_, that is emitted when the user looses a game. Whenever the _loose_ event occurs, the function `userLost()` is called.
 
 {% raw %}
 

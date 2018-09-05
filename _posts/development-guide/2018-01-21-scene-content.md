@@ -105,7 +105,7 @@ When an entity uses a material, you must refer to it prepending a `#` to the mat
 
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, you don't need to declare a `<material />` entity.
 
-Not all shaders are supported by the Decentraland engine. For example, all blender render materials should be supported, in Cycles render only PBR (phisically based rendering) materials are supported.
+Not all shaders are supported by the Decentraland engine. For example, all blender render materials should be supported, in Cycles render only PBR (physically based rendering) materials are supported.
 
 See [entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material. Keep in mind that all materials and textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
@@ -181,7 +181,7 @@ To make a material transparent, you must add an alpha channel to the image you u
 
 #### Basic materials
 
-Instead of the _material_ entity, you can define a material through the _basic-material_ entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistenlty bright, it can also be used to give your scene a more minimalistic look.
+Instead of the _material_ entity, you can define a material through the _basic-material_ entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistently bright, it can also be used to give your scene a more minimalist look.
 
 {% raw %}
 
@@ -269,9 +269,9 @@ The `weight` property allows a single model to carry out multiple animations at 
 
 The `weight` value of all active animations should add up to 1 at all times. If it adds up to less than 1, the weighted average will be referencing the default position of the armature for the remaining part of the calculation.
 
-For example, in the code example above, if only _shark_swim_ is active with a `weight` of 0.2, then the swiming movements are quite subtle, only 20% of what the animation says it should move. The other 80% of what's averaged represents the default position of the armature.
+For example, in the code example above, if only _shark_swim_ is active with a `weight` of 0.2, then the swimming movements are quite subtle, only 20% of what the animation says it should move. The other 80% of what's averaged represents the default position of the armature.
 
-The `weight` property can be used in interesting ways, for example the `weight` property of _shark_swim_ could be set in proportion to how fast the shark is swimming, so you don't need to create multiple animations for fast and slow swimming. You could also change the `weight` value gradually when starting and stoping the animation to give it a more natural transition and avoid jumps from one pose to another.
+The `weight` property can be used in interesting ways, for example the `weight` property of _shark_swim_ could be set in proportion to how fast the shark is swimming, so you don't need to create multiple animations for fast and slow swimming. You could also change the `weight` value gradually when starting and stopping the animation to give it a more natural transition and avoid jumps from one pose to another.
 
 #### Free libraries for 3D models
 
@@ -301,7 +301,7 @@ You can add sound to your scene by including a sound component in any entity.
 <sphere
   position={{ x: 5, y: 3, z: 5 }}
   sound={{
-    src: "sounds/carnivalrides.ogg",
+    src: "sounds/carnivalRides.ogg",
     loop: true,
     playing: true,
     volume: 0.5
@@ -414,7 +414,7 @@ plain text.
 </scene>
 ```
 
-The static scene above becomes the following dynamic schen when migrating it to _TSX_:
+The static scene above becomes the following dynamic scene when migrating it to _TSX_:
 
 {% raw %}
 
@@ -451,7 +451,7 @@ HTML and XHTML are case insensitive for attributes, this generates conflicts wit
 
 {% endraw %}
 
-The static scene above becomes the following dynamic schen when migrating it to TSX:
+The static scene above becomes the following dynamic scene when migrating it to TSX:
 
 {% raw %}
 

@@ -16,7 +16,7 @@ The `ScriptableScene` object is the base template for all Decentraland scenes. B
 The way that `ScriptableScene` works mimics the way in which a [React component](https://reactjs.org/docs/thinking-in-react.html) works. Like when defining a React component, the scene object has:
 
 - **State**: variables for data that is meant to change over time.
-- **Props**: porperties used to pass information on from parent to child.
+- **Props**: properties used to pass information on from parent to child.
 - **Lifecycle methods**: a series of default methods that are executed at different times relative to when the scene is mounted, updated and unmounted.
 
 ## Scene state
@@ -170,7 +170,7 @@ export default class Scene extends ScriptableScene<Props, IState> {
 
 These steps summarize when each of the methods above are called:
 
-1.  The user enters your scene, a series of processes are run in the backround by the low level API.
+1.  The user enters your scene, a series of processes are run in the background by the low level API.
 2.  After all requirements are fulfilled, `sceneDidMount()` is called.
 3.  `render()` is then called for the first time.
 4.  The user then navigates the scene, creating various events by interacting with it. If any of those events leads to a change in the scene's state, then `shouldSceneUpdate()` is called. If this function returns `true`, then:
@@ -197,7 +197,7 @@ The entry point for the WebWorker is defined in the _build.json_:
 ]
 ```
 
-> **Note:** The file _scene.tsx_ must include an `export default` statement for the class of the scene. The loader of the engine requires this statment to instantiate the scene.
+> **Note:** The file _scene.tsx_ must include an `export default` statement for the class of the scene. The loader of the engine requires this statement to instantiate the scene.
 
 ## Server side scenes
 
@@ -210,7 +210,7 @@ You can take a look at the [remote scene sample code](https://github.com/decentr
 ## Low level API
 
 The protocol and internals that the `ScriptableScene` object interfaces with in the background are explained in the [decentraland-rpc](https://github.com/decentraland/decentraland-rpc)
-respository.
+repository.
 
 It's important to understand the way `entityController` gets injected into the class.
 

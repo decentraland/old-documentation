@@ -164,7 +164,7 @@ Learn more about how the scene state works in [scene state]({{ site.baseurl }}{%
 The _scene.json_ file is a JSON formatted manifest for a scene in the world. A scene can span a single or multiple LAND parcels. The _scene.json_ manifest describes what objects exist in the scene, a list of any assets needed to render it, contact information for the parcel owner, and security settings. For more information and an example of a
 _scene.json_ file, please visit the [Decentraland specification proposal](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki).
 
-When you run the `dcl init` command, it prompts you to enter some descriptive metadata, these datais are stored in
+When you run the `dcl init` command, it prompts you to enter some descriptive metadata, these details are stored in
 the scene.json manifest file for the scene. All of this
 metadata is optional for previewing the scene locally, but part of it is needed for deploying. You can change this information manually at any time.
 
@@ -207,7 +207,7 @@ For both static and dynamic scenes, the end result is the same: a tree of entiti
   <sphere position="1 1 1"></sphere>
   <box position="3.789 2.3 4.065" scale="1 10 1"></box>
   <box position="2.212 7.141 4.089" scale="2.5 0.2 1"></box>
-  <gitf-model src="crate/crate.gitf" position="5 1 5"></box>
+  <gltf-model src="crate/crate.gltf" position="5 1 5"></box>
 </scene>
 ```
 

@@ -14,7 +14,7 @@ set_order: 4
 
 ## Introduction
 
-Entities are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All entities share the same base constructor, they all have a tag, attributes, and children entitiies.
+Entities are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All entities share the same base constructor, they all have a tag, attributes, and children entities.
 
 `<entity>` is the base element of Decentraland, all elements are built by extending the base `entity` object. An `<entity>` can contain several components, each component introduces attributes that modify the entity in different ways. For example, you can include the `color` component on an entity to set its color, or include the `withCollisions` component to make it collidable.
 
@@ -547,7 +547,7 @@ Example:
     />
 ```
 
-This example shows the definition of a new material and then a shpere entity that uses it.
+This example shows the definition of a new material and then a sphere entity that uses it.
 
 Interface reference:
 

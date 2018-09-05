@@ -33,9 +33,9 @@ The `dcl init` command creates a Decentraland **project** in your current workin
 There are four different scene templates that you can use as a starting point:
 
 - **Basic scene**: Defined in a simple TypeScript file that renders a single glTF model.
-- **Interactive scene**: Defined in a TypeScript file featuring an example with a door that can be opened. This is the best template to start learning how to use the SDK. The scene features a basic state and handles click events. The scene state is stored locally in the users's browser, so a user's actions don't affect how other users see the scene rendered.
+- **Interactive scene**: Defined in a TypeScript file featuring an example with a door that can be opened. This is the best template to start learning how to use the SDK. The scene features a basic state and handles click events. The scene state is stored locally in the user's browser, so a user's actions don't affect how other users see the scene rendered.
 - **Remote scene**: Defined in a TypeScript file featuring the same example used for the local scene, but it differs in that the scene state is stored in a remote server that it communicates with over WebSockets. Because of this, all users see the scene rendered identically. To test your scene, you can run both the server and the client locally.
-- **Static scene**: Defined in an **XML** file with a single glTF moel. You can't add any dynamic or interactive content to this type of scene, it can only display static entities in place.
+- **Static scene**: Defined in an **XML** file with a single glTF model. You can't add any dynamic or interactive content to this type of scene, it can only display static entities in place.
 
 See [scene contents]({{ site.baseurl }}{% post_url /development-guide/2018-01-11-scene-files %}) for an overview of the default files that are created in your scene.
 

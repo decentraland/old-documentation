@@ -19,7 +19,7 @@ This simple tutorial walks you through creating a simple scene where user clicks
 
 #### Add predefined animations to a 3D model
 
-This tutorial shows you how you can download a feely licenced 3D model from Google Poly, and apply free animations that you can download from Mixamo to it.
+This tutorial shows you how you can download a freely licenced 3D model from Google Poly, and apply free animations that you can download from Mixamo to it.
 
 It then also goes over how you can activate these animations in a Decentraland scene.
 
@@ -47,7 +47,7 @@ This tutorial shows how you can add a collider to a 3D model. Colliders prevent 
 
 This tutorial shows how you can build a jukebox. It includes an array of animated buttons that can be interacted with, each button triggers the playing of a different song.
 
-This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-creating-a-music-jukebox) to acompany the video.
+This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-creating-a-music-jukebox) to accompany the video.
 
 {%  include youtube.html video_id='_K8FUg0dl0c'  %}
 
@@ -62,7 +62,7 @@ This tutorial shows how you can handle some basic behaviors of character in a De
 - If you click the water bowl, it walks towards it and drinks.
 - If you step inside the bounds of the scene, the dog follows you and sits in front of you.
 
-This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-basic-ai-with-block-dog) to acompany the video.
+This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-basic-ai-with-block-dog) to accompany the video.
 
 {%  include youtube.html video_id='61ppyctd-88'  %}
 
@@ -80,7 +80,7 @@ This tutorial shows how you can build a simple yet fully functional game in Dece
 - A reset button
 - Support for multiple players
 
-This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-a-simple-tower-defense-game) to acompany the video.
+This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-a-simple-tower-defense-game) to accompany the video.
 
 {%  include youtube.html video_id='XPcMaGtX37k'  %}
 
@@ -88,8 +88,8 @@ This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydif
 
 **Stack-based finit state machine, path finding with a\*, random content generation, custom event handling**
 
-This tutorial shows how to build a more complex scene that involves predators and prays, which can interchangably be mice, cats or dogs. Each animal has a stack-based finite state machine (FSM) to manage its AI. Each animal uses the a\* path finding algorythm to find its way around obstacles and othe animals.
+This tutorial shows how to build a more complex scene that involves predators and prays, which can interchangeably be mice, cats or dogs. Each animal has a stack-based finite state machine (FSM) to manage its AI. Each animal uses the a\* path finding algorithm to find its way around obstacles and other animals.
 
-This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-dog-cat-mouse-cheese-using-a-fsm) to acompany the video.
+This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-dog-cat-mouse-cheese-using-a-fsm) to accompany the video.
 
 {%  include youtube.html video_id='Ur9YyycvhEE'  %}

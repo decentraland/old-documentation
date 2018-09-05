@@ -21,7 +21,7 @@ The Decentraland CLI is distributed via [npm](https://www.npmjs.com/get-npm?utm_
 
 ## Before you Begin
 
-Please install the following dependences before you install the CLI:
+Please install the following dependencies before you install the CLI:
 
 - [Node.js](https://github.com/decentraland/cli#nodejs-installation) (version 8)
 - [IPFS](https://dist.ipfs.io/#go-ipfs)
@@ -89,7 +89,7 @@ By updating the CLI, the new scenes you create with it will use the latest versi
 
 To update the version of the Decentraland SDK:
 
-1.  Open the file _package-lock.josn_ in the scene folder.
+1.  Open the file _package-lock.json_ in the scene folder.
 2.  Look for the version of _metaverse_api_ being used and manually change it to the latest version of the SDK.
 
 > TIp: If you're not sure what's the latest version, check the [release notes]({{ site.baseurl }}{% post_url /releases/sdk/2018-01-01-4.0.0 %}).
