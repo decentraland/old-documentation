@@ -8,7 +8,7 @@ categories:
   - development-guide
 type: Document
 set: development-guide
-set_order: 12
+set_order: 2
 ---
 
 All entities, including _primitives_, _glTF_ models and _base entities_, have a _position_, a _rotation_ and a _scale_. These can be easily configured, as shown below:
