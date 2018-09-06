@@ -2,8 +2,6 @@
 date: 2018-01-12
 title: XML static scenes
 description: How to create a static XML scene
-redirect_from:
-  - /documentation/entity-positioning/
 categories:
   - development-guide
 type: Document
