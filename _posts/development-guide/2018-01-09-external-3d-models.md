@@ -25,45 +25,56 @@ glTF models can have either a _.gltf_ or a _.glb_ extension. glTF files are huma
 
 We recommend using _.gltf_ while you're working on a scene, but then switching to _.glb_ when uploading it.
 
-> Note: When using Blender to create or edit 3D models, you need an add-on to export glTF files. For models that don't include animations we recommend installing the add-on by [Kronos group](https://github.com/KhronosGroup/glTF-Blender-Exporter). To export glTFs that include animations, you should instead install the add-on by [Kupoman](https://github.com/Kupoman/blendergltf).
+The following aspects of a 3D model can either be embedded in a _glTF_ file or referenced externally:
+
+- Textures can either be embedded or referenced from an external image file.
+- Binary data about geometry, animations, and other buffer-related aspects of the model can either be embedded or referenced from an external _.bin_ file.
+
+> Note: Animations _must_ be embedded inside the _glTF_ file to use in Decentraland.
 
 #### Export to glTF from Blender
 
-Blender doesn't support exporting to glTF by default, but you can install an addon to enable it.
+Blender doesn't support exporting to glTF by default, but you can install a plugin to enable it.
 
 1. Download the [Khronos Exporter](https://github.com/KhronosGroup/glTF-Blender-Exporter)
-2. To install the exporter, extract the _.zip_ file, and then copy the `scripts/addons/io_scene_gltf2` folder under the `scripts/addons` folder of your Blender installation.
+2. To install the exporter, extract the _.zip_ file, and then copy the `scripts/addons/io_scene_gltf2` folder under the `scripts/addons` folder in your Blender installation.
 3. Activate the addon by opening _User Preferences…_ in Blender. In the _Add-ons_ tab, enable **Import-Export: glTF 2.0 format**. Don’t forget to click _Save User Settings_.
-   > Note: If you have another glTF 2.0 exporter installed, disable it. Only one may be enabled at a time.
+   > Note: If you have another glTF 2.0 exporter installed, disable it. Only one can be enabled at a time.
+
+When exporting 3D models that include multiple animations, make sure that all animations are embedded in the model. To do this, open the _NLA editor_ and click _Stash_ to add each animation to the model.
+
+We recommend using the following export settings when exporting models with animations:
+
+![](/images/media/blender-export-settings-animations.png)
 
 #### Export to glTF from 3D Studio Max
 
-3D Studio Max doesn't support exporting to glTF by default, but you can install an addon to enable it.
+3D Studio Max doesn't support exporting to glTF by default, but you can install a plugin to enable it.
 
 1. Download the plugin from [this link](https://github.com/BabylonJS/Exporters/tree/master/3ds%20Max).
 2. Install the plugin by following [these instructions](http://doc.babylonjs.com/resources/3dsmax#how-to-install-the-3ds-max-plugin).
-3. Export glTF files by following [these instructions](http://doc.babylonjs.com/resources/3dsmax_to_gltf).
+3. Export glTF files using the plugin by following [these instructions](http://doc.babylonjs.com/resources/3dsmax_to_gltf).
 
 #### Export to glTF from Maya
 
-Maya doesn't support exporting to glTF by default, but you can install an addon to enable it.
+Maya doesn't support exporting to glTF by default, but you can install a plugin to enable it.
 
 1. Install the plugin by following [these instructions](http://doc.babylonjs.com/resources/maya).
-2. Export glTF files by following [these instructions](http://doc.babylonjs.com/resources/maya_to_gltf#pbr-materials).
+2. Export glTF files using the plugin by following [these instructions](http://doc.babylonjs.com/resources/maya_to_gltf#pbr-materials).
 
-Note: As an alternative, you can try [this other plugin](https://github.com/WonderMediaProductions/Maya2glTF) too.
+> Note: As an alternative, you can try [this other plugin](https://github.com/WonderMediaProductions/Maya2glTF) too.
 
 #### Export to glTF from Unity
 
-Unity doesn't support exporting to glTF by default, but you can install an addon to enable it.
+Unity doesn't support exporting to glTF by default, but you can install a plugin to enable it.
 
 Download the plugin from [this link](https://github.com/sketchfab/Unity-glTF-Exporter).
 
-Note: As an alternative, you can try [this other plugin](https://assetstore.unity.com/packages/tools/utilities/collada-exporter-for-unity2017-99793) too.
+> Note: As an alternative, you can try [this other plugin](https://assetstore.unity.com/packages/tools/utilities/collada-exporter-for-unity2017-99793) too.
 
 #### Preview a glTF model
 
-A quick and easy way to preview the contents of a glTF model before importing it into a scene is to use the [Babylon.js Sandbox](https://sandbox.babylonjs.com/). Just drag and drop the glTF file (and its _.bin_ if applicable) into the canvas to view the model.
+A quick and easy way to preview the contents of a glTF model before importing it into a scene is to use the [Babylon.js Sandbox](https://sandbox.babylonjs.com/). Just drag and drop the glTF file (and its _.bin_ file if applicable) into the canvas to view the model.
 
 In the sandbox you can also view the animations that are embedded in the model, select which to display by picking it out of a dropdown menu.
 
@@ -159,6 +170,7 @@ Examples of other valid sizes:
 
 - If your scene includes multiple models that use the same texture, reference the texture as an external file instead of having it embedded in the 3D model. Embedded textures get duplicated for each model and add to the scene's size.
   > Note: After referencing a file for a texture that won’t be embedded, make sure that file won’t be moved or renamed, as otherwise the reference to the file will be lost. The file must also be inside the scene folder so that it’s uploaded together with the scene.
+- Read [this article](https://www.khronos.org/blog/art-pipeline-for-gltf) for a detailed overview of a full art pipeline that uses PBR textures in glTF models.
 
 ## Colliders
 
@@ -256,7 +268,25 @@ You can use a tool like Blender to create animations for a 3D model.
 
 6.  By default all frames in between the ones you defined will transition linearly from one pose to the next. You can also configure these transitions to behave exponentially, ease-in, bounce, etc.
 
-To create several animations for the same model in Blender, you must select the Dope-Sheet view, and open the Action Editor. You can also edit the animation from the Dope-Sheet view, for example you can adjusting the distance between two key frames.
+#### Handle multiple animations with Blender
+
+To export a model with several embedded animations in Blender, you must create multiple _actions_ from the _Dope-Sheet_.
+
+![](/images/media/blender-dope-sheet.png)
+
+You can also edit the animation from the Dope-Sheet view, for example you can adjust the distance between two key frames.
+
+To preview the different actions, open the _Action Editor_ (only accessible once you're in the Dope Sheet).
+
+![](/images/media/blender-action-editor.png)
+
+In order to export multiple animations, you need to stash all the actions using the _NLA Editor_. We recommend opening the NLA editor on a separate editor tab while keeping the Dope sheet also open.
+
+![](/images/media/blender-nla-editor.png)
+
+In the NLA Editor, select each action that you want to embed in the glTF model and click _Stash_.
+
+![](/images/media/blender-nla-editor2.png)
 
 When adding the model to your Decentraland scene, you must activate animations by configuring the _gltf-model_ entity. See [Scene content guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for instructions.
 
