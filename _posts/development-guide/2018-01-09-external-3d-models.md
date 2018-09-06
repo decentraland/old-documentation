@@ -27,6 +27,48 @@ We recommend using _.gltf_ while you're working on a scene, but then switching t
 
 > Note: When using Blender to create or edit 3D models, you need an add-on to export glTF files. For models that don't include animations we recommend installing the add-on by [Kronos group](https://github.com/KhronosGroup/glTF-Blender-Exporter). To export glTFs that include animations, you should instead install the add-on by [Kupoman](https://github.com/Kupoman/blendergltf).
 
+#### Export to glTF from Blender
+
+Blender doesn't support exporting to glTF by default, but you can install an addon to enable it.
+
+1. Download the [Khronos Exporter](https://github.com/KhronosGroup/glTF-Blender-Exporter)
+2. To install the exporter, extract the _.zip_ file, and then copy the `scripts/addons/io_scene_gltf2` folder under the `scripts/addons` folder of your Blender installation.
+3. Activate the addon by opening _User Preferences…_ in Blender. In the _Add-ons_ tab, enable **Import-Export: glTF 2.0 format**. Don’t forget to click _Save User Settings_.
+   > Note: If you have another glTF 2.0 exporter installed, disable it. Only one may be enabled at a time.
+
+#### Export to glTF from 3D Studio Max
+
+3D Studio Max doesn't support exporting to glTF by default, but you can install an addon to enable it.
+
+1. Download the plugin from [this link](https://github.com/BabylonJS/Exporters/tree/master/3ds%20Max).
+2. Install the plugin by following [these instructions](http://doc.babylonjs.com/resources/3dsmax#how-to-install-the-3ds-max-plugin).
+3. Export glTF files by following [these instructions](http://doc.babylonjs.com/resources/3dsmax_to_gltf).
+
+#### Export to glTF from Maya
+
+Maya doesn't support exporting to glTF by default, but you can install an addon to enable it.
+
+1. Install the plugin by following [these instructions](http://doc.babylonjs.com/resources/maya).
+2. Export glTF files by following [these instructions](http://doc.babylonjs.com/resources/maya_to_gltf#pbr-materials).
+
+Note: As an alternative, you can try [this other plugin](https://github.com/WonderMediaProductions/Maya2glTF) too.
+
+#### Export to glTF from Unity
+
+Unity doesn't support exporting to glTF by default, but you can install an addon to enable it.
+
+Download the plugin from [this link](https://github.com/sketchfab/Unity-glTF-Exporter).
+
+Note: As an alternative, you can try [this other plugin](https://assetstore.unity.com/packages/tools/utilities/collada-exporter-for-unity2017-99793) too.
+
+#### Preview a glTF model
+
+A quick and easy way to preview the contents of a glTF model before importing it into a scene is to use the [Babylon.js Sandbox](https://sandbox.babylonjs.com/). Just drag and drop the glTF file (and its _.bin_ if applicable) into the canvas to view the model.
+
+In the sandbox you can also view the animations that are embedded in the model, select which to display by picking it out of a dropdown menu.
+
+![](/images/media/babylon-sandbox.png)
+
 #### Why we use glTF
 
 Compared to the older _OBJ format_, which supports only vertices, normals, texture coordinates, and basic materials,
