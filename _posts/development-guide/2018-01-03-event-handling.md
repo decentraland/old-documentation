@@ -287,7 +287,7 @@ The scene above uses a `subscribeTo` function to initiate a listener to track th
 
 ## Create custom events
 
-For scenes that include complex logic like games, it makes sense to create custom events. For example, in a game you might define a custom event called _loose_ and send it whenever a player looses, you can then subscribe different functions to whenever this event occurs.
+For scenes that include complex logic like games, it makes sense to create custom events. For example, in a game you might define a custom event called _lose_ and send it whenever a player loses, you can then subscribe different functions to whenever this event occurs.
 
 To enable custom events, you must first create a custom event subscriber and import it into your scene, as described below.
 
@@ -332,14 +332,14 @@ In your scene, you need to initiate the event subscriber before you can use it. 
 
 {% endraw %}
 
-The example below initiates the event subscriber and then subscribes to the custom event _loose_, that is emitted when the user looses a game. Whenever the _loose_ event occurs, the function `userLost()` is called.
+The example below initiates the event subscriber and then subscribes to the custom event _lose_, that is emitted when the user loses a game. Whenever the _lose_ event occurs, the function `userLost()` is called.
 
 {% raw %}
 
 ```tsx
  sceneDidMount() {
     EventManager.init(this.eventSubscriber);
-    this.eventSubscriber.on('loose', e => this.userLost());
+    this.eventSubscriber.on('lose', e => this.userLost());
   }
 ```
 
@@ -356,7 +356,7 @@ You can trigger the emission of custom events at any part of your scen's code. T
     this.setState({health: this.state.health -= 1})
     if (this.state.health <= 0)
     {
-      EventManager.emit("loose")
+      EventManager.emit("lose")
     }
   }
 ```
