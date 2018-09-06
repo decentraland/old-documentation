@@ -107,7 +107,7 @@ In this example, based on the door example in the beginner samples, you're only 
 
 #### Block Dog
 
-In this example, that's described in greater detail in a [video tutorial](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-basic-ai-with-block-dog), you control a pet dog. The dog has its own autonomous actions that it performs randomly. It also follows you around, sits when cicked and goes to drink when you click its bowl.
+In this example, that's described in greater detail in a [video tutorial](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-basic-ai-with-block-dog), you control a pet dog. The dog has its own autonomous actions that it performs randomly. It also follows you around, sits when clicked and goes to drink when you click its bowl.
 
 [Code](https://github.com/decentraland/sample-scene-Block-Dog)
 
@@ -127,7 +127,7 @@ This example, that's described in greater detail in a [video tutorial](https://s
 
 #### Dog, cat, mouse, cheese
 
-This example, that's described in greater detail in a [video tutorial](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-dog-cat-mouse-cheese-using-a-fsm) shows how to build a more complex scene that involves predators and prays, which can interchangably be mice, cats or dogs. Each animal has a stack-based finite state machine (FSM) to manage its AI. Each animal uses the a\* path finding algorythm to find its way around obstacles and othe animals.
+This example, that's described in greater detail in a [video tutorial](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-dog-cat-mouse-cheese-using-a-fsm) shows how to build a more complex scene that involves predators and prays, which can interchangeably be mice, cats or dogs. Each animal has a stack-based finite state machine (FSM) to manage its AI. Each animal uses the a\* path finding algorithm to find its way around obstacles and other animals.
 
 [Code](https://github.com/decentraland/sample-scene-dog-cat-mouse-cheese)
 

@@ -162,7 +162,7 @@ Now when users view the stairs in your scene, they’ll see the more elaborate m
 #### Best practices with colliders
 
 - Always use the smallest number of triangles possible when creating colliders. Avoid making a copy of a complex object to use as a collider. Simple colliders guarantee a good user-experience in and keep your scene within the triangle limitations.
-- Collider objects shouln't have any material, as users of your scene will never see it. Colliders are invisible to users.
+- Collider objects shouldn't have any material, as users of your scene will never see it. Colliders are invisible to users.
   > Note: Remember that each scene is limited to log2(n+1) x 10000 triangles, where n is the number of parcels in your scene.
 - All collider objects names must end with \__collider_. For example, _tree_collider_.
 - When duplicating collider objects, pay attention to their names. Some programs append a \__1_ to the end of the filename to avoid duplicates, for example _tree_collider_1_. Objects that are named like this will be interpreted by the Decentraland World Engine as normal objects, not colliders.
@@ -177,7 +177,7 @@ Currently, other forms of animations that aren't based on armatures are not supp
 
 There's no specific rule about the names animations must have. You can verify the names of the animations in an exported model by opening the contents of a _.gltf_ file with a text editor. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-You can include any number of animations in a _glTF model_. All animations in a _glTF_ model are dissabled by default when loading the model into a Decentraland scene. See [Scene content guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for instructions on how to activate and handle animations in a scene.
+You can include any number of animations in a _glTF model_. All animations in a _glTF_ model are disabled by default when loading the model into a Decentraland scene. See [Scene content guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for instructions on how to activate and handle animations in a scene.
 
 > Note: There currently isn't a way to change the frame rate of an animation displayed in your scene, the speed is fixed to a default setting. To change an animation's speed, you must change the number of frames.
 

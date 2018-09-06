@@ -101,9 +101,11 @@ Materials can be applied to primitive entities and to planes, simply by setting 
 
 In the example above, the image for the material is located in a `materials` folder, which is located at root level of the scene project folder.
 
+When an entity uses a material, you must refer to it prepending a `#` to the material's id. So if the material's id is `reusable_material`, you must set the `material` on an entity to `#reusable_material`.
+
 Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, you don't need to declare a `<material />` entity.
 
-Not all shaders are supported by the Decentraland engine. For example, all blender render materials should be supported, in Cycles render only PBR (phisically based rendering) materials are supported.
+Not all shaders are supported by the Decentraland engine. For example, all blender render materials should be supported, in Cycles render only PBR (physically based rendering) materials are supported.
 
 See [entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material. Keep in mind that all materials and textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
@@ -152,6 +154,8 @@ async render() {
 
 To create an animated sprite, use texture mapping to change the selected regions of a same texture that holds all the frames.
 
+To work with animated sprites, you can install and use the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) node package. Read documentation on how to use it in the provided link.
+
 #### Transparent materials
 
 To make a material transparent, you must add an alpha channel to the image you use for the texture. The _material_ entity ignores the alpha channel of the texture image by default, so you must either:
@@ -177,7 +181,7 @@ To make a material transparent, you must add an alpha channel to the image you u
 
 #### Basic materials
 
-Instead of the _material_ entity, you can define a material through the _basic-material_ entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistenlty bright, it can also be used to give your scene a more minimalistic look.
+Instead of the _material_ entity, you can define a material through the _basic-material_ entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistently bright, it can also be used to give your scene a more minimalist look.
 
 {% raw %}
 
@@ -265,9 +269,9 @@ The `weight` property allows a single model to carry out multiple animations at 
 
 The `weight` value of all active animations should add up to 1 at all times. If it adds up to less than 1, the weighted average will be referencing the default position of the armature for the remaining part of the calculation.
 
-For example, in the code example above, if only _shark_swim_ is active with a `weight` of 0.2, then the swiming movements are quite subtle, only 20% of what the animation says it should move. The other 80% of what's averaged represents the default position of the armature.
+For example, in the code example above, if only _shark_swim_ is active with a `weight` of 0.2, then the swimming movements are quite subtle, only 20% of what the animation says it should move. The other 80% of what's averaged represents the default position of the armature.
 
-The `weight` property can be used in interesting ways, for example the `weight` property of _shark_swim_ could be set in proportion to how fast the shark is swimming, so you don't need to create multiple animations for fast and slow swimming. You could also change the `weight` value gradually when starting and stoping the animation to give it a more natural transition and avoid jumps from one pose to another.
+The `weight` property can be used in interesting ways, for example the `weight` property of _shark_swim_ could be set in proportion to how fast the shark is swimming, so you don't need to create multiple animations for fast and slow swimming. You could also change the `weight` value gradually when starting and stopping the animation to give it a more natural transition and avoid jumps from one pose to another.
 
 #### Free libraries for 3D models
 
@@ -297,7 +301,7 @@ You can add sound to your scene by including a sound component in any entity.
 <sphere
   position={{ x: 5, y: 3, z: 5 }}
   sound={{
-    src: "sounds/carnivalrides.ogg",
+    src: "sounds/carnivalRides.ogg",
     loop: true,
     playing: true,
     volume: 0.5
@@ -390,78 +394,3 @@ Collision settings currently don't affect how other entities interact with each 
 Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
 > Tip: To view the limits of all collider meshes in the scene, launch your scene preview with `dcl start` and then click `c`. This draws blue lines that delimit all colliders in place.
-
-## Migrating an XML scene to TypeScript
-
-If you have a static XML scene and want to add dynamic capabilities to it, you must migrate it to TSX format. This implies making some minor changes to the entity syntax.
-
-#### Data types
-
-> **TL;DR**  
-> in XML: `position="10 10 10"`  
-> in TSX: `position={ { x:10, y: 10, z: 10 } }`
-
-There are subtle differences between the _text/xml_ representation and the _.tsx_ representation of a scene. Our approach is _TSX-first_, and the _XML_ representation of the scene is only a compatibility view. Because of this, attributes in _TSX_ must be objects, not
-plain text.
-
-```xml
-<scene>
-  <box position="10 10 10" />
-</scene>
-```
-
-The static scene above becomes the following dynamic schen when migrating it to _TSX_:
-
-{% raw %}
-
-```tsx
-class Scene extends ScriptableScene {
-  async render() {
-    return (
-      <scene>
-        <box position={{ x: 10, y: 10, z: 10 }} />
-      </scene>
-    )
-  }
-}
-```
-
-{% endraw %}
-
-#### Attribute naming
-
-> **TL;DR**  
-> in XML: `albedo-color="#ffeeaa"` (kebab-case)  
-> in TSX: `albedoColor="#ffeeaa"` (camelCase)
-
-HTML and XHTML are case insensitive for attributes, this generates conflicts with the implementation of certain attributes like `albedoColor`. Because reading `albedocolor` was confusing, and having hardcoded keys with hyphens in the code was so dirty, we decided to follow the React convention of having every property camel cased in code and hyphenated in the HTML/XML representation.
-
-{% raw %}
-
-```xml
-<scene>
-  <!-- XML -->
-  <material id="test" albedo-color="#ffeeaa" />
-</scene>
-```
-
-{% endraw %}
-
-The static scene above becomes the following dynamic schen when migrating it to TSX:
-
-{% raw %}
-
-```tsx
-// TSX
-class Scene extends ScriptableScene {
-  async render() {
-    return (
-      <scene>
-        <material id="test" albedoColor="#ffeeaa" />
-      </scene>
-    )
-  }
-}
-```
-
-{% endraw %}

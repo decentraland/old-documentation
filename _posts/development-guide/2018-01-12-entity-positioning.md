@@ -8,7 +8,7 @@ categories:
   - development-guide
 type: Document
 set: development-guide
-set_order: 12
+set_order: 2
 ---
 
 All entities, including _primitives_, _glTF_ models and _base entities_, have a _position_, a _rotation_ and a _scale_. These can be easily configured, as shown below:
@@ -40,7 +40,7 @@ All entities, including _primitives_, _glTF_ models and _base entities_, have a 
 
 {% endraw %}
 
-> Tip: When previewing a scene locally, a compass appears in the (0,0,0) point of the scene twith labels for each axis.
+> Tip: When previewing a scene locally, a compass appears in the (0,0,0) point of the scene with labels for each axis.
 
 ## Rotation
 
@@ -74,7 +74,7 @@ You must provide this setting with a number that selects between the following m
 - 4: Only move in the **Z** axis, the rotation on other axis is fixed.
 - 7: Rotate on all axis to follow the user.
 
-If the entitiy is configured with both a specific rotation and a billboard setting, it uses the rotation set on by its billboard behavior.
+If the entity is configured with both a specific rotation and a billboard setting, it uses the rotation set on by its billboard behavior.
 
 #### Turn to face a position
 
@@ -92,7 +92,7 @@ This setting needs a _Vector3Component_ as a value, this vector indicates the co
 
 You can use a transition to make movements caused by lookAt smoother and more natural.
 
-If the entitiy is configured with both a specific rotation and a lookAt setting, it uses the rotation set on by its lookAt behavior.
+If the entity is configured with both a specific rotation and a lookAt setting, it uses the rotation set on by its lookAt behavior.
 
 ## Scale
 

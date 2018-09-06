@@ -201,13 +201,13 @@ For most 3D math operations, we recommend importing [Babylonjs](https://www.baby
 
 Before a library can be used by your scene, it must be installed with _npm_ in the scene's folder. This is important because when the scene is deployed to Decentraland, all of its dependencies must be uploaded as well.
 
-When importing from large libraries like Babylonjs, we recommend only ipmporting the elements that you need for your scene, instead of importing the entire library.
+When importing from large libraries like Babylonjs, we recommend only importing the elements that you need for your scene, instead of importing the entire library.
 
 ## Vector math operations
 
 Vectors in decentraland are of type _Vector3Component_, this type is very lightweight and doesn't include any methods.
 
-To avoid doing vector math manually, we recommend importing the _Vector3_ type from Babylonjs. This type comes with a lot of handy operations like scaling, substracting and more.
+To avoid doing vector math manually, we recommend importing the _Vector3_ type from Babylonjs. This type comes with a lot of handy operations like scaling, subtracting and more.
 
 To use this, you must first install babylonjs in the project folder. Run the following command from a terminal in the scene's main folder.
 
@@ -245,13 +245,33 @@ Entities in decentraland accept variables of type _Vector3_ for setting position
 
 Keep in mind that some events in a Decentraland scene, like the `positionChanged` event, have attributes that are of type _Vector3Component_. If you wish to use methods from _Vector3_ on this information, you must first change its type.
 
-## Access data accross objects
+## Handle animated 2D sprites
+
+You can add 2D animations in your scene as a way to save on triangle amounts, or as a chosen esthetic.
+
+You'll generally want to apply sprite animations to a _plane_ entity that's configured to behave as a _billboard_. Setting an entity's billboard component makes it rotate to always face the user, learn more about this in [Entity positioning]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}).
+
+We recommend using the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) node package. To install it run the following:
+
+```
+npm i --save dcl-sprites
+```
+
+Then import the library into your scene:
+
+```tsx
+import { createSpriteSheet } from "dcl-sprites"
+```
+
+Read the [library's documentation](https://github.com/decentraland/dcl-sprites) for further instructions on how to use it.
+
+## Access data across objects
 
 When your scene reaches a certain level of complexity, it's convenient to break the code out into several separate objects instead of having all of the logic inside the [`scriptableScene` class]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}).
 
 The downside is that information becomes harder to pass on. If all of your logic occurs inside the `scriptableScene` class, you can keep track of all information using the [scene state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}) and scene properties. But if that's not the case, then you must keep in mind that you can't reference the scene state or scene properties from outside the `scriptableScene` class.
 
-You can eitehr:
+You can either:
 
 - Pass information from the main `scriptableScene` class as properties of child objects.
 - Use a library like [Redux](https://redux.js.org/) to create a univesal data store that can be referenced from anywhere.
@@ -305,6 +325,8 @@ This example iterates over a loop until a condition is met, in which case `clear
 
 #### Delay an execution
 
+###### setTimeout()
+
 The `setTimeout()` function delays the execution of a statement or function.
 
 {% raw %}
@@ -317,7 +339,41 @@ setTimeout(f => {
 
 {% endraw %}
 
-The setTimeout function requires that you pass a function or statement to execute, followed by the ammount of milliseconds to delay that execution.
+The setTimeout function requires that you pass a function or statement to execute, followed by the amount of milliseconds to delay that execution.
+
+###### await sleep()
+
+A more elegant way to delay execution is by creating a helper `sleep` function and calling it. The benefit is that if you need to pause execution several times in a process, you don't need to nest multiple statements one inside the other.
+
+Add the following function to your _scene.tsx_ file:
+
+{% raw %}
+
+```tsx
+export function sleep(ms: number = 0) {
+  return new Promise(r => setTimeout(r, ms))
+}
+```
+
+{% endraw %}
+
+Then you can call the `sleep()` function from any asyncronous function in your scene as shown below.
+
+{% raw %}
+
+```tsx
+  async updateAnimation(){
+    this.setState({playAnimation1:true, playAnimation2:false})
+    await sleep(5000)
+    this.setState({playAnimation1:false, playAnimation2:true})
+    await sleep(5000)
+    this.updateAnimation()
+  }
+```
+
+{% endraw %}
+
+> Note: for the code above to work, your TypeScript file must include or import a definition for the `sleep()` function.
 
 #### Freeze till complete
 
@@ -531,6 +587,15 @@ The end result of all the expressions in your `return` statement must always be 
 
 > Note: You are free to add TypeScript _expressions_ to make up the `return` value, but you can't add _statements_. The difference is that expressions always have a return value, but statements might not. You can't use `if/else` or `switch/case` because those are statements, but you can call functions that do the same.
 
+#### Add or remove entities
+
+Instead of telling the engine what actions to take to reach a desired state, you tell the engine what new state you want to render, and the engine figures out how to get there. If you're familiar with the React framework, you'll note that the Decentraland API is designed around the same ideas.
+
+**Because of this, there is no action to _add_ or _remove_ entities from the scene**. Instead, this is implicitly done when you call the `render()` function telling it to render a different set of entities.
+
+- If the new set includes an entity that wasn't rendered before, it's implicitly added.
+- If an entitiy is missing from the new set, then it's implicitly removed.
+
 #### Reference variables from render
 
 The simplest way to change how something is rendered is to reference the value of a variable from the value of one of the XML attributes.
@@ -594,11 +659,11 @@ async render() {
 
 {% endraw %}
 
-In this second example, the _y_ position of the box is determined based on the value of `liftBox` and the timing of its transition is based on the value of `bounce`. Note that both of these conditional expressions were added in parts of the code that were already being processed as TypeScript, so no aditional `{ }` were needed.
+In this second example, the _y_ position of the box is determined based on the value of `liftBox` and the timing of its transition is based on the value of `bounce`. Note that both of these conditional expressions were added in parts of the code that were already being processed as TypeScript, so no additional `{ }` were needed.
 
 > Note: In these examples we're able to add conditional logic through the use of an `? / :` expression. You can't use an `if` and `else` in this context, because those are statements, and statements aren't supported as part of the `return` value.
 
-#### Define an undetermined number of entities
+#### Render entities from an array
 
 For scenes where the number of entities isn't fixed, use an array to represent these entities and their attributes and then use a `map()` operation within the `render()` function.
 
@@ -608,7 +673,7 @@ For scenes where the number of entities isn't fixed, use an array to represent t
 async render() {
   return (
     <scene>
-      { this.state.secuence.map(num =>
+      { this.state.sequence.map(num =>
         <box
           position={{ x: num * 2, y: 1, z: 1 }}
           key={"box" + num.toString()}
@@ -621,7 +686,7 @@ async render() {
 
 {% endraw %}
 
-This function uses a `map()` operation to create a box entity for each element in the `secuence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `secuence` variable in the scene state.
+This function uses a `map()` operation to create a box entity for each element in the `sequence` array, using the numbers stored in this array to set the x coordinate of each of these boxes. This enables you to dynamically change how many boxes appear and where by changing the `sequence` variable in the scene state.
 
 A few best practices when rendering entities from a list:
 
@@ -630,11 +695,60 @@ A few best practices when rendering entities from a list:
 - Give each entity a unique `key`
 - Avoid using the array index as the entity key
 
+#### Render entities from an object
+
+When you want to keep track of multiple pieces of information about each entity in a collection, it's useful to store the entities as an object, where each attribute of the object represents one of the entities.
+
+We recommend defining a custom type for the object, to validate that data is being stored in a consistent way.
+
+{% raw %}
+
+```tsx
+export type boxes = {
+  [key: string]: [Vector3Component, Vector3Component, boolean]
+}
+```
+
+{% endraw %}
+
+The following code example renders a collection of boxes from a _sequence_ variable in the scene state.
+
+{% raw %}
+
+```tsx
+ async render() {
+    return (
+      <scene>
+        { this.renderBoxes()}
+      </scene>
+    )
+  }
+
+  renderBoxes(){
+    let boxModels: any[] = []
+    for (var box in this.state.sequence) {
+      boxModels.push(
+        <box
+          key={"box"}
+          position={this.state.sequence[box][0]}
+          rotation={this.state.sequence[box][1]}
+          visible={this.state.sequence[box][2]}
+         />
+      )
+      return boxModels
+  }
+}
+```
+
+{% endraw %}
+
+While iterating through the attributes in the object, `box` refers to the attribute key, and you can use it to access the values under that key via `this.state.sequence[box]`.
+
 #### Keep the render function readable
 
 The output of the render() function can include calls to other functions. Since render() is called each time that the scene state is updated, so will all the functions that are called by render().
 
-Doing this keeps the code in render() more readable. In simple scenarios it's mostly reocomendable to define all the entities of the scene within the `render()` function, but when dealing with a varying number of entities or a large number that can be treated as an array, it's often useful to handle this behavior in a function outside render().
+Doing this keeps the code in render() more readable. In simple scenarios it's mostly recommendable to define all the entities of the scene within the `render()` function, but when dealing with a varying number of entities or a large number that can be treated as an array, it's often useful to handle this behavior in a function outside render().
 
 {% raw %}
 
@@ -661,7 +775,7 @@ The functions that are called as part of the return satement must, of course, re
 
 ```tsx
 renderObstacles() {
-  return this.state.secuence.map(num =>
+  return this.state.sequence.map(num =>
     <box
       position={{ x: num * 2, y: 1, z: 1 }}
     />

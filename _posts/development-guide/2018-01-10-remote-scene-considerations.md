@@ -106,4 +106,4 @@ You can extract a user's id from an event when listening to events through `subs
 
 {% endraw %}
 
-User id's are assigned to users when they enter Decenrtaland, but they don't persist from session to session. If you care about keeping track of long term user identity, you can identify users through their public wallet address. You can obtain a user's address through the `getPublicKey()` method. See [Blockchain operations]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-07-scene-blockchain-operations %}) for details about what you need to import in order to run this method.
+User id's are assigned to users when they enter Decentraland, but they don't persist from session to session. If you care about keeping track of long term user identity, you can identify users through their public wallet address. You can obtain a user's address through the `getPublicKey()` method. See [Blockchain operations]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-07-scene-blockchain-operations %}) for details about what you need to import in order to run this method.

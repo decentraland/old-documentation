@@ -132,7 +132,7 @@ All [scene objects]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-
 
 If you have game development experience with other tools, you might expect scenes to have some kind of render loop that periodically renders elements in the screen. Decentraland doesn't work like that. We built the API based on _events_, so the `render()` function is designed to update the scene in reaction to events rather than by querying the world repeatedly.
 
-Scenes have a [state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}), which is a collection of variables that change over time and represent the current disposition of the scene. The state changes by the occurance of [events]({{ site.baseurl }}{% post_url /development-guide/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
+Scenes have a [state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}), which is a collection of variables that change over time and represent the current disposition of the scene. The state changes by the occurrence of [events]({{ site.baseurl }}{% post_url /development-guide/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
 
 This is inspired by the [React](https://reactjs.org/) framework, most of what you can read about React applies to decentraland scenes as well.
 
@@ -232,7 +232,7 @@ In this example, we're just telling the system the desired state, instead of des
 
 We made our SDK following the React approach, for several reasons:
 
-- It takes advantage of the evolution of web technologies that occured in the past 10 years.
+- It takes advantage of the evolution of web technologies that occurred in the past 10 years.
 - It's simpler to understand, it removes tons of boilerplate code that's not related to the business logic of the scene.
 - It's declarative. You describe **what** you want, not **how** you want that to happen.
 - It helps onboard developers that are already familiar with React.

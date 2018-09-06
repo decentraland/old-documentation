@@ -122,7 +122,9 @@ Once these basic use cases are covered, you can start to get more sophisticated 
 
 **Camera perspective** is another critical aspect of the user experience that will require specific and sequential goals. Since the ultimate vision of Decentraland is to build a VR world, the camera will eventually take a first person perspective. So, depending on the experience, this perspective will drive the individual experience of each player.
 
-**Audio** is another critical aspect that may require its own prototype release. As with all major software releases, you may both number and name them for fun and for feedback engagement.
+**Device interoperability** is an important thing to be aware of. Users of your scene may be accessing your scene using a desktop, a mobile device or a VR headset. Users should be able to interact with your scene reasonably well using either. For those using a VR headset try to avoid dizzying movements that could cause motion sickness.
+
+**Audio** is another critical aspect of a scene's atmosphere. Background sounds like wind, crickets, distant conversations, maybe even music can be a very powerful way to increase immersion and give context. You can also change how volume levels relate to distance from the sound source to put more or less emphasis on a sound's location.
 
 Consider the MVP as one of many, many prototypes that you can use to establish your cadence for releases once you have established your pipeline. The focus of each release may vary, or it may be a hybrid of each aspect of the experience. However, you should aim to deliver successively more complicated experiences, each iteration building upon the last.
 
