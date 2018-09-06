@@ -17,6 +17,34 @@ See [Scene content guide]({{ site.baseurl }}{% post_url /development-guide/2018-
 
 Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
+## Supported 3D model formats
+
+All 3D models in Decentraland must be in glTF format. [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
+
+glTF models can have either a _.gltf_ or a _.glb_ extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and to check for their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance.
+
+We recommend using _.gltf_ while you're working on a scene, but then switching to _.glb_ when uploading it.
+
+> Note: When using Blender to create or edit 3D models, you need an add-on to export glTF files. For models that don't include animations we recommend installing the add-on by [Kronos group](https://github.com/KhronosGroup/glTF-Blender-Exporter). To export glTFs that include animations, you should instead install the add-on by [Kupoman](https://github.com/Kupoman/blendergltf).
+
+#### Why we use glTF
+
+Compared to the older _OBJ format_, which supports only vertices, normals, texture coordinates, and basic materials,
+glTF provides a more powerful set of features that includes:
+
+- Hierarchical objects
+- Skeletal structure and animation
+- More robust materials and shaders
+- Scene information (light sources, cameras)
+
+> Note: _.obj_ models are supported in Decentraland scenes as a legacy feature, but will likely not be supported for much longer.
+
+Compared to _COLLADA_, the supported features are very similar. However, because glTF focuses on providing a
+"transmission format" rather than an editor format, it is more interoperable with web technologies.
+
+Consider this analogy: the .PSD (Adobe Photoshop) format is helpful for editing 2D images, but images must then be converted to .JPG for use
+on the web. In the same way, COLLADA may be used to edit a 3D asset, but glTF is a simpler way of transmitting it while rendering the same result.
+
 ## Materials
 
 #### Shader support
@@ -89,34 +117,6 @@ Examples of other valid sizes:
 
 - If your scene includes multiple models that use the same texture, reference the texture as an external file instead of having it embedded in the 3D model. Embedded textures get duplicated for each model and add to the scene's size.
   > Note: After referencing a file for a texture that won’t be embedded, make sure that file won’t be moved or renamed, as otherwise the reference to the file will be lost. The file must also be inside the scene folder so that it’s uploaded together with the scene.
-
-## Supported 3D model formats
-
-All 3D models in Decentraland must be in glTF format. [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
-
-glTF models can have either a _.gltf_ or a _.glb_ extension. glTF files are human-readable, you can open one in a text editor and read it like a JSON file. This is useful, for example, to verify that animations are properly attached and to check for their names. glb files are binary, so they're not readable but they are considerably smaller in size, which is good for the scene's performance.
-
-We recommend using _.gltf_ while you're working on a scene, but then switching to _.glb_ when uploading it.
-
-> Note: When using Blender to create or edit 3D models, you need an add-on to export glTF files. For models that don't include animations we recommend installing the add-on by [Kronos group](https://github.com/KhronosGroup/glTF-Blender-Exporter). To export glTFs that include animations, you should instead install the add-on by [Kupoman](https://github.com/Kupoman/blendergltf).
-
-#### Why we use glTF
-
-Compared to the older _OBJ format_, which supports only vertices, normals, texture coordinates, and basic materials,
-glTF provides a more powerful set of features that includes:
-
-- Hierarchical objects
-- Skeletal structure and animation
-- More robust materials and shaders
-- Scene information (light sources, cameras)
-
-> Note: _.obj_ models are supported in Decentraland scenes as a legacy feature, but will likely not be supported for much longer.
-
-Compared to _COLLADA_, the supported features are very similar. However, because glTF focuses on providing a
-"transmission format" rather than an editor format, it is more interoperable with web technologies.
-
-Consider this analogy: the .PSD (Adobe Photoshop) format is helpful for editing 2D images, but images must then be converted to .JPG for use
-on the web. In the same way, COLLADA may be used to edit a 3D asset, but glTF is a simpler way of transmitting it while rendering the same result.
 
 ## Colliders
 
