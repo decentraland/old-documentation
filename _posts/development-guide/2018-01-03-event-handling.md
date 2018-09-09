@@ -1,7 +1,7 @@
 ---
 date: 2018-01-05
-title: Event Handling
-description: Learn the different events that can occur in a scene and how to catch them.
+title: Обработка событий
+description: Описание различных событий в сцене и способы их обработки.
 redirect_from:
   - /sdk-reference/event-handling/
 categories:
@@ -11,11 +11,11 @@ set: development-guide
 set_order: 3
 ---
 
-When users interact with the entities in your scene, these generate several types of events. These events can have an effect on the scene [state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}), which triggers a new rendering of the scene.
+В процессе взаимодействия пользователя с объектами в вашей сцене генерируется несколько типов событий. Эти события могут влиять на [состояние]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}) сцены, что в свою очередь вызывает перерисовку всей сцены.
 
 ![](/images/media/events_state_diagram.jpeg)
 
-Generally, a good way of having your scene respond to events is to set up a listener in the `sceneDidMount()` method. See [scriptable scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) for more context about when this method is executed.
+В общем случае, для того чтобы ваша сцена реагировала на события, хорошей практикой будет установить обработчик событий в методе `sceneDidMount()`. Смотри [динамическая сцена]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) где подробно описано когда вызывается этот метов.
 
 {% raw %}
 
@@ -27,19 +27,19 @@ async sceneDidMount() {
 
 {% endraw %}
 
-To debug a scene, you can use `console.log()` to keep track of the occurrence of events or to verify that the event's parameters are what you expected.
+Для отладки сцены можно использовать `console.log()`, чтобы отслеживать вызовы различных событий и убедиться что вы передаете именно те параметры, которые необходимо.
 
-## Clicking
+## Клик
 
-Clicks can be done either with a mouse, a touch screen, a VR controller or some other device, the events that are generated from this don't make any distinction. When the ray that the avatar casts forward points at a valid entity and the user clicks, this creates a `click` event.
+Кликнуть можно с помощью мыши, прикосновения в тач интерфейсах, в VR контроллере или другом устройстве, события которые генерируются в этом случае не относятся к чему-то определенному. Когда же взгляд аватара направлен на некий объект в сцене, создается событие `click`.
 
-> Note: Clicks can be made from a maximum distance of 10 meters away from the entity.
+> Замечание: Кликнуть можно с расстояния менее 10 метров от объекта.
 
 #### onClick
 
-The easiest way to handle click events is to add an `onClick` component to the entity itself. With this in place, there's no need to add an event subscriber for click events from this entity, that's already implicitly handled.
+Самый простой способ обработки событий этого типа добавить компонент `onClick` к самому объекту. Если сделать это, то нет необходимости слушать обработчик событий в ожидании события click для какого-то объекта, обработка уже задана неявно.
 
-You can declare what to do in the event of a click by writing a lambda in the `onClick` itself, or you can call a separate function to keep the render method more legible.
+Вы можете описать что будет происходить в случае click с помощью лямбда выражения в самом событии `onClick` , или вызвать отдельную функцию, чтобы не загромождать код.
 
 {% raw %}
 
@@ -53,12 +53,12 @@ You can declare what to do in the event of a click by writing a lambda in the `o
 
 {% endraw %}
 
-If you call a function from onClick, any uses of the `this` operator refer to the function itself, not to the [scriptable scene object]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}). It can sometimes be a problem if you need to refer to the scene state or to other functions in the scene. To avoid this problem, you can either define the function as a lambda or call the function through a lambda defined in the `onClick` value (as in the example above). See [TypeScript Tips]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %}) for more complete examples of how to work around this.
+ В случае вызова функции в onClick, любое использование оператора `this` будет относиться к самой функции, а не к [динамическому объекту в сцене]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}). Иногда это может вызывать трудности, если есть необходимость обратиться к самой сцене или к другим функциям, описанным для сцены. Чтобы избежать этого, можно либо  вызвать стрелочную функцию, либо описать лямбда-функцию напрямую из свойства `onClick` объекта (как в примере выше). Смотри [TypeScript Tips]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %}) где можно найти больше примеров и объяснений.
 
-The click event object is passed as a parameter of the function you call in the `onClick`. This event object contains the following parameters that can be accessed by your function:
+Объект, генерируемый событием click, передается в качестве аргумента функции, которая вызывается в событии `onClick`. Этот объект содержит следующие параметры, к которым есть доступ из вашей функции:
 
-- `elementId`: the ID of the entity that was clicked (if the entity has an id).
-- `pointerId`: the ID for the user who performed the click.
+- `elementId`: ID объекта на который кликнули (если у него есть id).
+- `pointerId`: ID пользователя, который совершил click.
 
 {% raw %}
 
@@ -85,14 +85,14 @@ export default class Scene extends ScriptableScene {
 
 {% endraw %}
 
-This example logs both parameters of the click event each time the box entity is clicked.
+Данный пример пишет в консоль оба параметра каждый раз, когда вы нажимаете на куб.
 
-#### The generic click event
+#### Базовое событие click
 
-The generic `click` event represents all clicks done on valid entities. Only entities that have an id are considered valid for generating click events. The click event object contains the following parameters:
+Базовое событие `click` представляет все события click на все объекты, которые его поддерживают. Только объекты, у которых есть id будут генерировать это событие. Объект, генерируемый после click, будет содержать следующие параметры:
 
-- `elementId`: the Id of the entity that was clicked.
-- `pointerId`: the id for the user who performed the click.
+- `elementId`: ID элемента, на который кликнули.
+- `pointerId`: ID пользователя, который совершил это действие.
 
 {% raw %}
 
@@ -124,13 +124,13 @@ export default class LastClicked extends ScriptableScene {
 
 {% endraw %}
 
-The example above uses the `subscribeTo` to initiate a listener that checks for all click events. When the user clicks on either of the two boxes, the scene stores the id of the clicked entity in the `lastClicked` state variable and prints it to console.
+Пример выше использует метод `subscribeTo` для подписки на все события click. Когда пользователь кликает на любой из двух кубов, сцена записывает ID объекта, на который кликнули в свойство `lastClicked` и выводит это значение в консоль.
 
-#### Entity-specific click events
+#### Нажатие на определенные объекты
 
-A simpler way to deal with clicks that are made on a single entity is to listen for click events that are specific for that entity. The names of entity-specific click events are as follows: the id of the entity, an underscore and then _click_. For example, the event created from clicking an entity called `redButton` is named `redButton_click`.
+Более простым способом обработки событий click на конкретный объект является подписка на эти события именно у этого объекта. Имена, которые мы получим в результате клика по этому объекту: id элемента, нижнее подчеркивание и затем _click_. Например, событие, генерируемое после клика на элемент с названием `redButton` будет называться `redButton_click`.
 
-> Note: Entity-specific click events have no properties, so you can't access the user's id from this event.
+> Примечание: у таких событий нет свойств, то есть вы не сможете обрптиться к ID пользователя, совершившего это действие.
 
 {% raw %}
 
@@ -161,11 +161,11 @@ export default class RedButton extends ScriptableScene {
 
 {% endraw %}
 
-The scene above uses an `eventSubscriber` to initiate a listener that checks for click events done on the `redButton` entity. Whenever this occurs, the state of `buttonState` is toggled.
+В сцене, представленной выше, используется подписка `eventSubscriber` для инициализации подписки, которая будет ожидать события click на элемент `redButton`. Как только это произойдет значение свойства `buttonState` инвертируется.
 
-## Pointer down and pointer up
+## Событие pointer up и pointer down
 
-The pointer down and pointer up events are fired whenever the user presses or releases an input controller. This could be a mouse, a touch screen, a VR controller or another kind of controller. It doesn't matter where the user's avatar is pointing at, the event is triggered every time.
+События pointer down и pointer up (эти два события, идушие один за другим, генерируют событие click) случаются когда пользователь нажимает или отпускает какое-либо поле ввода. Событие может генерироваться мышью, сенсорным экраном, VR контроллером или иным устройством ввода. Неважно куда направлен взгляд пользователя, события генерируются в любом случае.
 
 {% raw %}
 
@@ -202,17 +202,17 @@ export default class BigButton extends ScriptableScene {
 
 {% endraw %}
 
-The scene above uses two `subscribeTo` functions to initiate listeners that check both when the user clicks or releases a pointer button. Both listener functions alter the `buttonState` state variable in the scene. This variable is then used to set the height of a box that mimics the pressing of the user's button.
+В сцене выше используются два метода `subscribeTo` для подписки на событие нажатия / отпускания указателя над элементом. Обе подписки вызывают функции, которые меняют значение переменной `buttonState` в сцене. В дальнейшем эта переменная используется чтобы поменять высоту кубика, который имитирует нажатие на кнопку.
 
-## Position change
+## Изменение местоположения
 
-The `positionChanged` event sends the position of the user each time it changes.
+Событие `positionChanged` генерируется каждый раз, когда пользователь меняет свое местоположение.
 
-The `positionChanged` event has the following properties:
+У события `positionChanged` есть следующие свойства:
 
-- `position`: a Vector3Component with the user's position relative to the base parcel of the scene.
-- `cameraPosition`: a Vector3Component with the user's absolute position relative to the world.
-- `playerHeight`: the eye height of the user, in meters.
+- `position`: Vector3Component который содержит положение пользователя, относительно базового участка сцены.
+- `cameraPosition`: Vector3Component содержит положение пользователя в системе координат всего мира decentraland.
+- `playerHeight`: высота глаз пользователя в метрах.
 
 {% raw %}
 
@@ -242,17 +242,17 @@ export default class BoxFollower extends ScriptableScene {
 
 {% endraw %}
 
-The scene above uses a `subscribeTo` function to initiate a listener to track when the position of the user changes. When the user moves, the scene stores the current position in the state variable `boxPosition`, which is used to set the position of a box that follows the user around.
+Сцена выше использует метод `subscribeTo` для инициализации подписки на координаты местоположения пользователя. Когда пользователь двигается, сцена записывает текущее местоположение в переменную `boxPosition`, которая используется чтобы установить координаты кубика, который следует за пользователем.
 
-## Rotation change
+## Вращение объектов
 
-The `rotationChanged` event sends the angle in which the user is looking each time it changes.
+Событие `rotationChanged` отправляет угол, с которого пользователь смотрит на объект, как только этот угол изменяется.
 
-The `rotationChanged` event has the following properties:
+У события `rotationChanged` есть следующие свойства:
 
-- `rotation`: a Vector3Component with the user's rotation.
+- `rotation`: Vector3Component вектор, описывающий изменение угла зрения пользователя.
 
-- `quaternion`: the rotation of the user expressed as a quaternion.
+- `quaternion`: изменение угла зрения пользователя в 4х значном виде.
 
 {% raw %}
 
@@ -283,17 +283,18 @@ export default class ConeHead extends ScriptableScene {
 
 {% endraw %}
 
-The scene above uses a `subscribeTo` function to initiate a listener to track the user's rotation. When the user looks in a different direction, the scene stores the current angle in the state variable `rotation`. This example adds another 90 degrees to the X axis of this angle just to make the output more fun to play with. This angle is used to orient a cone that faces and mimics the user.
+В сцене, представленной выше, используется метод `subscribeTo` для отслеживания изменения угла зрения пользователя. Когда пользователь смотрит в другом направлении, сцена сохраняет текущий угол в свойство `rotation`. В этом примере мы добалвляем дополнительные 90 градосов по оси X к текущему углу поворота, просто чтобы показать как это работает. Этот угол используется для того, чтобы сориентировать конус, который имитирует пользователя.
 
-## Create custom events
+## Создание собственных событий
 
-For scenes that include complex logic like games, it makes sense to create custom events. For example, in a game you might define a custom event called _lose_ and send it whenever a player loses, you can then subscribe different functions to whenever this event occurs.
+Для сцен, в которых используется более сложная логика, например для игр, можно создавать свои собственные события. Например, в своей игре вы можете объявить собственное событие _lose_ и отправлять его как только пользователь проигрывает, вы так же можете подписаться в различных методах, чтобы среагировать это событие, как только оно произойдет.
 
-To enable custom events, you must first create a custom event subscriber and import it into your scene, as described below.
+Чтобы создать собственные события, вам сначала необходимо создать свой подписчик (event subscriber) и импортировать его в сцену, как описано ниже
 
-#### Create an event manager
 
-To keep your scene's code cleaner, place the event manager in its own file, we recommend `ts\EventManager.ts`.
+#### Создание собственного менеджера событий (event manager)
+
+Для чистоты кода рекоменуем сохранить ваш event manager в отдельный файл, например `ts\EventManager.ts`.
 
 {% raw %}
 
@@ -315,11 +316,11 @@ export namespace EventManager {
 
 {% endraw %}
 
-The event manager has two simple functions, one to subscribe to initiate the subscriber and the other to emit instances of an event.
+У менеджера событий есть две простых функции, одна - подписка на инициализацию подписчика, другая - создает свои экземпляры события.
 
-#### Subscribe to events
+#### Подписка на события
 
-In your scene, you need to initiate the event subscriber before you can use it. We recommend doing that in the `sceneDidMount()` function so that it starts working as soon as the scene is loaded. Don't forget to also import the event subscriber you defined in `EventManager.ts` to the `scene.tsx` file.
+В вашей сцене вам нужно инициализировать подписку на события прежде чем вы сможете использовать эту возможность. Мы рекомендуем делать это в методе `sceneDidMount()`, так что эта возможность начнет работать сразу, как только сцена будет загружена. Не забудьте так же импортировать ваш менеджер событий, который вы описали в файле  `EventManager.ts` в основной проект `scene.tsx`.
 
 {% raw %}
 
@@ -332,7 +333,7 @@ In your scene, you need to initiate the event subscriber before you can use it. 
 
 {% endraw %}
 
-The example below initiates the event subscriber and then subscribes to the custom event _lose_, that is emitted when the user loses a game. Whenever the _lose_ event occurs, the function `userLost()` is called.
+Пример ниже инициализирует подписку на события и затем подписывается на собственное событие _lose_, которое происходит, когда пользователь проигрывает. Как только происходит событие _lose_, вызывается функция `userLost()`.
 
 {% raw %}
 
@@ -345,9 +346,9 @@ The example below initiates the event subscriber and then subscribes to the cust
 
 {% endraw %}
 
-#### Emit custom events
+#### Генерация собственных событий
 
-You can trigger the emission of custom events at any part of your scen's code. To do so, reach out to the `emit()` function that the event subscriber exposes. If other parts of your scene's code are subscribed to the event you're emitting, they will execute the corresponding code when the event is emitted.
+Вы можете вызвать собственное событие в любой части кода сцены. Для этого вызовите функцию `emit()` и ваш обработчик событий для данной функции будет вызван, в какой бы части кода сцены он не находился.
 
 {% raw %}
 
