@@ -2,7 +2,7 @@
 date: 2017-01-15
 title: Marketplace tutorial
 video_id: uyuaN1OdOh4
-description: Step-by-step instructions for buying, selling, and managing LAND
+description: Пошаговая инструкция по покупке, продаже и упралению землей (LAND)
 categories:
   - Decentraland
 resources:
@@ -13,4 +13,4 @@ set: general
 set_order: 1
 ---
 
-Video tutorial introducing the Decentraland Marketplace, with step-by-step instructions on how to get started buying, selling, and managing your LAND.
+Видео руководство дает вводную информацию о Decentraland Marketplace, пошаговое руководство по покупке, продаже и управлению своими земельными активами (Land)

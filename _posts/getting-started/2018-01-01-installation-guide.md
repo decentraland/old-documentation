@@ -11,87 +11,88 @@ set: getting-started
 set_order: 2
 ---
 
-To build scenes for Decentraland you will need to install the Command Line Interface (CLI).
+Для разработки с сцен в Decentraland вам нужно установить интерфейс командной строки (CLI).
 
-The CLI allows you to compile and preview your scene in an "off-chain" development environment. After testing your scene locally, you can use the CLI to upload your content to IPFS, linking it with your LAND.
+CLI позволяет компилировать и просматривать вашу сцену в локальном окружении. После того, как вы протестировали сцену на вашем компьютере, вы можете загрузить ее в IPFS, привязав к вашему участку земли.
 
-**Please note:** Currently, the Decentraland SDK (bundled with the CLI installation) only supports TypeScript.
+**Внимание:** На данный момент Decentraland SDK поддерживает только TypeScript.
 
-The Decentraland CLI is distributed via [npm](https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm).
+Для установки Decentraland CLI воспользуйтесь [npm](https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm).
 
-## Before you Begin
+## Прежде чем начать
 
-Please install the following dependencies before you install the CLI:
+Вам необходимо поставить следующе пакеты, от которых зависит CLI:
 
 - [Node.js](https://github.com/decentraland/cli#nodejs-installation) (version 8)
 - [IPFS](https://dist.ipfs.io/#go-ipfs)
 - [Python 2.7.x](https://www.python.org/downloads/)
 
-## To install the CLI on Mac OS
+## Для установки CLI на Mac OS
 
-On Mac OS, simply run the following command:
+Для Mac OS, просто запустите эту команду:
 
 ```bash
 npm install -g decentraland
 ```
 
-Once the installation is complete, the `dcl` command will be globally available.
+Как только установка завершится, команда  `dcl` будет доступна для исполнения.
 
-## To install the CLI on Linux
+## Для установки CLI на Linux
 
-If you are installing the CLI on a Linux-based operating system, run
+Если вы устанавливаете CLI на ОС Linux, то запустите:
 
 ```bash
 npm i -g --unsafe-perm decentraland
 ```
 
-Once the installation is complete, the `dcl` command will be globally available.
+Как только установка завершится, команда  `dcl` будет доступна для исполнения.
 
-## To install the CLI on Windows
+## Для установки CLI на Windows
 
-1.  Find the Command Prompt app and select **Run as Administrator**
-2.  Install windows-build-tools by running :
+1.  Запустите коммандную строку с правами администратора
+2.  Установите windows-build-tools с помощью команды :
     `npm install --global --production windows-build-tools`
-    ... Wait for both the Visual Studio Build Tools and Python installers to both read `Successfully installed xxxx`. Once these have installed successfully, you will be returned to the command prompt.
-3.  Install the CLI by running:
+    ... Дождитесь успешной установки Visual Studio Build Tools и Python . Как только установка завершена вы вернетесь в командную строку.
+3.  Установите CLI с помощью еоманды:
     `npm install -g decentraland`
 
-Once the installation is complete, the `dcl` command will be globally available.
+Как только установка завершится, команда  `dcl` будет доступна для исполнения.
 
-#### Optional: Install Git
+#### Необязательно: установка Git
 
-Since Windows machines don't use bash, we recommend that you install git and include git bash. You can otherwise run the CLI commands on the Windows command prompt.
+В связи с тем, что в ОС windows не встроен инерпритатор bash, мы рекомендуем вам установить git, а так же git bash
+Вы так же можете запускать команды CLI напрямую, из командной строки windows.
 
-1.  Download [git](https://git-scm.com/download/win) (you'll likely want the 64-bit Windows version):
-2.  When prompted choose to install **git bash**
-3.  When prompted for a default text editor select **Use the Nano editor by default**
-4.  When prompted to adjust your path environment, select **Use Git from the Windows Command Prompt**
-5.  When prompted to choose the SSH executable, select **Use OpenSSH**
-6.  When prompted to choose the HTTPS transport backend, select **Use the OpenSSL library**
-7.  When prompted to configure the line ending conversions, select **Checkout Windows-style, commit Unix-style line endings**
-8.  When prompted to configure the terminal emulator to use with Git Bash select **Use MinTTY**
-9.  On the final installation screen select the following options
+1.  Скачайте [git](https://git-scm.com/download/win) (скорее всего вам нужна 64битная версия):
+2.  На запрос выберите установку **git bash**
+3.  На запрос выбора текстового редактора по умолчанию выберите **Use the Nano editor by default**
+4.  На запрос выбора путей по умолчанию, выберите **Use Git from the Windows Command Prompt**
+5.  На запрос выбора исполняемого фпайла SSH, выберите **Use OpenSSH**
+6.  На запрос выбора библиотеки HTTPS, выберите **Use the OpenSSL library**
+7.  На запрос типа переноса строки, выберите **Checkout Windows-style, commit Unix-style line endings**
+8.  На запрос выбора эмулятора термиала, выберите **Use MinTTY**
+9.  На последнем этапе установки выберите следующие опции:
     - **Enable file system caching**
     - **Enable Git Credential Manager**
     - **Enable symbolic links**
 
-## Update the CLI on any platform
+## Обновление CLI на любой платформе
 
-To update the CLI to the latest supported version, run the following command:
+Чтобы обновить Decentraland CLI до последней актуальной версии, используйте команду:
 
 ```bash
 npm update -g decentraland
 ```
 
-## Update the SDK version of a scene
+## Обновление версии SDK для сцены
 
-By updating the CLI, the new scenes you create with it will use the latest version of the SDK. Projects that you created before you updated the CLI will keep using the original version of the SDK that they had when you created them. The only way to change this is to manually update the SDK version in the scene.
+Когда вы обновили CLI до последней версии, все новые сцены, созданные вами будут созданы с использованием последней версии SDK. Проекты же созданные ранее будут использовать ту версию SDK, с которой они создавались. Чтобы обновить версию SDK для существующего проекта, необходимо вручную обновить версию SDK в json файле проекта.
 
-To update the version of the Decentraland SDK:
+Для обновления версии Decentraland SDK:
 
-1.  Open the file _package-lock.json_ in the scene folder.
-2.  Look for the version of _metaverse_api_ being used and manually change it to the latest version of the SDK.
+1.  Откройте файл _package-lock.json_ в директории со сценой.
+2.  Найдите строку _metaverse_api_ и поменяйте версию на последнюю.
 
-> TIp: If you're not sure what's the latest version, check the [release notes]({{ site.baseurl }}{% post_url /releases/sdk/2018-01-01-4.0.0 %}).
+> Подсказка: Если вы не уверены какой номер версии сейчас актуален, можно посмотреть в [release notes]({{ site.baseurl }}{% post_url /releases/sdk/2018-01-01-4.0.0 %}).
 
-> Note: Checking the SDK version you have installed using `npm` won't tell you what version of the SDK is being used when previewing your scenes. The only way to know what version they are using is by checking _package-lock.josn_.
+> Примечание: проверка текущей версии SDK с помощью команды `npm` не даст вам информации, какая версия SDK используется для предпросмотра вашей сцены. Единственный способ посмотреть версию SDK для текущей сцены - смотреть в файле _package-lock.josn_.
