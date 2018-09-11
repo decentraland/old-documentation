@@ -145,6 +145,10 @@ You can also add `console.log()` and `console.trace()` commands to your code so 
 
 You can also use the `sources` tab in the developer tools menu to add breakpoints and pause execution while you interact with the scene in real time.
 
+The following video walks through different ways to debug a scene:
+
+{%  include youtube.html video_id='UIJ_dGOFjKM'  %}
+
 ## View collision meshes
 
 While viewing the preview, you can press `c` to view any collision meshes loaded in the glTF models of the scene. These are usually invisible, but determine where an avatar can move through, and where it can't.
