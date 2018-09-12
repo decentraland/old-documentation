@@ -79,6 +79,8 @@ In this example, based on the door example in the beginner samples, you interact
 
 [Code](https://github.com/decentraland/sample-scene-server)
 
+[Explore the scene](https://dcl-project-fprfrtlboa.now.sh/?position=0%2C0)
+
 Note: A similar sample is discussed in greater detail in a [blogpost](https://blog.decentraland.org/sdk-highlight-building-an-underwater-landscape-5bfcce73ff35).
 
 #### Dynamic number of entities
@@ -124,6 +126,8 @@ This example, that's described in greater detail in a [blogpost](https://blog.de
 This example, that's described in greater detail in a [video tutorial](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-a-simple-tower-defense-game), shows a simple tower defense game. The game generates a random path, and places traps in random locations along that path. Then enemy entities are spawn and follow this path, unless you activate the traps to stop them. The game supports multiple players, has a scoreboard and has a reset button to restart the game at any time.
 
 [Code](https://github.com/decentraland/sample-scene-tower-defense-game)
+
+[Explore the scene](https://dcl-project-iavfhvaswv.now.sh/?position=0%2C-1)
 
 #### Dog, cat, mouse, cheese
 
