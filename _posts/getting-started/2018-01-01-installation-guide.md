@@ -94,6 +94,6 @@ To update the version of the Decentraland SDK:
 
     In older versions, the same API was named \_metaverse*api* , change all mentions of it to _decentraland-api_.
 
-> TIp: If you're not sure what's the latest version, check the [release notes]({{ site.baseurl }}{% post_url /releases/sdk/2018-01-01-4.1.0 %}).
+> TIp: If you're not sure what's the latest version, check the [release notes]({{ site.baseurl }}{% post_url /releases/sdk/2018-01-02-4.1.0 %}).
 
 > Note: Checking the SDK version you have installed using `npm` won't tell you what version of the SDK is being used when previewing your scenes. The only way to know what version they are using is by checking _package-lock.josn_.
