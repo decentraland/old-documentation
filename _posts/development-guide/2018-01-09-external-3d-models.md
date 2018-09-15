@@ -171,6 +171,7 @@ Examples of other valid sizes:
 - If your scene includes multiple models that use the same texture, reference the texture as an external file instead of having it embedded in the 3D model. Embedded textures get duplicated for each model and add to the scene's size.
   > Note: After referencing a file for a texture that won’t be embedded, make sure that file won’t be moved or renamed, as otherwise the reference to the file will be lost. The file must also be inside the scene folder so that it’s uploaded together with the scene.
 - Read [this article](https://www.khronos.org/blog/art-pipeline-for-gltf) for a detailed overview of a full art pipeline that uses PBR textures in glTF models.
+- Find free, high quality PBR textures in [cgbookcase](https://cgbookcase.com/).
 
 ## Colliders
 
