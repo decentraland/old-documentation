@@ -90,9 +90,9 @@ By updating the CLI, the new scenes you create with it will use the latest versi
 To update the version of the Decentraland SDK:
 
 1.  Open the file _package-lock.json_ in the scene folder.
-2.  Look for the version of \_decentraland-api being used and manually change it to the latest version of the SDK.
+2.  Look for the version of _decentraland-api_ or _metaverse-api_ being used and manually change it to the latest version of the SDK.
 
-    In older versions, the same API was named \_metaverse*api* , change all mentions of it to _decentraland-api_.
+    In older versions, the API was named _metaverse-api_, in newer versions it's named _decentraland-api_ .
 
 > TIp: If you're not sure what's the latest version, check the [release notes]({{ site.baseurl }}{% post_url /releases/sdk/2018-01-02-4.1.0 %}).
 
