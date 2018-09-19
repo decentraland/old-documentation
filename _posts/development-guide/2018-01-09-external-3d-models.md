@@ -72,6 +72,12 @@ Download the plugin from [this link](https://github.com/sketchfab/Unity-glTF-Exp
 
 > Note: As an alternative, you can try [this other plugin](https://assetstore.unity.com/packages/tools/utilities/collada-exporter-for-unity2017-99793) too.
 
+#### Export to glTF from SketchUp
+
+SketchUp doesn't support exporting to glTF by default, but you can install a plugin to enable it.
+
+Download the plugin from [this link](https://extensions.sketchup.com/en/content/gltf-exporter).
+
 #### Preview a glTF model
 
 A quick and easy way to preview the contents of a glTF model before importing it into a scene is to use the [Babylon.js Sandbox](https://sandbox.babylonjs.com/). Just drag and drop the glTF file (and its _.bin_ file if applicable) into the canvas to view the model.
