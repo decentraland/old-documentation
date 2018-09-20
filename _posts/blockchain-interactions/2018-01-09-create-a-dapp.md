@@ -2,8 +2,6 @@
 date: 2018-01-01
 title: Create a DApp
 description: Reference for creating your own Decentralized App
-redirect_from:
-  - /decentraland/api/
 categories:
   - blockchain-interactions
 type: Document
