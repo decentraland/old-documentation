@@ -164,11 +164,11 @@ Note that the transition for each of these properties is configured separately.
     rotation={currentRotation}
     color={currentColor}
     scale={currentScale}
-    transition={
-        { rotation: { duration: 1000, timing: "ease-in" }}
-        { color: { duration: 3000, timing: "exponential-in" }}
-        { scale: { duration: 300, timing: "bounce-in" }}
-        }
+    transition={{
+      rotation: { duration: 1000, timing: "ease-in" },
+      color: { duration: 3000, timing: "exponential-in" },
+      scale: { duration: 300, timing: "bounce-in" }
+    }}
   />
 ```
 
