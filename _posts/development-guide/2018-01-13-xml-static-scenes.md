@@ -13,7 +13,7 @@ Instead of using TypeScript to create a scene that can be interactive or not (th
 
 ## Create a static scene
 
-Use the CLI to create a new scene following the steps of [Create scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}), then select _static_ as the scene type.
+To copy the [sample scene]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) that has static XML code, follow the steps in the [create scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) to clone a sample scene.
 
 ## Elements of a static scene
 

@@ -47,6 +47,12 @@ In your scenes, you can load up an interactive [GLTF model]({{ site.baseurl }}{%
 
 [Explore the scene](https://dcl-project-tiroqwvfop.now.sh/?position=0%2C1)
 
+#### Static XML Scene
+
+This is an example of a completely static scene. It's built entirely using XML, which makes it easier to write and edit, but doesn't support any interactions with the user.
+
+[Code](https://github.com/decentraland/sample-scene-static-xml)
+
 ## Intermediate samples
 
 #### Sound Support

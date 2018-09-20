@@ -31,9 +31,9 @@ async addOne(){
 
 ## Create remote scenes
 
-Use the Decentraland CLI to [create a new scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) based on the default remote scene. When prompted by the CLI to select the type of scene, select the option _Remote_.
+To copy one of the [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) that implements a remote server, follow the steps in the [create scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) to clone a sample scene.
 
-To transform an existing local scene into remote, we recommend using the CLI to create a new scene and then copying the contents from the _scene.tsx_ file of the old scene into the _RemoteScene.tsx_ file of the new remote scene.
+To transform an existing local scene into remote, we recommend cloning the [sample multiplayer scene](https://github.com/decentraland/sample-scene-server) and then copying the contents from the _scene.tsx_ file of the old scene into the _RemoteScene.tsx_ file of the new remote scene.
 
 You should also make the following changes to the scene's code:
 

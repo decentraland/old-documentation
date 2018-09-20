@@ -15,10 +15,6 @@ set_order: 7
 
 Make sure of the following:
 
-- Your scene's _scene.json_ file reflects the correct properties, including your Metamask public address, and the LAND parcels where you want to upload the scene.
-
-> Note: The CLI prompts you to provide this information when creating the scene, but you can also modify the file manually at any time.
-
 - Your scene complies with all of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}). Most of these are validated each time you run a preview of your scene.
 
 * You installed IPFS correctly. To do so, follow [these steps](https://ipfs.io/docs/install/).
@@ -26,6 +22,24 @@ Make sure of the following:
 * You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it. The account must also hold a minimum amount of Ether to pay a transaction gas fee.
 
 * You own the necessary amount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}).
+
+* If you're deploying a single scene to multiple adjacent parcels, you must first merge them together into an _Estate_ before you can deploy to them. See [Marketplace]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}) for instructions on how to create an estate.
+
+## Check scene data
+
+When deploying, the CLI reads information from the _scene.json_ to know where to deploy your scene to.
+
+Open your scene's _scene.json_ file and verify the following:
+
+- **Owner**: Needs to match your Ethereum wallet address. This same address needs to hold the LAND tokens, or have been granted permissions by the owner.
+
+- **Parcels**: The coordinates of the parcels that will be occupied by your scene
+
+- **Base**: The coordinates of the parcel that will be considered the [0,0] coordinate of the scene.
+
+- **Estate**: The ID of the estate you're deploying to. If you're deploying to a single parcel, this field isn't necessary.
+
+  > Note: To find your estate's id, open the estate's detail page in the Marketplace. The URL should include a number for the ID. For example if the URL is _market.decentraland.org/estates/84/detail_, the estate's ID is _84_.
 
 ## To publish the scene
 

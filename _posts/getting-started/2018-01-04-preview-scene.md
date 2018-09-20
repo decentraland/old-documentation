@@ -24,9 +24,9 @@ npm install -g decentraland
 
 See the [Installation Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
 
-## Preview a local scene
+## Preview a scene
 
-To preview a local scene run the following command on the scene's main folder:
+To preview a scene run the following command on the scene's main folder:
 
 ```bash
 dcl start
@@ -37,6 +37,8 @@ Any dependencies that are missing are installed and then the CLI opens the scene
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
 ## Preview a remote scene
+
+Remote scenes depend on an external server to store a shared state for all users of the scene, making it possible to have multiplayer interaction.
 
 To preview a remote scene you must first start a WebSockets server in your local machine. To do this:
 
