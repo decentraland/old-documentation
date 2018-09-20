@@ -298,7 +298,7 @@ To keep your scene's code cleaner, place the event manager in its own file, we r
 {% raw %}
 
 ```tsx
-import { EventSubscriber } from "metaverse-api"
+import { EventSubscriber } from "decentraland-api"
 
 export namespace EventManager {
   let eventSubscriber: EventSubscriber

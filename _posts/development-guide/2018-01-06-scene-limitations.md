@@ -27,6 +27,8 @@ Below are the maximum number of elements allowed allowed in a scene:
 - **Textures:** `log2(n+1) x 10` Amount of textures in the scene. It includes textures imported as part of models.
 - **Height:** `log2(n+1) x 20` Height in meters.
 
+  > Note: User avatars and any items brought by users from outside the scene don't count for calculating these limits.
+
 ## Query scene limitations via code
 
 From a scene's code, you can query both the limitations that apply to the scene and how much the scene is currently using. This is especially useful with scenes where the content changes dynamically. For example, in a scene where you add a new entity each time the user clicks, you could stop adding entities when you reach the scene limits.
