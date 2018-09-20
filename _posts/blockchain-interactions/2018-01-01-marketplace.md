@@ -65,12 +65,16 @@ To view your LAND tokens, click **My Land**. Here you’ll find a list of all of
 
 By clicking on one of the parcels listed under My Land, you can edit its name, description, put it up for sale, or transfer it directly to another wallet address.
 
+![](/images/media/marketplace_myland.png)
+
 ## Buy MANA
 
 To buy MANA in exchange for Ether, follow these steps:
 
 1. Open your user _Settings page_
 2. Check the box next to _You have authorized the Marketplace contract to operate MANA on your behalf_.
+
+   ![](/images/media/marketplace_authorize.png)
 
    > Note: Enabling this setting triggers a transaction on the blockchain. You must confirm this transaction in your Ethereum client, pay a gas fee in Ether and wait for its confirmation before it takes effect.
 
@@ -85,9 +89,12 @@ To buy LAND parcels in Decentraland, follow these steps:
 1. Open your user _Settings page_
 2. Check the box next to _You have authorized the Marketplace contract to operate LAND on your behalf_.
 
+   ![](/images/media/marketplace_authorize.png)
+
    > Note: Enabling this setting triggers a transaction on the blockchain. You must confirm this transaction in your Ethereum client, pay a gas fee in Ether and wait for its confirmation before it takes effect.
 
 3. Explore the _Atlas view_ or the _Marketplace view_ to find a plot of land you like that's on sale. On the parcel's view, click **Buy**.
+   ![](/images/media/marketplace_buy_land.png)
 4. Confirm this transaction on your Ethereum client and wait for the network to verify it.
 
 > Note: Aside from the gas fee that the Ethereum network pays to the miners of the transaction, Decentraland does not collect any surplus trading fees.
@@ -157,11 +164,11 @@ To grant permissions over a parcel:
 
 ## See your activity history
 
-Open the notifications icon, next to your user icon.
+Open the notifications page by clicking the bell icon at the top of the screen.
 
-![](/images/media/)
+![](/images/media/marketplace_notifications.png)
 
-This displays a list of all the recent transactions that you have carried out, together with their status.
+The notifications page displays a list of all the recent transactions that you have carried out, together with their status.
 
 Click a transaction to see more details about it on Etherscan.
 
@@ -186,7 +193,7 @@ To transfer a LAND parcel or estate to another user:
 
 1. Navigate to the details page of the parcel or the estate you'd like to transfer and click **Transfer**
 
-   ![](/images/media/)
+   ![](/images/media/marketplace_transfer_land.png)
 
 2. Enter the public address of the Ethereum wallet of the recipient.
 
