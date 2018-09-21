@@ -15,7 +15,7 @@ You can create your own decentralized apps (dApps) to interface with Decentralan
 
 A decentralized application, or dApp, is one that runs on a distributed peer to peer network rather than from a central server.
 
-In the context of the blockchain, a dApp uses smart contracts in its back-end to interact with the blockchain. A dApp may also expose a front end and cache information from the blockchain temporarily, but its output is ultimately reflected on-chain.
+In the context of blockchain, a dApp uses smart contracts and possibly a P2P network, instead of a Web API service. A dApp may also expose a front end and cache information from the blockchain temporarily, but its output is ultimately reflected on-chain.
 
 See [this site](https://blockchainhub.net/decentralized-applications-dapps/) for a more complete overview about dApps.
 
@@ -50,9 +50,9 @@ Below are links to the full code of several dApps that we built around Decentral
 
 - [Canilla](https://github.com/decentraland/canilla): This basic dApp provides free Ropsten MANA.
 
-- [Gate](https://github.com/decentraland/gate): This basic dApp adds a token to your wallet that whitelists you and certifies that you can use the Decentraland client.
+- [Gate](https://github.com/decentraland/gate): This basic dApp creates an invitation NFT to whitelist users using the Decentraland private alpha version.
 
-- [Marketplace](https://github.com/decentraland/marketplace): This is the full application that runs the Decentraland [Marketplace](https://market.decentraland.org/)
+- [Marketplace](https://github.com/decentraland/marketplace): This is the full application that runs the Decentraland [Marketplace](https://market.decentraland.org/). To make it run fast, it requires a database and a backend server connected to the Ethereum network to create indexes with information about LAND.
 
 ## dApp testing framework
 
