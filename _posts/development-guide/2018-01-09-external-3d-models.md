@@ -118,6 +118,10 @@ Not all shaders can be used in models that are imported into Decentraland. Make 
 
   > Tip: When using Blender, you can use PBR materials by setting _Cycles_ rendering and adding the _Principled BSDF_ shader. Note that none of the other shaders of the _Cycles_ renderer are supported.
 
+The image below shows two identical models, created with the same colors and textures. The model on the left uses all _PBR_ materials, some of them include _metalness_, _transparency_, and _emissiveness_. The model on the right uses all _standard_ materials, some including _transparency_ and _emissiveness_.
+
+![](/images/media/materials_pbr_basic.png)
+
 See [entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material.
 
 #### Transparent and emissive materials
@@ -126,7 +130,7 @@ You can set a material to be _transparent_. Transparent materials can be seen th
 
 You can also make a material _emissive_. Emissive materials cast their own light. Note that when rendered, they don't actually illuminate nearby objects in the scene, they just seem to have a blurred glow around them.
 
-The image below shows two identical models, the one on the left uses only opaque materials, the one on the right uses both transparent and emissive materials in some of its parts.
+The image below shows two identical models created with standard materials. The one on the left uses only opaque materials, the one on the right uses both transparent and emissive materials in some of its parts.
 
 ![](/images/media/materials_transparent_emissive.png)
 
