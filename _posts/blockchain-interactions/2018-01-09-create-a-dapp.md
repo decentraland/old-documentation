@@ -1,6 +1,6 @@
 ---
 date: 2018-01-01
-title: Create a DApp
+title: Create a dApp
 description: Reference for creating your own Decentralized App
 categories:
   - blockchain-interactions
