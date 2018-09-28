@@ -199,7 +199,19 @@ Instead of the _material_ entity, you can define a material through the _basic-m
 
 {% endraw %}
 
-Materials are also implicitly imported into a scene when you import a glTF model that includes embedded materials. When that's the case, the scene doesn't need a _material_ entity declared.
+When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The _basic material_ entity uses the _nearest neighbor_ algorithm by default, but you can configure it to use the _bilinear_ or _trilinear_ algorithms instead by setting the `samplingMode`.
+
+{% raw %}
+
+```tsx
+<basic-material
+  id="basic_material"
+  texture="materials/profile_avatar.png"
+  samplingMode={DCL.TextureSamplingMode.TRILINEAR}
+/>
+```
+
+{% endraw %}
 
 ## Import 3D models
 
