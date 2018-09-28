@@ -111,7 +111,11 @@ See [entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06
 
 #### Texture mapping
 
-An entity that uses a material can be configured to map specific regions of the texture to its faces. You do this by setting _u_ and _v_ coordinates on the 2D image of the texture to correspond to the vertices of the entity. The more vertices the entity has, the more _uv_ coordinates need to be defined on the texture, a plane for example needs to have 8 _uv_ points defined, 4 for each of its two faces.
+An entity that uses a material can be configured to map specific regions of the texture to its faces.
+
+Use the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) library to map textures easily. Read documentation on how to use this library in the provided link.
+
+To handle texture mapping manually, you set _u_ and _v_ coordinates on the 2D image of the texture to correspond to the vertices of the entity. The more vertices the entity has, the more _uv_ coordinates need to be defined on the texture, a plane for example needs to have 8 _uv_ points defined, 4 for each of its two faces.
 
 {% raw %}
 
@@ -153,8 +157,6 @@ async render() {
 {% endraw %}
 
 To create an animated sprite, use texture mapping to change the selected regions of a same texture that holds all the frames.
-
-To work with animated sprites, you can install and use the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) node package. Read documentation on how to use it in the provided link.
 
 #### Transparent materials
 
