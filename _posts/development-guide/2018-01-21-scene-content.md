@@ -213,6 +213,8 @@ When textures are stretched or shrinked to a different size from the original te
 
 {% endraw %}
 
+The example above uses a trilinear algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
+
 ## Import 3D models
 
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in _glTF_ format. [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
