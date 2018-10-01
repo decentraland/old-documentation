@@ -161,7 +161,7 @@ Collision meshes can be added to any model in an external 3D modeling tool like 
 
 ## View bounding boxes
 
-While viewing the preview, you can press `b` to view any bounding boxes. Bounding boxes show the space occupied by an entity, it's especially useful to see these when dealing with invisible entities.
+While viewing the preview, you can press `b` to view any bounding boxes. Bounding boxes show the space occupied by an entity, it's especially useful to see these when dealing with entities that are invisible, buried inside others, or underground.
 
 ## Using the Ethereum test network
 
