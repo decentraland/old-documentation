@@ -69,7 +69,7 @@ Hosting your own server is also a recommended safety measure for games that invo
 
 #### Game timing
 
-Games that use peer to peer connections should take into account that there could be lag between users and shouldn’t rely on fast reactions between the actions of different users. We recommend games that are turn based, or that are mostly based on player versus environment interactions.
+**Games that use peer to peer connections should take into account that there could be lag between users** and shouldn’t rely on fast reactions between the actions of different users. We recommend games that are turn based, or that are mostly based on player versus environment interactions.
 
 For games where the timing of actions between players is critical, like a first person shooter, you should implement your own server as a real-time authoritative source of truth between all players in your scene.
 
