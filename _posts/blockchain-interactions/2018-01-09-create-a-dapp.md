@@ -44,7 +44,7 @@ While building our own dApps internally, we put together some helper libraries t
 
 - [Decentraland-dapps](https://github.com/decentraland/decentraland-dapps): This is a higher level library with common modules for dApps. The modules in this library are built using `Decentraland-eth`.
 
-- [Decentraland UI](decentraland.ui.org): This library contains a selection of reusable UI elements that are included in Decentraland's projects.
+- [Decentraland UI](https://ui.decentraland.org/): This library contains a selection of reusable UI elements that are included in Decentraland's projects.
 
 ## Sample dApps
 
