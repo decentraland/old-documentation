@@ -23,9 +23,9 @@ The scene tree structure must start with a `<scene>` tag in the root level.
 
 ```xml
 <scene>
-  <box position='5 5 1' />
-  <entity position=' 1 3 1'>
-    <box position='0 0 0' />
+  <box position="5 5 1" ></box>
+  <entity position=" 1 3 1"></ entity>
+    <box position="0 0 0" ></box>
   </entity>
 </scene>
 ```
@@ -35,9 +35,9 @@ The scene tree structure must start with a `<scene>` tag in the root level.
 You can add primitive shapes like boxes, cones, or spheres.
 
 ```xml
-<box color='#ff00aa' position='1 2 3' />
-<sphere color='#00aaff' position='1 2 3' scale='4 4 4' />
-<plane color='#00aaff' position='1 2 3' scale='4 4 4' rotation='-90 0 0' />
+<box color="#ff00aa" position="1 2 3" ></box>
+<sphere color="#00aaff" position="1 2 3" scale="4 4 4"></sphere>
+<plane color="#00aaff" position="1 2 3" scale="4 4 4" rotation="-90 0 0" ></plane>
 ```
 
 #### 3D Models
@@ -45,7 +45,7 @@ You can add primitive shapes like boxes, cones, or spheres.
 You can import 3D models in _glTF_ format into your scene. See [3D model considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for details about what can be supported in 3D models.
 
 ```xml
-<gltf-model position='1 2 3' scale='4 4 4' src='models/dog.gltf' />
+<gltf-model position="1 2 3" scale="4 4 4" src="models/dog.gltf"></gltf-model>
 ```
 
 All `gltf-model` entities need to have an `src` attribute, pointing to a file for the 3D model.
@@ -55,9 +55,9 @@ All `gltf-model` entities need to have an `src` attribute, pointing to a file fo
 You can use basic entities as wrappers to group and transform child entities. These entities are invisible, but any attributes they have are inherited by their children, which can make it easier to scale, rotate or position several entities as a group.
 
 ```xml
-<entity position='5 0 0' rotation='0 90 0'>
-   <box color='#ff00aa' position='-2 0 0' />
-   <box color='#00aaff' position='2 0 0' />
+<entity position="5 0 0" rotation="0 90 0">
+   <box color="#ff00aa" position="-2 0 0"></box>
+   <box color="#00aaff" position="2 0 0"></box>
  </entity>
 ```
 
@@ -126,6 +126,8 @@ class Scene extends ScriptableScene {
 ```
 
 {% endraw %}
+-->
+<!--
 
 #### Attribute naming
 
@@ -139,7 +141,6 @@ HTML and XHTML are case insensitive for attributes, this generates conflicts wit
 
 ```xml
 <scene>
-  <!-- XML -->
   <material id="test" albedo-color="#ffeeaa" />
 </scene>
 ```
