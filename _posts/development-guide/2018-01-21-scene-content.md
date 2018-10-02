@@ -199,7 +199,7 @@ Instead of the _material_ entity, you can define a material through the _basic-m
 
 {% endraw %}
 
-When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The _basic material_ entity uses the _nearest neighbor_ algorithm by default, but you can configure it to use the _bilinear_ or _trilinear_ algorithms instead by setting the `samplingMode`.
+When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The _basic material_ entity uses the _bilinear_ algorithm by default, but you can configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode`.
 
 {% raw %}
 
@@ -207,13 +207,13 @@ When textures are stretched or shrinked to a different size from the original te
 <basic-material
   id="basic_material"
   texture="materials/profile_avatar.png"
-  samplingMode={DCL.TextureSamplingMode.TRILINEAR}
+  samplingMode={DCL.TextureSamplingMode.NEAREST}
 />
 ```
 
 {% endraw %}
 
-The example above uses a trilinear algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
+The example above uses a nearest neighbor algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
 
 ## Import 3D models
 
@@ -237,9 +237,9 @@ In the example above, the model is located in a `models` folder, which is locate
 
 > Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
 
-glTF models can also include their own textures, materials, colliders and animations. See [3D models considerations]({{ site.baseurl }}{% post_url /getting-started/2018-01-09-external-3d-models %}) for more information on this.
+glTF models can also include their own textures, materials, colliders and animations. See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more information on this.
 
-Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /getting-started/2018-01-06-scene-limitations %}).
+Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
 > Note: obj models are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use an `<obj-model>` entity.
 
@@ -247,7 +247,7 @@ Keep in mind that all models, their shaders and their textures must be within th
 
 Files with .gltf extensions can be opened with a text editor to view their contents. There you can find the list of animations included in the model and how they're named. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-See [3D models considerations]({{ site.baseurl }}{% post_url /getting-started/2018-01-09-external-3d-models %}) for information on how to create animations for a 3D model before importing it to a Decentraland scene.
+See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for information on how to create animations for a 3D model before importing it to a Decentraland scene.
 
 You handle animations to a _gltf-model_ entity by adding _skeletalAnimation_ settings to it. This setting receives an array of JSON entries, where each entry handles one of the animations in the model. For an animation to be activated, you must set the `playing` property of a clip to _true_.
 
@@ -403,7 +403,7 @@ All entities have collisions disabled by default. Depending on the type of entit
 
 A _collider_ is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision object is usually a lot simpler (with less vertices) than the original model.
 
-See [3D models considerations]({{ site.baseurl }}{% post_url /getting-started/2018-01-09-external-3d-models %}) for more details on what colliders are and how to add them.
+See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more details on what colliders are and how to add them.
 
 Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the user's avatar.
 
