@@ -18,13 +18,15 @@ To run these commands, you must first [Install the CLI]({{ site.baseurl }}{% pos
 The `dcl info` command returns the contents of a scene's _scene.json_ file, including owner, contact info, and parcels in the scene.
 
 - `dcl info` from the scene's folder returns info about that specific scene.
-- `dcl info x, y`, where _x_ and _y_ are parcel coordinates, returns info about the scene in that location.
+- `dcl info x,y`, where _x_ and _y_ are parcel coordinates, returns info about the scene in that location.
+  > Note: Don't add a space between both coordinates.
 - `dcl info id`, where _id_ is an estate id, returns info about the scene with that estate id.
 
 The `dcl status` command returns a list with the files deployed to a scene. This only includes file names and sizes. You can't access the contents of the files via the CLI.
 
 - `dcl status` from the scene's folder returns info about that specific scene.
-- `dcl status x, y`, where _x_ and _y_ are parcel coordinates, returns info about the scene in that location.
+- `dcl status x,y`, where _x_ and _y_ are parcel coordinates (with no spaces between them), returns info about the scene in that location.
+  > Note: Don't add a space between both coordinates.
 - `dcl status id`, where _id_ is an estate id, returns info about the scene with that estate id.
 
 > Note: Everything that's uploaded to IPFS is public and reachable through that network. When you deploy a scene, by default you're not uploading the original source code for the scene, instead you upload a version that's compiled to minified JavaScript, which is a lot less readable.
