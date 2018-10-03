@@ -21,8 +21,8 @@ layout: default
           {% endif %}
         {%endif %}
       {% endfor %}
-          
-          
+
+
           </b></h1>
       <a class="index-trigger modalOpen no-smooth" href="#index-modal">
         {% include index-icon.html icon="Index" %} See index
@@ -117,8 +117,8 @@ layout: default
       </a>
       {% endif %}
     </div>
-    {% assign related_posts = site.related_posts %} 
-    {% assign related_posts_size = related_posts | size %} 
+    {% assign related_posts = site.related_posts %}
+    {% assign related_posts_size = related_posts | size %}
     {% if related_posts_size > 0 %}
     <div class="related">
       <h2>Related documents</h2>
@@ -132,9 +132,9 @@ layout: default
 <div id="index-modal" class="modalDialog index-modal">
   <a title="Close" class="close">&times;</a>
   <ul>
-    {% if page.set %} 
-    {% assign set_file_name = "_sets/" | append: page.set | append: ".md" %} 
-    {% assign set = site.sets | where: "path", set_file_name | first %} 
+    {% if page.set %}
+    {% assign set_file_name = "_sets/" | append: page.set | append: ".md" %}
+    {% assign set = site.sets | where: "path", set_file_name | first %}
     {% assign series_posts = site.posts | where: "set", page.set | sort: 'set_order' %}
     {% for series_post in series_posts %}
     <li {% if series_post.url==page.url %} class="active" {% endif %}>
@@ -235,3 +235,31 @@ layout: default
     }
   });
 </script>
+
+{% if page.content contains "code" %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.1/clipboard.min.js" integrity="sha256-hIvIxeqhGZF+VVeM55k0mJvWpQ6gTkWk3Emc+NmowYA=" crossorigin="anonymous"></script>
+  <script>
+    $('.highlighter-rouge code').each(function(i) {
+      const currentId = `codeblock${(i + 1)}`
+      $(this).attr('id', currentId)
+      const clipButton = `<div class="copy-code"><button class="codeblock-btn" data-clipboard-target="#${currentId}">Copy Code</button></div>`
+      $(this).after(clipButton)
+    })
+
+    const clipboard = new ClipboardJS('.codeblock-btn')
+    clipboard.on('success', e => e.clearSelection())
+
+    $('.codeblock-btn').on('click', function () {
+      const $this = $(this)
+      const text = $this.text()
+
+      $this.addClass('copied')
+      $this.text('Copied')
+
+      window.setTimeout(() => {
+        $this.removeClass('copied')
+        $this.text(text)
+      }, 3000)
+    })
+  </script>
+{% endif %}

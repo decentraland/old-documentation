@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16">
+  <style>
+    g { display: none }
+    g:target { display: inline }
+  </style>
+  <g id="copy" fill="none" fill-rule="evenodd">
+    <path d="M-3-2v20h20V-2z"/>
+    <path fill="#F04" d="M3.25 3h-.5a2 2 0 0 0-2 2v8.5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V13h.5a2 2 0 0 0 2-2V2.5a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2V3zM4.5 3v-.25a1 1 0 0 1 1-1H11a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-.25V5a2 2 0 0 0-2-2H4.5zM2 5.25a1 1 0 0 1 1-1h5.5a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8z"/>
+  </g>
+  <g id="copied" fill="none" fill-rule="evenodd">
+    <path d="M-4-6h20v20H-4z"/>
+    <path style="transform: translate(0, 3px)" d="M.17 5.037A.565.565 0 0 1 0 4.661c0-.107.057-.268.17-.376l.796-.752a.571.571 0 0 1 .795 0l2.258 2.35a.286.286 0 0 0 .398 0L10.239.162a.571.571 0 0 1 .795 0l.796.752a.5.5 0 0 1 0 .753L4.587 8.839A.53.53 0 0 1 4.189 9a.53.53 0 0 1-.397-.161L.17 5.037z" fill="#F04" fill-rule="nonzero"/>
+  </g>
+</svg>
