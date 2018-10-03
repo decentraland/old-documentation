@@ -15,25 +15,11 @@ set_order: 10
 
 Remote scenes store their state in a remote server instead of in each user's local client. This means that all users of the scene share the same state, which allows them to see the same content in the scene and to interact in more meaningful ways. See [scene state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}) for more about the scene state.
 
-In a remote scene, the state is handled in the _State.ts_ file. This file also exports two functions that must be used to handle the state: `getState()` and `setState()`.
-
-{% raw %}
-
-```tsx
-async addOne(){
-  let count = getState().myCounter
-  count =+ 1
-  setState({myCounter: count})
-}
-```
-
-{% endraw %}
-
 ## Create remote scenes
 
-Use the Decentraland CLI to [create a new scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) based on the default remote scene. When prompted by the CLI to select the type of scene, select the option _Remote_.
+To copy one of the [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) that implements a remote server, follow the steps in the [create scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) to clone a sample scene.
 
-To transform an existing local scene into remote, we recommend using the CLI to create a new scene and then copying the contents from the _scene.tsx_ file of the old scene into the _RemoteScene.tsx_ file of the new remote scene.
+To transform an existing local scene into remote, we recommend cloning the [sample multiplayer scene](https://github.com/decentraland/sample-scene-server) and then copying the contents from the _scene.tsx_ file of the old scene into the _RemoteScene.tsx_ file of the new remote scene.
 
 You should also make the following changes to the scene's code:
 
@@ -43,7 +29,11 @@ You should also make the following changes to the scene's code:
 
 ## Preview remote scenes
 
-To preview a remote scene, you must first launch the server locally. Then you can run `dcl start` as you normally do with local scenes. You can also point multiple browser windows at the same local address to instantiate multiple users in the same scene, these will share the same scene state.
+To preview a remote scene, you must run both the scene and the server it relies on. The server can also be run locally in the same machine as the preview.
+
+Once the server is running, either remotely or locally, you can run `dcl start` on the scene as you normally do for local scenes.
+
+Once the scene preview is running, you can open multiple browser tabs pointing at the same local address. Each tab will instantiate a separate user in the same scene, these users will share the same scene state.
 
 See [preview a scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %}) for more details.
 
@@ -56,7 +46,7 @@ Any changes made to the scene will linger on for other users to find, you must m
 
 #### Reset the state
 
-If the `sceneDidMount()` method in your scene sets the scene state to a default set of values, this would ensure that each user that walks into your scene finds it in the state. The problem with that is that when a second user arrives, the first will also see the scene reset, which is generally a poor experience.
+You shouldn't set the scene state to default values in the `sceneDidMount()` method. If you do, this would ensure that each user that walks into your scene finds it in the same state. The problem is that if a second user enters the scene, `sceneDidMount()` would be called again and the scene state would be reset for all users. This is generally a poor experience for the user that was already in the scene.
 
 In some cases, it makes sense to include some kind of reset button in the scene. Pressing the reset button would reset the scene gracefully.
 

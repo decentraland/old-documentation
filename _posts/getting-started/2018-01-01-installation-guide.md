@@ -29,7 +29,7 @@ Please install the following dependencies before you install the CLI:
 
 ## To install the CLI on Mac OS
 
-On Mac OS, simply run the following command:
+On Mac OS, open the _Terminal_ app and run the following command:
 
 ```bash
 npm install -g decentraland

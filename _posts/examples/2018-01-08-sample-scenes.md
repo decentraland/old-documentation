@@ -47,7 +47,15 @@ In your scenes, you can load up an interactive [GLTF model]({{ site.baseurl }}{%
 
 [Explore the scene](https://dcl-project-tiroqwvfop.now.sh/?position=0%2C1)
 
-## Intermediate samples
+## Static XML Scenes
+
+#### Static XML Scene
+
+This is an example of a completely static scene. It's built entirely using XML, which makes it easier to write and edit, but doesn't support any interactions with the user.
+
+[Code](https://github.com/decentraland/sample-scene-static-xml)
+
+## Multimedia
 
 #### Sound Support
 
@@ -73,6 +81,8 @@ In this example, you can interact with two video players. One loads the video co
 
 [Explore the scene](https://dcl-project-ffueiuubku.now.sh/?position=0%2C-1)
 
+## Remote Scenes
+
 #### Multiplayer Content
 
 In this example, based on the door example in the beginner samples, you interact with a door by opening and closing it, while another player is in the same room seeing the door's state changes. This simple example is built to give you a glimpse into how a multi-user environment works where multiple users interact with the same entities.
@@ -83,6 +93,16 @@ In this example, based on the door example in the beginner samples, you interact
 
 Note: A similar sample is discussed in greater detail in a [blogpost](https://blog.decentraland.org/sdk-highlight-building-an-underwater-landscape-5bfcce73ff35).
 
+#### Tower defense game
+
+This example, that's described in greater detail in a [video tutorial](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-a-simple-tower-defense-game), shows a simple tower defense game. The game generates a random path, and places traps in random locations along that path. Then enemy entities are spawn and follow this path, unless you activate the traps to stop them. The game supports multiple players, has a scoreboard and has a reset button to restart the game at any time.
+
+[Code](https://github.com/decentraland/sample-scene-tower-defense-game)
+
+[Explore the scene](https://dcl-project-iavfhvaswv.now.sh/?position=0%2C-1)
+
+## Intermediate samples
+
 #### Dynamic number of entities
 
 In this example, that's described in greater detail in a [blogpost](https://blog.decentraland.org/developer-tutorial-creating-a-dynamic-flock-of-hummingbirds-8c2cd41f8296), a new bird appears and starts flying randomly around the scene each time you click on a tree. It's a good example of how to build multiple entities from an array and of how to handle 3D model animations.
@@ -91,9 +111,7 @@ In this example, that's described in greater detail in a [blogpost](https://blog
 
 [Explore the scene](https://dcl-project-xdoolmuwqt.now.sh/?position=0%2C-1)
 
-## Advanced samples
-
-#### Simple Memory Game
+#### Memory Game
 
 In this example, that's described in greater detail in a [blogpost](https://blog.decentraland.org/building-a-memory-game-using-decentralands-sdk-87ee35968f8d), you play with a "Simon Says" game. This game is a good example of how to add more complex logic into a scene and how to change its state based on how the user interacts with it.
 
@@ -106,6 +124,8 @@ In this example, that's described in greater detail in a [blogpost](https://blog
 In this example, based on the door example in the beginner samples, you're only allowed to open the door if you've paid 10 MANA to a specific wallet. The sample shows how you can use the SDK to track blockchain transactions.
 
 [Code](https://github.com/decentraland/sample-scene-payments)
+
+## Advanced samples
 
 #### Block Dog
 
@@ -120,14 +140,6 @@ In this example, that's described in greater detail in a [video tutorial](https:
 This example, that's described in greater detail in a [blogpost](https://blog.decentraland.org/developer-tutorial-port-a-redux-chess-game-to-decentraland-49f509b2eba6), takes an existing 2D chess game and builds a 3D scene around it in decentraland. The game can only start when two players have accepted to join the game, and each can only interact with the scene when it's their turn.
 
 [Code](https://github.com/cazala/decentraland-redux-chess-app)
-
-#### Tower defense game
-
-This example, that's described in greater detail in a [video tutorial](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-a-simple-tower-defense-game), shows a simple tower defense game. The game generates a random path, and places traps in random locations along that path. Then enemy entities are spawn and follow this path, unless you activate the traps to stop them. The game supports multiple players, has a scoreboard and has a reset button to restart the game at any time.
-
-[Code](https://github.com/decentraland/sample-scene-tower-defense-game)
-
-[Explore the scene](https://dcl-project-iavfhvaswv.now.sh/?position=0%2C-1)
 
 #### Dog, cat, mouse, cheese
 
