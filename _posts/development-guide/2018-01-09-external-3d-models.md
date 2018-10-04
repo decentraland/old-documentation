@@ -186,6 +186,33 @@ Examples of other valid sizes:
 
 > Although textures of arbitrary sizes work in the alpha release, the engine displays an alert in the console. We will enforce this restriction in coming releases and invalid texture sizes will cease to work.
 
+#### Swap a material
+
+Suppose you've imported a 3D model that uses a material that's not supported by Decentraland. You can easily change this material while still keeping the same texture and its mapping.
+
+![](/images/media/materials-not-supported.png)
+
+To swap the material:
+
+1. Check the current material's settings to see what texture files are being used and how they are configured.
+2. Delete the current material from the mesh.
+
+   ![](/images/media/materials_delete_material.png)
+
+3. Create a new material.
+
+   ![](/images/media/materials_new_material.png)
+
+   > TIp: If you're using Blender and are on the _Blender Render_ tab, it creates a basic material by default, which is supported by Decentraland.
+
+4. Open the _Textures_ settings and create a new texture, importing the same image file that the original material used.
+
+   ![](/images/media/materials_new_texture.png)
+
+5. The texture should be mapped to the new material just as it was mapped to the old material.
+
+   ![](/images/media/materials_final.png)
+
 #### Best practices for materials
 
 - If your scene includes multiple models that use the same texture, reference the texture as an external file instead of having it embedded in the 3D model. Embedded textures get duplicated for each model and add to the scene's size.
@@ -234,7 +261,7 @@ In this case, we can name the box "Box*Tree_collider" and export both the tree a
 
 Whenever a player views the tree model in your scene, they will see the complex model for your tree. However, when they walk into your tree, they will collide with the box, not the tree.
 
-#### Collider objects for stairs
+#### Add a collider to a staircase
 
 Stairs are a very common use-case for collider objects. In order for users to climb stairs, there must be a corresponding \_collider object that the users are able to step on.
 
@@ -244,17 +271,17 @@ Using a ramp object also avoids creating unnecessary geometry, saving room for o
 
 1.  Create a new object in the shape of a ramp that resembles the size and proportions of the original stairs.
 
-![](/images/media/collision-stairs-both.png)
+    ![](/images/media/collision-stairs-both.png)
 
 2.  Name the ramp object something similar to _stairs_collider_. It must end in \__collider_.
 
 3.  Overlay the ramp object to the stairs so that they occupy the same space.
 
-![](/images/media/collision-stairs-collider.png)
+    ![](/images/media/collision-stairs-collider.png)
 
 4.  Export both objects together as a single _glTF_ model.
 
-![](/images/media/collision-stairs.png)
+    ![](/images/media/collision-stairs.png)
 
 Now when users view the stairs in your scene, they’ll see the more elaborate model of the stairs, but when they climb them, they’ll collide with the ramp.
 
@@ -286,7 +313,7 @@ In a Decentraland scene, you can use `weight` to blend several animations or to 
 
 > Tip: Instead of creating your own animations, you can also download generic animations and apply them to your model. For example, for 3D characters with human-like characteristics, you can download free or paid animations from [Mixamo](https://www.mixamo.com/#/).
 
-#### Creating an animation
+#### Create an animation
 
 You can use a tool like Blender to create animations for a 3D model.
 
