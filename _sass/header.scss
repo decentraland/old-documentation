@@ -83,6 +83,7 @@ header {
     right: 0;
     transform: translate(0, -10%);
     padding-bottom: 12px;
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.12);
 
     &.open {
       pointer-events: auto;
@@ -97,7 +98,7 @@ header {
     white-space: nowrap;
 
     li {
-      height: 43px;
+      height: 56px;
       margin: 0;
       list-style-type: none;
     }
@@ -180,11 +181,6 @@ header {
       align-items: center;
       flex-grow: 1;
     }
-
-    .dropdown-content {
-      width: 240px;
-      border-radius: 0 0 8px 8px;
-    }
   }
 }
 
@@ -215,6 +211,7 @@ header {
       background: transparent;
       transform: translate(0, 0);
       transition: unset;
+      box-shadow: none;
     }
 
     ul.menu {
