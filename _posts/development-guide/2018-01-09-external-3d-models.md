@@ -264,6 +264,8 @@ Now when users view the stairs in your scene, they’ll see the more elaborate m
 - Collider objects shouldn't have any material, as users of your scene will never see it. Colliders are invisible to users.
   > Note: Remember that each scene is limited to log2(n+1) x 10000 triangles, where n is the number of parcels in your scene.
 - All collider objects names must end with \__collider_. For example, _tree_collider_.
+- If you use a _plane_ as a collider, it will only block in one direction. If you want colliders to block from both sides, for example for a wall, you need to create two planes with their normals facing in opposite directions.
+
 - When duplicating collider objects, pay attention to their names. Some programs append a \__1_ to the end of the filename to avoid duplicates, for example _tree_collider_1_. Objects that are named like this will be interpreted by the Decentraland World Engine as normal objects, not colliders.
 
 - To view the limits of all collider meshes in a Decentraland scene, launch your scene preview with `dcl start` and then click `c`. This draws blue lines that delimit all colliders in place.
