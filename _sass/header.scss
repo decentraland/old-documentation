@@ -139,7 +139,7 @@ header {
       fill: #eee;
       position: absolute;
       top: 50%;
-      left: 12px;
+      left: 14px;
       display: inline-block;
       cursor: pointer;
       transform: translateY(-50%);
@@ -154,10 +154,14 @@ header {
     font-size: 15px;
     line-height: 24px;
     letter-spacing: -0.3px;
-    color: #7d8499;
+    color: #5c5c6e;
     background-color: $docs_medium_grey;
     width: 100%;
     box-sizing: border-box;
+
+    &::placeholder {
+      color: #5c5c6e;
+    }
   }
 }
 
@@ -193,6 +197,7 @@ header {
     .dropdown-overlay.open {
       pointer-events: none;
       opacity: 0;
+      transition: none;
     }
 
     .dropdown-trigger {
