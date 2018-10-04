@@ -1,0 +1,28 @@
+<header>
+  <div class="dropdown-overlay"></div>
+  <div class="wrapper">
+    <nav>
+      <div class="topbar">
+        <div class="logo">
+          <a href="/">{% include logo.html %}</a>
+        </div>
+        <div class="dropdown-trigger">Docs</div>
+      </div>
+      <div class="dropdown-content">
+        <ul class="menu">
+          <li><a href="/">Marketplace</a></li>
+          <li><a href="/" class="active">Docs</a></li>
+          <li><a href="/">Agora</a></li>
+          <li><a href="/">Blog</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="header_search">
+      <form action="{{ site.baseurl }}/search/" method="get">
+        <input type="search" name="q" {% if include.add_id %}id="search-input"{% endif %} placeholder="Search" autofocus>
+        {% include search-icon.html %}
+        <input type="submit" value="Search" style="display: none;">
+      </form>
+    </div>
+  </div>
+</header>

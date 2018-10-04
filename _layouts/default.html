@@ -56,21 +56,8 @@
 </head>
 
 <body class="{{ page.body_class }}">
-  <header>
-    <h1 class="logo-title">{{ page.title }}</h1>
-    <div class="logo">
-      <a href="/">{% include logo.html %}</a>
-    </div>
-    <div class="header_search">
-      <button class="search_toggle" id="open-search">
-        {% include search-icon.html %}
-      </button>
-      {% include search.html %}
-    </div>
-  </header>
-
+  {% include header.html %}
   {{ content }}
-
   {% include footer.html %}
   <script>
     $(function () {
@@ -100,6 +87,21 @@
         event.preventDefault();
         $(".header_search").removeClass("open");
       });
+
+      $("header .dropdown-trigger").on("click", function (event) {
+        event.preventDefault();
+        $(this).toggleClass("open")
+        $('header .dropdown-content').toggleClass("open")
+        $('header .dropdown-overlay').toggleClass("open")
+      })
+
+      $('header .dropdown-overlay').on("click", function (event) {
+        event.preventDefault();
+        $("header .dropdown-trigger").removeClass('open')
+        $('header .dropdown-content').removeClass("open")
+        $('header .dropdown-overlay').removeClass("open")
+      })
+
     });
   </script>
 </body>
