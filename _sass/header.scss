@@ -25,19 +25,15 @@ header {
     align-items: center;
     -webkit-tap-highlight-color: transparent;
 
-    &:after {
+    svg {
       display: inline-block;
-      content: "";
-      vertical-align: 0.155em;
-      transition: all 150ms linear;
-      background: url(../images/arrow.svg) no-repeat center center;
+      transition: transform 150ms linear;
       width: 10px;
-      height: 10px;
+      height: 6px;
       margin-left: 8px;
-      padding: 8px 0;
     }
 
-    &.open:after {
+    &.open svg {
       transform: rotate(180deg);
     }
   }
@@ -62,6 +58,7 @@ header {
     bottom: 0;
     opacity: 0;
     transition: opacity 300ms ease;
+    -webkit-tap-highlight-color: transparent;
 
     &.open {
       pointer-events: auto;
