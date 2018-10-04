@@ -23,6 +23,7 @@ header {
     cursor: pointer;
     display: flex;
     align-items: center;
+    user-select: none;
     -webkit-tap-highlight-color: transparent;
 
     svg {
@@ -80,7 +81,7 @@ header {
     right: 0;
     transform: translate(0, -10%);
     padding-bottom: 12px;
-    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.12);
 
     &.open {
       pointer-events: auto;
@@ -155,6 +156,7 @@ header {
     background-color: $docs_medium_grey;
     width: 100%;
     box-sizing: border-box;
+    -webkit-appearance: none;
 
     &::placeholder {
       color: #5c5c6e;
