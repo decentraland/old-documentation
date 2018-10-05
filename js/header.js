@@ -2,6 +2,7 @@
 layout: null
 ---
 $(function() {
+
   function getPreview(query, content, previewLength) {
     previewLength = previewLength || content.length * 2
 
@@ -75,8 +76,6 @@ $(function() {
         </div>`
       )
     }
-
-    console.log(results)
   }
 
   function openDropdown() {
@@ -134,31 +133,31 @@ $(function() {
   let fetching = false
 
   $('.header_search input[type="search"]').on("input", function() {
-    if (!window.data && !fetching) {
-      fetching = true
+    if (fetching) return
 
-      $.getJSON("{{ site.baseurl }}/data.json", function(data) {
-        fetching = false
-        window.data = data
-
-        window.index = lunr(function() {
-          this.field("id")
-          this.field("title", { boost: 10 })
-          this.field("categories")
-          this.field("url")
-          this.field("content")
-        })
-
-        for (var key in window.data) {
-          window.index.add(window.data[key])
-        }
-
-        showSearchResults()
-      })
-    }
-
-    if (window.data && !fetching) {
+    if (window.data) {
       showSearchResults()
+      return
     }
+
+    fetching = true
+
+    $.getJSON("{{ site.baseurl }}/data.json", function(data) {
+      fetching = false
+      window.data = data
+      window.index = lunr(function() {
+        this.field("id")
+        this.field("title", { boost: 10 })
+        this.field("categories")
+        this.field("url")
+        this.field("content")
+      })
+
+      for (var key in window.data) {
+        window.index.add(window.data[key])
+      }
+
+      showSearchResults()
+    })
   })
 })
