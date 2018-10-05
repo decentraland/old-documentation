@@ -151,7 +151,7 @@ header {
     transform: translateY(-50%);
   }
 
-  button.close {
+  .close {
     border: none;
     -webkit-appearance: none;
     background-color: transparent;
@@ -232,7 +232,7 @@ header {
   }
 
   &.open {
-    button.close {
+    .close {
       opacity: 1;
       pointer-events: auto;
     }
