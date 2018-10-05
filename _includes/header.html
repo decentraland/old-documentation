@@ -23,6 +23,9 @@
       <form action="{{ site.baseurl }}/search/" method="get">
         <input type="search" name="q" {% if include.add_id %}id="search-input"{% endif %} placeholder="Search" autofocus autocomplete="off">
         {% include search-icon.html %}
+        <button class="close">
+          {% include close-icon.html %}
+        </button>
         <input type="submit" value="Search" style="display: none;">
       </form>
       <div class="search-results"></div>

@@ -120,8 +120,15 @@ $(function() {
     closeSearchResults()
   })
 
+  $("header .close").on("click", function (event) {
+    event.preventDefault()
+    closeSearchResults()
+    $('.header_search input[type="search"]').val('')
+  })
+
   $('.header_search input[type="search"]').on("focus", function() {
     closeDropdown()
+    showSearchResults()
   })
 
   let fetching = false

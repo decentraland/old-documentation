@@ -138,21 +138,43 @@ header {
     display: flex;
     position: relative;
     justify-content: space-between;
+    align-items: center;
+    z-index: 11;
+  }
 
-    svg {
-      fill: #eee;
-      position: absolute;
-      top: 50%;
-      left: 14px;
-      display: inline-block;
-      cursor: pointer;
-      transform: translateY(-50%);
-    }
+  svg.search-icon {
+    fill: #eee;
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    display: inline-block;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+
+  button.close {
+    border: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    display: flex;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 8px;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    transition: opacity 300ms ease;
+    opacity: 0;
+    pointer-events: none;
   }
 
   input[type="search"] {
     margin: 0;
-    padding: 8px 10px 8px 40px;
+    padding: 0 40px;
+    height: 40px;
     border: none;
     border-radius: 8px;
     font-size: 15px;
@@ -197,6 +219,11 @@ header {
   }
 
   &.open {
+    button.close {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     .search-results {
       pointer-events: auto;
       opacity: 1;
@@ -229,10 +256,6 @@ header {
 
 @media #{$mid-point} {
   .header_search {
-    form {
-      z-index: 11;
-    }
-
     input[type="search"] {
       width: 420px;
     }
