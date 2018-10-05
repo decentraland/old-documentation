@@ -71,7 +71,7 @@ $(function() {
       $(".header_search .search-results").append(
         `<div>
           <a href="${result.url}">${result.title}</a>
-          <p>${getPreview(userInput, result.content, 170)}</p>
+          <p>${getPreview(userInput, result.content, 120)}</p>
         </div>`
       )
     }
@@ -93,13 +93,16 @@ $(function() {
   }
 
   function openSearchResults() {
-    $(".header_search .search-results").empty().addClass("open")
-    $("header .search-overlay").addClass("open")
+    $(".header_search").addClass("open")
+    $(".header_search .search-results").empty()
+    $("header .search-overlay-mobile").addClass("open")
+    $("header .search-overlay-desktop").addClass("open")
   }
 
   function closeSearchResults() {
-    $(".header_search .search-results").removeClass("open")
-    $("header .search-overlay").removeClass("open")
+    $(".header_search").removeClass("open")
+    $("header .search-overlay-mobile").removeClass("open")
+    $("header .search-overlay-desktop").removeClass("open")
   }
 
   $("header .dropdown-trigger").on("click", function(event) {
@@ -112,7 +115,7 @@ $(function() {
     closeDropdown()
   })
 
-  $("header .search-overlay").on("click", function(event) {
+  $("header .search-overlay-mobile, header .search-overlay-desktop").on("click", function(event) {
     event.preventDefault()
     closeSearchResults()
   })

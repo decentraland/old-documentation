@@ -1,6 +1,6 @@
 <header>
   <div class="dropdown-overlay"></div>
-  <div class="search-overlay"></div>
+  <div class="search-overlay-mobile"></div>
   <div class="wrapper">
     <nav>
       <div class="topbar">
@@ -19,6 +19,7 @@
       </div>
     </nav>
     <div class="header_search">
+      <div class="search-overlay-desktop"></div>
       <form action="{{ site.baseurl }}/search/" method="get">
         <input type="search" name="q" {% if include.add_id %}id="search-input"{% endif %} placeholder="Search" autofocus autocomplete="off">
         {% include search-icon.html %}
