@@ -173,8 +173,8 @@ header {
     background: white;
     z-index: 10;
     position: absolute;
-    border-radius: 6px;
     padding: 16px;
+    padding-bottom: 0;
     box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.12);
     left: 0;
     width: 100%;
@@ -246,13 +246,13 @@ header {
     }
 
     .search-results {
+      border-radius: 6px;
       left: auto;
       right: 30px;
       width: 420px;
       top: 12px;
       padding-top: 52px;
       padding-right: 24px;
-      padding-bottom: 0;
     }
   }
 
