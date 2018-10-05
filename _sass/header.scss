@@ -86,7 +86,6 @@ header {
     left: -15px;
     right: 0;
     transform: translate(0, -5%);
-    padding-bottom: 12px;
     box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.12);
 
     &.open {
@@ -344,7 +343,6 @@ header {
       pointer-events: auto;
       opacity: 1;
       position: relative;
-      padding-bottom: 0;
       width: auto;
       top: 0;
       left: 0;
