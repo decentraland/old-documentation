@@ -2,6 +2,57 @@
 layout: null
 ---
 $(function() {
+  function openDropdown() {
+    closeSearchResults()
+    $("header .dropdown-trigger").addClass("open")
+    $("header .dropdown-content").addClass("open")
+    $("header .dropdown-overlay").addClass("open")
+  }
+
+  function closeDropdown() {
+    $("header .dropdown-trigger").removeClass("open")
+    $("header .dropdown-content").removeClass("open")
+    $("header .dropdown-overlay").removeClass("open")
+  }
+
+  function openSearchResults() {
+    $(".header_search").addClass("open")
+    $(".header_search .search-results").empty()
+    $("header .search-overlay-mobile").addClass("open")
+    $("header .search-overlay-desktop").addClass("open")
+  }
+
+  function closeSearchResults() {
+    $(".header_search").removeClass("open")
+    $("header .search-overlay-mobile").removeClass("open")
+    $("header .search-overlay-desktop").removeClass("open")
+  }
+
+  $("header .dropdown-trigger").on("click", function(event) {
+    event.preventDefault()
+    $(this).hasClass("open") ? closeDropdown() : openDropdown()
+  })
+
+  $("header .dropdown-overlay").on("click", function(event) {
+    event.preventDefault()
+    closeDropdown()
+  })
+
+  $("header .search-overlay-mobile, header .search-overlay-desktop").on("click", function(event) {
+    event.preventDefault()
+    closeSearchResults()
+  })
+
+  $("header .close").on("click", function (event) {
+    event.preventDefault()
+    closeSearchResults()
+    $('.header_search input[type="search"]').val('')
+  })
+
+  $('.header_search input[type="search"]').on("focus", function() {
+    closeDropdown()
+    showSearchResults()
+  })
 
   function getPreview(query, content, previewLength) {
     previewLength = previewLength || content.length * 2
@@ -71,64 +122,14 @@ $(function() {
     for (result of results) {
       $(".header_search .search-results").append(
         `<div>
-          <a href="${result.url}">${result.title}</a>
-          <p>${getPreview(userInput, result.content, 120)}</p>
+          <a href="${result.url}">
+            <span class="title">${result.title}</span>
+            <span class="description">${getPreview(userInput, result.content, 120)}</span>
+          </a>
         </div>`
       )
     }
   }
-
-  function openDropdown() {
-    closeSearchResults()
-    $("header .dropdown-trigger").addClass("open")
-    $("header .dropdown-content").addClass("open")
-    $("header .dropdown-overlay").addClass("open")
-  }
-
-  function closeDropdown() {
-    $("header .dropdown-trigger").removeClass("open")
-    $("header .dropdown-content").removeClass("open")
-    $("header .dropdown-overlay").removeClass("open")
-  }
-
-  function openSearchResults() {
-    $(".header_search").addClass("open")
-    $(".header_search .search-results").empty()
-    $("header .search-overlay-mobile").addClass("open")
-    $("header .search-overlay-desktop").addClass("open")
-  }
-
-  function closeSearchResults() {
-    $(".header_search").removeClass("open")
-    $("header .search-overlay-mobile").removeClass("open")
-    $("header .search-overlay-desktop").removeClass("open")
-  }
-
-  $("header .dropdown-trigger").on("click", function(event) {
-    event.preventDefault()
-    $(this).hasClass("open") ? closeDropdown() : openDropdown()
-  })
-
-  $("header .dropdown-overlay").on("click", function(event) {
-    event.preventDefault()
-    closeDropdown()
-  })
-
-  $("header .search-overlay-mobile, header .search-overlay-desktop").on("click", function(event) {
-    event.preventDefault()
-    closeSearchResults()
-  })
-
-  $("header .close").on("click", function (event) {
-    event.preventDefault()
-    closeSearchResults()
-    $('.header_search input[type="search"]').val('')
-  })
-
-  $('.header_search input[type="search"]').on("focus", function() {
-    closeDropdown()
-    showSearchResults()
-  })
 
   let fetching = false
 

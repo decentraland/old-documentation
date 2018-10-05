@@ -195,7 +195,6 @@ header {
     background: white;
     z-index: 10;
     position: absolute;
-    padding: 16px;
     padding-bottom: 0;
     box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.12);
     left: 0;
@@ -206,15 +205,30 @@ header {
     opacity: 0;
     transform: translate(0, -5%);
     color: #5c5c6e;
+    top: 114px;
 
-    a,
+    a {
+      color: #0d0d17;
+      display: block;
+      padding: 16px;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+
     strong {
       color: #0d0d17;
       font-weight: 500;
     }
 
-    p {
-      text-align: left;
+    .title,
+    .description {
+      display: block;
+    }
+
+    .title {
+      font-weight: 500;
     }
   }
 
@@ -236,6 +250,10 @@ header {
   .header_search {
     input[type="search"] {
       width: 280px;
+    }
+
+    .search-results {
+      top: 64px;
     }
   }
 
@@ -277,8 +295,8 @@ header {
       right: 30px;
       width: 420px;
       top: 12px;
-      padding-top: 52px;
-      padding-right: 24px;
+      padding-top: 40px;
+      overflow: hidden;
     }
   }
 
