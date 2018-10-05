@@ -81,11 +81,11 @@ header {
     position: absolute;
     background: white;
     width: 100vw;
-    z-index: 11;
+    z-index: 21;
     top: 64px;
     left: -15px;
     right: 0;
-    transform: translate(0, -10%);
+    transform: translate(0, -5%);
     padding-bottom: 12px;
     box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.12);
 
@@ -204,7 +204,7 @@ header {
     transition: transform 300ms ease, opacity 300ms ease;
     pointer-events: none;
     opacity: 0;
-    transform: translate(0, -10%);
+    transform: translate(0, -5%);
     color: #5c5c6e;
 
     a,
@@ -250,6 +250,8 @@ header {
       display: flex;
       align-items: center;
       flex-grow: 1;
+      background: white;
+      z-index: 21;
     }
   }
 }
@@ -258,6 +260,7 @@ header {
   .header_search {
     input[type="search"] {
       width: 420px;
+      transition: background-color 300ms ease;
     }
 
     &.open {
@@ -294,6 +297,10 @@ header {
 
     .menu a {
       padding-left: 82px;
+    }
+
+    nav {
+      z-index: auto;
     }
   }
 }
