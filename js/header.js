@@ -28,28 +28,30 @@ $(function() {
     $("header .search-overlay-desktop").removeClass("open")
   }
 
-  $("header .dropdown-trigger").on("click", function(event) {
+  $("header .dropdown-trigger").click(function(event) {
     event.preventDefault()
     $(this).hasClass("open") ? closeDropdown() : openDropdown()
   })
 
-  $("header .dropdown-overlay").on("click", function(event) {
+  $("header .dropdown-overlay").click(function(event) {
     event.preventDefault()
     closeDropdown()
   })
 
-  $("header .search-overlay-mobile, header .search-overlay-desktop").on("click", function(event) {
+  $("header .search-overlay-mobile, header .search-overlay-desktop").click(function(event) {
     event.preventDefault()
     closeSearchResults()
   })
 
-  $("header .close").on("click", function (event) {
+  const $searchInput = $('.header_search input[type="search"]')
+
+  $("header .close").click(function(event) {
     event.preventDefault()
     closeSearchResults()
-    $('.header_search input[type="search"]').val('')
+    $searchInput.val('')
   })
 
-  $('.header_search input[type="search"]').on("focus", function() {
+  $searchInput.focus(function() {
     closeDropdown()
     showSearchResults()
   })
@@ -103,9 +105,7 @@ $(function() {
   }
 
   function showSearchResults() {
-    const userInput = $('.header_search input[type="search"]')
-      .val()
-      .toLowerCase()
+    const userInput = $searchInput.val().toLowerCase()
 
     if (userInput.length === 0) {
       closeSearchResults()
@@ -142,13 +142,13 @@ $(function() {
       })
   }
 
-  $('.header_search input[type="search"]').keydown(function (event) {
+  $searchInput.keydown(function(event) {
     const $list = $('.header_search .search-results')
     const $selected = $list.find('li.selected')
 
     let $next
 
-    function moveCursor() {
+    function selectNextItem() {
       event.preventDefault()
       $selected.removeClass('selected')
       $next.addClass('selected')
@@ -161,8 +161,8 @@ $(function() {
         if ($next.length === 0) {
           $next = $list.find('li:first-child')
         }
-        moveCursor()
-        break;
+        selectNextItem()
+        break
 
       case 'Up': // IE specific value
       case 'ArrowUp':
@@ -170,7 +170,7 @@ $(function() {
         if ($next.length === 0) {
           $next = $list.find('li:last-child')
         }
-        moveCursor()
+        selectNextItem()
         break
 
       case "Enter":
@@ -178,13 +178,13 @@ $(function() {
           event.preventDefault()
           document.location.href = $selected.find('a').attr('href')
         }
-        break;
+        break
     }
   })
 
   let fetching = false
 
-  $('.header_search input[type="search"]').on("input", function() {
+  $searchInput.on('input', function() {
     if (fetching) return
 
     if (window.data) {

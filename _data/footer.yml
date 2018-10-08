@@ -1,16 +1,15 @@
-- name:
-  link: https://facebook.com/decentraland
+# - link: https://facebook.com/decentraland
+#   new_window: true
+#   social_icon: Facebook
+- link: https://discordapp.com/invite/9EcuFgC
+  social_icon: Discord
   new_window: true
-  social_icon: Facebook
-- name:
-  link: https://twitter.com/decentraland
-  social_icon: Twitter
+- link: https://reddit.com/r/decentraland
   new_window: true
-- name:
-  link: https://github.com/decentraland
+  social_icon: Reddit
+- link: https://github.com/decentraland
   social_icon: Github
   new_window: true
-- name: 
-  link: /feed.xml
-  social_icon: Discord
-  new_window: false
+- link: https://twitter.com/decentraland
+  social_icon: Twitter
+  new_window: true
