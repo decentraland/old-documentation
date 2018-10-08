@@ -119,17 +119,68 @@ $(function() {
 
     openSearchResults()
 
+    const $list = $('.header_search .search-results')
+
     for (result of results) {
-      $(".header_search .search-results").append(
-        `<div>
+      $list.append(
+        `<li>
           <a href="${result.url}">
             <span class="title">${result.title}</span>
             <span class="description">${getPreview(userInput, result.content, 120)}</span>
           </a>
-        </div>`
+        </li>`
       )
     }
+
+    $list.find('li')
+      .mouseenter(function() {
+        $list.find('li.selected').removeClass('selected')
+        $(this).addClass('selected')
+      })
+      .mouseleave(function() {
+        $(this).removeClass('selected')
+      })
   }
+
+  $('.header_search input[type="search"]').keydown(function (event) {
+    const $list = $('.header_search .search-results')
+    const $selected = $list.find('li.selected')
+
+    let $next
+
+    function moveCursor() {
+      event.preventDefault()
+      $selected.removeClass('selected')
+      $next.addClass('selected')
+    }
+
+    switch (event.key) {
+      case 'Down': // IE specific value
+      case 'ArrowDown':
+        $next = $selected.next()
+        if ($next.length === 0) {
+          $next = $list.find('li:first-child')
+        }
+        moveCursor()
+        break;
+
+      case 'Up': // IE specific value
+      case 'ArrowUp':
+        $next = $selected.prev()
+        if ($next.length === 0) {
+          $next = $list.find('li:last-child')
+        }
+        moveCursor()
+        break
+
+      case "Enter":
+        if ($selected.length > 0) {
+          event.preventDefault()
+          document.location.href = $selected.find('a').attr('href')
+        }
+        break;
+    }
+  })
 
   let fetching = false
 

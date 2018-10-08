@@ -194,7 +194,8 @@ header {
     background: white;
     z-index: 10;
     position: absolute;
-    padding-bottom: 0;
+    padding: 0;
+    margin: 0;
     box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.12);
     left: 0;
     width: 100%;
@@ -206,14 +207,23 @@ header {
     color: #5c5c6e;
     top: 114px;
 
+    li {
+      margin: 0;
+      list-style-type: none;
+
+      &.selected a {
+        background-color: #f5f5f5;
+      }
+    }
+
     a {
       color: #0d0d17;
       display: block;
       padding: 20px 16px;
 
-      &:hover {
-        background-color: #f5f5f5;
-      }
+      // &:hover {
+      //   background-color: #f5f5f5;
+      // }
     }
 
     strong {
