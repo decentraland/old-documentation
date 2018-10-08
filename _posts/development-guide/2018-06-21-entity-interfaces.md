@@ -389,7 +389,7 @@ interface BaseEntity {
   /**
    * Defines if the entity and its children should be rendered
    */
-  visible?: string
+  visible?: boolean
 
   /**
    * The ID is used to attach events and identify the entity in the scene tree

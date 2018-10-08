@@ -118,7 +118,21 @@ Not all shaders can be used in models that are imported into Decentraland. Make 
 
   > Tip: When using Blender, you can use PBR materials by setting _Cycles_ rendering and adding the _Principled BSDF_ shader. Note that none of the other shaders of the _Cycles_ renderer are supported.
 
+The image below shows two identical models, created with the same colors and textures. The model on the left uses all _PBR_ materials, some of them include _metalness_, _transparency_, and _emissiveness_. The model on the right uses all _standard_ materials, some including _transparency_ and _emissiveness_.
+
+![](/images/media/materials_pbr_basic.png)
+
 See [entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material.
+
+#### Transparent and emissive materials
+
+You can set a material to be _transparent_. Transparent materials can be seen through to varying degrees, depending on their _alpha_. To do this, activate the transparency property of the material and then set its _alpha_ to the desired amount. An alpha of 1 will make the material completely opaque, an alpha of 0 will make it invisible.
+
+You can also make a material _emissive_. Emissive materials cast their own light. Note that when rendered, they don't actually illuminate nearby objects in the scene, they just seem to have a blurred glow around them.
+
+The image below shows two identical models created with standard materials. The one on the left uses only opaque materials, the one on the right uses both transparent and emissive materials in some of its parts.
+
+![](/images/media/materials_transparent_emissive.png)
 
 #### Textures
 
@@ -178,6 +192,29 @@ Examples of other valid sizes:
   > Note: After referencing a file for a texture that won’t be embedded, make sure that file won’t be moved or renamed, as otherwise the reference to the file will be lost. The file must also be inside the scene folder so that it’s uploaded together with the scene.
 - Read [this article](https://www.khronos.org/blog/art-pipeline-for-gltf) for a detailed overview of a full art pipeline that uses PBR textures in glTF models.
 - Find free, high quality PBR textures in [cgbookcase](https://cgbookcase.com/).
+
+## Meshes
+
+3D models have a _mesh_ composed of triangular _faces_. These faces meet each other on _edges_ (the lines along which they touch) and _vertices_ (the points where their corners join).
+
+#### Smooth geometries
+
+You can configure a mesh to be _smooth_. This tells the engine to render its shape as if there was an infinite number of intermediate faces rounding it off. This setting can greatly help you reduce the number of triangles needed to make a shape appear to be rounded.
+
+The image below shows two identical models with the same materials. They differ in that the one on the right has most of its geometry set to _smooth_.
+
+![](/images/media/meshes_smooth_vs_sharp.png)
+
+Note how you can see distinct faces on all of the cylindrical shapes of the model on the left, but not on the model on the right.
+
+This setting can be configured separately over individual _faces_, _edges_ and _vertices_ of a model. One same model could have some of its faces or edges set to _smooth_ and others to _sharp_
+
+#### Best practices for geometries
+
+- Be mindful of how many faces you add to your 3D models, as more faces make its rendering more demanding. See [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}) for the limits imposed by a scene.
+- Make sure there are no hidden faces that can't be seen but that add to the triangle count.
+- For shapes that should have rounded sides, set them to be _smooth_ rather than adding additional faces.
+- Make sure the _normals_ of all faces are facing outwards instead of inwards. If there are faces in your model that seem not to be there when you render it, this is most likely the cause.
 
 ## Colliders
 

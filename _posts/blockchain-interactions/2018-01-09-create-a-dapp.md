@@ -1,6 +1,6 @@
 ---
 date: 2018-01-01
-title: Create a DApp
+title: Create a dApp
 description: Reference for creating your own Decentralized App
 categories:
   - blockchain-interactions
@@ -43,6 +43,8 @@ While building our own dApps internally, we put together some helper libraries t
 - [Decentraland-eth](https://github.com/decentraland/decentraland-eth): This is a low level library with utility functions to work with the Ethereum blockchain.
 
 - [Decentraland-dapps](https://github.com/decentraland/decentraland-dapps): This is a higher level library with common modules for dApps. The modules in this library are built using `Decentraland-eth`.
+
+- [Decentraland UI](https://ui.decentraland.org/): This library contains a selection of reusable UI elements that are included in Decentraland's projects.
 
 ## Sample dApps
 

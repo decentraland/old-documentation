@@ -109,6 +109,12 @@ When running a preview, any content that is located outside the parcel boundarie
 
 3D models used in decentraland must use supported shaders and materials. See [3D model considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for a list of supported shaders.
 
+## Lighting
+
+The scene's lighting conditions can't be changed from the default setting.
+
+Entities don't cast shadows over other entities and dynamic lighting isn’t supported.
+
 ## Texture size constraints
 
 Texture sizes must use width and height numbers (in pixels) that match the following numbers:
