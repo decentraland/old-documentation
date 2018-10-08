@@ -79,26 +79,61 @@ Scenes are deployed to **parcels**, the 10 meter by 10 meter pieces of virtual L
 
 We are developing the web client that will allow users to explore Decentraland. All of the content you upload to your LAND will be rendered and viewable through this client. We have included a preview tool in the SDK so that you can preview, test, and interact with your content in the meantime.
 
-## Entities and Components
+## The game loop
 
-Entities are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development.
+The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbone of a Decentraland scene. It cycles through the main code at a regular interval and tells the scene to:
+
+- Listen for user input
+- Update the scene
+- Re-render the scene
+
+We call each loop a frame ???? (or tick?)
+
+Not all updates are necessarily due to user actions, your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some user actions might also take multiple frames to be completed, for example if the opening of a door needs to take a couple of seconds, the door position must be updated several times as it moves.
+
+First the scene is updated so that the positions and other properties of the objects in it are changed, then the scene is rendered, using the new positions.
+
+The updating of the scene is performed regularly 60 times per second (?)
+
+The engine tries to render the scene 60 times per second, but depending on scene performance, it could skip some frames to keep up. ?????
+
+## Entities and Components
 
 Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an _entity_, and each entity can include _components_ that shape its characteristics and functionality.
 
-Entities are all of the assets that you include in your scenes that users will be able to render, view, and interact with from their web browser. These include 3D objects and audio files.
+_Entities_ are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All visible and invisible 3D objects and audio players in your scene will each be an entity. An entity is nothing more than a labeled bag in which to place components, the entity itself has no properties or methods of its own, it simply groups several components together.
 
-Components define the traits of an entity. For example, you can include the `color` component on an entity to set its color, or include the `lookAt` component to rotate it to face a certain point in space.
+_Components_ define the traits of an entity. For example, all entities have a `position` component that stores its coordinates, you might also want to add a `color` component on an entity to store its color, or create a custom `physics` component to store values for entity's weight, velocity and acceleration. A component only stores specific data about an entity, it has no methods of its own.
 
+<!--
 > Note: The term _component_ as used in reference to this model differs greatly from how it's used in the _React_ ecosystem, where everything is considered a _component_. Throughout our documentation, we will use the term _component_ as used by the Entity-Component model.
+-->
 
-An entity can have other entities as children, these inherit the components from the parent. If a parent entity is positioned, scaled or rotated, its children are also affected. Invisible entities can also be used as wrappers that only exist to handle multiple entities as a group. Thanks to this, we can arrange entities into trees.
+An entity can hold other entities as children, these inherit the components from the parent. If a parent entity is positioned, scaled or rotated by its components, its children entities are also affected.
 
+Invisible entities can be used as wrappers that only exist to handle multiple entities as a group. Thanks to this, we can arrange entities into trees, just like the HTML of a webpage.
+
+<!--
 For additional terms, definitions, and explanations, please refer to our [complete Glossary]({{ site.baseurl }}{% post_url /general/2018-01-03-glossary %}).
+-->
 
 See [Entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a reference of all the available constructors for predefined entities and all of the supported components of each.
 
-## The Render function
+## Systems and processes
 
+As mentioned above, both entities and components simply store information about 3D objects, but don't have any methods to change those values when they need to be updated. That's where _systems_ and _processes_ come in.
+
+_Processes_ execute functions over the components of an entity to change their values. _Systems_ simply group these functions together, they are an abstraction used to group them and .... easily import them??
+
+For example, imagine your scene has a number of "ball" entities bouncing around. Each of these balls has a `position` component that stores its coordinates and a `physics` component that stores its weight, velocity and acceleration. You could add a system called `physicsSystem` that calls an `update` process on every frame of the game loop and changes the values on the `position` component of each ball based on calculations using the information on the ball's `physics` component.
+
+## The update and draw functions
+
+The game loop regularly executes the active processes.
+
+After all the processes run, the components on each entity will have new values. When the draw function is called, it will render the entities using these new updated values and users will see the entities in their new positions.
+
+<!--
 All [scene objects]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) have a 'render()` method that outputs what users of your scene will see on their browser. This function must always output a hierarchical tree of entities that starts at the root level with a _scene_ entity.
 
 {% raw %}
@@ -136,6 +171,8 @@ Scenes have a [state]({{ site.baseurl }}{% post_url /development-guide/2018-01-0
 
 This is inspired by the [React](https://reactjs.org/) framework, most of what you can read about React applies to decentraland scenes as well.
 
+-->
+
 ## Scene Decoupling
 
 Your scenes don't run in the same context as the engine
@@ -148,6 +185,7 @@ We have also abstracted the communication protocol. This allows us to run the sc
 
 We don't want developers to intervene with the internals of the engine or even need to know what lies inside the engine. We need to ensure a consistent experience for users throughout the Decentraland map, and mistakes are more likely to happen at that "low" level.
 
+<!--
 #### Decoupling a scene from the engine
 
 Let's take a look at an example. Suppose you want to render a scene with the following content:
@@ -169,6 +207,8 @@ Once the `render()` function sends this scene to the engine, the engine takes ca
 
 To optimize performance, we only send the changes in the scene to the actual client, not the entire contents of it. So if the scene has a shoal of
 fish and only one of them moves, the API will send only that delta to the client, the one fish that moved. This makes things faster for the client and is completely transparent to the developer of the scene.
+
+
 
 ## Taking Inspiration from React
 
@@ -238,3 +278,5 @@ We made our SDK following the React approach, for several reasons:
 - It helps onboard developers that are already familiar with React.
 - The pattern is well known and well documented, getting help should be easy.
 - It has a low memory footprint and it makes it easy to do garbage collection.
+
+-->
