@@ -49,8 +49,7 @@ header {
   }
 
   .dropdown-overlay,
-  .search-overlay-mobile,
-  .search-overlay-desktop {
+  .search-overlay {
     background: rgba(0, 0, 0, 0.16);
     position: fixed;
     pointer-events: none;
@@ -69,7 +68,7 @@ header {
     }
   }
 
-  .search-overlay-desktop {
+  .search-overlay.desktop {
     display: none;
   }
 
@@ -315,11 +314,11 @@ header {
   }
 
   header {
-    .search-overlay-mobile {
+    .search-overlay.mobile {
       display: none;
     }
 
-    .search-overlay-desktop {
+    .search-overlay.desktop {
       display: block;
     }
 

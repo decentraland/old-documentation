@@ -18,14 +18,12 @@ $(function() {
   function openSearchResults() {
     $(".header_search").addClass("open")
     $(".header_search .search-results").empty()
-    $("header .search-overlay-mobile").addClass("open")
-    $("header .search-overlay-desktop").addClass("open")
+    $("header .search-overlay").addClass("open")
   }
 
   function closeSearchResults() {
     $(".header_search").removeClass("open")
-    $("header .search-overlay-mobile").removeClass("open")
-    $("header .search-overlay-desktop").removeClass("open")
+    $("header .search-overlay").removeClass("open")
   }
 
   $("header .dropdown-trigger").click(function(event) {
@@ -38,7 +36,7 @@ $(function() {
     closeDropdown()
   })
 
-  $("header .search-overlay-mobile, header .search-overlay-desktop").click(function(event) {
+  $("header .search-overlay").click(function(event) {
     event.preventDefault()
     closeSearchResults()
   })
