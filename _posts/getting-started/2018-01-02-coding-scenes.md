@@ -87,23 +87,29 @@ The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbo
 - Update the scene
 - Re-render the scene
 
-We call each loop a frame ???? (or tick?)
+We call each iteration over the loop a _frame_. ???? (or tick?)
 
-Not all updates are necessarily due to user actions, your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some user actions might also take multiple frames to be completed, for example if the opening of a door needs to take a couple of seconds, the door position must be updated several times as it moves.
+Not all updates are necessarily caused by a user's actions. Your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some user actions might also take multiple frames to be completed, for example if the opening of a door needs to take a whole second, the door position must be updated several times as it moves.
 
-First the scene is updated so that the positions and other properties of the objects in it are changed, then the scene is rendered, using the new positions.
+First the scene's state is updated. Then the scene is re-rendered, using the new values from the scene state.
 
-The updating of the scene is performed regularly 60 times per second (?)
+The updating of the scene is performed regularly 30 times per second (?)
 
-The engine tries to render the scene 60 times per second, but depending on scene performance, it could skip some frames to keep up. ?????
+The engine tries to render the scene 30 times per second, but depending on scene performance, it could skip some frames to keep up. ?????
 
 ## Entities and Components
 
-Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an _entity_, and each entity can include _components_ that shape its characteristics and functionality.
+Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an _entity_, and each entity can include _components_ that determine its characteristics.
 
-_Entities_ are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All visible and invisible 3D objects and audio players in your scene will each be an entity. An entity is nothing more than a labeled bag in which to place components, the entity itself has no properties or methods of its own, it simply groups several components together.
+_Entities_ are the basic unit for building everything in Decentraland scenes, think of them as the equivalent of Elements in a DOM tree in web development. All visible and invisible 3D objects and audio players in your scene will each be an entity. An entity is nothing more than a container in which to place components. The entity itself has no properties or methods of its own, it simply groups several components together.
 
-_Components_ define the traits of an entity. For example, all entities have a `position` component that stores its coordinates, you might also want to add a `color` component on an entity to store its color, or create a custom `physics` component to store values for entity's weight, velocity and acceleration. A component only stores specific data about an entity, it has no methods of its own.
+_Components_ define the traits of an entity. For example, all entities have a `position` component that stores the entity's coordinates. You might also add a `color` component on an entity to store its color, or create a custom `physics` component to store values for the entity's weight, velocity and acceleration. A component only stores specific data about its parent entity, it has no methods of its own.
+
+[DIAGRAM : ENTITIY W COMPONENTS]
+
+The values stored in all the components of the scene represent the _scene state_.
+
+All methods that might determine how the values in the components could change over time are completely decoupled from the entities and components. These methods are carried out by something else that we call _systems_. Entities and components simply store data and are completely agnostic to what _systems_ are acting upon them.
 
 <!--
 > Note: The term _component_ as used in reference to this model differs greatly from how it's used in the _React_ ecosystem, where everything is considered a _component_. Throughout our documentation, we will use the term _component_ as used by the Entity-Component model.
@@ -111,7 +117,11 @@ _Components_ define the traits of an entity. For example, all entities have a `p
 
 An entity can hold other entities as children, these inherit the components from the parent. If a parent entity is positioned, scaled or rotated by its components, its children entities are also affected.
 
+[DIAGRAM : ENTITIY W children]
+
 Invisible entities can be used as wrappers that only exist to handle multiple entities as a group. Thanks to this, we can arrange entities into trees, just like the HTML of a webpage.
+
+[DIAGRAM : invisible ENTITIY W children]
 
 <!--
 For additional terms, definitions, and explanations, please refer to our [complete Glossary]({{ site.baseurl }}{% post_url /general/2018-01-03-glossary %}).
@@ -119,17 +129,25 @@ For additional terms, definitions, and explanations, please refer to our [comple
 
 See [Entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a reference of all the available constructors for predefined entities and all of the supported components of each.
 
-## Systems and processes
+## Systems
 
-As mentioned above, both entities and components simply store information about 3D objects, but don't have any methods to change those values when they need to be updated. That's where _systems_ and _processes_ come in.
+As mentioned above, both entities and components simply store information about 3D objects, but don't have any methods to change those values when they need to be updated. That's where _systems_ come in.
 
-_Processes_ execute functions over the components of an entity to change their values. _Systems_ simply group these functions together, they are an abstraction used to group them and .... easily import them??
+_Systems_ execute functions over the components of an entity to change their values. They are executed every frame
+
+Systems filter entities and only work with those that possess the components they require, so for example...
 
 For example, imagine your scene has a number of "ball" entities bouncing around. Each of these balls has a `position` component that stores its coordinates and a `physics` component that stores its weight, velocity and acceleration. You could add a system called `physicsSystem` that calls an `update` process on every frame of the game loop and changes the values on the `position` component of each ball based on calculations using the information on the ball's `physics` component.
 
-## The update and draw functions
+[DIAGRAM : ENTITIY transformed by system]
 
-The game loop regularly executes the active processes.
+When a system runs, it iterates over all entities that match their requirements. A system doesn't need to be explicitly assigned to an entity.
+
+## Putting it all together
+
+The _engine_ is what sits in between _entities_ and _components_ on one hand and _systems_ on the other. It coordinates the systems so that they know what entities to act upon and when.
+
+All of the values stored in the components in the scene represent the scene's state at that point in time. Each frame, the engine generates an output for the user to see.
 
 After all the processes run, the components on each entity will have new values. When the draw function is called, it will render the entities using these new updated values and users will see the entities in their new positions.
 
