@@ -105,6 +105,7 @@ $(function() {
   }
 
   function showSearchResults() {
+    const limit = 4
     const userInput = $searchInput.val().toLowerCase()
 
     if (userInput.length === 0) {
@@ -112,13 +113,13 @@ $(function() {
       return
     }
 
-    const results = window.index
-      .search(userInput)
-      .map(index => window.data[index.ref])
-      .slice(0, 4)
-
     openSearchResults()
 
+    const items = window.index
+      .search(userInput)
+      .map(index => window.data[index.ref])
+
+    const results = items.slice(0, limit)
     const $list = $('.header_search .search-results')
 
     for (result of results) {
@@ -128,6 +129,14 @@ $(function() {
             <span class="title">${result.title}</span>
             <span class="description">${getPreview(userInput, result.content, 120)}</span>
           </a>
+        </li>`
+      )
+    }
+
+    if (items.length > limit) {
+      $list.append(
+        `<li class="more-results">
+          <a href="/search/?q=${userInput}">See more results</a>
         </li>`
       )
     }
