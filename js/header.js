@@ -105,7 +105,6 @@ $(function() {
   }
 
   function showSearchResults() {
-    const limit = 4
     const userInput = $searchInput.val().toLowerCase()
 
     if (userInput.length === 0) {
@@ -119,6 +118,7 @@ $(function() {
       .search(userInput)
       .map(index => window.data[index.ref])
 
+    const limit = 4
     const results = items.slice(0, limit)
     const $list = $('.header_search .search-results')
 
@@ -182,7 +182,7 @@ $(function() {
         selectNextItem()
         break
 
-      case "Enter":
+      case 'Enter':
         if ($selected.length > 0) {
           event.preventDefault()
           document.location.href = $selected.find('a').attr('href')
@@ -203,15 +203,15 @@ $(function() {
 
     fetching = true
 
-    $.getJSON("{{ site.baseurl }}/data.json", function(data) {
+    $.getJSON('{{ site.baseurl }}/data.json', function(data) {
       fetching = false
       window.data = data
       window.index = lunr(function() {
-        this.field("id")
-        this.field("title", { boost: 10 })
-        this.field("categories")
-        this.field("url")
-        this.field("content")
+        this.field('id')
+        this.field('title', { boost: 10 })
+        this.field('categories')
+        this.field('url')
+        this.field('content')
       })
 
       for (var key in window.data) {
