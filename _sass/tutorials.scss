@@ -310,6 +310,18 @@
       margin: 44px 0 4px;
     }
 
+    ol {
+      padding: 0;
+    }
+
+    li {
+      font-size: 15px;
+    }
+
+    strong {
+      font-weight: 500;
+    }
+
     p {
       font-size: 15px;
       line-height: 1.6;
@@ -322,6 +334,11 @@
       &:hover {
         text-decoration: none;
       }
+    }
+
+    .header-link {
+      color: #ccc;
+      text-decoration: none;
     }
   }
 
