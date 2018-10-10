@@ -11,6 +11,8 @@ set: development-guide
 set_order: 4
 ---
 
+> Note: The information contained in this page is only relevant to scenes made with _Scriptable scene_. In scenes with _ECS_, the scene state is stored directly in the components of each entity. See [] for
+
 The scene state is made up of a series of variables that change over time. The state changes by the occurrence of [events]({{ site.baseurl }}{% post_url /development-guide/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
 
 ![](/images/media/events_state_diagram.jpeg)
@@ -37,7 +39,7 @@ The variables you choose to make up your scene's state should be the minimal pos
 
 ## Local and remote scenes
 
-**Local scenes** store the scene state locally as part of the scriptable scene object. For example, when you create scenes with the Decentraland CLI, the default scenes for the options _Basic_ and _Interactive_ are both local scenes.
+**Local scenes** store the scene state locally as part of the scriptable scene object. The default scenes that you create with the CLI work like this.
 
 {% raw %}
 
