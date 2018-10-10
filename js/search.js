@@ -69,7 +69,7 @@ layout: null
 					contentPreview = getPreview(query, item.content, 170),
 					titlePreview = getPreview(query, item.title);
 
-				resultsHTML += "<li><h4><a href='{{ site.baseurl }}" + item.url.trim() + "'>" + titlePreview + "</a></h4><p>" + contentPreview + "</p></li>";
+				resultsHTML += "<li><a href='{{ site.baseurl }}" + item.url.trim() + "'><h4>" + titlePreview + "</h4><p>" + contentPreview + "</p></a></li>";
 			});
 
 			searchResultsEl.innerHTML = resultsHTML;
