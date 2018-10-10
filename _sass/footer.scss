@@ -107,6 +107,7 @@ footer {
     display: flex;
     margin-bottom: 24px;
     justify-content: center;
+    align-items: center;
 
     @media #{$mid-point} {
       margin-bottom: 0;
@@ -121,10 +122,27 @@ footer {
       letter-spacing: -0.1px;
       color: $docs_primary_black;
       background-color: transparent;
+      outline: none;
     }
 
     option {
       padding: 0;
+    }
+  }
+
+  .lang-flag {
+    border-radius: 100%;
+    width: 16px;
+    height: 16px;
+    background: no-repeat center center;
+    margin-right: 4px;
+
+    &.english {
+      background-image: url(../images/flag-english.svg);
+    }
+
+    &.chinese {
+      background-image: url(../images/flag-chinese.svg);
     }
   }
 

@@ -51,12 +51,6 @@ small,
 p {
   font-weight: $text-font-weight;
   margin: 0 0 $base-spacing;
-
-  text-align: justify;
-
-  @media #{$desktop} {
-    text-align: left;
-  }
 }
 
 .lead {
@@ -96,7 +90,7 @@ blockquote {
   padding: 0 $base-spacing;
   margin: $base-spacing 0;
   color: $medium-grey;
-  border-left: 4px solid #ddd;
+  border-left: 4px solid rgba(#5c5c6e, 0.2);
 }
 
 strong {
