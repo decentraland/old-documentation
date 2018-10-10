@@ -79,6 +79,15 @@ Scenes are deployed to **parcels**, the 10 meter by 10 meter pieces of virtual L
 
 We are developing the web client that will allow users to explore Decentraland. All of the content you upload to your LAND will be rendered and viewable through this client. We have included a preview tool in the SDK so that you can preview, test, and interact with your content in the meantime.
 
+## Scene paradigms
+
+////// ONLY IF WE TAKE THE HORRIBLE DECISION TO DO BOTH
+
+Decentraland scenes can be coded in two very different ways.
+
+- ECS (.ts) uses an Entity component system and is close to how most game engines develop
+- Scriptable scene (.tsx) is close to how the React framework works, which is popular in web development.
+
 ## The game loop
 
 The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbone of a Decentraland scene's code. It cycles through the main code at a regular interval and does the following:
@@ -109,11 +118,11 @@ See [Entities and components]({{ site.baseurl }}{% post_url /development-guide/2
 For additional terms, definitions, and explanations, please refer to our [complete Glossary]({{ site.baseurl }}{% post_url /general/2018-01-03-glossary %}).
 -->
 
-## Systems
+## Systems and componentSystems
 
 Entities and components are just used to store information about 3D objects, but don't have any methods to change those values when they need to be updated. That's where _systems_ come in.
 
-_Systems_ execute functions over the components of an entity to change their values. Systems are executed on every frame of the game loop.
+_Systems_ and _systemComponents_ execute functions over the components of an entity to change their values. Systems and systemComponents each have an `update()` method that's executed on every frame of the game loop, this follows the [update game pattern](http://gameprogrammingpatterns.com/update-method.html).
 
 See [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-01-16-systems %}) for more details about how systems are used in a scene.
 
@@ -178,29 +187,6 @@ We have also abstracted the communication protocol. This allows us to run the sc
 We don't want developers to intervene with the internals of the engine or even need to know what lies inside the engine. We need to ensure a consistent experience for users throughout the Decentraland map, and mistakes are more likely to happen at that "low" level.
 
 <!--
-#### Decoupling a scene from the engine
-
-Let's take a look at an example. Suppose you want to render a scene with the following content:
-
-{% raw %}
-
-```tsx
-<scene>
-  <gltf-model src="models/a.gltf" />
-  <sphere position={{ x: 10, y: 10, z: 10 }} />
-</scene>
-```
-
-{% endraw %}
-
-While writing your scene's code, you have no need to actually load the `a.gltf` model, and you don't need to know the geometry indexes used by the sphere entity. All you need to do is describe the scene at a higher level, like you do in XML.
-
-Once the `render()` function sends this scene to the engine, the engine takes care of the positions, assets and geometries.
-
-To optimize performance, we only send the changes in the scene to the actual client, not the entire contents of it. So if the scene has a shoal of
-fish and only one of them moves, the API will send only that delta to the client, the one fish that moved. This makes things faster for the client and is completely transparent to the developer of the scene.
-
-
 
 ## Taking Inspiration from React
 
