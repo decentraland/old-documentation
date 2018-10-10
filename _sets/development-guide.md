@@ -1,8 +1,8 @@
 ---
 title: Development guide
 description: Learn about the Decentraland API and what you can do with it.
-color: "#FFE3D2"
+color: "#314ade"
 accent_color: "#314ade"
 order: 2
-img: api@3x.png
+img: development-guide.svg
 ---
