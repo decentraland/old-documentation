@@ -186,7 +186,7 @@ Examples of other valid sizes:
 
 > Although textures of arbitrary sizes work in the alpha release, the engine displays an alert in the console. We will enforce this restriction in coming releases and invalid texture sizes will cease to work.
 
-#### Swap a material
+#### How to swap a material
 
 Suppose you've imported a 3D model that uses a material that's not supported by Decentraland. You can easily change this material while still keeping the same texture and its mapping.
 
@@ -203,7 +203,7 @@ To swap the material:
 
     <img src="/images/media/materials_new_material.png" alt="New default basic material" width="400"/>
 
-   > TIp: If you're using Blender and are on the _Blender Render_ tab, it creates a basic material by default, which is supported by Decentraland.
+   > Tip: If you're using Blender and are on the _Blender Render_ tab, it creates a basic material by default, which is supported by Decentraland.
 
 4. Open the _Textures_ settings and create a new texture, importing the same image file that the original material used.
 
@@ -261,7 +261,7 @@ In this case, we can name the box "Box*Tree_collider" and export both the tree a
 
 Whenever a player views the tree model in your scene, they will see the complex model for your tree. However, when they walk into your tree, they will collide with the box, not the tree.
 
-#### Add a collider to a staircase
+#### How to add a collider to a staircase
 
 Stairs are a very common use-case for collider objects. In order for users to climb stairs, there must be a corresponding \_collider object that the users are able to step on.
 
@@ -313,7 +313,7 @@ In a Decentraland scene, you can use `weight` to blend several animations or to 
 
 > Tip: Instead of creating your own animations, you can also download generic animations and apply them to your model. For example, for 3D characters with human-like characteristics, you can download free or paid animations from [Mixamo](https://www.mixamo.com/#/).
 
-#### Create an animation
+#### How to create an animation
 
 You can use a tool like Blender to create animations for a 3D model.
 
@@ -341,7 +341,7 @@ You can use a tool like Blender to create animations for a 3D model.
 
 6.  By default all frames in between the ones you defined will transition linearly from one pose to the next. You can also configure these transitions to behave exponentially, ease-in, bounce, etc.
 
-#### Handle multiple animations with Blender
+#### How to handle multiple animations with Blender
 
 To export a model with several embedded animations in Blender, you must create multiple _actions_ from the _Dope-Sheet_.
 
