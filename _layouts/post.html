@@ -240,7 +240,12 @@ layout: default
     $('.highlighter-rouge code').each(function(i) {
       const currentId = `codeblock${(i + 1)}`
       $(this).attr('id', currentId)
-      const clipButton = `<div class="copy-code"><button class="codeblock-btn" data-clipboard-target="#${currentId}">Copy Code</button></div>`
+      const clipButton = `<div class="copy-code">
+        <button class="codeblock-btn" data-clipboard-target="#${currentId}">
+          <span class="status-copy">{% include copy-code-1.html %} Copy Code</span>
+          <span class="status-copied">{% include copy-code-2.html %} Copied</span>
+        </button>
+      </div>`
       $(this).after(clipButton)
     })
 
@@ -249,14 +254,9 @@ layout: default
 
     $('.codeblock-btn').on('click', function () {
       const $this = $(this)
-      const text = $this.text()
-
       $this.addClass('copied')
-      $this.text('Copied')
-
       window.setTimeout(() => {
         $this.removeClass('copied')
-        $this.text(text)
       }, 3000)
     })
   </script>

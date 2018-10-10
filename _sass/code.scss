@@ -14,42 +14,44 @@
     font-family: $base-font-family;
     padding: 0;
     outline: none;
-    display: flex;
     border: none;
     background: transparent;
     position: relative;
-    width: 70px;
+    width: 90px;
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
 
-    &:before,
-    &:after {
-      content: "";
-      display: block;
+    span {
       position: absolute;
-      left: -22px;
-      top: 1px;
-      height: 16px;
-      width: 14px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       transition: opacity 200ms linear;
-      background-repeat: no-repeat;
-      background-position: center center;
-    }
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
 
-    &::before {
-      background-image: url("../images/copy-code-1.svg");
-      opacity: 1;
-    }
+      svg {
+        margin-right: 8px;
+        width: 14px;
+      }
 
-    &::after {
-      background-image: url("../images/copy-code-2.svg");
-      opacity: 0;
+      &.status-copy {
+        opacity: 1;
+      }
+
+      &.status-copied {
+        opacity: 0;
+      }
     }
 
     &.copied {
-      &:before {
+      .status-copy {
         opacity: 0;
       }
 
-      &:after {
+      .status-copied {
         opacity: 1;
       }
     }

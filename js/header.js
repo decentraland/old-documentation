@@ -64,11 +64,13 @@ $(function() {
     $('head').prepend('<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1" />')
   }
 
-  $searchInput.on('touchstart', function() {
+  const $inputs = $('.header_search input[type="search"], select')
+
+  $inputs.on('touchstart', function() {
     zoomDisable()
   })
 
-  $searchInput.on('touchend', function() {
+  $inputs.on('touchend', function() {
     setTimeout(zoomEnable, 500)
   })
 
