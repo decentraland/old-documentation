@@ -90,7 +90,18 @@ blockquote {
   padding: 0 $base-spacing;
   margin: $base-spacing 0;
   color: $medium-grey;
-  border-left: 4px solid rgba(#5c5c6e, 0.2);
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 4px;
+    height: 100%;
+    background: rgba(92, 92, 110, 0.2);
+    left: 0px;
+    border-radius: 4px;
+  }
 }
 
 strong {
