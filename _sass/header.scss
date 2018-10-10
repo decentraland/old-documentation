@@ -221,13 +221,21 @@ header {
         border-top: $docs_medium_grey 1px solid;
         font-size: 13px;
         padding: 15px 16px;
+        justify-content: center;
       }
     }
 
     a {
       color: #0d0d17;
-      display: block;
       padding: 20px 16px;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    img {
+      margin-right: 20px;
+      width: 24px;
+      height: 24px;
     }
 
     strong {

@@ -69,7 +69,20 @@ layout: null
 					contentPreview = getPreview(query, item.content, 170),
 					titlePreview = getPreview(query, item.title);
 
-				resultsHTML += "<li><a href='{{ site.baseurl }}" + item.url.trim() + "'><h4>" + titlePreview + "</h4><p>" + contentPreview + "</p></a></li>";
+				let category = item.categories.split(',')[0]
+				if (category === 'Decentraland') {
+					category = 'home'
+				}
+
+				resultsHTML += `<li>
+					<a href='{{ site.baseurl }}${item.url.trim()}'>
+						<img src="{{ site.baseurl }}/images/sets/${category}.svg" />
+						<div>
+							<h4>${titlePreview}</h4>
+							<p>${contentPreview}</p>
+						</div>
+					</a>
+				</li>`;
 			});
 
 			searchResultsEl.innerHTML = resultsHTML;

@@ -141,11 +141,19 @@ $(function() {
     const $list = $('.header_search .search-results')
 
     for (result of results) {
+      let category = result.categories.split(',')[0]
+      if (category === 'Decentraland') {
+        category = 'home'
+      }
+
       $list.append(
         `<li>
           <a href="${result.url}">
-            <span class="title">${result.title}</span>
-            <span class="description">${getPreview(userInput, result.content, 120)}</span>
+            <img src="{{ site.baseurl }}/images/sets/${category}.svg" />
+            <div>
+              <span class="title">${result.title}</span>
+              <span class="description">${getPreview(userInput, result.content, 120)}</span>
+            </div>
           </a>
         </li>`
       )
