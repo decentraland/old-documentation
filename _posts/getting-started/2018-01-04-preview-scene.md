@@ -77,7 +77,7 @@ You can point other browser tabs to the same local address and this will add new
 
 ## Upload a scene to decentraland
 
-Once you're happy with your scene, you can upload it and publish it to Decentraland, see [publishing]({{ site.baseurl }}{% post_url /getting-started/2018-01-07-publishing %}) ) for instructions on how to do that.
+Once you're happy with your scene, you can upload it and publish it to Decentraland, see [publishing]({{ site.baseurl }}{% post_url /deploy/2018-01-07-publishing %}) ) for instructions on how to do that.
 
 ## Parameters of the preview command
 

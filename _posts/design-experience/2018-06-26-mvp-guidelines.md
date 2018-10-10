@@ -135,7 +135,7 @@ Once basic use cases are covered, you can start to get more sophisticated with y
 
 **Audio** is another critical aspect of a scene's atmosphere. Background sounds like wind, crickets, distant conversations, maybe even music can be a very powerful way to increase immersion and give context. You can also change how volume levels relate to distance from the sound source to put more or less emphasis on a sound's location.
 
-Read [design constraints for games]({{ site.baseurl }}{% post_url /getting-started/2018-01-08-design-games %}) for a detailed look at a number of other considerations.
+Read [design constraints for games]({{ site.baseurl }}{% post_url /design-experience/2018-01-08-design-games %}) for a detailed look at a number of other considerations.
 
 Consider the MVP as one of many prototypes that you can use to establish your cadence for releases once you have established your pipeline. The focus of each release may vary, or it may be a hybrid of each aspect of the experience. However, you should aim to deliver successively more complicated experiences, each iteration building upon the last.
 

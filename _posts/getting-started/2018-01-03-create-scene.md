@@ -84,4 +84,4 @@ See the [development guide]({{ site.baseurl }}{% post_url /development-guide/201
 
 ## Publish your scene
 
-Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /getting-started/2018-01-07-publishing %}).
+Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /deploy/2018-01-07-publishing %}).
