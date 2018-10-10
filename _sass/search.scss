@@ -11,6 +11,10 @@
   margin: 0;
   padding: 0;
 
+  strong {
+    font-weight: 500;
+  }
+
   li {
     list-style: none;
     margin: 0 0 16px;
@@ -38,6 +42,7 @@
       margin: 0;
       font-size: 15px;
       color: $docs_primary_black;
+      text-align: left;
     }
 
     .label {
