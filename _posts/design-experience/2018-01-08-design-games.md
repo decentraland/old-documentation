@@ -3,9 +3,9 @@ date: 2018-01-08
 title: Design constraints for games
 description: What you need to keep in mind when designing a game for Decentraland.
 categories:
-  - getting-started
+  - design-experience
 type: Document
-set: getting-started
+set: design-experience
 set_order: 8
 ---
 

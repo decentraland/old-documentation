@@ -5,9 +5,9 @@ description: How to publish my project?
 redirect_from:
   - /documentation/publishing/
 categories:
-  - getting-started
+  - deploy
 type: Document
-set: getting-started
+set: deploy
 set_order: 7
 ---
 

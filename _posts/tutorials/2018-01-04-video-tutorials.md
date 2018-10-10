@@ -5,7 +5,7 @@ description: Videos walking you through how to create scenes in Decentraland.
 categories:
   - examples
 type: Document
-set: examples
+set: tutorials
 set_order: 3
 ---
 
