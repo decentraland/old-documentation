@@ -396,14 +396,17 @@ The example above defines a box entity that can't be walked through.
 All entities have collisions disabled by default. Depending on the type of entity, collisions are enabled as follows:
 
 - For most entities, including _primitives_ (boxes, spheres, etc), planes and base entities, you enable collisions by setting the `withCollisions` component to _true_.
+
+      > Note: Plane entities only block in one direction.
+
 - To enable collisions in _glTF models_, you can either:
 
   - Overlay an invisible entity with the `withCollisions` component set to _true_.
   - Edit the model in an external tool like Blender to include a _collider object_. The collider must be named _x_collider_, where _x_ is the name of the model. So for a model named _house_, the collider must be named _house_collider_.
 
-A _collider_ is a set of planes or geometric shapes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision object is usually a lot simpler (with less vertices) than the original model.
+A _collider_ is a set of geometric shapes or planes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision object is usually a lot simpler (with less vertices) than the original model.
 
-See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more details on what colliders are and how to add them.
+See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more details on how to add colliders to a 3D model.
 
 Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the user's avatar.
 
