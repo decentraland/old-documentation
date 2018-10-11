@@ -17,7 +17,7 @@ Make sure of the following:
 
 - Your scene complies with all of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}). Most of these are validated each time you run a preview of your scene.
 
-* You installed IPFS correctly. To do so, follow [these steps](https://ipfs.io/docs/install/).
+* You installed IPFS correctly. To do so, follow [these steps](https://ipfs.io/docs/install/). Check [these instructions](https://ipfs.io/docs/getting-started/) to test the installation.
 
 * You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it. The account must also hold a minimum amount of Ether to pay a transaction gas fee.
 
@@ -45,7 +45,7 @@ Open your scene's _scene.json_ file and verify the following:
 
 1.  To make sure the scene has been locally built with your latest changes, run `npm run build`.
 2.  Log into your Metamask account with the same public address associated with your parcels in Decentraland. That public address should be listed in the scene's _scene.json_ file.
-3.  Start up an IPFS daemon by following [these instructions](https://ipfs.io/docs/getting-started/).
+3.  Start up an IPFS daemon by running `ipfs daemon`.
 4.  Finally, run `dcl deploy` from the scene's folder.
 
 If this is your first time uploading this scene to the selected parcels,Metamask will ask you to approve a transaction for paying the gas fee after the file upload is completed. You only make this payment the first time you deploy content, as the smart contract for your LAND is only updated when you link your content to IPNS, the naming service for IPFS.
