@@ -144,9 +144,11 @@ entirely decoupled from the rendering engine. We designed it to be like this for
 
 The decoupling works by using RPC protocol, this protocol assigns a small part of the client to only render the scene and control events.
 
-We have also abstracted the communication protocol. This allows us to run the scenes both locally in a WebWorker and remotely in a Node.js server through WebSockets.
+We have also abstracted the communication protocol. This allows us to run the scenes locally in a WebWorker.
 
 We don't want developers to intervene with the internals of the engine or even need to know what lies inside the engine. We need to ensure a consistent experience for users throughout the Decentraland map, and mistakes are more likely to happen at that "low" level.
+
+Because of this decoupling, your scene's code doesn't have access to the DOM or the `window` object, so you can't access data like the user's browser or geographical location.
 
 #### Decoupling a scene from the engine
 
