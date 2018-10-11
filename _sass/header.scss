@@ -167,6 +167,7 @@ header {
     transition: opacity 300ms ease;
     opacity: 0;
     pointer-events: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   input[type="search"] {

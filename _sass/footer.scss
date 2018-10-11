@@ -111,6 +111,7 @@ footer {
 
     @media #{$mid-point} {
       margin-bottom: 0;
+      margin-right: 16px;
     }
 
     select {
@@ -154,8 +155,13 @@ footer {
     }
 
     ul {
-      padding: 0 26px;
       line-height: 32px;
+      max-width: 320px;
+      margin: 0 auto;
+
+      @media #{$mid-point} {
+        max-width: none;
+      }
     }
 
     li {
