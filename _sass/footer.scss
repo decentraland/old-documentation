@@ -1,6 +1,5 @@
 footer {
-  padding: 10px 0 10px;
-  margin: 100px 0 48px;
+  margin: 48px 0;
 
   font-size: 14px;
   font-weight: normal;
@@ -13,6 +12,7 @@ footer {
 
   @media #{$desktop} {
     margin-bottom: 0;
+    padding: 10px 0;
   }
 
   .footer-wrapper {
@@ -159,7 +159,7 @@ footer {
       max-width: 320px;
       margin: 0 auto;
 
-      @media #{$mid-point} {
+      @media (min-width: 500px) {
         max-width: none;
       }
     }
