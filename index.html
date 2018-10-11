@@ -1,30 +1,5 @@
 ---
 ---
-<style>
-  .docs-header {
-    height: 48px;
-    margin-top: 48px;
-    padding:8px 0;
-    position: relative;
-  }
-
-  .docs-header > .index-trigger {
-    position: absolute;
-    right: 0;
-    top: 12px;
-    display: flex!important;
-  }
-
-  .docs-header > span {
-    font-size: 22px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.45;
-    letter-spacing: normal;
-    color: #0a0f1f;
-  }
-</style>
 <div class="wrapper home">
 	<section>
     {% capture content %}{% include home.md %}{% endcapture %}
@@ -35,5 +10,4 @@
 
     {% include override-color.html accent_color="#ff0044" %}
   </section>
-
 </div>
