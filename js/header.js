@@ -149,7 +149,9 @@ $(function() {
       $list.append(
         `<li>
           <a href="${result.url}">
-            <img src="{{ site.baseurl }}/images/sets/${category}.svg" />
+            <div class="icon">
+              <img src="{{ site.baseurl }}/images/sets/${category}.svg" />
+            </div>
             <div>
               <span class="title">${result.title}</span>
               <span class="description">${getPreview(userInput, result.content, 120)}</span>

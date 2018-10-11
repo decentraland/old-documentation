@@ -76,7 +76,9 @@ layout: null
 
 				resultsHTML += `<li>
 					<a href='{{ site.baseurl }}${item.url.trim()}'>
-						<img src="{{ site.baseurl }}/images/sets/${category}.svg" />
+						<div class="icon">
+							<img src="{{ site.baseurl }}/images/sets/${category}.svg" />
+						</div>
 						<div>
 							<h4>${titlePreview}</h4>
 							<p>${contentPreview}</p>

@@ -63,10 +63,14 @@
       }
     }
 
-    img {
-      margin-right: 20px;
-      width: 32px;
-      height: 32px;
+    .icon {
+      padding: 4px 20px 6px 6px;
+      flex-shrink: 0;
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
     }
 
     h4 {
