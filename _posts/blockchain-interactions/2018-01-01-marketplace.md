@@ -18,10 +18,10 @@ Access the Marketplace at [market.decentraland.org](https://market.decentraland.
 
 The Marketplace allows you to:
 
-- **Sell** a parcel of LAND. Set your own price in MANA and an expiration date for the offer.
-- **Buy** parcels that are for sale.
-- **Name** your parcels and estates and give them a public description.
-- **Transfer** your parcels and estates to another user.
+- **Sell** parcels and Estates of LAND. Set your own price in MANA and an expiration date for the offer.
+- **Buy** parcels and Estates that are for sale.
+- **Name** your parcels and Estates and give them a public description.
+- **Transfer** your parcels and Estates to another user.
 - **Grant permissions** to other users to edit the parcels you own.
 - **Explore** the world through a map to see who owns what.
 
@@ -39,7 +39,7 @@ Since all transactions in the Ethereum network have a gas fee that needs to be p
 
 ## The Atlas View
 
-The Atlas view gives you a bird’s-eye perspective of every color coded parcel, estate, road, district, and plaza in Decentraland.
+The Atlas view gives you a bird’s-eye perspective of every color coded parcel, Estate, road, district, and plaza in Decentraland.
 
 ![](/images/media/c120655-atlas_view_screenshot.png)
 
@@ -55,15 +55,15 @@ Click _Color Key_ in the footer to see what each tile color represents.
 
 ## The Marketplace View
 
-If you’d rather see a list of every parcel currently offered on the market, you can use the Marketplace View. You can sort offers by “Newest”, “Cheapest”, “Most expensive”, and “Closest to expire”. Click a tile to learn more about it.
+If you’d rather see a list of all the LAND currently offered on the market, you can use the Marketplace View. Select the tabs at the top to switch between individual parcels and multi-parcel Estates. You can sort offers by “Newest”, “Cheapest”, “Most expensive”, and “Closest to expire”. Click a tile to learn more about it.
 
 ![](/images/media/c867650-marketplace_view_screenshot.png)
 
 ## Manage Your LAND
 
-To view your LAND tokens, click **My Land**. Here you’ll find a list of all of your parcels and estates, including any that you’ve contributed to community districts and any parcels that you have listed for sale.
+To view your LAND tokens, click **My Land**. Here you’ll find a list of all of your parcels and Estates, including any that you’ve contributed to community districts and any parcels that you have listed for sale.
 
-By clicking on one of the parcels listed under My Land, you can edit its name, description, put it up for sale, or transfer it directly to another wallet address.
+By clicking on one of the parcels or Estates listed under My Land, you can edit its name, description, put it up for sale, or transfer it directly to another wallet address.
 
 ![](/images/media/marketplace_myland.png)
 
@@ -72,9 +72,9 @@ By clicking on one of the parcels listed under My Land, you can edit its name, d
 To buy MANA in exchange for Ether, follow these steps:
 
 1. Open your user _Settings page_
-2. Check the box next to _You have authorized the Marketplace contract to operate MANA on your behalf_.
+2. Check the box next to _Assets using MANA_.
 
-   ![](/images/media/marketplace_authorize.png)
+   ![](/images/media/marketplace_authorizations.png)
 
    > Note: Enabling this setting triggers a transaction on the blockchain. You must confirm this transaction in your Ethereum client, pay a gas fee in Ether and wait for its confirmation before it takes effect.
 
@@ -82,43 +82,44 @@ To buy MANA in exchange for Ether, follow these steps:
 4. Set an amount of MANA you'd like to receive and click **Submit**.
 5. Confirm this transaction on your Ethereum client and wait for the network to verify it.
 
-## Buy parcels
+## Buy parcels and Estates
 
-To buy LAND parcels in Decentraland, follow these steps:
+To buy LAND in Decentraland, follow these steps:
 
 1. Open your user _Settings page_
-2. Check the box next to _You have authorized the Marketplace contract to operate LAND on your behalf_.
+2. Check the box next to _LAND_.
 
-   ![](/images/media/marketplace_authorize.png)
+   ![](/images/media/marketplace_authorizations.png)
 
    > Note: Enabling this setting triggers a transaction on the blockchain. You must confirm this transaction in your Ethereum client, pay a gas fee in Ether and wait for its confirmation before it takes effect.
 
-3. Explore the _Atlas view_ or the _Marketplace view_ to find a plot of land you like that's on sale. On the parcel's view, click **Buy**.
+3. _Optional_: Click the box next to _Estates_ to also authorize the Marketplace to operate Estates.
+4. Explore the _Atlas view_ or the _Marketplace view_ to find a plot of land you like that's on sale and click it to open its details. On it's details page, click **Buy**.
    ![](/images/media/marketplace_buy_land.png)
-4. Confirm this transaction on your Ethereum client and wait for the network to verify it.
+5. Confirm this transaction on your Ethereum client and wait for the network to verify it.
 
 > Note: Aside from the gas fee that the Ethereum network pays to the miners of the transaction, Decentraland does not collect any surplus trading fees.
 
-## Sell a parcel
+## Sell a parcel or Estate
 
-To sell one of your LAND parcels for MANA:
+To sell one of your plots of LAND for MANA:
 
-1. Open **My LAND** and select the parcel you'd like to sell.
-2. In the parcel's details page, click **Sell**.
+1. Open **My LAND** and select the parcel or Estate you'd like to sell.
+2. In the details page, click **Sell**.
 3. Set a price and expiration date and click **Confirm**.
 4. Confirm this transaction on your Ethereum client and wait for the network to verify it.
 
-## Create an estate
+## Create an Estate
 
 LAND Estates make it possible to associate two or more directly adjacent parcels of LAND to make it easier to manage your larger LAND holdings. Estates are especially useful when building larger scenes that span more than one parcel.
 
-Parcels in an estate must be directly adjacent, and cannot be separated by a road, plaza, or any other parcel.
+Parcels in an Estate must be directly adjacent, and cannot be separated by a road, plaza, or any other parcel.
 
 To create your first Estate, you need to own two or more adjacent LAND parcels.
 
-1. Open **My LAND** and select one of the parcels you'd like to add to the estate.
+1. Open **My LAND** and select one of the parcels you'd like to add to the Estate.
 2. In the parcel's details page, click **Create Estate**.
-3. You will be shown a view of the Atlas centered on the parcel you selected, with the remaining adjacent parcels you own highlighted. Select the different parcels you want to include in your estate.
+3. You will be shown a view of the Atlas centered on the parcel you selected, with the remaining adjacent parcels you own highlighted. Select the different parcels you want to include in your Estate.
    ![](/images/media/market_estates1.png)
 
 4. Click **Continue**.
@@ -132,13 +133,13 @@ Once you’ve created your first Estate, you will see a new tab titled Estates. 
 
 When you create a new Estate, you are effectively transferring your parcels to a new token. These Estates are represented by ERC721 tokens (like any other NFT). You will no longer see the individual parcels under _My Land_, and they will not appear in MetaMask, Mist, Trezor, or Ledger wallets, nor on Etherscan under your address.
 
-## Edit parcels or estates
+## Edit parcels or Estates
 
-You can edit the name and description of any parcel or estate that you own. These details will be publicly displayed in the Atlas.
+You can edit the name and description of any parcel or Estate that you own. These details will be publicly displayed in the Atlas.
 
-To edit a parcel or estate:
+To edit a parcel or Estate:
 
-1. Navigate to the details page of the parcel or the estate you'd like to edit and click **Edit**.
+1. Navigate to the details page of the parcel or the Estate you'd like to edit and click **Edit**.
 
    ![](/images/media/marketplace_edit_parcel.png)
 
@@ -151,7 +152,7 @@ You can give another user permissions to edit the content in a LAND parcel. This
 
 The user given permission can also change the name or description of the parcel in the Marketplace.
 
-> Note: Currently, this feature is only enabled for parcels, not estates.
+> Note: Currently, this feature is only enabled for parcels, not Estates.
 
 To grant permissions over a parcel:
 
@@ -189,9 +190,9 @@ To transfer MANA to another account:
 
 ## Transfer LAND
 
-To transfer a LAND parcel or estate to another user:
+To transfer a LAND parcel or Estate to another user:
 
-1. Navigate to the details page of the parcel or the estate you'd like to transfer and click **Transfer**
+1. Navigate to the details page of the parcel or the Estate you'd like to transfer and click **Transfer**
 
    ![](/images/media/marketplace_transfer_land.png)
 
