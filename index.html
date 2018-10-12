@@ -2,12 +2,15 @@
 ---
 <div class="wrapper home">
 	<section>
-    {% capture content %}{% include home.md %}{% endcapture %}
-    {{ content | markdownify }}
+    <div class="home-content">
+      {% capture content %}{% include home.md %}{% endcapture %}
+      {{ content | markdownify }}
+    </div>
 
     {% include newsletter.html %}
     {% include social-networks.html %}
 
-    {% include override-color.html accent_color="#ff0044" %}
+    {% include override-color.html accent_color="#ff2d55" %}
+    {% include copy-code.html %}
   </section>
 </div>
