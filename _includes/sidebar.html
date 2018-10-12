@@ -1,0 +1,64 @@
+<aside class="sidebar sticky">
+  <ul>
+    {% if page.url == "/" %}
+      <li class="active">
+        <div>
+          {% include sets/home.svg %}
+          <span class="sidebar-h3">Home</span>
+        </div>
+    {% else %}
+      <li>
+        <div>
+          {% include sets/home.svg %}
+          <a href="/" class="sidebar-h3">Home</a>
+        </div>
+    {% endif %}
+    </li>
+
+  {% assign sets = site.sets | sort: 'order' %}
+  {% for set in sets %}
+    {% assign page_set_id = '/sets/' | append: page.set %}
+    {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+    {% assign first = series_posts[0] %}
+    {% assign size = series_posts | size %}
+
+    {% capture set_image %}sets/{{ first.categories[0] }}.svg{% endcapture %}
+
+    {% if size > 0 %}
+      {% if page_set_id==set.id %}
+        <li class="active">
+          <div>
+            {%- comment -%} <img src="{{ site.baseurl }}/images/sets/{{ first.categories[0] }}.svg" /> {%- endcomment -%}
+            {% include {{ set_image }} %}
+            <span class="sidebar-h3">{{ set.title }}</span>
+          </div>
+      {% else %}
+        <li>
+          <div>
+            {%- comment -%} <img src="{{ site.baseurl }}/images/sets/{{ first.categories[0] }}.svg" /> {%- endcomment -%}
+            {% include {{ set_image }} %}
+            <a href="{{ first.url }}" class="sidebar-h3 toggle-item" data-toggle="{{set.id}}">{{ set.title }}</a>
+          </div>
+      {% endif %}
+
+      {% if page_set_id==set.id %}
+        <ul class="current-post-list">
+          {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+          {% for post in series_posts %}
+            <li><a {% if post.url == page.url %} class="active" {% endif %} href="{{ post.url }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <ul class="toggle" style="display: none" data-id="{{set.id}}">
+        {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+        {% for post in series_posts %}
+          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+
+      </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</aside>

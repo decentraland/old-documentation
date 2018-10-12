@@ -1,0 +1,82 @@
+.sidebar {
+  display: none;
+  padding: 56px 20px 0 0;
+  position: absolute;
+  width: 200px;
+
+  @media #{$desktop} {
+    display: block;
+    width: 240px;
+    padding: 56px 0 0 0;
+  }
+
+  .sidebar-h3 {
+    font-size: 15px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    color: #0a0f1f;
+    // margin-bottom: 16px;
+    display: flex;
+    height: 44px;
+    align-items: center;
+    margin-left: 16px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      // margin: 0 0 15px 0;
+      margin: 0;
+
+      > div {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+
+        svg {
+          width: 16px;
+          height: 16px;
+          margin: 8px;
+        }
+      }
+
+      > ul {
+        padding-left: 48px;
+
+        li > a {
+          height: 44px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    -webkit-transition: transform 0.2s ease;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+    text-transform: capitalize;
+    color: #5c5c6e;
+    transition: color 200ms ease;
+
+    &.active {
+      color: #000;
+      font-weight: 500;
+      // transform: translateX(10px);
+    }
+
+    &:hover {
+      color: #000;
+    }
+  }
+}

@@ -37,6 +37,7 @@ h2 {
 
 h3 {
   font-size: 1.44em;
+  font-weight: 500;
 }
 
 h4 {
@@ -87,8 +88,8 @@ picture {
 }
 
 blockquote {
-  padding: 0 $base-spacing;
-  margin: $base-spacing 0;
+  padding: 0 16px;
+  margin: 16px 0;
   color: $medium-grey;
   position: relative;
 

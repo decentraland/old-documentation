@@ -4,86 +4,38 @@ layout: default
 {% assign tags = page.tags %}
 <div class="tutorial {{ page.set }} wrapper post-wrapper">
   <div class="top-section">
-    <div class="back-to-docs">
-    </div>
     <div class="title-search-wrapper">
-      <h1><b>
-      {% assign sets = site.sets | sort: 'order' %}
-      {% for set in sets %}
-      {% assign page_set_id = '/sets/' | append: page.set %}
-        {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
-        {% assign first = series_posts[0] %}
-        {% assign size = series_posts | size %}
-        {% if size > 0 %}
-          {% if page_set_id==set.id %}
-          {{ set.title }}
-
-          {% endif %}
-        {%endif %}
-      {% endfor %}
-
-
-          </b></h1>
+      {%- comment -%} <h1><b>
+        {% assign sets = site.sets | sort: 'order' %}
+        {% for set in sets %}
+          {% assign page_set_id = '/sets/' | append: page.set %}
+          {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+          {% assign first = series_posts[0] %}
+          {% assign size = series_posts | size %}
+          {% if size > 0 %}
+            {% if page_set_id==set.id %}
+              {{ set.title }}
+            {% endif %}
+          {%endif %}
+        {% endfor %}
+      </b></h1> {%- endcomment -%}
       <a class="index-trigger modalOpen no-smooth" href="#index-modal">
         {% include index-icon.svg icon="Index" %} See index
       </a>
-      <div class="post-top-search">
-        {% include search.svg %}
-      </div>
     </div>
   </div>
+
   <section class="main-container">
-    <aside class="sidebar sticky">
-      <ul>
-      {% assign sets = site.sets | sort: 'order' %}
-      {% for set in sets %}
-      {% assign page_set_id = '/sets/' | append: page.set %}
-        {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
-        {% assign first = series_posts[0] %}
-        {% assign size = series_posts | size %}
-        {% if size > 0 %}
-          {% if page_set_id==set.id %}
-            <li class="active"><span style="display: block" class="sidebar-h3">{{ set.title }}</span>
-          {% else %}
-            <li>
-                <a href="{{ first.url }}" class="sidebar-h3 toggle-item" data-toggle="{{set.id}}">{{ set.title }}</a>
-          {% endif %}
-          {% if page_set_id==set.id %}
-          <ul class="current-post-list">
-          {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
-          {% for post in series_posts %}
+    {% include sidebar.html %}
 
-            <li >
-                <a  {% if post.url==page.url %} class="override-color-set active" {% endif %} href="{{ post.url }}">{{ post.title }}</a>
-            </li>
-          {% endfor %}
-          </ul>
-          {% else %}
-          <ul class="toggle" style="display: none" data-id="{{set.id}}">
-          {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
-          {% for post in series_posts %}
-            <li >
-                <a href="{{ post.url }}">{{ post.title }}</a>
-            </li>
-          {% endfor %}
-          </ul>
-          {% endif %}
-        </li>
-        {% endif %}
-      {% endfor %}
-      </ul>
-    </aside>
     <section class="tutorial-content">
-
       {% if page.type == "Video" %}
         {% include youtube.html video_id=page.video_id %}
         {% if page.resources %}
           <div class="resources">
             <ul>
               {% for resource in page.resources %}
-              <li>
-                <a href="{{ resource.link }}">{{ resource.name }}</a>
-              </li>
+                <li><a href="{{ resource.link }}">{{ resource.name }}</a></li>
               {% endfor %}
             </ul>
           </div>
@@ -101,7 +53,6 @@ layout: default
       </div> {%- endcomment -%}
     </section>
   </section>
-
 </div>
 
 <section class="bottom-navigation">
@@ -227,8 +178,8 @@ layout: default
     return false;
   });
 
-  $(document).keyup(function (e) {
-    if (e.keyCode == 27) {
+  $(document).keyup(function (event) {
+    if (event.key == "Escape") {
       $(".show").removeClass("show");
     }
   });

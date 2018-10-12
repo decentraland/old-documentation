@@ -64,7 +64,7 @@ $(function() {
     $('head').prepend('<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1" />')
   }
 
-  const $inputs = $('.header_search input[type="search"], select')
+  const $inputs = $('.header_search input[type="search"], select, .newsletter input[type="email"]')
 
   $inputs.on('touchstart', function() {
     zoomDisable()

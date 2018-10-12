@@ -1,9 +1,12 @@
 .home {
   section {
-    padding-top: 44px;
+    // padding-top: 44px;
   }
 
   .home-content {
+    margin-left: auto;
+    max-width: 760px;
+
     h1 {
       font-weight: 500;
       font-size: 34px;
@@ -11,6 +14,7 @@
       letter-spacing: 0.4px;
       margin-bottom: 8px;
       margin-top: 0;
+      padding-top: 44px;
     }
 
     h2 {
