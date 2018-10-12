@@ -152,7 +152,6 @@ The transition can be added to affect the following properties of an entity:
 - position
 - rotation
 - scale
-- color
 - lookAt
 
 Note that the transition for each of these properties is configured separately.
@@ -160,16 +159,14 @@ Note that the transition for each of these properties is configured separately.
 {% raw %}
 
 ```tsx
- <box
-    rotation={currentRotation}
-    color={currentColor}
-    scale={currentScale}
-    transition={{
-      rotation: { duration: 1000, timing: "ease-in" },
-      color: { duration: 3000, timing: "exponential-in" },
-      scale: { duration: 300, timing: "bounce-in" }
-    }}
-  />
+<box
+  rotation={currentRotation}
+  scale={currentScale}
+  transition={{
+    rotation: { duration: 1000, timing: "ease-in" },
+    scale: { duration: 300, timing: "bounce-in" }
+  }}
+/>
 ```
 
 {% endraw %}
