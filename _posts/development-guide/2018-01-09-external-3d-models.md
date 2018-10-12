@@ -45,7 +45,7 @@ When exporting 3D models that include multiple animations, make sure that all an
 
 We recommend using the following export settings when exporting models with animations:
 
-![](/images/media/blender-export-settings-animations.png)
+<img src="/images/media/blender-export-settings-animations.png" alt="Blender export menu" width="250"/>
 
 #### Export to glTF from 3D Studio Max
 
@@ -186,6 +186,33 @@ Examples of other valid sizes:
 
 > Although textures of arbitrary sizes work in the alpha release, the engine displays an alert in the console. We will enforce this restriction in coming releases and invalid texture sizes will cease to work.
 
+#### How to swap a material
+
+Suppose you've imported a 3D model that uses a material that's not supported by Decentraland. You can easily change this material while still keeping the same texture and its mapping.
+
+<img src="/images/media/materials-not-supported.png" alt="Model without valid material" width="250"/>
+
+To swap the material:
+
+1. Check the current material's settings to see what texture files are being used and how they are configured.
+2. Delete the current material from the mesh.
+
+   ![](/images/media/materials_delete_material.png)
+
+3. Create a new material.
+
+    <img src="/images/media/materials_new_material.png" alt="New default basic material" width="400"/>
+
+   > Tip: If you're using Blender and are on the _Blender Render_ tab, it creates a basic material by default, which is supported by Decentraland.
+
+4. Open the _Textures_ settings and create a new texture, importing the same image file that the original material used.
+
+   <img src="/images/media/materials_new_texture.png" alt="New default basic texture" width="300"/>
+
+5. The texture should be mapped to the new material just as it was mapped to the old material.
+
+   <img src="/images/media/materials_final.png" alt="Model with valid material" width="300"/>
+
 #### Best practices for materials
 
 - If your scene includes multiple models that use the same texture, reference the texture as an external file instead of having it embedded in the 3D model. Embedded textures get duplicated for each model and add to the scene's size.
@@ -226,15 +253,15 @@ For an object to be recognized by a Decentraland scene as a collider, all it nee
 
 For example, to create a collider for a tree, you can create a simple box object surrounding its trunk. Users of the scene won't see this box, but it will block their path.
 
-![](/images/media/collision-tree.png)
+<img src="/images/media/collision-tree.png" alt="Entity tree" width="500"/>
 
 In this case, we can name the box "Box*Tree_collider" and export both the tree and the box as a single \_gltf* model. The \_collider tag alerts the Decentraland world engine that the box object belongs to the collection of colliders, making the \_collider mesh invisible.
 
-![](/images/media/collision-hierarchy.png)
+<img src="/images/media/collision-hierarchy.png" alt="Entity tree" width="350"/>
 
 Whenever a player views the tree model in your scene, they will see the complex model for your tree. However, when they walk into your tree, they will collide with the box, not the tree.
 
-#### Collider objects for stairs
+#### How to add a collider to a staircase
 
 Stairs are a very common use-case for collider objects. In order for users to climb stairs, there must be a corresponding \_collider object that the users are able to step on.
 
@@ -244,17 +271,17 @@ Using a ramp object also avoids creating unnecessary geometry, saving room for o
 
 1.  Create a new object in the shape of a ramp that resembles the size and proportions of the original stairs.
 
-![](/images/media/collision-stairs-both.png)
+    <img src="/images/media/collision-stairs-both.png" alt="Staircase mesh and collider side by side" width="300"/>
 
 2.  Name the ramp object something similar to _stairs_collider_. It must end in \__collider_.
 
 3.  Overlay the ramp object to the stairs so that they occupy the same space.
 
-![](/images/media/collision-stairs-collider.png)
+     <img src="/images/media/collision-stairs-collider.png" alt="Overlaid mesh and collider" width="300"/>
 
 4.  Export both objects together as a single _glTF_ model.
 
-![](/images/media/collision-stairs.png)
+    <img src="/images/media/collision-stairs.png" alt="Exported 3D model with invisible collider" width="300"/>
 
 Now when users view the stairs in your scene, they’ll see the more elaborate model of the stairs, but when they climb them, they’ll collide with the ramp.
 
@@ -264,6 +291,8 @@ Now when users view the stairs in your scene, they’ll see the more elaborate m
 - Collider objects shouldn't have any material, as users of your scene will never see it. Colliders are invisible to users.
   > Note: Remember that each scene is limited to log2(n+1) x 10000 triangles, where n is the number of parcels in your scene.
 - All collider objects names must end with \__collider_. For example, _tree_collider_.
+- If you use a _plane_ as a collider, it will only block in one direction. If you want colliders to block from both sides, for example for a wall, you need to create two planes with their normals facing in opposite directions.
+
 - When duplicating collider objects, pay attention to their names. Some programs append a \__1_ to the end of the filename to avoid duplicates, for example _tree_collider_1_. Objects that are named like this will be interpreted by the Decentraland World Engine as normal objects, not colliders.
 
 - To view the limits of all collider meshes in a Decentraland scene, launch your scene preview with `dcl start` and then click `c`. This draws blue lines that delimit all colliders in place.
@@ -284,53 +313,53 @@ In a Decentraland scene, you can use `weight` to blend several animations or to 
 
 > Tip: Instead of creating your own animations, you can also download generic animations and apply them to your model. For example, for 3D characters with human-like characteristics, you can download free or paid animations from [Mixamo](https://www.mixamo.com/#/).
 
-#### Creating an animation
+#### How to create an animation
 
 You can use a tool like Blender to create animations for a 3D model.
 
 1.  Create an armature, following the shape of your model and the parts you wish to move. You do this by adding an initial bone and then extruding all other bones from the vertices of that one. Bones in the armature define the points that can be articulated. The armature must be positioned overlapping the mesh.
 
-    ![](/images/media/armature_hummingbird1.png)
+    <img src="/images/media/armature_hummingbird1.png" alt="Armature" width="300"/>
 
 2.  Make both the armature and the mesh child assets of the same object.
 
 3.  Check that the mesh moves naturally when rotating its bones in the ways you plan to move it. If parts of the mesh get stretched in undesired ways, use weight paint to change what parts of the model are affected by each bone in the armature.
 
-    ![](/images/media/animations_hummingbird_wp1.png)
+    <img src="/images/media/animations_hummingbird_wp1.png" alt="Weight paint view for one bone" width="300"/>
 
-    ![](/images/media/animations_hummingbird_wp2.png)
+    <img src="/images/media/animations_hummingbird_wp2.png" alt="Weight paint view for another bone" width="300"/>
 
 > Note: There's a reported bug with Babylon.js that prevents some faces of a mesh from being rendered when they're not related to any bone in the armature. So if you paint some faces with weight 0 and then animate the model, you might see these faces dissappear. To solve this, we recommend making sure that each face is related to at least one bone of the armature and painted with a weight of at least 0.01.
 
 4.  Move the armature to a desired pose, all bones can be rotated or scaled. Then lock the rotation and scale of the bones you wish to control with this animation.
 
-    ![](/images/media/armature_hummingbird2.png)
+    <img src="/images/media/armature_hummingbird2.png" alt="Shifted armature" width="300"/>
 
 5.  Switch to a different frame in the animation, position the armature into a new pose and lock it again. Repeat this process for all the key frames you want to set to describe the animation.
 
-    ![](/images/media/armature_hummingbird_animation.png)
+    <img src="/images/media/armature_hummingbird_animation.png" alt="Frames in animation" width="450"/>
 
 6.  By default all frames in between the ones you defined will transition linearly from one pose to the next. You can also configure these transitions to behave exponentially, ease-in, bounce, etc.
 
-#### Handle multiple animations with Blender
+#### How to handle multiple animations with Blender
 
 To export a model with several embedded animations in Blender, you must create multiple _actions_ from the _Dope-Sheet_.
 
-![](/images/media/blender-dope-sheet.png)
+<img src="/images/media/blender-dope-sheet.png" alt="Open dope sheet" width="250"/>
 
 You can also edit the animation from the Dope-Sheet view, for example you can adjust the distance between two key frames.
 
 To preview the different actions, open the _Action Editor_ (only accessible once you're in the Dope Sheet).
 
-![](/images/media/blender-action-editor.png)
+<img src="/images/media/blender-action-editor.png" alt="Open action editor" width="250"/>
 
 In order to export multiple animations, you need to stash all the actions using the _NLA Editor_. We recommend opening the NLA editor on a separate editor tab while keeping the Dope sheet also open.
 
-![](/images/media/blender-nla-editor.png)
+<img src="/images/media/blender-nla-editor.png" alt="Open NLA editor" width="250"/>
 
 In the NLA Editor, select each action that you want to embed in the glTF model and click _Stash_.
 
-![](/images/media/blender-nla-editor2.png)
+<img src="/images/media/blender-nla-editor2.png" alt="Stash actions into glTF model" width="600"/>
 
 When adding the model to your Decentraland scene, you must activate animations by configuring the _gltf-model_ entity. See [Scene content guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for instructions.
 
