@@ -413,7 +413,6 @@ interface BaseEntity {
     position?: TransitionValue
     rotation?: TransitionValue
     scale?: TransitionValue
-    color?: TransitionValue
   }
 
   /**
