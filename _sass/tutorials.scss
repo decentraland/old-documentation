@@ -69,8 +69,14 @@
 }
 
 .main-container {
-  position: relative;
+  // position: relative;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media #{$tablet-landscape} {
+    flex-direction: row;
+  }
 }
 
 .top-section {
@@ -241,6 +247,10 @@
   }
 
   .tutorial-content {
+    @media #{$tablet-landscape} {
+      padding-top: 28px;
+    }
+
     h2 {
       margin-top: 40px;
       font-size: 22px;
@@ -296,7 +306,8 @@
       font-weight: 500;
       font-style: normal;
       font-stretch: normal;
-      margin: 44px 0 8px;
+      // margin: 44px 0 8px;
+      margin: 16px 0 8px;
     }
 
     h2 {
@@ -340,13 +351,13 @@
     }
   }
 
-  .tutorial-main:first-child {
-    margin-top: 32px;
+  // .tutorial-main:first-child {
+  //   margin-top: 32px;
 
-    @media #{$desktop} {
-      margin-top: 56px;
-    }
-  }
+  //   @media #{$desktop} {
+  //     margin-top: 56px;
+  //   }
+  // }
 
   .tutorial-content {
     width: 100%;
@@ -354,57 +365,6 @@
     @media #{$desktop} {
       margin-left: auto;
       max-width: 760px;
-    }
-  }
-}
-
-.sidebar {
-  display: none;
-  padding: 56px 20px 0 0;
-  position: absolute;
-  width: 200px;
-
-  @media #{$desktop} {
-    display: block;
-    width: 220px;
-    padding: 56px 0 0 0;
-  }
-
-  .sidebar-h3 {
-    font-size: 18px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.45;
-    letter-spacing: normal;
-    color: #0a0f1f;
-    margin-bottom: 16px;
-  }
-
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-
-    li {
-      margin: 0 0 15px 0;
-    }
-  }
-
-  a {
-    display: block;
-    text-decoration: none;
-    -webkit-transition: transform 0.2s ease;
-    font-size: 15px;
-    line-height: 24px;
-    letter-spacing: -0.3px;
-    text-transform: capitalize;
-    color: #7d8499;
-
-    &.active {
-      color: #000;
-      font-weight: bold;
-      // transform: translateX(10px);
     }
   }
 }

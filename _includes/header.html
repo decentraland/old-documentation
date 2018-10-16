@@ -5,9 +5,9 @@
     <nav>
       <div class="topbar">
         <div class="logo">
-          <a href="/">{% include logo.html %}</a>
+          <a href="/">{% include logo.svg %}</a>
         </div>
-        <div class="dropdown-trigger">Docs {% include arrow-icon.html %}</div>
+        <div class="dropdown-trigger">Docs {% include arrow.svg %}</div>
       </div>
       <div class="dropdown-content">
         <ul class="menu">
@@ -22,9 +22,9 @@
       <div class="search-overlay desktop"></div>
       <form action="{{ site.baseurl }}/search/" method="get">
         <input type="search" name="q" {% if include.add_id %}id="search-input"{% endif %} placeholder="Search" autofocus autocomplete="off">
-        {% include search-icon.html %}
+        {% include search.svg %}
         <div class="close">
-          {% include close-icon.html %}
+          {% include close.svg %}
         </div>
         <input type="submit" value="Search" style="display: none;">
       </form>

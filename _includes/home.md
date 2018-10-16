@@ -1,6 +1,6 @@
 # Let’s build the metaverse together
 
-## The Decentraland SDK provides everything you need to build interactive 3D content for Decentraland.
+### The Decentraland SDK provides everything you need to build interactive 3D content for Decentraland.
 
 ---
 
@@ -21,15 +21,15 @@ To get started, install the Command Line Interface (CLI).
 
 The CLI allows you to compile and preview your scene locally. After testing your scene locally, you can use the CLI to upload your content.
 
-> Note: Install the following dependencies before you install the CLI:
-
-    - [Node.js](https://github.com/decentraland/cli#nodejs-installation) (version 8)
-    - [IPFS](https://dist.ipfs.io/#go-ipfs)
-    - [Python 2.7.x](https://www.python.org/downloads/)
+> **Note**: Install the following dependencies before you install the CLI:
+>
+> - [Node.js](https://github.com/decentraland/cli#nodejs-installation) (version 8)
+> - [IPFS](https://dist.ipfs.io/#go-ipfs)
+> - [Python 2.7.x](https://www.python.org/downloads/)
 
 To install the CLI, run the following command in your command line tool of choice:
 
-```
+```bash
 npm install -g decentraland
 ```
 
@@ -39,13 +39,13 @@ Read [Installation guide]({{ site.baseurl }}{% post_url /getting-started/2018-01
 
 Create a new scene by running the following code in an empty folder:
 
-```
+```bash
 dcl init
 ```
 
 Preview the 3D scene in your browser by running the following command in that same folder:
 
-```
+```bash
 dcl start
 ```
 
@@ -69,7 +69,7 @@ In your scene’s code, add the following line in between the other XML entities
 
 {% raw %}
 
-```
+```tsx
 <gltf-model
   src="models/Avocado.gltf"
   position={{ x: 3, y: 0.75, z: 2 }}

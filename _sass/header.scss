@@ -1,5 +1,7 @@
 header {
-  border-bottom: solid 1px rgba(92, 92, 110, 0.16);
+  // border-bottom: solid 1px rgba(92, 92, 110, 0.16);
+  position: relative;
+  z-index: 11;
 
   .topbar {
     display: flex;
@@ -46,6 +48,7 @@ header {
     background: white;
     z-index: 1;
     padding-bottom: 12px;
+    position: relative;
   }
 
   .dropdown-overlay,
@@ -85,7 +88,7 @@ header {
     left: -15px;
     right: 0;
     transform: translate(0, -5%);
-    box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.16);
 
     &.open {
       pointer-events: auto;
@@ -196,7 +199,7 @@ header {
     position: absolute;
     padding: 0;
     margin: 0;
-    box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.16);
     left: 0;
     width: 100%;
     font-size: 15px;
@@ -357,9 +360,7 @@ header {
     }
 
     .dropdown-overlay.open {
-      pointer-events: none;
-      opacity: 0;
-      transition: none;
+      display: none;
     }
 
     .dropdown-trigger {

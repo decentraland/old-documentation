@@ -1,13 +1,30 @@
 ---
 ---
 <div class="wrapper home">
+  {% include sidebar.html %}
 	<section>
-    {% capture content %}{% include home.md %}{% endcapture %}
-    {{ content | markdownify }}
+    <div class="home-content">
+      {% capture content %}{% include home.md %}{% endcapture %}
+      {{ content | markdownify }}
+    </div>
 
     {% include newsletter.html %}
     {% include social-networks.html %}
 
-    {% include override-color.html accent_color="#ff0044" %}
+    {% include override-color.html accent_color="#ff2d55" %}
+    {% include copy-code.html %}
   </section>
 </div>
+
+<script>
+  var headings = document.querySelectorAll("h2[id]");
+
+  for (var i = 0; i < headings.length; i++) {
+    var anchorLink = document.createElement("a");
+    anchorLink.innerText = "#";
+    anchorLink.href = "#" + headings[i].id;
+    anchorLink.classList.add("header-link");
+
+    headings[i].appendChild(anchorLink);
+  }
+</script>
