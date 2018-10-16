@@ -2,8 +2,13 @@
 layout: null
 ---
 $(function() {
+  function closeSidebar() {
+    $(".sidebar").removeClass("open")
+  }
+
   function openDropdown() {
     closeSearchResults()
+    closeSidebar()
     $("header .dropdown-trigger").addClass("open")
     $("header .dropdown-content").addClass("open")
     $("header .dropdown-overlay").addClass("open")
@@ -50,6 +55,7 @@ $(function() {
   })
 
   $searchInput.focus(function() {
+    closeSidebar()
     closeDropdown()
     showSearchResults()
   })

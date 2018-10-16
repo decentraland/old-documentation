@@ -1,5 +1,5 @@
 .wrapper {
-  // position: relative;
+  position: relative;
   max-width: 1124px;
   padding: 0 15px;
   // margin: 96px auto;
@@ -8,6 +8,10 @@
   @media #{$mid-point} {
     padding: 0 30px;
   }
+}
+
+body > .wrapper {
+  border-top: solid 1px rgba(92, 92, 110, 0.16);
 }
 
 .logo {
