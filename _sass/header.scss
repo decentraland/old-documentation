@@ -88,7 +88,7 @@ header {
     left: -15px;
     right: 0;
     transform: translate(0, -5%);
-    box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.16);
 
     &.open {
       pointer-events: auto;
@@ -199,7 +199,7 @@ header {
     position: absolute;
     padding: 0;
     margin: 0;
-    box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.16);
     left: 0;
     width: 100%;
     font-size: 15px;
