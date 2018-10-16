@@ -1,11 +1,7 @@
 <aside class="sidebar">
   <div class="sidebar-overlay"></div>
   <div class="dropdown">
-
-    {% if page.url == '/' %}
-      {% assign selected_set_image = 'sets/general.svg' %}
-      {% assign selected_set_title = 'Home' %}
-    {% else %}
+    {% if page.set %}
       {% assign sets = site.sets | sort: 'order' %}
       {% for set in sets %}
         {% assign set_id = set.id  | replace: "/sets/", "" %}
@@ -14,6 +10,9 @@
           {% assign selected_set_title = set.title %}
         {% endif %}
       {% endfor %}
+    {% else %}
+      {% assign selected_set_image = 'sets/general.svg' %}
+      {% assign selected_set_title = 'Home' %}
     {% endif %}
 
     <div class="icon">{% include {{ selected_set_image }} %}</div>

@@ -65,35 +65,13 @@
 
   <script>
     $(function () {
-      $('a[href*=\\#]').not(".no-smooth").on('click', function (event) {
-        var el = $(this.hash);
-        if (el.length > 0) {
-          // event.preventDefault();
-          $('html,body').animate({ scrollTop: $(this.hash).offset().top - $('header').outerHeight() }, 500);
+      $('a[href*=\\#]').not('.no-smooth').on('click', function() {
+        const $el = $(this.hash)
+        if ($el.length > 0) {
+          $('html,body').animate({ scrollTop: $el.offset().top - 30 }, 500)
         }
-      });
-
-      {%- comment -%} /*
-      $('svg').click(function () {
-        $(this).parent('form').submit();
-      });
-
-      $("#open-nav").click(function (event) {
-        event.preventDefault();
-        $("body").toggleClass("nav-open");
-      });
-
-      $("#open-search").click(function (event) {
-        event.preventDefault();
-        $(".header_search").toggleClass("open");
-      });
-
-      $("#close-search").click(function (event) {
-        event.preventDefault();
-        $(".header_search").removeClass("open");
-      });
+      })
     })
-    */ {%- endcomment -%}
   </script>
 </body>
 
