@@ -60,7 +60,7 @@
 
 <body class="{{ page.body_class }}">
   {% include header.html %}
-  {{ content }}
+  <main>{{ content }}</main>
   {% include footer.html %}
 
   <script>
@@ -73,6 +73,7 @@
         }
       });
 
+      {%- comment -%} /*
       $('svg').click(function () {
         $(this).parent('form').submit();
       });
@@ -92,6 +93,7 @@
         $(".header_search").removeClass("open");
       });
     })
+    */ {%- endcomment -%}
   </script>
 </body>
 
