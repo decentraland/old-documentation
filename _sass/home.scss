@@ -1,11 +1,17 @@
 .home {
-  section {
-    // padding-top: 44px;
+  display: flex;
+  flex-direction: column;
+
+  @media #{$tablet-landscape} {
+    flex-direction: row;
   }
 
   .home-content {
     margin-left: auto;
-    max-width: 760px;
+
+    @media #{$tablet-landscape} {
+      padding-top: 28px;
+    }
 
     h1 {
       font-weight: 500;
@@ -14,7 +20,7 @@
       letter-spacing: 0.4px;
       margin-bottom: 8px;
       margin-top: 0;
-      padding-top: 44px;
+      padding-top: 16px;
     }
 
     h2 {

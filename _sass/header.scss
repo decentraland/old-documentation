@@ -46,6 +46,7 @@ header {
     background: white;
     z-index: 1;
     padding-bottom: 12px;
+    position: relative;
   }
 
   .dropdown-overlay,
@@ -357,9 +358,7 @@ header {
     }
 
     .dropdown-overlay.open {
-      pointer-events: none;
-      opacity: 0;
-      transition: none;
+      display: none;
     }
 
     .dropdown-trigger {

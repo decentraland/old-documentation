@@ -3,7 +3,7 @@ layout: default
 ---
 {% assign tags = page.tags %}
 <div class="tutorial {{ page.set }} wrapper post-wrapper">
-  <div class="top-section">
+  {%- comment -%} <div class="top-section">
     <div class="title-search-wrapper">
       {%- comment -%} <h1><b>
         {% assign sets = site.sets | sort: 'order' %}
@@ -23,7 +23,7 @@ layout: default
         {% include index-icon.svg icon="Index" %} See index
       </a>
     </div>
-  </div>
+  </div> {%- endcomment -%}
 
   <section class="main-container">
     {% include sidebar.html %}
@@ -78,7 +78,7 @@ layout: default
   </div>
 </section> {%- endcomment -%}
 
-<div id="index-modal" class="modalDialog index-modal">
+{%- comment -%} <div id="index-modal" class="modalDialog index-modal">
   <a title="Close" class="close">&times;</a>
   <ul>
     {% if page.set %}
@@ -106,7 +106,7 @@ layout: default
     </li>
     {% endfor %} {% endif %}
   </ul>
-</div>
+</div> {%- endcomment -%}
 
 
 {%- comment -%} <div id="subscribe" class="modalDialog">
@@ -144,12 +144,11 @@ layout: default
   </div>
 </div> {%- endcomment -%}
 
-<script src="{{ site.baseurl }}/js/main.js"></script>
+{%- comment -%} <script src="{{ site.baseurl }}/js/main.js"></script> {%- endcomment -%}
 
 <script>
   var headings = document.querySelectorAll("h2[id]");
 
-  console.log(headings);
   for (var i = 0; i < headings.length; i++) {
     var anchorLink = document.createElement("a");
     anchorLink.innerText = "#";
@@ -184,5 +183,11 @@ layout: default
     }
   });
 </script>
+
+{% if page.set %}
+  {% assign set_file_name = "_sets/" | append: page.set | append: ".md" %}
+  {% assign set = site.sets | where: "path", set_file_name | first %}
+  {% include override-color.html accent_color=set.accent_color %}
+{% endif %}
 
 {% include copy-code.html %}

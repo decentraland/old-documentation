@@ -1,4 +1,12 @@
-<aside class="sidebar sticky">
+<aside class="sidebar">
+  <div class="sidebar-overlay"></div>
+  <div class="dropdown">
+    <div class="icon">{% include sets/home.svg %}</div>
+    <span class="override-color-set">Home</span>
+    <div class="arrow">{% include arrow.svg %}</div>
+  </div>
+  <div class="close">&times;</div>
+
   <ul>
     {% if page.url == "/" %}
       <li class="active">
@@ -62,3 +70,25 @@
   {% endfor %}
   </ul>
 </aside>
+
+<script>
+const $sidebar = $('.sidebar')
+
+$sidebar.find('.dropdown').click(function(event) {
+  event.preventDefault()
+  $sidebar.addClass('open')
+})
+
+$sidebar.find('.close, .sidebar-overlay').click(function(event) {
+  event.preventDefault()
+  $sidebar.removeClass('open')
+})
+
+$sidebar.find('.toggle-item').click(function(event) {
+  event.preventDefault()
+  const data = $(event.target).attr('data-toggle')
+  $('.toggle[data-id!="' + data + '"]').hide('fast')
+  $('.toggle[data-id="' + data + '"]').toggle('fast')
+})
+
+</script>

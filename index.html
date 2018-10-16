@@ -1,8 +1,8 @@
 ---
 ---
 <div class="wrapper home">
+  {% include sidebar.html %}
 	<section>
-    {% include sidebar.html %}
     <div class="home-content">
       {% capture content %}{% include home.md %}{% endcapture %}
       {{ content | markdownify }}
