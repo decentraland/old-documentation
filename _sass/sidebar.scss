@@ -34,8 +34,10 @@
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     height: 64px;
+    font-size: 17px;
+    font-weight: 500;
 
-    @media (min-width: 960px) {
+    @media #{$tablet-landscape} {
       display: none;
     }
 
@@ -60,12 +62,6 @@
 
   .close {
     position: absolute;
-    top: 40px;
-    right: 40px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: #f2f3f5;
     font-size: 30px;
     line-height: 1;
     text-align: center;
@@ -76,6 +72,20 @@
     pointer-events: none;
     transition: opacity 300ms ease;
     user-select: none;
+    top: 16px;
+    right: 16px;
+    width: 16px;
+    height: 16px;
+    background: url(../images/x.svg) no-repeat center center;
+
+    @media #{$mid-point} {
+      top: 40px;
+      right: 40px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #f2f3f5;
+    }
   }
 
   ul {
@@ -85,7 +95,7 @@
   }
 
   > ul {
-    padding: 36px 48px;
+    padding: 8px 16px;
     position: absolute;
     width: 100%;
     transition: transform 300ms ease, opacity 300ms ease;
@@ -98,7 +108,11 @@
     transform: translate(0, -5%);
     box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.16);
 
-    @media (min-width: 960px) {
+    @media #{$mid-point} {
+      padding: 36px 48px;
+    }
+
+    @media #{$tablet-landscape} {
       display: block;
       width: 240px;
       padding: 56px 0 0 0;
@@ -119,7 +133,7 @@
       pointer-events: auto;
       opacity: 1;
 
-      @media (min-width: 960px) {
+      @media #{$tablet-landscape} {
         display: none;
       }
     }
@@ -134,7 +148,7 @@
       opacity: 1;
       pointer-events: auto;
 
-      @media (min-width: 960px) {
+      @media #{$tablet-landscape} {
         display: none;
       }
     }

@@ -1,11 +1,26 @@
 <aside class="sidebar">
   <div class="sidebar-overlay"></div>
   <div class="dropdown">
-    <div class="icon">{% include sets/home.svg %}</div>
-    <span class="override-color-set">Home</span>
+
+    {% if page.url == '/' %}
+      {% assign selected_set_image = 'sets/general.svg' %}
+      {% assign selected_set_title = 'Home' %}
+    {% else %}
+      {% assign sets = site.sets | sort: 'order' %}
+      {% for set in sets %}
+        {% assign set_id = set.id  | replace: "/sets/", "" %}
+        {% if page.set == set_id %}
+          {% capture selected_set_image %}sets/{{ set_id }}.svg{% endcapture %}
+          {% assign selected_set_title = set.title %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    <div class="icon">{% include {{ selected_set_image }} %}</div>
+    <span class="override-color-set">{{ selected_set_title }}</span>
     <div class="arrow">{% include arrow.svg %}</div>
   </div>
-  <div class="close">&times;</div>
+  <div class="close"></div>
 
   <ul>
     {% if page.url == "/" %}
@@ -36,14 +51,12 @@
       {% if page_set_id==set.id %}
         <li class="active">
           <div>
-            {%- comment -%} <img src="{{ site.baseurl }}/images/sets/{{ first.categories[0] }}.svg" /> {%- endcomment -%}
             {% include {{ set_image }} %}
             <span class="sidebar-h3">{{ set.title }}</span>
           </div>
       {% else %}
         <li>
           <div>
-            {%- comment -%} <img src="{{ site.baseurl }}/images/sets/{{ first.categories[0] }}.svg" /> {%- endcomment -%}
             {% include {{ set_image }} %}
             <a href="{{ first.url }}" class="sidebar-h3 toggle-item" data-toggle="{{set.id}}">{{ set.title }}</a>
           </div>
@@ -90,5 +103,4 @@ $sidebar.find('.toggle-item').click(function(event) {
   $('.toggle[data-id!="' + data + '"]').hide('fast')
   $('.toggle[data-id="' + data + '"]').toggle('fast')
 })
-
 </script>
