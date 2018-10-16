@@ -55,7 +55,7 @@ layout: default
   </section>
 </div>
 
-<section class="bottom-navigation">
+{%- comment -%} <section class="bottom-navigation">
   <div class="wrapper">
     <div class="next">
       <h2>Next Step</h2>
@@ -76,7 +76,7 @@ layout: default
     </div>
     {% endif %}
   </div>
-</section>
+</section> {%- endcomment -%}
 
 <div id="index-modal" class="modalDialog index-modal">
   <a title="Close" class="close">&times;</a>
@@ -109,7 +109,7 @@ layout: default
 </div>
 
 
-<div id="subscribe" class="modalDialog">
+{%- comment -%} <div id="subscribe" class="modalDialog">
   <div>
     <a title="Close" class="close">&times;</a>
     <form action="{{ site.newsletter_action }}" method="post">
@@ -119,9 +119,9 @@ layout: default
       <input type="submit" value="Sign up">
     </form>
   </div>
-</div>
+</div> {%- endcomment -%}
 
-<div id="share" class="modalDialog sharing">
+{%- comment -%} <div id="share" class="modalDialog sharing">
   <div>
     <a title="Close" class="close">&times;</a>
     <h2>Share</h2>
@@ -142,7 +142,7 @@ layout: default
       </li>
     </ul>
   </div>
-</div>
+</div> {%- endcomment -%}
 
 <script src="{{ site.baseurl }}/js/main.js"></script>
 
