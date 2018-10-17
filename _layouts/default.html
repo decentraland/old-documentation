@@ -61,17 +61,6 @@
   {% include header.html %}
   <main>{{ content }}</main>
   {% include footer.html %}
-
-  <script>
-    $(function () {
-      $('a[href*=\\#]').not('.no-smooth').on('click', function() {
-        const $el = $(this.hash)
-        if ($el.length > 0) {
-          $('html,body').animate({ scrollTop: $el.offset().top - 30 }, 500)
-        }
-      })
-    })
-  </script>
 </body>
 
 </html>

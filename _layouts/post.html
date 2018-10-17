@@ -29,19 +29,6 @@ layout: default
   </section>
 </div>
 
-<script>
-  var headings = document.querySelectorAll("h2[id]");
-
-  for (var i = 0; i < headings.length; i++) {
-    var anchorLink = document.createElement("a");
-    anchorLink.innerText = "#";
-    anchorLink.href = "#" + headings[i].id;
-    anchorLink.classList.add("header-link");
-
-    headings[i].appendChild(anchorLink);
-  }
-</script>
-
 {% if page.set %}
   {% assign set_file_name = "_sets/" | append: page.set | append: ".md" %}
   {% assign set = site.sets | where: "path", set_file_name | first %}

@@ -2,10 +2,6 @@
 layout: null
 ---
 $(function() {
-  function closeSidebar() {
-    $(".sidebar").removeClass("open")
-  }
-
   function openDropdown() {
     closeSearchResults()
     closeSidebar()
@@ -258,6 +254,10 @@ $(function() {
 
   const $sidebar = $(".sidebar")
 
+  function closeSidebar() {
+    $sidebar.removeClass("open")
+  }
+
   $sidebar.find(".dropdown").click(function(event) {
     event.preventDefault()
     $sidebar.addClass("open")
@@ -265,7 +265,7 @@ $(function() {
 
   $sidebar.find(".close, .sidebar-overlay").click(function(event) {
     event.preventDefault()
-    $sidebar.removeClass("open")
+    closeSidebar()
   })
 
   $sidebar.find(".toggle-item").click(function(event) {
@@ -273,5 +273,23 @@ $(function() {
     const data = $(event.target).attr("data-toggle")
     $('.toggle[data-id!="' + data + '"]').hide("fast")
     $('.toggle[data-id="' + data + '"]').toggle("fast")
+  })
+
+  const headings = document.querySelectorAll("h2[id]")
+
+  for (var i = 0; i < headings.length; i++) {
+    const anchorLink = document.createElement("a")
+    anchorLink.innerText = "#"
+    anchorLink.href = "#" + headings[i].id
+    anchorLink.classList.add("header-link")
+
+    headings[i].appendChild(anchorLink)
+  }
+
+  $('a[href*=\\#]').not('.no-smooth').on('click', function() {
+    const $el = $(this.hash)
+    if ($el.length > 0) {
+      $('html,body').animate({ scrollTop: $el.offset().top - 30 }, 500)
+    }
   })
 })
