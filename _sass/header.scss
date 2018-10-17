@@ -1,5 +1,4 @@
 header {
-  // border-bottom: solid 1px rgba(92, 92, 110, 0.16);
   position: relative;
   z-index: 11;
 
@@ -8,6 +7,8 @@ header {
     flex-direction: row;
     align-items: center;
     padding: 14px 0;
+    z-index: 22;
+    position: relative;
   }
 
   .logo {
@@ -42,13 +43,34 @@ header {
 
   nav {
     position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -15px;
+      right: -15px;
+      bottom: 0;
+      background: $white-color;
+      z-index: 22;
+    }
   }
 
   .wrapper {
-    background: white;
     z-index: 1;
     padding-bottom: 12px;
     position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $white-color;
+      z-index: 20;
+    }
   }
 
   .dropdown-overlay,
@@ -81,7 +103,7 @@ header {
     pointer-events: none;
     opacity: 0;
     position: absolute;
-    background: white;
+    background: $white-color;
     width: 100vw;
     z-index: 21;
     top: 64px;
@@ -132,15 +154,13 @@ header {
 
 .header_search {
   height: 38px;
-  background-color: white;
-  z-index: 20;
 
   form {
     display: flex;
     position: relative;
     justify-content: space-between;
     align-items: center;
-    z-index: 11;
+    z-index: 20;
   }
 
   svg.search-icon {
@@ -194,7 +214,7 @@ header {
   }
 
   .search-results {
-    background: white;
+    background: $white-color;
     z-index: 10;
     position: absolute;
     padding: 0;
@@ -278,6 +298,10 @@ header {
 
 @media #{$tablet} {
   .header_search {
+    form {
+      z-index: 23;
+    }
+
     input[type="search"] {
       width: 280px;
     }
@@ -292,14 +316,20 @@ header {
       display: flex;
       align-items: center;
       padding-bottom: 0;
+
+      &::before {
+        z-index: 22;
+      }
     }
 
     nav {
       display: flex;
       align-items: center;
       flex-grow: 1;
-      background: white;
-      z-index: 21;
+
+      &::before {
+        display: none;
+      }
     }
   }
 }
@@ -327,6 +357,7 @@ header {
       top: 12px;
       padding-top: 40px;
       overflow: hidden;
+      z-index: 22;
     }
   }
 
@@ -337,6 +368,7 @@ header {
 
     .search-overlay.desktop {
       display: block;
+      z-index: 22;
     }
 
     .dropdown-content {
@@ -353,7 +385,7 @@ header {
   }
 }
 
-@media (min-width: 960px) {
+@media #{$tablet-landscape} {
   header {
     .logo {
       margin-right: 12px;
@@ -379,6 +411,7 @@ header {
       transform: translate(0, 0);
       transition: unset;
       box-shadow: none;
+      z-index: 22;
     }
 
     .menu {
