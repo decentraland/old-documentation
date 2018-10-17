@@ -145,7 +145,7 @@ $(function() {
     for (result of results) {
       let category = result.categories.split(',')[0]
       if (category === 'Decentraland') {
-        category = 'home'
+        category = 'general'
       }
 
       $list.append(

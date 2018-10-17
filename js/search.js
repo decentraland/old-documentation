@@ -71,7 +71,7 @@ layout: null
 
 				let category = item.categories.split(',')[0]
 				if (category === 'Decentraland') {
-					category = 'home'
+					category = 'general'
 				}
 
 				resultsHTML += `<li>
