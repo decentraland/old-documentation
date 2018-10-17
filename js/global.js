@@ -301,30 +301,25 @@ $(function() {
 
   // LANGUAGE ==>
 
-  function setLanguage(value) {
-    Cookies.set('language', value)
-
-    $('select#lang').val(value)
-    $('.lang-flag')
-      .removeClass('english chinese')
-      .addClass(value)
-
+  function dismissLanguageBar() {
+    Cookies.set('language', true)
     $('.select-language').removeClass('visible')
   }
 
   $('select#lang').on('change', function() {
     const value = $(this).val()
-    setLanguage(value)
+    dismissLanguageBar()
+    $('select#lang').val(value)
+    $('.lang-flag')
+      .removeClass('english chinese')
+      .addClass(value)
   })
 
   $('.select-language .dismiss').click(function() {
-    setLanguage($('select#lang').val())
+    dismissLanguageBar()
   })
 
-  const language = Cookies.get('language')
-  if (language) {
-    setLanguage(language)
-  } else {
+  if (!Cookies.get('language')) {
     $('.select-language').addClass('visible')
   }
 })
