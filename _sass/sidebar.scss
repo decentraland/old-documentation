@@ -56,7 +56,6 @@
 
     .arrow {
       margin-left: 4px;
-      transition: transform 150ms linear;
     }
   }
 
@@ -138,12 +137,6 @@
       }
     }
 
-    .dropdown {
-      .arrow {
-        transform: rotate(180deg);
-      }
-    }
-
     .close {
       opacity: 1;
       pointer-events: auto;
@@ -162,6 +155,7 @@
 
   li {
     margin: 0;
+    user-select: none;
 
     > div {
       display: flex;

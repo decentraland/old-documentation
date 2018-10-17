@@ -2,6 +2,8 @@
 layout: null
 ---
 $(function() {
+  // HEADER ==>
+
   function openDropdown() {
     closeSearchResults()
     closeSidebar()
@@ -252,6 +254,8 @@ $(function() {
     })
   })
 
+  // SIDEBAR ==>
+
   const $sidebar = $(".sidebar")
 
   function closeSidebar() {
@@ -275,6 +279,8 @@ $(function() {
     $('.toggle[data-id="' + data + '"]').toggle("fast")
   })
 
+  // HEADINGS ==>
+
   const headings = document.querySelectorAll("h2[id]")
 
   for (var i = 0; i < headings.length; i++) {
@@ -292,4 +298,33 @@ $(function() {
       $('html,body').animate({ scrollTop: $el.offset().top - 30 }, 500)
     }
   })
+
+  // LANGUAGE ==>
+
+  function setLanguage(value) {
+    Cookies.set('language', value)
+
+    $('select#lang').val(value)
+    $('.lang-flag')
+      .removeClass('english chinese')
+      .addClass(value)
+
+    $('.select-language').removeClass('visible')
+  }
+
+  $('select#lang').on('change', function() {
+    const value = $(this).val()
+    setLanguage(value)
+  })
+
+  $('.select-language .dismiss').click(function() {
+    setLanguage($('select#lang').val())
+  })
+
+  const language = Cookies.get('language')
+  if (language) {
+    setLanguage(language)
+  } else {
+    $('.select-language').addClass('visible')
+  }
 })
