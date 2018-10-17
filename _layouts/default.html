@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/screen.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/screen.css?{{ site.time | date: '%s%N' }}" type="text/css" />
   <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" />
   <link rel="icon" type="image/png" href="{{ site.baseurl }}/images/favicon.png">
 
@@ -52,10 +52,9 @@
   {% seo %}
   {% feed_meta %}
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="{{ site.baseurl }}/js/lunr.min.js"></script>
-  <script src="{{ site.baseurl }}/js/header.js"></script>
-  <script src="{{ site.baseurl }}/js/sidebar.js"></script>
+  <script src="{{ site.baseurl }}/js/global.js?{{ site.time | date: '%s%N' }}"></script>
 </head>
 
 <body class="{{ page.body_class }}">
