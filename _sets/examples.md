@@ -1,8 +1,8 @@
 ---
 title: Scene examples
 description: View examples for Decentraland scenes.
-color: "#43a047"
-accent_color: "#43a047"
-order: 6
+color: "#f44c1e"
+accent_color: "#f44c1e"
+order: 8
 img: examples.svg
 ---
