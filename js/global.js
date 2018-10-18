@@ -265,11 +265,13 @@ $(function() {
   $sidebar.find(".dropdown").click(function(event) {
     event.preventDefault()
     $sidebar.addClass("open")
+    $('body').addClass("modal-open")
   })
 
-  $sidebar.find(".close, .sidebar-overlay").click(function(event) {
+  $sidebar.find(".close").click(function(event) {
     event.preventDefault()
     closeSidebar()
+    $('body').removeClass("modal-open")
   })
 
   $sidebar.find(".toggle-item").click(function(event) {

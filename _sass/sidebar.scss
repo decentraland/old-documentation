@@ -1,18 +1,4 @@
 .sidebar {
-  .sidebar-overlay {
-    background: rgba(0, 0, 0, 0.16);
-    position: fixed;
-    pointer-events: none;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    transition: opacity 300ms ease;
-    -webkit-tap-highlight-color: transparent;
-  }
-
   .sidebar-h3 {
     font-size: 15px;
     font-weight: 500;
@@ -96,16 +82,17 @@
   > ul {
     padding: 8px 16px;
     position: absolute;
-    width: 100%;
     transition: transform 300ms ease, opacity 300ms ease;
     background: white;
-    top: -1px;
+    top: 0;
     left: 0;
-    z-index: 10;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
     opacity: 0;
     pointer-events: none;
     transform: translate(0, -5%);
-    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.16);
+    overflow-y: auto;
 
     @media #{$mid-point} {
       padding: 8px 30px;
@@ -128,15 +115,6 @@
   }
 
   &.open {
-    .sidebar-overlay {
-      pointer-events: auto;
-      opacity: 1;
-
-      @media #{$tablet-landscape} {
-        display: none;
-      }
-    }
-
     .close {
       opacity: 1;
       pointer-events: auto;
