@@ -93,6 +93,7 @@
     pointer-events: none;
     transform: translate(0, -5%);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     @media #{$mid-point} {
       padding: 8px 30px;
