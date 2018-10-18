@@ -18,6 +18,10 @@ body {
 
   &.modal-open {
     overflow-y: hidden;
+
+    @media #{$tablet-landscape} {
+      overflow-y: auto;
+    }
   }
 }
 
