@@ -17,7 +17,7 @@ body {
   flex-direction: column;
 
   &.modal-open {
-    overflow: hidden;
+    overflow-y: hidden;
   }
 }
 
