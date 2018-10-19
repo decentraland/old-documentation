@@ -6,22 +6,23 @@
 
 <div class="shortcuts">
   <a href="{{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}">
-    <div><img src="/images/home/1.png"/></div>
-    <span>Scene content</span>
+    <div class="image"><img src="/images/home/1.png"/></div>
+    <div class="title">Scene content</div>
+    <div class="description">Brief description for the content. Two lines max.</div>
   </a>
   <a href="{{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}">
-    <div><img src="/images/home/2.png"/></div>
-    <span>Entity reference</span>
+    <div class="image"><img src="/images/home/2.png"/></div>
+    <div class="title">Entity reference</div>
+    <div class="description">Brief description for the content. Two lines max.</div>
   </a>
   <a href="{{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}">
-    <div><img src="/images/home/3.png"/></div>
-    <span>Sample scenes</span>
+    <div class="image"><img src="/images/home/3.png"/></div>
+    <div class="title">Sample scenes</div>
+    <div class="description">Brief description for the content. Two lines max.</div>
   </a>
 </div>
 
-## Quickstart guide
-
-#### Install the CLI
+## Install the CLI
 
 To get started, install the Command Line Interface (CLI).
 
@@ -41,7 +42,7 @@ npm install -g decentraland
 
 Read [Installation guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) for more details about installing the CLI.
 
-#### Create your first scene
+## Create your first scene
 
 Create a new scene by running the following code in an empty folder:
 
@@ -57,7 +58,7 @@ dcl start
 
 Read more about the scene preview in [preview a scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %})
 
-#### Edit the scene
+## Edit the scene
 
 Open the `scene.tsx` file in your scene folder with the source code editor of your choice.
 

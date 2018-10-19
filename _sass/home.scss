@@ -232,22 +232,29 @@
       }
     }
 
-    div {
+    .image {
       margin: 0 auto;
       display: flex;
       align-items: center;
+
+      img {
+        object-fit: contain;
+        height: 128px;
+        width: 128px;
+      }
     }
 
-    img {
-      object-fit: contain;
-      height: 128px;
-      width: 128px;
-    }
-
-    span {
+    .title {
       font-size: 20px;
       line-height: 1.4;
       font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .description {
+      opacity: 0.8;
+      font-size: 15px;
+      line-height: 1.4;
     }
   }
 }
