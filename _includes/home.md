@@ -87,13 +87,20 @@ Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-c
 
 ## Scene examples
 
----
-
-[screenshot][screenshot] [screenshot]
-
-Door scene Hummingbird scene BlockDog
-
----
+<div class="examples">
+  <a href="https://github.com/decentraland/sample-scene-script">
+    <img src="/images/media/door.png" alt="" />
+    <span>Door scene</span>
+  </a>
+  <a href="https://github.com/decentraland/sample-scene-array-of-entities">
+    <img src="/images/media/hummingbirds.png" alt="" />
+    <span>Hummingbirds</span>
+  </a>
+  <a href="https://github.com/decentraland/sample-scene-Block-Dog">
+    <img src="/images/media/blockdog.png" alt="" />
+    <span>BlockDog</span>
+  </a>
+</div>
 
 See [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) for more scene examples.
 Also see [tutorials]({{ site.baseurl }}{% post_url /tutorials/2018-01-03-tutorials %}) for detailed instructions for building scenes like these.
