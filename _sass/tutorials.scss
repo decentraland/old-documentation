@@ -122,12 +122,7 @@
   }
 
   .tutorial-content {
-    width: 100%;
-
-    @media #{$desktop} {
-      margin-left: auto;
-      max-width: 760px;
-    }
+    overflow: hidden;
   }
 }
 
