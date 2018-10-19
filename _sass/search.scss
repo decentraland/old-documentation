@@ -29,6 +29,7 @@
       position: relative;
       display: flex;
       align-items: flex-start;
+      transition: transform 300ms ease;
 
       &::before,
       &::after {
@@ -38,7 +39,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        transition: opacity 300ms linear;
+        transition: opacity 300ms ease;
         border-radius: 8px;
       }
 
@@ -53,6 +54,8 @@
       }
 
       &:hover {
+        transform: translate(0, -8px);
+
         &::before {
           opacity: 0;
         }

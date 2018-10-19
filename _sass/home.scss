@@ -124,12 +124,12 @@
         }
 
         &::before {
-          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
           opacity: 1;
         }
 
         &::after {
-          box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.24);
+          box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.12);
           opacity: 0;
         }
 
@@ -154,7 +154,6 @@
       span {
         font-size: 20px;
         font-weight: 500;
-        text-align: center;
         padding: 16px 20px;
       }
     }
