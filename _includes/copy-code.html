@@ -10,7 +10,7 @@
           <span class="status-copied">{% include copy-code-2.svg %} Copied</span>
         </button>
       </div>`
-      $(this).after(clipButton)
+      $(this).parent().after(clipButton)
     })
 
     const clipboard = new ClipboardJS('.codeblock-btn')

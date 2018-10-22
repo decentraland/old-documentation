@@ -17,17 +17,11 @@
     border: none;
     background: transparent;
     position: relative;
-    width: 110px;
     height: 100%;
     text-transform: uppercase;
     -webkit-tap-highlight-color: transparent;
 
     span {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
       transition: opacity 200ms linear;
       white-space: nowrap;
       display: flex;
@@ -43,6 +37,11 @@
       }
 
       &.status-copied {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         opacity: 0;
       }
     }

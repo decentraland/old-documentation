@@ -164,13 +164,13 @@ dl {
   .highlight {
     margin: $base-spacing 0;
     padding: 0;
+    border-radius: 8px;
+    border: 1px solid rgba(92, 92, 110, 0.16);
+    overflow: hidden;
 
     .light-theme {
       margin: 0;
       padding: 0;
-      border-radius: 8px;
-      border: 1px solid rgba(92, 92, 110, 0.16);
-      overflow: hidden;
     }
 
     .c {
