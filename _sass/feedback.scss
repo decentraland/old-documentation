@@ -9,14 +9,14 @@
     text-align: center;
     position: relative;
     background-color: $white-color;
-    z-index: 30;
+    z-index: 21;
   }
 
   .feedback-overlay {
     background: rgba(0, 0, 0, 0.16);
     position: fixed;
     pointer-events: none;
-    z-index: 30;
+    z-index: 20;
     top: 0;
     left: 0;
     right: 0;
@@ -44,13 +44,6 @@
       text-align: left;
     }
   }
-
-  // .feedback-yes,
-  // .feedback-no,
-  // .form {
-  //   z-index: ;
-  //   position: relative;
-  // }
 
   &.sending {
     .feedback-overlay {

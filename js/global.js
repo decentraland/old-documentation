@@ -2,6 +2,7 @@
 layout: null
 ---
 $(function() {
+
   // HEADER ==>
 
   function openDropdown() {
@@ -355,16 +356,12 @@ $(function() {
     $mirror.text('')
   }
 
-  function submitFeedback() {
-    // TODO: send to Segment
-    return new Promise(() => {
-      console.log($input.val())
-    })
-  }
-
   function sendFeedback() {
+    // TODO: send to Segment
+    console.log($input.val())
+
     $feedback.removeClass('sending').addClass('sent')
-    submitFeedback().then(() => resetFeedback())
+    resetFeedback()
   }
 
   function skipFeedback() {
