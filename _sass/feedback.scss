@@ -1,5 +1,6 @@
 .feedback {
   padding: 48px 0;
+  position: relative;
 
   .box {
     border: solid 1px rgba(#5c5c6e, 0.2);
@@ -9,14 +10,13 @@
     text-align: center;
     position: relative;
     background-color: $white-color;
-    z-index: 21;
   }
 
   .feedback-overlay {
     background: rgba(0, 0, 0, 0.16);
     position: fixed;
     pointer-events: none;
-    z-index: 20;
+    z-index: 40;
     top: 0;
     left: 0;
     right: 0;
@@ -24,6 +24,18 @@
     opacity: 0;
     transition: opacity 300ms ease;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  &.yes {
+    .feedback-no {
+      display: none;
+    }
+  }
+
+  &.no {
+    .feedback-yes {
+      display: none;
+    }
   }
 
   @media #{$mid-point} {
@@ -38,11 +50,22 @@
 
   .step-2,
   .step-3 {
-    display: none;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 300ms ease, opacity 300ms ease;
+  }
 
-    @media #{$mid-point} {
-      text-align: left;
-    }
+  .step-2 {
+    border: none;
+    z-index: 40;
+    transform: translate(0, -5%);
+    top: 10px;
+  }
+
+  .step-3 {
+    top: 28px;
   }
 
   &.sending {
@@ -51,40 +74,23 @@
       opacity: 1;
     }
 
-    .step-1,
-    .step-3 {
-      display: none;
-    }
-
     .step-2 {
-      display: block;
-    }
-
-    .box {
-      border: none;
-    }
-
-    &.yes {
-      .feedback-no {
-        display: none;
-      }
-    }
-
-    &.no {
-      .feedback-yes {
-        display: none;
-      }
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(0, 0);
     }
   }
 
   &.sent {
     .step-1,
     .step-2 {
-      display: none;
+      opacity: 0;
+      pointer-events: none;
     }
 
     .step-3 {
-      display: block;
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 
@@ -207,6 +213,10 @@
       font-size: 15px;
       font-weight: 500;
       padding: 0;
+
+      &[disabled] {
+        color: ##7d8499;
+      }
     }
   }
 }

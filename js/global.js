@@ -337,9 +337,11 @@ $(function() {
   const $textarea = $feedback.find('.textarea')
   const $input = $textarea.find('textarea')
   const $mirror = $textarea.find('.mirror')
+  const $send = $feedback.find('.send')
 
   function sendingFeedback(value) {
-    $feedback.addClass('sending ' + value)
+    resetFeedback()
+    $feedback.removeClass('yes no').addClass('sending ' + value)
     $textarea.click()
   }
 
@@ -361,15 +363,14 @@ $(function() {
     console.log($input.val())
 
     $feedback.removeClass('sending').addClass('sent')
-    resetFeedback()
   }
 
   function skipFeedback() {
-    $feedback.removeClass('sending yes no')
-    resetFeedback()
+    // $feedback.removeClass('sending yes no')
+    $feedback.removeClass('sending')
   }
 
-  $feedback.find('.send').click(function() {
+  $send.click(function() {
     sendFeedback()
   })
 
@@ -378,10 +379,13 @@ $(function() {
   })
 
   $textarea.on('click', function() {
-    $input.focus();
+    $input.focus()
   })
 
   $input.on('keydown keyup', function(event) {
+    const value = event.target.value
+    $send.attr('disabled', value.trim().length === 0)
+
     switch (event.key) {
       case 'Enter':
         sendFeedback()
