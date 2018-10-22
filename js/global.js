@@ -68,7 +68,12 @@ $(function() {
     $('head').prepend('<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1" />')
   }
 
-  const $inputs = $('.header_search input[type="search"], select, .newsletter input[type="email"]')
+  const touchableInputs = [
+    '.header_search input[type="search"]',
+    '.newsletter input[type="email"]',
+    'select',
+  ]
+  const $inputs = $(touchableInputs.join(','))
 
   $inputs.on('touchstart', function() {
     zoomDisable()
@@ -352,7 +357,9 @@ $(function() {
 
   function submitFeedback() {
     // TODO: send to Segment
-    return new Promise(() => console.log($input.val()))
+    return new Promise(() => {
+      console.log($input.val())
+    })
   }
 
   function sendFeedback() {
@@ -369,7 +376,7 @@ $(function() {
     sendFeedback()
   })
 
-  $feedback.find('.skip').click(function() {
+  $feedback.find('.skip, .feedback-overlay').click(function() {
     skipFeedback()
   })
 

@@ -175,13 +175,14 @@
       font-size: 15px;
       line-height: 1.6;
       color: #0d0d17;
+      font-family: $base-font-family;
+      word-spacing: normal;
+      letter-spacing: normal;
     }
 
     .mirror {
       pointer-events: none;
-      // visibility: hidden;
-
-      color: lime;
+      visibility: hidden;
     }
 
     textarea {
