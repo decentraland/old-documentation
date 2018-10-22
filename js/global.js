@@ -324,4 +324,70 @@ $(function() {
   if (!Cookies.get('language')) {
     $('.select-language').addClass('visible')
   }
+
+  // FEEDBACK ==>
+
+  const $feedback = $('.feedback')
+  const $textarea = $feedback.find('.textarea')
+  const $input = $textarea.find('textarea')
+  const $mirror = $textarea.find('.mirror')
+
+  function sendingFeedback(value) {
+    $feedback.addClass('sending ' + value)
+    $textarea.click()
+  }
+
+  $feedback.find('.yes').click(function() {
+    sendingFeedback('yes')
+  })
+
+  $feedback.find('.no').click(function() {
+    sendingFeedback('no')
+  })
+
+  function resetFeedback() {
+    $input.val('')
+    $mirror.text('')
+  }
+
+  function submitFeedback() {
+    // TODO: send to Segment
+    return new Promise(() => console.log($input.val()))
+  }
+
+  function sendFeedback() {
+    $feedback.removeClass('sending').addClass('sent')
+    submitFeedback().then(() => resetFeedback())
+  }
+
+  function skipFeedback() {
+    $feedback.removeClass('sending yes no')
+    resetFeedback()
+  }
+
+  $feedback.find('.send').click(function() {
+    sendFeedback()
+  })
+
+  $feedback.find('.skip').click(function() {
+    skipFeedback()
+  })
+
+  $textarea.on('click', function() {
+    $input.focus();
+  })
+
+  $input.on('keydown keyup', function(event) {
+    switch (event.key) {
+      case 'Enter':
+        sendFeedback()
+        break;
+      case 'Escape':
+        skipFeedback()
+        break;
+      default:
+        $mirror.text(event.target.value)
+    }
+  })
+
 })

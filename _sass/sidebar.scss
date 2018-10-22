@@ -1,4 +1,10 @@
 .sidebar {
+  @media #{$tablet-landscape} {
+    display: block;
+    flex-shrink: 0;
+    padding: 36px 64px 0 0;
+  }
+
   .sidebar-h3 {
     font-size: 15px;
     font-weight: 500;
@@ -79,7 +85,7 @@
     list-style: none;
   }
 
-  > ul {
+  ul.parent {
     padding: 8px 16px;
     position: fixed;
     transition: transform 300ms ease, opacity 300ms ease;
@@ -94,6 +100,7 @@
     transform: translate(0, -5%);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    width: 100%;
 
     @media #{$mid-point} {
       padding: 8px 30px;
@@ -102,13 +109,12 @@
     @media #{$tablet-landscape} {
       display: block;
       width: 240px;
-      padding: 36px 0 0;
+      padding: 0;
       opacity: 1;
       transform: translate(0, 0);
       pointer-events: auto;
       position: static;
       flex-shrink: 0;
-      margin-right: 64px;
       box-shadow: none;
       transform: none;
       background: transparent;
@@ -169,6 +175,7 @@
     text-transform: capitalize;
     color: #5c5c6e;
     transition: color 200ms ease;
+    outline: none;
 
     &.active {
       color: #000;
