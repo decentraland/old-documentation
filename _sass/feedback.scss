@@ -108,10 +108,25 @@
     }
 
     a {
-      text-decoration: underline;
+      position: relative;
 
       &:hover {
         text-decoration: none;
+
+        &::after {
+          opacity: 1;
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        opacity: 0;
+        transition: opacity $default-transition;
       }
     }
   }
@@ -226,6 +241,22 @@
       font-size: 15px;
       font-weight: 500;
       padding: 0;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        opacity: 0;
+        transition: opacity $default-transition;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
 
       &[disabled] {
         color: #5c5c6e;
