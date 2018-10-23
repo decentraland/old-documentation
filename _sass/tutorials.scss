@@ -108,10 +108,8 @@
     }
 
     a {
-      text-decoration: underline;
-
       &:hover {
-        text-decoration: none;
+        text-decoration: underline;
       }
     }
 
@@ -120,10 +118,6 @@
       text-decoration: none;
     }
   }
-
-  // .tutorial-content {
-  //   overflow: hidden;
-  // }
 }
 
 .listing {
