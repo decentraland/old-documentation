@@ -389,6 +389,7 @@ $(function() {
   })
 
   $textarea.on('click', function() {
+    zoomDisable()
     $input.focus()
   })
 
