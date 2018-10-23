@@ -22,7 +22,7 @@
     -webkit-tap-highlight-color: transparent;
 
     span {
-      transition: opacity $default-transition;
+      transition: opacity $default-transition, transform $default-transition;
       white-space: nowrap;
       display: flex;
       align-items: center;
@@ -34,6 +34,7 @@
 
       &.status-copy {
         opacity: 1;
+        transform: translate(0, 0);
       }
 
       &.status-copied {
@@ -43,16 +44,19 @@
         right: 0;
         bottom: 0;
         opacity: 0;
+        transform: translate(10%, 0);
       }
     }
 
     &.copied {
       .status-copy {
         opacity: 0;
+        transform: translate(-10%, 0);
       }
 
       .status-copied {
         opacity: 1;
+        transform: translate(0, 0);
       }
     }
   }

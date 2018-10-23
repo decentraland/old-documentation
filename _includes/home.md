@@ -6,19 +6,25 @@
 
 <div class="shortcuts">
   <a href="{{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}">
-    <div class="image"><img src="/images/home/1.png"/></div>
-    <div class="title">Scene content</div>
-    <div class="description">An overview of the entities and components that make up scenes.</div>
+    <div>
+      <div class="image"><img src="/images/home/1.png"/></div>
+      <div class="title">Scene content</div>
+      <div class="description">An overview of the entities and components that make up scenes.</div>
+    </div>
   </a>
   <a href="{{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}">
-    <div class="image"><img src="/images/home/2.png"/></div>
-    <div class="title">Entity reference</div>
-    <div class="description">A complete reference of Decentraland’s most basic building blocks.</div>
+    <div>
+      <div class="image"><img src="/images/home/2.png"/></div>
+      <div class="title">Entity reference</div>
+      <div class="description">A complete reference of Decentraland’s most basic building blocks.</div>
+    </div>
   </a>
   <a href="{{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}">
-    <div class="image"><img src="/images/home/3.png"/></div>
-    <div class="title">Sample scenes</div>
-    <div class="description">Several scene examples to get you started, and inspire your creations.</div>
+    <div>
+      <div class="image"><img src="/images/home/3.png"/></div>
+      <div class="title">Sample scenes</div>
+      <div class="description">Several scene examples to get you started, and inspire your creations.</div>
+    </div>
   </a>
 </div>
 
@@ -96,16 +102,22 @@ Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-c
 
 <div class="examples">
   <a href="https://github.com/decentraland/sample-scene-script">
-    <img src="/images/home/door.png"/>
-    <span>Door scene</span>
+    <div>
+      <img src="/images/home/door.png"/>
+      <span>Door scene</span>
+    </div>
   </a>
   <a href="https://github.com/decentraland/sample-scene-array-of-entities">
-    <img src="/images/home/hummingbirds.png"/>
-    <span>Hummingbirds</span>
+    <div>
+      <img src="/images/home/hummingbirds.png"/>
+      <span>Hummingbirds</span>
+    </div>
   </a>
   <a href="https://github.com/decentraland/sample-scene-Block-Dog">
-    <img src="/images/home/blockdog.png"/>
-    <span>BlockDog</span>
+    <div>
+      <img src="/images/home/blockdog.png"/>
+      <span>BlockDog</span>
+    </div>
   </a>
 </div>
 
