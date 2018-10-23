@@ -13,13 +13,17 @@
     cursor: pointer;
     font-family: $base-font-family;
     padding: 0;
-    outline: none;
     border: none;
     background: transparent;
     position: relative;
     height: 100%;
     text-transform: uppercase;
+    outline: none;
     -webkit-tap-highlight-color: transparent;
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
 
     span {
       transition: opacity $default-transition, transform $default-transition;
