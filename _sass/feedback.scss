@@ -46,6 +46,10 @@
       justify-content: space-between;
       text-align: left;
     }
+
+    .step-2 {
+      text-align: left;
+    }
   }
 
   .step-2,
@@ -198,6 +202,10 @@
       left: 0;
       right: 0;
       background-color: transparent;
+
+      &::placeholder {
+        color: #5c5c6e;
+      }
     }
   }
 
@@ -215,7 +223,7 @@
       padding: 0;
 
       &[disabled] {
-        color: #7d8499;
+        color: #5c5c6e;
       }
     }
   }
