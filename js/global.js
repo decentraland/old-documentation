@@ -362,15 +362,11 @@ $(function() {
     $mirror.text('')
   }
 
-  let feedbackSent = false
-
   function sendFeedback() {
-    if (feedbackSent) return
-    feedbackSent = true
-
     // TODO: send to Segment
     console.log($input.val())
 
+    $input.blur()
     $feedback
       .removeClass('sending')
       .addClass('sent')
