@@ -29,7 +29,7 @@
       position: relative;
       display: flex;
       align-items: flex-start;
-      transition: transform 300ms ease;
+      transition: transform $default-transition;
 
       &::before,
       &::after {
@@ -39,7 +39,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        transition: opacity 300ms ease;
+        transition: opacity $default-transition;
         border-radius: 8px;
       }
 

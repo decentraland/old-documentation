@@ -108,7 +108,7 @@
       flex-direction: column;
       border-radius: 8px;
       text-decoration: none;
-      transition: transform 300ms ease;
+      transition: transform $default-transition;
       position: relative;
 
       &::before,
@@ -120,7 +120,7 @@
         right: 0;
         bottom: 0;
         border-radius: 8px;
-        transition: opacity 300ms ease;
+        transition: opacity $default-transition;
         pointer-events: none;
       }
 

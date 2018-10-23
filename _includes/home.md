@@ -8,17 +8,17 @@
   <a href="{{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}">
     <div class="image"><img src="/images/home/1.png"/></div>
     <div class="title">Scene content</div>
-    <div class="description">Brief description for the content. Two lines max.</div>
+    <div class="description">An overview of the entities and components that make up scenes.</div>
   </a>
   <a href="{{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}">
     <div class="image"><img src="/images/home/2.png"/></div>
     <div class="title">Entity reference</div>
-    <div class="description">Brief description for the content. Two lines max.</div>
+    <div class="description">A complete reference of Decentraland’s most basic building blocks.</div>
   </a>
   <a href="{{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}">
     <div class="image"><img src="/images/home/3.png"/></div>
     <div class="title">Sample scenes</div>
-    <div class="description">Brief description for the content. Two lines max.</div>
+    <div class="description">Several scene examples to get you started, and inspire your creations.</div>
   </a>
 </div>
 

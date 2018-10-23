@@ -29,7 +29,7 @@ header {
 
     svg {
       display: inline-block;
-      transition: transform 150ms linear;
+      transition: transform $default-transition;
       width: 10px;
       height: 6px;
       margin-left: 8px;
@@ -82,7 +82,7 @@ header {
     right: 0;
     bottom: 0;
     opacity: 0;
-    transition: opacity 300ms ease;
+    transition: opacity $default-transition;
     -webkit-tap-highlight-color: transparent;
 
     &.open {
@@ -97,7 +97,7 @@ header {
 
   .dropdown-content {
     overflow: hidden;
-    transition: transform 300ms ease, opacity 300ms ease;
+    transition: transform $default-transition, opacity $default-transition;
     pointer-events: none;
     opacity: 0;
     position: absolute;
@@ -183,7 +183,7 @@ header {
     cursor: pointer;
     padding: 0;
     outline: none;
-    transition: opacity 300ms ease;
+    transition: opacity $default-transition;
     opacity: 0;
     pointer-events: none;
     -webkit-tap-highlight-color: transparent;
@@ -219,7 +219,7 @@ header {
     left: 0;
     width: 100%;
     font-size: 15px;
-    transition: transform 300ms ease, opacity 300ms ease;
+    transition: transform $default-transition, opacity $default-transition;
     pointer-events: none;
     opacity: 0;
     transform: translate(0, -5%);
@@ -334,7 +334,7 @@ header {
   .header_search {
     input[type="search"] {
       width: 420px;
-      transition: background-color 300ms ease;
+      transition: background-color $default-transition;
     }
 
     &.open {

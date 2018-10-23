@@ -22,7 +22,7 @@
     right: 0;
     bottom: 0;
     opacity: 0;
-    transition: opacity 300ms ease;
+    transition: opacity $default-transition;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -58,7 +58,7 @@
     width: 100%;
     opacity: 0;
     pointer-events: none;
-    transition: transform 300ms ease, opacity 300ms ease;
+    transition: transform $default-transition, opacity $default-transition;
   }
 
   .step-2 {

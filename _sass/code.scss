@@ -22,7 +22,7 @@
     -webkit-tap-highlight-color: transparent;
 
     span {
-      transition: opacity 200ms linear;
+      transition: opacity $default-transition;
       white-space: nowrap;
       display: flex;
       align-items: center;
