@@ -341,7 +341,11 @@ $(function() {
 
   function sendingFeedback(value) {
     resetFeedback()
-    $feedback.removeClass('yes no').addClass('sending ' + value)
+
+    $feedback
+      .removeClass('yes no')
+      .addClass('sending ' + value)
+
     $textarea.click()
   }
 
@@ -362,11 +366,12 @@ $(function() {
     // TODO: send to Segment
     console.log($input.val())
 
-    $feedback.removeClass('sending').addClass('sent')
+    $feedback
+      .removeClass('sending')
+      .addClass('sent')
   }
 
   function skipFeedback() {
-    // $feedback.removeClass('sending yes no')
     $feedback.removeClass('sending')
   }
 
@@ -383,9 +388,6 @@ $(function() {
   })
 
   $input.on('keydown keyup', function(event) {
-    const value = event.target.value
-    $send.attr('disabled', value.trim().length === 0)
-
     switch (event.key) {
       case 'Enter':
         sendFeedback()
