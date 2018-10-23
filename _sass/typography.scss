@@ -72,6 +72,10 @@ a {
   &:hover {
     color: shade($action-color, 25%);
   }
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 hr {
