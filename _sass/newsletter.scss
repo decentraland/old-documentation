@@ -108,6 +108,7 @@
 
       &[disabled] {
         background-color: lighten(#ff355d, 10%);
+        cursor: default;
       }
     }
   }
