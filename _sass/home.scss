@@ -13,8 +13,12 @@
       padding-top: 28px;
     }
 
-    a:hover {
+    a {
       text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
 
     h1 {
