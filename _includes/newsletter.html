@@ -24,8 +24,9 @@ $('#email').on('keyup', function() {
 
 $('form.newsletter__form').on('submit', function(event) {
   event.preventDefault()
-  const email = $('#email').val().trim()
-  cta(email)
+  const $email = $('#email')
+  $email.blur()
+  cta($email.val().trim())
   $('.newsletter').addClass('sent')
   return false
 })
