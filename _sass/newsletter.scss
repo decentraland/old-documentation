@@ -104,6 +104,11 @@
       outline: none;
       cursor: pointer;
       border: none;
+      transition: background-color $default-transition;
+
+      &[disabled] {
+        background-color: lighten(#ff355d, 10%);
+      }
     }
   }
 }
