@@ -44,14 +44,15 @@
         right: 0;
         bottom: 0;
         opacity: 0;
-        transform: translate(10%, 0);
+        transform: translate(5%, 0);
+        justify-content: center;
       }
     }
 
     &.copied {
       .status-copy {
         opacity: 0;
-        transform: translate(-10%, 0);
+        transform: translate(-5%, 0);
       }
 
       .status-copied {
