@@ -69,7 +69,10 @@
 
   .tutorial-main {
     color: #0d0d17;
-    max-width: 760px;
+
+    @media #{$tablet-landscape} {
+      max-width: 760px;
+    }
 
     .scrollable {
       overflow-x: auto;

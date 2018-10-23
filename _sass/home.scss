@@ -8,10 +8,10 @@
 
   .home-content {
     margin-left: auto;
-    max-width: 760px;
 
     @media #{$tablet-landscape} {
       padding-top: 28px;
+      max-width: 760px;
     }
 
     a {
@@ -139,6 +139,7 @@
 
     a {
       text-decoration: none;
+      display: flex;
 
       &::after {
         content: none;
