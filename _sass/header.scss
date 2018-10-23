@@ -162,13 +162,11 @@ header {
   }
 
   svg.search-icon {
-    fill: #eee;
     position: absolute;
     top: 50%;
     left: 14px;
-    display: inline-block;
-    cursor: pointer;
     transform: translateY(-50%);
+    pointer-events: none;
   }
 
   .close {
