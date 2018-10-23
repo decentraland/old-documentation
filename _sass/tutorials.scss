@@ -69,6 +69,11 @@
 
   .tutorial-main {
     color: #0d0d17;
+    max-width: 760px;
+
+    .scrollable {
+      overflow-x: auto;
+    }
 
     h1 {
       font-size: 34px;

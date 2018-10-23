@@ -2,7 +2,6 @@
 layout: null
 ---
 $(function() {
-
   // HEADER ==>
 
   function openDropdown() {
@@ -404,4 +403,7 @@ $(function() {
     }
   })
 
+  // SCROLLABLE TABLES ==>
+
+  $('.tutorial-main table').wrap('<div class="scrollable"></div>')
 })
