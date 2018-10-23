@@ -362,7 +362,12 @@ $(function() {
     $mirror.text('')
   }
 
+  let feedbackSent = false
+
   function sendFeedback() {
+    if (feedbackSent) return
+    feedbackSent = true
+
     // TODO: send to Segment
     console.log($input.val())
 
@@ -388,15 +393,17 @@ $(function() {
   })
 
   $input.on('keydown keyup', function(event) {
+    $mirror.text(event.target.value)
+  })
+
+  $input.on('keydown', function(event) {
     switch (event.key) {
       case 'Enter':
         sendFeedback()
-        break;
+        break
       case 'Escape':
         skipFeedback()
-        break;
-      default:
-        $mirror.text(event.target.value)
+        break
     }
   })
 
