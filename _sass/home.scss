@@ -19,6 +19,12 @@
       &:hover {
         text-decoration: none;
       }
+
+      &.header-link,
+      &.header-link:hover {
+        color: #ccc;
+        text-decoration: none;
+      }
     }
 
     h1 {
