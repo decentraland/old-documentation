@@ -63,9 +63,9 @@ footer {
     color: #fff;
     text-decoration: none;
 
-    // &:hover svg {
-    //   fill: #f05;
-    // }
+    &:hover svg {
+      fill: #f05;
+    }
   }
 
   ul {
@@ -172,9 +172,9 @@ footer {
     a {
       color: #5c5c6e;
 
-      // &:hover {
-      //   color: #f05;
-      // }
+      &:hover {
+        color: #f05;
+      }
     }
   }
 }
