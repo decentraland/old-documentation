@@ -338,7 +338,11 @@ $(function() {
   const $mirror = $textarea.find('.mirror')
   const $send = $feedback.find('.send')
 
+  let articleWasUseful
+
   function sendingFeedback(value) {
+    articleWasUseful = value
+
     resetFeedback()
 
     $feedback
@@ -362,8 +366,19 @@ $(function() {
   }
 
   function sendFeedback() {
-    // TODO: send to Segment
-    console.log($input.val())
+    $feedback.find('.send').prop({ disabled: true })
+
+    const payload = {
+      useful: articleWasUseful,
+      feedback: $input.val(),
+      url: pageUrl
+    }
+
+    {% if jekyll.environment == 'production' and site.segment_write_key != '' %}
+      analytics.track('Feedback', payload)
+    {% else %}
+      console.log(payload)
+    {% endif %}
 
     $input.blur()
     $feedback
