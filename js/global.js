@@ -4,49 +4,52 @@ layout: null
 $(function() {
   // HEADER ==>
 
+  const $header = $('header')
+  const $headerSearch = $('.header_search')
+
   function openDropdown() {
     closeSearchResults()
     closeSidebar()
-    $("header .dropdown-trigger").addClass("open")
-    $("header .dropdown-content").addClass("open")
-    $("header .dropdown-overlay").addClass("open")
+    $header.find('.dropdown-trigger').addClass('open')
+    $header.find('.dropdown-content').addClass('open')
+    $header.find('.dropdown-overlay').addClass('open')
   }
 
   function closeDropdown() {
-    $("header .dropdown-trigger").removeClass("open")
-    $("header .dropdown-content").removeClass("open")
-    $("header .dropdown-overlay").removeClass("open")
+    $header.find('.dropdown-trigger').removeClass('open')
+    $header.find('.dropdown-content').removeClass('open')
+    $header.find('.dropdown-overlay').removeClass('open')
   }
 
   function openSearchResults() {
-    $(".header_search").addClass("open")
-    $(".header_search .search-results").empty()
-    $("header .search-overlay").addClass("open")
+    $headerSearch.addClass('open')
+    $headerSearch.find('.search-results').empty()
+    $header.find('.search-overlay').addClass('open')
   }
 
   function closeSearchResults() {
-    $(".header_search").removeClass("open")
-    $("header .search-overlay").removeClass("open")
+    $headerSearch.removeClass('open')
+    $header.find('.search-overlay').removeClass('open')
   }
 
-  $("header .dropdown-trigger").click(function(event) {
+  $header.find('.dropdown-trigger').click(function(event) {
     event.preventDefault()
-    $(this).hasClass("open") ? closeDropdown() : openDropdown()
+    $(this).hasClass('open') ? closeDropdown() : openDropdown()
   })
 
-  $("header .dropdown-overlay").click(function(event) {
+  $header.find('.dropdown-overlay').click(function(event) {
     event.preventDefault()
     closeDropdown()
   })
 
-  $("header .search-overlay").click(function(event) {
+  $header.find('.search-overlay').click(function(event) {
     event.preventDefault()
     closeSearchResults()
   })
 
-  const $searchInput = $('.header_search input[type="search"]')
+  const $searchInput = $headerSearch.find('input[type="search"]')
 
-  $("header .close").click(function(event) {
+  $header.find('.close').click(function(event) {
     event.preventDefault()
     closeSearchResults()
     $searchInput.val('')
@@ -147,7 +150,7 @@ $(function() {
 
     const limit = 4
     const results = items.slice(0, limit)
-    const $list = $('.header_search .search-results')
+    const $list = $headerSearch.find('.search-results')
 
     for (result of results) {
       let category = result.categories.split(',')[0]
@@ -201,7 +204,7 @@ $(function() {
   }
 
   $searchInput.keydown(function(event) {
-    const $list = $('.header_search .search-results')
+    const $list = $headerSearch.find('.search-results')
     const $selected = $list.find('li.selected')
 
     let $next
@@ -240,8 +243,6 @@ $(function() {
     }
   })
 
-  const $headerSearch = $('.header_search')
-
   let fetching = false
 
   $searchInput.on('input', function() {
@@ -278,40 +279,40 @@ $(function() {
 
   // SIDEBAR ==>
 
-  const $sidebar = $(".sidebar")
+  const $sidebar = $('.sidebar')
 
   function closeSidebar() {
-    $sidebar.removeClass("open")
+    $sidebar.removeClass('open')
   }
 
-  $sidebar.find(".dropdown").click(function(event) {
+  $sidebar.find('.dropdown').click(function(event) {
     event.preventDefault()
-    $sidebar.addClass("open")
-    $('body').addClass("modal-open")
+    $sidebar.addClass('open')
+    $('body').addClass('modal-open')
   })
 
-  $sidebar.find(".close").click(function(event) {
+  $sidebar.find('.close').click(function(event) {
     event.preventDefault()
     closeSidebar()
-    $('body').removeClass("modal-open")
+    $('body').removeClass('modal-open')
   })
 
-  $sidebar.find(".toggle-item").click(function(event) {
+  $sidebar.find('.toggle-item').click(function(event) {
     event.preventDefault()
-    const data = $(event.target).attr("data-toggle")
-    $('.toggle[data-id!="' + data + '"]').hide("fast")
-    $('.toggle[data-id="' + data + '"]').toggle("fast")
+    const data = $(event.target).attr('data-toggle')
+    $('.toggle[data-id!="' + data + '"]').hide('fast')
+    $('.toggle[data-id="' + data + '"]').toggle('fast')
   })
 
   // HEADINGS ==>
 
-  const headings = document.querySelectorAll("h2[id]")
+  const headings = document.querySelectorAll('h2[id]')
 
   for (var i = 0; i < headings.length; i++) {
-    const anchorLink = document.createElement("a")
-    anchorLink.innerText = "#"
-    anchorLink.href = "#" + headings[i].id
-    anchorLink.classList.add("header-link")
+    const anchorLink = document.createElement('a')
+    anchorLink.innerText = '#'
+    anchorLink.href = '#' + headings[i].id
+    anchorLink.classList.add('header-link')
 
     headings[i].appendChild(anchorLink)
   }
