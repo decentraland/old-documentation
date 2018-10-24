@@ -33,13 +33,13 @@ $('form.newsletter__form').on('submit', function(event) {
 
 function cta(email) {
   $('#subscribe').prop({ disabled: true })
-  {% if jekyll.environment == 'production' and site.segment_write_key != '' %}
-    if (email) {
+  if (email) {
+    {% if jekyll.environment == 'production' and site.segment_write_key != '' %}
       analytics.identify({ email: email })
       analytics.track('Subscribe Newsletter', { email: email })
-      return true
-    }
-  {% endif %}
-  return false
+    {% else %}
+      console.log(email)
+    {% endif %}
+  }
 }
 </script>

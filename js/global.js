@@ -366,8 +366,6 @@ $(function() {
   }
 
   function sendFeedback() {
-    $feedback.find('.send').prop({ disabled: true })
-
     const payload = {
       useful: articleWasUseful,
       feedback: $input.val(),
@@ -380,6 +378,7 @@ $(function() {
       console.log(payload)
     {% endif %}
 
+    $send.prop({ disabled: true })
     $input.blur()
     $feedback
       .removeClass('sending')
