@@ -371,11 +371,11 @@ $(function() {
     const payload = {
       useful: articleWasUseful,
       feedback: $input.val(),
-      url: pageUrl
+      url: siteUrl + baseUrl + pageUrl
     }
 
     {% if jekyll.environment == 'production' and site.segment_write_key != '' %}
-      analytics.track('Feedback', payload)
+      analytics.track('Article Feedback', payload)
     {% else %}
       console.log(payload)
     {% endif %}
