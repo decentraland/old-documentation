@@ -182,7 +182,7 @@ $(function() {
       $list.append(
         `<li class="no-results">
           <div class="image">
-            <img src="{{ site.baseurl }}/images/search-icon.svg"/>
+            {% include search-big.svg %}
           </div>
           <strong>Sorry, we couldn't find any matches</strong>
           <span>Try searching for a different keyword</span>
