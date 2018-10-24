@@ -36,10 +36,12 @@ const baseUrl = "{{ site.baseurl }}"
 const pageUrl = "{{ page.url }}"
 </script>
 
-{% if page.set %}
+{%- comment -%} {% if page.set %}
   {% assign set_file_name = "_sets/" | append: page.set | append: ".md" %}
   {% assign set = site.sets | where: "path", set_file_name | first %}
   {% include override-color.html accent_color=set.accent_color %}
-{% endif %}
+{% endif %} {%- endcomment -%}
+
+{% include override-color.html accent_color="#f05" %}
 
 {% include copy-code.html %}
