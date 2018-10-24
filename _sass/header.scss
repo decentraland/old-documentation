@@ -169,6 +169,23 @@ header {
     pointer-events: none;
   }
 
+  .loader {
+    opacity: 0;
+    transition: opacity $default-transition;
+    pointer-events: none;
+    position: absolute;
+    top: 11px;
+    right: 24px;
+    width: 12px;
+    height: 12px;
+  }
+
+  &.fetching {
+    .loader {
+      opacity: 1;
+    }
+  }
+
   .close {
     border: none;
     -webkit-appearance: none;
@@ -242,6 +259,30 @@ header {
         font-size: 13px;
         padding: 15px 16px;
         justify-content: center;
+      }
+
+      &.no-results {
+        text-align: center;
+        padding: 24px 0 72px;
+
+        strong,
+        span {
+          display: block;
+          font-size: 15px;
+        }
+
+        strong {
+          margin-bottom: 4px;
+        }
+
+        .image {
+          width: 96px;
+          height: 96px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+        }
       }
     }
 

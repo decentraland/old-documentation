@@ -173,12 +173,24 @@ $(function() {
     if (items.length > limit) {
       $list.append(
         `<li class="more-results">
-          <a href="/search/?q=${userInput}">See more results</a>
+          <a href="{{ site.baseurl }}/search/?q=${userInput}">See more results</a>
         </li>`
       )
     }
 
-    $list.find('li')
+    if (results.length === 0) {
+      $list.append(
+        `<li class="no-results">
+          <div class="image">
+            <img src="{{ site.baseurl }}/images/search-icon.svg"/>
+          </div>
+          <strong>Sorry, we couldn't find any matches</strong>
+          <span>Try searching for a different keyword</span>
+        </li>`
+      )
+    }
+
+    $list.find('li:not(.no-results)')
       .mouseenter(function() {
         $list.find('li.selected').removeClass('selected')
         $(this).addClass('selected')
@@ -228,6 +240,8 @@ $(function() {
     }
   })
 
+  const $headerSearch = $('.header_search')
+
   let fetching = false
 
   $searchInput.on('input', function() {
@@ -239,9 +253,12 @@ $(function() {
     }
 
     fetching = true
+    $headerSearch.addClass('fetching')
 
     $.getJSON('{{ site.baseurl }}/data.json', function(data) {
       fetching = false
+      $headerSearch.removeClass('fetching')
+
       window.data = data
       window.index = lunr(function() {
         this.field('id')
