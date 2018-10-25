@@ -118,19 +118,19 @@ Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-c
 ## Scene examples
 
 <div class="examples">
-  <a href="https://github.com/decentraland/sample-scene-script">
+  <a target="_blank" href="https://github.com/decentraland/sample-scene-script">
     <div>
       <img src="/images/home/door.png"/>
       <span>Door scene</span>
     </div>
   </a>
-  <a href="https://github.com/decentraland/sample-scene-array-of-entities">
+  <a target="_blank" href="https://github.com/decentraland/sample-scene-array-of-entities">
     <div>
       <img src="/images/home/hummingbirds.png"/>
       <span>Hummingbirds</span>
     </div>
   </a>
-  <a href="https://github.com/decentraland/sample-scene-Block-Dog">
+  <a target="_blank" href="https://github.com/decentraland/sample-scene-Block-Dog">
     <div>
       <img src="/images/home/blockdog.png"/>
       <span>BlockDog</span>
