@@ -107,27 +107,8 @@
       text-align: right;
     }
 
-    a {
-      position: relative;
-
-      &:hover {
-        text-decoration: none;
-
-        &::after {
-          opacity: 1;
-        }
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        right: 0;
-        height: 1px;
-        opacity: 0;
-        transition: opacity $default-transition;
-      }
+    a:hover {
+      text-decoration: underline;
     }
   }
 
@@ -152,10 +133,15 @@
       font-size: 13px;
       padding: 8px 40px;
       text-transform: uppercase;
+      transition: background-color $default-transition;
 
       &.no {
         background-color: #f2f2f5;
         color: #0d0d17;
+
+        &:hover {
+          background-color: #e8eaed;
+        }
       }
 
       &.yes {
@@ -242,25 +228,14 @@
       font-size: 15px;
       font-weight: 500;
       padding: 0;
-      position: relative;
 
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        right: 0;
-        height: 1px;
-        opacity: 0;
-        transition: opacity $default-transition;
-      }
-
-      &:hover::after {
-        opacity: 1;
+      &:hover:not([disabled]) {
+        text-decoration: underline;
       }
 
       &[disabled] {
         color: #5c5c6e;
+        cursor: default;
       }
     }
   }

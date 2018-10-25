@@ -383,10 +383,10 @@ $(function() {
     $mirror.text('')
   }
 
-  function sendFeedback() {
+  function sendFeedback(withFeedback) {
     const payload = {
       useful: articleWasUseful,
-      feedback: $input.val(),
+      feedback: withFeedback ? $input.val().trim() : '',
       url: siteUrl + baseUrl + pageUrl
     }
 
@@ -403,16 +403,12 @@ $(function() {
       .addClass('sent')
   }
 
-  function skipFeedback() {
-    $feedback.removeClass('sending')
-  }
-
   $send.click(function() {
-    sendFeedback()
+    sendFeedback(true)
   })
 
-  $feedback.find('.skip, .feedback-overlay').click(function() {
-    skipFeedback()
+  $feedback.find('.skip').click(function() {
+    sendFeedback(false)
   })
 
   $textarea.on('click', function() {
@@ -421,16 +417,19 @@ $(function() {
   })
 
   $input.on('keydown keyup', function(event) {
-    $mirror.text(event.target.value)
+    const value = event.target.value;
+    $send.prop({ disabled: value.trim().length === 0 })
+    $mirror.text(value)
   })
 
   $input.on('keydown', function(event) {
     switch (event.key) {
       case 'Enter':
-        sendFeedback()
-        break
-      case 'Escape':
-        skipFeedback()
+        if (!$send.attr('disabled')) {
+          sendFeedback()
+        } else {
+          event.preventDefault()
+        }
         break
     }
   })

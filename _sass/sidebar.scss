@@ -14,6 +14,7 @@
     height: 44px;
     align-items: center;
     margin-left: 16px;
+    width: 100%;
   }
 
   .active {
@@ -158,6 +159,10 @@
         width: 16px;
         height: 16px;
         margin: 8px;
+
+        .main {
+          transition: fill $default-transition;
+        }
       }
     }
 

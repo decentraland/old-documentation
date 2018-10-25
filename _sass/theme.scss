@@ -1,15 +1,63 @@
 $accent-color: #f05;
 
-a { color: $accent-color }
-a:hover::after { background-color: $accent-color }
-.override-color-set { color: $accent-color !important }
-.tutorial-main a { color: $accent-color }
-.tutorial-content ul li:before { color: $accent-color }
-.copy-code .codeblock-btn { color: $accent-color }
-.copy-code .codeblock-btn svg g path.main { fill: $accent-color }
-.sidebar li.active .sidebar-h3 { color: $accent-color }
-.sidebar .active svg .main { fill: $accent-color }
-.sidebar .dropdown svg .main { fill: $accent-color }
-.feedback .textarea { border-bottom-color: $accent-color }
-.feedback .options button { color: $accent-color }
-.feedback .options button:hover::after { background-color: $accent-color }
+a {
+  color: $accent-color;
+}
+
+.override-color-set {
+  color: $accent-color !important;
+}
+
+.tutorial-main a {
+  color: $accent-color;
+}
+
+.tutorial-content ul li:before {
+  color: $accent-color;
+}
+
+.copy-code .codeblock-btn {
+  color: $accent-color;
+
+  svg g path.main {
+    fill: $accent-color;
+  }
+}
+
+.sidebar {
+  .active {
+    .sidebar-h3 {
+      color: $accent-color;
+    }
+    svg .main {
+      fill: $accent-color;
+    }
+  }
+
+  li:hover {
+    a.sidebar-h3 {
+      color: $accent-color;
+    }
+    svg .main {
+      fill: $accent-color;
+    }
+  }
+
+  .dropdown svg .main {
+    fill: $accent-color;
+  }
+}
+
+.feedback {
+  .buttons button.yes:hover {
+    background-color: $accent-color;
+  }
+
+  .textarea {
+    border-bottom-color: $accent-color;
+  }
+
+  .options button {
+    color: $accent-color;
+  }
+}
