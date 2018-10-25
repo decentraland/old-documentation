@@ -41,7 +41,6 @@ const pageUrl = "{{ page.url }}"
   {% assign set = site.sets | where: "path", set_file_name | first %}
   {% include override-color.html accent_color=set.accent_color %}
 {% endif %} {%- endcomment -%}
-
-{% include override-color.html accent_color="#f05" %}
+{%- comment -%} {% include override-color.html accent_color="#f05" %} {%- endcomment -%}
 
 {% include copy-code.html %}
