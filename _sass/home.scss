@@ -5,11 +5,13 @@
   // @media #{$tablet-landscape} {
   //   flex-direction: row;
   // }
+  > section {
+    margin-left: 304px;
+  }
 
   .home-content {
     @media #{$tablet-landscape} {
       padding-top: 28px;
-      margin-left: 304px;
     }
 
     a {
