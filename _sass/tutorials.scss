@@ -7,26 +7,27 @@
 
 .main-container {
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
 
-  @media #{$tablet-landscape} {
-    flex-direction: row;
-  }
+  // @media #{$tablet-landscape} {
+  //   flex-direction: row;
+  // }
 }
 
 .tutorial {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  // display: flex;
+  // flex-wrap: wrap;
+  // flex-direction: column;
 
-  @media #{$mid-point} {
-    flex-direction: row;
-  }
+  // @media #{$mid-point} {
+  //   flex-direction: row;
+  // }
 
   .tutorial-content {
     @media #{$tablet-landscape} {
       padding-top: 28px;
+      margin-left: 304px;
     }
 
     h2 {
@@ -70,9 +71,9 @@
   .tutorial-main {
     color: #0d0d17;
 
-    @media #{$tablet-landscape} {
-      max-width: 760px;
-    }
+    // @media #{$tablet-landscape} {
+    //   max-width: 760px;
+    // }
 
     .scrollable {
       overflow-x: auto;

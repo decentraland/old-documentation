@@ -1,17 +1,15 @@
 .home {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
 
-  @media #{$tablet-landscape} {
-    flex-direction: row;
-  }
+  // @media #{$tablet-landscape} {
+  //   flex-direction: row;
+  // }
 
   .home-content {
-    margin-left: auto;
-
     @media #{$tablet-landscape} {
       padding-top: 28px;
-      max-width: 760px;
+      margin-left: 304px;
     }
 
     a {
@@ -85,6 +83,13 @@
       font-size: 15px;
       line-height: 1.6;
       letter-spacing: -0.3px;
+
+      > img {
+        border-radius: 8px;
+        box-shadow: 0 16px 64px 0 rgba(0, 0, 0, 0.16);
+        margin-bottom: 20px;
+        transform: scale(.9, .9);
+      }
     }
 
     blockquote {
