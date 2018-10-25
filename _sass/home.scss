@@ -5,8 +5,10 @@
   // @media #{$tablet-landscape} {
   //   flex-direction: row;
   // }
-  > section {
-    margin-left: 304px;
+  @media #{$tablet-landscape} {
+    > section {
+      margin-left: 304px;
+    }
   }
 
   .home-content {
