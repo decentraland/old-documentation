@@ -72,8 +72,13 @@
       flex-shrink: 0;
 
       img {
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
+
+        @media #{$mid-point} {
+          width: 20px;
+          height: 20px;
+        }
       }
     }
 

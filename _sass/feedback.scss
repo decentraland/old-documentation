@@ -135,10 +135,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 14px;
-    margin-top: 16px;
+    margin: 16px auto 0;
+    max-width: 320px;
 
     @media #{$mid-point} {
-      margin-top: 0;
+      margin: 0;
     }
 
     button {
