@@ -1,4 +1,20 @@
-<script>
+<style>
+a { color: {{ include.accent_color }} }
+a:hover::after { background-color: {{ include.accent_color }} }
+.override-color-set { color: {{ include.accent_color }} !important }
+.tutorial-main a { color: {{ include.accent_color }} }
+.tutorial-content ul li:before { color: {{ include.accent_color }} }
+.copy-code .codeblock-btn { color: {{ include.accent_color }} }
+.copy-code .codeblock-btn svg g path.main { fill: {{ include.accent_color }} }
+.sidebar li.active .sidebar-h3 { color: {{ include.accent_color }} }
+.sidebar .active svg .main { fill: {{ include.accent_color }} }
+.sidebar .dropdown svg .main { fill: {{ include.accent_color }} }
+.feedback .textarea { border-bottom-color: {{ include.accent_color }} }
+.feedback .options button { color: {{ include.accent_color }} }
+.feedback .options button:hover::after { background-color: {{ include.accent_color }} }
+</style>
+
+{%- comment -%} <script>
   var color = {{ include.accent_color | jsonify }};
 
   if (color) {
@@ -26,4 +42,4 @@
       $('body').append(style)
     })
   }
-</script>
+</script> {%- endcomment -%}
