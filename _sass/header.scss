@@ -324,10 +324,6 @@ header {
     .close {
       opacity: 1;
       pointer-events: auto;
-
-      &:hover {
-        opacity: 0.48;
-      }
     }
 
     .search-results {
