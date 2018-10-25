@@ -4,8 +4,7 @@
   }
 
   .sidebar-h3 {
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 17px;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.45;
@@ -15,6 +14,12 @@
     height: 44px;
     align-items: center;
     margin-left: 16px;
+  }
+
+  .active {
+    .sidebar-h3 {
+      font-weight: 500;
+    }
   }
 
   .dropdown {
@@ -99,6 +104,10 @@
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     width: 100%;
+
+    > li {
+      margin-bottom: 8px;
+    }
 
     @media #{$mid-point} {
       padding: 8px 30px;

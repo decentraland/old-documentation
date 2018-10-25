@@ -108,34 +108,9 @@
       line-height: 1.6;
     }
 
-    // a {
-    //   text-decoration: underline;
-
-    //   &:hover {
-    //     text-decoration: none;
-    //   }
-    // }
-
     a {
-      position: relative;
-
       &:hover {
-        text-decoration: none;
-
-        &::after {
-          opacity: 1;
-        }
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        right: 0;
-        height: 1px;
-        opacity: 0;
-        transition: opacity $default-transition;
+        text-decoration: underline;
       }
     }
 
