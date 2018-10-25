@@ -41,6 +41,7 @@
         bottom: 0;
         transition: opacity $default-transition;
         border-radius: 8px;
+        background-color: transparent;
       }
 
       &::before {

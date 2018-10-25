@@ -1,7 +1,5 @@
 .sidebar {
   @media #{$tablet-landscape} {
-    // flex-shrink: 0;
-    position: absolute;
     padding: 36px 64px 0 0;
   }
 

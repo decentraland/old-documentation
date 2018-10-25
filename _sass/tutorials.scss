@@ -7,27 +7,19 @@
 
 .main-container {
   width: 100%;
-  // display: flex;
-  // flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-  // @media #{$tablet-landscape} {
-  //   flex-direction: row;
-  // }
+  @media #{$tablet-landscape} {
+    flex-direction: row;
+  }
 }
 
 .tutorial {
-  // display: flex;
-  // flex-wrap: wrap;
-  // flex-direction: column;
-
-  // @media #{$mid-point} {
-  //   flex-direction: row;
-  // }
-
   .tutorial-content {
     @media #{$tablet-landscape} {
       padding-top: 28px;
-      margin-left: 304px;
+      width: calc(100% - 304px);
     }
 
     h2 {
