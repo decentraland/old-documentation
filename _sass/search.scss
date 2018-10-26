@@ -5,6 +5,10 @@
   letter-spacing: 0.4px;
   color: $docs_primary_black;
   font-weight: 500;
+
+  @supports (-ms-ime-align: auto) {
+    font-weight: 600;
+  }
 }
 
 #search-results {
@@ -13,6 +17,10 @@
 
   strong {
     font-weight: 500;
+
+    @supports (-ms-ime-align: auto) {
+      font-weight: 600;
+    }
   }
 
   li {
@@ -88,6 +96,10 @@
       line-height: 28px;
       font-weight: 500;
       color: $docs_primary_black;
+
+      @supports (-ms-ime-align: auto) {
+        font-weight: 600;
+      }
     }
 
     p {
@@ -116,4 +128,8 @@
 
 #search-query {
   font-weight: 500;
+
+  @supports (-ms-ime-align: auto) {
+    font-weight: 600;
+  }
 }

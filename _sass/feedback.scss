@@ -135,6 +135,10 @@
       text-transform: uppercase;
       transition: background-color $default-transition;
 
+      @supports (-ms-ime-align: auto) {
+        font-weight: 600;
+      }
+
       &.no {
         background-color: #f2f2f5;
         color: #0d0d17;
@@ -157,6 +161,10 @@
     line-height: 1.4;
     letter-spacing: 0.3px;
     color: #0d0d17;
+
+    @supports (-ms-ime-align: auto) {
+      font-weight: 600;
+    }
   }
 
   .subtitle {
@@ -228,6 +236,10 @@
       font-size: 15px;
       font-weight: 500;
       padding: 0;
+
+      @supports (-ms-ime-align: auto) {
+        font-weight: 600;
+      }
 
       &:hover:not([disabled]) {
         text-decoration: underline;

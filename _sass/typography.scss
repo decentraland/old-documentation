@@ -25,6 +25,10 @@ h6 {
   margin: 1.414em 0 0.5em;
   font-weight: inherit;
   font-weight: 500;
+
+  @supports (-ms-ime-align: auto) {
+    font-weight: 600;
+  }
 }
 
 h1 {
@@ -38,7 +42,6 @@ h2 {
 
 h3 {
   font-size: 1.44em;
-  font-weight: 500;
 }
 
 h4 {
@@ -107,7 +110,11 @@ blockquote {
 }
 
 strong {
-  font-weight: bold;
+  font-weight: 500;
+
+  @supports (-ms-ime-align: auto) {
+    font-weight: 600;
+  }
 }
 
 em {

@@ -319,6 +319,13 @@ header {
     .title {
       font-weight: 500;
     }
+
+    @supports (-ms-ime-align: auto) {
+      strong,
+      .title {
+        font-weight: 600;
+      }
+    }
   }
 
   &.open {

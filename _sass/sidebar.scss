@@ -20,6 +20,10 @@
   .active {
     .sidebar-h3 {
       font-weight: 500;
+
+      @supports (-ms-ime-align: auto) {
+        font-weight: 600;
+      }
     }
   }
 
@@ -32,6 +36,10 @@
     height: 64px;
     font-size: 17px;
     font-weight: 500;
+
+    @supports (-ms-ime-align: auto) {
+      font-weight: 600;
+    }
 
     @media #{$tablet-landscape} {
       display: none;
@@ -195,6 +203,10 @@
     &.active {
       color: #000;
       font-weight: 500;
+
+      @supports (-ms-ime-align: auto) {
+        font-weight: 600;
+      }
     }
 
     &:hover {

@@ -46,6 +46,10 @@
 
   strong {
     font-weight: 500;
+
+    @supports (-ms-ime-align: auto) {
+      font-weight: 600;
+    }
   }
 }
 

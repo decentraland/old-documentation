@@ -124,6 +124,10 @@ footer {
       color: $docs_primary_black;
       background-color: transparent;
       outline: none;
+
+      @supports (-ms-ime-align: auto) {
+        font-weight: 600;
+      }
     }
 
     option {
