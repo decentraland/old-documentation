@@ -97,7 +97,7 @@
       color: #fff;
       background-color: #ff355d;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 500;
       padding: 10px 16px;
       border-radius: 6px;
       height: 44px;
@@ -105,6 +105,11 @@
       cursor: pointer;
       border: none;
       transition: background-color $default-transition;
+
+      _:-ms-lang(x),
+      & {
+        font-weight: 600;
+      }
 
       &[disabled] {
         background-color: lighten(#ff355d, 20%);

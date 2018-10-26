@@ -16,6 +16,10 @@ body {
   display: flex;
   flex-direction: column;
 
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    display: block;
+  }
+
   &.modal-open {
     overflow-y: hidden;
 

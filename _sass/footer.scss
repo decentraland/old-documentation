@@ -125,7 +125,8 @@ footer {
       background-color: transparent;
       outline: none;
 
-      @supports (-ms-ime-align: auto) {
+      _:-ms-lang(x),
+      & {
         font-weight: 600;
       }
     }

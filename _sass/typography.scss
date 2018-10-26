@@ -26,7 +26,8 @@ h6 {
   font-weight: inherit;
   font-weight: 500;
 
-  @supports (-ms-ime-align: auto) {
+  _:-ms-lang(x),
+  & {
     font-weight: 600;
   }
 }
@@ -112,7 +113,8 @@ blockquote {
 strong {
   font-weight: 500;
 
-  @supports (-ms-ime-align: auto) {
+  _:-ms-lang(x),
+  & {
     font-weight: 600;
   }
 }

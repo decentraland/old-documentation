@@ -74,17 +74,17 @@ layout: null
 					category = 'general'
 				}
 
-				resultsHTML += `<li>
-					<a href='{{ site.baseurl }}${item.url.trim()}'>
-						<div class="icon">
-							<img src="{{ site.baseurl }}/images/sets/${category}.svg" />
-						</div>
-						<div>
-							<h4>${titlePreview}</h4>
-							<p>${contentPreview}</p>
-						</div>
-					</a>
-				</li>`;
+				resultsHTML += '<li>' +
+					'<a href="{{ site.baseurl }}' + item.url.trim() + '">' +
+						'<div class="icon">' +
+							'<img src="{{ site.baseurl }}/images/sets/' + category + '.svg" />' +
+						'</div>' +
+						'<div>' +
+							'<h4>' + titlePreview + '</h4>' +
+							'<p>' + contentPreview + '</p>' +
+						'</div>' +
+					'</a>' +
+				'</li>';
 			});
 
 			searchResultsEl.innerHTML = resultsHTML;

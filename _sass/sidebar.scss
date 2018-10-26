@@ -21,7 +21,8 @@
     .sidebar-h3 {
       font-weight: 500;
 
-      @supports (-ms-ime-align: auto) {
+      _:-ms-lang(x),
+      & {
         font-weight: 600;
       }
     }
@@ -37,7 +38,8 @@
     font-size: 17px;
     font-weight: 500;
 
-    @supports (-ms-ime-align: auto) {
+    _:-ms-lang(x),
+    & {
       font-weight: 600;
     }
 
@@ -204,7 +206,8 @@
       color: #000;
       font-weight: 500;
 
-      @supports (-ms-ime-align: auto) {
+      _:-ms-lang(x),
+      & {
         font-weight: 600;
       }
     }

@@ -6,7 +6,8 @@
   color: $docs_primary_black;
   font-weight: 500;
 
-  @supports (-ms-ime-align: auto) {
+  _:-ms-lang(x),
+  & {
     font-weight: 600;
   }
 }
@@ -89,7 +90,8 @@
       font-weight: 500;
       color: $docs_primary_black;
 
-      @supports (-ms-ime-align: auto) {
+      _:-ms-lang(x),
+      & {
         font-weight: 600;
       }
     }
@@ -121,7 +123,8 @@
 #search-query {
   font-weight: 500;
 
-  @supports (-ms-ime-align: auto) {
+  _:-ms-lang(x),
+  & {
     font-weight: 600;
   }
 }

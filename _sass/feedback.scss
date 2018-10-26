@@ -135,7 +135,8 @@
       text-transform: uppercase;
       transition: background-color $default-transition;
 
-      @supports (-ms-ime-align: auto) {
+      _:-ms-lang(x),
+      & {
         font-weight: 600;
       }
 
@@ -162,7 +163,8 @@
     letter-spacing: 0.3px;
     color: #0d0d17;
 
-    @supports (-ms-ime-align: auto) {
+    _:-ms-lang(x),
+    & {
       font-weight: 600;
     }
   }
@@ -237,7 +239,8 @@
       font-weight: 500;
       padding: 0;
 
-      @supports (-ms-ime-align: auto) {
+      _:-ms-lang(x),
+      & {
         font-weight: 600;
       }
 

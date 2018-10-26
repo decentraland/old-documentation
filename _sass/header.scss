@@ -208,7 +208,7 @@ header {
     top: 8px;
   }
 
-  input[type="search"] {
+  input[type="text"] {
     margin: 0;
     padding: 0 40px;
     height: 40px;
@@ -222,6 +222,10 @@ header {
     width: 100%;
     box-sizing: border-box;
     -webkit-appearance: none;
+
+    &::-ms-clear {
+      display: none;
+    }
 
     &::placeholder {
       color: #5c5c6e;
@@ -318,7 +322,8 @@ header {
     .title {
       font-weight: 500;
 
-      @supports (-ms-ime-align: auto) {
+      _:-ms-lang(x),
+      & {
         font-weight: 600;
       }
     }
@@ -348,7 +353,7 @@ header {
       z-index: 23;
     }
 
-    input[type="search"] {
+    input[type="text"] {
       width: 280px;
     }
 
@@ -382,13 +387,13 @@ header {
 
 @media #{$mid-point} {
   .header_search {
-    input[type="search"] {
+    input[type="text"] {
       width: 420px;
       transition: background-color $default-transition;
     }
 
     &.open {
-      input[type="search"] {
+      input[type="text"] {
         background-color: $white-color;
         border-radius: 6px 6px 0 0;
         border-bottom: $docs_medium_grey 1px solid;

@@ -47,7 +47,7 @@ $(function() {
     closeSearchResults()
   })
 
-  const $searchInput = $headerSearch.find('input[type="search"]')
+  const $searchInput = $headerSearch.find('input[type="text"]')
 
   $header.find('.close').click(function(event) {
     event.preventDefault()
@@ -55,7 +55,7 @@ $(function() {
     $searchInput.val('')
   })
 
-  $searchInput.focus(function() {
+  $searchInput.on('focus click', function() {
     closeSidebar()
     closeDropdown()
     showSearchResults()
@@ -72,7 +72,7 @@ $(function() {
   }
 
   const touchableInputs = [
-    '.header_search input[type="search"]',
+    '.header_search input[type="text"]',
     '.newsletter input[type="email"]',
     'select',
   ]
@@ -146,50 +146,52 @@ $(function() {
 
     const items = window.index
       .search(userInput)
-      .map(index => window.data[index.ref])
+      .map(function (index) { return window.data[index.ref] })
 
     const limit = 4
     const results = items.slice(0, limit)
     const $list = $headerSearch.find('.search-results')
 
-    for (result of results) {
-      let category = result.categories.split(',')[0]
+    for (var i = 0; i < results.length; i++) {
+      var result = results[i]
+      var category = result.categories.split(',')[0]
+
       if (category === 'Decentraland') {
         category = 'general'
       }
 
       $list.append(
-        `<li>
-          <a href="${result.url}">
-            <div class="icon">
-              <img src="{{ site.baseurl }}/images/sets/${category}.svg" />
-            </div>
-            <div>
-              <span class="title">${result.title}</span>
-              <span class="description">${getPreview(userInput, result.content, 120)}</span>
-            </div>
-          </a>
-        </li>`
+        '<li>' +
+          '<a href="' + result.url + '">' +
+            '<div class="icon">' +
+              '<img src="{{ site.baseurl }}/images/sets/' + category + '.svg" />' +
+            '</div>' +
+            '<div>' +
+              '<span class="title">' + result.title + '</span>' +
+              '<span class="description">' + getPreview(userInput, result.content, 120) + '</span>' +
+            '</div>' +
+          '</a>' +
+        '</li>'
       )
     }
 
     if (items.length > limit) {
       $list.append(
-        `<li class="more-results">
-          <a href="{{ site.baseurl }}/search/?q=${userInput}">See more results</a>
-        </li>`
+        '<li class="more-results">' +
+          '<a href="{{ site.baseurl }}/search/?q=' + userInput + '">See more results</a>' +
+        '</li>'
       )
     }
 
     if (results.length === 0) {
       $list.append(
-        `<li class="no-results">
-          <div class="image">
-            {% include search-big.svg %}
-          </div>
-          <strong>Sorry, we couldn't find any matches</strong>
-          <span>Try searching for a different keyword</span>
-        </li>`
+        '<li class="no-results">' +
+          '<div class="image">' +
+            '{% include search-big.svg %}' +
+          '</div>' +
+          '<strong>Sorry, we couldn\'t find any matches</strong>' +
+          '<span>Try searching for a different keyword</span>' +
+        '</li>'
       )
     }
 
@@ -232,6 +234,10 @@ $(function() {
           $next = $list.find('li:last-child')
         }
         selectNextItem()
+        break
+
+      case 'Escape':
+        closeSearchResults()
         break
 
       case 'Enter':
