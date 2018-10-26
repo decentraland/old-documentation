@@ -386,8 +386,7 @@ $(function() {
   function sendFeedback(withFeedback) {
     const payload = {
       useful: articleWasUseful,
-      feedback: withFeedback ? $input.val().trim() : null,
-      url: siteUrl + baseUrl + pageUrl
+      feedback: withFeedback ? $input.val().trim() : null
     }
 
     {% if jekyll.environment == 'production' and site.segment_write_key != '' %}

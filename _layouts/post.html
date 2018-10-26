@@ -30,12 +30,6 @@ layout: default
   </section>
 </div>
 
-<script>
-const siteUrl = "{{ site.url }}"
-const baseUrl = "{{ site.baseurl }}"
-const pageUrl = "{{ page.url }}"
-</script>
-
 {%- comment -%} {% if page.set %}
   {% assign set_file_name = "_sets/" | append: page.set | append: ".md" %}
   {% assign set = site.sets | where: "path", set_file_name | first %}
