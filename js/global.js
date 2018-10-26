@@ -386,7 +386,7 @@ $(function() {
   function sendFeedback(withFeedback) {
     const payload = {
       useful: articleWasUseful,
-      feedback: withFeedback ? $input.val().trim() : '',
+      feedback: withFeedback ? $input.val().trim() : null,
       url: siteUrl + baseUrl + pageUrl
     }
 
@@ -426,7 +426,7 @@ $(function() {
     switch (event.key) {
       case 'Enter':
         if (!$send.attr('disabled')) {
-          sendFeedback()
+          sendFeedback(true)
         } else {
           event.preventDefault()
         }

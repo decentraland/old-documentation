@@ -45,8 +45,6 @@
     {% assign set_id = set.id  | replace: "/sets/", "" %}
     {% capture set_image %}sets/{{ set_id }}.svg{% endcapture %}
 
-    {%- comment -%} {% capture set_image %}sets/{{ first.categories[0] }}.svg{% endcapture %} {%- endcomment -%}
-
     {% if size > 0 %}
       {% if page_set_id == set.id %}
         <li class="active">
