@@ -43,14 +43,6 @@
       transition: fill 200ms ease;
     }
   }
-
-  strong {
-    font-weight: 500;
-
-    @supports (-ms-ime-align: auto) {
-      font-weight: 600;
-    }
-  }
 }
 
 @media #{$mid-point} {

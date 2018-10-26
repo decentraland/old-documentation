@@ -308,7 +308,6 @@ header {
 
     strong {
       color: #0d0d17;
-      font-weight: 500;
     }
 
     .title,
@@ -318,11 +317,8 @@ header {
 
     .title {
       font-weight: 500;
-    }
 
-    @supports (-ms-ime-align: auto) {
-      strong,
-      .title {
+      @supports (-ms-ime-align: auto) {
         font-weight: 600;
       }
     }

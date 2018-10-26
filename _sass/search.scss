@@ -15,14 +15,6 @@
   margin: 0;
   padding: 0;
 
-  strong {
-    font-weight: 500;
-
-    @supports (-ms-ime-align: auto) {
-      font-weight: 600;
-    }
-  }
-
   li {
     list-style: none;
     margin: 0 0 16px;
