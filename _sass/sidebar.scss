@@ -106,12 +106,7 @@
     -webkit-overflow-scrolling: touch;
     width: 100%;
 
-    > li {
-      margin-bottom: 8px;
-    }
-
     @media #{$mid-point} {
-      // padding: 8px 30px;
       padding: 32px 48px;
     }
 
@@ -127,6 +122,16 @@
       box-shadow: none;
       transform: none;
       background: transparent;
+    }
+
+    > li {
+      margin-bottom: 8px;
+      width: 90%;
+      max-width: 300px;
+
+      @media #{$tablet-landscape} {
+        width: 100%;
+      }
     }
   }
 
@@ -179,14 +184,13 @@
   a {
     display: block;
     text-decoration: none;
-    -webkit-transition: transform 0.2s ease;
     font-size: 15px;
     line-height: 24px;
     letter-spacing: -0.3px;
     text-transform: capitalize;
     color: #5c5c6e;
-    transition: color 200ms ease;
     outline: none;
+    -webkit-tap-highlight-color: transparent;
 
     &.active {
       color: #000;
