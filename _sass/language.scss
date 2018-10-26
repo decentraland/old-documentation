@@ -10,6 +10,11 @@
 
   &.visible {
     display: flex;
+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      display: block;
+      padding-top: 10px;
+    }
   }
 
   @media (min-width: 520px) {
@@ -46,6 +51,7 @@
   .wrapper {
     flex-grow: 1;
     top: -2px;
+    position: relative;
   }
 
   .select-wrapper {
