@@ -74,8 +74,8 @@
     background: url(../images/x.svg) no-repeat center center;
 
     @media #{$mid-point} {
-      top: 12px;
-      right: 30px;
+      top: 40px;
+      right: 48px;
       width: 36px;
       height: 36px;
       border-radius: 50%;
@@ -111,7 +111,8 @@
     }
 
     @media #{$mid-point} {
-      padding: 8px 30px;
+      // padding: 8px 30px;
+      padding: 32px 48px;
     }
 
     @media #{$tablet-landscape} {
