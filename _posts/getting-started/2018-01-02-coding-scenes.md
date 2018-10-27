@@ -88,22 +88,6 @@ Decentraland scenes can be coded in two very different ways.
 - ECS (.ts) uses an Entity component system and is close to how most game engines develop
 - Scriptable scene (.tsx) is close to how the React framework works, which is popular in web development.
 
-## The game loop
-
-The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbone of a Decentraland scene's code. It cycles through the main code at a regular interval and does the following:
-
-- Listen for user input
-- Update the scene
-- Re-render the scene
-
-We call each iteration over the loop a _frame_. Decentraland scenes are rendered at 30 frames per second ... 30??
-
-The engine tries to render the scene 30 times per second, but depending on scene performance, it could skip some frames to keep up. ?????
-
-In each frame, the scene's state is updated. Then the scene is re-rendered, using the new values from the scene state.
-
-Not all changes to the scene are necessarily caused by a user's actions. Your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some user actions might also take multiple frames to be completed, for example if the opening of a door needs to take a whole second, the door position must be incrementally updated 30 times as it moves.
-
 ## Entities and Components
 
 Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an _entity_, and each entity can include _components_ that determine its characteristics.
@@ -114,25 +98,75 @@ Entities are nested inside other entities to form a tree structure. If you're fa
 
 See [Entities and components]({{ site.baseurl }}{% post_url /development-guide/2018-01-15-entities-components %}) for an in-depth look of both these concepts and how they're used by Decentraland scenes.
 
-<!--
-For additional terms, definitions, and explanations, please refer to our [complete Glossary]({{ site.baseurl }}{% post_url /general/2018-01-03-glossary %}).
--->
+
+## The game loop
+
+The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbone of a Decentraland scene's code. It cycles through the main code at a regular interval and does the following:
+
+- Listen for user input
+- Update the scene
+- Re-render the scene
+
+In most traditional software programs, all events are triggered directly by user actions. Nothing about the program's state will change until the user clicks to open a menu, save a file, etc. Interactive environments and games aren't like that. Not all changes to the scene are necessarily caused by a user's actions. Your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some user actions might also take multiple frames to be completed, for example if the opening of a door needs to take a whole second, the door position must be incrementally updated about 30 times as it moves.
+
+We call each iteration over the loop a _frame_. Decentraland scenes are rendered at 30 frames per second whenever possible. If a frame takes more time than that to be rendered, then there will be less frames.
+
+In each frame, the scene is updated; then the scene is re-rendered, based on the updated values.
+
+In Decentraland scenes, there is no explicitly declared game loop, but rather the `update()` functions on _Systems_ and _systemComponents_ make up the game loop.
+
+The rendering of the scene is carried out in the backend, you don't need to handle that while developing your scene.
 
 ## Systems and componentSystems
 
-Entities and components are just used to store information about 3D objects, but don't have any methods to change those values when they need to be updated. That's where _systems_ come in.
+Entities and components are places to store information about 3D the objects in a scene. _Systems_ and _systemComponents_ change the information that's stored in components.
 
-_Systems_ and _systemComponents_ execute functions over the components of an entity to change their values. Systems and systemComponents each have an `update()` method that's executed on every frame of the game loop, this follows the [update game pattern](http://gameprogrammingpatterns.com/update-method.html).
+_Systems_ and _systemComponents_ are what make a static scene dynamic, allowing things to change over time or in response to user interaction. 
+
+Systems and systemComponents each have an `update()` method that's executed on every frame of the game loop, following the [_update pattern_](http://gameprogrammingpatterns.com/update-method.html).
+
 
 See [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-01-16-systems %}) for more details about how systems are used in a scene.
 
 ## Putting it all together
 
-The _engine_ is what sits in between _entities_ and _components_ on one hand and _systems_ on the other. It coordinates the systems so that they know what entities to act upon and when.
+The _engine_ is what sits in between _entities_ and _components_ on one hand and _systems_ and _systemComponents_ on the other. It coordinates the systems so that they know what entities to act upon and when.
 
 All of the values stored in the components in the scene represent the scene's state at that point in time. With every frame of the game loop, the engine runs each of the systems over the corresponding components to update their values.
 
 After all the systems run, the components on each entity will have new values. When the engine renders the scene, it will use these new updated values and users will see the entities change to match their new states.
+
+
+```ts
+export class RotatorSystem extends ComponentSystem {
+  constructor() {
+    super(Rotation)
+  }
+  update() {
+    for (let i in this.entities) {
+      const rotation = this.entities[i].get(Rotation)
+      rotation.x += 5
+    }
+  }
+}
+
+const cube = new Entity()
+
+cube.set(new Position(5, 1, 5))
+cube.set(new Rotation(0, 0, 0))
+cube.set(new BoxShape())
+
+engine.addEntity(cube)
+engine.addSystem(new RotatorSystem())
+```
+
+In the example above, a `cube` entity and a `RotatorSystem` ComponentSystem are added to the engine. The `cube` entity has a `Position`, a `Rotation`, and a `BoxShape` component. In every frame of the game loop, the `update()` function of `RotationSystem` is called, and it changes the values in the `Rotation` component of the `cube` entity.
+
+[DIAGRAM]
+
+Note that the most of the code above is executed just once when loading the scene. The exception is the `update()` method of the ComponentSystem, that's called on every frame of the game loop.
+
+
 
 <!--
 All [scene objects]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) have a 'render()` method that outputs what users of your scene will see on their browser. This function must always output a hierarchical tree of entities that starts at the root level with a _scene_ entity.
