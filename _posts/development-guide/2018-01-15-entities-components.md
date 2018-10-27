@@ -51,6 +51,14 @@ syntax
 
 example with nested entities
 
+## Get data from components
+
+flake.get(SpinVel).velocityX = Math.random() \* 10
+
+## Set data in a component
+
+flake.set(new Scale(0.1, 0.3, 0.1))
+
 ## Predefined components
 
 The Decentraland ECS module includes a series of basic predefined components.
