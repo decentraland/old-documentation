@@ -1,10 +1,14 @@
 .wrapper {
-  max-width: 1124px;
-  padding: 0 15px;
+  max-width: 1164px;
+  padding: 0 16px;
   margin: 0 auto;
 
   @media #{$mid-point} {
-    padding: 0 30px;
+    padding: 0 48px;
+  }
+
+  @media #{$desktop} {
+    padding: 0 16px;
   }
 }
 

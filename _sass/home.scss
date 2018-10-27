@@ -119,6 +119,7 @@
     a {
       text-decoration: none;
       display: flex;
+      -webkit-tap-highlight-color: transparent;
 
       /* IE11 */
       @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {

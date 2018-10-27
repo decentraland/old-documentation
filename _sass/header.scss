@@ -413,6 +413,10 @@ header {
   }
 
   header {
+    .wrapper {
+      padding: 0 16px;
+    }
+
     .search-overlay.mobile {
       display: none;
     }
