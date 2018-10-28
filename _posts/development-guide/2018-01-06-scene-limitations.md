@@ -145,3 +145,23 @@ Examples of other valid sizes:
 When deploying your scene, you can't upload more than 100 files to IPFS, as having too many files in a scene will make it take too long to load in the client.
 
 If you have more than 100 files in your scene folder, it's likely that many of those files aren't being used directly when loading the scene. You can make the CLI ignore specific files from the scene folder and not upload them to IPFS by specifying them in the _dclignore_ file for the scene. Learn more about it in [Scene files]({{ site.baseurl }}{% post_url /development-guide/2018-01-11-scene-files %}).
+
+## Reference table
+
+| N# of Parcels | Height (meters) | N# of Triangles | N# of Entities | N# of Bodies | N# of Materials | N# of Textures |
+| ------------- | --------------- | --------------- | -------------- | ------------ | --------------- | -------------- |
+| 1             | 20.00           | 10000           | 200            | 30           | 20              | 10             |
+| 2             | 31.70           | 15850           | 317            | 48           | 32              | 16             |
+| 3             | 40.00           | 20000           | 400            | 60           | 40              | 20             |
+| 4             | 46.44           | 23219           | 464            | 70           | 46              | 23             |
+| 5             | 51.70           | 25850           | 517            | 78           | 52              | 26             |
+| 6             | 56.15           | 28074           | 561            | 84           | 56              | 28             |
+| 7             | 60.00           | 30000           | 600            | 90           | 60              | 30             |
+| 8             | 63.40           | 31699           | 634            | 95           | 63              | 32             |
+| 9             | 66.44           | 33219           | 664            | 100          | 66              | 33             |
+| 10            | 69.19           | 34594           | 692            | 104          | 69              | 35             |
+| 20            | 87.85           | 43923           | 878            | 132          | 88              | 44             |
+| 30            | 99.08           | 49542           | 991            | 149          | 99              | 50             |
+| 40            | 107.15          | 53576           | 1072           | 161          | 107             | 54             |
+| 50            | 113.45          | 56724           | 1134           | 170          | 113             | 57             |
+| 100           | 133.16          | 66582           | 1332           | 200          | 133             | 67             |
