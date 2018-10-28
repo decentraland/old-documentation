@@ -15,9 +15,9 @@ By interacting with the Ethereum blockchain you can, for example, require that a
 
 - Using the Web3 API
 - Using the `ethjs` library
-- Using the _ethereum controller_
+- Using the `eth-connect` library
 
-> IMPORTANT: At the present time, none of these three solutions are fully supported by the SDK, and the way in which they are implemented is very likely to change. For this reason, we advise that you only try these out for proofs of concept, but not to develop final experiences.
+> IMPORTANT: At the present time, none of these solutions are fully supported by the SDK, and the way in which they are implemented is very likely to change. For this reason, we advise that you only try these out for proofs of concept, but not to develop final experiences.
 
 ## Obtain a user's public key
 
@@ -115,6 +115,7 @@ npm install --save ethjs
 
 For more details and a full reference of what's possible with this library, see [ethjs's documentation](https://github.com/ethjs/ethjs)
 
+<!--
 ## The Ethereum Controller
 
 Another way to perform operations on the Ethereum blockchain is through the ethereum controller. This controller is packaged with the SDK, so you don't need to run any manual installations. You must first import it into your scene:
