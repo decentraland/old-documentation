@@ -98,7 +98,6 @@ Entities are nested inside other entities to form a tree structure. If you're fa
 
 See [Entities and components]({{ site.baseurl }}{% post_url /development-guide/2018-01-15-entities-components %}) for an in-depth look of both these concepts and how they're used by Decentraland scenes.
 
-
 ## The game loop
 
 The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbone of a Decentraland scene's code. It cycles through the main code at a regular interval and does the following:
@@ -121,10 +120,9 @@ The rendering of the scene is carried out in the backend, you don't need to hand
 
 Entities and components are places to store information about 3D the objects in a scene. _Systems_ and _systemComponents_ change the information that's stored in components.
 
-_Systems_ and _systemComponents_ are what make a static scene dynamic, allowing things to change over time or in response to user interaction. 
+_Systems_ and _systemComponents_ are what make a static scene dynamic, allowing things to change over time or in response to user interaction.
 
 Systems and systemComponents each have an `update()` method that's executed on every frame of the game loop, following the [_update pattern_](http://gameprogrammingpatterns.com/update-method.html).
-
 
 See [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-01-16-systems %}) for more details about how systems are used in a scene.
 
@@ -135,7 +133,6 @@ The _engine_ is what sits in between _entities_ and _components_ on one hand and
 All of the values stored in the components in the scene represent the scene's state at that point in time. With every frame of the game loop, the engine runs each of the systems over the corresponding components to update their values.
 
 After all the systems run, the components on each entity will have new values. When the engine renders the scene, it will use these new updated values and users will see the entities change to match their new states.
-
 
 ```ts
 export class RotatorSystem extends ComponentSystem {
@@ -165,8 +162,6 @@ In the example above, a `cube` entity and a `RotatorSystem` ComponentSystem are 
 [DIAGRAM]
 
 Note that the most of the code above is executed just once when loading the scene. The exception is the `update()` method of the ComponentSystem, that's called on every frame of the game loop.
-
-
 
 <!--
 All [scene objects]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) have a 'render()` method that outputs what users of your scene will see on their browser. This function must always output a hierarchical tree of entities that starts at the root level with a _scene_ entity.
