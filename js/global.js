@@ -344,6 +344,10 @@ $(function() {
     $('.lang-flag')
       .removeClass('english chinese')
       .addClass(value)
+
+    if (value === 'chinese') {
+      document.location.href = 'https://cn.docs.decentraland.org'
+    }
   })
 
   $('.select-language .dismiss').click(function() {
