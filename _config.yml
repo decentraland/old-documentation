@@ -3,11 +3,24 @@
 
 title: Decentraland
 url: "https://docs.decentraland.org"
-baseurl:
+? baseurl
 #google_analytics_key: UA-63691338-8
-disqus_shortname:
-newsletter_action:
+? disqus_shortname
+? newsletter_action
 segment_write_key: ZHLrnVct1IQCx7yLeOzxSic7G1Duy0HH
+
+twitter_url: "https://twitter.com/decentraland"
+discord_url: "https://discordapp.com/invite/9EcuFgC"
+github_url: "https://github.com/decentraland"
+sdk_url: "https://docs.decentraland.org/"
+reddit_url: "https://reddit.com/r/decentraland"
+fb_url: "https://www.facebook.com/decentraland/"
+faq_url: "https://decentraland.org/#faqs"
+telegram_url: "https://t.me/decentralandTG"
+tos_url: "https://decentraland.org/terms"
+privacy_url: "https://decentraland.org/privacy"
+content_url: "https://decentraland.org/content"
+ethics_url: "https://decentraland.org/ethics"
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /images/logo.png
@@ -21,12 +34,12 @@ social:
   links:
     - https://github.com/decentraland/documentation
 
-markdown    : kramdown
+markdown: kramdown
 
 # More › http://kramdown.gettalong.org/quickref.html
 # Options › http://kramdown.gettalong.org/options.html
 kramdown:
-  input:          GFM
+  input: GFM
   # https://github.com/jekyll/jekyll/pull/4090
   syntax_highlighter: rouge
 
@@ -34,7 +47,7 @@ kramdown:
   # span, block element options fall back to global
   syntax_highlighter_opts:
     # Rouge Options › https://github.com/jneen/rouge#full-options
-    css_class: 'light-theme'
+    css_class: "light-theme"
     #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
     span:
       line_numbers: false
@@ -67,28 +80,23 @@ exclude:
   - vendor
 
 collections:
-  sets:
-
+  ? sets
 
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
     values:
       layout: "default"
       image: "/images/thumb.jpg"
-  -
-    scope:
+  - scope:
       type: "posts"
     values:
       layout: "post"
-  -
-    scope:
+  - scope:
       type: "sets"
     values:
       _hide_content: true
-  -
-    scope:
+  - scope:
       path: "index.html"
     values:
       body_class: "show_hero_search"
@@ -110,4 +118,4 @@ types:
   - Document
   - Video
 
-_comments:
+? _comments

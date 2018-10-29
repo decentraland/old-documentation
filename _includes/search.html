@@ -1,6 +1,6 @@
 <form action="{{ site.baseurl }}/search/" method="get">
 	<input type="search" name="q" {% if include.add_id %}id="search-input"{% endif %} placeholder="Search" autofocus>
-	{% include search-icon.html %}
+	{% include search.svg %}
 	<button id="close-search">Cancel</button>
 	<input type="submit" value="Search" style="display: none;">
 </form>

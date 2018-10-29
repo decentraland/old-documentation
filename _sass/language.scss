@@ -1,0 +1,102 @@
+.select-language {
+  display: none;
+  background-color: #f2f2f5;
+  height: 72px;
+  align-items: center;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.7;
+  position: relative;
+
+  &.visible {
+    display: flex;
+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      display: block;
+      padding-top: 10px;
+    }
+  }
+
+  @media (min-width: 520px) {
+    height: 48px;
+
+    br {
+      display: none;
+    }
+  }
+
+  @media #{$tablet-landscape} {
+    text-align: center;
+  }
+
+  .dismiss {
+    cursor: pointer;
+    color: #ff2d55;
+    position: absolute;
+    user-select: none;
+    right: 16px;
+    text-transform: uppercase;
+    font-size: 13px;
+    top: 2px;
+    bottom: 0;
+    right: 16px;
+    display: flex;
+    align-items: center;
+
+    @media #{$mid-point} {
+      right: 30px;
+    }
+  }
+
+  .wrapper {
+    flex-grow: 1;
+    top: -2px;
+    position: relative;
+  }
+
+  .select-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 3px;
+    left: 4px;
+
+    select {
+      margin: 0;
+      border: 0;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: -0.1px;
+      color: $docs_primary_black;
+      background-color: transparent;
+      outline: none;
+
+      _:-ms-lang(x),
+      & {
+        font-weight: 600;
+      }
+    }
+
+    option {
+      padding: 0;
+    }
+  }
+
+  .lang-flag {
+    border-radius: 100%;
+    width: 16px;
+    height: 16px;
+    background: no-repeat center center;
+    margin-right: 4px;
+
+    &.english {
+      background-image: url(../images/flag-english.svg);
+    }
+
+    &.chinese {
+      background-image: url(../images/flag-chinese.svg);
+    }
+  }
+}

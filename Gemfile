@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'jekyll', '3.7.2'
+gem 'jekyll', '3.8.4'
 gem 'html-proofer'
 
 group :jekyll_plugins do

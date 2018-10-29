@@ -1,0 +1,35 @@
+<header>
+  <div class="dropdown-overlay"></div>
+  <div class="search-overlay mobile"></div>
+  <div class="wrapper">
+    <nav>
+      <div class="topbar">
+        <div class="logo">
+          <a href="/">{% include logo.svg %}</a>
+        </div>
+        <div class="dropdown-trigger">Docs {% include arrow.svg %}</div>
+      </div>
+      <div class="dropdown-content">
+        <ul class="menu">
+          <li><a href="https://market.decentraland.org/">Marketplace</a></li>
+          <li><a href="/" class="active">Docs</a></li>
+          <li><a href="https://agora.decentraland.org/">Agora</a></li>
+          <li><a href="https://decentraland.org/blog/">Blog</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="header_search">
+      <div class="search-overlay desktop"></div>
+      <form action="{{ site.baseurl }}/search/" method="get">
+        <input type="text" name="q" {% if include.add_id %}id="search-input"{% endif %} placeholder="Search" autofocus autocomplete="off">
+        {% include search.svg %}
+        <div class="loader"></div>
+        <div class="close">
+          {% include close.svg %}
+        </div>
+        <input type="submit" value="Search" style="display: none;">
+      </form>
+      <ul class="search-results"></ul>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,45 @@
+<div class="newsletter">
+  <div class="container">
+    <div class="newsletter__content">
+      <h2 class="newsletter__small-title">Developers Newsletter</h2>
+      <p class="newsletter__title">Subscribe to the latest news about Decentraland</p>
+    </div>
+    <form action="" class="form newsletter__form">
+      <input type="email" class="form-control" id="email" placeholder="mail@domain.com">
+      <button class="btn" type="submit" id="subscribe" disabled>Subscribe</button>
+    </form>
+    <div class="newsletter__form-sent">
+      <h2 class="newsletter__title">Thank you for subscribing!</h2>
+      <p>You will be up to date with every Decentraland news!</p>
+    </div>
+  </div>
+</div>
+
+<script>
+$('#email').on('keyup', function() {
+  $('#subscribe').prop({
+    disabled: $('#email').val().trim().length === 0
+  })
+})
+
+$('form.newsletter__form').on('submit', function(event) {
+  event.preventDefault()
+  const $email = $('#email')
+  $email.blur()
+  cta($email.val().trim())
+  $('.newsletter').addClass('sent')
+  return false
+})
+
+function cta(email) {
+  $('#subscribe').prop({ disabled: true })
+  if (email) {
+    {% if jekyll.environment == 'production' and site.segment_write_key != '' %}
+      analytics.identify({ email: email })
+      analytics.track('Subscribe Newsletter', { email: email })
+    {% else %}
+      console.log(email)
+    {% endif %}
+  }
+}
+</script>

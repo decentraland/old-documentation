@@ -1,0 +1,29 @@
+{% if page.content contains "code" %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.1/clipboard.min.js" integrity="sha256-hIvIxeqhGZF+VVeM55k0mJvWpQ6gTkWk3Emc+NmowYA=" crossorigin="anonymous"></script>
+  <script>
+    $('.highlighter-rouge code').each(function(i) {
+      const currentId = 'codeblock' + (i + 1)
+      $(this).attr('id', currentId)
+      const clipButton = (
+        '<div class="copy-code">' +
+          '<button class="codeblock-btn" data-clipboard-target="#' + currentId + '">' +
+            '<span class="status-copy">{% include copy-code-1.svg %} Copy Code</span>' +
+            '<span class="status-copied">{% include copy-code-2.svg %} Copied</span>' +
+          '</button>' +
+        '</div>'
+      )
+      $(this).parent().after(clipButton)
+    })
+
+    const clipboard = new ClipboardJS('.codeblock-btn')
+    clipboard.on('success', function(e) { e.clearSelection() })
+
+    $('.codeblock-btn').on('click', function () {
+      const $this = $(this)
+      $this.addClass('copied')
+      window.setTimeout(function() {
+        $this.removeClass('copied')
+      }, 3000)
+    })
+  </script>
+{% endif %}

@@ -1,0 +1,9 @@
+<svg width="11px" height="18px" viewBox="0 0 11 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: 3px 7px 6px 5px">
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="chevron" transform="translate(6.000000, 9.000000) scale(-1, 1) translate(-6.000000, -9.000000) translate(-10.000000, -7.000000)">
+      <rect id="bounds" x="0" y="0" width="32" height="32"></rect>
+      <path d="M10.6666667,16 L19.1111111,7.55555556 C19.6020309,7.06463578 20.3979691,7.06463578 20.8888889,7.55555556 L20.8888889,7.55555556 C21.3798087,8.04647533 21.3798087,8.84241356 20.8888889,9.33333333 L14.2222222,16 L20.8888889,22.6666667 C21.3798087,23.1575864 21.3798087,23.9535247 20.8888889,24.4444444 L20.8888889,24.4444444 C20.3979691,24.9353642 19.6020309,24.9353642 19.1111111,24.4444444 L10.6666667,16 Z"
+        id="icon" fill="#000000" transform="translate(16.222222, 16.000000) scale(-1, 1) translate(-16.222222, -16.000000) "></path>
+    </g>
+  </g>
+</svg>
