@@ -29,7 +29,8 @@ There are many wallet providers where you can hold Decentraland tokens. To use t
 Every wallet has a public and a private key. The hash of your public key is your wallet’s unique address, used to route transactions and identify a user. Your private key is used by your wallet to sign each transaction that you send to the network and certify that it was truly sent by you. Your private key is also used to restore your wallet in case you forget your password, so keep it in a safe place and don’t share it with anyone.
 
 In Decentraland, user identities are built around wallets. Since wallet public keys are unique, your scene can use them to identify a Decentraland user in a persistent way. Wallets can also hold different tokens that can give a user a unique avatar, a wearable item, permissions to enter scenes that choose to restrict access, a special weapon to use in a game, etc.
-Transactions
+
+## Transactions
 
 Transactions make changes to the information that’s stored in the blockchain. Typical transactions involve tokens changing owners, for example user A giving his LAND token to user B in exchange for an amount of MANA tokens. In the Ethereum network, however, a transaction can also mean changing the information that’s stored about a token without changing its owner. For example, changing the description of a parcel, or merging several parcels into an Estate.
 
