@@ -119,11 +119,13 @@ In this example, that's described in greater detail in a [blogpost](https://blog
 
 [Explore the scene](https://dcl-project-asliohkpyt.now.sh/?position=0%2C0)
 
+<!--
 #### Pay to open
 
 In this example, based on the door example in the beginner samples, you're only allowed to open the door if you've paid 10 MANA to a specific wallet. The sample shows how you can use the SDK to track blockchain transactions.
 
 [Code](https://github.com/decentraland/sample-scene-payments)
+-->
 
 ## Advanced samples
 
