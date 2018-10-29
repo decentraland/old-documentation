@@ -1,0 +1,83 @@
+{% assign sets = site.sets | sort: 'order' %}
+<aside class="sidebar">
+  <div class="dropdown">
+    {% if page.set %}
+      {% for set in sets %}
+        {% assign set_id = set.id  | replace: "/sets/", "" %}
+        {% if page.set == set_id %}
+          {% capture selected_set_image %}sets/{{ set_id }}.svg{% endcapture %}
+          {% assign selected_set_title = set.title %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% assign selected_set_image = 'sets/home.svg' %}
+      {% assign selected_set_title = 'Home' %}
+    {% endif %}
+
+    <div class="icon">{% include {{ selected_set_image }} %}</div>
+    <span class="override-color-set">{{ selected_set_title }}</span>
+    <div class="arrow">{% include double-arrow.svg %}</div>
+  </div>
+  <div class="close"></div>
+
+  <ul class="parent">
+    {% if page.url == "/" %}
+      <li class="active">
+        <div>
+          {% include sets/home.svg %}
+          <span class="sidebar-h3">Home</span>
+        </div>
+    {% else %}
+      <li>
+        <div>
+          {% include sets/home.svg %}
+          <a href="/" class="sidebar-h3">Home</a>
+        </div>
+    {% endif %}
+    </li>
+
+  {% for set in sets %}
+    {% assign page_set_id = '/sets/' | append: page.set %}
+    {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+    {% assign first = series_posts[0] %}
+    {% assign size = series_posts | size %}
+
+    {% assign set_id = set.id  | replace: "/sets/", "" %}
+    {% capture set_image %}sets/{{ set_id }}.svg{% endcapture %}
+
+    {% if size > 0 %}
+      {% if page_set_id == set.id %}
+        <li class="active">
+          <div>
+            {% include {{ set_image }} %}
+            <span class="sidebar-h3">{{ set.title }}</span>
+          </div>
+      {% else %}
+        <li>
+          <div>
+            {% include {{ set_image }} %}
+            <a href="{{ first.url }}" class="sidebar-h3 toggle-item" data-toggle="{{set.id}}">{{ set.title }}</a>
+          </div>
+      {% endif %}
+
+      {% if page_set_id == set.id %}
+        <ul class="current-post-list">
+          {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+          {% for post in series_posts %}
+            <li><a {% if post.url == page.url %} class="active" {% endif %} href="{{ post.url }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <ul class="toggle" style="display: none" data-id="{{set.id}}">
+        {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
+        {% for post in series_posts %}
+          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+
+      </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</aside>

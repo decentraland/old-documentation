@@ -13,14 +13,6 @@
 {% assign categories = categories | split: "," | uniq | sort: self %}
 
 <div class="wrapper">
-  <section class="docs-top-section">
-    <h2 class="docs-top-tag">
-      Documentation
-    </h2>
-    <div class="docs-top-search">
-      {% include search.html %}
-    </div>
-  </section>
   <section>
     <h1 class="docs-intro-title">
       Site map
@@ -35,12 +27,12 @@
     {% assign posts = site.categories[cat] %}
     {% assign len = posts | size %}
     {% if cat != 'releases' %}
-    
+
     {% if len > 0 %}
     <h2 style="text-transform:capitalize;">
       {{ cat | replace: "-", " " }} <span class="count">({{ posts | size }})</span>
     </h2>
-    <ul>    
+    <ul>
       {% assign posts_sorted = posts | sort: 'date' %}
       {% for post in posts_sorted %}
       <li>

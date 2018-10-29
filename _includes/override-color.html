@@ -1,23 +1,16 @@
-<script>
-  var color = {{ include.accent_color | jsonify }};
-
-  if (color) {
-    var rules = [
-      'a { color: $; }',
-      '.override-color-set { color: $ !important; }',
-      '.index-trigger { color: $; }',
-      'blockquote { border-color: $; }',
-      '.tutorial-content ul li:before { color: $; }',
-      '.back-to-docs svg #icon { fill: $; }',
-      '.index-trigger svg #shape { fill: $; }'
-    ]
-
-    var style = $('<style>')
-
-    style.text(rules.map(function ($) { return $.replace('$', color) }).join('\n'))
-
-    $(function () {
-      $('body').append(style)
-    })
-  }
-</script>
+<style>
+a { color: {{ include.accent_color }} }
+.override-color-set { color: {{ include.accent_color }} !important }
+.tutorial-main a { color: {{ include.accent_color }} }
+.tutorial-content ul li:before { color: {{ include.accent_color }} }
+.copy-code .codeblock-btn { color: {{ include.accent_color }} }
+.copy-code .codeblock-btn svg g path.main { fill: {{ include.accent_color }} }
+.sidebar li.active .sidebar-h3 { color: {{ include.accent_color }} }
+.sidebar li.active svg .main { fill: {{ include.accent_color }} }
+.sidebar li:hover .sidebar-h3 { color: {{ include.accent_color }} }
+.sidebar li:hover svg .main { fill: {{ include.accent_color }} }
+.sidebar .dropdown svg .main { fill: {{ include.accent_color }} }
+.feedback .buttons button.yes:hover { background-color: {{ include.accent_color }} }
+.feedback .textarea { border-bottom-color: {{ include.accent_color }} }
+.feedback .options button { color: {{ include.accent_color }} }
+</style>
