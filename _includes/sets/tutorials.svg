@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18">
-  <g fill="none" transform="translate(-5 -3)">
-    <rect width="24" height="24"/>
-    <path class="main" fill="#000" d="M13,3 L19,9 L19,19 C19,20.1045695 18.1045695,21 17,21 L7,21 C5.8954305,21 5,20.1045695 5,19 L5,5 C5,3.8954305 5.8954305,3 7,3 L13,3 Z M13,4 L13,8.09999996 C13,8.59705626 13.4029437,9 13.9,9 L18,9 L13,4 Z"/>
-  </g>
-</svg>
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 3l6 6v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6zm0 1v4.1a.9.9 0 0 0 .9.9H18l-5-5z" class="main" fill="#0D0D17" fill-rule="nonzero"/></svg>
