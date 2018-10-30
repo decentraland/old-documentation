@@ -245,6 +245,7 @@
         padding: 32px 20px 16px;
         display: flex;
         flex-direction: column;
+        width: 100%;
 
         &::before {
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
