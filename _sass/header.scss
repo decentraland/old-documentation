@@ -108,7 +108,7 @@ header {
     top: 64px;
     left: -15px;
     right: 0;
-    transform: translate(0, -5%);
+    transform: translate(0, -16px);
     box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.16);
 
     &.open {
@@ -245,7 +245,7 @@ header {
     transition: transform $default-transition, opacity $default-transition;
     pointer-events: none;
     opacity: 0;
-    transform: translate(0, -5%);
+    transform: translate(0, -16px);
     color: #5c5c6e;
     top: 114px;
 
