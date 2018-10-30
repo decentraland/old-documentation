@@ -345,9 +345,12 @@ $(function() {
       .removeClass('english chinese')
       .addClass(value)
 
-    if (value === 'chinese') {
-      document.location.href = 'https://cn.docs.decentraland.org'
+    const sites = {
+      english: 'https://docs.decentraland.org',
+      chinese: 'https://cn.docs.decentraland.org'
     }
+
+    document.location.href = sites[value] + document.location.pathname
   })
 
   $('.select-language .dismiss').click(function() {
