@@ -42,16 +42,13 @@
     right: 16px;
     display: flex;
     align-items: center;
-
-    @media #{$mid-point} {
-      right: 30px;
-    }
   }
 
   .wrapper {
     flex-grow: 1;
     top: -2px;
     position: relative;
+    padding: 0 16px;
   }
 
   .select-wrapper {
