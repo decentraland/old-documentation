@@ -97,7 +97,7 @@ Three dimensional scenes in Decentraland are based on the [Entity-Component](htt
 
 Entities are nested inside other entities to form a tree structure. If you're familiar with web development, you might find it useful to think of entities as elements in a DOM tree and of components as the attributes of each of these elements.
 
-See [Entities and components]({{ site.baseurl }}{% post_url /development-guide/2018-01-15-entities-components %}) for an in-depth look of both these concepts and how they're used by Decentraland scenes.
+See [Entities and components]({{ site.baseurl }}{% post_url /development-guide/2018-02-15-entities-components %}) for an in-depth look of both these concepts and how they're used by Decentraland scenes.
 
 ## The game loop
 
@@ -125,7 +125,7 @@ _Systems_ and _systemComponents_ are what make a static scene dynamic, allowing 
 
 Systems and systemComponents each have an `update()` method that's executed on every frame of the game loop, following the [_update pattern_](http://gameprogrammingpatterns.com/update-method.html).
 
-See [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-01-16-systems %}) for more details about how systems are used in a scene.
+See [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-systems %}) for more details about how systems are used in a scene.
 
 ## Putting it all together
 
