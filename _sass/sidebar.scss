@@ -79,8 +79,8 @@
     user-select: none;
     top: 16px;
     right: 16px;
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     background: url(../images/x.svg) no-repeat center center;
 
     @media #{$mid-point} {
@@ -100,7 +100,7 @@
   }
 
   ul.parent {
-    padding: 8px 16px;
+    padding: 8px 16px 8px 8px;
     position: fixed;
     transition: transform $default-transition, opacity $default-transition;
     background: white;
@@ -117,7 +117,7 @@
     width: 100%;
 
     @media #{$mid-point} {
-      padding: 32px 48px;
+      padding: 32px 48px 32px 40px;
     }
 
     @media #{$tablet-landscape} {
