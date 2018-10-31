@@ -65,6 +65,7 @@
 
     .scrollable {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     h1 {

@@ -1,6 +1,78 @@
 ---
 layout: null
 ---
+
+function indexData(data) {
+  var index = lunr(function() {
+    this.field('id')
+    this.field('title', { boost: 10 })
+    this.field('categories')
+    this.field('url')
+    this.field('content')
+  })
+
+  for (var key in data) {
+    index.add(data[key])
+  }
+
+  window.index = index
+  window.data = data
+}
+
+if (!document.location.pathname.match('/search')) {
+  $.getJSON('{{ site.baseurl }}/data.json?{{ site.time | date: "%s%N" }}', function(data) {
+    indexData(data)
+  })
+}
+
+function getPreview(query, content, previewLength) {
+  previewLength = previewLength || content.length * 2
+
+  var parts = query.split(" "),
+    match = content.toLowerCase().indexOf(query.toLowerCase()),
+    matchLength = query.length,
+    preview
+
+  // Find a relevant location in content
+  for (var i = 0; i < parts.length; i++) {
+    if (match >= 0) {
+      break
+    }
+
+    match = content.toLowerCase().indexOf(parts[i].toLowerCase())
+    matchLength = parts[i].length
+  }
+
+  // Create preview
+  if (match >= 0) {
+    var start = match - previewLength / 2,
+      end = start > 0 ? match + matchLength + previewLength / 2 : previewLength
+
+    preview = content.substring(start, end).trim()
+
+    if (start > 0) {
+      preview = "..." + preview
+    }
+
+    if (end < content.length) {
+      preview = preview + "..."
+    }
+
+    // Highlight query parts
+    preview = preview.replace(
+      new RegExp("(" + parts.join("|") + ")", "gi"),
+      "<strong>$1</strong>"
+    )
+  } else {
+    // Use start of content if no match found
+    preview =
+      content.substring(0, previewLength).trim() +
+      (content.length > previewLength ? "..." : "")
+  }
+
+  return preview
+}
+
 $(function() {
   // HEADER ==>
 
@@ -85,54 +157,6 @@ $(function() {
   $inputs.on('touchend', function() {
     setTimeout(zoomEnable, 500)
   })
-
-  function getPreview(query, content, previewLength) {
-    previewLength = previewLength || content.length * 2
-
-    var parts = query.split(" "),
-      match = content.toLowerCase().indexOf(query.toLowerCase()),
-      matchLength = query.length,
-      preview
-
-    // Find a relevant location in content
-    for (var i = 0; i < parts.length; i++) {
-      if (match >= 0) {
-        break
-      }
-
-      match = content.toLowerCase().indexOf(parts[i].toLowerCase())
-      matchLength = parts[i].length
-    }
-
-    // Create preview
-    if (match >= 0) {
-      var start = match - previewLength / 2,
-        end = start > 0 ? match + matchLength + previewLength / 2 : previewLength
-
-      preview = content.substring(start, end).trim()
-
-      if (start > 0) {
-        preview = "..." + preview
-      }
-
-      if (end < content.length) {
-        preview = preview + "..."
-      }
-
-      // Highlight query parts
-      preview = preview.replace(
-        new RegExp("(" + parts.join("|") + ")", "gi"),
-        "<strong>$1</strong>"
-      )
-    } else {
-      // Use start of content if no match found
-      preview =
-        content.substring(0, previewLength).trim() +
-        (content.length > previewLength ? "..." : "")
-    }
-
-    return preview
-  }
 
   function showSearchResults() {
     const userInput = $searchInput.val().toLowerCase()
@@ -262,23 +286,11 @@ $(function() {
     fetching = true
     $headerSearch.addClass('fetching')
 
-    $.getJSON('{{ site.baseurl }}/data.json', function(data) {
+    $.getJSON('{{ site.baseurl }}/data.json?{{ site.time | date: "%s%N" }}', function(data) {
       fetching = false
       $headerSearch.removeClass('fetching')
 
-      window.data = data
-      window.index = lunr(function() {
-        this.field('id')
-        this.field('title', { boost: 10 })
-        this.field('categories')
-        this.field('url')
-        this.field('content')
-      })
-
-      for (var key in window.data) {
-        window.index.add(window.data[key])
-      }
-
+      indexData(data)
       showSearchResults()
     })
   })
