@@ -298,12 +298,13 @@ $(function() {
   // SIDEBAR ==>
 
   const $sidebar = $('.sidebar')
+  const $sidebarDropdown = $sidebar.find('.dropdown')
 
   function closeSidebar() {
     $sidebar.removeClass('open')
   }
 
-  $sidebar.find('.dropdown').click(function(event) {
+  $sidebarDropdown.click(function(event) {
     event.preventDefault()
     $sidebar.addClass('open')
     $('body').addClass('modal-open')
@@ -320,6 +321,22 @@ $(function() {
     const data = $(event.target).attr('data-toggle')
     $('.toggle[data-id!="' + data + '"]').hide('fast')
     $('.toggle[data-id="' + data + '"]').toggle('fast')
+  })
+
+  const $window = $(window)
+  $window.bind('scroll', function () {
+    var threshold = $header.height()
+
+    const $languageSelector = $('.select-language.visible')
+    if ($languageSelector.length > 0) {
+      threshold += $languageSelector.height()
+    }
+
+    if ($window.scrollTop() > threshold) {
+      $sidebarDropdown.addClass('sticky')
+    } else {
+      $sidebarDropdown.removeClass('sticky')
+    }
   })
 
   // HEADINGS ==>
