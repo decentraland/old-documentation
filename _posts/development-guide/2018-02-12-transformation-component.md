@@ -26,11 +26,18 @@ myEntity.set(myTransform)
 - `x:0, y:0, z:0` refers is the middle of the scene's base parcel, at ground level. The position of a child entity is relative to the center position of its parent entity, so `x:0, y:0, z:0` always refers to the center of the parent, wherever it is in the scene.
   > Note: You can change the base parcel of a scene by editing the `base` attribute of _scene.json_.
 
+You can either set each axis individually, or use the `set` operation to set all axis.
+
 ```ts
 let myTransform = new Transform()
+
+// Set each axis individually
 myTransform.position.x = 3
 myTransform.position.y = 1
 myTransform.position.z = 3
+
+// Set the whole position with one expression (x, y, z)
+myTransform.position.set(3, 1, 3)
 ```
 
 > Tip: When previewing a scene locally, a compass appears in the (0,0,0) point of the scene with labels for each axis.
@@ -39,12 +46,18 @@ myTransform.position.z = 3
 
 `rotation` is a _3D vector_ too, but where _x_, _y_ and _z_ represent the rotation in that axis, measured in degrees. A full turn requires 360 degrees.
 
+You can either set each angle individually, or use the `set` operation to set all angles.
+
 ```ts
 let myTransform = new Transform()
 
+// Set each angle individually
 myTransform.rotation.x = 180
 myTransform.rotation.y = 90
 myTransform.rotation.z = 0
+
+// Set the whole rotation with one expression  (x, y, z)
+myTransform.rotation.set(180, 90, 0)
 ```
 
 <!--
@@ -96,15 +109,21 @@ If the entity is configured with both a specific rotation and a lookAt setting, 
 
 The default scale is 1, so assign a value larger to 1 to stretch an entity or smaller than 1 to shrink it.
 
+You can either set each dimension individually, or use the `set` operation to set all dimensions.
+
 <!-- can either be a _number_, to maintain the entity's proportions, or a _3D vector_, in case you want to scale the axis in different proportions.
 -->
 
 ```ts
 let myTransform = new Transform()
 
+// Set each dimension individually
 myTransform.scale.x = 1
 myTransform.scale.y = 5
 myTransform.scale.z = 1
+
+// Set the whole scale with one expression  (x, y, z)
+myTransform.set(1, 5, 1)
 ```
 
 ## Inherit transformations from parent
@@ -119,12 +138,11 @@ const childEntity = new Entity()
 childEntity.parent = parentEntity
 
 let parentTransform = new Transform()
-parentTransform.position.x = 3
-parentTransform.position.y = 1
-parentTransform.rotation.x = 90
+parentTransform.position.set(3, 1, 1)
+parentTransform.scale(0.5, 0.5, 0.5)
 
 let childTransform = new Transform()
-childTransform.position.x = 1
+childTransform.position.set(0, 1, 0)
 
 parentEntity.set(parentTransform)
 childEntity.set(childTransform)
