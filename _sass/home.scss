@@ -1,8 +1,6 @@
 .home {
-  display: flex;
-  flex-direction: column;
-
   @media #{$tablet-landscape} {
+    display: flex;
     flex-direction: row;
 
     > section {
