@@ -116,12 +116,13 @@ If multiple entities in your scene use a same material, there's no need to creat
 
 ```tsx
 //Create entities and assign shapes
+const box = new BoxShape()
 const myEntity = new Entity()
-myEntity.set(new BoxShape())
+myEntity.set(box)
 const mySecondEntity = new Entity()
-mySecondEntity.set(new BoxShape())
+mySecondEntity.set(box)
 const myThirdEntity = new Entity()
-myThirdEntity.set(new BoxShape())
+myThirdEntity.set(box)
 
 //Create material and configure fields
 const myMaterial = new Material()

@@ -107,12 +107,11 @@ If the entity is configured with both a specific rotation and a lookAt setting, 
 
 `scale` is also a _3D vector_, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, wether it's a primitive or a 3D model.
 
+You can also set a single number in the `set` operation to maintain the entity's proportions as you scale it.
+
 The default scale is 1, so assign a value larger to 1 to stretch an entity or smaller than 1 to shrink it.
 
 You can either set each dimension individually, or use the `set` operation to set all dimensions.
-
-<!-- can either be a _number_, to maintain the entity's proportions, or a _3D vector_, in case you want to scale the axis in different proportions.
--->
 
 ```ts
 let myTransform = new Transform()
@@ -124,6 +123,9 @@ myTransform.scale.z = 1
 
 // Set the whole scale with one expression  (x, y, z)
 myTransform.set(1, 5, 1)
+
+// Set the scale with a single number to maintain proportions
+myTransform.set(2)
 ```
 
 ## Inherit transformations from parent

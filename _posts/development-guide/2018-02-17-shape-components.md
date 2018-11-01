@@ -52,6 +52,8 @@ For more complex shapes, you can build a 3D model in an external tool like Blend
 
 To add an external model into a scene, add a `GLTFShape` component to an entity and set its `src` to the path of the glTF file containing the model.
 
+> Note: 3D models in _.obj_ format are also supported, but will might not be supported for much longer. To add one, create an `OBJShape` component instead. Note that _.obj_ models don't support animations and other features.
+
 ```ts
 myEntity.set(new GLTFShape("models/House.gltf"))
 ```
@@ -65,8 +67,6 @@ In the example above, the model is located in a `models` folder at root level of
 glTF models can include their own embedded textures, materials, colliders and animations. See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more information on this.
 
 Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
-
-> Note: 3D models in _.obj_ format are also supported as a legacy feature, but will likely not be supported for much longer. To add one, use a `OBJShape` component instead.
 
 #### Free libraries for 3D models
 
@@ -121,3 +121,28 @@ A _collider_ is a set of geometric shapes or planes that define which parts of t
 See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more details on how to add colliders to a 3D model.
 
 ## Text blocks
+
+## Reuse shapes
+
+If multiple entities in your scene use a same primitive or 3D model, there's no need to create an instance of the shape component for each. All entities can share one same instance, this keeps your scene lighter to load and prevents you from exceeding the maximum amount of triangles per scene.
+
+```ts
+// Create shape component
+const house = new GLTFShape("models/House.gltf"
+
+// Create entities
+const myEntity = new Entity()
+const mySecondEntity = new Entity()
+const myThirdEntity = new Entity()
+
+// Assign shape component to entities
+myEntity.set(house)
+mySecondEntity.set(house)
+myThirdEntity.set(house)
+```
+
+## Handle an object pool
+
+If you plan to spawn and despawn similar entities from your scene, it might be a good practice to keep a fixed set of entities in memory. Instead of creating and deleting these, you could add and remove these from the engine instead.
+
+This is an efficient way to deal with your user's memory,

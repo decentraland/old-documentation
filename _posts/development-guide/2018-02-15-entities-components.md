@@ -36,11 +36,19 @@ Explain there are two ways to declare entities and compnents: xml for static and
 
 ## TypeScript syntax for entities and components
 
+```ts
+// Create an entity
 const cube = new Entity()
 
-cube.set(new Components.Position(5, 1, 5))
+// Create and apply a transform component to that entity
+cube.set(new Transform())
 
+// Set the fields in the component
+cube.get(Transform).position.set(3, 1, 3)
+
+// Add the entity to the engine
 engine.addEntity(cube)
+```
 
 > Note: Entities and their components don't exist in your scene until you add the entities to the engine, as shown above.
 
@@ -69,11 +77,11 @@ Invisible entities can be used as wrappers, these can handle multiple entities a
 
 [DIAGRAM : invisible ENTITIY W children]
 
-## Set a component on an entity
+## Add a component to an entity
 
-Set a component on an entity for its values to affect the entity.
+Add a component to an entity for its values to affect the entity.
 
-You can create a new component and set it in a same expression, as shown below:
+You can create a new component and set it in one single expression, as shown below:
 
 ```ts
 cube = new Entity()
@@ -95,14 +103,14 @@ Once a component is set in an entity, you can reference it through the parent en
 
 ```ts
 cube = new Entity()
-cube.set(new Scale(0.1, 0.3, 0.1))
-scale = cube.get(Scale)
+cube.set(new Transform())
+scale = cube.get(Transform)
 ```
 
 You can change the values in the fields of the component by accessing it this way.
 
 ```ts
-scale = cube.get(Scale).x = Math.random() * 10
+scale = cube.get(Transform).scale.x = Math.random() * 10
 ```
 
 ## Define a custom component
@@ -213,44 +221,7 @@ export class Cat {
 
 You may want to add a component that simply signals to a [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-systems %}) to handle this entity and not another. A component like this could have no data of its own.
 
-## Disposable components
-
-Disposable components can be added to an engine directly, without needing to be linked to an entity. Entities then add references to them isntead of instancing new ones
-
-These are ideal for materials and for sounds that might be used by various entities.
-
 ```ts
-const niceMaterial = new Material()
-niceMaterial.albedoColor = "#FF0000"
-
-const box = new BoxShape()
-box.set(niceMaterial)
+@Component("flag")
+export class flag {}
 ```
-
-@DisposableComponent('gltf-model')
-export class GLTFModel {
-src: string = ''
-
-constructor(str?: string) {
-this.src = str
-}
-
-onDispose() {
-// a
-}
-}
-
-const model = new GLTFModel()
-
-const model = new GLTFModel()
-const ent = new Entity()
-ent.set(model)
-model.src = 'example.gltf'
-
-engine.addEntity(ent)
-
-dcl.onUpdate(x => {
-if (x === 1) {
-engine.disposeComponent(model)
-}
-})

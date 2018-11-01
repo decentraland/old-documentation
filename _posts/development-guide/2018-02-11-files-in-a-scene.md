@@ -17,9 +17,7 @@ Scenes include the following files:
 
 - **src/game.ts**: The entry point of the scene.
 - **scene.json**: The manifest that contains metadata for the scene.
-- **decentraland/project.json**: Data about the scene owner.
 - **package.json** and **package-lock.json**: Specify the versions of all dependencies of the scene.
-- **build.json**: The file with the instructions to build the scene.
 - **tsconfig.json**: Typescript configuration file.
 - **.dclignore**: Lists what files in your project not to deploy to IPFS.
 
@@ -43,12 +41,6 @@ When you run the `dcl init` command, it prompts you to enter some descriptive me
 the scene.json manifest file for the scene. All of this
 metadata is optional for previewing the scene locally, but part of it is needed for deploying. You can change this information manually at any time.
 
-#### project.json
-
-Contains information about the Ethereum address of the scene owner
-
-????
-
 #### package.json
 
 This file provides information to NPM that allows it to identify the project, as well as handle the project's dependencies. Decentraland scenes need two packages:
@@ -61,10 +53,6 @@ This file provides information to NPM that allows it to identify the project, as
 This file lists the versions of all the other dependencies of the project. These versions are locked, meaning that the compiler will use literally the same minor release listed here.
 
 You can change any package version manually by editing this file.
-
-#### build.json
-
-This is the Decentraland build configuration file.
 
 #### tsconfig.json
 
