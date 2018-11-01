@@ -325,18 +325,12 @@ $(function() {
 
   const $window = $(window)
   $window.bind('scroll', function () {
-    var threshold = $header.height()
-
     const $languageSelector = $('.select-language.visible')
-    if ($languageSelector.length > 0) {
-      threshold += $languageSelector.height()
-    }
+    const threshold = ($languageSelector.length > 0)
+      ? $header.height() + $languageSelector.height()
+      : $header.height()
 
-    if ($window.scrollTop() > threshold) {
-      $sidebarDropdown.addClass('sticky')
-    } else {
-      $sidebarDropdown.removeClass('sticky')
-    }
+    $sidebarDropdown.toggleClass('sticky', $window.scrollTop() > threshold)
   })
 
   // HEADINGS ==>
