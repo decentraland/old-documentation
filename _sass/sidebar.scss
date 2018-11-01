@@ -189,7 +189,6 @@
 
     > div {
       display: flex;
-      // flex-shrink: 0;
       align-items: center;
 
       svg {
@@ -203,7 +202,11 @@
     }
 
     > ul {
-      padding-left: 50px;
+      padding-left: 42px;
+
+      @media #{$tablet-landscape} {
+        padding-left: 46px;
+      }
 
       li > a {
         padding: 10px 0;
