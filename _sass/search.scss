@@ -69,16 +69,16 @@
     }
 
     .icon {
-      padding: 4px 20px 6px 6px;
+      padding: 4px 20px 6px 0;
       flex-shrink: 0;
 
       img {
-        width: 16px;
-        height: 16px;
+        width: 20px;
+        height: 20px;
 
         @media #{$tablet} {
-          width: 20px;
-          height: 20px;
+          width: auto;
+          height: auto;
         }
       }
     }
