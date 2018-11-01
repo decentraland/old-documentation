@@ -16,13 +16,19 @@ header {
   }
 
   .logo {
-    width: 32px;
-    height: 32px;
     margin-right: 16px;
+    height: 32px;
+
+    img {
+      width: 32px;
+    }
 
     @media #{$mid-point} {
-      width: 36px;
       height: 36px;
+
+      img {
+        width: 36px;
+      }
     }
   }
 
