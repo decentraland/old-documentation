@@ -356,7 +356,7 @@ $(function() {
   // LANGUAGE ==>
 
   function dismissLanguageBar() {
-    Cookies.set('language', true)
+    Cookies.set('language', true, { expires: 365 })
     $('.select-language').removeClass('visible')
   }
 
