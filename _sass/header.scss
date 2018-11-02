@@ -16,13 +16,19 @@ header {
   }
 
   .logo {
-    width: 32px;
-    height: 32px;
     margin-right: 16px;
+    height: 32px;
+
+    img {
+      width: 32px;
+    }
 
     @media #{$mid-point} {
-      width: 36px;
       height: 36px;
+
+      img {
+        width: 36px;
+      }
     }
   }
 
@@ -142,7 +148,7 @@ header {
       display: flex;
       align-items: center;
       height: 100%;
-      padding: 12px 15px 12px 67px;
+      padding: 12px 15px 12px 64px;
       color: #0a0f1f;
       text-transform: uppercase;
       font-size: 13px;
