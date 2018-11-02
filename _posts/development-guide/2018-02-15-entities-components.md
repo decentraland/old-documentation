@@ -99,19 +99,40 @@ cube.set(nextPosComponent)
 
 ## Access a component from an entity
 
-Once a component is set in an entity, you can reference it through the parent entity.
+Once a component is set in an entity, you can reference it through the parent entity using the `get` method.
 
 ```ts
+// Create entity and component
 cube = new Entity()
 cube.set(new Transform())
+
+// Using get
 scale = cube.get(Transform)
 ```
 
-You can change the values in the fields of the component by accessing it this way.
+The `get()` function fetches a reference to the component object, not a copy of its values. That means you are then free to change the component's values.
 
 ```ts
-scale = cube.get(Transform).scale.x = Math.random() * 10
+let XScale = cube.get(Transform).scale.x
+XScale = Math.random() * 10
 ```
+
+The example above directly modifies the value of the _x_ scale on the Transform component.
+
+If you're not entirely sure if the entity will have the component you're trying to retrieve, you can use `getOrNull()` or `getOrCreate()`
+
+```ts
+//  getOrNull
+scale = cube.getOrNull(Transform)
+
+// getOrCreate
+scale = cube.getOrCreate(Transform)
+```
+
+If the component you're trying to retrieve can't be found in the entity:
+
+- When using `get()` it returns an error
+- When using `getOrNull()` it returns `Null`
 
 ## Define a custom component
 

@@ -80,6 +80,7 @@ Scenes are deployed to **parcels**, the 10 meter by 10 meter pieces of virtual L
 
 We are developing the web client that will allow users to explore Decentraland. All of the content you upload to your LAND will be rendered and viewable through this client. We have included a preview tool in the SDK so that you can preview, test, and interact with your content in the meantime.
 
+<!--
 ## Scene paradigms
 
 ////// ONLY IF WE TAKE THE HORRIBLE DECISION TO DO BOTH
@@ -89,9 +90,11 @@ Decentraland scenes can be coded in two very different ways.
 - ECS (.ts) uses an Entity component system and is close to how most game engines develop
 - Scriptable scene (.tsx) is close to how the React framework works, which is popular in web development.
 
+-->
+
 ## Entities and Components
 
-Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an _entity_, and each entity can include _components_ that determine its characteristics.
+Three dimensional scenes in Decentraland are based on an [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) system, where everything in a scene is an _entity_, and each entity can include _components_ that determine its characteristics.
 
 [DIAGRAM : ENTITIY W COMPONENTS]
 
@@ -107,102 +110,86 @@ The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbo
 - Update the scene
 - Re-render the scene
 
-In most traditional software programs, all events are triggered directly by user actions. Nothing about the program's state will change until the user clicks to open a menu, save a file, etc. Interactive environments and games aren't like that. Not all changes to the scene are necessarily caused by a user's actions. Your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some user actions might also take multiple frames to be completed, for example if the opening of a door needs to take a whole second, the door position must be incrementally updated about 30 times as it moves.
+In most traditional software programs, all events are triggered directly by user actions. Nothing it the program's state will change until the user clicks on a button, opens a menu, etc.
+
+Interactive environments and games are different from that. Not all changes to the scene are necessarily caused by a user's actions. Your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some user actions might also take multiple frames to be completed, for example if the opening of a door needs to take a whole second, the door position must be incrementally updated about 30 times as it moves.
 
 We call each iteration over the loop a _frame_. Decentraland scenes are rendered at 30 frames per second whenever possible. If a frame takes more time than that to be rendered, then there will be less frames.
 
 In each frame, the scene is updated; then the scene is re-rendered, based on the updated values.
 
-In Decentraland scenes, there is no explicitly declared game loop, but rather the `update()` functions on _Systems_ and _systemComponents_ make up the game loop.
+In Decentraland scenes, there is no explicitly declared game loop, but rather the `update()` functions on the _Systems_ of the scene make up the game loop.
 
 The rendering of the scene is carried out in the backend, you don't need to handle that while developing your scene.
 
-## Systems and componentSystems
+## Systems
 
-Entities and components are places to store information about 3D the objects in a scene. _Systems_ and _systemComponents_ change the information that's stored in components.
+Entities and components are places to store information about 3D the objects in a scene. _Systems_ change the information that's stored in components.
 
-_Systems_ and _systemComponents_ are what make a static scene dynamic, allowing things to change over time or in response to user interaction.
+_Systems_ are what make a static scene dynamic, allowing things to change over time or in response to user interaction.
 
-Systems and systemComponents each have an `update()` method that's executed on every frame of the game loop, following the [_update pattern_](http://gameprogrammingpatterns.com/update-method.html).
+Each System has an `update()` method that's executed on every frame of the game loop, following the [_update pattern_](http://gameprogrammingpatterns.com/update-method.html).
 
 See [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-systems %}) for more details about how systems are used in a scene.
 
+## Entity groups
+
+Groups keep track of all entities in the scene that have certain components in them. Once a group is created, it automatically keeps its list up to date with each new entity or component that is added or removed.
+
+Entity groups can be referenced by systems as they update the scene. If you attempt to update all the entities in the scene on every frame, that can sometimes have a significant cost in performance. By referring only to the entities in a group, you ensure you're only dealing with those that are relevant.
+
 ## Putting it all together
 
-The _engine_ is what sits in between _entities_ and _components_ on one hand and _systems_ and _systemComponents_ on the other. It coordinates the systems so that they know what entities to act upon and when.
+The _engine_ is what sits in between _entities_ and _components_ on one hand and _systems_ and _entity groups_ on the other. It calls system's functions, updates groups when entities are added, etc.
 
-All of the values stored in the components in the scene represent the scene's state at that point in time. With every frame of the game loop, the engine runs each of the systems over the corresponding components to update their values.
+All of the values stored in the components in the scene represent the scene's state at that point in time. With every frame of the game loop, the engine runs each of the systems to update their values.
 
 After all the systems run, the components on each entity will have new values. When the engine renders the scene, it will use these new updated values and users will see the entities change to match their new states.
 
 ```ts
-export class RotatorSystem extends ComponentSystem {
-  constructor() {
-    super(Rotation)
-  }
+// Create a group to track all entities with a Transform component
+const myGroup = engine.getComponentGroup(Transform)
+
+// Define a System
+export class RotatorSystem {
+  // The update function runs on every frame of the game loop
   update() {
-    for (let i in this.entities) {
-      const rotation = this.entities[i].get(Rotation)
+    // The function iterates over all the entities in myGroup
+    for (let entity of this.myGroup.entities) {
+      const rotation = entity.get(Transform).Rotation
       rotation.x += 5
     }
   }
 }
 
+// Add the system to the engine
+engine.addSystem(new RotatorSystem())
+
+// Create an entity
 const cube = new Entity()
 
-cube.set(new Position(5, 1, 5))
-cube.set(new Rotation(0, 0, 0))
+// Create a transform component
+const cubeTransform = new Transform()
+
+// Set the fields in the transform component
+cubeTransform.Position.set(5, 1, 5)
+cubeTransform.Rotation.set(0, 0, 0)
+
+// Set the transform onto the entity
+cube.set(cubeTransform)
+
+// Give the entity a box shape
 cube.set(new BoxShape())
 
+// Add the entity to the engine
 engine.addEntity(cube)
-engine.addSystem(new RotatorSystem())
 ```
 
-In the example above, a `cube` entity and a `RotatorSystem` ComponentSystem are added to the engine. The `cube` entity has a `Position`, a `Rotation`, and a `BoxShape` component. In every frame of the game loop, the `update()` function of `RotationSystem` is called, and it changes the values in the `Rotation` component of the `cube` entity.
+In the example above, a `cube` entity and a `RotatorSystem` system are added to the engine. The `cube` entity has a `Transform`, and a `BoxShape` component. In every frame of the game loop, the `update()` function of `RotationSystem` is called, and it changes the values in the `Transform` component of the `cube` entity.
 
 [DIAGRAM]
 
-Note that the most of the code above is executed just once when loading the scene. The exception is the `update()` method of the ComponentSystem, that's called on every frame of the game loop.
-
-<!--
-All [scene objects]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) have a 'render()` method that outputs what users of your scene will see on their browser. This function must always output a hierarchical tree of entities that starts at the root level with a _scene_ entity.
-
-{% raw %}
-
-```tsx
- async render() {
-    return (
-      <scene position={{ x: 5, y: 0, z: 5 }}>
-        <box
-          position={{ x: 2, y: 1, z: 0 }}
-          scale={{ x: 2, y: 2, z: 0.05 }}
-          color="#0000FF"
-        />
-        <entity
-          rotation={this.state.doorRotation}
-          transition={{ rotation: { duration: 1000, timing: 'ease-in' } }}
-        >
-          <box
-            id="door"
-            scale={{ x: 1, y: 2, z: 0.05 }}
-            position={{ x: 0.5, y: 1, z: 0 }}
-            color="#00FF00"
-          />
-        </entity>
-      </scene>
-    )
-  }
-```
-
-{% endraw %}
-
-If you have game development experience with other tools, you might expect scenes to have some kind of render loop that periodically renders elements in the screen. Decentraland doesn't work like that. We built the API based on _events_, so the `render()` function is designed to update the scene in reaction to events rather than by querying the world repeatedly.
-
-Scenes have a [state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}), which is a collection of variables that change over time and represent the current disposition of the scene. The state changes by the occurrence of [events]({{ site.baseurl }}{% post_url /development-guide/2018-01-03-event-handling %}) in the scene. When the state changes, this retriggers the rendering of the scene, using the new values of the state.
-
-This is inspired by the [React](https://reactjs.org/) framework, most of what you can read about React applies to decentraland scenes as well.
-
--->
+Note that most of the code above is executed just once, when loading the scene. The exception is the `update()` method of the system, which is called on every frame of the game loop.
 
 ## Scene Decoupling
 
@@ -217,76 +204,3 @@ We have also abstracted the communication protocol. This allows us to run the sc
 We don't want developers to intervene with the internals of the engine or even need to know what lies inside the engine. We need to ensure a consistent experience for users throughout the Decentraland map, and mistakes are more likely to happen at that "low" level.
 
 Because of this decoupling, your scene's code doesn't have access to the DOM or the `window` object, so you can't access data like the user's browser or geographical location.
-
-<!--
-
-## Taking Inspiration from React
-
-One of the goals we had when designing our SDK was to reduce the learning curve as much as possible. We also wanted to incentive good practices and the writing of maintainable code, respecting the remote async-rpc constraints in every case.
-
-To make a long story short, we were considering two approaches for doing this:
-
-- **the jQuery way**: tell the system how to handle entities, create, mutate and try to reach a desired state.
-- **the React way**: tell the system the desired state and let it figure out how to get there.
-
-#### The _jQuery_ way
-
-If we had chosen the jQuery way (which we didn't), the code needed to create our example scene would look like this:
-
-{% raw %}
-
-```ts
-// WARNING: This code sample is only hypothetical,
-// This is not valid syntax
-// and is not supported by our tools
-
-let scene = metaverse.createScene()
-let objModel = metaverse.createObjModel()
-let sphere = metaverse.createSphere()
-
-objModel.setAttribute("src", "models/a.gltf")
-objModel.appendTo(scene)
-
-sphere.setAttribute("position", { x: 10, y: 10, z: 10 })
-sphere.appendTo(scene)
-
-EntityController.render(scene)
-```
-
-{% endraw %}
-
-In this example, we're telling the system how to reach a desired state, the example (ab)uses mutations and
-side effects of how the code works to reach the desired state.
-
-#### The _React_ way
-
-We chose to do things the [React](https://reactjs.org/) way, so our code for creating the same scene as above looks like this:
-
-{% raw %}
-
-```tsx
-// IMPORTANT: This code is only an example, it does not exist nor work
- async render() {
-   return (
-    <scene>
-      <obj-model src="models/a.gltf" />
-      <sphere position={{ x: 10, y: 10, z: 10 }} />
-    </scene>
-  )
-}
-```
-
-{% endraw %}
-
-In this example, we're just telling the system the desired state, instead of describing all of the logic to get to that state.
-
-We made our SDK following the React approach, for several reasons:
-
-- It takes advantage of the evolution of web technologies that occurred in the past 10 years.
-- It's simpler to understand, it removes tons of boilerplate code that's not related to the business logic of the scene.
-- It's declarative. You describe **what** you want, not **how** you want that to happen.
-- It helps onboard developers that are already familiar with React.
-- The pattern is well known and well documented, getting help should be easy.
-- It has a low memory footprint and it makes it easy to do garbage collection.
-
--->

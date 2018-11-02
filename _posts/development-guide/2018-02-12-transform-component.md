@@ -107,7 +107,7 @@ If the entity is configured with both a specific rotation and a lookAt setting, 
 
 `scale` is also a _3D vector_, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, wether it's a primitive or a 3D model.
 
-You can also set a single number in the `set` operation to maintain the entity's proportions as you scale it.
+You can either use the `set()` operation to provide a value for each of the three axis, or use `setAll()` to provide a single number and maintain the entity's proportions as you scale it.
 
 The default scale is 1, so assign a value larger to 1 to stretch an entity or smaller than 1 to shrink it.
 
@@ -125,7 +125,7 @@ myTransform.scale.z = 1
 myTransform.set(1, 5, 1)
 
 // Set the scale with a single number to maintain proportions
-myTransform.set(2)
+myTransform.setAll(2)
 ```
 
 ## Inherit transformations from parent
