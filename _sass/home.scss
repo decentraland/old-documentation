@@ -1,8 +1,6 @@
 .home {
-  display: flex;
-  flex-direction: column;
-
   @media #{$tablet-landscape} {
+    display: flex;
     flex-direction: row;
 
     > section {
@@ -120,6 +118,7 @@
       text-decoration: none;
       display: flex;
       -webkit-tap-highlight-color: transparent;
+      user-select: none;
 
       /* IE11 */
       @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
@@ -245,6 +244,7 @@
         padding: 32px 20px 16px;
         display: flex;
         flex-direction: column;
+        width: 100%;
 
         &::before {
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);

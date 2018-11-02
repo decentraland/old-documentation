@@ -1,4 +1,6 @@
 .sidebar {
+  min-height: 56px;
+
   @media #{$tablet-landscape} {
     padding: 36px 64px 0 0;
   }
@@ -34,7 +36,7 @@
     cursor: pointer;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    height: 64px;
+    height: 56px;
     font-size: 17px;
     font-weight: 500;
 
@@ -45,6 +47,22 @@
 
     @media #{$tablet-landscape} {
       display: none;
+    }
+
+    &.sticky {
+      background: #fff;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+      padding: 0 16px;
+      transition: box-shadow $default-transition;
+
+      @media #{$mid-point} {
+        padding: 0 48px;
+      }
     }
 
     .icon,
@@ -79,8 +97,8 @@
     user-select: none;
     top: 16px;
     right: 16px;
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     background: url(../images/x.svg) no-repeat center center;
 
     @media #{$mid-point} {
@@ -100,7 +118,7 @@
   }
 
   ul.parent {
-    padding: 8px 16px;
+    padding: 8px 16px 8px 8px;
     position: fixed;
     transition: transform $default-transition, opacity $default-transition;
     background: white;
@@ -111,13 +129,13 @@
     z-index: 30;
     opacity: 0;
     pointer-events: none;
-    transform: translate(0, -5%);
+    transform: translate(0, -16px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     width: 100%;
 
     @media #{$mid-point} {
-      padding: 32px 48px;
+      padding: 32px 48px 32px 40px;
     }
 
     @media #{$tablet-landscape} {
@@ -199,7 +217,6 @@
     text-transform: capitalize;
     color: #5c5c6e;
     outline: none;
-    -webkit-tap-highlight-color: transparent;
 
     &.active {
       color: #000;
