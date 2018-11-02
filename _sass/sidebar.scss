@@ -15,8 +15,11 @@
     display: flex;
     padding: 10px 0;
     align-items: center;
-    margin-left: 8px;
     width: 100%;
+
+    @media #{$tablet-landscape} {
+      margin-left: 4px;
+    }
   }
 
   .active {
@@ -186,7 +189,6 @@
 
     > div {
       display: flex;
-      // flex-shrink: 0;
       align-items: center;
 
       svg {
@@ -200,7 +202,11 @@
     }
 
     > ul {
-      padding-left: 50px;
+      padding-left: 42px;
+
+      @media #{$tablet-landscape} {
+        padding-left: 46px;
+      }
 
       li > a {
         padding: 10px 0;
