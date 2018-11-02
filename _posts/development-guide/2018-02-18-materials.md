@@ -110,11 +110,11 @@ myEntity.set(myMaterial)
 
 To create an animated sprite, use texture mapping to change the selected regions of a same texture that holds all the frames.
 
-## Reusing materials
+## Reuse materials
 
 If multiple entities in your scene use a same material, there's no need to create an instance of the material component for each. All entities can share one same instance, this keeps your scene lighter to load and prevents you from exceeding the maximum amount of materials per scene.
 
-```tsx
+```ts
 //Create entities and assign shapes
 const box = new BoxShape()
 const myEntity = new Entity()

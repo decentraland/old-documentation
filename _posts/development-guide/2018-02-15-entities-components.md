@@ -225,3 +225,18 @@ You may want to add a component that simply signals to a [Systems]({{ site.baseu
 @Component("flag")
 export class flag {}
 ```
+
+## Handle an object pool
+
+If you plan to spawn and despawn similar entities from your scene, it might be a good practice to keep a fixed set of entities in memory. Instead of creating and deleting these, you could add and remove these from the engine instead.
+
+This is an efficient way to deal with your user's memory.
+
+When adding an entity to the engine, its `alive` field is implicitly set to `true`, when removing it, this field is set to `false`.
+
+While an entity isn't added to the engine, its geometry doesn't add up to the maximum triangle count four your scene.
+
+This has the following benefits:
+
+- If your entity uses a complex 3D model or texture, it might take the scene some time to load it from the content server. If the entity is already in memory, then that won't be necessary.
+- If you add and remove entities constantly, entities that are removed from the engine might still remain in memory and add up over time till they become unmanageable. By reusing the same ones, you ensure this won't happen.
