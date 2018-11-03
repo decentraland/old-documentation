@@ -9,7 +9,7 @@ set: blockchain-interactions
 set_order: 3
 ---
 
-You can use the Decentraland CLI to query info directly from LAND tokens in the blockchain and from the scene files uploaded to IPFS.
+You can use the Decentraland CLI to query info directly from LAND tokens in the blockchain and from the scene files uploaded to the content server.
 
 To run these commands, you must first [Install the CLI]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}).
 
@@ -29,7 +29,7 @@ The `dcl status` command returns a list with the files deployed to a scene. This
   > Note: Don't add a space between both coordinates.
 - `dcl status id`, where _id_ is an estate id, returns info about the scene with that estate id.
 
-> Note: Everything that's uploaded to IPFS is public and reachable through that network. When you deploy a scene, by default you're not uploading the original source code for the scene, instead you upload a version that's compiled to minified JavaScript, which is a lot less readable.
+> Note: Everything that's uploaded to our content server is public and reachable through that network. When you deploy a scene, by default you're not uploading the original source code for the scene, instead you upload a version that's compiled to minified JavaScript, which is a lot less readable.
 
 ## Get info from a wallet address
 
