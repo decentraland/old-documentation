@@ -140,9 +140,3 @@ myEntity.set(house)
 mySecondEntity.set(house)
 myThirdEntity.set(house)
 ```
-
-## Handle an object pool
-
-If you plan to spawn and despawn similar entities from your scene, it might be a good practice to keep a fixed set of entities in memory. Instead of creating and deleting these, you could add and remove these from the engine instead.
-
-This is an efficient way to deal with your user's memory,

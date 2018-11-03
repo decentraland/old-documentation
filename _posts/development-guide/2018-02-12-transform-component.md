@@ -105,7 +105,7 @@ If the entity is configured with both a specific rotation and a lookAt setting, 
 
 ## Scale
 
-`scale` is also a _3D vector_, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, wether it's a primitive or a 3D model.
+`scale` is also a _3D vector_, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, whether it's a primitive or a 3D model.
 
 You can either use the `set()` operation to provide a value for each of the three axis, or use `setAll()` to provide a single number and maintain the entity's proportions as you scale it.
 
