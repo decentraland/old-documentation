@@ -4,18 +4,18 @@
   .docs-header {
     height: 48px;
     margin-top: 48px;
-    padding:8px 0;
+    padding: 8px 0;
     position: relative;
   }
 
-  .docs-header > .index-trigger {
+  .docs-header>.index-trigger {
     position: absolute;
     right: 0;
     top: 12px;
-    display: flex!important;
+    display: flex !important;
   }
 
-  .docs-header > span {
+  .docs-header>span {
     font-size: 22px;
     font-weight: 600;
     font-style: normal;
@@ -26,24 +26,26 @@
   }
 </style>
 <div class="wrapper">
-	<section class="docs-top-section">
-		<h2 class="docs-top-tag">
-			Documentation
-		</h2>
-		<div class="docs-top-search">
-            <div class="docs-top-languages">
-                <a href="http://cn.docs.decentraland.org" class="translate-link-en" data-event-category="Translate to 中文" data-event-action="click">中文</a>
-            </div>
+  <section class="docs-top-section">
+    <h2 class="docs-top-tag">
+      Documentation
+    </h2>
+    <div class="docs-top-search">
+      <div class="docs-top-languages">
+        <a href="http://cn.docs.decentraland.org" class="translate-link-en" data-event-category="Translate to 中文"
+          data-event-action="click">中文</a>
+      </div>
 
-			{% include search.html %}
-		</div>
-	</section>
-	<section>
-		<h1 class="docs-intro-title">
-			Start building the metaverse
-		</h1>
-		<p class="docs-intro-desc">
-			Learn about Decentraland, the SDK, and supporting dApps. Or jump right in and <a href="{{ site.baseurl }}/documentation/create-scene/" > create your first scene</a>!
+      {% include search.html %}
+    </div>
+  </section>
+  <section>
+    <h1 class="docs-intro-title">
+      Start building the metaverse
+    </h1>
+    <p class="docs-intro-desc">
+      Learn about Decentraland, the SDK, and supporting dApps. Or jump right in and <a href="{{ site.baseurl }}/documentation/create-scene/">
+        create your first scene</a>!
     </p>
     <div class="docs-header">
       <a class="index-trigger no-smooth" href="{{site.baseurl}}/archive" style="">
@@ -51,30 +53,31 @@
       </a>
       <span>Categories</span>
     </div>
-		<div class="docs-listing">
-			<ul class="listing">
-			{% assign sets = site.sets | sort: 'order' %}
-      {% for set in sets %}
+    <div class="docs-listing">
+      <ul class="listing">
+        {% assign sets = site.sets | sort: 'order' %}
+        {% for set in sets %}
         {% assign series_posts = site.posts | where: "set", set.slug | sort: 'set_order' %}
         {% assign post = series_posts[0] %}
-				{% assign size = series_posts | size %}
+        {% assign size = series_posts | size %}
         {% if size > 0 %}
-          <li>
-            <a class="docs-wrapper" href="{{ post.url }}">
-              <div class="icon" style="background-color: {{set.color}}; background-image: url({{ site.baseurl }}/images/sets/{{set.img}})">{% include document-icon.html icon=item.type %}</div>
-              <article>
-                <h3>{{ set.title | replace: "-", " " }}</h3>
-                <p class="description">
-                  {{ set.description }}
-                </p>
-                <span class="entry-count">{{size}} entries</span>
-              </article>
-            </a>
-          </li>
+        <li>
+          <a class="docs-wrapper" href="{{ post.url }}">
+            <div class="icon" style="background-color: {{set.color}}; background-image: url({{ site.baseurl }}/images/sets/{{set.img}})">{%
+              include document-icon.html icon=item.type %}</div>
+            <article>
+              <h3>{{ set.title | replace: "-", " " }}</h3>
+              <p class="description">
+                {{ set.description }}
+              </p>
+              <span class="entry-count">{{size}} entries</span>
+            </article>
+          </a>
+        </li>
         {% endif %}
-			{% endfor %}
-			</ul>
-		</div>
+        {% endfor %}
+      </ul>
+    </div>
 
     {% include newsletter.html %}
     {% include social-networks.html %}
