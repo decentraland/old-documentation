@@ -168,7 +168,7 @@ export class NextPos {
   x: number = 0
   y: number = 0
   z: number = 0
-  constructor(number: x, number: y, number: z) {
+  constructor(x: number, y: number, z: number) {
     this.x = x
     this.y = y
     this.z = z
@@ -190,7 +190,7 @@ export class NextPos {
   x: number = 0
   y: number = 0
   z: number = 0
-  constructor(number: x = 5, number: y = 3, number: z = 5) {
+  constructor(x: number = 5, y: number = 3, z: number = 5) {
     this.x = x
     this.y = y
     this.z = z
