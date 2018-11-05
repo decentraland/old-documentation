@@ -27,7 +27,10 @@ At a very high level, the **Decentraland Software Development Kit** (SDK) allows
 
 It includes the following components:
 
+<!--
 - **The Decentraland Editor**: Use it to create and preview Decentraland scenes. You don't need to download any software to your machine, the editor runs entirely on your browser.
+-->
+
 - **The Decentraland CLI** (Command Line Interface): Use it to generate new Decentraland scenes locally on your own machine, preview them and upload them to the content server.
 - **The Decentraland API** (formerly known as _Metaverse API_ and still commonly referred to as _the API_): A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between users or other applications.
 
@@ -102,13 +105,13 @@ See [Entities and components]({{ site.baseurl }}{% post_url /development-guide/2
 
 ## The game loop
 
-The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbone of a Decentraland scene's code. It cycles through the main code at a regular interval and does the following:
+The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbone of a Decentraland scene's code. It cycles through part of the code at a regular interval and does the following:
 
 - Listen for user input
 - Update the scene
 - Re-render the scene
 
-In most traditional software programs, all events are triggered directly by user actions. Nothing it the program's state will change until the user clicks on a button, opens a menu, etc.
+In most traditional software programs, all events are triggered directly by user actions. Nothing in the program's state will change until the user clicks on a button, opens a menu, etc.
 
 Interactive environments and games are different from that. Not all changes to the scene are necessarily caused by a user's actions. Your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some user actions might also take multiple frames to be completed, for example if the opening of a door needs to take a whole second, the door position must be incrementally updated about 30 times as it moves.
 

@@ -97,6 +97,14 @@ nextPosComponent.x = Math.random() * 10
 cube.set(nextPosComponent)
 ```
 
+## Remove a component from an entity
+
+To remove a component from an entity, simply use the entity's `remove()` method.
+
+```ts
+myEntity.remove(Material)
+```
+
 ## Access a component from an entity
 
 Once a component is set in an entity, you can reference it through the parent entity using the `get` method.
