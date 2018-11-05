@@ -60,8 +60,6 @@ myTransform.rotation.z = 0
 myTransform.rotation.set(180, 90, 0)
 ```
 
-> Tip: To rotate an entity so that it always faces the user (in a single axis or in all of them), set the BillboardMode field in the entity's [shape component]({{ site.baseurl }}{% post_url /development-guide/2018-02-17-shape-component %}).
-
 <!--
 ## Billboard mode
 
