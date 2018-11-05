@@ -37,34 +37,57 @@ Below are the maximum number of elements allowed allowed in a scene:
 
 From a scene's code, you can query both the limitations that apply to the scene and how much the scene is currently using. This is especially useful with scenes where the content changes dynamically. For example, in a scene where you add a new entity each time the user clicks, you could stop adding entities when you reach the scene limits.
 
+To use this functionality, you must first import `EntityController` into your scene.
+
+```ts
+import { querySceneLimits } from "@decentraland/EntityController"
+```
+
 #### Obtain scene limitations
 
 Run `this.entityController.querySceneLimits()` to obtain the limits of your scene. The limits are calculated for your scene based on how many parcels it occupies, according to the _scene.json_ file. The values returned by this command don't change over time, as the scene's size is always the same.
 
-The `querySceneLimits()` is asynchronous, so we recommend calling it with an `await` statement.
+The `querySceneLimits()` is asynchronous, so we recommend calling it using the `executeTask()` function, including an `await` statement.
+
+```ts
+executeTask(async () => {
+  try {
+    const limits = await querySceneLimits()
+    log('limits' + limits)
+  }
+})
+```
 
 The `querySceneLimits()` function returns a promise of an object with the following properties, all of type _number_.
 
 {% raw %}
 
 ```tsx
+// import controller
+import { querySceneLimits } from '@decentraland/EntityController'
+
+
 // get limits object
-const limits = await this.entityController.querySceneLimits()
+executeTask(async () => {
+  try {
+    const limits = await querySceneLimits()
 
-// print maximum triangles
-console.log(limits.triangles)
+    // print maximum triangles
+    log(limits.triangles)
 
-// print maximum entities
-console.log(limits.entities)
+    // print maximum entities
+    log(limits.entities)
 
-// print maximum bodies
-console.log(limits.bodies)
+    // print maximum bodies
+    log(limits.bodies)
 
-// print maximum materials
-console.log(limits.materials)
+    // print maximum materials
+    log(limits.materials)
 
-// print maximum textures
-console.log(limits.textures)
+    // print maximum textures
+    log(limits.textures)
+  }
+}
 ```
 
 {% endraw %}
@@ -75,30 +98,47 @@ For example, if your scene has only one parcel, logging `limits.triangles` shoul
 
 Just as you can check via code the maximum allowed values for your scene, you can also check how much of that is currently used by the scene. You do this by running `this.querySceneMetrics()`. The values returned by this command change over time as your scene renders different content.
 
-The `querySceneMetrics()` is asynchronous, so we recommend calling it with an `await` statement.
+The `querySceneMetrics()` is asynchronous, so we recommend calling it using the `executeTask()` function, including an `await` statement.
+
+```ts
+executeTask(async () => {
+  try {
+    const limits = await querySceneLimits()
+    log('limits' + limits)
+  }
+})
+```
 
 The `querySceneMetrics()` function returns a promise of an object with the following properties, all of type _number_.
 
 {% raw %}
 
 ```tsx
-// get metrics object
-const limits = await this.entityController.querySceneMetrics()
+// import controller
+import { querySceneMetrics } from '@decentraland/EntityController'
 
-// print maximum triangles
-console.log(limits.triangles)
 
-// print maximum entities
-console.log(limits.entities)
+// get limits object
+executeTask(async () => {
+  try {
+    const limits = await querySceneMetrics()
 
-// print maximum bodies
-console.log(limits.bodies)
+    // print maximum triangles
+    log(limits.triangles)
 
-// print maximum materials
-console.log(limits.materials)
+    // print maximum entities
+    log(limits.entities)
 
-// print maximum textures
-console.log(limits.textures)
+    // print maximum bodies
+    log(limits.bodies)
+
+    // print maximum materials
+    log(limits.materials)
+
+    // print maximum textures
+    log(limits.textures)
+  }
+}
 ```
 
 {% endraw %}
