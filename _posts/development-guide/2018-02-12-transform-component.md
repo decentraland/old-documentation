@@ -60,28 +60,36 @@ myTransform.rotation.z = 0
 myTransform.rotation.set(180, 90, 0)
 ```
 
+> Tip: To rotate an entity so that it always faces the user (in a single axis or in all of them), set the BillboardMode field in the entity's [shape component]({{ site.baseurl }}{% post_url /development-guide/2018-02-17-shape-component %}).
+
 <!--
-#### Turn to face the user
+## Billboard mode
 
-You can set an entity to act as a _billboard_, this means that it will always rotate to face the user. This was a common technique used in 3D games of the 90s, where most entities were planes that always faced the player, but the same can be used with and 3D model. This is also very handy to add to _text_ entities, since it makes them always legible.
+You can set a shape component to act as a _billboard_, this means that it will always rotate the entity to face the user. All components for primitive shapes and glTF models have a `billboard` field to allow you to set this.
 
-{% raw %}
+Billboards were a common technique used in 3D games of the 90s, where most entities were 2D planes that always faced the player, but the same can also be used to rotate a 3D model.
 
-```tsx
-<box billboard={7} />
-```
+You can also choose to only rotate the shape in this way in one of its axis. For example, if you set the billboard mode of a cube to only rotate in the Y axis, it will follow the user when moving at ground level, but the user will be able to look at it from above or from below.
 
-{% endraw %}
+Set the `billboard` field with a number, each number refers to a different rotation mode:
 
-You must provide this setting with a number that selects between the following modes:
-
-- 0: No movement on any axis
+- 0: No movement on any axis (default value)
 - 1: Only move in the **X** axis, the rotation on other axis is fixed.
 - 2: Only move in the **Y** axis, the rotation on other axis is fixed.
 - 4: Only move in the **Z** axis, the rotation on other axis is fixed.
 - 7: Rotate on all axis to follow the user.
 
-If the entity is configured with both a specific rotation and a billboard setting, it uses the rotation set on by its billboard behavior.
+```ts
+let myTransform = new Transform()
+
+// Set its billboard mode
+myTransform.billboard = 2
+```
+
+Billboards are also very handy to add to _text_ entities, since it makes them always legible.
+
+
+If the transform is configured with both a specific `rotation` and a `billboard` value other than 0, it uses the rotation set on by its billboard behavior.
 
 #### Turn to face a position
 
