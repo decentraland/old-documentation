@@ -105,6 +105,12 @@ To remove a component from an entity, simply use the entity's `remove()` method.
 myEntity.remove(Material)
 ```
 
+A removed component might still remain in memory even after removed.
+
+If your scene adds new components and removes them regularly, these removed components will add up and cause memory problems. It's advisable to instead use an object pool.
+
+If you try to remove a component that doesn't exist in the entity, this won't raise any errors.
+
 ## Access a component from an entity
 
 Once a component is set in an entity, you can reference it through the parent entity using the `get` method.
@@ -255,11 +261,14 @@ You may want to add a component that simply signals to a [Systems]({{ site.baseu
 export class flag {}
 ```
 
-## Handle an object pool
+## Pool entities and components
 
 If you plan to spawn and despawn similar entities from your scene, it might be a good practice to keep a fixed set of entities in memory. Instead of creating and deleting these, you could add and remove these from the engine instead.
 
 This is an efficient way to deal with your user's memory.
+
+```ts
+```
 
 When adding an entity to the engine, its `alive` field is implicitly set to `true`, when removing it, this field is set to `false`.
 
@@ -269,3 +278,8 @@ This has the following benefits:
 
 - If your entity uses a complex 3D model or texture, it might take the scene some time to load it from the content server. If the entity is already in memory, then that won't be necessary.
 - If you add and remove entities constantly, entities that are removed from the engine might still remain in memory and add up over time till they become unmanageable. By reusing the same ones, you ensure this won't happen.
+
+Similarly, if you plan to set and remove certain components from your entities, it's recommendable to create a pool of fixed components to add and remove rather than create new ones.
+
+```ts
+```

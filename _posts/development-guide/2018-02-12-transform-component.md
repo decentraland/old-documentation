@@ -61,7 +61,7 @@ myTransform.rotation.set(180, 90, 0)
 ```
 
 <!--
-## Billboard mode
+## Rotate to shape the user
 
 You can set a shape component to act as a _billboard_, this means that it will always rotate the entity to face the user. All components for primitive shapes and glTF models have a `billboard` field to allow you to set this.
 
@@ -89,7 +89,7 @@ Billboards are also very handy to add to _text_ entities, since it makes them al
 
 If the transform is configured with both a specific `rotation` and a `billboard` value other than 0, it uses the rotation set on by its billboard behavior.
 
-#### Turn to face a position
+#### Rotate to face a position
 
 You can set an entity to face a specific position in the scene using `lookAt`. This is a way to set the rotation of an entity without having to deal with angles.
 
