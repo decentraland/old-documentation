@@ -7,6 +7,11 @@ layout: default
     {% include sidebar.html %}
 
     <section class="tutorial-content">
+      <div class="tutorial-main" data-swiftype-index="true">
+        <h1>{{page.title}}</h1>
+        {{ content }}
+      </div>
+
       {% if page.type == "Video" %}
         {% include youtube.html video_id=page.video_id %}
         {% if page.resources %}
@@ -19,11 +24,6 @@ layout: default
           </div>
         {% endif %}
       {% endif %}
-
-      <div class="tutorial-main" data-swiftype-index="true">
-        <h1>{{page.title}}</h1>
-        {{ content }}
-      </div>
 
       {% include feedback.html %}
     </section>
