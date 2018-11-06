@@ -21,7 +21,7 @@ _Components_ define the traits of an entity. For example, a `transform` componen
 
 The values stored in all of the components that exist in the entities of the scene make up the _scene state_. When these values change, they change how the scene is rendered for the users.
 
-Components are meant to only store data about their parent entity. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-systems %}). Systems are completely decoupled from the components themselves. Entities and components are agnostic to what _systems_ are acting upon them.
+Components are only meant to store data about their parent entity. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-systems %}). Systems are completely decoupled from the components themselves. Entities and components are agnostic to what _systems_ are acting upon them.
 
 See [Component Reference]() for a reference of all the available constructors for predefined entities and all of the supported components of each.
 
@@ -73,9 +73,7 @@ If a parent entity has a `transform` component that affects its position, scale 
 - For **rotation** the parent's rotation is _0, 0, 0_
 - For **scale**, the parent is considered to have a size of _1_. Any resizing of the parent affects scale and position in proportion.
 
-Invisible entities can be used as wrappers, these can handle multiple entities as a group.
-
-[DIAGRAM : invisible ENTITIY W children]
+Entities with no shape component are invisible in the scene, and these can be used as wrappers to handle and position multiple entities as a group.
 
 ## Add a component to an entity
 
@@ -85,15 +83,17 @@ You can create a new component and set it in one single expression, as shown bel
 
 ```ts
 cube = new Entity()
-cube.set(new Scale(0.1, 0.3, 0.1))
+cube.set(new NextPos(1, 3, 1))
 ```
 
-You can otherwise first create a component, and then set on to an entity in a separate expression:
+You can otherwise first create a component, and then set it onto an entity in a separate expression:
 
 ```ts
 cube = new Entity()
 const nextPosComponent = new NextPos()
-nextPosComponent.x = Math.random() * 10
+nextPosComponent.x = 1
+nextPosComponent.y = 3
+nextPosComponent.z = 1
 cube.set(nextPosComponent)
 ```
 

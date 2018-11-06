@@ -13,7 +13,7 @@ Clicks can be done either with a mouse, a touch screen, a VR controller or some 
 
 > Note: Clicks can be made from a maximum distance of 10 meters away from the entity.
 
-#### onClick
+#### OnClick
 
 The easiest way to handle click events is to add an `onClick` component to the entity you want to click.
 
@@ -47,7 +47,26 @@ myEntity.set(
 
 ## Pointer down and pointer up event
 
-The pointer down and pointer up events are fired whenever the user presses or releases an input controller. It doesn't matter if the pointer was pointing at an entity or not.
+The pointer down and pointer up events are fired whenever the user presses or releases an input controller.
+
+These events are triggered every time that the buttons are pressed or released, regardless of where the pointer is pointing at, even if the click is also being handled by an entity's `OnClick` component.
+
+Use the `subscribe()` method of the Input object to initiate a listener that's subscribed to this click event. Whenever the event it caught, it executes a function.
+
+```tsx
+// Instance the input object
+const input = Input.instance
+
+// button down event
+input.subscribe("BUTTON_A_DOWN", e => {
+  log("pointerUp", e)
+})
+
+// button up event
+input.subscribe("BUTTON_A_UP", e => {
+  log("pointerDown", e)
+})
+```
 
 The PointerEvent object contains the following parameters:
 
@@ -56,26 +75,9 @@ The PointerEvent object contains the following parameters:
 - `length`: The length of the ray, as a _number_
 - `pointerId`: ID of the pointer that triggered the event (_PRIMARY_ or _SECONDARY_)
 
-```tsx
-// Instance the input object
-const input = Input.instance
-
-// button down event
-input.subscribe("BUTTON_A_DOWN", e => {
-  log("pointerUp works", e)
-})
-
-// button up event
-input.subscribe("BUTTON_A_UP", e => {
-  log("pointerDown works", e)
-})
-```
-
-The example above uses the `subscribe` to initiate a listener that checks for all click events. When the user clicks anywhere in the scene, it logs the event to console.
-
 ## Pointer state
 
-Instead of listening for events, you can check for the pointer's current state. This can be implemented in an `update()` function to check this state regularly.
+Instead of creating a listener to catch the events of the buttons changing state, you can check for the button's current state. You can implement this in a system's `update()` function to check this state regularly.
 
 ```tsx
 // Instance the input object
@@ -88,4 +90,6 @@ class ButtonChecker {
     }
   }
 }
+
+engine.addSystem(new ButtonChecker())
 ```
