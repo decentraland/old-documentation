@@ -120,6 +120,18 @@ A _collider_ is a set of geometric shapes or planes that define which parts of t
 
 See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more details on how to add colliders to a 3D model.
 
+## Make invisible
+
+You can make an entity invisible by setting the `visible` field in its shape component. Doing this is especially useful when using the shape as a collider.
+
+All components for primitive shape and 3D models are visible by default.
+
+```ts
+const myEntity = new Entity()
+myEntity.set(new BoxShape())
+myEntity.get(BoxShape).visible = false
+```
+
 ## Text blocks
 
 ## Reuse shapes
