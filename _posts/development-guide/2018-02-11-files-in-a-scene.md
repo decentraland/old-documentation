@@ -23,11 +23,40 @@ Scenes include the following files:
 
 #### game.ts
 
+This is the entry point to your scene's code. You could fit your entire scene's logic into this file, although for clarity in most cases we recommend spreading out your code over several other _.ts_ files and importing them into _game.ts_.
+
 In most cases, you'll only need to edit this file to create your scene. It contains the code that generates an entity tree, which is what end users of your parcel will see.
 
 Below is a basic example of a _game.ts_ file:
 
 ```ts
+// Create an entity group to track entities with Transition components
+let group = engine.getComponentGroup(Transform)
+
+// Create a system
+export class RotatorSystem {
+  // The update() function runs on every frame.
+  update() {
+    // Cycle over the entities in the entity group
+    for (let entity of group.entities) {
+      const transform = entity.get(Transform)
+      transform.rotation.y += 2
+    }
+  }
+}
+
+// Create an entity
+const cube = new Entity()
+// Add a cube shape to the entity
+cube.set(new BoxShape())
+// Add a transform component to the entity
+cube.set(new Transform())
+// Configure values in the transform component
+cube.get(Transform).position.set(5, 0, 5)
+// Add the entity to the engine
+engine.addEntity(cube)
+// Add the system to the engine
+engine.addSystem(new RotatorSystem())
 ```
 
 #### scene.json
@@ -37,16 +66,14 @@ The _scene.json_ file is a JSON formatted manifest for a scene in the world. A s
 contact information for the parcel owner, and security settings. For more information and an example of a
 _scene.json_ file, please visit the [Decentraland specification proposal](https://github.com/decentraland/proposals/blob/master/dsp/0020.mediawiki).
 
-When you run the `dcl init` command, it prompts you to enter some descriptive metadata, these datais are stored in
-the scene.json manifest file for the scene. All of this
-metadata is optional for previewing the scene locally, but part of it is needed for deploying. You can change this information manually at any time.
+All of this metadata is optional for previewing the scene locally, but part of it is needed for deploying. You can change this information manually at any time.
 
 #### package.json
 
 This file provides information to NPM that allows it to identify the project, as well as handle the project's dependencies. Decentraland scenes need two packages:
 
 - **decentraland-api**: allows the scene to communicate with the world engine.
-- **typescript**: used to compile the file _scene.tsx_ to javascript.
+- **typescript**: used to compile the file _game.ts_ to javascript.
 
 #### package-lock.json
 
@@ -73,6 +100,7 @@ We suggest using these folder names consistently for storing the different types
 - Sound files: `/sounds`
 - Image files for textures: `/materials`
 - _.ts_ definitions for components `/components`
+- _.ts_ definitions for systems `/systems`
 
 ## The dclignore file
 

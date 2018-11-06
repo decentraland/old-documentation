@@ -230,7 +230,7 @@ export class Velocity extends Components.Vector {
 }
 ```
 
-#### Interchangable components
+#### Interchangeable components
 
 You might want to define multiple different components where it only makes sense for each entity to have only one of these.
 

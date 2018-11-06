@@ -128,7 +128,7 @@ If multiple entities in your scene use a same primitive or 3D model, there's no 
 
 ```ts
 // Create shape component
-const house = new GLTFShape("models/House.gltf"
+const house = new GLTFShape("models/House.gltf")
 
 // Create entities
 const myEntity = new Entity()
