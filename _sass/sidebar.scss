@@ -195,6 +195,14 @@
         margin: 8px;
         flex-shrink: 0;
 
+        @media #{$tablet-landscape} {
+          margin-left: 0;
+        }
+
+        @media #{$desktop} {
+          margin-left: 8px;
+        }
+
         .main {
           transition: fill $default-transition;
         }
@@ -205,6 +213,10 @@
       padding-left: 42px;
 
       @media #{$tablet-landscape} {
+        padding-left: 38px;
+      }
+
+      @media #{$desktop} {
         padding-left: 46px;
       }
 
