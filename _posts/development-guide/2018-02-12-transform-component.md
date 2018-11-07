@@ -60,8 +60,7 @@ myTransform.rotation.z = 0
 myTransform.rotation.set(180, 90, 0)
 ```
 
-<!--
-## Rotate to shape the user
+## Rotate to face the user
 
 You can set a shape component to act as a _billboard_, this means that it will always rotate the entity to face the user. All components for primitive shapes and glTF models have a `billboard` field to allow you to set this.
 
@@ -86,28 +85,21 @@ myTransform.billboard = 2
 
 Billboards are also very handy to add to _text_ entities, since it makes them always legible.
 
-
 If the transform is configured with both a specific `rotation` and a `billboard` value other than 0, it uses the rotation set on by its billboard behavior.
 
-#### Rotate to face a position
+## Rotate to face a position
 
-You can set an entity to face a specific position in the scene using `lookAt`. This is a way to set the rotation of an entity without having to deal with angles.
+You can use `lookAt()` to orient an entity fo face a specific point in space by simply passing it that point's coordinates. This is a way to avoid dealing with the math for calculating the necessary angles.
 
-{% raw %}
+```ts
+let myTransform = new Transform()
+myTransform.position.set(1, 0, 1)
 
-```tsx
-<box lookAt={{ x: 2, y: 1, z: 3 }} transition={{ lookAt: { duration: 500 } }} />
+// Rotate to face the coordinates (4, 1, 2)
+myTransform.lookAt(new Vector3(4, 1, 2))
 ```
 
-{% endraw %}
-
-This setting needs a _Vector3Component_ as a value, this vector indicates the coordinates of the point in the scene that it will look at. You can, for example, set this value to a variable in the scene state that is updated with another entity's position.
-
-You can use a transition to make movements caused by lookAt smoother and more natural.
-
-If the entity is configured with both a specific rotation and a lookAt setting, it uses the rotation set on by its lookAt behavior.
-
--->
+This field requires a _Vector3Component_ as a value, this vector indicates the coordinates of the point in the scene to look at.
 
 ## Scale
 
