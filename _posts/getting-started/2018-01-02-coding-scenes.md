@@ -25,14 +25,14 @@ At a very high level, the **Decentraland Software Development Kit** (SDK) allows
 - Upload the content of your scene to the content server.
 - Link your LAND tokens to the URL of the content you have uploaded.
 
-It includes the following components:
+Our SDK includes the following components:
 
 <!--
 - **The Decentraland Editor**: Use it to create and preview Decentraland scenes. You don't need to download any software to your machine, the editor runs entirely on your browser.
 -->
 
 - **The Decentraland CLI** (Command Line Interface): Use it to generate new Decentraland scenes locally on your own machine, preview them and upload them to the content server.
-- **The Decentraland API** (formerly known as _Metaverse API_ and still commonly referred to as _the API_): A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between users or other applications.
+- **The Decentraland API**: A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between users or other applications.
 
 - **Scene examples**: Take inspiration and coding best practices from the [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
 
@@ -40,11 +40,11 @@ It includes the following components:
 
 To develop a scene locally, you don't need to own LAND tokens. Developing and testing a scene can be done completely offline, without the need to deploy a scene to the Ethereum network (the system Decentraland uses to establish ownership of LAND), or the content server.
 
-This SDK is intended to be used by users that are comfortable working with code and a terminal. You must have the following:
+These early releases of the SDK are intended for users that are comfortable working with code and a terminal. You must have the following:
 
 - **npm** (Node package manager): Used in the terminal to handle scene dependencies. [Download link](https://www.npmjs.com/)
 
-- **A source code editor**: Helps you create scenes a lot faster and with less errors, as it marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. Click on an object in the code to see the full definition of its class and what attributes it supports. We recommend [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/).
+- **A source code editor**: Helps you create scenes a lot faster and with less errors. A source code editor marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. You can also click on an object in the code to see the full definition of its class and what attributes it supports. We recommend [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/).
 
 - **The Decentraland CLI**: Used to build, preview and upload scenes. See [Installation guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %})
 
@@ -55,7 +55,7 @@ This SDK is intended to be used by users that are comfortable working with code 
 We use [TypeScript (.tsx)](https://www.typescriptlang.org/docs/handbook/jsx.html)
 to create our scenes.
 
-TypeScript is a superset of JavaScript, so if you're familiar with JavaScript you'll find it's almost the same, but TypeScript allows you to employ object-oriented programming and type declarations. Features like autocomplete and type-checking speed up development times and allow for the creation of a solid codebase. These features are all key components to a positive developer experience.
+TypeScript is a superset of JavaScript, so if you're familiar with JavaScript you'll find it's almost the same, but TypeScript allows you to employ object-oriented programming and type declarations. Features like autocomplete and type-checking speed up development times and allow for the creation of a more solid codebase. These features are all key components to a positive developer experience.
 
 <!--
 See [TypeScript tips]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %}) for best practices and recommendations for writing Decentraland scenes using TypeScript.
@@ -77,7 +77,7 @@ You can use another tool or language instead of TypeScript and compile it into J
 
 The content you deploy to your LAND is called a **scene**. A scene is an interactive program that renders content, this could be a game, an interactive experience, an art gallery, whatever you want!
 
-Scenes are deployed to **parcels**, the 10 meter by 10 meter pieces of virtual LAND, the scarce and non-fungible asset maintained in an Ethereum smart contract. These parcels of virtual space are where you will upload and interact with the content you create using the SDK.
+Scenes are deployed virtual LAND in Decentraland. LAND is a scarce and non-fungible asset maintained in an Ethereum smart contract. Deploy to a single **parcel**, a 10 meter by 10 meter piece of LAND, or to an **estate**, comprised of multiple adjacent parcels.
 
 We are developing the web client that will allow users to explore Decentraland. All of the content you upload to your LAND will be rendered and viewable through this client. We have included a preview tool in the SDK so that you can preview, test, and interact with your content in the meantime.
 
@@ -113,19 +113,19 @@ The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbo
 
 In most traditional software programs, all events are triggered directly by user actions. Nothing in the program's state will change until the user clicks on a button, opens a menu, etc.
 
-Interactive environments and games are different from that. Not all changes to the scene are necessarily caused by a user's actions. Your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some user actions might also take multiple frames to be completed, for example if the opening of a door needs to take a whole second, the door position must be incrementally updated about 30 times as it moves.
+Interactive environments and games are different from that. Not all changes to the scene are necessarily caused by a user's actions. Your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some user actions might also take multiple frames to be completed, for example if the opening of a door needs to take a whole second, the door's rotation must be incrementally updated about 30 times as it moves.
 
-We call each iteration over the loop a _frame_. Decentraland scenes are rendered at 30 frames per second whenever possible. If a frame takes more time than that to be rendered, then there will be fewer frames.
+We call each iteration over the loop a _frame_. Decentraland scenes are rendered at 30 frames per second whenever possible. If a frame takes more time than that to be rendered, then less frames will be processed.
 
 In each frame, the scene is updated; then the scene is re-rendered, based on the updated values.
 
 In Decentraland scenes, there is no explicitly declared game loop, but rather the `update()` functions on the _Systems_ of the scene make up the game loop.
 
-The rendering of the scene is carried out in the backend, you don't need to handle that while developing your scene.
+The compiling and rendering of the scene is carried out in the backend, you don't need to handle that while developing your scene.
 
 ## Systems
 
-Entities and components are places to store information about 3D the objects in a scene. _Systems_ change the information that's stored in components.
+Entities and components are places to store information about the objects in a scene. _Systems_ are places to store functions that change the information that's stored in components.
 
 _Systems_ are what make a static scene dynamic, allowing things to change over time or in response to user interaction.
 
@@ -137,13 +137,15 @@ See [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-system
 
 Groups keep track of all entities in the scene that have certain components in them. Once a group is created, it automatically keeps its list up to date with each new entity or component that is added or removed.
 
-Entity groups can be referenced by systems as they update the scene. If you attempt to update all the entities in the scene on every frame, that can sometimes have a significant cost in performance. By referring only to the entities in a group, you ensure you're only dealing with those that are relevant.
+If you attempt to update all the entities in the scene on every frame, that can sometimes have a significant cost in performance. By referring only to the entities in a group, you ensure you're only dealing with those that are relevant.
+
+Entity groups can be referenced by the functions in a system, typically an `update()` function will loop over each entity in the group performing the same actions.
 
 ## Putting it all together
 
 The _engine_ is what sits in between _entities_ and _components_ on one hand and _systems_ and _entity groups_ on the other. It calls system's functions, updates groups when entities are added, etc.
 
-All of the values stored in the components in the scene represent the scene's state at that point in time. With every frame of the game loop, the engine runs each of the systems to update their values.
+All of the values stored in the components in the scene represent the scene's state at that point in time. With every frame of the game loop, the engine runs the `update()` function of each of the systems to update the values stored in the components.
 
 After all the systems run, the components on each entity will have new values. When the engine renders the scene, it will use these new updated values and users will see the entities change to match their new states.
 
@@ -169,15 +171,12 @@ engine.addSystem(new RotatorSystem())
 // Create an entity
 const cube = new Entity()
 
-// Create a transform component
-const cubeTransform = new Transform()
+// Give the entity a transform component
+cube.set(new Transform())
 
 // Set the fields in the transform component
-cubeTransform.Position.set(5, 1, 5)
-cubeTransform.Rotation.set(0, 0, 0)
-
-// Set the transform onto the entity
-cube.set(cubeTransform)
+cube.get(Transform).Position.set(5, 1, 5)
+cube.get(Transform)..Rotation.set(0, 0, 0)
 
 // Give the entity a box shape
 cube.set(new BoxShape())
@@ -195,13 +194,13 @@ Note that most of the code above is executed just once, when loading the scene. 
 ## Scene Decoupling
 
 Your scenes don't run in the same context as the engine
-(a.k.a. the main thread), they might even not run in the same computer as the engine. We created the SDK in a way that is
+(a.k.a. the main thread). We created the SDK in a way that is
 entirely decoupled from the rendering engine. We designed it to be like this for both safety and performance reasons.
+
+Because of this decoupling, your scene's code doesn't have access to the DOM or the `window` object, so you can't access data like the user's browser or geographical location.
 
 The decoupling works by using RPC protocol, this protocol assigns a small part of the client to only render the scene and control events.
 
 We have also abstracted the communication protocol. This allows us to run the scenes locally in a WebWorker.
 
 We don't want developers to intervene with the internals of the engine or even need to know what lies inside the engine. We need to ensure a consistent experience for users throughout the Decentraland map, and mistakes are more likely to happen at that "low" level.
-
-Because of this decoupling, your scene's code doesn't have access to the DOM or the `window` object, so you can't access data like the user's browser or geographical location.
