@@ -13,24 +13,26 @@ Clicks can be done either with a mouse, a touch screen, a VR controller or some 
 
 > Note: Clicks can be made from a maximum distance of 10 meters away from the entity.
 
-#### OnClick
+## OnClick
 
-The easiest way to handle click events is to add an `onClick` component to the entity you want to click.
+The easiest way to handle click events is to add an `OnClick` component to the entity you want to click.
 
-You can declare what to do in the event of a click by writing a lambda in the `onClick` itself, or you can call a separate function to keep your code easier to read.
+You declare what to do in the event of a click by writing a lambda function in the `OnClick` component.
 
 ```tsx
 const myEntity = new Entity()
 myEntity.set(new BoxShape())
 
 myEntity.set(
-  new OnClick(_ => {
+  new OnClick(e => {
     log("myEntity clicked")
   })
 )
 ```
 
-The click event object is passed as a parameter of the function you call in the `onClick`. This event object contains the following parameter that can be accessed by your function:
+> Tip: To keep your code easier to read, the lambda function in the `OnCLick` can consist of just a call to a separate function that contains all of the logic.
+
+The _click event_ object is always implicitly passed as a parameter of the function in the `OnClick`. This event object contains the following parameter that can be accessed by your function:
 
 - `pointerId`: ID of the pointer that triggered the event (_PRIMARY_ or _SECONDARY_)
 
@@ -45,13 +47,13 @@ myEntity.set(
 )
 ```
 
-## Pointer down and pointer up event
+## Button down and button up event
 
-The pointer down and pointer up events are fired whenever the user presses or releases an input controller.
+The _button down_ and _button up_ events are fired whenever the user presses or releases an input controller.
 
-These events are triggered every time that the buttons are pressed or released, regardless of where the pointer is pointing at, even if the click is also being handled by an entity's `OnClick` component.
+These events are triggered every time that the buttons are pressed or released, regardless of where the pointer is pointing at. It doesn't make a difference if the click is also being handled by an entity's `OnClick` component.
 
-Use the `subscribe()` method of the Input object to initiate a listener that's subscribed to this click event. Whenever the event it caught, it executes a function.
+Use the `subscribe()` method of the Input object to initiate a listener that's subscribed to one of the click events. Whenever the event it caught, it executes a lambda function.
 
 ```tsx
 // Instance the input object
@@ -68,7 +70,9 @@ input.subscribe("BUTTON_A_UP", e => {
 })
 ```
 
-The PointerEvent object contains the following parameters:
+> Note: This code only needs to be executed once for the `subscribe()` method to keep polling for the event. Don't add this into a system's `update()` function, as that would register a new listener on every frame.
+
+All click event objects contain the following parameters:
 
 - `from`: Origin point of the ray, as a _Vector3_
 - `direction`: Direction vector of the ray, as a normalized _Vector3_
@@ -77,7 +81,15 @@ The PointerEvent object contains the following parameters:
 
 ## Pointer state
 
-Instead of creating a listener to catch the events of the buttons changing state, you can check for the button's current state. You can implement this in a system's `update()` function to check this state regularly.
+Instead of creating a listener to catch events from the buttons changing state, you can check for the button's current state using the _Input_ object.
+
+```tsx
+let buttonState = input.state[Pointer.PRIMARY].BUTTON_A_DOWN
+```
+
+If the _A_ button is down, `BUTTON_A_DOWN` has the value _true_, if the _A_ button is up, it has the value _false_.
+
+You can implement this in a system's `update()` function to check the button state regularly.
 
 ```tsx
 // Instance the input object
@@ -86,7 +98,9 @@ const input = Input.instance
 class ButtonChecker {
   update() {
     if (input.state[Pointer.PRIMARY].BUTTON_A_DOWN) {
-      log("button down")
+      log("button A down")
+    } else {
+      log("button A up")
     }
   }
 }

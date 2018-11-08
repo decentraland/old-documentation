@@ -48,7 +48,7 @@ Primitive shapes don't include materials. To give it a color or a texture, you m
 
 ## Import 3D models
 
-For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in _glTF_ format. [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
+For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in _.glTF_ or _.glb_ (binary _.glTF_). [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
 To add an external model into a scene, add a `GLTFShape` component to an entity and set its `src` to the path of the glTF file containing the model.
 
@@ -134,7 +134,16 @@ myEntity.get(BoxShape).visible = false
 
 ## Text blocks
 
-## Reuse shapes
+## Optimize 3D models
+
+To ensure that 3D models in your scene load faster and take up less memory, follow these best practices:
+
+- Save your models in _.glb_ format, which is a lighter version of _.gltf_.
+- If you have multiple models that share the same textures, export your models with textures in a separate file. That way multiple models can refer to a single texture file that only needs to be loaded once.
+- If you have multiple entities using the same 3D model, instance a single `GLTFShape` component and assign that same one to the entities that will use it.
+- If your scene has entities that appear and disappear, it might be a good idea to pool these entities and keep them already defined but removed from the engine until needed. This will help them appear faster, the trade-off is that they will occupy memory when not in use.
+
+#### Reuse shapes
 
 If multiple entities in your scene use a same primitive or 3D model, there's no need to create an instance of the shape component for each. All entities can share one same instance, this keeps your scene lighter to load and prevents you from exceeding the maximum amount of triangles per scene.
 
