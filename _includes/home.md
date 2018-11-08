@@ -161,5 +161,5 @@ Also see [tutorials]({{ site.baseurl }}{% post_url /tutorials/2018-01-03-tutoria
 
 - [Design constraints for games]({{ site.baseurl }}{% post_url /design-experience/2018-01-08-design-games %})
 - [TypeScript tips]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %})
-- [3D model consierations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %})
+- [3D model considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %})
 - [Scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %})
