@@ -22,19 +22,19 @@ At a very high level, the **Decentraland Software Development Kit** (SDK) allows
 - Generate a default _project_ containing a Decentraland scene, including all the assets needed to render and run your content.
 - Build, test, and preview the content of your scene locally in your web browser - completely offline, and without having to make any Ethereum transactions or own LAND.
 - Write TypeScript code using the Decentraland API to add interactive and dynamic behavior to the scene.
-- Upload the content of your scene to [IPFS](https://ipfs.io).
-- Link your LAND tokens to the IPFS URL of the content you have uploaded.
+- Upload the content of your scene to the content server.
+- Link your LAND tokens to the URL of the content you have uploaded.
 
 It includes the following components:
 
-- **The Decentraland CLI** (Command Line Interface): Use it to generate new Decentraland scenes locally on your own machine, preview them and upload them to IPFS.
+- **The Decentraland CLI** (Command Line Interface): Use it to generate new Decentraland scenes locally on your own machine, preview them and upload them to the content server.
 - **The Decentraland API** (formerly known as _Metaverse API_ and still commonly referred to as _the API_): A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between users or other applications.
 
 - **Scene exapmples**: Take inspiration and coding best practices from the [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
 
 ## Requirements
 
-To develop a scene locally, you don't need to own LAND tokens. Developing and testing a scene can be done completely offline, without the need to deploy a scene to the Ethereum network (the system Decentraland uses to establish ownership of LAND), or IPFS (the P2P network we use for distribution and delivery of content).
+To develop a scene locally, you don't need to own LAND tokens. Developing and testing a scene can be done completely offline, without the need to deploy a scene to the Ethereum network (the system Decentraland uses to establish ownership of LAND), or the content server.
 
 This SDK is intended to be used by users that are comfortable working with code and a terminal. You must have the following:
 

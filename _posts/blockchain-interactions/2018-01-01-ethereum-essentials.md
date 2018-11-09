@@ -81,7 +81,7 @@ Cryptocurrency tokens like Bitcoin, Ethereum, and MANA are all fungible because 
 
 You could also create custom fungible tokens to use in Decentraland scenes and use them to depict items that are all equal and have no distinctive or customizable properties between them. You could, for example, create a game that revolves around collecting a large quantity of identical items, and represent these through a fungible token . You could also use a fungible token to represent a golden ticket that gives users who hold it access to a specific region or service.
 
-_ERC20_ is the most accepted standard for non-fungible tokens in the Ethereum Network. MANA is built upon this standard.
+_ERC20_ is the most accepted standard for fungible tokens in the Ethereum Network. MANA is built upon this standard.
 
 #### Non-Fungible tokens
 

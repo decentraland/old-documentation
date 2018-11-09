@@ -13,7 +13,7 @@ set_order: 2
 
 To build scenes for Decentraland you will need to install the Command Line Interface (CLI).
 
-The CLI allows you to compile and preview your scene in an "off-chain" development environment. After testing your scene locally, you can use the CLI to upload your content to IPFS, linking it with your LAND.
+The CLI allows you to compile and preview your scene in an "off-chain" development environment. After testing your scene locally, you can use the CLI to upload your content to the content server, linking it with your LAND.
 
 **Please note:** Currently, the Decentraland SDK (bundled with the CLI installation) only supports TypeScript.
 
@@ -24,7 +24,6 @@ The Decentraland CLI is distributed via [npm](https://www.npmjs.com/get-npm?utm_
 Please install the following dependencies before you install the CLI:
 
 - [Node.js](https://github.com/decentraland/cli#nodejs-installation) (version 8)
-- [IPFS](https://dist.ipfs.io/#go-ipfs)
 - [Python 2.7.x](https://www.python.org/downloads/)
 
 ## To install the CLI on Mac OS
@@ -90,9 +89,7 @@ By updating the CLI, the new scenes you create with it will use the latest versi
 To update the version of the Decentraland SDK:
 
 1.  Open the file _package-lock.json_ in the scene folder.
-2.  Look for the version of _decentraland-api_ or _metaverse-api_ being used and manually change it to the latest version of the SDK.
-
-    In older versions, the API was named _metaverse-api_, in newer versions it's named _decentraland-api_ .
+2.  Look for the version of _decentraland-api_ (or _metaverse-api_ in older versions) being used and manually change it to the latest version of the SDK.
 
 > Tip: If you're not sure what's the latest version, check the [release notes]({{ site.baseurl }}{% post_url /releases/sdk/2018-01-02-4.1.0 %}).
 
