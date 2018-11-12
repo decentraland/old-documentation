@@ -70,7 +70,7 @@ childEntity.parent = parentEntity
 If a parent entity has a `transform` component that affects its position, scale or rotation, its children entities are also affected.
 
 - For **position**, the parent's center is _0, 0, 0_
-- For **rotation** the parent's rotation is _0, 0, 0_
+- For **rotation** the parent's rotation is the quaternion _0, 0, 0, 1_ (equivalent to the Euler angle _0, 0, 0_)
 - For **scale**, the parent is considered to have a size of _1_. Any resizing of the parent affects scale and position in proportion.
 
 Entities with no shape component are invisible in the scene, and these can be used as wrappers to handle and position multiple entities as a group.

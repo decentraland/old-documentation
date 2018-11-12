@@ -43,7 +43,7 @@ const myGroup = engine.getComponentGroup(Transform, Physics, NextPosition)
 ```ts
 const myGroup = engine.getComponentGroup(Transform, Physics)
 
-export class PhysicsSystem {
+export class PhysicsSystem implements ISystem {
   update() {
     for (let entity of this.myGroup.entities) {
       const position = entity.get(Transform).Position

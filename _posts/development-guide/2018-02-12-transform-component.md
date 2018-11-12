@@ -44,20 +44,30 @@ myTransform.position.set(3, 1, 3)
 
 ## Rotation
 
-`rotation` is a _3D vector_ too, but where _x_, _y_ and _z_ represent the rotation in that axis, measured in degrees. A full turn requires 360 degrees.
-
-You can either set each angle individually, or use the `set` operation to set all angles.
+`rotation` is stored as a [_quaternion_](https://en.wikipedia.org/wiki/Quaternion), a system of four numbers, _x_, _y_, _z_ and _w_.
 
 ```ts
 let myTransform = new Transform()
 
-// Set each angle individually
-myTransform.rotation.x = 180
-myTransform.rotation.y = 90
-myTransform.rotation.z = 0
+myTransform.rotation.set(0, 0, 1, 0)
+```
 
-// Set the whole rotation with one expression  (x, y, z)
-myTransform.rotation.set(180, 90, 0)
+You can also set the rotation field with _Euler_ angles, the more common _x_, _y_ and _z_ notation that most people are familiar with. To use Euler angles, use the `setEuler()` method.
+
+```ts
+let myTransform = new Transform()
+
+myTransform.rotation.setEuler(0, 90, 180)
+```
+
+The SDK uses a _3D vector_ to represent Euler angles, where _x_, _y_ and _z_ represent the rotation in that axis, measured in degrees. A full turn requires 360 degrees.
+
+> Note: If you set the rotation using _Euler_ angles, the rotation value is still stored internally as a quaternion.
+
+When you retrieve the rotation of an entity, it returns a quaternion by default. To obtain the rotation expressed as in Euler angles, you need to specify it:
+
+```ts
+myEntity.get(Transform).rotation.eulerAngles
 ```
 
 ## Rotate to face the user
@@ -99,7 +109,7 @@ myTransform.position.set(1, 0, 1)
 myTransform.lookAt(new Vector3(4, 1, 2))
 ```
 
-This field requires a _Vector3Component_ as a value, this vector indicates the coordinates of the point in the scene to look at.
+This field requires a _Vector3Component_ as a value, this vector indicates the coordinates of the position of the point in the scene to look at.
 
 ## Scale
 
@@ -151,76 +161,12 @@ childEntity.set(childTransform)
 You can include an invisible entity with no shape component wrapping a set of other entities. This entity won't be visible in the rendered scene, but can be used to apply a transform to all its children as a group.
 
 <!--
+## Translate
 
-## Transitions
 
-In dynamic scenes, you can configure an entity to affect the way in which it moves. By default, all changes to an entity are rendered as a sudden shift from one state to another. By adding a _transition_, you can make the change be gradual and more natural.
+## Rotate
 
-The example below shows a box entity that is configured to rotate smoothly.
 
-{% raw %}
 
-```tsx
-<box
-  rotation={currentRotation}
-  transition={{
-    rotation: { duration: 1000, timing: "ease-in" }
-  }}
-/>
-```
 
-{% endraw %}
-
-> Note: The transition doesn't make the box rotate, it just sets the way it rotates whenever the value of the entity's rotation changes, usually as the result of an event.
-
-The transition can be added to affect the following properties of an entity:
-
-- position
-- rotation
-- scale
-- lookAt
-
-Note that the transition for each of these properties is configured separately.
-
-{% raw %}
-
-```tsx
-<box
-  rotation={currentRotation}
-  scale={currentScale}
-  transition={{
-    rotation: { duration: 1000, timing: "ease-in" },
-    scale: { duration: 300, timing: "bounce-in" }
-  }}
-/>
-```
-
-{% endraw %}
-
-The transition allows you to set:
-
-- A delay: milliseconds to wait before the change begins occuring.
-- A duration: milliseconds from when the change begins to when it ends.
-- Timing: select a function to shape the transition. For example, the transition could be _linear_, _ease-in_, _ease-out_, _exponential-in_ or _bounce-in_, among other options.
-
-In the example below, a transition is applied to the rotation of an invisible entity that wraps a box. As the box is off-center from the parent entity, the box pivots like an opening door.
-
-{% raw %}
-
-```tsx
-<entity
-  rotation={currentRotation}
-  transition={{
-    rotation: { duration: 1000, timing: "ease-in" }
-  }}
->
-  <box
-    id="door"
-    scale={{ x: 1, y: 2, z: 0.05 }}
-    position={{ x: 0.5, y: 1, z: 0 }}
-  />
-</entity>
-```
-
-{% endraw %}
 -->

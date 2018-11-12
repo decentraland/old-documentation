@@ -18,16 +18,16 @@ See 3D models
 
 -->
 
-## Move an entity
+## Move an entity gradually
 
 To move any entity's position over time, you need to change the data in its _Transform_ component.
 
-The easiest way to do this is to change the values incrementally in the `update()` function of a system.
+The easiest way to do this is to use the `translate()` function to change the values incrementally, and run this as part of the `update()` function of a system.
 
 ```ts
 export class SimpleMove {
   update() {
-    myEntity.get(Transform).position.x += 0.1
+    myEntity.get(Transform).translate(Vector3.forward * 0.1)
   }
 }
 
@@ -40,14 +40,14 @@ myEntity.set(new BoxShape())
 engine.addEntity(myEntity)
 ```
 
-The code above works ok, but suppose that the frame rate of the user running your scene can't keep up at a regular pace. Then the movement would appear jumpy, as not all frames are evenly timed.
+The code above works, but suppose that the user running your scene is struggling to keep up with the pace of the frame rate. That could result in the movement appearing jumpy, as not all frames are evenly timed but each moves the entity in the same amount.
 
-You can avoid that by using the `dt` parameter
+You can compensate for this by using the `dt` parameter
 
 ```ts
-export class SimpleMove{
+export class SimpleMove {
   update(dt: number) {
-    myEntity.get(Transform).position.x += dt: number * 0.5
+    myEntity.get(Transform).translate(Vector3.forward * dt)
   }
 }
 // (...)
