@@ -98,9 +98,11 @@ We suggest using these folder names consistently for storing the different types
 - 3d models: `/models`
 - Videos: `/videos`
 - Sound files: `/sounds`
-- Image files for textures: `/materials`
+- Image files for textures (except for glTF models): `/materials`
 - _.ts_ definitions for components `/components`
 - _.ts_ definitions for systems `/systems`
+
+> Note: Supporting files for glTF models, like their texture image files or _.bin_ files, should always be placed in the same folder as the model's _.gltf_ or _.glb_ file.
 
 ## The dclignore file
 
