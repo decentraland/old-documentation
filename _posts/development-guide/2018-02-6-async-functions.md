@@ -15,22 +15,22 @@ set_order: 5
 
 Most of the code in your scene runs synchronously using a single thread. That means that commands are executed sequentially line by line. Each command must first wait for the previous command to finish executing before it can start.
 
-Doing things like this ensures the consistency of your code,
+For each frame of the scene, the `update` functions of the systems in your scene are executed one by one, following the priorities set when adding the systems to the engine.
 
-In each frame of the scene, the `update` functions of the systems in your scenes are executed one by one, following the priorities determined when adding the systems to the engine. They all run in a single thread.
+Running code synchronously ensures consistency, as you can always be sure you'll know the order in which the commands in your code run.
 
-In some special cases, you want commands to run asynchronously. This means that the execution of the next line won't wait for the command to return a result.
+In some special cases though, you want some commands to run asynchronously. This means that you can start off a process and the execution of the next line of code won't wait for that process to return a result before it starts.
 
 This is useful for cases where you need to wait for a response from an external service that could take time.
 
 For example:
 
-- Playing a sound file
-- Retrieving data from a REST API
-- Performing a transaction on the blockchain
-- Parse a JSON file (??)
+- When playing a sound file
+- When retrieving data from a REST API
+- When performing a transaction on the blockchain
+- When parsing a JSON file (??)
 
-Since your scene needs to be updated many times per second, you can't afford to have the scene's main thread stuck waiting from an answer from an external service. The rest of your code needs to keep running while you're idle waiting for a response.
+Since your scene needs to be updated many times per second, you can't afford to have the scene's main thread stuck waiting for an answer from an external service. The rest of your code needs to keep running, building the next frame, while the process is idle waiting for a response.
 
 [ ASYNC DIAGRAMS]
 
@@ -48,10 +48,27 @@ executeTask(async () => {
     log("failed to reach URL")
   }
 })
+// (...)
 ```
 
-The example above executes a `fetch()` function to retrieve data from a REST API.
+The example above executes a `fetch()` function to retrieve data from a REST API. The rest of the code in the scene will keep being executed while this asynchronous process takes place.
 
+<!--
 Note that there are two `await` statements here, one to get data from
+-->
 
-Note that, as your scene waits for a response, several frames might be rendered before you get a response. So make sure your scene's content remains coherent
+> Note: Keep in mind that several frames of your scene might be rendered before the task finishes executing. Make sure your scene's code is flexible enough to handle the in-between scenarios while the asynchronous task is being completed.
+
+## Subscribe a listener
+
+Another way to run asynchronous code is to instance an event listener. Event listeners trigger the running of an asynchronous task every time that a given event occurs.
+
+```ts
+const input = Input.instance
+
+input.subscribe("BUTTON_A_UP", e => {
+  console["log"]("pointerUp works", e)
+})
+```
+
+<!-- If multiple events in rapid succession, do we get multiple independent threads? -->
