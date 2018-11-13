@@ -114,6 +114,8 @@ myTransform.lookAt(new Vector3(4, 1, 2))
 
 This field requires a _Vector3Component_ as a value, this vector indicates the coordinates of the position of the point in the scene to look at.
 
+The `lookAt()` function has a second optional argument that sets the global direction for _up_ to use as reference. For most cases, you won't need to set this field.
+
 ## Scale
 
 `scale` is also a _3D vector_, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, whether it's a primitive or a 3D model.
@@ -190,7 +192,7 @@ You can compensate for this uneven timing by using the `dt` parameter to adjust 
 ```ts
 export class SimpleMove {
   update(dt: number) {
-    myEntity.get(Transform).translate(Vector3.Forward.scale(dt))
+    myEntity.get(Transform).translate(Vector3.Forward.scale(dt * 3))
   }
 }
 // (...)
@@ -200,10 +202,15 @@ export class SimpleMove {
 
 The easiest way to rotate an entity is to use the `rotate()` function to change the values in the Transform component incrementally, and run this as part of the `update()` function of a system.
 
+The `rotate()` function takes two arguments:
+
+- The direction in which to rotate (as a _Vector3_)
+- The amount
+
 ```ts
 export class SimpleRotate {
   update() {
-    myEntity.get(Transform).rotate(Vector3.Left.scale(0.1))
+    myEntity.get(Transform).rotate(Vector3.Left, dt * 3)
   }
 }
 
