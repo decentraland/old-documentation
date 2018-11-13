@@ -98,7 +98,9 @@ Billboards are also very handy to add to _text_ entities, since it makes them al
 
 If the transform is configured with both a specific `rotation` and a `billboard` value other than 0, it uses the rotation set on by its billboard behavior.
 
-## Face a position
+> Note: If there are multiple users present at the same time, they will each see the entities with billboard mode facing them.
+
+## Face a set of coordinates
 
 You can use `lookAt()` to orient an entity fo face a specific point in space by simply passing it that point's coordinates. This is a way to avoid dealing with the math for calculating the necessary angles.
 
@@ -160,3 +162,212 @@ childEntity.set(childTransform)
 ```
 
 You can include an invisible entity with no shape component wrapping a set of other entities. This entity won't be visible in the rendered scene, but can be used to apply a transform to all its children as a group.
+
+## Move gradually
+
+The easiest way to move an entity is to use the `translate()` function to change the values stored in the `Transform` component. You can do this incrementally by translating a small amount each time the `update()` function of a system is called.
+
+```ts
+export class SimpleMove {
+  update() {
+    myEntity.get(Transform).translate(Vector3.Forward.scale(0.1))
+  }
+}
+
+engine.addSystem(new SimpleMove())
+
+const myEntity = new Entity()
+myEntity.set(new Transform())
+myEntity.set(new BoxShape())
+
+engine.addEntity(myEntity)
+```
+
+Suppose that the user running your scene is struggling to keep up with the pace of the frame rate. That could result in the movement appearing jumpy, as not all frames are evenly timed but each moves the entity in the same amount.
+
+You can compensate for this uneven timing by using the `dt` parameter to adjust the scale the movement.
+
+```ts
+export class SimpleMove {
+  update(dt: number) {
+    myEntity.get(Transform).translate(Vector3.Forward.scale(dt))
+  }
+}
+// (...)
+```
+
+## Rotate gradually
+
+The easiest way to rotate an entity is to use the `rotate()` function to change the values in the Transform component incrementally, and run this as part of the `update()` function of a system.
+
+```ts
+export class SimpleRotate {
+  update() {
+    myEntity.get(Transform).rotate(Vector3.Left.scale(0.1))
+  }
+}
+
+engine.addSystem(new SimpleRotate())
+```
+
+## Move between two points
+
+If you want an entity to move smoothly between two points, using a _lerp_ (linear interpolation) algorythm is the easiest way. This algorythm is very well known in game development, as it's really useful.
+
+The `lerp()` function takes three parameters:
+
+- The origin vector
+- The target vector
+- The amount, a value from 0 to 1 that represents what fraction of the translation to do.
+
+```ts
+const originVector = Vector3.Zero()
+const targetVector = Vector3.Forward()
+
+let newPos = Vector3.Lerp(originVector, targetVector, 0.6)
+```
+
+The linear interpolation algorithm finds an intermediate point in the path between both vectors that is in the same proportion as the time fraction.
+
+For example, if the origin vector is _(0, 0, 0)_ and the target vector is _(10, 0, 10)_:
+
+- Using an amount of 0 would return _(0, 0, 0)_
+- Using an amount of 0.3 would return _(3, 0, 3)_
+- Using an amount of 1 would return _(10, 0, 10)_
+
+To implement this in your scene, you should store the data that goes into the lerp function in a component. We recommend creating a specific component to store the necessary information for the lerp to happen. You also need to define a system that implements the gradual movement in each frame.
+
+```ts
+@Component("lerpData")
+export class LerpData {
+  previousPos: Vector3 = Vector3.Zero()
+  target: Vector3 = Vector3.Zero()
+  fraction: number = 0
+}
+
+export class LerpMove {
+  update() {
+    let transform = myEntity.get(Transform)
+    let lerp = myEntity.get(LerpData)
+    if (lerp.fraction < 1) {
+      transform.position = Vector3.Lerp(
+        lerp.previousPos,
+        lerp.target,
+        lerp.fraction
+      )
+      lerp.fraction += 1 / 60
+    }
+  }
+}
+
+engine.addSystem(new LerpMove())
+
+const myEntity = new Entity()
+myEntity.set(new Transform())
+myEntity.set(new BoxShape())
+
+myEntity.set(new LerpData())
+myEntity.get(LerpData).previousPos = new Vector3(1, 1, 1)
+myEntity.get(LerpData).target = new Vector3(8, 1, 3)
+
+engine.addEntity(myEntity)
+```
+
+> Note: You can do the same kind of operation to lerp an entity's rotation or scale. When lerping scale, if you plan to keep all axis in proportion, you can make things simpler by using `Scalar.lerp` and only interpolate between two numbers instead of two vectors.
+
+## Move non-linearly between two points
+
+While using the lerp method, you can make the movement speed non-linear. In the previous example we increment the fraction by a given amount each frame, but we could also use a mathematical function to increase the number exponentially or in other measures that give you a different movement pace.
+
+You could also use a function that gives recurring results, like a sine function, to describe a movement that comes and goes.
+
+```ts
+@Component("lerpData")
+export class LerpData {
+  previousPos: Vector3 = Vector3.Zero()
+  target: Vector3 = Vector3.Zero()
+  fraction: number = 0
+  time: number = 0
+}
+
+export class LerpMove {
+  update() {
+    let transform = lerpEntity.get(Transform)
+    let lerp = lerpEntity.get(LerpData)
+    lerp.time += 0.01
+    lerp.fraction = Math.sin(lerp.time)
+    transform.position = Vector3.Lerp(
+      lerp.previousPos,
+      lerp.target,
+      lerp.fraction
+    )
+  }
+}
+```
+
+The example above adds a `time` field to the custom component. The `time` field is incremented on every frame, and then `fraction` is set to the _sin_ of that value. Because of the nature of the _sin_ operation, the entity will lerp back and forth between both points.
+
+## Move following a path
+
+A `Path3` object stores a series of vectors that describe a path. You can have an entity loop over the list of vectors, performing a lerp movement between each.
+
+```ts
+const point1 = new Vector3(1, 1, 1)
+const point2 = new Vector3(8, 1, 3)
+const point3 = new Vector3(8, 4, 7)
+const point4 = new Vector3(1, 1, 7)
+
+const myPath = new Path3D([point1, point2, point3, point4])
+
+@Component("pathData")
+export class PathData {
+  previousPos: Vector3 = myPath.path[0]
+  target: Vector3 = myPath.path[1]
+  fraction: number = 0
+  nextPathIndex: number = 1
+}
+
+export class PatrolPath {
+  update() {
+    let transform = myEntity.get(Transform)
+    let path = myEntity.get(PathData)
+    if (path.fraction < 1) {
+      transform.position = Vector3.Lerp(
+        path.previousPos,
+        path.target,
+        path.fraction
+      )
+      path.fraction += 1 / 60
+    } else {
+      path.nextPathIndex += 1
+      if (path.nextPathIndex >= myPath.path.length) {
+        path.nextPathIndex = 0
+      }
+      path.previousPos = path.target
+      path.target = myPath.path[path.nextPathIndex]
+      path.fraction = 0
+    }
+  }
+}
+
+engine.addSystem(new PatrolPath())
+
+const myEntity = new Entity()
+myEntity.set(new Transform())
+myEntity.set(new BoxShape())
+myEntity.set(new PathData())
+
+engine.addEntity(myEntity)
+```
+
+The example above defines a 3D path that's made up of four 3D vectors. We also define a custom `PathData` component, that includes the same data used by the custom component in the _lerp_ example above, but adds a `nextPathIndex` field to keep track of what vector to use next from the path.
+
+The system is very similar to the system in the _lerp_ example, but when a lerp action is completed, it sets the `target` and `previousPos` fields to new values. If we reach the end of the path, we return to the first value in the path.
+
+<!--
+
+## Move along curves
+
+... investigate
+
+-->
