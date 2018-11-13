@@ -20,7 +20,7 @@ See 3D models
 
 ## Move an entity gradually
 
-To move any entity's position over time, you need to change the data in its _Transform_ component.
+To move any entity's position over time, you need to change the data in its [_Transform_]() component.
 
 The easiest way to do this is to use the `translate()` function to change the values incrementally, and run this as part of the `update()` function of a system.
 
@@ -47,13 +47,27 @@ You can compensate for this by using the `dt` parameter
 ```ts
 export class SimpleMove {
   update(dt: number) {
-    myEntity.get(Transform).translate(Vector3.forward * dt)
+    myEntity.get(Transform).translate(Vector3.Forward * dt)
   }
 }
 // (...)
 ```
 
-## Move gradually to a specific point
+## Rotate an entity gradually
+
+The easiest way to rotate an entity is to use the `rotate()` function to change the values in the Transform component incrementally, and run this as part of the `update()` function of a system.
+
+```ts
+export class SimpleRotate {
+  update() {
+    myEntity.get(Transform).rotate(Vector3.Left * 0.1)
+  }
+}
+
+engine.addSystem(new SimpleRotate())
+```
+
+## Move to a specific point
 
 If you want an entity to move smoothly between two points, using a lerp (linear interpolation) algorythm is the easiest way. This algorythm is very well known in game development, as it's really useful.
 
@@ -152,7 +166,7 @@ The example above adds a `time` field to the custom component. The `time` field 
 
 ## Follow a path
 
-A `Path2` or `Path3` object stores a series of vectors that describe a path. You can have an entity loop over the list of vectors, performing a lerp movement between each.
+A `Path3` object stores a series of vectors that describe a path. You can have an entity loop over the list of vectors, performing a lerp movement between each.
 
 ```ts
 const point1 = new Vector3(1, 1, 1)

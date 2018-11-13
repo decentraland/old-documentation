@@ -13,9 +13,10 @@ You can set the _position_, _rotation_ and _scale_ of an entity by using the `Tr
 
 ```ts
 const myEntity = new Entity()
-let myTransform = new Transform()
-myEntity.set(myTransform)
+myEntity.set(new Transform())
 ```
+
+To move, rotate or resize an entity in your scene, change the values on this component incrementally, frame by frame. See [Movement and animation]() for more details and best practices.
 
 ## Position
 
@@ -70,7 +71,7 @@ When you retrieve the rotation of an entity, it returns a quaternion by default.
 myEntity.get(Transform).rotation.eulerAngles
 ```
 
-## Rotate to face the user
+## Face the user
 
 You can set a shape component to act as a _billboard_, this means that it will always rotate the entity to face the user. All components for primitive shapes and glTF models have a `billboard` field to allow you to set this.
 
@@ -97,7 +98,7 @@ Billboards are also very handy to add to _text_ entities, since it makes them al
 
 If the transform is configured with both a specific `rotation` and a `billboard` value other than 0, it uses the rotation set on by its billboard behavior.
 
-## Rotate to face a position
+## Face a position
 
 You can use `lookAt()` to orient an entity fo face a specific point in space by simply passing it that point's coordinates. This is a way to avoid dealing with the math for calculating the necessary angles.
 
@@ -159,14 +160,3 @@ childEntity.set(childTransform)
 ```
 
 You can include an invisible entity with no shape component wrapping a set of other entities. This entity won't be visible in the rendered scene, but can be used to apply a transform to all its children as a group.
-
-<!--
-## Translate
-
-
-## Rotate
-
-
-
-
--->
