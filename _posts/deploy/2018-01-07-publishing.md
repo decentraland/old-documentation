@@ -11,6 +11,9 @@ set: deploy
 set_order: 7
 ---
 
+> Note: The currently released version of the CLI doesn't support deploying parcels to Decentraland. We're working on a new version of the CLI that will make the deployment process simpler.
+
+<!--
 ## Before you begin
 
 Make sure of the following:
@@ -45,11 +48,6 @@ Open your scene's _scene.json_ file and verify the following:
 2.  Log into your Metamask account with the same public address associated with your parcels in Decentraland. That public address should be listed in the scene's _scene.json_ file.
 3.  Run `dcl deploy` from the scene's folder.
 
-<!--
-If this is your first time uploading this scene to the selected parcels,Metamask will ask you to approve a transaction for paying the gas fee after the file upload is completed. You only make this payment the first time you deploy content, as the smart contract for your LAND is only updated when you link your content to IPNS, the naming service for IPFS.
-
-This updates your parcel with your latest changes in addition to uploading your content to IPFS.
--->
 
 Currently, as a measure to improve performance and your visitor's experience, your content will be pinned to Decentraland’s main server to ensure that the data needed to render your parcel is always readily available.
 
@@ -66,6 +64,8 @@ If you're using one of these, the process of uploading content to your LAND is s
 3.  Run `dcl deploy --https` from the scene's folder. This will open a tab on your browser where you need to confirm this action.
     > Note: Currently, the certificate is self-signed, so your browser might give you a warning before launching the page. The warning is displayed only because the certificate is self-signed by your machine, please ignore it and carry on.
 4.  The Ledger device will then ask you for a confirmation, which you must give by pushing the device's buttons.
+
+-->
 
 <!--
 
