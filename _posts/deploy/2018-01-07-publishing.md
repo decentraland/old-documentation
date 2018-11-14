@@ -44,14 +44,16 @@ Open your scene's _scene.json_ file and verify the following:
 1.  To make sure the scene has been locally built with your latest changes, run `npm run build`.
 2.  Log into your Metamask account with the same public address associated with your parcels in Decentraland. That public address should be listed in the scene's _scene.json_ file.
 3.  Run `dcl deploy` from the scene's folder.
+4.  The command line lists the files it will upload. Confirm with _Y_.
+
+    > Tip: If there are files in your project folder that you don't want to deploy, list them in the _.dclignore_ file.
+
+5.  A browser tab will open, showing what parcels you're deploying to. Click **Sign and Deploy**.
+6.  Metamask opens, notifying you that your signature is requested. Click **Sign** to confirm this action.
 
 <!--
-If this is your first time uploading this scene to the selected parcels,Metamask will ask you to approve a transaction for paying the gas fee after the file upload is completed. You only make this payment the first time you deploy content, as the smart contract for your LAND is only updated when you link your content to IPNS, the naming service for IPFS.
-
-This updates your parcel with your latest changes in addition to uploading your content to IPFS.
--->
-
 Currently, as a measure to improve performance and your visitor's experience, your content will be pinned to Decentraland’s main server to ensure that the data needed to render your parcel is always readily available.
+-->
 
 > Note: While this command deploys your scene to your parcel, remember that users can’t currently explore Decentraland, so your content won’t be discoverable “in-world”.
 
@@ -63,11 +65,15 @@ If you're using one of these, the process of uploading content to your LAND is s
 
 1.  To make sure the scene has been locally built with your latest changes, run `npm run build`.
 2.  Plug your Ledger device in. Your parcels in Decentraland should be associated with that same wallet. The same public address should be listed in the scene's _scene.json_ file.
-3.  Run `dcl deploy --https` from the scene's folder. This will open a tab on your browser where you need to confirm this action.
-    > Note: Currently, the certificate is self-signed, so your browser might give you a warning before launching the page. The warning is displayed only because the certificate is self-signed by your machine, please ignore it and carry on.
-4.  The Ledger device will then ask you for a confirmation, which you must give by pushing the device's buttons.
+3.  Run `dcl deploy --https` from the scene's folder. 4. The command line lists the files it will upload. Confirm with _Y_.
 
-<!--
+    > Tip: If there are files in your project folder that you don't want to deploy, list them in the _.dclignore_ file.
+
+4.  A browser tab will open, showing what parcels you're deploying to. Click **Sign and Deploy**.
+
+    > Note: Currently, the certificate is self-signed, so your browser might give you a warning before launching the page. The warning is displayed only because the certificate is self-signed by your machine, please ignore it and carry on.
+
+5.  The Ledger device will then ask you for a confirmation, which you must give by pushing the device's buttons.
 
 ## What is the content server
 
@@ -77,4 +83,3 @@ We use the content server to host and distribute all scene content in a similar 
 
 1.  The content server stores and distributes all of the assets required to render your scenes.
 2.  The `dcl deploy` command links these assets to the LAND parcel specified in your **scene.json** file. Whenever you redeploy your scene, the CLI will update your LAND smart contract, if needed, to point to the most recent content available on the content server.
--->
