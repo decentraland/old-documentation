@@ -17,11 +17,11 @@ Make sure of the following:
 
 - Your scene complies with all of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}). Most of these are validated each time you run a preview of your scene.
 
-* You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it. The account must also hold a minimum amount of Ether to pay a transaction gas fee.
+- You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it. The account must also hold a minimum amount of Ether to pay a transaction gas fee.
 
-* You own the necessary amount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}).
+- You own the necessary amount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}).
 
-* If you're deploying a single scene to multiple adjacent parcels, you must first merge them together into an _Estate_ before you can deploy to them. See [Marketplace]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}) for instructions on how to create an estate.
+- If you're deploying a single scene to multiple adjacent parcels, you must first merge them together into an _Estate_ before you can deploy to them. See [Marketplace]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}) for instructions on how to create an estate.
 
 ## Check scene data
 
