@@ -143,7 +143,7 @@ The custom type defined above can only hold the three possible values listed abo
 
 ```tsx
 state = {
-  characterNow: (characterState = "walking")
+  characterNow: characterState = "walking"
 }
 ```
 
@@ -594,7 +594,7 @@ Instead of telling the engine what actions to take to reach a desired state, you
 **Because of this, there is no action to _add_ or _remove_ entities from the scene**. Instead, this is implicitly done when you call the `render()` function telling it to render a different set of entities.
 
 - If the new set includes an entity that wasn't rendered before, it's implicitly added.
-- If an entitiy is missing from the new set, then it's implicitly removed.
+- If an entity is missing from the new set, then it's implicitly removed.
 
 #### Reference variables from render
 
@@ -809,13 +809,13 @@ export default class clickTest extends DCL.ScriptableScene<any, IState> {
 
   // is defined as a lambda
   clickBox = () => {
-    this.setState({ clickCounter: (this.state.clickCounter += 1) })
+    this.setState({ clickCounter: this.state.clickCounter += 1 })
     console.log(this.state.clickCounter)
   }
 
   // called via a lambda in the onClick
   clickBox2() {
-    this.setState({ clickCounter: (this.state.clickCounter += 1) })
+    this.setState({ clickCounter: this.state.clickCounter += 1 })
     console.log(this.state.clickCounter)
   }
 

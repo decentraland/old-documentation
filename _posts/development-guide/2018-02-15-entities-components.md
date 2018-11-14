@@ -17,7 +17,7 @@ _Entities_ are the basic unit for building everything in Decentraland scenes. If
 
 _Components_ define the traits of an entity. For example, a `transform` component stores the entity's coordinates, rotation and scale. A `BoxShape` component gives the entity a cube shape when rendered in the scene. You might also create a custom `physics` component to store values for the entity's velocity and acceleration.
 
-[DIAGRAM : ENTITIY W COMPONENTS]
+[DIAGRAM : ENTITY W COMPONENTS]
 
 The values stored in all of the components that exist in the entities of the scene make up the _scene state_. When these values change, they change how the scene is rendered for the users.
 
@@ -56,7 +56,7 @@ engine.addEntity(cube)
 
 An entity can have other entities as children. Thanks to this, we can arrange entities into trees, just like the HTML of a webpage.
 
-[DIAGRAM : ENTITIY W children]
+[DIAGRAM : ENTITY W children]
 
 To assign an entity as the parent of another, simply use the following syntax:
 

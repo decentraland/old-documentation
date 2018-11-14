@@ -105,7 +105,7 @@ Entities don't use collisions by default. Depending on the type of the shape com
       ```ts
       let box = new BoxShape()
       box.withCollisions = true
-      myEntitiy.set(box)
+      myEntity.set(box)
       ```
 
 
