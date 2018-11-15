@@ -612,7 +612,7 @@ export type MaterialDescriptorEntity = {
   /**
    * Emmisive texture.
    */
-  emisiveTexture?: string
+  emissiveTexture?: string
 
   /**
    * Stores surface normal data used to displace a mesh in a texture.

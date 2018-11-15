@@ -145,7 +145,7 @@ There are different kinds of textures you can use in a 3D model:
 - albedo textures: don't use light
 - alpha textures: determine only the transparency regions and its degree
 - bump texture: Stores surface normal data used to displace a mesh in a texture. Used with BPR.
-- emisiveTexture
+- emissiveTexture
 - refractionTexture
 
 
