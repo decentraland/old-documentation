@@ -64,6 +64,18 @@ Note that there are two `await` statements here, one to get data from
 
 > Note: Keep in mind that several frames of your scene might be rendered before the task finishes executing. Make sure your scene's code is flexible enough to handle the in-between scenarios while the asynchronous task is being completed.
 
+## OnClick functions
+
+You can add an `OnCLick` component to any entity to trigger an asynchronous lambda function every time that entity is clicked.
+
+```ts
+myEntity.set(
+  new OnClick(e => {
+    log("clicked on the entity", e)
+  })
+)
+```
+
 ## Subscribe a listener
 
 Another way to run asynchronous code is to instance an event listener. Event listeners trigger the running of an asynchronous lambda function every time that a given event occurs.
@@ -74,7 +86,7 @@ const input = Input.instance
 
 // Subscribe to an event
 input.subscribe("BUTTON_A_DOWN", e => {
-  console["log"]("pointerUp works", e)
+  log("pointerUp works", e)
 })
 ```
 

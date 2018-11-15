@@ -32,7 +32,7 @@ let shark = new Entity()
 shark.set(new GLTFShape("models/shark.gltf"))
 
 // Create animation clip
-const clipSwim = new AnimationClip("swim", { speed: 1 })
+const clipSwim = new AnimationClip("swim")
 
 // Add animation clip to GLTFShape component
 shark.get(GLTFShape).addClip(clipSwim)
@@ -41,7 +41,7 @@ shark.get(GLTFShape).addClip(clipSwim)
 You can also create and add a clip in a single statement:
 
 ```ts
-shark.get(GLTFShape).addClip(new AnimationClip("swim", { speed: 1 }))
+shark.get(GLTFShape).addClip(new AnimationClip("swim"))
 ```
 
 ## Play an animation
@@ -52,7 +52,7 @@ The simplest way to play or pause it is to use the `play()` and `pause()` method
 
 ```ts
 // Create animation clip
-const clipSwim = new AnimationClip("swim", { speed: 1 })
+const clipSwim = new AnimationClip("swim")
 
 // Start playing the clip
 clipSwim.play()
@@ -65,7 +65,7 @@ If your scene's code doesn't have a pointer to refer to the clip object directly
 
 ```ts
 // Create and add clip
-shark.get(GLTFShape).addClip(new AnimationClip("swim", { speed: 1 }))
+shark.get(GLTFShape).addClip(new AnimationClip("swim"))
 
 // Start playing the clip
 shark
@@ -88,7 +88,7 @@ The `AnimationClip` object also has a `playing` boolean parameter. You can start
 clipSwim.playing = true
 ```
 
-## Set a clip's parameters
+## Set clip parameters
 
 You can configure the following parameters for an animation clip:
 
@@ -97,7 +97,7 @@ You can configure the following parameters for an animation clip:
 - `speed`: A number that determines how fast the animation is played, by default equal to _1_. Set it higher or lower to make the animation play faster or slower.
 - `weight`: Allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance that animation will be given in the average. By default equal to _1_, it can't be any higher than _1_.
 
-These parameters can all be set when creating the clip:
+When creating a clip object, the constructor has a second optional parameter to pass all the values for the clip's parameters as an object:
 
 ```ts
 const clipSwim = new AnimationClip("swim", {
@@ -107,7 +107,7 @@ const clipSwim = new AnimationClip("swim", {
 })
 ```
 
-You can also modify the parameters of an existing clip:
+You can also modify the parameters of an existing clip, by using the `setParams()` function and passing an object with the parameter values you want to change:
 
 ```ts
 clipSwim.setParams({ loop: true, speed: 3, weight: 0.2 })
