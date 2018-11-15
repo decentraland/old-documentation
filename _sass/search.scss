@@ -33,43 +33,15 @@
         position: relative;
         display: flex;
         align-items: flex-start;
-        transition: transform $default-transition;
-
-        &::before,
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          transition: opacity $default-transition;
-          border-radius: 8px;
-          background-color: transparent;
-        }
-
-        &::before {
-          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-          opacity: 1;
-        }
-
-        &::after {
-          box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.12);
-          opacity: 0;
-        }
+        transition: transform $default-transition,
+          box-shadow $default-transition;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
       }
 
       &:hover {
         > div {
           transform: translate(0, -4px);
-
-          &::before {
-            opacity: 0;
-          }
-
-          &::after {
-            opacity: 1;
-          }
+          box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.12);
         }
       }
     }
