@@ -53,7 +53,7 @@ let myTransform = new Transform()
 myTransform.rotation.set(0, 0, 1, 0)
 ```
 
-You can also set the rotation field with _Euler_ angles, the more common _x_, _y_ and _z_ notation that most people are familiar with. To use Euler angles, use the `setEuler()` method.
+You can also set the rotation field with [_Euler_ angles](https://en.wikipedia.org/wiki/Euler_angles), the more common _x_, _y_ and _z_ notation that most people are familiar with. To use Euler angles, use the `setEuler()` method.
 
 ```ts
 let myTransform = new Transform()
@@ -79,19 +79,19 @@ Billboards were a common technique used in 3D games of the 90s, where most entit
 
 You can also choose to only rotate the shape in this way in one of its axis. For example, if you set the billboard mode of a cube to only rotate in the Y axis, it will follow the user when moving at ground level, but the user will be able to look at it from above or from below.
 
-Set the `billboard` field with a number, each number refers to a different rotation mode:
+Set the `billboard` field with a value from the `BillboardMode` enum. For example, to rotate in all axis, set the value to `BillboardMode.BILLBOARDMODE_ALL`.
 
-- 0: No movement on any axis (default value)
-- 1: Only move in the **X** axis, the rotation on other axis is fixed.
-- 2: Only move in the **Y** axis, the rotation on other axis is fixed.
-- 4: Only move in the **Z** axis, the rotation on other axis is fixed.
-- 7: Rotate on all axis to follow the user.
+- `BILLBOARDMODE_NONE` (0): No movement on any axis (default value)
+- `BILLBOARDMODE_X` (1): Only move in the **X** axis, the rotation on other axis is fixed.
+- `BILLBOARDMODE_Y` (2): Only move in the **Y** axis, the rotation on other axis is fixed.
+- `BILLBOARDMODE_Z` (4): Only move in the **Z** axis, the rotation on other axis is fixed.
+- `BILLBOARDMODE_ALL` (7): Rotate on all axis to follow the user.
 
 ```ts
 let myTransform = new Transform()
 
 // Set its billboard mode
-myTransform.billboard = 2
+myTransform.billboard = BillboardMode.BILLBOARDMODE_Y
 ```
 
 Billboards are also very handy to add to _text_ entities, since it makes them always legible.
@@ -150,7 +150,7 @@ If a parent entity is scaled, all position values of its children are also scale
 ```tsx
 const parentEntity = new Entity()
 const childEntity = new Entity()
-childEntity.parent = parentEntity
+childEntity.setParent(parentEntity)
 
 let parentTransform = new Transform()
 parentTransform.position.set(3, 1, 1)

@@ -61,10 +61,19 @@ An entity can have other entities as children. Thanks to this, we can arrange en
 To assign an entity as the parent of another, simply use the following syntax:
 
 ```ts
+// Create entities
 childEntity = new Entity()
 parentEntity = new Entity()
 
-childEntity.parent = parentEntity
+// Assign parent
+childEntity.setParent(parentEntity)
+```
+
+Once a parent is assigned, it can be read off the child entity with `.getParent()`.
+
+```ts
+// Get parent from an entity
+const parent = childEntity.getParent()
 ```
 
 If a parent entity has a `transform` component that affects its position, scale or rotation, its children entities are also affected.
