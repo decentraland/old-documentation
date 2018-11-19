@@ -116,32 +116,6 @@ This field requires a _Vector3Component_ as a value, this vector indicates the c
 
 The `lookAt()` function has a second optional argument that sets the global direction for _up_ to use as reference. For most cases, you won't need to set this field.
 
-## Rotate using a pivot point
-
-When setting the rotation of an entity, the rotation is always in reference to the entity's center coordinate. To rotate an entity using another set of coordinates as a pivot point, create a second (invisible) entity with the pivot point as its position and make it a parent of the entity you with to rotate.
-
-When rotating the parent entity, its children will be all rotated using the parent's position as a pivot point. Note that the position of the child entity is in reference to that of the parent entity.
-
-```ts
-// Create entity you wish to rotate
-const door = new Entity()
-door.set(new Transform())
-
-// Create the pivot entity
-const pivot = new Entity()
-pivot.set(new Transform())
-pivot.get(Transform).position.set(4, 1, 3)
-
-// Set pivot as the parent
-door.setParent(pivot)
-
-// Position child in reference to parent
-door.get(Transform).position.set(0.5, 0, 0)
-
-// Rotate the parent. The child rotates using the parent's location as a pivot point.
-pivot.get(Transform).rotation.set(0, 90, 0)
-```
-
 ## Scale
 
 `scale` is also a _3D vector_, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, whether it's a primitive or a 3D model.
@@ -190,6 +164,32 @@ childEntity.set(childTransform)
 ```
 
 You can include an invisible entity with no shape component wrapping a set of other entities. This entity won't be visible in the rendered scene, but can be used to apply a transform to all its children as a group.
+
+## Rotate using a pivot point
+
+When setting the rotation of an entity, the rotation is always in reference to the entity's center coordinate. To rotate an entity using another set of coordinates as a pivot point, create a second (invisible) entity with the pivot point as its position and make it a parent of the entity you with to rotate.
+
+When rotating the parent entity, its children will be all rotated using the parent's position as a pivot point. Note that the position of the child entity is in reference to that of the parent entity.
+
+```ts
+// Create entity you wish to rotate
+const door = new Entity()
+door.set(new Transform())
+
+// Create the pivot entity
+const pivot = new Entity()
+pivot.set(new Transform())
+pivot.get(Transform).position.set(4, 1, 3)
+
+// Set pivot as the parent
+door.setParent(pivot)
+
+// Position child in reference to parent
+door.get(Transform).position.set(0.5, 0, 0)
+
+// Rotate the parent. The child rotates using the parent's location as a pivot point.
+pivot.get(Transform).rotation.set(0, 90, 0)
+```
 
 ## Move gradually
 
