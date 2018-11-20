@@ -30,7 +30,7 @@ myEntity.set(new BoxShape())
 
 //Create material and configure its fields
 const myMaterial = new Material()
-myMaterial.albedoColor = "#FF0000"
+myMaterial.albedoColor = Color3.Blue()
 myMaterial.metallic = 0.9
 myMaterial.roughness = 0.1
 
@@ -39,6 +39,101 @@ myEntity.set(myMaterial)
 ```
 
 See [component reference]()) for a full list of all the fields that can be configured in a `Material` of `BasicMatieral` component.
+
+## Basic materials
+
+Instead of the `Material` component, you can define a material through the `BasicMaterial` entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistently bright, it can also be used to give your scene a more minimalist look.
+
+```tsx
+const myMaterial = new BasicMaterial()
+```
+
+## Material colors
+
+Give a material a plain color. In a `BasicMaterial` component, you set the `color` field. In a `Material` component, you set the `albedoColor` field. Albedo colors respond to light and can include shades on them.
+
+All color fields are of type `Color3`, these hold three values, for _Red_, _Green_ and _Blue_. Each of these numbers is between 0 and 1.
+
+```ts
+myMaterial.albedoColor = new Color3.(0.5, 0, 0.5)
+```
+
+You can also pick predetermined colors using the following functions of the `Color3` object:
+
+```ts
+let red = Color3.Red()
+
+let green = Color3.Green()
+
+let blue = Color3.Blue()
+
+let black = Color3.Black()
+
+let white = Color3.White()
+
+let purple = Color3.Purple()
+
+let magenta = Color3.Magenta()
+
+let yellow = Color3.Yellow()
+
+let gray = Color3.Gray()
+
+let teal = Color3.Teal()
+```
+
+You can otherwise pick a random color using the following function:
+
+```ts
+// Pick a random color
+let green = Color3.Random()
+```
+
+If you prefer to specify a color using hexadecimal values, as is often done in JavaScript web development, you can do so using the `.FromHexString()` function
+
+```ts
+let gray = Color3.FromHexString("#CCCCCCC")
+```
+
+The `Color3` object also includes a lot of other functions to add, substract, compare, lerp, or convert the format of colors.
+
+You can also edit the following fields in a `Material` component to fine-tune how its color is percieved:
+
+- _emissiveColor_: The color emitted from the material.
+- _ambientColor_: AKA Diffuse Color in other nomenclature.
+- _reflectionColor_: The color reflected from the material.
+- _reflectivityColor_: AKA Specular Color in other nomenclature.
+
+#### Change a color gradually
+
+Change a color gradually with linear interpolation between two colors, using the `.lerp()` function.
+
+```ts
+// This variable will store the ratio between both colors
+let colorRatio = 0
+
+// Define colors
+const red = Color3.Red()
+const yellow = Color3.Yellow()
+
+// Create material
+const myMaterial = new Material()
+
+// This system changes the value of colorRatio every frame, and sets a new color on the material
+export class ColorSystem implements ISystem {
+  update(dt: number) {
+    myMaterial.albedoColor = Color3.lerp(red, yellow, colorRatio)
+    if (colorRatio < 1) {
+      colorRatio += 0.01
+    }
+  }
+}
+
+// Add the system to the engine
+engine.addSystem(ColorSystem)
+```
+
+The example above changes the color of a material from red to yellow, incrementally shifting it on every frame.
 
 ## Using textures
 
@@ -126,7 +221,7 @@ myThirdEntity.set(box)
 
 //Create material and configure fields
 const myMaterial = new Material()
-myMaterial.albedoColor = "#FF0000"
+myMaterial.albedoColor = Color3.Blue()
 
 //Assign same material to all entities
 myEntity.set(myMaterial)
@@ -149,13 +244,7 @@ const myMaterial2 = new Material()
 myMaterial2.alphaTexture = "materials/alphaTexture.png"
 ```
 
-## Basic materials
-
-Instead of the `Material` component, you can define a material through the `BasicMaterial` entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistently bright, it can also be used to give your scene a more minimalist look.
-
-```tsx
-const myMaterial = new BasicMaterial()
-```
+## Texture stretching in basic materials
 
 When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The `BasicMaterial` component uses the _bilinear_ algorithm by default, but you can configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode`.
 
