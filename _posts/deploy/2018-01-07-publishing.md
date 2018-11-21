@@ -83,3 +83,5 @@ We use the content server to host and distribute all scene content in a similar 
 
 1.  The content server stores and distributes all of the assets required to render your scenes.
 2.  The `dcl deploy` command links these assets to the LAND parcel specified in your **scene.json** file. Whenever you redeploy your scene, the CLI will update your LAND smart contract, if needed, to point to the most recent content available on the content server.
+
+Anyone willing to host a copy of the content server will be free to replicate it. The information on each copy of the server will be verifiable, as each scene is signed by the LAND owner's hash. This means that someone hosting a copy of the server won't be able to tamper with the content to display something illegitimate.
