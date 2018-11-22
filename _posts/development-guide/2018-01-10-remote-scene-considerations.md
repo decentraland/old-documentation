@@ -23,7 +23,7 @@ To transform an existing local scene into remote, we recommend cloning the [samp
 
 You should also make the following changes to the scene's code:
 
-- Remove the state definition from the scriptable scene object in _scene.tsx_. Paste that same state definition in the _Scene.ts_ file.
+- Remove the state definition from the scriptable scene object in _scene.tsx_. Paste that same state definition in the _State.ts_ file.
 - Replace all uses of `this.state.<variable>` with `getState().<variable>`.
 - Replace all uses of `this.setState()` with `setState()`.
 
