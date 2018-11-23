@@ -1,5 +1,6 @@
 {
   "name": "dcl-docs",
   "alias": "dcl-docs.now.sh",
-  "type": "static"
+  "type": "static",
+  "version": 1
 }

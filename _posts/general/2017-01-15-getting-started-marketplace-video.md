@@ -7,7 +7,7 @@ categories:
   - Decentraland
 resources:
   - name: Marketplace
-    link: https://market.decentraland.today
+    link: https://market.decentraland.org
 type: Video
 set: general
 set_order: 1
