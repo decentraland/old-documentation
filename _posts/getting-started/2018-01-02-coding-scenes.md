@@ -174,7 +174,7 @@ fish and only one of them moves, the API will send only that delta to the client
 
 ## Taking Inspiration from React
 
-One of the goals we had when designing our SDK was to reduce the learning curve as much as possible. We also wanted to incentive good practices and the writing of maintainable code, respecting the remote async-rpc constraints in every case.
+One of the goals we had when designing our SDK was to reduce the learning curve as much as possible. We also wanted to incentivise good practices and the writing of maintainable code, respecting the remote async-rpc constraints in every case.
 
 To make a long story short, we were considering two approaches for doing this:
 
