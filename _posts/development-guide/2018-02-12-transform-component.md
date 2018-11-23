@@ -12,7 +12,10 @@ set_order: 2
 You can set the _position_, _rotation_ and _scale_ of an entity by using the `Transform` component. This can be used on primitive shapes (cubes, spheres, planes, etc) as well as on 3D models (glTF).
 
 ```ts
+// Create a new entity
 const myEntity = new Entity()
+
+// Add a transform component to the entity
 myEntity.set(new Transform())
 ```
 
@@ -20,16 +23,17 @@ To move, rotate or resize an entity in your scene, change the values on this com
 
 ## Position
 
-`position` is a _3D vector_, it sets the position of the entity's center on all three axes.
+`position` is a _3D vector_, it sets the position of the entity's center on all three axes, stored as a `Vector3` object.
 
 - By default, coordinates are measured in _meters_.
   > Note: If you're positioning a child of a parent entity that has a scale that's different from 1, the position vector is scaled accordingly.
 - `x:0, y:0, z:0` refers is the middle of the scene's base parcel, at ground level. The position of a child entity is relative to the center position of its parent entity, so `x:0, y:0, z:0` always refers to the center of the parent, wherever it is in the scene.
   > Note: You can change the base parcel of a scene by editing the `base` attribute of _scene.json_.
 
-You can either set each axis individually, or use the `set` operation to set all axis.
+You set the position in the following ways:
 
 ```ts
+// Create transform
 let myTransform = new Transform()
 
 // Set each axis individually
@@ -37,35 +41,50 @@ myTransform.position.x = 3
 myTransform.position.y = 1
 myTransform.position.z = 3
 
-// Set the whole position with one expression (x, y, z)
+// Set the position with three numbers (x, y, z)
 myTransform.position.set(3, 1, 3)
+
+// Set the position with an object
+myTransform.position = new Vector3(5, 1, 5)
 ```
 
-> Tip: When previewing a scene locally, a compass appears in the (0,0,0) point of the scene with labels for each axis.
+When setting the value of the position with an object, you can either use a `Vector3` object, or any other object with _x_, _y_ and _z_ fields.
+
+> Tip: When previewing a scene locally, a compass appears in the (0,0,0) point of the scene with labels for each axis as reference.
 
 ## Rotation
 
 `rotation` is stored as a [_quaternion_](https://en.wikipedia.org/wiki/Quaternion), a system of four numbers, _x_, _y_, _z_ and _w_.
 
 ```ts
+// Create transform
 let myTransform = new Transform()
 
+// Set rotation with four numbers (x, y, z, w)
 myTransform.rotation.set(0, 0, 1, 0)
+
+// Set rotation with a quaternion
+myTransform.rotation = new Quaternion(1, 0, 0, 0)
 ```
 
 You can also set the rotation field with [_Euler_ angles](https://en.wikipedia.org/wiki/Euler_angles), the more common _x_, _y_ and _z_ notation that most people are familiar with. To use Euler angles, use the `setEuler()` method.
 
 ```ts
+// Create transform
 let myTransform = new Transform()
 
+// Use the .setEuler() function
 myTransform.rotation.setEuler(0, 90, 180)
+
+// Set the `eulerAngles` field
+myTransform.rotation.eulerAngles = new Vector3(0, 90, 0)
 ```
 
-The SDK uses a _3D vector_ to represent Euler angles, where _x_, _y_ and _z_ represent the rotation in that axis, measured in degrees. A full turn requires 360 degrees.
+When using a _3D vector_ to represent Euler angles, _x_, _y_ and _z_ represent the rotation in that axis, measured in degrees. A full turn requires 360 degrees.
 
 > Note: If you set the rotation using _Euler_ angles, the rotation value is still stored internally as a quaternion.
 
-When you retrieve the rotation of an entity, it returns a quaternion by default. To obtain the rotation expressed as in Euler angles, you need to specify it:
+When you retrieve the rotation of an entity, it returns a quaternion by default. To obtain the rotation expressed as in Euler angles, get the `.eulerAngles` field:
 
 ```ts
 myEntity.get(Transform).rotation.eulerAngles
@@ -88,6 +107,7 @@ Set the `billboard` field with a value from the `BillboardMode` enum. For exampl
 - `BILLBOARDMODE_ALL` (7): Rotate on all axis to follow the user.
 
 ```ts
+// Create a transform
 let myTransform = new Transform()
 
 // Set its billboard mode
@@ -105,20 +125,20 @@ If the transform is configured with both a specific `rotation` and a `billboard`
 You can use `lookAt()` to orient an entity fo face a specific point in space by simply passing it that point's coordinates. This is a way to avoid dealing with the math for calculating the necessary angles.
 
 ```ts
+// Create a transform
 let myTransform = new Transform()
-myTransform.position.set(1, 0, 1)
 
 // Rotate to face the coordinates (4, 1, 2)
 myTransform.lookAt(new Vector3(4, 1, 2))
 ```
 
-This field requires a _Vector3Component_ as a value, this vector indicates the coordinates of the position of the point in the scene to look at.
+This field requires a _Vector3_ object as a value, or any object with _x_, _y_ and _z_ attributes. This vector indicates the coordinates of the position of the point in the scene to look at.
 
 The `lookAt()` function has a second optional argument that sets the global direction for _up_ to use as reference. For most cases, you won't need to set this field.
 
 ## Scale
 
-`scale` is also a _3D vector_, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, whether it's a primitive or a 3D model.
+`scale` is also a _3D vector_, stored as a `Vector3` object, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, whether it's a primitive or a 3D model.
 
 You can either use the `set()` operation to provide a value for each of the three axis, or use `setAll()` to provide a single number and maintain the entity's proportions as you scale it.
 
@@ -127,6 +147,7 @@ The default scale is 1, so assign a value larger to 1 to stretch an entity or sm
 You can either set each dimension individually, or use the `set` operation to set all dimensions.
 
 ```ts
+// Create a transform
 let myTransform = new Transform()
 
 // Set each dimension individually
@@ -135,11 +156,16 @@ myTransform.scale.y = 5
 myTransform.scale.z = 1
 
 // Set the whole scale with one expression  (x, y, z)
-myTransform.set(1, 5, 1)
+myTransform.scale.set(1, 5, 1)
 
 // Set the scale with a single number to maintain proportions
-myTransform.setAll(2)
+myTransform.scale.setAll(2)
+
+// Set the scale with an object
+myTransform.scale = new Vector3(1, 1, 1.5)
 ```
+
+When setting the value of the scale with an object, you can either use a `Vector3` object, or any other object with _x_, _y_ and _z_ fields.
 
 ## Inherit transformations from parent
 
@@ -148,22 +174,28 @@ When an entity is nested inside another, the child entities inherit components f
 If a parent entity is scaled, all position values of its children are also scaled.
 
 ```tsx
+// Create entities
 const parentEntity = new Entity()
 const childEntity = new Entity()
+
+// Set one as the parent of the other
 childEntity.setParent(parentEntity)
 
+// Create a transform for the parent
 let parentTransform = new Transform()
 parentTransform.position.set(3, 1, 1)
 parentTransform.scale(0.5, 0.5, 0.5)
 
+// Create a transform for the child
 let childTransform = new Transform()
 childTransform.position.set(0, 1, 0)
 
+// Add both entities to the engine
 parentEntity.set(parentTransform)
 childEntity.set(childTransform)
 ```
 
-You can include an invisible entity with no shape component wrapping a set of other entities. This entity won't be visible in the rendered scene, but can be used to apply a transform to all its children as a group.
+You can use an invisible entity with no shape component to wrap a set of other entities. This entity won't be visible in the rendered scene, but can be used to group its children and apply a transform to all of them.
 
 ## Rotate using a pivot point
 
@@ -249,8 +281,8 @@ If you want an entity to move smoothly between two points, using a _lerp_ (linea
 
 The `lerp()` function takes three parameters:
 
-- The origin vector
-- The target vector
+- The vector for the origin position
+- The vector for the target position
 - The amount, a value from 0 to 1 that represents what fraction of the translation to do.
 
 ```ts
@@ -260,7 +292,7 @@ const targetVector = Vector3.Forward()
 let newPos = Vector3.Lerp(originVector, targetVector, 0.6)
 ```
 
-The linear interpolation algorithm finds an intermediate point in the path between both vectors that is in the same proportion as the time fraction.
+The linear interpolation algorithm finds an intermediate point in the path between both vectors that matches the provided amount.
 
 For example, if the origin vector is _(0, 0, 0)_ and the target vector is _(10, 0, 10)_:
 
@@ -310,7 +342,7 @@ engine.addEntity(myEntity)
 
 ## Move non-linearly between two points
 
-While using the lerp method, you can make the movement speed non-linear. In the previous example we increment the fraction by a given amount each frame, but we could also use a mathematical function to increase the number exponentially or in other measures that give you a different movement pace.
+While using the lerp method, you can make the movement speed non-linear. In the previous example we increment the lerp amount by a given amount each frame, but we could also use a mathematical function to increase the number exponentially or in other measures that give you a different movement pace.
 
 You could also use a function that gives recurring results, like a sine function, to describe a movement that comes and goes.
 
