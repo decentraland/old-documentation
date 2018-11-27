@@ -107,3 +107,48 @@ class ButtonChecker {
 
 engine.addSystem(new ButtonChecker())
 ```
+
+<!--
+
+## Custom events
+
+Define an event manager
+
+```ts
+export namespace EventManager {
+
+  const subscriptions: Record<string, Array<(params?: any) => void> > = {}
+
+  export function on(evt: string, callback: (params?: any) => void) {
+    if (!subscriptions[evt]){
+      subscriptions[evt] = []
+    }
+    subscriptions[evt].push(callback)
+  }
+
+  export function emit(evt: string, params?: any) {
+    if (subscriptions[evt]){
+      subscriptions[evt].forEach(callback => callback(params))
+    }
+  }
+}
+```
+
+Import the event manager
+
+```ts
+import { EventManager } from 'ts/EventManager'
+```
+
+Use it:
+
+```ts
+EventManager.emit("test", {test: 5})
+
+EventManager.on("test", function(e) {
+  log("test " + e.test)
+ })
+
+ ```
+
+-->

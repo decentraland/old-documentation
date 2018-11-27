@@ -13,17 +13,21 @@ Decentraland scenes that use 'ECS' are built around _entities_ and _components_.
 
 ## Overview
 
-_Entities_ are the basic unit for building everything in Decentraland scenes. If you're familiar with web development, think of them as the equivalent of Elements in a DOM tree. All visible and invisible 3D objects and audio players in your scene will each be an entity. An entity is nothing more than a container in which to place components. The entity itself has no properties or methods of its own, it simply groups several components together.
+_Entities_ are the basic unit for building everything in Decentraland scenes. All visible and invisible 3D objects and audio players in your scene will each be an entity. An entity is nothing more than a container in which to place components. The entity itself has no properties or methods of its own, it simply groups several components together.
 
-_Components_ define the traits of an entity. For example, a `transform` component stores the entity's coordinates, rotation and scale. A `BoxShape` component gives the entity a cube shape when rendered in the scene. You might also create a custom `physics` component to store values for the entity's velocity and acceleration.
+_Components_ define the traits of an entity. For example, a `transform` component stores the entity's coordinates, rotation and scale. A `BoxShape` component gives the entity a cube shape when rendered in the scene, a `Material` component gives the entity a color or texture. You could also create a custom `health` component to store an entity's remaining health value, and add it to entities that represent enemies in a game.
+
+If you're familiar with web development, think of entities as the equivalent of _Elements_ in a _DOM_ tree, and of components as _attributes_ of those elements.
 
 [DIAGRAM : ENTITY W COMPONENTS]
 
-The values stored in all of the components that exist in the entities of the scene make up the _scene state_. When these values change, they change how the scene is rendered for the users.
+Components like `transform`, `material` or shape components are closely tied in with the rendering of the scene. If the values in these components changes, that alone is enough to change how the scene is rendered in the next frame.
+
+> Note: In previous versions of the SDK, the _scene state_ was abstracted into an object that was separate from the entities themselves. As of version 5.0, the _scene state_ is made up directly of the sum of every component in the entities present in the scene.
 
 Components are only meant to store data about their parent entity. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-systems %}). Systems are completely decoupled from the components themselves. Entities and components are agnostic to what _systems_ are acting upon them.
 
-See [Component Reference]() for a reference of all the available constructors for predefined entities and all of the supported components of each.
+See [Component Reference]() for a reference of all the available constructors for predefined components.
 
 <!--
 ## XML syntax for entities and components
@@ -50,7 +54,7 @@ cube.get(Transform).position.set(3, 1, 3)
 engine.addEntity(cube)
 ```
 
-> Note: Entities and their components don't exist in your scene until you add the entities to the engine, as shown above.
+> Note: Entities and their components don't exist in your scene until you add the entities to the _engine_, as shown above.
 
 ## Nested entities
 
@@ -58,7 +62,7 @@ An entity can have other entities as children. Thanks to this, we can arrange en
 
 [DIAGRAM : ENTITY W children]
 
-To assign an entity as the parent of another, simply use the following syntax:
+To assign an entity as the parent of another, simply use `.setParent()`:
 
 ```ts
 // Create entities
@@ -79,32 +83,45 @@ const parent = childEntity.getParent()
 If a parent entity has a `transform` component that affects its position, scale or rotation, its children entities are also affected.
 
 - For **position**, the parent's center is _0, 0, 0_
-- For **rotation** the parent's rotation is the quaternion _0, 0, 0, 1_ (equivalent to the Euler angle _0, 0, 0_)
+- For **rotation** the parent's rotation is the quaternion _0, 0, 0, 1_ (equivalent to the Euler angles _0, 0, 0_)
 - For **scale**, the parent is considered to have a size of _1_. Any resizing of the parent affects scale and position in proportion.
 
-Entities with no shape component are invisible in the scene, and these can be used as wrappers to handle and position multiple entities as a group.
+Entities with no shape component are invisible in the scene. These can be used as wrappers to handle and position multiple entities as a group.
 
 ## Add a component to an entity
 
-Add a component to an entity for its values to affect the entity.
+When an instance of a component is added to an entity, the component's values affect the entity.
 
-You can create a new component and set it in one single expression, as shown below:
-
-```ts
-cube = new Entity()
-cube.set(new NextPos(1, 3, 1))
-```
-
-You can otherwise first create a component, and then set it onto an entity in a separate expression:
+One way of doing this is to first create the component instance, and then assign it to an entity in a separate expression:
 
 ```ts
+// Create entity
 cube = new Entity()
-const nextPosComponent = new NextPos()
-nextPosComponent.x = 1
-nextPosComponent.y = 3
-nextPosComponent.z = 1
-cube.set(nextPosComponent)
+
+// Create component
+const myMaterial = new Material()
+
+// Assign component
+cube.set(myMaterial)
+
+// Configure component
+myMaterial.albedoColor = Color3.Red()
 ```
+
+You can otherwise use a single expression to both create a new instance of a component and assign it to an entity:
+
+```ts
+// Create entity
+cube = new Entity()
+
+// Create and assign component
+cube.set(new Material())
+
+// Configure component
+cube.get(Material).albedoColor = Color3.Red()
+```
+
+> Note: In the example above, as you never define a pointer to the entity's material component, you need to refer to it through its parent entity using `.get()`.
 
 ## Remove a component from an entity
 
@@ -116,24 +133,29 @@ myEntity.remove(Material)
 
 A removed component might still remain in memory even after removed.
 
-If your scene adds new components and removes them regularly, these removed components will add up and cause memory problems. It's advisable to instead use an object pool.
+If your scene adds new components and removes them regularly, these removed components will add up and cause memory problems. It's advisable to instead use an object pool to handle these components.
 
-If you try to remove a component that doesn't exist in the entity, this won't raise any errors.
+If you try to remove a component that doesn't exist in the entity, this action won't raise any errors.
 
 ## Access a component from an entity
 
-Once a component is set in an entity, you can reference it through the parent entity using the `get` method.
+You can reach components through their parent entity by using the entity's `.get()` function.
 
 ```ts
 // Create entity and component
 cube = new Entity()
+
+// Create and assign component
 cube.set(new Transform())
 
 // Using get
-scale = cube.get(Transform)
+let transform = cube.get(Transform)
+
+// Edit values in the component
+transform.position = (5, 0, 5)
 ```
 
-The `get()` function fetches a reference to the component object, not a copy of its values. That means you are then free to change the component's values.
+The `get()` function fetches a reference to the component object. If you change the values of what's returned by this function, you're changing the component itself. For example, in the example above, we're setting the `position` stored in the component to _(5, 0, 5)_.
 
 ```ts
 let XScale = cube.get(Transform).scale.x
@@ -142,7 +164,7 @@ XScale = Math.random() * 10
 
 The example above directly modifies the value of the _x_ scale on the Transform component.
 
-If you're not entirely sure if the entity will have the component you're trying to retrieve, you can use `getOrNull()` or `getOrCreate()`
+If you're not entirely sure if the entity does have the component you're trying to retrieve, you can use `getOrNull()` or `getOrCreate()`
 
 ```ts
 //  getOrNull
@@ -152,20 +174,22 @@ scale = cube.getOrNull(Transform)
 scale = cube.getOrCreate(Transform)
 ```
 
-If the component you're trying to retrieve can't be found in the entity:
+If the component you're trying to retrieve doesn't exit in the entity:
 
-- When using `get()` it returns an error
-- When using `getOrNull()` it returns `Null`
+- `get()` returns an error
+- `getOrNull()` returns `Null`
+- `getOrCreate()` instances a new component in its place
 
 ## Define a custom component
 
 If you need to store information about an entity that isn't handled by the default components of the SDK (see [component reference]() ), then you can create a custom type of component on your scene.
 
-Custom components can be defined in your scene's `.ts` file.
+Custom components can be defined in your scene's `.ts` file, but for larger projects we recommend defining them in a separate `ts` file and importing it.
 
-Components can store as many fields as you want.
+A component can store as many fields as you want.
 
 ```ts
+// Define custom component
 @Component("nextPos")
 export class NextPos {
   x: number = 0
@@ -173,19 +197,24 @@ export class NextPos {
   z: number = 0
 }
 
+// Create entity
 cube = new Entity()
-const nextPosComponent = new NextPos()
-nextPosComponent.x = 5
-nextPosComponent.y = 3
-nextPosComponent.z = 5
-cube.set(nextPosComponent)
+
+// Create instance of component
+cube.set(new NextPos())
+
+// Set values on component
+cube.get(NextPos).x = 5
+cube.get(NextPos).y = 3
+cube.get(NextPos).z = 5
 ```
 
 #### Constructors
 
-You can add a constructor to your component, this allows you to set its values in the same expression as you instance it.
+Adding a constructor to your component allows you to set its values in the same expression as you create an instance of it.
 
 ```ts
+// Define custom component
 @Component("nextPos")
 export class NextPos {
   x: number = 0
@@ -198,41 +227,50 @@ export class NextPos {
   }
 }
 
+// Create entity
 cube = new Entity()
+
+// Create instance of component and set its values
 cube.set(new NextPos(5, 3, 5))
 ```
 
 > Tip: If you use a source code editor, when instancing a component that has a constructor, you can see what the parameters are by mousing over the expression.
-> [img]
+
+<!-- img -->
 
 You can make the parameters optional by setting default values on each. If there are default values and you don't declare the parameters when instancing a component, it will use the default.
 
 ```ts
+// Define custom component
 @Component("nextPos")
 export class NextPos {
   x: number = 0
   y: number = 0
   z: number = 0
-  constructor(x: number = 5, y: number = 3, z: number = 5) {
+  constructor(x?: number = 5, y?: number = 3, z?: number = 5) {
     this.x = x
     this.y = y
     this.z = z
   }
 }
 
+// Create entity
 cube = new Entity()
+
+// Create instance of component with default values
 cube.set(new NextPos())
 ```
 
-#### Inheritance
+#### Inheritance from other components
 
-You can create a component that's based on an existing one and leverage all of its existing methods.
+You can create a component that's based on an existing one and leverage all of its existing methods and fields.
 
-The following example defines a _Velocity_ component, which inherits its fields and methods from the already existing _Vector_ component.
+The following example defines a _Velocity_ component, which inherits its fields and methods from the already existing _Vector3_ component.
 
 ```ts
 @Component("velocity")
-export class Velocity extends Components.Vector {
+export class Velocity extends Vector3 {
+  // x, y and z fields are inherited from Vector
   constructor(x: number, y: number, z: number) {
     super(x, y, z)
   }
@@ -241,13 +279,11 @@ export class Velocity extends Components.Vector {
 
 #### Interchangeable components
 
-You might want to define multiple different components where it only makes sense for each entity to have only one of these.
+Certain components intentionally can't coexist in a single entity. For example, an entity can't have both BoxShape and PlaneShape. If you assign one, you overwrite the other if present.
 
-You can define multiple components that occupy a single _space_ on an entity.
+You can create custom components that follow this same behavior against each other, where it only makes sense for each entity to have only one of them assigned.
 
-For example, an entity can't have both BoxShape and PlaneShape, if you assign one, you overwrite the other. You can create custom components that follow this same behavior with each other.
-
-To define components that share a same space, set the same name for the internal name:
+To define components that share a same _space_ in an entity, set the same name for on the component's internal name:
 
 ```ts
 @Component("animal")
@@ -261,34 +297,72 @@ export class Cat {
 }
 ```
 
+In the example above, note that both components occupy the _animal_ space. Each entity in the scene will only be able to have one animal component assigned.
+
 ## Components as flags
 
-You may want to add a component that simply signals to a [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-systems %}) to handle this entity and not another. A component like this could have no data of its own.
+You may want to add a component that simply marks an entity to differentiate it from others but doesn't store any data. This is useful when using [Entity groups](), so that the group only keeps track of certain entities in the scene and not others.
 
 ```ts
-@Component("flag")
-export class flag {}
+@Component("myFlag")
+export class MyFlag {}
 ```
 
 ## Pool entities and components
 
-If you plan to spawn and despawn similar entities from your scene, it might be a good practice to keep a fixed set of entities in memory. Instead of creating and deleting these, you could add and remove these from the engine instead.
+If you plan to spawn and despawn similar entities from your scene, it's often a good practice to keep a fixed set of entities in memory. Instead of creating new entities and deleting them, you could add and remove existing entities from the engine. This is an efficient way to deal with your user's memory.
 
-This is an efficient way to deal with your user's memory.
+Entities that are not added to the engine aren't rendered as part of the scene, but they are kept in memory. Their geometry doesn't add up to the maximum triangle count four your scene.
 
 ```ts
+// Define spawner singleton object
+const spawner = {
+  MAX_POOL_SIZE: 20,
+  pool: [] as Entity[],
+
+  spawnEntity() {
+    // Get an entity from the pool
+    const ent = spawner.getEntityFromPool()
+
+    if (!ent) return
+
+    // Add a transform component to the entity
+    let t = ent.getOrCreate(Transform)
+    t.scale.setAll(0.5)
+    t.position = (5, 0, 5)
+
+    //add entity to engine
+    engine.addEntity(ent)
+  },
+
+  getEntityFromPool(): Entity | null {
+    // Check if an existing entity can be used
+    for (let i = 0; i < spawner.pool.length; i++) {
+      if (!spawner.pool[i].alive) {
+        return spawner.pool[i]
+      }
+    }
+    // If none of the existing are available, create a new one, unless the maximum pool size is reached
+    if (spawner.pool.length < spawner.MAX_POOL_SIZE) {
+      const instance = new Entity()
+      spawner.pool.push(instance)
+      return instance
+    }
+    return null
+  }
+}
+
+spawner.spawnEntity()
 ```
 
 When adding an entity to the engine, its `alive` field is implicitly set to `true`, when removing it, this field is set to `false`.
 
-While an entity isn't added to the engine, its geometry doesn't add up to the maximum triangle count four your scene.
+Using an object pool has the following benefits:
 
-This has the following benefits:
+- If your entity uses a complex 3D model or texture, it might take the scene some time to load it from the content server. If the entity is already in memory when it's needed, then that delay won't happen.
+- This is a solution to avoid a common problem, where each entity that's removed could remain lingering in memory after being removed, and these unused entities could add up till they become too many to handle. By recycling the same entities, you ensure this won't happen.
 
-- If your entity uses a complex 3D model or texture, it might take the scene some time to load it from the content server. If the entity is already in memory, then that won't be necessary.
-- If you add and remove entities constantly, entities that are removed from the engine might still remain in memory and add up over time till they become unmanageable. By reusing the same ones, you ensure this won't happen.
-
-Similarly, if you plan to set and remove certain components from your entities, it's recommendable to create a pool of fixed components to add and remove rather than create new ones.
+Similarly, if you plan to set and remove certain components from your entities, it's recommendable to create a pool of fixed components to add and remove rather than create new component instances each time.
 
 ```ts
 ```
