@@ -16,36 +16,36 @@ Each entity group keeps track of a list of entities that have all the required c
 - An entity in the engine adds a new component
 - An entity in the engine removes a component
 
-After the group is created, you don't need to add or remove manually from it, the engine takes care of that.
+After the group is created, you don't need to add or remove entities manually from it, the engine takes care of that.
 
 ```ts
 const myGroup = engine.getComponentGroup(Transform)
 ```
 
-[Systems]() typically iterate over these groups in their update method. Having a predefined group of valid entities is a great way to save resources, specially for functions that run on every frame like `update()`. If on every frame your system would have to iterate over every single entity in the scene, that would be very time consuming.
+[Systems]() typically iterate over the entities in these groups in their update method, performing the same operations on each. Having a predefined group of valid entities is a great way to save resources, specially for functions that run on every frame like `update()`. If on every frame your system would have to iterate over every single entity in the scene looking for the ones it needs, that would be very time consuming.
 
-You can access the entities in a group in the following way: if the group name is `myGroup`, calling `this.myGroup.entities` returns an array containing all the entities in it. Typically, the functions in a system iterate over this array, performing the same operations on each.
+You can access the entities in a group in the following way: if the group name is `myGroup`, calling `myGroup.entities` returns an array containing all the entities in it.
 
-> Note: Keep in mind that groups take up space in the local memory of the user's machine. Usually, the benefit in speed you get from having a group is a tradeoff that is well worth it. However, for cases where you have a large group that you don't access all that often, it might be better to not have one.
+> Note: Keep in mind that groups take up space in the local memory of the user's machine. Usually, the benefit in speed you get from having a group is a tradeoff that is well worth it. However, for cases where you'd have a large group that you don't access all that often, it might be better to not have one.
 
 ## Required components
 
-When creating a group, you need to specify what components need to be present in every entity of the group. You can list as many components as you want, the group will only accept entities that have **all** of the listed components.
+When creating a group, specify what components need to be present in every entity that's added to the group. You can list as many components as you want, the group will only accept entities that have **all** of the listed components.
 
 ```ts
 const myGroup = engine.getComponentGroup(Transform, Physics, NextPosition)
 ```
 
-> Tip: If your scene includes several entities that have the same components, but you only want some of those in your group, create a custom component to acts as as a flag. This component doesn't need to have any properties in it. Add this component to the entities that you want the group to handle.
+> Tip: If your scene includes several entities that have the same components, but you only want some of those in your group, create a custom component to act as a [flag]({{ site.baseurl }}{% post_url /development-guide/2018-02-15-entities-components %}#components-as-flags). This component doesn't need to have any properties in it. Add this component to the entities that you want the group to handle.
 
-## Use groups on a system
+## Use groups in a system
 
 ```ts
 const myGroup = engine.getComponentGroup(Transform, Physics)
 
 export class PhysicsSystem implements ISystem {
   update() {
-    for (let entity of this.myGroup.entities) {
+    for (let entity of myGroup.entities) {
       const position = entity.get(Transform).Position
       const vel = entity.get(Physics).velocity
       position.x += vel.x
@@ -58,6 +58,6 @@ export class PhysicsSystem implements ISystem {
 
 In the example above, `PhysicsSystem` iterates over the entities in `myGroup` as part of the `update()` function, that is executed on every frame of the game loop.
 
-- If the scene has several _ball_ entities, each with a `Position` and a `Physics` component, then they be included in `myGroup` and `PhysicsSystem` will update their position on every frame.
+- If the scene has several _ball_ entities, each with a `Position` and a `Physics` component, then they will be included in `myGroup`. `PhysicsSystem` will then update their position on every frame.
 
-- If your scene also has other entities like a _hoop_ and a _scoreBoard_ that only have a `Physics` component, then they won't be in `myGroup` and won't be unaffected by `PhysicsSystem`.
+- If your scene also has other entities like a _hoop_ and a _scoreBoard_ that only have a `Physics` component, then they won't be in `myGroup` and won't be affected by `PhysicsSystem`.
