@@ -100,9 +100,9 @@ The `Color3` object also includes a lot of other functions to add, substract, co
 You can also edit the following fields in a `Material` component to fine-tune how its color is percieved:
 
 - _emissiveColor_: The color emitted from the material.
-- _ambientColor_: AKA Diffuse Color in other nomenclature.
+- _ambientColor_: AKA _Diffuse Color_ in other nomenclature.
 - _reflectionColor_: The color reflected from the material.
-- _reflectivityColor_: AKA Specular Color in other nomenclature.
+- _reflectivityColor_: AKA _Specular Color_ in other nomenclature.
 
 #### Change a color gradually
 
