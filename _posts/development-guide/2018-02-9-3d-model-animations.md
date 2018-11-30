@@ -23,25 +23,51 @@ Not all _glTF_ files include animations. To see if there are any available, you 
 
 Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-## Add an animation clip
+## Instance and add an animation clip
 
-To use an animation, you must first add it to a `GLTFShape` component. This step is needed even when the animation is already embedded in the _.glTF_ file.
+To animate a 3D model, you must create an animation object and add it to a `GLTFShape` component.
 
 ```ts
 let shark = new Entity()
 shark.set(new GLTFShape("models/shark.gltf"))
 
-// Create animation clip
+// Instance animation clip
 const clipSwim = new AnimationClip("swim")
 
 // Add animation clip to GLTFShape component
 shark.get(GLTFShape).addClip(clipSwim)
 ```
 
+> Note: You need to create and add an animation object even if the animation is embedded in the _.glTF_ file.
+
 You can also create and add a clip in a single statement:
 
 ```ts
+// Instance and add a clip
 shark.get(GLTFShape).addClip(new AnimationClip("swim"))
+
+// Retrieve a clip that was added to a component
+let swim = swim.get(GLTFShape).getClip("swim")
+```
+
+Each instance of an animation object has a state of its own that keeps track how far it has advanced along the animation. If you add a same animation clip instance to multiple `GLTFShape` components from different entities, they will all reference this same state. This means that if you play the clip, all entities using the instance will be animated together at the same time.
+
+If you want to independently animate several entities using a same clip, you must instance multiple clip objects, one for each entity using it.
+
+```ts
+// Create an entity
+let shark1 = new Entity()
+shark1.set(new GLTFShape("models/shark.gltf"))
+
+// Instance and add a clip
+shark1.get(GLTFShape).addClip(new AnimationClip("swim"))
+
+// Create a second entity
+let shark2 = new Entity()
+shark2.set(new GLTFShape("models/shark.gltf"))
+
+// Instance and add a new clip
+shark2.get(GLTFShape).addClip(new AnimationClip("swim"))
 ```
 
 ## Play an animation
