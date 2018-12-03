@@ -63,3 +63,25 @@ In the example above, `PhysicsSystem` iterates over the entities in `myGroup` as
 - If the scene has several _ball_ entities, each with a `Position` and a `Physics` component, then they will be included in `myGroup`. `PhysicsSystem` will then update their position on every frame.
 
 - If your scene also has other entities like a _hoop_ and a _scoreBoard_ that only have a `Physics` component, then they won't be in `myGroup` and won't be affected by `PhysicsSystem`.
+
+## All entities
+
+You can access the full list of entities that have been added to the engine, regardless of what components they have, through `engine.entities`.
+
+```ts
+engine.entities
+```
+
+## Change a group while iterating
+
+Entity groups are mutable. You shouldn't modify the group while you're iterating over it, because that could have unwanted consequences.
+
+For example, if you iterate over an entity group to remove each entity from the engine, the act of removing an entity displaces the other entities in the array, which can lead to some entities being skipped.
+
+To overcome this problem, use the following code to remove all entities from the engine:
+
+```ts
+while (myGroup.entities.length) {
+  engine.removeEntity(myGroup.entities[0])
+}
+```
