@@ -80,6 +80,14 @@ In the example above, the newly created entity isn't viewable by users of your s
 
 > Note: Entities aren't added to [Entity groups]() until they are added to the engine.
 
+When an entity is added to the engine, its `alive` property is implicitly set to _true_. You can check if an entity is currently added to the engine by checking this property.
+
+```ts
+if (!myEntity.alive) {
+  engine.addEntity(myEntity)
+}
+```
+
 ## Remove entities from the engine
 
 Entities that have been added to the engine can also be removed from it. When an entity is removed, it stops being rendered by the scene and users can no longer interact with it.
@@ -347,7 +355,7 @@ You may want to add a component that simply marks an entity to differentiate it 
 export class MyFlag {}
 ```
 
-## Pool entities and components
+## Pooling entities and components
 
 If you plan to spawn and despawn similar entities from your scene, it's often a good practice to keep a fixed set of entities in memory. Instead of creating new entities and deleting them, you could add and remove existing entities from the engine. This is an efficient way to deal with your user's memory.
 
