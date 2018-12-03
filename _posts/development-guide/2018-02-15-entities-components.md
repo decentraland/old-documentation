@@ -15,17 +15,17 @@ Decentraland scenes that use 'ECS' are built around _entities_ and _components_.
 
 _Entities_ are the basic unit for building everything in Decentraland scenes. All visible and invisible 3D objects and audio players in your scene will each be an entity. An entity is nothing more than a container in which to place components. The entity itself has no properties or methods of its own, it simply groups several components together.
 
-_Components_ define the traits of an entity. For example, a `transform` component stores the entity's coordinates, rotation and scale. A `BoxShape` component gives the entity a cube shape when rendered in the scene, a `Material` component gives the entity a color or texture. You could also create a custom `health` component to store an entity's remaining health value, and add it to entities that represent enemies in a game.
+_Components_ define the traits of an entity. For example, a `transform` component stores the entity's coordinates, rotation and scale. A `BoxShape` component gives the entity a cube shape when rendered in the scene, a `Material` component gives the entity a color or texture. You could also create a custom `health` component to store an entity's remaining health value, and add it to entities that represent non-player enemies in a game.
 
 If you're familiar with web development, think of entities as the equivalent of _Elements_ in a _DOM_ tree, and of components as _attributes_ of those elements.
 
 [DIAGRAM : ENTITY W COMPONENTS]
 
-Components like `transform`, `material` or shape components are closely tied in with the rendering of the scene. If the values in these components changes, that alone is enough to change how the scene is rendered in the next frame.
+Components like `transform`, `material` or shape components are closely tied in with the rendering of the scene. If the values in these components change, that alone is enough to change how the scene is rendered in the next frame.
 
-> Note: In previous versions of the SDK, the _scene state_ was abstracted into an object that was separate from the entities themselves. As of version 5.0, the _scene state_ is made up directly of the sum of every component in the entities present in the scene.
+> Note: In previous versions of the SDK, the _scene state_ was stored in an object that was separate from the entities themselves. As of version 5.0, the _scene state_ is made up directly from the sum of every component in the entities present in the scene.
 
-Components are only meant to store data about their parent entity. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-systems %}). Systems are completely decoupled from the components themselves. Entities and components are agnostic to what _systems_ are acting upon them.
+Components are only meant to store data about their parent entity. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-systems %}). Systems are completely decoupled from the components and entities themselves. Entities and components are agnostic to what _systems_ are acting upon them.
 
 See [Component Reference]() for a reference of all the available constructors for predefined components.
 
@@ -44,17 +44,56 @@ Explain there are two ways to declare entities and compnents: xml for static and
 // Create an entity
 const cube = new Entity()
 
-// Create and apply a transform component to that entity
+// Create and apply a `Transform` component to that entity
 cube.set(new Transform())
 
 // Set the fields in the component
 cube.get(Transform).position.set(3, 1, 3)
 
+// Create and apply a `CubeShape` component to give the entity a visible form
+cube.set(new CubeShape())
+
 // Add the entity to the engine
 engine.addEntity(cube)
 ```
 
-> Note: Entities and their components don't exist in your scene until you add the entities to the _engine_, as shown above.
+## Add entities to the engine
+
+When you create a new entity, you're instancing an object and storing it in memory. You can then start adding components to it and configuring them.
+
+It's important to understand that a newly created entity isn't _rendered_ until you add it to the scene's _engine_. Until the entity is added to the engine, users won't be able to see or interact with the entity.
+
+The engine is the part of the scene that sits in the middle and manages all of the other parts. It determines what entities are rendered and how users interact with them. It also coordinates what functions from [systems]() are executed and when.
+
+```ts
+// Create an entity
+const cube = new Entity()
+
+// Give the entity a shape
+cube.set(new CubeShape())
+
+// Add the entity to the engine
+engine.addEntity(cube)
+```
+
+In the example above, the newly created entity isn't viewable by users of your scene until it's added to the engine.
+
+> Note: Entities aren't added to [Entity groups]() until they are added to the engine.
+
+## Remove entities from the engine
+
+Entities that have been added to the engine can also be removed from it. When an entity is removed, it stops being rendered by the scene and users can no longer interact with it.
+
+```ts
+// Remove an entity from the engine
+engine.removeEntity(cube)
+```
+
+Removed entities are also removed from all [Entity groups](). If your scene has a pointer referencing a removed entity, it will remain in memory, allowing you to still access and change its component's values and add it back.
+
+Components of a removed entity aren't removed from memory either. This is specially useful for components that are used by multiple entities. For example, if you have a material component that
+
+If a removed entity has child entities, the child entities aren't removed from the engine. Keep in mind that if a child's position depended on that of the removed parent's, it will now be positioned relative to the scene (or to its new parent entity).
 
 ## Nested entities
 

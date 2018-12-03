@@ -16,6 +16,8 @@ Each entity group keeps track of a list of entities that have all the required c
 - An entity in the engine adds a new component
 - An entity in the engine removes a component
 
+> Note: Only entities that are added to the engine are eligible for entity groups. Entities that have been created but not added to the engine, or that have been removed from the engine, aren't listed in any group.
+
 After the group is created, you don't need to add or remove entities manually from it, the engine takes care of that.
 
 ```ts
