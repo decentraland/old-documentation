@@ -31,6 +31,26 @@ executeTask(async () => {
 })
 ```
 
+The fetch command can also include a second argument, where you bundle headers, HTTP method and HTTP body into an object.
+
+```ts
+executeTask(async () => {
+  try {
+    let response = await fetch(callUrl, {
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify(myBody)
+    })
+    let json = await response.json()
+    log(json)
+  } catch {
+    log("failed to reach URL")
+  }
+})
+```
+
+> Note: The body must be sent as a stringified JSON object.
+
 The fetch command returns a `response` object with the following data:
 
 - `headers`: A `ReadOnlyHeaders` object. Call the `get()` method to obtain a specific header, or the `has()` method to check if a header is present.

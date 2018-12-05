@@ -138,6 +138,15 @@ Once a parent is assigned, it can be read off the child entity with `.getParent(
 const parent = childEntity.getParent()
 ```
 
+You can also read what child entities are assigned to a parent by using `.children`.
+
+```ts
+// Get the first child listed in the library
+parentEntity.children[0]
+```
+
+> Note: `.children` returns a library that lists all the child entities. You can access a specific entity either by indicating an index number or by indicating the automatically generated `uuid` key.
+
 If a parent entity has a `transform` component that affects its position, scale or rotation, its children entities are also affected.
 
 - For **position**, the parent's center is _0, 0, 0_
