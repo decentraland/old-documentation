@@ -2,8 +2,6 @@
 date: 2018-01-01
 title: Deploy to Zeit
 description: Upload a scene to Zeit to share it offchain.
-redirect_from:
-  - /documentation/publishing/
 categories:
   - deploy
 type: Document
