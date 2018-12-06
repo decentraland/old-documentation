@@ -31,7 +31,7 @@ executeTask(async () => {
 })
 ```
 
-The fetch command can also include a second argument, where you bundle headers, HTTP method and HTTP body into an object.
+The fetch command can also include a second optional argument that bundles headers, HTTP method and HTTP body into a single object.
 
 ```ts
 executeTask(async () => {
