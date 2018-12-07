@@ -28,37 +28,6 @@ To run your scene in Now, make sure you’re using the latest version of the SDK
 
 Remember that the SDK version is specified in the scene and is determined when you first create it with the CLI. So, if you have a scene you created with an older version of the CLI, and then update the CLI, you will need to manually update the scene so it references the latest version of the SDK.
 
-<!--
-Once your scene has been updated to the latest version, modify the `package.json` file to include a new script called `now-start`. This script should run `dcl start --ci`.
-
-Your package.json file should contain something like:
-
-```json
-{
-  "name": "dcl-project",
-  "version": "1.0.0",
-  "description": "My new Decentraland project",
-  "scripts": {
-    "start": "dcl start",
-    "now-start": "dcl start --ci",
-    "build": "decentraland-compiler build.json",
-    "watch": "decentraland-compiler build.json --watch"
-  },
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "decentraland-api": "latest",
-    "decentraland": "latest"
-  },
-  "dependencies": {
-    "ajv": "^6.5.3"
-  }
-}
-```
--->
-
-> Note: If you're having trouble with an updated scene, make sure that the `package.json` file includes the script `deploy:now`. Otherwise add the following line: `"deploy:now": "now --platform-version 1 --docker"`.
-
 ## Deploy to Now
 
 To deploy a scene to now:
@@ -75,21 +44,7 @@ To deploy a scene to now:
 
    You can otherwise get the link in the console's output, it will resemble something like `https://myscene-gnezxvoayw.now.sh`.
 
-<!--
-## Download and use the Now Desktop Client
-
-1. Go to [zeit.co’s website](https://zeit.co/now) to download the _Now Desktop Client_.
-
-2. Once you’ve installed and opened the desktop client, you should see the triangular _Now_ icon appear next to your other running programs.
-
-![](/images/media/now_deployment.png)
-
-3. Click the entire scene folder and drop it on the _Now_ icon on the toolbar. That will start uploading the folder’s contents to the server.
-
-4. A new tab will open automatically in your web browser, showing you the server’s console as it installs the necessary dependencies to run your scene. This takes a few minutes, but eventually the scene preview should open automatically once everything is installed.
--->
-
-4. Share the link with anyone you want! _Now_ will keep hosting your scene at that link indeterminably.
+3. Share the link with anyone you want! _Now_ will keep hosting your scene at that link indeterminably.
 
 Keep in mind that the free version of Now enforces a maximum file size of 50 MB.
 
