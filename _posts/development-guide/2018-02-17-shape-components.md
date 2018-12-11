@@ -132,8 +132,6 @@ myEntity.set(new BoxShape())
 myEntity.get(BoxShape).visible = false
 ```
 
-## Text blocks
-
 ## Optimize 3D models
 
 To ensure that 3D models in your scene load faster and take up less memory, follow these best practices:
