@@ -25,13 +25,6 @@ To move, rotate or resize an entity in your scene, change the values on this com
 
 `position` is a _3D vector_, it sets the position of the entity's center on all three axes, stored as a `Vector3` object.
 
-- By default, coordinates are measured in _meters_.
-  > Note: If you're positioning a child of a parent entity that has a scale that's different from 1, the position vector is scaled accordingly.
-- `x:0, y:0, z:0` refers is the middle of the scene's base parcel, at ground level. The position of a child entity is relative to the center position of its parent entity, so `x:0, y:0, z:0` always refers to the center of the parent, wherever it is in the scene.
-  > Note: You can change the base parcel of a scene by editing the `base` attribute of _scene.json_.
-
-You set the position in the following ways:
-
 ```ts
 // Create transform
 let myTransform = new Transform()
@@ -48,9 +41,27 @@ myTransform.position.set(3, 1, 3)
 myTransform.position = new Vector3(5, 1, 5)
 ```
 
-When setting the value of the position with an object, you can either use a `Vector3` object, or any other object with _x_, _y_ and _z_ fields.
+> Note: When setting the value of the position with an object, you can either use a `Vector3` object, or any other object with _x_, _y_ and _z_ fields.
 
-> Tip: When previewing a scene locally, a compass appears in the (0,0,0) point of the scene with labels for each axis as reference.
+When setting a position, keep the following considerations in mind:
+
+- `x:0, y:0, z:0` refers to the _South-East_ corner of the scene's base parcel, at ground level.
+
+  > Tip: When viewing a scene preview, a compass appears in the (0,0,0) point of the scene with labels for each axis as reference.
+
+  > Note: You can change the base parcel of a scene by editing the `base` attribute of _scene.json_.
+
+- If an entity is a child of another, then `x:0, y:0, z:0` refers to the center of its parent entity, wherever it is in the scene.
+
+- By default, coordinates are measured in _meters_.
+
+  > Note: If you're positioning a child of a parent entity that has a scale that's different from 1, the position vector is scaled accordingly.
+
+- Every entity in your scene must be positioned within the bounds of the parcels it occupies at all times. If an entity leaves these boundaries, it will raise an error.
+
+  > Note: When viewing a scene in preview mode, entities that are out of bounds are highlighted in _red_.
+
+- Your scene is also limited in height. The more parcels that make up the scene, the higher you're allowed to build. See [scene limitations]() for more details.
 
 ## Rotation
 
