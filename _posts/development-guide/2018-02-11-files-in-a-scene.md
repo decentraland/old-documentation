@@ -30,14 +30,14 @@ In most cases, you'll only need to edit this file to create your scene. It conta
 Below is a basic example of a _game.ts_ file:
 
 ```ts
-// Create an entity group to track entities with Transition components
+// Create a component group to track entities with Transition components
 let group = engine.getComponentGroup(Transform)
 
 // Create a system
 export class RotatorSystem {
   // The update() function runs on every frame.
   update() {
-    // Cycle over the entities in the entity group
+    // Cycle over the entities in the component group
     for (let entity of group.entities) {
       const transform = entity.get(Transform)
       transform.rotation.y += 2

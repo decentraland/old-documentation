@@ -78,7 +78,7 @@ engine.addEntity(cube)
 
 In the example above, the newly created entity isn't viewable by users of your scene until it's added to the engine.
 
-> Note: Entities aren't added to [Entity groups]() until they are added to the engine.
+> Note: Entities aren't added to [Component groups]() until they are added to the engine.
 
 When an entity is added to the engine, its `alive` property is implicitly set to _true_. You can check if an entity is currently added to the engine by checking this property.
 
@@ -97,7 +97,7 @@ Entities that have been added to the engine can also be removed from it. When an
 engine.removeEntity(cube)
 ```
 
-Removed entities are also removed from all [Entity groups](). If your scene has a pointer referencing a removed entity, it will remain in memory, allowing you to still access and change its component's values and add it back.
+Removed entities are also removed from all [Component groups](). If your scene has a pointer referencing a removed entity, it will remain in memory, allowing you to still access and change its component's values and add it back.
 
 If a removed entity has child entities, you can determine what to do with them through the optional second and third arguments of the `.removeEntity()` function.
 
@@ -241,7 +241,7 @@ scale = cube.getOrNull(Transform)
 scale = cube.getOrCreate(Transform)
 ```
 
-If the component you're trying to retrieve doesn't exit in the entity:
+If the component you're trying to retrieve doesn't exist in the entity:
 
 - `get()` returns an error
 - `getOrNull()` returns `Null`
@@ -368,7 +368,7 @@ In the example above, note that both components occupy the _animal_ space. Each 
 
 ## Components as flags
 
-You may want to add a component that simply marks an entity to differentiate it from others but doesn't store any data. This is useful when using [Entity groups](), so that the group only keeps track of certain entities in the scene and not others.
+You may want to add a component that simply marks an entity to differentiate it from others but doesn't store any data. This is useful when using [Component groups](), so that the group only keeps track of certain entities in the scene and not others.
 
 ```ts
 @Component("myFlag")

@@ -48,6 +48,8 @@ Instead of the `Material` component, you can define a material through the `Basi
 const myMaterial = new BasicMaterial()
 ```
 
+> Note: Basic materials have some property names that are different from those in normal materials. For example it uses `texture` instead of `albedoTexture`.
+
 ## Material colors
 
 Give a material a plain color. In a `BasicMaterial` component, you set the `color` field. In a `Material` component, you set the `albedoColor` field. Albedo colors respond to light and can include shades on them.

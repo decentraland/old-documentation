@@ -60,7 +60,7 @@ TypeScript is a superset of JavaScript, so if you're familiar with JavaScript yo
 <!--
 See [TypeScript tips]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %}) for best practices and recommendations for writing Decentraland scenes using TypeScript.
 -->
-
+<!--
 #### XML
 
 For scenes that only render motionless content and that won't be interactive, you can use [XML](https://en.wikipedia.org/wiki/XML).
@@ -68,6 +68,8 @@ For scenes that only render motionless content and that won't be interactive, yo
 When building your scene with the CLI, select the option _Static_.
 
 We encourage developers to instead build their scenes using TypeScript. TypeScript scenes include embedded XML tags to handle the rendered entities. If you ignore all of the Typescript code in a _Basic_ scene and only edit what's inside the `render()` function, you're dealing with what's essentially XML but with slightly different syntax.
+
+-->
 
 #### Other languages
 
@@ -133,17 +135,17 @@ Each System has an `update()` method that's executed on every frame of the game 
 
 See [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-systems %}) for more details about how systems are used in a scene.
 
-## Entity groups
+## Component groups
 
-Groups keep track of all entities in the scene that have certain components in them. Once a group is created, it automatically keeps its list up to date with each new entity or component that is added or removed.
+Component groups keep track of all entities in the scene that have certain components in them. Once a component group is created, it automatically keeps its list up to date with each new entity or component that is added or removed.
 
-If you attempt to update all the entities in the scene on every frame, that can sometimes have a significant cost in performance. By referring only to the entities in a group, you ensure you're only dealing with those that are relevant.
+If you attempt to update all the entities in the scene on every frame, that can sometimes have a significant cost in performance. By referring only to the entities in a component group, you ensure you're only dealing with those that are relevant.
 
-Entity groups can be referenced by the functions in a system, typically an `update()` function will loop over each entity in the group performing the same actions.
+Component groups can be referenced by the functions in a system, typically an `update()` function will loop over each entity in the component group, performing the same actions.
 
 ## Putting it all together
 
-The _engine_ is what sits in between _entities_ and _components_ on one hand and _systems_ and _entity groups_ on the other. It calls system's functions, updates groups when entities are added, etc.
+The _engine_ is what sits in between _entities_ and _components_ on one hand and _systems_ and _component groups_ on the other. It calls system's functions, updates groups when entities are added, etc.
 
 All of the values stored in the components in the scene represent the scene's state at that point in time. With every frame of the game loop, the engine runs the `update()` function of each of the systems to update the values stored in the components.
 

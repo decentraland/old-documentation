@@ -274,12 +274,12 @@ The easiest way to rotate an entity is to use the `rotate()` function to change 
 The `rotate()` function takes two arguments:
 
 - The direction in which to rotate (as a _Vector3_)
-- The amount
+- The amount to rotate, in euler degrees
 
 ```ts
 export class SimpleRotate {
   update() {
-    myEntity.get(Transform).rotate(Vector3.Left, dt * 3)
+    myEntity.get(Transform).rotate(Vector3.Left()) dt * 3)
   }
 }
 
