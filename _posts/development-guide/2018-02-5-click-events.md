@@ -61,12 +61,12 @@ const input = Input.instance
 
 // button down event
 input.subscribe("BUTTON_A_DOWN", e => {
-  log("pointerUp", e)
+  log("button A Down", e)
 })
 
 // button up event
 input.subscribe("BUTTON_A_UP", e => {
-  log("pointerDown", e)
+  log("button A Up", e)
 })
 ```
 

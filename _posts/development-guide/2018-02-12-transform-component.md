@@ -288,7 +288,7 @@ engine.addSystem(new SimpleRotate())
 
 ## Move between two points
 
-If you want an entity to move smoothly between two points, using a _lerp_ (linear interpolation) algorythm is the easiest way. This algorythm is very well known in game development, as it's really useful.
+If you want an entity to move smoothly between two points, use the _lerp_ (linear interpolation) algorythm. This algorythm is very well known in game development, as it's really useful.
 
 The `lerp()` function takes three parameters:
 
@@ -322,7 +322,7 @@ export class LerpData {
 }
 
 export class LerpMove {
-  update() {
+  update(dt: number) {
     let transform = myEntity.get(Transform)
     let lerp = myEntity.get(LerpData)
     if (lerp.fraction < 1) {
@@ -331,7 +331,7 @@ export class LerpMove {
         lerp.target,
         lerp.fraction
       )
-      lerp.fraction += 1 / 60
+      lerp.fraction += dt / 6
     }
   }
 }
@@ -349,7 +349,10 @@ myEntity.get(LerpData).target = new Vector3(8, 1, 3)
 engine.addEntity(myEntity)
 ```
 
-> Note: You can do the same kind of operation to lerp an entity's rotation or scale. When lerping scale, if you plan to keep all axis in proportion, you can make things simpler by using `Scalar.lerp` and only interpolate between two numbers instead of two vectors.
+You can do the same kind of operation to lerp an entity's rotation or scale.
+
+- When lerping `scale`: If you plan to keep all axis in proportion, you can make things simpler by using `Scalar.lerp` and only interpolate between two numbers instead of two vectors.
+- When lerping `rotation`: you can use the quaternion funcion `slerp` (spherical lerp) to interpolate between two quaternion rotations. You could also represent the rotation with Vector3 values and carry out a normal `lerp` function, but that would imply a conversion from Vector3 to Quaternions on each frame, as rotation values are stored as Quaternions.
 
 ## Move non-linearly between two points
 
@@ -367,10 +370,10 @@ export class LerpData {
 }
 
 export class LerpMove {
-  update() {
+  update(dt: number) {
     let transform = lerpEntity.get(Transform)
     let lerp = lerpEntity.get(LerpData)
-    lerp.time += 0.01
+    lerp.time += dt / 6
     lerp.fraction = Math.sin(lerp.time)
     transform.position = Vector3.Lerp(
       lerp.previousPos,
@@ -404,7 +407,7 @@ export class PathData {
 }
 
 export class PatrolPath {
-  update() {
+  update(dt: number) {
     let transform = myEntity.get(Transform)
     let path = myEntity.get(PathData)
     if (path.fraction < 1) {
@@ -413,7 +416,7 @@ export class PatrolPath {
         path.target,
         path.fraction
       )
-      path.fraction += 1 / 60
+      path.fraction += dt / 6
     } else {
       path.nextPathIndex += 1
       if (path.nextPathIndex >= myPath.path.length) {
