@@ -326,9 +326,10 @@ $(function() {
   const $window = $(window)
   $window.bind('scroll', function () {
     const $languageSelector = $('.select-language.visible')
+    const offset = $header.height() + $header.offset().top
     const threshold = ($languageSelector.length > 0)
-      ? $header.height() + $languageSelector.height()
-      : $header.height()
+      ? offset + $languageSelector.height()
+      : offset
 
     $sidebarDropdown.toggleClass('sticky', $window.scrollTop() > threshold)
   })
