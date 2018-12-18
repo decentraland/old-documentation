@@ -65,44 +65,65 @@ Read more about the scene preview in [preview a scene]({{ site.baseurl }}{% post
 
 ## Edit the scene
 
-Open the `scene.tsx` file in your scene folder with the source code editor of your choice.
+Open the `game.ts` file in your scene folder with the source code editor of your choice.
 
-{% raw %}
 
 ```tsx
-import * as DCL from "decentraland-api"
+/// --- Set up a system ---
 
-export default class SampleScene extends DCL.ScriptableScene {
-  async render() {
-    return (
-      <scene>
-        <box
-          position={{ x: 5, y: 0.5, z: 5 }}
-          rotation={{ x: 0, y: 45, z: 0 }}
-          color="#4CC3D9"
-        />
-        <sphere position={{ x: 6, y: 1.25, z: 4 }} color="#EF2D5E" />
-        <cylinder
-          position={{ x: 7, y: 0.75, z: 3 }}
-          radius={0.5}
-          scale={{ x: 0, y: 1.5, z: 0 }}
-          color="#FFC65D"
-        />
-        <plane
-          position={{ x: 5, y: 0, z: 6 }}
-          rotation={{ x: -90, y: 0, z: 0 }}
-          scale={4}
-          color="#7BC8A4"
-        />
-      </scene>
-    )
+class RotatorSystem {
+  // this group will contain every entity that has a Transform component
+  group = engine.getComponentGroup(Transform)
+
+  update(dt: number) {
+    // iterate over the entities of the group
+    for (let entity of this.group.entities) {
+      // get the Transform component of the entity
+      const transform = entity.get(Transform)
+
+      // mutate the rotation
+      transform.rotate(Vector3.Up(), dt * 10) 
+    }
   }
 }
+
+// Add a new instance of the system to the engine
+engine.addSystem(new RotatorSystem())
+
+/// --- Spawner function ---
+
+function spawnCube(x: number, y: number, z: number) {
+  // create the entity
+  const cube = new Entity()
+
+  // set a transform to the entity
+  cube.set(new Transform({ position: new Vector3(x, y, z) }))
+
+  // set a shape to the entity
+  cube.set(new BoxShape())
+
+  // add the entity to the engine
+  engine.addEntity(cube)
+
+  return cube
+}
+
+/// --- Spawn a cube ---
+
+const cube = spawnCube(5, 1, 5)
+
+cube.set(
+  new OnClick(() => {
+    cube.get(Transform).scale.z *= 1.1
+    cube.get(Transform).scale.x *= 0.9
+
+    spawnCube(Math.random() * 8 + 1, Math.random() * 8, Math.random() * 8 + 1)
+  })
+)
 ```
 
-{% endraw %}
 
-Change anything you want from this code, for example change the _x_ position of one of the entities. If you kept the preview running in a browser tab, you should now see the changes show in the preview.
+Change anything you want from this code, for example change the _x_ position of the first `cube` entity that's spawned. If you kept the preview running in a browser tab, you should now see the changes show in the preview.
 
 Download this 3D model of an avocado from [Google Poly](https://poly.google.com) in _glTF_ format. [link](https://poly.google.com/view/cgLBGFfm5FU)
 
@@ -110,25 +131,26 @@ Download this 3D model of an avocado from [Google Poly](https://poly.google.com)
 
 Create a new folder under your scene’s directory named `/models`. Extract the downloaded files and place them all in that folder.
 
-In your scene’s code, add the following line in between the other XML entities:
+At the end of your scene’s code, add the following lines:
 
-{% raw %}
 
 ```tsx
-<gltf-model
-  src="models/Avocado.gltf"
-  position={{ x: 3, y: 0.75, z: 2 }}
-  scale={10}
-/>
+let avocado = new Entity()
+avocado.set(new GLTFShape("models/avocado.gltf"))
+avocado.set(new Transform({ 
+    position: new Vector3(3, 1, 3), 
+    scale: new Vector3(10, 10, 10)
+    }))
+engine.addEntity(avocado)
 ```
-
-{% endraw %}
 
 Check your scene preview once again to see that the 3D model is now there too.
 
 ![](/images/media/landing_avocado_in_scene.png)
 
-Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) for a high-level understanding of how Decentraland scenes function. Check [scene-content]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for specifics about how to add content to a scene.
+The lines you just added create a new [entity](), give it a [shape]() based on the 3D model you downloaded, and [set its position]().
+
+Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) for a high-level understanding of how Decentraland scenes function.
 
 ## Scene examples
 
@@ -160,6 +182,5 @@ Also see [tutorials]({{ site.baseurl }}{% post_url /tutorials/2018-01-03-tutoria
 ## Other useful information
 
 - [Design constraints for games]({{ site.baseurl }}{% post_url /design-experience/2018-01-08-design-games %})
-- [TypeScript tips]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %})
 - [3D model considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %})
 - [Scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %})
