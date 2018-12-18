@@ -6,7 +6,7 @@ categories:
   - development-guide
 type: Document
 set: development-guide
-set_order: 2
+set_order: 1
 ---
 
 Decentraland scenes that use 'ECS' are built around _entities_ and _components_.

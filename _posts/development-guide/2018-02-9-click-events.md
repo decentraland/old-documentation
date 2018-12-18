@@ -6,7 +6,7 @@ categories:
   - development-guide
 type: Document
 set: development-guide
-set_order: 5
+set_order: 9
 ---
 
 Clicks can be done either with a mouse, a touch screen, a VR controller or some other device, these all generate the same type of event.

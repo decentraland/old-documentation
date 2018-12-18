@@ -6,7 +6,7 @@ categories:
   - development-guide
 type: Document
 set: development-guide
-set_order: 3
+set_order: 2
 ---
 
 Each component group keeps track of a list of entities that have all the required components. The engine automatically updates this list every time that:

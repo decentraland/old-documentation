@@ -8,6 +8,7 @@ type: Document
 set: development-guide
 set_order: 13
 ---
+<!--
 
 You can create a static scene with XML. The advantage of this is that the code is simpler and straight forward, very similar to the code of an [A-frame](aframe.io) scene. The disadvantage is that you can't make the scene dynamic or interactive in any way, users will only be able to walk around it.
 
@@ -84,7 +85,7 @@ To migrate a scene that was developed in A-frame into decentraland:
   - In every tag name that starts with _a-_ remove the _a-_. So tags like `<a-entity>` and `<a-gltf-model>` become `<entity>` and `<gltf-model>`.
   - For all _position_ attributes, inverse the z axis. For example `position=”10 5 15”` should become `position=”10 5 -15”`.
 
-<!--
+
 
 ## Migrating an XML scene to TypeScript
 

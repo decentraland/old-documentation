@@ -10,7 +10,7 @@ type: Document
 set: development-guide
 set_order: 12
 ---
-
+<!-- 
 The Decentraland SDK is meant to be used via TypeScript (.tsx) files. This section introduces a number of tips and tricks you can take advantage of when building your scene. What's discussed here isn't directly related to the features of the SDK, but rather about ways in which you can use the TypeScript language and context to make the most out of it.
 
 ## Log to console
@@ -849,3 +849,4 @@ export default class clickTest extends DCL.ScriptableScene<any, IState> {
 ```
 
 {% endraw %}
+-->

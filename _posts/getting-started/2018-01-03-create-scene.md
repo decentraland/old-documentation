@@ -12,7 +12,7 @@ set_order: 1
 tag: introduction
 ---
 
-In Decentraland, a scene is the representation of the content of an estate/LAND. All scenes are made up of [entities]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
+In Decentraland, a scene is the representation of the content of an estate or parcel. All scenes are made up of [entities and components](), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
 
 ## Install the CLI
 
@@ -39,15 +39,7 @@ The `dcl init` command creates a Decentraland **project** in your current workin
 
 The default scene is defined in a TypeScript file featuring an example with a door that can be opened. The scene features a basic state and handles click events.
 
-<!--
-There are four different scene templates that you can use as a starting point:
-
-- **Basic scene**: Defined in a simple TypeScript file that renders a single glTF model.
-- **Interactive scene**: Defined in a TypeScript file featuring an example with a door that can be opened. This is the best template to start learning how to use the SDK. The scene features a basic state and handles click events. The scene state is stored locally in the user's browser, so a user's actions don't affect how other users see the scene rendered.
-- **Remote scene**: Defined in a TypeScript file featuring the same example used for the local scene, but it differs in that the scene state is stored in a remote server that it communicates with over WebSockets. Because of this, all users see the scene rendered identically. To test your scene, you can run both the server and the client locally.
-- **Static scene**: Defined in an **XML** file with a single glTF model. You can't add any dynamic or interactive content to this type of scene, it can only display static entities in place. -->
-
-See [scene contents]({{ site.baseurl }}{% post_url /development-guide/2018-01-11-scene-files %}) for an overview of the default files that are created in your scene.
+See [Files in a scene]({{ site.baseurl }}{% post_url /development-guide/2018-02-4-files-in-a-scene %}) for an overview of the default files that are created in your scene.
 
 ## Clone a sample scene
 
@@ -77,10 +69,10 @@ For more about what you can see in a scene preview, and instructions for how to 
 
 To edit scenes, we recommend using a source code editor like [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/). An editor like this helps you create scenes a lot faster and with less errors, as it marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. With Visual Studio Code you can even click on an object to see the full definition of its class.
 
-- You create the logic of your scene by editing the _Scene.tsx_ file.
+- You create the logic of your scene by editing the _game.ts_ file.
 - You define scene properties, like the parcels it covers or owner information, in the _scene.json_ file.
 
-See the [development guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for simple instructions about adding content to your scene.
+See the _Development guide_ section for simple instructions about adding content to your scene.
 
 ## Publish your scene
 

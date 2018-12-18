@@ -6,7 +6,7 @@ categories:
   - development-guide
 type: Document
 set: development-guide
-set_order: 2
+set_order: 8
 ---
 
 3D models in _.glTF_ and _.glb_ format can include as many animations as you want in them. Animations tell the mesh how to move, by specifying a series of poses that are laid out over time, the mesh then blends from one pose to the other to simulate continuous movement. See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for details on how to create models and animations for them. Read [Shape components]() for instructions on how to import a 3D model to a scene.

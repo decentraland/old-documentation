@@ -6,7 +6,7 @@ categories:
   - development-guide
 type: Document
 set: development-guide
-set_order: 2
+set_order: 29
 ---
 
 Your scene can leverage external services that expose APIs, you can use this to obtain updated price data, weather data or any other kind of information exposed by an API.

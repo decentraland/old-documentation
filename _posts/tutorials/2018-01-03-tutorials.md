@@ -9,6 +9,8 @@ set: tutorials
 set_order: 2
 ---
 
+
+<!--
 ## Simple interactive scene
 
 [Simple interactive scene](https://blog.decentraland.org/build-your-first-interactive-scene-using-the-sdk-5d6895ac78f0)
@@ -48,3 +50,4 @@ This blogpost walks you through importing the logic of an existing 2D game built
 [Weather from an API](https://blog.decentraland.org/developer-tutorial-simulate-weather-in-decentraland-using-real-world-data-eb1162716d5b)
 
 This blogpost explains how to call a weather API from your scene to display different weather conditions based on that.
+-->
