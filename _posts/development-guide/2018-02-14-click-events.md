@@ -1,12 +1,12 @@
 ---
-date: 2018-02-5
+date: 2018-02-14
 title: Click events
 description: Learn how to handle user clicks in your scene.
 categories:
   - development-guide
 type: Document
 set: development-guide
-set_order: 9
+set_order: 14
 ---
 
 Clicks can be done either with a mouse, a touch screen, a VR controller or some other device, these all generate the same type of event.

@@ -122,10 +122,6 @@ The image below shows two identical models, created with the same colors and tex
 
 ![](/images/media/materials_pbr_basic.png)
 
-<!--
-See [entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material.
--->
-
 #### Transparent and emissive materials
 
 You can set a material to be _transparent_. Transparent materials can be seen through to varying degrees, depending on their _alpha_. To do this, activate the transparency property of the material and then set its _alpha_ to the desired amount. An alpha of 1 will make the material completely opaque, an alpha of 0 will make it invisible.
