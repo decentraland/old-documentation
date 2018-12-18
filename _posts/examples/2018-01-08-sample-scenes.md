@@ -33,7 +33,7 @@ With this Dynamic Animation, we're demonstrating how to employ simple data bindi
 
 #### Interactive Content
 
-This simple example shows a scene that you can interact with by opening and closing a door. Clicking the door creates an [event]({{ site.baseurl }}{% post_url /development-guide/2018-02-9-click-events %}), which changes the scene's state. The scene's state then changes the rotation of the door, which rotates smoothly thanks to a transition.
+This simple example shows a scene that you can interact with by opening and closing a door. Clicking the door creates an [event]({{ site.baseurl }}{% post_url /development-guide/2018-02-14-click-events %}), which changes the scene's state. The scene's state then changes the rotation of the door, which rotates smoothly thanks to a transition.
 
 [Code](https://github.com/decentraland/sample-scene-script)
 

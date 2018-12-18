@@ -150,6 +150,8 @@ Check your scene preview once again to see that the 3D model is now there too.
 
 The lines you just added create a new [entity](), give it a [shape]() based on the 3D model you downloaded, and [set its position]().
 
+Note that the avocado you added rotates, just like all other entities in the scene. That's because the `RotatorSystem` [system]() is iterating over every entity in the scene. 
+
 Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) for a high-level understanding of how Decentraland scenes function.
 
 ## Scene examples
