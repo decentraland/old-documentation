@@ -1,5 +1,5 @@
 ---
-date: 2018-02-10
+date: 2018-02-2
 title: Component groups
 description: Learn about how your scene keeps track of lists of entities that have components in common to make updating them easier.
 categories:
@@ -38,7 +38,7 @@ When creating a component group, specify what components need to be present in e
 const myGroup = engine.getComponentGroup(Transform, Physics, NextPosition)
 ```
 
-> Tip: If your scene includes several entities that have the same components, but you only want some of those in your component group, create a custom component to act as a [flag]({{ site.baseurl }}{% post_url /development-guide/2018-02-15-entities-components %}#components-as-flags). This component doesn't need to have any properties in it. Add this component to the entities that you want the component group to handle.
+> Tip: If your scene includes several entities that have the same components, but you only want some of those in your component group, create a custom component to act as a [flag]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}#components-as-flags). This component doesn't need to have any properties in it. Add this component to the entities that you want the component group to handle.
 
 ## Use component groups in a system
 

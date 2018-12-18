@@ -1,5 +1,5 @@
 ---
-date: 2018-02-17
+date: 2018-02-7
 title: Materials
 description: Learn how to add materials and textures to entities with primitive shapes.
 categories:
@@ -163,7 +163,7 @@ In the example above, the image for the material is located in a `materials` fol
 
 #### Texture mapping
 
-If you want the texture to be mapped to specific scale or alignment on your entities, then you need to configure _uv_ properties on the [shape components]({{ site.baseurl }}{% post_url /development-guide/2018-02-17-shape-components %}).
+If you want the texture to be mapped to specific scale or alignment on your entities, then you need to configure _uv_ properties on the [shape components]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}).
 
 <!--
 Use the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) library to map textures easily. Read documentation on how to use this library in the provided link.

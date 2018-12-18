@@ -1,5 +1,5 @@
 ---
-date: 2018-02-5
+date: 2018-02-25
 title: Asynchronous code
 description: Learn when and how to run asynchronous functions in your scene's code.
 categories:

@@ -25,7 +25,7 @@ Components like `transform`, `material` or shape components are closely tied in 
 
 > Note: In previous versions of the SDK, the _scene state_ was stored in an object that was separate from the entities themselves. As of version 5.0, the _scene state_ is made up directly from the sum of every component in the entities present in the scene.
 
-Components are only meant to store data about their parent entity. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-16-systems %}). Systems are completely decoupled from the components and entities themselves. Entities and components are agnostic to what _systems_ are acting upon them.
+Components are only meant to store data about their parent entity. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}). Systems are completely decoupled from the components and entities themselves. Entities and components are agnostic to what _systems_ are acting upon them.
 
 See [Component Reference]() for a reference of all the available constructors for predefined components.
 

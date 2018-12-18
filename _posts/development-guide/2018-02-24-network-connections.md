@@ -1,5 +1,5 @@
 ---
-date: 2018-02-9
+date: 2018-02-24
 title: Network connections
 description: How to communicate your scene with external servers and APIs.
 categories:
