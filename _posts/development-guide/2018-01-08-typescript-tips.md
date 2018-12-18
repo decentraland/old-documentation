@@ -249,7 +249,7 @@ Keep in mind that some events in a Decentraland scene, like the `positionChanged
 
 You can add 2D animations in your scene as a way to save on triangle amounts, or as a chosen aesthetic.
 
-You'll generally want to apply sprite animations to a _plane_ entity that's configured to behave as a _billboard_. Setting an entity's billboard component makes it rotate to always face the user, learn more about this in [Entity positioning]({{ site.baseurl }}{% post_url /development-guide/2018-2-12-entity-positioning %}).
+You'll generally want to apply sprite animations to a _plane_ entity that's configured to behave as a _billboard_. Setting an entity's billboard component makes it rotate to always face the user, learn more about this in [Entity positioning]().
 
 We recommend using the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) node package. To install it run the following:
 
@@ -267,24 +267,24 @@ Read the [library's documentation](https://github.com/decentraland/dcl-sprites) 
 
 ## Access data across objects
 
-When your scene reaches a certain level of complexity, it's convenient to break the code out into several separate objects instead of having all of the logic inside the [`scriptableScene` class]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}).
+When your scene reaches a certain level of complexity, it's convenient to break the code out into several separate objects instead of having all of the logic inside the [`scriptableScene` class]().
 
-The downside is that information becomes harder to pass on. If all of your logic occurs inside the `scriptableScene` class, you can keep track of all information using the [scene state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}) and scene properties. But if that's not the case, then you must keep in mind that you can't reference the scene state or scene properties from outside the `scriptableScene` class.
+The downside is that information becomes harder to pass on. If all of your logic occurs inside the `scriptableScene` class, you can keep track of all information using the [scene state]() and scene properties. But if that's not the case, then you must keep in mind that you can't reference the scene state or scene properties from outside the `scriptableScene` class.
 
 You can either:
 
 - Pass information from the main `scriptableScene` class as properties of child objects.
 - Use a library like [Redux](https://redux.js.org/) to create a univesal data store that can be referenced from anywhere.
 
-See [scene state]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-scene-state %}) for more details.
+See [scene state]() for more details.
 
 ## Execution timing
 
 TypeScript provides various ways you can control when parts of your code are executed.
 
-The scriptableScene object comes with a number of default functions that are executed at different times of the scene life cycle, for example `sceneDidMount()` is called once when the scene starts and `render()` is called each time the that the scene state changes. See [scriptable scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) for more information.
+The scriptableScene object comes with a number of default functions that are executed at different times of the scene life cycle, for example `sceneDidMount()` is called once when the scene starts and `render()` is called each time the that the scene state changes. See [scriptable scene]() for more information.
 
-Entities can include a _transition_ component to make any changes occur gradually, this works very much like transitions in CSS. See [Entity positioning]({{ site.baseurl }}{% post_url /development-guide/2018-2-12-entity-positioning  %}) for more information.
+Entities can include a _transition_ component to make any changes occur gradually, this works very much like transitions in CSS. See [Entity positioning]() for more information.
 
 #### Start a time-based loop
 
@@ -787,7 +787,7 @@ renderObstacles() {
 
 ## The this operator
 
-Most often, when you use `this` in a scene it refers to the instance of the [scriptable scene object]({{ site.baseurl }}{% post_url /development-guide/2018-01-05-scriptable-scene %}) that is running the scene.
+Most often, when you use `this` in a scene it refers to the instance of the [scriptable scene object]() that is running the scene.
 
 However, the meaning of `this` in a function is relative to where a function is being called from, not to where the function was defined. The same function could assign different meanings to `this` depending on where it was called from. If a function is defined as part of the scene, but it's called by the onClick component of an entity, any uses of the operator `this` in the function refer to the function itself, not to the scriptable scene object.
 
