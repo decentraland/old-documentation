@@ -19,6 +19,16 @@ const myEntity = new Entity()
 myEntity.set(new Transform())
 ```
 
+For brevity, you can also create a `Transform` entity and give it initial values in a single statement, passing it an object that can optionally include _position_, _rotation_ and _scale_ properties.
+
+```ts
+myEntity.set(new Transform({ 
+    position: new Vector3(3, 1, 3), 
+    scale: new Vector3(10, 10, 10)
+    rotation: new Quaternion(0, 0, 0, 1)
+    }))
+```
+
 To move, rotate or resize an entity in your scene, change the values on this component incrementally, frame by frame. See [Move entities]() for more details and best practices.
 
 ## Position
@@ -26,8 +36,8 @@ To move, rotate or resize an entity in your scene, change the values on this com
 `position` is a _3D vector_, it sets the position of the entity's center on all three axes, stored as a `Vector3` object.
 
 ```ts
-// Create transform
-let myTransform = new Transform()
+// Create transform with a predefined position
+let myTransform = new Transform({position: new Vector3(1, 0, 1)})
 
 // Set each axis individually
 myTransform.position.x = 3
@@ -68,8 +78,8 @@ When setting a position, keep the following considerations in mind:
 `rotation` is stored as a [_quaternion_](https://en.wikipedia.org/wiki/Quaternion), a system of four numbers, _x_, _y_, _z_ and _w_.
 
 ```ts
-// Create transform
-let myTransform = new Transform()
+// Create transform with a predefined rotation in Quaternions
+let myTransform = new Transform({rotation: new Quaternion(0, 0, 0, 1)})
 
 // Set rotation with four numbers (x, y, z, w)
 myTransform.rotation.set(0, 0, 1, 0)
@@ -81,8 +91,8 @@ myTransform.rotation = new Quaternion(1, 0, 0, 0)
 You can also set the rotation field with [_Euler_ angles](https://en.wikipedia.org/wiki/Euler_angles), the more common _x_, _y_ and _z_ notation that most people are familiar with. To use Euler angles, use the `setEuler()` method.
 
 ```ts
-// Create transform
-let myTransform = new Transform()
+// Create transform with a predefined rotation in Euler angles
+let myTransform = new Transform({rotation: Quaternion.Euler(0, 90, 0)})
 
 // Use the .setEuler() function
 myTransform.rotation.setEuler(0, 90, 180)
@@ -158,8 +168,8 @@ The default scale is 1, so assign a value larger to 1 to stretch an entity or sm
 You can either set each dimension individually, or use the `set` operation to set all dimensions.
 
 ```ts
-// Create a transform
-let myTransform = new Transform()
+// Create a transform with a predefined scale
+let myTransform = new Transform({scale: new Vector3(2, 2, 2)})
 
 // Set each dimension individually
 myTransform.scale.x = 1
