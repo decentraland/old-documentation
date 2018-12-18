@@ -25,7 +25,7 @@ This is an example of a completely static scene. We've laid out a sample space t
 
 #### Dynamic Animation
 
-With this Dynamic Animation, we're demonstrating how to employ simple data binding to objects in your scene. [Translation, rotation, and scale]({{ site.baseurl }}{% post_url /development-guide/2018-2-12-set-entity-position %}) are all attributes you can bind to state properties.
+With this Dynamic Animation, we're demonstrating how to employ simple data binding to objects in your scene. [Translation, rotation, and scale]({{ site.baseurl }}{% post_url /development-guide/2018-2-5-set-entity-position %}) are all attributes you can bind to state properties.
 
 [Code](https://github.com/decentraland/sample-scene-dynamic-animation)
 
