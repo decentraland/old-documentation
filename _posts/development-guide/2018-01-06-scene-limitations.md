@@ -60,7 +60,6 @@ executeTask(async () => {
 
 The `querySceneLimits()` function returns a promise of an object with the following properties, all of type _number_.
 
-{% raw %}
 
 ```tsx
 // import controller
@@ -90,7 +89,6 @@ executeTask(async () => {
 }
 ```
 
-{% endraw %}
 
 For example, if your scene has only one parcel, logging `limits.triangles` should print `10000`.
 
@@ -111,7 +109,6 @@ executeTask(async () => {
 
 The `querySceneMetrics()` function returns a promise of an object with the following properties, all of type _number_.
 
-{% raw %}
 
 ```tsx
 // import controller
@@ -140,8 +137,6 @@ executeTask(async () => {
   }
 }
 ```
-
-{% endraw %}
 
 For example, if your scene is only rendering one box entity at the time, logging `limits.entities` should print `1`.
 
