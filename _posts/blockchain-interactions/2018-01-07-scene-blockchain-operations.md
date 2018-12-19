@@ -11,47 +11,493 @@ set: blockchain-interactions
 set_order: 7
 ---
 
-By interacting with the Ethereum blockchain you can, for example, require that a user pays a fee before activating something in your scene. The SDK is currently experimenting with different ways to interface with the Ethereum blockchain. Currently there are three ways you can achieve this:
+By interacting with the Ethereum blockchain you can, for example, require that a user pays a fee before activating something in your scene. Currently, we're using the `eth-connect` library, created by Decentraland, for handling these types of operations.
 
-- Using the Web3 API
-- Using the `ethjs` library
-- Using the `eth-connect` library
-
-> IMPORTANT: At the present time, none of these solutions are fully supported by the SDK, and the way in which they are implemented is very likely to change. For this reason, we advise that you only try these out for proofs of concept, but not to develop final experiences.
 
 ## Obtain a user's public key
 
 You can obtain a user's public Ethereum key by using `getUserPublicKey()`. You can then use this information to send payments to the user, or as a way to recognize users.
 
-The example below imports the `UserIdentity` library and runs `getUserPublicKey()` to get the public key of the user's Metamask account and log it to console. The user must be logged into their Metamask account on their browser for this to work.
+The example below imports the `Identity` library and runs `getUserPublicKey()` to get the public key of the user's Metamask account and log it to console. The user must be logged into their Metamask account on their browser for this to work.
 
-{% raw %}
+
 
 ```tsx
-import { createElement, inject, UserIdentity } from "decentraland-api/src"
+import { getUserPublicKey } from '@decentraland/Identity'
 
-export default class Scene extends ScriptableScene<any, any> {
-  @inject("Identity")
-  userIdentity: UserIdentity
+executeTask(async () => {
+  let key = await getUserPublicKey()
+  log(key)
+})
 
-  state = {
-    publicKey: ""
-  }
-
-  async sceneDidMount() {
-    const publicKey = await this.userIdentity!.getUserPublicKey()
-    this.setState({ publicKey })
-    console.log(this.state.publicKey)
-  }
-
-  render() {
-    return <scene />
-  }
-}
 ```
 
-{% endraw %}
 
+## Download and import the eth-connect library
+
+To use eth-connect library, you must manually install the package via `npm` in your scene's folder. To do so, run the following command in the scene folder:
+
+```
+npm install eth-connect
+```
+
+> Note: Decentraland scenes don't support older versions than 4.0 of the eth-connect library.
+
+> Note: Currently, we don't allow installing other dependencies via npm that are not created by Decentraland.
+
+To use the eth-connect controller in your scene, you must import it from the scene code:
+
+```ts
+import * as EthConnect from '../../../node_modules/eth-connect/esm'
+```
+
+## Import the contract ABI
+
+An ABI (Application Binary Interface) describes how to interact with an Ethereum contract, determining what functions are available, what inputs they take and what they output. Each Ethereum contract has its own ABI, you should import the ABIs of all the contracts you wish to use in your project.
+
+ABI definitions can be quite lengthy, so we recommend copying the ABI code into a separate `.ts` file and importing it into other scene files from there.
+
+Ether:
+https://solidity.readthedocs.io/en/develop/abi-spec.html
+
+MANA:
+
+
+fake MANA:
+
+
+## Call the methods in a contract
+
+After importing the `eth-connect` library, you can import a contract's _abi_, exposing all the methods available in the contract.
+
+```ts
+import { getProvider } from '@decentraland/web3-provider'
+import { getUserPublicKey } from '@decentraland/Identity'
+import * as EthConnect from '../../../node_modules/eth-connect/esm'
+
+const abi = [
+  {
+    constant: true,
+    inputs: [],
+    name: 'mintingFinished',
+    outputs: [
+      {
+        name: '',
+        type: 'bool'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'name',
+    outputs: [
+      {
+        name: '',
+        type: 'string'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: '_spender',
+        type: 'address'
+      },
+      {
+        name: '_value',
+        type: 'uint256'
+      }
+    ],
+    name: 'approve',
+    outputs: [
+      {
+        name: '',
+        type: 'bool'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: '_from',
+        type: 'address'
+      },
+      {
+        name: '_to',
+        type: 'address'
+      },
+      {
+        name: '_value',
+        type: 'uint256'
+      }
+    ],
+    name: 'transferFrom',
+    outputs: [
+      {
+        name: '',
+        type: 'bool'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'decimals',
+    outputs: [
+      {
+        name: '',
+        type: 'uint8'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: false,
+    inputs: [],
+    name: 'unpause',
+    outputs: [
+      {
+        name: '',
+        type: 'bool'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: '_to',
+        type: 'address'
+      },
+      {
+        name: '_amount',
+        type: 'uint256'
+      }
+    ],
+    name: 'mint',
+    outputs: [
+      {
+        name: '',
+        type: 'bool'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: '_value',
+        type: 'uint256'
+      }
+    ],
+    name: 'burn',
+    outputs: [],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'paused',
+    outputs: [
+      {
+        name: '',
+        type: 'bool'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '_owner',
+        type: 'address'
+      }
+    ],
+    name: 'balanceOf',
+    outputs: [
+      {
+        name: 'balance',
+        type: 'uint256'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: false,
+    inputs: [],
+    name: 'finishMinting',
+    outputs: [
+      {
+        name: '',
+        type: 'bool'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: false,
+    inputs: [],
+    name: 'pause',
+    outputs: [
+      {
+        name: '',
+        type: 'bool'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'owner',
+    outputs: [
+      {
+        name: '',
+        type: 'address'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'symbol',
+    outputs: [
+      {
+        name: '',
+        type: 'string'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: '_to',
+        type: 'address'
+      },
+      {
+        name: '_value',
+        type: 'uint256'
+      }
+    ],
+    name: 'transfer',
+    outputs: [
+      {
+        name: '',
+        type: 'bool'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '_owner',
+        type: 'address'
+      },
+      {
+        name: '_spender',
+        type: 'address'
+      }
+    ],
+    name: 'allowance',
+    outputs: [
+      {
+        name: 'remaining',
+        type: 'uint256'
+      }
+    ],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: 'to',
+        type: 'address'
+      },
+      {
+        name: 'amount',
+        type: 'uint256'
+      }
+    ],
+    name: 'setBalance',
+    outputs: [],
+    payable: false,
+    type: 'function'
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: 'newOwner',
+        type: 'address'
+      }
+    ],
+    name: 'transferOwnership',
+    outputs: [],
+    payable: false,
+    type: 'function'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'to',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        name: 'amount',
+        type: 'uint256'
+      }
+    ],
+    name: 'Mint',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [],
+    name: 'MintFinished',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [],
+    name: 'Pause',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [],
+    name: 'Unpause',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'burner',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        name: 'value',
+        type: 'uint256'
+      }
+    ],
+    name: 'Burn',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'owner',
+        type: 'address'
+      },
+      {
+        indexed: true,
+        name: 'spender',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        name: 'value',
+        type: 'uint256'
+      }
+    ],
+    name: 'Approval',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'from',
+        type: 'address'
+      },
+      {
+        indexed: true,
+        name: 'to',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        name: 'value',
+        type: 'uint256'
+      }
+    ],
+    name: 'Transfer',
+    type: 'event'
+  }
+]
+
+executeTask(async () => {
+  const provider = await getProvider()
+  const requestManager = new EthConnect.RequestManager(provider)
+  const factory = new EthConnect.ContractFactory(requestManager, abi)
+  const contract = (await factory.at('0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb')) as any
+  const res = await contract.setBalance('0xaFA48Fad27C7cAB28dC6E970E4BFda7F7c8D60Fb', 100, {
+    from: await getUserPublicKey()
+  })
+  log(res)
+})
+
+```
+
+The example above imports the abi for the Ropsten MANA contract and transfers 100 _fake MANA_ to your account in the Ropsten test network when you open it.
+
+
+
+
+<!--
 ## Web3 API
 
 The SDK includes an interface for the Web3 API. You can use it to call methods of this API from your scene's code. The interface includes two methods: `send` and `sendAsync`, which can be used to call the methods from the API. We have only whitelisted the following methods from the API, all others are currently not supported:
@@ -105,51 +551,6 @@ export default class EthereumProvider extends ScriptableScene {
 
 For more details and a full reference of what's possible with this API, see [Web3's documentation](https://web3js.readthedocs.io/en/1.0/)
 
-## ethjs library
-
-To use it, you must first install ethjs in your local machine. To do so, run the following:
-
-```bash
-npm install --save ethjs
-```
-
-For more details and a full reference of what's possible with this library, see [ethjs's documentation](https://github.com/ethjs/ethjs)
-
-<!--
-## The Ethereum Controller
-
-Another way to perform operations on the Ethereum blockchain is through the ethereum controller. This controller is packaged with the SDK, so you don't need to run any manual installations. You must first import it into your scene:
-
-1.  Import the `EthereumController` to the .tsx file:
-
-{% raw %}
-
-```tsx
-import {
-  createElement,
-  ScriptableScene,
-  EthereumController,
-  inject
-} from "decentraland-api"
-```
-
-{% endraw %}
-
-2.  Then inject the ethereum controller as a decorator into your custom scene class:
-
-{% raw %}
-
-```tsx
-export default class myScene extends ScriptableScene {
-  @inject("experimentalEthereumController")
-  eth: EthereumController
-  // (...)
-}
-```
-
-{% endraw %}
-
-The examples below show some of the things you can do with this controller.
 
 #### Require a payment
 
@@ -191,6 +592,7 @@ The example above listens for clicks on a `door` entity. When clicked, the user 
 ![](/images/media/metamask_confirm.png)
 
 > Tip: We recommend defining the wallet address and the ammount to pay as global constants at the start of the _.tsx_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
+-->
 
 #### Using the Ethereum test network
 
@@ -206,6 +608,7 @@ To preview your scene using the test network, add the `DEBUG` property to the UR
 
 Any transactions that you accept while viewing the scene in this mode will only occur in the test network and not affect the MANA balance in your real wallet.
 
+<!--
 ## Wait for a transaction
 
 Another thing that the ethereum controller allows you to do is check if a specific transaction has been already mined. This looks for a specific transaction's hash number and verifies that it has been validated by a miner and added to the blockchain.
@@ -241,6 +644,8 @@ async sceneDidMount() {
 The example above first requires the user to accept a transaction, if the user accepts it, then `requirePayment` returns a hash that can be used to track the transaction and see if it's been mined. Once the transaction is mined and accepted as part of the blockchain, the `isDoorClosed` variable in the scene state is changed.
 
 <!--
+
+-->
 
 #### Signing messages
 
@@ -315,6 +720,8 @@ console.log(‘Is the message correct?’, isEqual)
 
 {% endraw %}
 
+
+<!--
 #### Example:
 
 {% raw %}

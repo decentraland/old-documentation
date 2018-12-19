@@ -24,8 +24,9 @@ Add an `NFTShape` component to an entity to display a 2D token in your scene.
 const nft = new Entity()
 
 // position entity
-nft.set(new Transform())
-nft.get(Transform).position.set(1, 1.2, 1)
+nft.set(new Transform({
+  position: new Vector(1, 1.2, 1)
+  }))
 
 // add an NFTShape, instanced with a token contract and token id
 nft.set(new NFTShape("0x06012c8cf97bead5deae237070f9587f8e7a266d", "475577"))

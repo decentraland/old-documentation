@@ -47,14 +47,18 @@ export class RotatorSystem {
 
 // Create an entity
 const cube = new Entity()
+
 // Add a cube shape to the entity
 cube.set(new BoxShape())
+
 // Add a transform component to the entity
-cube.set(new Transform())
-// Configure values in the transform component
-cube.get(Transform).position.set(5, 0, 5)
+cube.set(new Transform({
+  position: new Vector3(5, 0, 5)
+}))
+
 // Add the entity to the engine
 engine.addEntity(cube)
+
 // Add the system to the engine
 engine.addSystem(new RotatorSystem())
 ```

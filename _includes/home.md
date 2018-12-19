@@ -5,18 +5,18 @@
 ## Shortcuts
 
 <div class="shortcuts">
-  <a href="{{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}">
+  <a href="{{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}">
     <div>
       <div class="image"><img src="/images/home/1.png"/></div>
-      <div class="title">Scene content</div>
-      <div class="description">An overview of the entities and components that make up scenes.</div>
+      <div class="title">Coding scenes</div>
+      <div class="description">An overview the tools and the essential concepts surrounding the SDK.</div>
     </div>
   </a>
-  <a href="{{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}">
+  <a href="">
     <div>
       <div class="image"><img src="/images/home/2.png"/></div>
-      <div class="title">Entity reference</div>
-      <div class="description">A complete reference of Decentraland’s most basic building blocks.</div>
+      <div class="title">Component and object reference</div>
+      <div class="description">A complete reference of the default components and other available objects, with their functions.</div>
     </div>
   </a>
   <a href="{{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}">
