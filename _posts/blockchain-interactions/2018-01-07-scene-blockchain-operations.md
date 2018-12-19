@@ -11,10 +11,27 @@ set: blockchain-interactions
 set_order: 7
 ---
 
-By interacting with the Ethereum blockchain you can, for example, require that a user pays a fee before activating something in your scene. Currently, we're using the `eth-connect` library, created by Decentraland, for handling these types of operations.
+A Decentraland scene can interface with the Ethereum blockchain. This can serve to obtain data about the user's wallet and the tokens in it, or to trigger transactions that could involve any Ethereum token, fungible or non-fungible.
 
+There currently are three tools to use for this, all of them specifically provided by Decentraland.
 
-## Obtain a user's public key
+- The `Identity` library: used to obtain general user data from their Ethereum account.
+- The `eth-connect` library: used to interface with Ethereum contracts and trigger transactions.
+- The `Ethereum controller`: used for more low-level transactions.
+
+Note that all transactions triggered by a scene will require a user to approve and pay a gas fee.
+
+## User identity
+
+#### Import the identity library
+
+The identity library is ported with the Decentraland ECS. You can simply import it into a scene without any additional steps.
+
+```ts
+import { getUserPublicKey, getUserData } from '@decentraland/Identity'
+```
+
+#### Get a public key
 
 You can obtain a user's public Ethereum key by using `getUserPublicKey()`. You can then use this information to send payments to the user, or as a way to recognize users.
 
@@ -22,7 +39,7 @@ The example below imports the `Identity` library and runs `getUserPublicKey()` t
 
 
 
-```tsx
+```ts
 import { getUserPublicKey } from '@decentraland/Identity'
 
 executeTask(async () => {
@@ -32,8 +49,17 @@ executeTask(async () => {
 
 ```
 
+#### Get other data
 
-## Download and import the eth-connect library
+```ts
+getUserData()
+```
+
+## Interact with contracts
+
+#### Download and import the eth-connect library
+
+The eth-connect library is made and maintained by Decentraland. It's based on the popular [Web3.js](https://github.com/ethereum/web3.js/) library, but it's fully written in TypeScript and features a few improvements of our own.
 
 To use eth-connect library, you must manually install the package via `npm` in your scene's folder. To do so, run the following command in the scene folder:
 
@@ -51,22 +77,50 @@ To use the eth-connect controller in your scene, you must import it from the sce
 import * as EthConnect from '../../../node_modules/eth-connect/esm'
 ```
 
-## Import the contract ABI
+
+
+> Note: The eth-connect library is currently lacking more in-depth documentation. Since this library is mostly based on the Web3.js library and most of the function names are intentionally identical to those in Web3.js, it can often be helpful to refer to the [Web3's documentation](https://web3js.readthedocs.io/en/1.0/).
+
+
+#### Import a contract ABI
 
 An ABI (Application Binary Interface) describes how to interact with an Ethereum contract, determining what functions are available, what inputs they take and what they output. Each Ethereum contract has its own ABI, you should import the ABIs of all the contracts you wish to use in your project.
 
-ABI definitions can be quite lengthy, so we recommend copying the ABI code into a separate `.ts` file and importing it into other scene files from there.
+For example, here's an example of one function in the MANA ABI:
+
+```json
+{
+  anonymous: false,
+  inputs: [
+    {
+      indexed: true,
+      name: 'burner',
+      type: 'address'
+    },
+    {
+      indexed: false,
+      name: 'value',
+      type: 'uint256'
+    }
+  ],
+  name: 'Burn',
+  type: 'event'
+}
+```
+
+ABI definitions can be quite lengthy, as they often include a lot of functions, so we recommend pasting the JSON contents of an ABI file into a separate `.ts` file and importing it into other scene files from there. We also recommend holding all ABI files in a separate folder of your scene, named `/contracts`.
 
 Ether:
 https://solidity.readthedocs.io/en/develop/abi-spec.html
 
 MANA:
+https://etherscan.io/address/0x0f5d2fb29fb7d3cfee444a200298f468908cc942#code
 
 
-fake MANA:
+fake MANA?:
 
 
-## Call the methods in a contract
+#### Call the methods in a contract
 
 After importing the `eth-connect` library, you can import a contract's _abi_, exposing all the methods available in the contract.
 
@@ -75,409 +129,7 @@ import { getProvider } from '@decentraland/web3-provider'
 import { getUserPublicKey } from '@decentraland/Identity'
 import * as EthConnect from '../../../node_modules/eth-connect/esm'
 
-const abi = [
-  {
-    constant: true,
-    inputs: [],
-    name: 'mintingFinished',
-    outputs: [
-      {
-        name: '',
-        type: 'bool'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'name',
-    outputs: [
-      {
-        name: '',
-        type: 'string'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: '_spender',
-        type: 'address'
-      },
-      {
-        name: '_value',
-        type: 'uint256'
-      }
-    ],
-    name: 'approve',
-    outputs: [
-      {
-        name: '',
-        type: 'bool'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'totalSupply',
-    outputs: [
-      {
-        name: '',
-        type: 'uint256'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: '_from',
-        type: 'address'
-      },
-      {
-        name: '_to',
-        type: 'address'
-      },
-      {
-        name: '_value',
-        type: 'uint256'
-      }
-    ],
-    name: 'transferFrom',
-    outputs: [
-      {
-        name: '',
-        type: 'bool'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'decimals',
-    outputs: [
-      {
-        name: '',
-        type: 'uint8'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [],
-    name: 'unpause',
-    outputs: [
-      {
-        name: '',
-        type: 'bool'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: '_to',
-        type: 'address'
-      },
-      {
-        name: '_amount',
-        type: 'uint256'
-      }
-    ],
-    name: 'mint',
-    outputs: [
-      {
-        name: '',
-        type: 'bool'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: '_value',
-        type: 'uint256'
-      }
-    ],
-    name: 'burn',
-    outputs: [],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'paused',
-    outputs: [
-      {
-        name: '',
-        type: 'bool'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: '_owner',
-        type: 'address'
-      }
-    ],
-    name: 'balanceOf',
-    outputs: [
-      {
-        name: 'balance',
-        type: 'uint256'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [],
-    name: 'finishMinting',
-    outputs: [
-      {
-        name: '',
-        type: 'bool'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [],
-    name: 'pause',
-    outputs: [
-      {
-        name: '',
-        type: 'bool'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'owner',
-    outputs: [
-      {
-        name: '',
-        type: 'address'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'symbol',
-    outputs: [
-      {
-        name: '',
-        type: 'string'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: '_to',
-        type: 'address'
-      },
-      {
-        name: '_value',
-        type: 'uint256'
-      }
-    ],
-    name: 'transfer',
-    outputs: [
-      {
-        name: '',
-        type: 'bool'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: '_owner',
-        type: 'address'
-      },
-      {
-        name: '_spender',
-        type: 'address'
-      }
-    ],
-    name: 'allowance',
-    outputs: [
-      {
-        name: 'remaining',
-        type: 'uint256'
-      }
-    ],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: 'to',
-        type: 'address'
-      },
-      {
-        name: 'amount',
-        type: 'uint256'
-      }
-    ],
-    name: 'setBalance',
-    outputs: [],
-    payable: false,
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: 'newOwner',
-        type: 'address'
-      }
-    ],
-    name: 'transferOwnership',
-    outputs: [],
-    payable: false,
-    type: 'function'
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: 'to',
-        type: 'address'
-      },
-      {
-        indexed: false,
-        name: 'amount',
-        type: 'uint256'
-      }
-    ],
-    name: 'Mint',
-    type: 'event'
-  },
-  {
-    anonymous: false,
-    inputs: [],
-    name: 'MintFinished',
-    type: 'event'
-  },
-  {
-    anonymous: false,
-    inputs: [],
-    name: 'Pause',
-    type: 'event'
-  },
-  {
-    anonymous: false,
-    inputs: [],
-    name: 'Unpause',
-    type: 'event'
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: 'burner',
-        type: 'address'
-      },
-      {
-        indexed: false,
-        name: 'value',
-        type: 'uint256'
-      }
-    ],
-    name: 'Burn',
-    type: 'event'
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: 'owner',
-        type: 'address'
-      },
-      {
-        indexed: true,
-        name: 'spender',
-        type: 'address'
-      },
-      {
-        indexed: false,
-        name: 'value',
-        type: 'uint256'
-      }
-    ],
-    name: 'Approval',
-    type: 'event'
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: 'from',
-        type: 'address'
-      },
-      {
-        indexed: true,
-        name: 'to',
-        type: 'address'
-      },
-      {
-        indexed: false,
-        name: 'value',
-        type: 'uint256'
-      }
-    ],
-    name: 'Transfer',
-    type: 'event'
-  }
-]
+const abi =   //////////////////
 
 executeTask(async () => {
   const provider = await getProvider()
@@ -500,7 +152,7 @@ The example above imports the abi for the Ropsten MANA contract and transfers 10
 <!--
 ## Web3 API
 
-The SDK includes an interface for the Web3 API. You can use it to call methods of this API from your scene's code. The interface includes two methods: `send` and `sendAsync`, which can be used to call the methods from the API. We have only whitelisted the following methods from the API, all others are currently not supported:
+We have only whitelisted the following methods from the API, all others are currently not supported:
 
 - eth_sendTransaction
 - eth_getTransactionReceipt
@@ -515,13 +167,6 @@ The SDK includes an interface for the Web3 API. You can use it to call methods o
 - eth_getTransactionCount
 - eth_getBlockByNumber
 
-To use it, you must first install web3 in your local machine. To do so, run the following:
-
-```bash
-npm i web3
-```
-
-> IMPORTANT: The SDK works with version _0.20.6_ of the Web3 library. It doesn't currently support newer versions.
 
 Below is a sample that uses this API to get the contents of a block in the blockchain.
 
@@ -547,105 +192,31 @@ export default class EthereumProvider extends ScriptableScene {
 }
 ```
 
-{% endraw %}
-
-For more details and a full reference of what's possible with this API, see [Web3's documentation](https://web3js.readthedocs.io/en/1.0/)
-
-
-#### Require a payment
-
-Once the `EthereumController` has been imported, you can run the `requirePayment` function. This function prompts the user to accept a paying a sum to an Ethereum wallet of your choice. Users must always accept payments manually, a payment can never be implied directly from the user's actions in the scene.
-
-{% raw %}
-
-```tsx
-this.eth.requirePayment(receivingAddress, amount, currency)
-```
-
-{% endraw %}
-
-The function requires that you specify an Ethereum wallet address to receive the payment, an amount for the transaction and a specific currency to use (for example, MANA or ETH).
-
-If accepted by the user, the function returns the hash number of the transaction that has been started.
-
-{% raw %}
-
-```tsx
-const myWallet = ‘0x0123456789...’
-const enterPrice = 10
-
-// (...)
-
-async sceneDidMount() {
-  this.eventSubscriber.on(‘door_click’, async () => {
-    await this.eth!.requirePayment(myWallet, entrancePrice, ‘MANA’)
-
-    this.setState(isDoorClosed: !this.state.isDoorClosed)
-  }
-}
-```
-
-{% endraw %}
-
-The example above listens for clicks on a `door` entity. When clicked, the user is prompted to make a payment in MANA to a specific wallet for a given ammount. Once the user accepts this payment, the rest of the function can be executed, in this case the `isDoorClosed` variable in the scene's state is changed. If the user doesn't accept the payment, the rest of the function won't be executed and the variable's state won't change.
-
-![](/images/media/metamask_confirm.png)
-
-> Tip: We recommend defining the wallet address and the ammount to pay as global constants at the start of the _.tsx_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
--->
-
-#### Using the Ethereum test network
-
-While testing your scene, to avoid transferring real MANA currency, you can use the _Ethereum Ropsten test network_ and transfer fake MANA instead.
-
-To use the test network you must set your Metamask Chrome extension to use the _Ropsten test network_ instead of _Main network_.
-
-You must also own MANA in the Ropsten blockchain. To obtain free Ropsten mana in the test network, go to our [MANA faucet](https://faucet.decentraland.today/).
-
-> Tip: To run the transaction of transferring Ropsten MANA to your wallet, you will need to pay a gas fee in Ropsten Ether. If you don't have Ropsten Ether, you can obtain it for free from various external faucets like [this one](https://faucet.ropsten.be/).
-
-To preview your scene using the test network, add the `DEBUG` property to the URL you're using to access the scene preview on your browser. For example, if you're accessing the scene via `http://127.0.0.1:8000/?position=0%2C-1`, you should set the URL to `http://127.0.0.1:8000/?DEBUG&position=0%2C-1`.
-
-Any transactions that you accept while viewing the scene in this mode will only occur in the test network and not affect the MANA balance in your real wallet.
-
-<!--
-## Wait for a transaction
-
-Another thing that the ethereum controller allows you to do is check if a specific transaction has been already mined. This looks for a specific transaction's hash number and verifies that it has been validated by a miner and added to the blockchain.
-
-{% raw %}
-
-```tsx
-await this.eth.waitForMinedTx(currency, tx, receivingAddress)
-```
-
-{% endraw %}
-
-The function requires that you specify a currency to use (for example, MANA or ETH), a transaction hash number and the Ethereum wallet address that received the payment.
-
-{% raw %}
-
-```tsx
-const myWallet = ‘0x0123456789...’
-
-// (...)
-
-async sceneDidMount() {
-  this.eventSubscriber.on(‘door_click’, async () => {
-    const tx = await this.eth!.requirePayment(myWallet, entrancePrice, ‘MANA’)
-    const userPaid = await this.eth!.waitForMinedTx(currency,tx, receivingAddress)
-    this.setState(isDoorClosed: !this.state.isDoorClosed)
-  }
-}
-```
-
-{% endraw %}
-
-The example above first requires the user to accept a transaction, if the user accepts it, then `requirePayment` returns a hash that can be used to track the transaction and see if it's been mined. Once the transaction is mined and accepted as part of the blockchain, the `isDoorClosed` variable in the scene state is changed.
-
-<!--
 
 -->
+
+## Lower level functions
+
+
+signMessage?
+
+convertMessageToObject
+
+sendAsync
+
+
+Another way to perform operations on the Ethereum blockchain is through the _ethereum controller_ library. This controller is packaged with the SDK, so you don't need to run any manual installations. This controller is lower level than `eth-connect`, so it's tougher to use but more flexible.
+
+To import the Ethereum controller into your scene file:
+
+
+```ts
+import {EthereumController} from "decentraland-ecs"
+```
+
+The examples below show some of the things you can do with this controller.
+
+
 
 #### Signing messages
 
@@ -665,7 +236,7 @@ Timestamp: <time stamp>
 
 For example, a signable message might look like this:
 
-```tsx
+```ts
 # DCL Signed message
 Attacker: 10
 Defender: 123
@@ -674,9 +245,7 @@ Timestamp: 1512345678
 
 Before a user can sign a message, you must first convert it into an object using the `convertMessageToObject()` function, then it can be signed with the `signMessage()` function.
 
-{% raw %}
-
-```tsx
+```ts
 const messageToSign = `# DCL Signed message
 Attacker: 10
 Defender: 123
@@ -686,7 +255,6 @@ const convertedMessage = await this.eth!.convertMessageToObject(messageToSign)
 const { message, signature } = await this.eth!.signMessage(convertedMessage)
 ```
 
-{% endraw %}
 
 #### Checking if a message is correct
 
@@ -700,15 +268,10 @@ npm install --save decentraland-eth
 
 You must then import these dependencies on the _.tsx_ file
 
-{% raw %}
 
 ```tsx
 import { eth } from "decentraland-eth"
 ```
-
-{% endraw %}
-
-{% raw %}
 
 ```tsx
 const { message, signature } = await this.eth!.signMessage(convertedMessage);
@@ -717,14 +280,8 @@ const messageHex = await eth.utils.toHex(messageToSign)
 const isEqual = message === messageHex
 console.log(‘Is the message correct?’, isEqual)
 ```
+Below is a full example that signs a message and checks its validity
 
-{% endraw %}
-
-
-<!--
-#### Example:
-
-{% raw %}
 
 ```tsx
 import { inject, EthereumController, createElement, ScriptableScene } from 'decentraland-api'
@@ -761,9 +318,9 @@ export default class SignMessage extends ScriptableScene {
 
  async render() {
    return (
-     <scene position={{ x: 5, y: 0, z: 5 }}>
-       <entity position={{ x: -3, y: 1.4, z: -3 }}>
-         <plane id="button-sign" scale={{ x: 0.8, y: 0.2, z: 1 }} color="#bada55" />
+     <scene >
+       <entity >
+         <plane id="button-sign" color="#bada55" />
          <text value="Sign message" fontSize={60} color="black" />
        </entity>
      </scene>
@@ -771,5 +328,18 @@ export default class SignMessage extends ScriptableScene {
  }
 ```
 
-{% endraw %}
--->
+
+
+## Using the Ethereum test network
+
+While testing your scene, to avoid transferring real MANA currency, you can use the _Ethereum Ropsten test network_ and transfer fake MANA instead.
+
+To use the test network you must set your Metamask Chrome extension to use the _Ropsten test network_ instead of _Main network_.
+
+You must also own MANA in the Ropsten blockchain. To obtain free Ropsten mana in the test network, go to our [MANA faucet](https://faucet.decentraland.today/).
+
+> Tip: To run the transaction of transferring Ropsten MANA to your wallet, you will need to pay a gas fee in Ropsten Ether. If you don't have Ropsten Ether, you can obtain it for free from various external faucets like [this one](https://faucet.ropsten.be/).
+
+To preview your scene using the test network, add the `DEBUG` property to the URL you're using to access the scene preview on your browser. For example, if you're accessing the scene via `http://127.0.0.1:8000/?position=0%2C-1`, you should set the URL to `http://127.0.0.1:8000/?DEBUG&position=0%2C-1`.
+
+Any transactions that you accept while viewing the scene in this mode will only occur in the test network and not affect the MANA balance in your real wallet.
