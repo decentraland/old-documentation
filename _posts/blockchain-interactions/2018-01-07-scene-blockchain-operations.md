@@ -11,13 +11,13 @@ set: blockchain-interactions
 set_order: 7
 ---
 
-A Decentraland scene can interface with the Ethereum blockchain. This can serve to obtain data about the user's wallet and the tokens in it, or to trigger transactions that could involve any Ethereum token, fungible or non-fungible.
+A Decentraland scene can interface with the Ethereum blockchain. This can serve to obtain data about the user's wallet and the tokens in it, or to trigger transactions that could involve any Ethereum token, fungible or non-fungible. This can be used in many ways, for example to sell tokens, to reward tokens as part of a game-mechanic, to change how a user interacts with a scene if they own certain tokens, etc.
 
-There currently are three tools to use for this, all of them specifically provided by Decentraland.
+There currently are three tools to use for this, all of them provided by Decentraland.
 
-- The `Identity` library: used to obtain general user data from their Ethereum account.
-- The `eth-connect` library: used to interface with Ethereum contracts and trigger transactions.
-- The `Ethereum controller`: used for more low-level transactions.
+- The `Identity` library: used to obtain general user data.
+- The `eth-connect` library: used to interface with Ethereum contracts and call their functions, for example to trigger transactions or check balances.
+- The `Ethereum controller`: a low-level library to use with more flexibility.
 
 Note that all transactions triggered by a scene will require a user to approve and pay a gas fee.
 
@@ -25,7 +25,7 @@ Note that all transactions triggered by a scene will require a user to approve a
 
 #### Import the identity library
 
-The identity library is ported with the Decentraland ECS. You can simply import it into a scene without any additional steps.
+The identity library is ported with the Decentraland ECS. Simply import it into a scene, no additional steps are needed.
 
 ```ts
 import { getUserPublicKey, getUserData } from '@decentraland/Identity'
@@ -33,7 +33,7 @@ import { getUserPublicKey, getUserData } from '@decentraland/Identity'
 
 #### Get a public key
 
-You can obtain a user's public Ethereum key by using `getUserPublicKey()`. You can then use this information to send payments to the user, or as a way to recognize users.
+You can obtain a user's public Ethereum key by using the `getUserPublicKey()` function.
 
 
 ```ts
@@ -45,6 +45,7 @@ executeTask(async () => {
 })
 
 ```
+The user's public key is necessary to send payments or other transactions that involve the user. The public key can also be used as a persisting ID to recognize a user over multiple sessions.
 
 > Note: The user must be logged into their Metamask account on their browser for this method to work.
 
@@ -62,8 +63,9 @@ executeTask(async () => {
   let userData = await getUserData()
   log(userData)
 })
-
 ```
+
+Users can change their display name at any time while in Decentraland. For this reason, the public key is generally a more recommendable way to keep track of users over time.
 
 > Note: The user must be logged into their Metamask account on their browser for this method to work.
 
@@ -71,7 +73,7 @@ executeTask(async () => {
 
 #### Download and import the eth-connect library
 
-The eth-connect library is made and maintained by Decentraland. It's based on the popular [Web3.js](https://github.com/ethereum/web3.js/) library, but it's fully written in TypeScript and features a few improvements of our own.
+The eth-connect library is made and maintained by Decentraland. It's based on the popular [Web3.js](https://github.com/ethereum/web3.js/) library, but it's fully written in TypeScript and features a few security improvements.
 
 To use eth-connect library, you must manually install the package via `npm` in your scene's folder. To do so, run the following command in the scene folder:
 
@@ -81,17 +83,17 @@ npm install eth-connect
 
 > Note: Decentraland scenes don't support older versions than 4.0 of the eth-connect library.
 
-> Note: Currently, we don't allow installing other dependencies via npm that are not created by Decentraland.
+> Note: Currently, we don't allow installing other dependencies via npm that are not created by Decentraland. This is to keep scenes well sandboxed and prevent malicious code.
 
-To use the eth-connect controller in your scene, you must import it from the scene code:
+Once installed, you must import `eth-connect` to the scene's code:
 
 ```ts
 import * as EthConnect from '../node_modules/eth-connect/esm'
 ```
 
+eth-connect offers a lot of functions to help you, including type converters and other things. Check it out on [GitHub](https://github.com/decentraland/eth-connect).
 
-
-> Note: The eth-connect library is currently lacking more in-depth documentation. Since this library is mostly based on the Web3.js library and most of the function names are intentionally identical to those in Web3.js, it can often be helpful to refer to the [Web3's documentation](https://web3js.readthedocs.io/en/1.0/).
+> Note: The eth-connect library is currently lacking more in-depth documentation. Since this library is mostly based on the Web3.js library and most of the function names are intentionally kept identical to those in Web3.js, it can often help to refer to [Web3's documentation](https://web3js.readthedocs.io/en/1.0/).
 
 
 #### Import a contract ABI
@@ -100,7 +102,7 @@ An ABI (Application Binary Interface) describes how to interact with an Ethereum
 
 For example, here's an example of one function in the MANA ABI:
 
-```json
+```ts
 {
   anonymous: false,
   inputs: [
@@ -122,39 +124,69 @@ For example, here's an example of one function in the MANA ABI:
 
 ABI definitions can be quite lengthy, as they often include a lot of functions, so we recommend pasting the JSON contents of an ABI file into a separate `.ts` file and importing it into other scene files from there. We also recommend holding all ABI files in a separate folder of your scene, named `/contracts`.
 
-Ether:
-https://solidity.readthedocs.io/en/develop/abi-spec.html
+```ts
+import {abi} from '../contracts/mana'
+```
 
-MANA:
-https://etherscan.io/address/0x0f5d2fb29fb7d3cfee444a200298f468908cc942#code
+Here are links to some useful ABI definitions:
 
+- [Ether ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html)
 
-fake MANA?:
+- [MANA ABI](https://etherscan.io/address/0x0f5d2fb29fb7d3cfee444a200298f468908cc942#code)
 
-> Tip: For contracts that follow a same standard, such as ERC20 or ERC721, you can import a single generic ABI for all. You then generate a single `ContractFactory` object and use that to instance interfaces for each contract.
+<!--
+- fake MANA?:
 
-#### Call the methods in a contract
+- LAND?
+-->
 
-After importing the `eth-connect` library and a contract's _abi_, you can call the methods in the contract.
+#### Instance a contract
 
-Before you do, you must
+After importing the `eth-connect` library and a contract's _abi_, you must instance several objects that will allow you to use the functions in the contract and connect to Metamask in the user's browser.
+
+You must also import the web3 provider. Even though we're not using web3 in the scene, Metamask in the user's browser does use web3, so we need a way to interact with that.
 
 ```ts
+import * as EthConnect from '../node_modules/eth-connect/esm'
+import {abi} from '../contracts/mana'
 import { getProvider } from '@decentraland/web3-provider'
-import { getUserPublicKey } from '@decentraland/Identity'
-import * as EthConnect from '../../../node_modules/eth-connect/esm'
-
-const abi =   //////////////////
 
 executeTask(async () => {
   // create an instance of the web3 provider to interface with Metamask
   const provider = await getProvider()
-  // Create the object that will send the messages
+  // Create the object that will handle the sending and receiving of RPC messages
   const requestManager = new EthConnect.RequestManager(provider)
-  // Create a factory object based on the contract
+  // Create a factory object based on the abi
   const factory = new EthConnect.ContractFactory(requestManager, abi)
-  // Instance a `contract` object from the factory
+  // Use the factory object to instance a `contract` object, referencing a specific contract
   const contract = (await factory.at('0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb')) as any
+})
+
+```
+
+Note that several of these functions must be called using `await`, since they rely on fetching external data and can take some time to be completed.
+
+> Tip: For contracts that follow a same standard, such as ERC20 or ERC721, you can import a single generic ABI for all. You then generate a single `ContractFactory` object with that ABI and use that same factory to instance interfaces for each contract.
+
+#### Call the methods in a contract
+
+Once you've created a `contract` object, you can easily call the functions that are defined in its abi, passing it the specified input parameters.
+
+
+```ts
+import * as EthConnect from '../node_modules/eth-connect/esm'
+import {abi} from '../contracts/mana'
+import { getProvider } from '@decentraland/web3-provider'
+import { getUserPublicKey } from '@decentraland/Identity'
+
+
+executeTask(async () => {
+  // Setup steps explained in the section above
+  const provider = await getProvider()
+  const requestManager = new EthConnect.RequestManager(provider)
+  const factory = new EthConnect.ContractFactory(requestManager, abi)
+  const contract = (await factory.at('0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb')) as any
+
   // Perform a function from the contract
   const res = await contract.setBalance('0xaFA48Fad27C7cAB28dC6E970E4BFda7F7c8D60Fb', 100, {
     from: await getUserPublicKey()
@@ -165,7 +197,7 @@ executeTask(async () => {
 
 ```
 
-The example above imports the abi for the Ropsten MANA contract and transfers 100 _fake MANA_ to your account in the Ropsten test network when you open it.
+The example above uses the abi for the Ropsten MANA contract and transfers 100 _fake MANA_ to your account in the Ropsten test network.
 
 
 
@@ -217,13 +249,9 @@ export default class EthereumProvider extends ScriptableScene {
 
 ## Lower level functions
 
-
-
-
-Another way to perform operations on the Ethereum blockchain is through the _ethereum controller_ library. This controller is packaged with the SDK, so you don't need to run any manual installations. This controller is lower level than `eth-connect`, so it's tougher to use but more flexible.
+Another way to perform operations on the Ethereum blockchain is through the _ethereum controller_ library. This controller is packaged with the SDK, so you don't need to run any manual installations. This controller operates at a lower level than `eth-connect` (in fact `eth-connect` is built upon it) so it's tougher to use but more flexible.
 
 To import the Ethereum controller into your scene file:
-
 
 ```ts
 import * as EthereumController from "@decentraland/EthereumController"
@@ -237,19 +265,19 @@ The examples below show some of the things you can do with this controller.
 Use the function `sendAsync()` to send messages over [RPC protocol](https://en.wikipedia.org/wiki/Remote_procedure_call).
 
 ```ts
- /**
-   * Used to build a Ethereum provider
-   */
-  export function sendAsync(message: RPCSendableMessage): Promise<any>
+import * as EthereumController from "@decentraland/EthereumController"
+
+// send a message
+await eth!.sendAsync(myMessage)
 ```
-
-
 
 #### Signing messages
 
-A user can sign a message using their Ethereum public key. This signature is a secure way to give consent or to register an accomplishment or action that is registered with the block chain. The signing of a message doesn't imply paying any gas fees on the Ethereum network.
+A user can sign a message using their Ethereum public key. This signature is a secure way to give consent or to register an accomplishment or action that is registered with the block chain.
 
-Messages that can be signed need to be follow a specific format to match safety requirements. They must include the “Decentraland signed header” at the top, this prevents the possibility of any mismanagement of the user’s wallet.
+The signing of a message isn't a transaction, so it doesn't imply paying any gas fees on the Ethereum network, it does however open a pop-up to ask the user for consent.
+
+Messages that can be signed need to follow a specific format to match safety requirements. They must include the “Decentraland signed header” at the top, this prevents the possibility of any mismanagement of the user’s wallet.
 
 Signable messages should follow this format:
 
@@ -261,7 +289,7 @@ Signable messages should follow this format:
 Timestamp: <time stamp>
 ```
 
-For example, a signable message might look like this:
+For example, a signable message for a game might look like this:
 
 ```ts
 # DCL Signed message
@@ -273,102 +301,83 @@ Timestamp: 1512345678
 Before a user can sign a message, you must first convert it from a string into an object using the `convertMessageToObject()` function, then it can be signed with the `signMessage()` function.
 
 ```ts
+import * as EthereumController from "@decentraland/EthereumController"
+
 const messageToSign = `# DCL Signed message
 Attacker: 10
 Defender: 123
 Timestamp: 1512345678`
 
-const convertedMessage = await this.eth!.convertMessageToObject(messageToSign)
-const { message, signature } = await this.eth!.signMessage(convertedMessage)
+let eth = EthereumController
+
+executeTask(async () => {  
+  const convertedMessage = await eth.convertMessageToObject(messageToSign)
+  const { message, signature } = await eth.signMessage(convertedMessage)
+  log({ message, signature })
+})
 ```
 
 
 #### Checking if a message is correct
 
-To verify that the message that the user signed is in fact the one that you want to send, you can use the `utils.toHex` function, from the `decentraland-eth` package, to convert it and easily compare it.
-
-To use this, you must first install some dependencies manually in your scene's directory. Navigate to your scene's folder and run the following:
-
-```bash
-npm install --save decentraland-eth
-```
-
-You must then import these dependencies on the _.tsx_ file
+To verify that the message that the user signed is in fact the one that you want to send, you can use the `toHex()` function from `eth-connect` library, to convert it and easily compare it.
 
 
 ```tsx
-import { eth } from "decentraland-eth"
-```
+import * as EthConnect from '../node_modules/eth-connect/esm'
+import * as EthereumController from "@decentraland/EthereumController"
 
-new functions...
-
-personal_sign   -> eth-connect  (dentro de request manager)
-
-signMessage -> de ethereum controller
-
-toHex ->  debe haber algo en eth-connect
-
-const signature = await requestManager.personal_sign(message, account, 'test')
-const signerAddress = await requestManager.personal_ecRecover(message, signature)
-
-
-
-```tsx
-const { message, signature } = await this.eth!.signMessage(convertedMessage);
-
-const messageHex = await eth.utils.toHex(messageToSign)
-const isEqual = message === messageHex
-console.log(‘Is the message correct?’, isEqual)
-```
-Below is a full example that signs a message and checks its validity
-
-
-```tsx
-import { inject, EthereumController, createElement, ScriptableScene } from 'decentraland-api'
-import { eth } from 'decentraland-eth'
 
 const messageToSign = `# DCL Signed message
 Attacker: 10
 Defender: 123
 Timestamp: 1512345678`
 
-export default class SignMessage extends ScriptableScene {
- @inject('experimentalEthereumController')
- eth: EthereumController | null = null
+let eth = EthereumController
 
- async sceneDidMount() {
-   this.subscribeTo('click', async e => {
-     if (e.elementId === 'button-sign') {
-       await this.signMessage()
-     }
-   })
- }
+function signMessage(msg: string){
+  executeTask(async () => {  
+    const convertedMessage = await eth.convertMessageToObject(msg)
+    const { message, signature } = await eth.signMessage(convertedMessage)
+    log({ message, signature })
 
- async signMessage() {
-   const convertedMessage = await this.eth!.convertMessageToObject(messageToSign)
-   const { message, signature } = await this.eth!.signMessage(convertedMessage)
+    const originalMessageHex = await  EthConnect.toHex(msg)
+    const sentMessageHex = await  EthConnect.toHex(message)
+    const isEqual = sentMessageHex === originalMessageHex
+    log("Is the message correct?", isEqual)
+  })
+}
 
-   console.log({ message, signature })
-
-   const messageHex = await eth.utils.toHex(messageToSign)
-
-   const isEqual = message === messageHex
-   console.log("Is the message correct?", isEqual)
- }
-
- async render() {
-   return (
-     <scene >
-       <entity >
-         <plane id="button-sign" color="#bada55" />
-         <text value="Sign message" fontSize={60} color="black" />
-       </entity>
-     </scene>
-   )
- }
+signMessage(messageToSign)
 ```
 
 
+
+<!--
+
+const signature = await requestManager.personal_sign(message, account, 'test')
+const signerAddress = await requestManager.personal_ecRecover(message, signature)
+
+
+/**
+     * The sign method calculates an Ethereum specific signature with:
+     *   sign(keccack256("Ethereum Signed Message:" + len(message) + message))).
+     *
+     * By adding a prefix to the message makes the calculated signature recognisable as an Ethereum specific signature.
+     * This prevents misuse where a malicious DApp can sign arbitrary data (e.g. transaction) and use the signature to
+     * impersonate the victim.
+     *
+     * See ecRecover to verify the signature.
+     */
+    personal_sign: (data: Data, signerAddress: Address, passPhrase: Data) => Promise<Data>;
+    /**
+     * ecRecover returns the address associated with the private key that was used to calculate the signature in
+     * personal_sign.
+     */
+    personal_ecRecover: (message: Data, signature: Data) => Promise<Address>;
+    constructor(provider: any);
+
+-->
 
 ## Using the Ethereum test network
 
