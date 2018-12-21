@@ -16,8 +16,9 @@ A Decentraland scene can interface with the Ethereum blockchain. This can serve 
 There currently are three tools to use for this, all of them provided by Decentraland.
 
 - The `Identity` library: used to obtain general user data.
-- The `eth-connect` library: used to interface with Ethereum contracts and call their functions, for example to trigger transactions or check balances.
-- The `Ethereum controller`: a low-level library to use with more flexibility.
+- The `Ethereum controller`: A basic library that offers some limited but simple functionality.
+- The `eth-connect` library: A lower level library to interface with Ethereum contracts and call their functions, for example to trigger transactions or check balances.
+
 
 Note that all transactions triggered by a scene will require a user to approve and pay a gas fee.
 
@@ -69,187 +70,9 @@ Users can change their display name at any time while in Decentraland. For this 
 
 > Note: The user must be logged into their Metamask account on their browser for this method to work.
 
-## Interact with contracts
+## High level operations
 
-#### Download and import the eth-connect library
-
-The eth-connect library is made and maintained by Decentraland. It's based on the popular [Web3.js](https://github.com/ethereum/web3.js/) library, but it's fully written in TypeScript and features a few security improvements.
-
-To use eth-connect library, you must manually install the package via `npm` in your scene's folder. To do so, run the following command in the scene folder:
-
-```
-npm install eth-connect
-```
-
-> Note: Decentraland scenes don't support older versions than 4.0 of the eth-connect library.
-
-> Note: Currently, we don't allow installing other dependencies via npm that are not created by Decentraland. This is to keep scenes well sandboxed and prevent malicious code.
-
-Once installed, you must import `eth-connect` to the scene's code:
-
-```ts
-import * as EthConnect from '../node_modules/eth-connect/esm'
-```
-
-eth-connect offers a lot of functions to help you, including type converters and other things. Check it out on [GitHub](https://github.com/decentraland/eth-connect).
-
-> Note: The eth-connect library is currently lacking more in-depth documentation. Since this library is mostly based on the Web3.js library and most of the function names are intentionally kept identical to those in Web3.js, it can often help to refer to [Web3's documentation](https://web3js.readthedocs.io/en/1.0/).
-
-
-#### Import a contract ABI
-
-An ABI (Application Binary Interface) describes how to interact with an Ethereum contract, determining what functions are available, what inputs they take and what they output. Each Ethereum contract has its own ABI, you should import the ABIs of all the contracts you wish to use in your project.
-
-For example, here's an example of one function in the MANA ABI:
-
-```ts
-{
-  anonymous: false,
-  inputs: [
-    {
-      indexed: true,
-      name: 'burner',
-      type: 'address'
-    },
-    {
-      indexed: false,
-      name: 'value',
-      type: 'uint256'
-    }
-  ],
-  name: 'Burn',
-  type: 'event'
-}
-```
-
-ABI definitions can be quite lengthy, as they often include a lot of functions, so we recommend pasting the JSON contents of an ABI file into a separate `.ts` file and importing it into other scene files from there. We also recommend holding all ABI files in a separate folder of your scene, named `/contracts`.
-
-```ts
-import {abi} from '../contracts/mana'
-```
-
-Here are links to some useful ABI definitions:
-
-- [Ether ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html)
-
-- [MANA ABI](https://etherscan.io/address/0x0f5d2fb29fb7d3cfee444a200298f468908cc942#code)
-
-<!--
-- fake MANA?:
-
-- LAND?
--->
-
-#### Instance a contract
-
-After importing the `eth-connect` library and a contract's _abi_, you must instance several objects that will allow you to use the functions in the contract and connect to Metamask in the user's browser.
-
-You must also import the web3 provider. Even though we're not using web3 in the scene, Metamask in the user's browser does use web3, so we need a way to interact with that.
-
-```ts
-import * as EthConnect from '../node_modules/eth-connect/esm'
-import {abi} from '../contracts/mana'
-import { getProvider } from '@decentraland/web3-provider'
-
-executeTask(async () => {
-  // create an instance of the web3 provider to interface with Metamask
-  const provider = await getProvider()
-  // Create the object that will handle the sending and receiving of RPC messages
-  const requestManager = new EthConnect.RequestManager(provider)
-  // Create a factory object based on the abi
-  const factory = new EthConnect.ContractFactory(requestManager, abi)
-  // Use the factory object to instance a `contract` object, referencing a specific contract
-  const contract = (await factory.at('0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb')) as any
-})
-
-```
-
-Note that several of these functions must be called using `await`, since they rely on fetching external data and can take some time to be completed.
-
-> Tip: For contracts that follow a same standard, such as ERC20 or ERC721, you can import a single generic ABI for all. You then generate a single `ContractFactory` object with that ABI and use that same factory to instance interfaces for each contract.
-
-#### Call the methods in a contract
-
-Once you've created a `contract` object, you can easily call the functions that are defined in its abi, passing it the specified input parameters.
-
-
-```ts
-import * as EthConnect from '../node_modules/eth-connect/esm'
-import {abi} from '../contracts/mana'
-import { getProvider } from '@decentraland/web3-provider'
-import { getUserPublicKey } from '@decentraland/Identity'
-
-
-executeTask(async () => {
-  // Setup steps explained in the section above
-  const provider = await getProvider()
-  const requestManager = new EthConnect.RequestManager(provider)
-  const factory = new EthConnect.ContractFactory(requestManager, abi)
-  const contract = (await factory.at('0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb')) as any
-
-  // Perform a function from the contract
-  const res = await contract.setBalance('0xaFA48Fad27C7cAB28dC6E970E4BFda7F7c8D60Fb', 100, {
-    from: await getUserPublicKey()
-  })
-  // Log response
-  log(res)
-})
-
-```
-
-The example above uses the abi for the Ropsten MANA contract and transfers 100 _fake MANA_ to your account in the Ropsten test network.
-
-
-
-
-<!--
-## Web3 API
-
-We have only whitelisted the following methods from the API, all others are currently not supported:
-
-- eth_sendTransaction
-- eth_getTransactionReceipt
-- eth_estimateGas
-- eth_call
-- eth_getBalance
-- eth_getStorageAt
-- eth_blockNumber
-- eth_gasPrice
-- eth_protocolVersion
-- net_version
-- eth_getTransactionCount
-- eth_getBlockByNumber
-
-
-Below is a sample that uses this API to get the contents of a block in the blockchain.
-
-
-```tsx
-import { createElement, ScriptableScene } from "decentraland-api"
-import Web3 = require("web3")
-
-export default class EthereumProvider extends ScriptableScene {
-  async sceneDidMount() {
-    const provider = await this.getEthereumProvider()
-    const web3 = new Web3(provider)
-
-    web3.eth.getBlock(48, function(error: Error, result: any) {
-      console.log("Eth block 48 (from scene)", result)
-    })
-  }
-
-  async render() {
-    return <scene />
-  }
-}
-```
-
-
--->
-
-## Lower level functions
-
-Another way to perform operations on the Ethereum blockchain is through the _ethereum controller_ library. This controller is packaged with the SDK, so you don't need to run any manual installations. This controller operates at a lower level than `eth-connect` (in fact `eth-connect` is built upon it) so it's tougher to use but more flexible.
+The simplest way to perform operations on the Ethereum blockchain is through the _ethereum controller_ library. This controller is packaged with the SDK, so you don't need to run any manual installations.
 
 To import the Ethereum controller into your scene file:
 
@@ -257,19 +80,8 @@ To import the Ethereum controller into your scene file:
 import * as EthereumController from "@decentraland/EthereumController"
 ```
 
-The examples below show some of the things you can do with this controller.
+Below we explain some of the things you can do with this controller.
 
-
-#### Async sending
-
-Use the function `sendAsync()` to send messages over [RPC protocol](https://en.wikipedia.org/wiki/Remote_procedure_call).
-
-```ts
-import * as EthereumController from "@decentraland/EthereumController"
-
-// send a message
-await eth!.sendAsync(myMessage)
-```
 
 #### Signing messages
 
@@ -320,7 +132,7 @@ executeTask(async () => {
 
 #### Checking if a message is correct
 
-To verify that the message that the user signed is in fact the one that you want to send, you can use the `toHex()` function from `eth-connect` library, to convert it and easily compare it.
+To verify that the message that the user signed is in fact the one that you want to send, you can use the `toHex()` function from `eth-connect` library, to convert it and easily compare it. See further below for instructions on how to import the `eth-connect` library.
 
 
 ```tsx
@@ -350,6 +162,306 @@ function signMessage(msg: string){
 
 signMessage(messageToSign)
 ```
+
+#### Require a payment
+
+The `requirePayment()` function prompts the user to accept paying a sum to an Ethereum wallet of your choice. 
+
+Users must always accept payments manually, a payment can never be implied directly from the user's actions in the scene.
+
+
+```tsx
+eth.requirePayment(receivingAddress, amount, currency)
+```
+
+The function requires that you specify an Ethereum wallet address to receive the payment, an amount for the transaction and a specific currency to use (for example, MANA or ETH).
+
+If accepted by the user, the function returns the hash number of the transaction.
+
+> Warning: This function informs you that a transaction was requested, but not that it was confirmed. If the gas price is too low, or it doesn't get mined for any reason, the transaction won't be completed. We don't advise relying on this function for dealing with things that are of value.
+
+
+```tsx
+const myWallet = ‘0x0123456789...’
+const enterPrice = 10
+
+function payment(){
+  executeTask(async () => {
+    try {
+      await eth.requirePayment(myWallet, entrancePrice, ‘MANA’)
+      openDoor()
+    } catch {
+      log("failed process payment")
+    }
+  })
+}
+
+const button = new Entity()
+button.set(new BoxShape())
+button.set(new OnClick( e => {
+    payment()
+  }))
+engine.addEntity(button)
+```
+
+
+The example above listens for clicks on a _button_ entity. When clicked, the user is prompted to make a payment in MANA to a specific wallet for a given amount. Once the user accepts this payment, the rest of the function can be executed. If the user doesn't accept the payment, the rest of the function won't be executed.
+
+![](/images/media/metamask_confirm.png)
+
+> Tip: We recommend defining the wallet address and the amount to pay as global constants at the start of the _.tsx_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
+
+
+
+#### Async sending
+
+Use the function `sendAsync()` to send messages over [RPC protocol](https://en.wikipedia.org/wiki/Remote_procedure_call).
+
+```ts
+import * as EthereumController from "@decentraland/EthereumController"
+
+// send a message
+await eth!.sendAsync(myMessage)
+```
+
+
+## Lower level operations
+
+The eth-connect library is made and maintained by Decentraland. It's based on the popular [Web3.js](https://github.com/ethereum/web3.js/) library, but it's fully written in TypeScript and features a few security improvements.
+
+
+This controller operates at a lower level than the _Ethereum controller_ (in fact the _Ethereum controller_ is built upon it) so it's tougher to use but more flexible.
+
+It's main use is to call functions in a contract, it also offers a number of helper functions for various tasks. Check it out on [GitHub](https://github.com/decentraland/eth-connect).
+
+> Note: The eth-connect library is currently lacking more in-depth documentation. Since this library is mostly based on the Web3.js library and most of the function names are intentionally kept identical to those in Web3.js, it can often help to refer to [Web3's documentation](https://web3js.readthedocs.io/en/1.0/).
+
+#### Download and import the eth-connect library
+
+
+To use eth-connect library, you must manually install the package via `npm` in your scene's folder. To do so, run the following command in the scene folder:
+
+```
+npm install eth-connect
+```
+
+> Note: Decentraland scenes don't support older versions than 4.0 of the eth-connect library.
+
+> Note: Currently, we don't allow installing other dependencies via npm that are not created by Decentraland. This is to keep scenes well sandboxed and prevent malicious code.
+
+Once installed, you must import `eth-connect` to the scene's code:
+
+```ts
+import * as EthConnect from '../node_modules/eth-connect/esm'
+```
+
+#### Import a contract ABI
+
+An ABI (Application Binary Interface) describes how to interact with an Ethereum contract, determining what functions are available, what inputs they take and what they output. Each Ethereum contract has its own ABI, you should import the ABIs of all the contracts you wish to use in your project.
+
+For example, here's an example of one function in the MANA ABI:
+
+```ts
+{
+  anonymous: false,
+  inputs: [
+    {
+      indexed: true,
+      name: 'burner',
+      type: 'address'
+    },
+    {
+      indexed: false,
+      name: 'value',
+      type: 'uint256'
+    }
+  ],
+  name: 'Burn',
+  type: 'event'
+}
+```
+
+ABI definitions can be quite lengthy, as they often include a lot of functions, so we recommend pasting the JSON contents of an ABI file into a separate `.ts` file and importing it into other scene files from there. We also recommend holding all ABI files in a separate folder of your scene, named `/contracts`.
+
+```ts
+import {abi} from '../contracts/mana'
+```
+
+Here are links to some useful ABI definitions:
+
+- [MANA ABI](https://etherscan.io/address/0x0f5d2fb29fb7d3cfee444a200298f468908cc942#code)
+
+<!--
+- fake MANA?:
+
+- LAND?
+-->
+
+#### Instance a contract
+
+After importing the `eth-connect` library and a contract's _abi_, you must instance several objects that will allow you to use the functions in the contract and connect to Metamask in the user's browser.
+
+You must also import the web3 provider. This is because Metamask in the user's browser uses web3, so we need a way to interact with that.
+
+```ts
+import * as EthConnect from '../node_modules/eth-connect/esm'
+import {abi} from '../contracts/mana'
+import { getProvider } from '@decentraland/web3-provider'
+
+executeTask(async () => {
+  // create an instance of the web3 provider to interface with Metamask
+  const provider = await getProvider()
+  // Create the object that will handle the sending and receiving of RPC messages
+  const requestManager = new EthConnect.RequestManager(provider)
+  // Create a factory object based on the abi
+  const factory = new EthConnect.ContractFactory(requestManager, abi)
+  // Use the factory object to instance a `contract` object, referencing a specific contract
+  const contract = (await factory.at('0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb')) as any
+})
+```
+
+Note that several of these functions must be called using `await`, since they rely on fetching external data and can take some time to be completed.
+
+> Tip: For contracts that follow a same standard, such as ERC20 or ERC721, you can import a single generic ABI for all. You then generate a single `ContractFactory` object with that ABI and use that same factory to instance interfaces for each contract.
+
+#### Call the methods in a contract
+
+Once you've created a `contract` object, you can easily call the functions that are defined in its ABI, passing it the specified input parameters.
+
+
+```ts
+import * as EthConnect from '../node_modules/eth-connect/esm'
+import {abi} from '../contracts/mana'
+import { getProvider } from '@decentraland/web3-provider'
+import { getUserPublicKey } from '@decentraland/Identity'
+
+
+executeTask(async () => {
+  // Setup steps explained in the section above
+  const provider = await getProvider()
+  const requestManager = new EthConnect.RequestManager(provider)
+  const factory = new EthConnect.ContractFactory(requestManager, abi)
+  const contract = (await factory.at('0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb')) as any
+
+  // Perform a function from the contract
+  const res = await contract.setBalance('0xaFA48Fad27C7cAB28dC6E970E4BFda7F7c8D60Fb', 100, {
+    from: await getUserPublicKey()
+  })
+  // Log response
+  log(res)
+})
+
+```
+
+The example above uses the abi for the Ropsten MANA contract and transfers 100 _fake MANA_ to your account in the Ropsten test network.
+
+#### Other functions
+
+The eth-connect library includes a number of other helpers you can use. For example to:
+
+- Get an estimated gas price
+- Get the balance of a given address
+- Get a transaction receipt
+- Get the number of transactions sent from an address
+- Convert between various formats including hexadecimal, binary, utf8, etc.
+
+<!--
+
+#### Obtain gas price
+
+
+ * Generates and returns an estimate of how much gas is necessary to allow the transaction to complete.
+     * The transaction will not be added to the blockchain. Note that the estimate may be significantly more
+     * than the amount of gas actually used by the transaction, for a variety of reasons including EVM mechanics
+     * and node performance.
+     */
+    eth_estimateGas: (data: Partial<TransactionCallOptions> & Partial<TransactionOptions>) => Promise<Quantity>;
+    /** Returns information about a block by hash. */
+
+  @exposeMethod
+  async estimateGas(data: Partial<TransactionCallOptions> & Partial<TransactionOptions>): Promise<Quantity> {
+    return requestManager.eth_estimateGas(data)
+  }
+
+#### Get Balance
+
+ /** Returns the balance of the account of given address. */
+    eth_getBalance: (address: Address, block: BlockIdentifier) => Promise<BigNumber>;
+
+
+      @exposeMethod
+  async getBalance(address: Address, block: Quantity | Tag): Promise<BigNumber> {
+    return requestManager.eth_getBalance(address, block)
+  }
+
+## Get data from executed transactions
+
+ /**
+     * Returns the receipt of a transaction by transaction hash.
+     * Note That the receipt is not available for pending transactions.
+     */
+    eth_getTransactionReceipt: (hash: TxHash) => Promise<TransactionReceipt>;
+
+@exposeMethod
+  async getTransactionReceipt(hash: TxHash): Promise<TransactionReceipt> {
+    return requestManager.eth_getTransactionReceipt(hash)
+  }
+
+
+  /** Returns the number of transactions sent from an address. */
+    eth_getTransactionCount: (address: Address, block: BlockIdentifier) => Promise<number>;
+
+  @exposeMethod
+  async getTransactionCount(address: Address, block: Quantity | Tag): Promise<number> {
+    return requestManager.eth_getTransactionCount(address, block)
+  }
+-->
+
+<!--
+## Web3 API
+
+We have only whitelisted the following methods from the API, all others are currently not supported:
+
+- eth_sendTransaction
+- eth_getTransactionReceipt
+- eth_estimateGas
+- eth_call
+- eth_getBalance
+- eth_getStorageAt
+- eth_blockNumber
+- eth_gasPrice
+- eth_protocolVersion
+- net_version
+- eth_getTransactionCount
+- eth_getBlockByNumber
+
+
+Below is a sample that uses this API to get the contents of a block in the blockchain.
+
+
+```tsx
+import { createElement, ScriptableScene } from "decentraland-api"
+import Web3 = require("web3")
+
+export default class EthereumProvider extends ScriptableScene {
+  async sceneDidMount() {
+    const provider = await this.getEthereumProvider()
+    const web3 = new Web3(provider)
+
+    web3.eth.getBlock(48, function(error: Error, result: any) {
+      console.log("Eth block 48 (from scene)", result)
+    })
+  }
+
+  async render() {
+    return <scene />
+  }
+}
+```
+
+
+-->
+
 
 
 
