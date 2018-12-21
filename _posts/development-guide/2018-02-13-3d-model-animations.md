@@ -1,12 +1,12 @@
 ---
-date: 2018-02-9
+date: 2018-02-13
 title: 3D model animations
 description: How to move and animate entities in your scene
 categories:
   - development-guide
 type: Document
 set: development-guide
-set_order: 8
+set_order: 13
 ---
 
 3D models in _.glTF_ and _.glb_ format can include as many animations as you want in them. Animations tell the mesh how to move, by specifying a series of poses that are laid out over time, the mesh then blends from one pose to the other to simulate continuous movement. See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for details on how to create models and animations for them. Read [Shape components]() for instructions on how to import a 3D model to a scene.
@@ -25,7 +25,7 @@ Typically, an animation name is comprised of its armature name, an underscore an
 
 ## Instance and add an animation clip
 
-To animate a 3D model, you must create an animation object and add it to a `GLTFShape` component.
+To use one of the animations in a 3D model, you must create a clip object and add it to a `GLTFShape` component.
 
 ```ts
 let shark = new Entity()
@@ -38,8 +38,6 @@ const clipSwim = new AnimationClip("swim")
 shark.get(GLTFShape).addClip(clipSwim)
 ```
 
-> Note: You need to create and add an animation object even if the animation is embedded in the _.glTF_ file.
-
 You can also create and add a clip in a single statement:
 
 ```ts
@@ -47,6 +45,13 @@ You can also create and add a clip in a single statement:
 shark.get(GLTFShape).addClip(new AnimationClip("swim"))
 
 // Retrieve a clip that was added to a component
+let swim = swim.get(GLTFShape).getClip("swim")
+```
+
+The steps of creating and adding a clip can also be avoided. If you try to get a clip that was never added to the component, the clip is created and added automatically:
+
+```ts
+// Create and get a clip
 let swim = swim.get(GLTFShape).getClip("swim")
 ```
 
@@ -87,7 +92,7 @@ clipSwim.play()
 clipSwim.pause()
 ```
 
-If your scene's code doesn't have a pointer to refer to the clip object directly (for example if you created and assigned the clip in a single statement) you can fetch a clip from the GLTFShape by name using `getClip()`.
+If your scene's code doesn't have a pointer to refer to the clip object directly, you can fetch a clip from the GLTFShape by name using `getClip()`.
 
 ```ts
 // Create and add clip
