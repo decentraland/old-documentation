@@ -9,7 +9,7 @@ set: development-guide
 set_order: 1
 ---
 
-Decentraland scenes that use 'ECS' are built around _entities_ and _components_.
+Decentraland scenes are built around [_entities_, _components_ and _systems_](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system). This is a common pattern used the architecture of several game engines, that allows for easy composability and scalability.
 
 ## Overview
 
@@ -23,9 +23,9 @@ If you're familiar with web development, think of entities as the equivalent of 
 
 Components like `transform`, `material` or shape components are closely tied in with the rendering of the scene. If the values in these components change, that alone is enough to change how the scene is rendered in the next frame.
 
-> Note: In previous versions of the SDK, the _scene state_ was stored in an object that was separate from the entities themselves. As of version 5.0, the _scene state_ is made up directly from the sum of every component in the entities present in the scene.
+> Note: In previous versions of the SDK, the _scene state_ was stored in an object that was separate from the entities themselves. As of version 5.0, the _scene state_ is directly embodied by the components that are used by the entities in the scene.
 
-Components are only meant to store data about their parent entity. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}). Systems are completely decoupled from the components and entities themselves. Entities and components are agnostic to what _systems_ are acting upon them.
+Components are meant to store data about their parent entity. They only store this data, they shouldn't modify it themselves. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}). Systems are completely decoupled from the components and entities themselves. Entities and components are agnostic to what _systems_ are acting upon them.
 
 See [Component Reference]() for a reference of all the available constructors for predefined components.
 
@@ -44,7 +44,7 @@ Explain there are two ways to declare entities and compnents: xml for static and
 // Create an entity
 const cube = new Entity()
 
-// Create and apply a `Transform` component to that entity
+// Create and add a `Transform` component to that entity
 cube.set(new Transform())
 
 // Set the fields in the component
@@ -59,9 +59,9 @@ engine.addEntity(cube)
 
 ## Add entities to the engine
 
-When you create a new entity, you're instancing an object and storing it in memory. You can then start adding components to it and configuring them.
+When you create a new entity, you're instancing an object and storing it in memory.
 
-It's important to understand that a newly created entity isn't _rendered_ until you add it to the scene's _engine_. Until the entity is added to the engine, users won't be able to see or interact with the entity.
+It's important to understand that a newly created entity won't be _rendered_ and it won't be possible for a user to interact with it until you add it to the scene's _engine_. Until the entity is added to the engine, users won't be able to see or interact with the entity.
 
 The engine is the part of the scene that sits in the middle and manages all of the other parts. It determines what entities are rendered and how users interact with them. It also coordinates what functions from [systems]() are executed and when.
 
@@ -80,11 +80,13 @@ In the example above, the newly created entity isn't viewable by users of your s
 
 > Note: Entities aren't added to [Component groups]() until they are added to the engine.
 
-When an entity is added to the engine, its `alive` property is implicitly set to _true_. You can check if an entity is currently added to the engine by checking this property.
+It’s sometimes useful to preemptively create entities and not add them to the engine until they are needed. This is especially true for entities that have elaborate geometries that might otherwise take time to load.
+
+When an entity is added to the engine, its `alive` property is implicitly set to _true_. You can check if an entity is currently added to the engine via this property.
 
 ```ts
 if (!myEntity.alive) {
-  engine.addEntity(myEntity)
+  log("entity isn't added to the engine")
 }
 ```
 
@@ -101,8 +103,8 @@ Removed entities are also removed from all [Component groups](). If your scene h
 
 If a removed entity has child entities, you can determine what to do with them through the optional second and third arguments of the `.removeEntity()` function.
 
-- `removeChildren`: Boolean to determine wether child entities are removed too. By default, this is _false_.
-- `newParent`: Assign a new parent entity to children of the removed entity.
+- `removeChildren`: Boolean to determine whether child entities are removed too. By default, this is _false_.
+- `newParent`: Set a new parent entity to children of the removed entity.
 
 ```ts
 // Remove an entity with these arguments:
@@ -120,14 +122,14 @@ An entity can have other entities as children. Thanks to this, we can arrange en
 
 [DIAGRAM : ENTITY W children]
 
-To assign an entity as the parent of another, simply use `.setParent()`:
+To set an entity as the parent of another, simply use `.setParent()`:
 
 ```ts
 // Create entities
 childEntity = new Entity()
 parentEntity = new Entity()
 
-// Assign parent
+// Set parent
 childEntity.setParent(parentEntity)
 ```
 
@@ -159,7 +161,7 @@ Entities with no shape component are invisible in the scene. These can be used a
 
 When an instance of a component is added to an entity, the component's values affect the entity.
 
-One way of doing this is to first create the component instance, and then assign it to an entity in a separate expression:
+One way of doing this is to first create the component instance, and then add it to an entity in a separate expression:
 
 ```ts
 // Create entity
@@ -168,20 +170,20 @@ cube = new Entity()
 // Create component
 const myMaterial = new Material()
 
-// Assign component
+// Add component
 cube.set(myMaterial)
 
 // Configure component
 myMaterial.albedoColor = Color3.Red()
 ```
 
-You can otherwise use a single expression to both create a new instance of a component and assign it to an entity:
+You can otherwise use a single expression to both create a new instance of a component and add it to an entity:
 
 ```ts
 // Create entity
 cube = new Entity()
 
-// Create and assign component
+// Create and add component
 cube.set(new Material())
 
 // Configure component
@@ -189,6 +191,12 @@ cube.get(Material).albedoColor = Color3.Red()
 ```
 
 > Note: In the example above, as you never define a pointer to the entity's material component, you need to refer to it through its parent entity using `.get()`.
+
+#### set vs add
+
+You can add a component to an entity either through `.set()` or `.add()`. The only difference between them is that a component assigned with `.set()` is overwritten whenever a component of the same kind is assigned to the entity. 
+
+A component assigned with `.add()` can't be overwritten like that. To change it, you must first remove it before assigning a replacement component.
 
 ## Remove a component from an entity
 
@@ -204,6 +212,8 @@ If your scene adds new components and removes them regularly, these removed comp
 
 If you try to remove a component that doesn't exist in the entity, this action won't raise any errors.
 
+If a component was added using `.set()`, then it can be overwritten directly by a component of the same category, without needing to remove it first. For example, if you give a _BoxShape_ component to an entity and later give it a _PlaneShape_ component, the _BoxShape_ component is overwritten.
+
 ## Access a component from an entity
 
 You can reach components through their parent entity by using the entity's `.get()` function.
@@ -212,7 +222,7 @@ You can reach components through their parent entity by using the entity's `.get
 // Create entity and component
 cube = new Entity()
 
-// Create and assign component
+// Create and add component
 cube.set(new Transform())
 
 // Using get
@@ -346,7 +356,7 @@ export class Velocity extends Vector3 {
 
 #### Interchangeable components
 
-Certain components intentionally can't coexist in a single entity. For example, an entity can't have both BoxShape and PlaneShape. If you assign one, you overwrite the other if present.
+Certain components intentionally can't coexist in a single entity. For example, an entity can't have both BoxShape and PlaneShape. If you assign one using `.set()`, you overwrite the other if present.
 
 You can create custom components that follow this same behavior against each other, where it only makes sense for each entity to have only one of them assigned.
 
@@ -364,7 +374,9 @@ export class Cat {
 }
 ```
 
-In the example above, note that both components occupy the _animal_ space. Each entity in the scene will only be able to have one animal component assigned.
+In the example above, note that both components occupy the _animal_ space. Each entity in the scene can only have one _animal_ component assigned.
+
+If you use `.set()` to assign a _Dog_ comonent to an entity that has a _Cat_ component, then the _Dog_ component will overwrite the _Cat_ component.
 
 ## Components as flags
 

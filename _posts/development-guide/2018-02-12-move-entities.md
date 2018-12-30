@@ -20,7 +20,9 @@ The easiest way to move an entity is to use the `translate()` function to change
 ```ts
 export class SimpleMove {
   update() {
-    myEntity.get(Transform).translate(Vector3.Forward.scale(0.1))
+    let transform = myEntity.get(Transform)
+    let distance = Vector3.Forward.scale(0.1)
+    transform.translate(distance)
   }
 }
 
@@ -42,7 +44,9 @@ You can compensate for this uneven timing by using the `dt` parameter to adjust 
 ```ts
 export class SimpleMove {
   update(dt: number) {
-    myEntity.get(Transform).translate(Vector3.Forward.scale(dt * 3))
+    let transform = myEntity.get(Transform)
+    let distance = Vector3.Forward.scale(dt * 3)
+    transform.translate(distance)
   }
 }
 // (...)
@@ -61,7 +65,8 @@ The `rotate()` function takes two arguments:
 export class SimpleRotate {
   update() {
     let transform = myEntity.get(Transform)
-    transform.rotate(Vector3.Left()) dt * 3)
+    let distance = dt * 3
+    transform.rotate(Vector3.Left(), distance)
   }
 }
 
@@ -101,7 +106,8 @@ engine.addEntity(pivot)
 export class PivotRotate {
   update() {
     let transform = myEntity.get(pivot)
-    transform.rotate(Vector3.Left()) dt * 3)
+    let distance = dt * 3
+    transform.rotate(Vector3.Left(), distance )
   }
 }
 
@@ -139,7 +145,7 @@ To implement this in your scene, you should store the data that goes into the le
 ```ts
 @Component("lerpData")
 export class LerpData {
-  previousPos: Vector3 = Vector3.Zero()
+  origin: Vector3 = Vector3.Zero()
   target: Vector3 = Vector3.Zero()
   fraction: number = 0
 }
@@ -151,7 +157,7 @@ export class LerpMove {
     let lerp = myEntity.get(LerpData)
     if (lerp.fraction < 1) {
       transform.position = Vector3.Lerp(
-        lerp.previousPos,
+        lerp.origin,
         lerp.target,
         lerp.fraction
       )
@@ -168,7 +174,7 @@ myEntity.set(new Transform())
 myEntity.set(new BoxShape())
 
 myEntity.set(new LerpData())
-myEntity.get(LerpData).previousPos = new Vector3(1, 1, 1)
+myEntity.get(LerpData).origin = new Vector3(1, 1, 1)
 myEntity.get(LerpData).target = new Vector3(8, 1, 3)
 
 engine.addEntity(myEntity)
@@ -195,7 +201,7 @@ To implement this in your scene, you should store the data that goes into the sl
 ```ts
 @Component('slerpData')
 export class SlerpData {
-  previousRot: Quaternion = Quaternion.Euler(0, 90, 0)
+  originRot: Quaternion = Quaternion.Euler(0, 90, 0)
   targetRot: Quaternion = Quaternion.Euler(0, 0, 0)
   fraction: number = 0
 }
@@ -208,7 +214,7 @@ export class SlerpRotate implements ISystem {
       let transform = myEntity.get(Transform)
 
       slerp.fraction += dt
-      let rot = Quaternion.Slerp(slerp.previousRot, slerp.targetRot, slerp.fraction)
+      let rot = Quaternion.Slerp(slerp.originRot, slerp.targetRot, slerp.fraction)
       transform.rotation = rot   
   }
 }
@@ -221,7 +227,7 @@ myEntity.set(new Transform())
 myEntity.set(new BoxShape())
 
 myEntity.set(new SlerpData())
-myEntity.get(SlerpData).previousRot = Quaternion.Euler(0, 90, 0)
+myEntity.get(SlerpData).originRot = Quaternion.Euler(0, 90, 0)
 myEntity.get(SlerpData).targetRot = Quaternion.Euler(0, 0, 0)
 
 engine.addEntity(myEntity)
@@ -258,7 +264,7 @@ You could also use a function that gives recurring results, like a sine function
 ```ts
 @Component("lerpData")
 export class LerpData {
-  previousPos: Vector3 = Vector3.Zero()
+  origin: Vector3 = Vector3.Zero()
   target: Vector3 = Vector3.Zero()
   fraction: number = 0
   time: number = 0
@@ -271,7 +277,7 @@ export class LerpMove {
     lerp.time += dt / 6
     lerp.fraction = Math.sin(lerp.time)
     transform.position = Vector3.Lerp(
-      lerp.previousPos,
+      lerp.origin,
       lerp.target,
       lerp.fraction
     )
@@ -295,7 +301,7 @@ const myPath = new Path3D([point1, point2, point3, point4])
 
 @Component("pathData")
 export class PathData {
-  previousPos: Vector3 = myPath.path[0]
+  origin: Vector3 = myPath.path[0]
   target: Vector3 = myPath.path[1]
   fraction: number = 0
   nextPathIndex: number = 1
@@ -307,7 +313,7 @@ export class PatrolPath {
     let path = myEntity.get(PathData)
     if (path.fraction < 1) {
       transform.position = Vector3.Lerp(
-        path.previousPos,
+        path.origin,
         path.target,
         path.fraction
       )
@@ -317,7 +323,7 @@ export class PatrolPath {
       if (path.nextPathIndex >= myPath.path.length) {
         path.nextPathIndex = 0
       }
-      path.previousPos = path.target
+      path.origin = path.target
       path.target = myPath.path[path.nextPathIndex]
       path.fraction = 0
     }
@@ -336,7 +342,7 @@ engine.addEntity(myEntity)
 
 The example above defines a 3D path that's made up of four 3D vectors. We also define a custom `PathData` component, that includes the same data used by the custom component in the _lerp_ example above, but adds a `nextPathIndex` field to keep track of what vector to use next from the path.
 
-The system is very similar to the system in the _lerp_ example, but when a lerp action is completed, it sets the `target` and `previousPos` fields to new values. If we reach the end of the path, we return to the first value in the path.
+The system is very similar to the system in the _lerp_ example, but when a lerp action is completed, it sets the `target` and `origin` fields to new values. If we reach the end of the path, we return to the first value in the path.
 
 <!--
 

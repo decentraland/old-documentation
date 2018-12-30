@@ -97,7 +97,7 @@ Decentraland scenes can be coded in two very different ways.
 
 ## Entities and Components
 
-Three dimensional scenes in Decentraland are based on an [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) system, where everything in a scene is an _entity_, and each entity can include _components_ that determine its characteristics.
+Three dimensional scenes in Decentraland are based on an [Entity-Component-System](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) architecture, where everything in a scene is an _entity_, and each entity can include _components_ that determine its characteristics.
 
 [DIAGRAM : ENTITY W COMPONENTS]
 
@@ -145,7 +145,7 @@ Component groups can be referenced by the functions in a system. Typically an `u
 
 ## Putting it all together
 
-The _engine_ is what sits in between _entities_ and _components_ on one hand and _systems_ and _component groups_ on the other. It calls system's functions, updates groups when entities are added, etc.
+The _engine_ is what sits in between _entities_, _components_ and _component groups_ on one hand and _systems_ on the other. It calls system's functions, updates groups when entities are added, etc.
 
 All of the values stored in the components in the scene represent the scene's state at that point in time. With every frame of the game loop, the engine runs the `update()` function of each of the systems to update the values stored in the components.
 
@@ -162,7 +162,7 @@ export class RotatorSystem implements ISystem {
     // The function iterates over all the entities in myGroup
     for (let entity of myGroup.entities) {
       const transform = entity.get(Transform)
-      transform.rotate(Vector3.Left() * 0.1)
+      transform.rotate(Vector3.Left(), 0.1)
     }
   }
 }
