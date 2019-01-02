@@ -71,7 +71,7 @@ When setting a position, keep the following considerations in mind:
 
   > Note: When viewing a scene in preview mode, entities that are out of bounds are highlighted in _red_.
 
-- Your scene is also limited in height. The more parcels that make up the scene, the higher you're allowed to build. See [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-0a-06-scene-limitations %}) for more details.
+- Your scene is also limited in height. The more parcels that make up the scene, the higher you're allowed to build. See [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}) for more details.
 
 ## Rotation
 
