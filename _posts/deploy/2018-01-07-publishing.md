@@ -21,7 +21,9 @@ Make sure of the following:
 
 - You own the necessary amount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}).
 
+<!--
 - If you're deploying a single scene to multiple adjacent parcels, you must first merge them together into an _Estate_ before you can deploy to them. See [Marketplace]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}) for instructions on how to create an estate.
+-->
 
 ## Check scene data
 
@@ -34,11 +36,11 @@ Open your scene's _scene.json_ file and verify the following:
 - **Parcels**: The coordinates of the parcels that will be occupied by your scene
 
 - **Base**: The coordinates of the parcel that will be considered the [0,0] coordinate of the scene.
-
+<!--
 - **Estate**: The ID of the estate you're deploying to. If you're deploying to a single parcel, this field isn't necessary.
 
   > Note: To find your estate's id, open the estate's detail page in the Marketplace. The URL should include a number for the ID. For example if the URL is _market.decentraland.org/estates/84/detail_, the estate's ID is _84_.
-
+-->
 ## To publish the scene
 
 1.  To make sure the scene has been locally built with your latest changes, run `npm run build`.
@@ -55,7 +57,7 @@ Open your scene's _scene.json_ file and verify the following:
 Currently, as a measure to improve performance and your visitor's experience, your content will be pinned to Decentraland’s main server to ensure that the data needed to render your parcel is always readily available.
 -->
 
-> Note: While this command deploys your scene to your parcel, remember that users can’t currently explore Decentraland, so your content won’t be discoverable “in-world”.
+> Note: Although this command deploys your scene to your parcels, remember that users can’t currently explore Decentraland, so your content won’t be discoverable “in-world” yet.
 
 ## Publish from a physical Ledger device
 
