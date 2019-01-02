@@ -1,5 +1,5 @@
 ---
-date: 2018-02-17
+date: 2018-02-6
 title: Shape components
 description: Learn about the different components that give entities their 3D shape and collision.
 categories:
@@ -44,7 +44,7 @@ let shpere = new SphereShape()
 myEntity.set(sphere)
 ```
 
-Primitive shapes don't include materials. To give it a color or a texture, you must assign a [material component]() to the same entity.
+Primitive shapes don't include materials. To give it a color or a texture, you must assign a [material component]({{ site.baseurl }}{% post_url /development-guide/2018-02-7-materials %}) to the same entity.
 
 ## Import 3D models
 

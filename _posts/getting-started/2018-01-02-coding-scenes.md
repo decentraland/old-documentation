@@ -31,7 +31,7 @@ Our SDK includes the following components:
 - **The Decentraland Editor**: Use it to create and preview Decentraland scenes. You don't need to download any software to your machine, the editor runs entirely on your browser.
 -->
 
-- **The Decentraland CLI** (Command Line Interface): Use it to generate new Decentraland scenes locally on your own machine, preview them and upload them to the content server.
+- **The Decentraland CLI** (Command Line Interface): Use it to [generate]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) new Decentraland scenes locally on your own machine, preview them and upload them to the content server.
 - **The Decentraland API**: A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between users or other applications.
 
 - **Scene examples**: Take inspiration and coding best practices from the [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
@@ -60,16 +60,13 @@ TypeScript is a superset of JavaScript, so if you're familiar with JavaScript yo
 <!--
 See [TypeScript tips]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %}) for best practices and recommendations for writing Decentraland scenes using TypeScript.
 -->
-<!--
+
 #### XML
 
-For scenes that only render motionless content and that won't be interactive, you can use [XML](https://en.wikipedia.org/wiki/XML).
+For scenes that only render motionless content and that won't be interactive, you can use [XML](https://en.wikipedia.org/wiki/XML). XML takes a lot less effort to learn and use.
 
-When building your scene with the CLI, select the option _Static_.
+We encourage developers to build their scenes using TypeScript, as that allows for far more interesting possibilities.
 
-We encourage developers to instead build their scenes using TypeScript. TypeScript scenes include embedded XML tags to handle the rendered entities. If you ignore all of the Typescript code in a _Basic_ scene and only edit what's inside the `render()` function, you're dealing with what's essentially XML but with slightly different syntax.
-
--->
 
 #### Other languages
 
@@ -82,18 +79,6 @@ The content you deploy to your LAND is called a **scene**. A scene is an interac
 Scenes are deployed to virtual LAND in Decentraland. LAND is a scarce and non-fungible asset maintained in an Ethereum smart contract. Deploy to a single **parcel**, a 10 meter by 10 meter piece of LAND, or to an **estate**, comprised of multiple adjacent parcels.
 
 We are developing the web client that will allow users to explore Decentraland. All of the content you upload to your LAND will be rendered and viewable through this client. We have included a preview tool in the SDK so that you can preview, test, and interact with your content in the meantime.
-
-<!--
-## Scene paradigms
-
-////// ONLY IF WE TAKE THE HORRIBLE DECISION TO DO BOTH
-
-Decentraland scenes can be coded in two very different ways.
-
-- ECS (.ts) uses an Entity component system and is close to how most game engines develop
-- Scriptable scene (.tsx) is close to how the React framework works, which is popular in web development.
-
--->
 
 ## Entities and Components
 
@@ -121,7 +106,7 @@ We call each iteration over the loop a _frame_. Decentraland scenes are rendered
 
 In each frame, the scene is updated; then the scene is re-rendered, based on the updated values.
 
-In Decentraland scenes, there is no explicitly declared game loop, but rather the `update()` functions on the [Systems]() of the scene make up the game loop.
+In Decentraland scenes, there is no explicitly declared game loop, but rather the `update()` functions on the [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) of the scene make up the game loop.
 
 The compiling and rendering of the scene is carried out in the backend, you don't need to handle that while developing your scene.
 

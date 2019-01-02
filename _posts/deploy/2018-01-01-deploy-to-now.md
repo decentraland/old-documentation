@@ -24,7 +24,7 @@ Note that it's not necessary to own LAND to upload a scene preview to Now. The u
 
 ## Get your scene ready
 
-To run your scene in Now, make sure you’re using the latest version of the SDK. Check [Release notes]() if you're not sure.
+To run your scene in Now, make sure you’re using the latest version of the SDK. Check the **Release notes** section if you're not sure.
 
 Remember that the SDK version is specified in the scene and is determined when you first create it with the CLI. So, if you have a scene you created with an older version of the CLI, and then update the CLI, you will need to manually update the scene so it references the latest version of the SDK.
 

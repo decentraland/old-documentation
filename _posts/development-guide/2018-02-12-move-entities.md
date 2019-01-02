@@ -11,7 +11,7 @@ set_order: 12
 
 To move, rotate or resize an entity in your scene, change the  _position_, _rotation_ and _scale_ values stored in an entity's `Transform` component incrementally, frame by frame. This can be used on primitive shapes (cubes, spheres, planes, etc) as well as on 3D models (glTF).
 
-You can easily perform these incremental changes by moving entities a small amount each time the `update()` function of a [system]() is called.
+You can easily perform these incremental changes by moving entities a small amount each time the `update()` function of a [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) is called.
 
 ## Move gradually
 
@@ -73,7 +73,7 @@ export class SimpleRotate {
 engine.addSystem(new SimpleRotate())
 ```
 
-> Tip: To make an entity always rotate to face the user, you can use the `billboardMode` setting. See [Set entity poision]() for details.
+> Tip: To make an entity always rotate to face the user, you can use the `billboardMode` setting. See [Set entity poision]({{ site.baseurl }}{% post_url /development-guide/2018-02-5-set-entity-positions %}) for details.
 
 ## Rotate using a pivot point
 

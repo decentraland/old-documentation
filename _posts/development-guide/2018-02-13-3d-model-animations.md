@@ -9,9 +9,9 @@ set: development-guide
 set_order: 13
 ---
 
-3D models in _.glTF_ and _.glb_ format can include as many animations as you want in them. Animations tell the mesh how to move, by specifying a series of poses that are laid out over time, the mesh then blends from one pose to the other to simulate continuous movement. See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for details on how to create models and animations for them. Read [Shape components]() for instructions on how to import a 3D model to a scene.
+3D models in _.glTF_ and _.glb_ format can include as many animations as you want in them. Animations tell the mesh how to move, by specifying a series of poses that are laid out over time, the mesh then blends from one pose to the other to simulate continuous movement. See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for details on how to create models and animations for them. Read [Shape components]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) for instructions on how to import a 3D model to a scene.
 
-> Tip: Animations are more suited for moving in place, not to change the position of an entity in the scene. For example, can set an animation to move a character's feet in place, but to change the location of the entity use the Transform component. See [Positioning entities]() for more details.
+> Tip: Animations are more suited for moving in place, not to change the position of an entity in the scene. For example, can set an animation to move a character's feet in place, but to change the location of the entity use the Transform component. See [Positioning entities]({{ site.baseurl }}{% post_url /development-guide/2018-02-5-set-entity-positions %}) for more details.
 
 ## Check a 3D model for animations
 

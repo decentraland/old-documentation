@@ -63,7 +63,7 @@ When you create a new entity, you're instancing an object and storing it in memo
 
 It's important to understand that a newly created entity won't be _rendered_ and it won't be possible for a user to interact with it until you add it to the scene's _engine_. Until the entity is added to the engine, users won't be able to see or interact with the entity.
 
-The engine is the part of the scene that sits in the middle and manages all of the other parts. It determines what entities are rendered and how users interact with them. It also coordinates what functions from [systems]() are executed and when.
+The engine is the part of the scene that sits in the middle and manages all of the other parts. It determines what entities are rendered and how users interact with them. It also coordinates what functions from [systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) are executed and when.
 
 ```ts
 // Create an entity
@@ -78,7 +78,7 @@ engine.addEntity(cube)
 
 In the example above, the newly created entity isn't viewable by users of your scene until it's added to the engine.
 
-> Note: Entities aren't added to [Component groups]() until they are added to the engine.
+> Note: Entities aren't added to [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}) until they are added to the engine.
 
 It’s sometimes useful to preemptively create entities and not add them to the engine until they are needed. This is especially true for entities that have elaborate geometries that might otherwise take time to load.
 
@@ -99,7 +99,7 @@ Entities that have been added to the engine can also be removed from it. When an
 engine.removeEntity(cube)
 ```
 
-Removed entities are also removed from all [Component groups](). If your scene has a pointer referencing a removed entity, it will remain in memory, allowing you to still access and change its component's values and add it back.
+Removed entities are also removed from all [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}). If your scene has a pointer referencing a removed entity, it will remain in memory, allowing you to still access and change its component's values and add it back.
 
 If a removed entity has child entities, you can determine what to do with them through the optional second and third arguments of the `.removeEntity()` function.
 
@@ -380,7 +380,7 @@ If you use `.set()` to assign a _Dog_ comonent to an entity that has a _Cat_ com
 
 ## Components as flags
 
-You may want to add a component that simply marks an entity to differentiate it from others but doesn't store any data. This is useful when using [Component groups](), so that the group only keeps track of certain entities in the scene and not others.
+You may want to add a component that simply marks an entity to differentiate it from others but doesn't store any data. This is useful when using [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}), so that the group only keeps track of certain entities in the scene and not others.
 
 ```ts
 @Component("myFlag")

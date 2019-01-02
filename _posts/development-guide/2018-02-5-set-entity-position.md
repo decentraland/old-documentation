@@ -29,7 +29,7 @@ myEntity.set(new Transform({
     }))
 ```
 
-To move, rotate or resize an entity in your scene, change the values on this component incrementally, frame by frame. See [Move entities]() for more details and best practices.
+To move, rotate or resize an entity in your scene, change the values on this component incrementally, frame by frame. See [Move entities]({{ site.baseurl }}{% post_url /development-guide/2018-02-12-move-entities %}) for more details and best practices.
 
 ## Position
 
@@ -71,7 +71,7 @@ When setting a position, keep the following considerations in mind:
 
   > Note: When viewing a scene in preview mode, entities that are out of bounds are highlighted in _red_.
 
-- Your scene is also limited in height. The more parcels that make up the scene, the higher you're allowed to build. See [scene limitations]() for more details.
+- Your scene is also limited in height. The more parcels that make up the scene, the higher you're allowed to build. See [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-0a-06-scene-limitations %}) for more details.
 
 ## Rotation
 

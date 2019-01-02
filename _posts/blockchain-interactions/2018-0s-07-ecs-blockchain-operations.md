@@ -9,9 +9,22 @@ set: blockchain-interactions
 set_order: 7
 ---
 
-By interacting with the Ethereum blockchain you can, for example, require that a user pays a fee before activating something in your scene. The SDK is currently experimenting with different ways to interface with the Ethereum blockchain. Currently you can use the `eth-connect` library.
+If you're building a scene to upload to your LAND in Decentraland, the scene's code can interact directly with the Ethereum blockchain. This can be used to obtain information about the users entering your scene and what tokens they own,  to require a payment for activating something or even for selling virtual goods.
 
-> IMPORTANT: At the present time, none of these solutions are fully supported by the SDK, and the way in which they are implemented is very likely to change. For this reason, we advise that you only try these out for proofs of concept, but not to develop final experiences.
+The _Ethereum controller_, included in the Decentraland SDK, is based on the `eth-connect` library, but it whitelists specific operations and includes additional operations.
+
+
+Note that in most of the examples here, we're using an [async function]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %}) to run the blockchain operations. This is because it might take some time to retrieve data from the blockchain.
+
+## Import the ethereum controller to your scene
+
+The Ethereum controller is packaged as part of the Decentraland SDK, but it must be imported into a scene before it can be used.
+
+All blockchain operations are  triggered through this controller.
+
+```ts
+
+```
 
 ## Obtain a user's public key
 
@@ -39,95 +52,122 @@ class IDSystem {
 }
 ```
 
-Note that we're using an async function to run the `getUserPublicKey()` function, as it might take some time to retrieve this data. We're then handling the data in a system, to be able to use it whenever it's ready.
 
-<!--
-## Web3 API
+## Require a payment
 
-The SDK includes an interface for the Web3 API. You can use it to call methods of this API from your scene's code. The interface includes two methods: `send` and `sendAsync`, which can be used to call the methods from the API. We have only whitelisted the following methods from the API, all others are currently not supported:
+The `requirePayment` function prompts the user to accept paying a sum to an Ethereum wallet of your choice. 
 
-- eth_sendTransaction
-- eth_getTransactionReceipt
-- eth_estimateGas
-- eth_call
-- eth_getBalance
-- eth_getStorageAt
-- eth_blockNumber
-- eth_gasPrice
-- eth_protocolVersion
-- net_version
-- eth_getTransactionCount
-- eth_getBlockByNumber
+Users must always accept payments manually, a payment can never be implied directly from the user's actions in the scene.
 
-To use it, you must first install web3 in your local machine. To do so, run the following:
-
-```bash
-npm i web3
-```
-
-> IMPORTANT: The SDK works with version _0.20.6_ of the Web3 library. It doesn't currently support newer versions.
-
-Below is a sample that uses this API to get the contents of a block in the blockchain.
-
-{% raw %}
 
 ```tsx
-import { createElement, ScriptableScene } from "decentraland-api"
-import Web3 = require("web3")
+eth.requirePayment(receivingAddress, amount, currency)
+```
 
-export default class EthereumProvider extends ScriptableScene {
-  async sceneDidMount() {
-    const provider = await this.getEthereumProvider()
-    const web3 = new Web3(provider)
 
-    web3.eth.getBlock(48, function(error: Error, result: any) {
-      console.log("Eth block 48 (from scene)", result)
-    })
-  }
+The function requires that you specify an Ethereum wallet address to receive the payment, an amount for the transaction and a specific currency to use (for example, MANA or ETH).
 
-  async render() {
-    return <scene />
-  }
+If accepted by the user, the function returns the hash number of the transaction that has been started.
+
+
+```tsx
+const myWallet = ‘0x0123456789...’
+const enterPrice = 10
+
+function payment(){
+  executeTask(async () => {
+    try {
+      await eth.requirePayment(myWallet, entrancePrice, ‘MANA’)
+      openDoor()
+    } catch {
+      log("failed process payment")
+    }
+  })
 }
+
+const button = new Entity()
+button.set(new OnClick( _ => {
+    payment()
+  }))
 ```
 
-{% endraw %}
 
-For more details and a full reference of what's possible with this API, see [Web3's documentation](https://web3js.readthedocs.io/en/1.0/)
+The example above listens for clicks on a _button_ entity. When clicked, the user is prompted to make a payment in MANA to a specific wallet for a given amount. Once the user accepts this payment, the rest of the function can be executed. If the user doesn't accept the payment, the rest of the function won't be executed.
 
-## ethjs library
+![](/images/media/metamask_confirm.png)
 
-To use it, you must first install ethjs in your local machine. To do so, run the following:
+> Tip: We recommend defining the wallet address and the amount to pay as global constants at the start of the _.tsx_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
 
-```bash
-npm install --save ethjs
+
+## Send a transaction
+
+```
+  @exposeMethod
+  async sendAsync(message: RPCSendableMessage): Promise<any> {
+    return sendAsync(message)
+  }
+
+  @exposeMethod
+  async sendTransaction(options: TransactionOptions): Promise<TxHash> {
+    return requestManager.eth_sendTransaction(options)
+  }
 ```
 
-For more details and a full reference of what's possible with this library, see [ethjs's documentation](https://github.com/ethjs/ethjs)
+## Get data before a transaction
+
+
+```
+
+  @exposeMethod
+  async gasPrice(): Promise<BigNumber> {
+    return requestManager.eth_gasPrice()
+  }
+
+
+  @exposeMethod
+  async estimateGas(data: Partial<TransactionCallOptions> & Partial<TransactionOptions>): Promise<Quantity> {
+    return requestManager.eth_estimateGas(data)
+  }
+
+    @exposeMethod
+  async getBalance(address: Address, block: Quantity | Tag): Promise<BigNumber> {
+    return requestManager.eth_getBalance(address, block)
+  }
+  
+
+
+```
+
+## Get data from executed transactions
+
+```
+@exposeMethod
+  async getTransactionReceipt(hash: TxHash): Promise<TransactionReceipt> {
+    return requestManager.eth_getTransactionReceipt(hash)
+  }
+
+
+  async getBlockNumber(block: Quantity | Tag, fullTransactionObjects: boolean): Promise<BlockObject> {
+    return requestManager.eth_getBlockByNumber(block, fullTransactionObjects)
+  }
+
+  @exposeMethod
+  async getTransactionCount(address: Address, block: Quantity | Tag): Promise<number> {
+    return requestManager.eth_getTransactionCount(address, block)
+  }
+```
+
+<!--
+
 
 
 ## The Ethereum Controller
 
-Another way to perform operations on the Ethereum blockchain is through the ethereum controller. This controller is packaged with the SDK, so you don't need to run any manual installations. You must first import it into your scene:
 
-1.  Import the `EthereumController` to the .tsx file:
-
-{% raw %}
-
-```tsx
-import {
-  createElement,
-  ScriptableScene,
-  EthereumController,
-  inject
-} from "decentraland-api"
-```
-
-{% endraw %}
 
 2.  Then inject the ethereum controller as a decorator into your custom scene class:
 
-{% raw %}
+
 
 ```tsx
 export default class myScene extends ScriptableScene {
@@ -137,64 +177,7 @@ export default class myScene extends ScriptableScene {
 }
 ```
 
-{% endraw %}
 
-The examples below show some of the things you can do with this controller.
-
-#### Require a payment
-
-Once the `EthereumController` has been imported, you can run the `requirePayment` function. This function prompts the user to accept a paying a sum to an Ethereum wallet of your choice. Users must always accept payments manually, a payment can never be implied directly from the user's actions in the scene.
-
-{% raw %}
-
-```tsx
-this.eth.requirePayment(receivingAddress, amount, currency)
-```
-
-{% endraw %}
-
-The function requires that you specify an Ethereum wallet address to receive the payment, an amount for the transaction and a specific currency to use (for example, MANA or ETH).
-
-If accepted by the user, the function returns the hash number of the transaction that has been started.
-
-{% raw %}
-
-```tsx
-const myWallet = ‘0x0123456789...’
-const enterPrice = 10
-
-// (...)
-
-async sceneDidMount() {
-  this.eventSubscriber.on(‘door_click’, async () => {
-    await this.eth!.requirePayment(myWallet, entrancePrice, ‘MANA’)
-
-    this.setState(isDoorClosed: !this.state.isDoorClosed)
-  }
-}
-```
-
-{% endraw %}
-
-The example above listens for clicks on a `door` entity. When clicked, the user is prompted to make a payment in MANA to a specific wallet for a given ammount. Once the user accepts this payment, the rest of the function can be executed, in this case the `isDoorClosed` variable in the scene's state is changed. If the user doesn't accept the payment, the rest of the function won't be executed and the variable's state won't change.
-
-![](/images/media/metamask_confirm.png)
-
-> Tip: We recommend defining the wallet address and the ammount to pay as global constants at the start of the _.tsx_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
-
-#### Using the Ethereum test network
-
-While testing your scene, to avoid transferring real MANA currency, you can use the _Ethereum Ropsten test network_ and transfer fake MANA instead.
-
-To use the test network you must set your Metamask Chrome extension to use the _Ropsten test network_ instead of _Main network_.
-
-You must also own MANA in the Ropsten blockchain. To obtain free Ropsten mana in the test network, go to our [MANA faucet](https://faucet.decentraland.today/).
-
-> Tip: To run the transaction of transferring Ropsten MANA to your wallet, you will need to pay a gas fee in Ropsten Ether. If you don't have Ropsten Ether, you can obtain it for free from various external faucets like [this one](https://faucet.ropsten.be/).
-
-To preview your scene using the test network, add the `DEBUG` property to the URL you're using to access the scene preview on your browser. For example, if you're accessing the scene via `http://127.0.0.1:8000/?position=0%2C-1`, you should set the URL to `http://127.0.0.1:8000/?DEBUG&position=0%2C-1`.
-
-Any transactions that you accept while viewing the scene in this mode will only occur in the test network and not affect the MANA balance in your real wallet.
 
 ## Wait for a transaction
 
@@ -232,7 +215,7 @@ The example above first requires the user to accept a transaction, if the user a
 
 <!--
 
-#### Signing messages
+## Signing messages
 
 A user can sign a message using their Ethereum public key. This signature is a secure way to give consent or to register an accomplishment or action that is registered with the block chain. The signing of a message doesn't imply paying any gas fees on the Ethereum network.
 
@@ -356,3 +339,20 @@ export default class SignMessage extends ScriptableScene {
 
 {% endraw %}
 -->
+
+
+## Using the Ethereum test network
+
+While testing your scene, to avoid spending real MANA currency, and real Ether for gas fees, you can use the _Ethereum Ropsten test network_ and transfer fake MANA instead.
+
+To use the test network you must set up your Metamask Chrome extension to use the _Ropsten test network_ instead of _Main network_.
+
+You must also own MANA and Ether in the Ropsten blockchain. 
+
+- For free Ropsten MANA, go to [MANA faucet](https://faucet.decentraland.today/).
+
+- For free Ropsten Ether, there are various external faucets like [this one](https://faucet.ropsten.be/).
+
+To preview your scene using the test network, add the `DEBUG` property to the URL you're using to access the scene preview on your browser. For example, if you're accessing the scene via `http://127.0.0.1:8000/?position=0%2C-1`, you should set the URL to `http://127.0.0.1:8000/?DEBUG&position=0%2C-1`.
+
+Any transactions that you accept while viewing the scene in this mode will only occur in the test network and not affect the MANA or Ether balance in your real wallet.

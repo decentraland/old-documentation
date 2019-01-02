@@ -148,9 +148,9 @@ Check your scene preview once again to see that the 3D model is now there too.
 
 ![](/images/media/landing_avocado_in_scene.png)
 
-The lines you just added create a new [entity](), give it a [shape]() based on the 3D model you downloaded, and [set its position]().
+The lines you just added create a new [entity]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}), give it a [shape]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) based on the 3D model you downloaded, and [set its position]({{ site.baseurl }}{% post_url /development-guide/2018-02-5-set-entity-position %}).
 
-Note that the avocado you added rotates, just like all other entities in the scene. That's because the `RotatorSystem` [system]() is iterating over every entity in the scene. 
+Note that the avocado you added rotates, just like all other entities in the scene. That's because the `RotatorSystem` [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) is iterating over every entity in the scene. 
 
 Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) for a high-level understanding of how Decentraland scenes function.
 

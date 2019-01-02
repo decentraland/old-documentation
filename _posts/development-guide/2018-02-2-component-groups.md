@@ -24,7 +24,7 @@ After the group is created, you don't need to add or remove entities manually fr
 const myGroup = engine.getComponentGroup(Transform)
 ```
 
-[Systems]() typically iterate over the entities in these groups in their update method, performing the same operations on each. Having a predefined group of valid entities is a great way to save resources, specially for functions that run on every frame like `update()`. If on every frame your system would have to iterate over every single entity in the scene looking for the ones it needs, that would be very time consuming.
+[Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) typically iterate over the entities in these groups in their update method, performing the same operations on each. Having a predefined group of valid entities is a great way to save resources, specially for functions that run on every frame like `update()`. If on every frame your system would have to iterate over every single entity in the scene looking for the ones it needs, that would be very time consuming.
 
 You can access the entities in a component group in the following way: if the group name is `myGroup`, calling `myGroup.entities` returns an array containing all the entities in it.
 

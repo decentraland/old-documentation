@@ -12,7 +12,7 @@ set_order: 1
 tag: introduction
 ---
 
-In Decentraland, a scene is the representation of the content of an estate or parcel. All scenes are made up of [entities and components](), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
+In Decentraland, a scene is the representation of the content of an estate or parcel. All scenes are made up of [entities and components]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}), which represent all of the elements in the scene and are arranged into tree structures, very much like elements in a DOM tree in web development.
 
 ## Install the CLI
 
@@ -64,6 +64,8 @@ dcl start
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
 For more about what you can see in a scene preview, and instructions for how to run a preview of a remote scene, see [preview your scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %}).
+
+You can also deploy your scene to a third-party server by just running a command using the CLI. This is a great way to share your content with others, without them needing to install any of the development tools necessary to build the scene locally. See [Deploy to Now](({{ site.baseurl }}{% post_url /deploy/2018-01-01-deploy-to-now %})).
 
 ## Edit your scene
 
