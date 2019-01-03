@@ -11,9 +11,10 @@ set_order: 6
 
 Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an _entity_, and each entity can include _components_ that shape its characteristics and functionality.
 
-The rendered shape of an entity is determined by what component it uses.
+The rendered shape of an entity is determined by what component it uses. Each entity can have only one shape component assigned to it.
 
-Each entity can have only one shape component assigned to it. If you assign a shape component to an entity that already had one, it will overwrite it.
+![](/images/media/ecs-simple-components.png)
+
 
 ## Primitive shapes
 
@@ -100,16 +101,14 @@ Entities don't use collisions by default. Depending on the type of the shape com
 
 - For _primitive_ shapes (boxes, spheres, planes etc), you enable collisions by setting the `withCollisions` field of the shape component to _true_.
 
-  > Note: Planes only block movement in one direction.
+  This example defines a box entity that can't be walked through.
 
-      ```ts
-      let box = new BoxShape()
-      box.withCollisions = true
-      myEntity.set(box)
-      ```
-
-
-      The example above defines a box entity that can't be walked through.
+  ```ts
+  let box = new BoxShape()
+  box.withCollisions = true
+  myEntity.set(box)
+  ```
+  > Note: Planes only block movement in one direction. 
 
 - To use collisions in a _glTF_ shape, you can either:
 
@@ -138,8 +137,8 @@ To ensure that 3D models in your scene load faster and take up less memory, foll
 
 - Save your models in _.glb_ format, which is a lighter version of _.gltf_.
 - If you have multiple models that share the same textures, export your models with textures in a separate file. That way multiple models can refer to a single texture file that only needs to be loaded once.
-- If you have multiple entities using the same 3D model, instance a single `GLTFShape` component and assign that same one to the entities that will use it.
-- If your scene has entities that appear and disappear, it might be a good idea to pool these entities and keep them already defined but removed from the engine until needed. This will help them appear faster, the trade-off is that they will occupy memory when not in use.
+- If you have multiple entities using the same 3D model and no animations, instance a single `GLTFShape` component and assign that same one to the entities that will use it.
+- If your scene has entities that appear and disappear, it might be a good idea to pool these entities and keep them already defined but removed from the engine until needed. This will help them appear faster, the trade-off is that they will occupy memory when not in use. See ({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}#pooling-entities-and-components)
 
 #### Reuse shapes
 

@@ -57,13 +57,9 @@ to create our scenes.
 
 TypeScript is a superset of JavaScript, so if you're familiar with JavaScript you'll find it's almost the same, but TypeScript allows you to employ object-oriented programming and type declarations. Features like autocomplete and type-checking speed up development times and allow for the creation of a more solid codebase. These features are all key components to a positive developer experience.
 
-<!--
-See [TypeScript tips]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %}) for best practices and recommendations for writing Decentraland scenes using TypeScript.
--->
-
 #### XML
 
-For scenes that only render motionless content and that won't be interactive, you can use [XML](https://en.wikipedia.org/wiki/XML). XML takes a lot less effort to learn and use.
+For scenes that only render motionless content and that won't be interactive, you can use [XML](https://en.wikipedia.org/wiki/XML). XML takes a lot less effort to learn and use, but it's more limited. See [XML static scenes]({{ site.baseurl }}{% post_url /development-guide/2018-01-13-xml-static-scenes %}) for an overview.
 
 We encourage developers to build their scenes using TypeScript, as that allows for far more interesting possibilities.
 
@@ -84,9 +80,11 @@ We are developing the web client that will allow users to explore Decentraland. 
 
 Three dimensional scenes in Decentraland are based on an [Entity-Component-System](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) architecture, where everything in a scene is an _entity_, and each entity can include _components_ that determine its characteristics.
 
-[DIAGRAM : ENTITY W COMPONENTS]
+![](/images/media/ecs-components.png)
 
 Entities are nested inside other entities to form a tree structure. If you're familiar with web development, you might find it useful to think of entities as elements in a DOM tree and of components as the attributes of each of these elements.
+
+![](/images/media/ecs-nested-entities.png)
 
 See [Entities and components]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}) for an in-depth look of both these concepts and how they're used by Decentraland scenes.
 
@@ -122,15 +120,17 @@ See [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems
 
 ## Component groups
 
-Component groups keep track of all entities in the scene that have certain components in them. Once a component group is created, it automatically keeps its list up to date with each new entity or component that is added or removed.
+[Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}) keep track of all entities in the scene that have certain components in them. Once a component group is created, it automatically keeps its list up to date with each new entity or component that is added or removed.
 
-If you attempt to update all the entities in the scene on every frame, that can sometimes have a significant cost in performance. By referring only to the entities in a component group, you ensure you're only dealing with those that are relevant.
+If you attempt to update all the entities in the scene on every frame, that could have a significant cost in performance. By referring only to the entities in a component group, you ensure you're only dealing with those that are relevant.
 
-Component groups can be referenced by the functions in a system. Typically an `update()` function will loop over the entities in the component group, performing the same actions on each.
+Component groups can be referenced by the functions in a [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}). Typically an `update()` function will loop over the entities in the component group, performing the same actions on each.
 
 ## Putting it all together
 
 The _engine_ is what sits in between _entities_, _components_ and _component groups_ on one hand and _systems_ on the other. It calls system's functions, updates groups when entities are added, etc.
+
+![](/images/media/ecs-big-picture.png)
 
 All of the values stored in the components in the scene represent the scene's state at that point in time. With every frame of the game loop, the engine runs the `update()` function of each of the systems to update the values stored in the components.
 
@@ -171,8 +171,6 @@ engine.addEntity(cube)
 ```
 
 In the example above, a `cube` entity and a `RotatorSystem` system are added to the engine. The `cube` entity has a `Transform`, and a `BoxShape` component. In every frame of the game loop, the `update()` function of `RotationSystem` is called, and it changes the rotation values in the `Transform` component of the `cube` entity.
-
-[DIAGRAM]
 
 Note that most of the code above is executed just once, when loading the scene. The exception is the `update()` method of the system, which is called on every frame of the game loop.
 

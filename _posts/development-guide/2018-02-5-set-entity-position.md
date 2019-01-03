@@ -9,23 +9,27 @@ set: development-guide
 set_order: 5
 ---
 
-You can set the _position_, _rotation_ and _scale_ of an entity by using the `Transform` component. This can be used on primitive shapes (cubes, spheres, planes, etc) as well as on 3D models (glTF).
+You can set the _position_, _rotation_ and _scale_ of an entity by using the `Transform` component. This can be used on any entity, which can also a primitive shape component (cube, sphere, plane, etc) or a 3D model component (glTF, Obj).
+
+![](/images/media/ecs-simple-components.png)
 
 ```ts
 // Create a new entity
-const myEntity = new Entity()
+const ball = new Entity()
 
 // Add a transform component to the entity
-myEntity.set(new Transform())
+ball.set(new Transform())
+ball.get(Transform).position.set(5, 1, 5)
+ball.get(Transform).scale.set(2, 2, 2)
 ```
 
 For brevity, you can also create a `Transform` entity and give it initial values in a single statement, passing it an object that can optionally include _position_, _rotation_ and _scale_ properties.
 
 ```ts
 myEntity.set(new Transform({ 
-    position: new Vector3(3, 1, 3), 
-    scale: new Vector3(10, 10, 10)
-    rotation: new Quaternion(0, 0, 0, 1)
+    position: new Vector3(5, 1, 5), 
+    rotation: new Quaternion(0, 0, 0, 0),
+    scale: new Vector3(2, 2, 2)
     }))
 ```
 
@@ -203,13 +207,15 @@ const childEntity = new Entity()
 childEntity.setParent(parentEntity)
 
 // Create a transform for the parent
-let parentTransform = new Transform()
-parentTransform.position.set(3, 1, 1)
-parentTransform.scale(0.5, 0.5, 0.5)
+let parentTransform = new Transform({
+  position: new Vector3(3, 1, 1),
+  scale: new Vecot3(0.5, 0.5, 0.5)
+})
 
 // Create a transform for the child
-let childTransform = new Transform()
-childTransform.position.set(0, 1, 0)
+let childTransform = new Transform({
+  position: new Vector3(0, 1, 0)
+})
 
 // Add both entities to the engine
 parentEntity.set(parentTransform)
