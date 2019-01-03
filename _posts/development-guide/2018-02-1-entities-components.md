@@ -211,7 +211,7 @@ A removed component might still remain in memory even after removed. If your sce
 
 If you try to remove a component that doesn't exist in the entity, this action won't raise any errors.
 
-If a component was added using `.set()`, then it can be overwritten directly by a component of the same category, without needing to remove it first. For example, if you give a _BoxShape_ component to an entity and later give it a _PlaneShape_ component, the _BoxShape_ component is overwritten.
+If a component was added using `.set()`, then it can be overwritten directly by a component of the same category, without needing to remove it first.
 
 ## Access a component from an entity
 
@@ -240,7 +240,7 @@ XScale = Math.random() * 10
 
 The example above directly modifies the value of the _x_ scale on the Transform component.
 
-If you're not entirely sure if the entity does have the component you're trying to retrieve, you can use `getOrNull()` or `getOrCreate()`
+If you're not entirely sure if the entity does have the component you're trying to retrieve, use `getOrNull()` or `getOrCreate()`
 
 ```ts
 //  getOrNull
@@ -252,62 +252,72 @@ scale = cube.getOrCreate(Transform)
 
 If the component you're trying to retrieve doesn't exist in the entity:
 
-- `get()` returns an error
-- `getOrNull()` returns `Null`
-- `getOrCreate()` instances a new component in its place
+- `get()` returns an error.
+- `getOrNull()` returns `Null`.
+- `getOrCreate()` instances a new component in its place and retrieves it.
 
 ## Define a custom component
 
 If you need to store information about an entity that isn't handled by the default components of the SDK (see [component reference]() ), then you can create a custom type of component on your scene.
 
-Custom components can be defined in your scene's `.ts` file, but for larger projects we recommend defining them in a separate `ts` file and importing it.
+Tip: Custom components can be defined in your scene's `.ts` file, but for larger projects we recommend defining them in a separate `ts` file and importing them.
 
 A component can store as many fields as you want.
 
 ```ts
-// Define custom component
-@Component("nextPos")
-export class NextPos {
-  x: number = 0
-  y: number = 0
-  z: number = 0
+@Component('wheelSpin')
+export class WheelSpin {
+  spinning: boolean
+  speed: number
 }
+```
 
-// Create entity
-cube = new Entity()
+Note that we're defining two names for the component: `wheelSpin` and `WheelSpin` in this case. The class name, the one in upper case, is the one you use to add the component to entities. The other name, the one in lowe case, can mostly be ignored, except if you want to use it as an [Interchangeable component](#interchangeable-components).
 
-// Create instance of component
-cube.set(new NextPos())
+Once defined, you can use the component in the entities of your scene:
+
+```ts
+// Create entities
+wheel = new Entity()
+wheel2 = new Entity()
+
+// Create instances of the component
+wheel.set(new WheelSpin())
+wheel2.set(new WheelSpin())
 
 // Set values on component
-cube.get(NextPos).x = 5
-cube.get(NextPos).y = 3
-cube.get(NextPos).z = 5
+wheel.get(WheelSpin).spinning = true
+wheel.get(WheelSpin).speed = 10
+wheel2.get(WheelSpin).spinning = false
 ```
+
+Each entity that has the component added to it is instancing a new copy of it, holding specific data for that entity.
+
 
 #### Constructors
 
-Adding a constructor to your component allows you to set its values in the same expression as you create an instance of it.
+Adding a constructor to a component allows you to configure its values in the same expression as you create an instance of it.
 
 ```ts
-// Define custom component
-@Component("nextPos")
-export class NextPos {
-  x: number = 0
-  y: number = 0
-  z: number = 0
-  constructor(x: number, y: number, z: number) {
-    this.x = x
-    this.y = y
-    this.z = z
+@Component('wheelSpin')
+export class WheelSpin {
+  spinning: boolean
+  speed: number
+  constructor(spinning: boolean, speed: number) {
+    this.spinning = spinning
+    this.speed = speed
   }
 }
+```
 
+If the component includes a constructor, you can use the following syntax:
+
+```ts
 // Create entity
-cube = new Entity()
+wheel = new Entity()
 
 // Create instance of component and set its values
-cube.set(new NextPos(5, 3, 5))
+wheel.set(new WheelSpin(true, 10))
 ```
 
 > Tip: If you use a source code editor, when instancing a component that has a constructor, you can see what the parameters are by mousing over the expression.
@@ -317,24 +327,22 @@ cube.set(new NextPos(5, 3, 5))
 You can make the parameters optional by setting default values on each. If there are default values and you don't declare the parameters when instancing a component, it will use the default.
 
 ```ts
-// Define custom component
-@Component("nextPos")
-export class NextPos {
-  x: number = 0
-  y: number = 0
-  z: number = 0
-  constructor(x?: number = 5, y?: number = 3, z?: number = 5) {
-    this.x = x
-    this.y = y
-    this.z = z
+@Component('wheelSpin')
+export class WheelSpin {
+  spinning: boolean
+  speed: number
+  constructor(spinning?: boolean = false, speed?: number = 3) {
+    this.spinning = spinning
+    this.speed = speed
   }
 }
-
+```
+```ts
 // Create entity
-cube = new Entity()
+wheel = new Entity()
 
 // Create instance of component with default values
-cube.set(new NextPos())
+wheel.set(new WheelSpin())
 ```
 
 #### Inheritance from other components
@@ -355,11 +363,11 @@ export class Velocity extends Vector3 {
 
 #### Interchangeable components
 
-Certain components intentionally can't coexist in a single entity. For example, an entity can't have both BoxShape and PlaneShape. If you assign one using `.set()`, you overwrite the other if present.
+Certain components intentionally can't coexist in a single entity. For example, an entity can't have both `BoxShape` and `PlaneShape`. If you assign one using `.set()`, you overwrite the other if present.
 
 You can create custom components that follow this same behavior against each other, where it only makes sense for each entity to have only one of them assigned.
 
-To define components that share a same _space_ in an entity, set the same name for on the component's internal name:
+To define components that are interchangeable and that occupy a same _space_ in an entity, set the same name for both on the component's internal name:
 
 ```ts
 @Component("animal")
@@ -375,11 +383,13 @@ export class Cat {
 
 In the example above, note that both components occupy the _animal_ space. Each entity in the scene can only have one _animal_ component assigned.
 
-If you use `.set()` to assign a _Dog_ comonent to an entity that has a _Cat_ component, then the _Dog_ component will overwrite the _Cat_ component.
+If you use `.set()` to assign a _Dog_ component to an entity that has a _Cat_ component, then the _Dog_ component will overwrite the _Cat_ component.
 
 ## Components as flags
 
-You may want to add a component that simply marks an entity to differentiate it from others but doesn't store any data. This is useful when using [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}), so that the group only keeps track of certain entities in the scene and not others.
+You may want to add a component that simply flags an entity to differentiate it from others, without using it to store any data. 
+
+This is especially useful when using [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}). Since component groups list entities based on components they own, a simple flag component can tell entities apart from others.
 
 ```ts
 @Component("myFlag")
@@ -390,7 +400,7 @@ export class MyFlag {}
 
 If you plan to spawn and despawn similar entities from your scene, it's often a good practice to keep a fixed set of entities in memory. Instead of creating new entities and deleting them, you could add and remove existing entities from the engine. This is an efficient way to deal with your user's memory.
 
-Entities that are not added to the engine aren't rendered as part of the scene, but they are kept in memory. Their geometry doesn't add up to the maximum triangle count four your scene.
+Entities that are not added to the engine aren't rendered as part of the scene, but they are kept in memory, making them quick to load if needed. Their geometry doesn't add up to the maximum triangle count four your scene while they aren't being rendered.
 
 ```ts
 // Define spawner singleton object
@@ -440,7 +450,9 @@ Using an object pool has the following benefits:
 - If your entity uses a complex 3D model or texture, it might take the scene some time to load it from the content server. If the entity is already in memory when it's needed, then that delay won't happen.
 - This is a solution to avoid a common problem, where each entity that's removed could remain lingering in memory after being removed, and these unused entities could add up till they become too many to handle. By recycling the same entities, you ensure this won't happen.
 
+<!--
 Similarly, if you plan to set and remove certain components from your entities, it's recommendable to create a pool of fixed components to add and remove rather than create new component instances each time.
 
 ```ts
 ```
+-->
