@@ -73,7 +73,7 @@ export class SimpleRotate {
 engine.addSystem(new SimpleRotate())
 ```
 
-> Tip: To make an entity always rotate to face the user, you can use the `billboardMode` setting. See [Set entity poision]({{ site.baseurl }}{% post_url /development-guide/2018-02-5-set-entity-position %}) for details.
+> Tip: To make an entity always rotate to face the user, you can use the `billboardMode` setting. See [Set entity poision]({{ site.baseurl }}{% post_url /development-guide/2018-02-5-set-entity-position %}#face-the-user) for details.
 
 ## Rotate using a pivot point
 

@@ -137,13 +137,13 @@ myTransform.billboard = BillboardMode.BILLBOARDMODE_Y
 
 Billboards are also very handy to add to _text_ entities, since it makes them always legible.
 
-If the transform is configured with both a specific `rotation` and a `billboard` value other than 0, it uses the rotation set on by its billboard behavior.
+If an entity has both a Transform component configured with a specific `rotation` and also a shape component with a `billboard` value other than 0, the user will see the entity behaving according to the billboard mode.
 
-> Note: If there are multiple users present at the same time, they will each see the entities with billboard mode facing them.
+> Note: If there are multiple users present at the same time, each will see the entities with billboard mode facing themselves.
 
 ## Face a set of coordinates
 
-You can use `lookAt()` to orient an entity fo face a specific point in space by simply passing it that point's coordinates. This is a way to avoid dealing with the math for calculating the necessary angles.
+You can use `lookAt()` on the Transform component to orient an entity fo face a specific point in space by simply passing it that point's coordinates. This is a way to avoid dealing with the math for calculating the necessary angles.
 
 ```ts
 // Create a transform
