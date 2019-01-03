@@ -11,34 +11,30 @@ set_order: 1
 
 Decentraland scenes are built around [_entities_, _components_ and _systems_](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system). This is a common pattern used the architecture of several game engines, that allows for easy composability and scalability.
 
+![](/images/media/ecs-big-picture.png)
+
 ## Overview
 
-_Entities_ are the basic unit for building everything in Decentraland scenes. All visible and invisible 3D objects and audio players in your scene will each be an entity. An entity is nothing more than a container in which to place components. The entity itself has no properties or methods of its own, it simply groups several components together.
+_Entities_ are the basic unit for building everything in Decentraland scenes. All visible and invisible 3D objects and audio players in your scene will each be an entity. An entity is nothing more than a container that holds components. The entity itself has no properties or methods of its own, it simply groups several components together.
 
 _Components_ define the traits of an entity. For example, a `transform` component stores the entity's coordinates, rotation and scale. A `BoxShape` component gives the entity a cube shape when rendered in the scene, a `Material` component gives the entity a color or texture. You could also create a custom `health` component to store an entity's remaining health value, and add it to entities that represent non-player enemies in a game.
 
 If you're familiar with web development, think of entities as the equivalent of _Elements_ in a _DOM_ tree, and of components as _attributes_ of those elements.
 
-[DIAGRAM : ENTITY W COMPONENTS]
-
-Components like `transform`, `material` or shape components are closely tied in with the rendering of the scene. If the values in these components change, that alone is enough to change how the scene is rendered in the next frame.
-
 > Note: In previous versions of the SDK, the _scene state_ was stored in an object that was separate from the entities themselves. As of version 5.0, the _scene state_ is directly embodied by the components that are used by the entities in the scene.
+
+![](/images/media/ecs-components.png)
+
+Components like `Transform`, `Material` or any of the _shape_ components are closely tied in with the rendering of the scene. If the values in these components change, that alone is enough to change how the scene is rendered in the next frame.
 
 Components are meant to store data about their parent entity. They only store this data, they shouldn't modify it themselves. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}). Systems are completely decoupled from the components and entities themselves. Entities and components are agnostic to what _systems_ are acting upon them.
 
 See [Component Reference]() for a reference of all the available constructors for predefined components.
 
-<!--
-## XML syntax for entities and components
 
-Quick sample and link to xml static scenes??
+## Syntax for entities and components
 
-Explain there are two ways to declare entities and compnents: xml for static and code for dynamic
-
--->
-
-## TypeScript syntax for entities and components
+Entities and components are declared as TypeScript objects. The example below shows some basic operations of declaring, configuring and assigning these.
 
 ```ts
 // Create an entity
@@ -57,11 +53,11 @@ cube.set(new CubeShape())
 engine.addEntity(cube)
 ```
 
+Note: It's also possible to declare entities and components in [XML]({{ site.baseurl }}{% post_url /development-guide/2018-01-13-xml-static-scenes %}). Writing a scene in this way is easier but very limiting. You can't make the entities in the scene move or be interactive in any way.
+
 ## Add entities to the engine
 
-When you create a new entity, you're instancing an object and storing it in memory.
-
-It's important to understand that a newly created entity won't be _rendered_ and it won't be possible for a user to interact with it until you add it to the scene's _engine_. Until the entity is added to the engine, users won't be able to see or interact with the entity.
+When you create a new entity, you're instancing an object and storing it in memory. A newly created entity isn't _rendered_ and it won't be possible for a user to interact with it until it's added to the _engine_.
 
 The engine is the part of the scene that sits in the middle and manages all of the other parts. It determines what entities are rendered and how users interact with them. It also coordinates what functions from [systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) are executed and when.
 
@@ -78,15 +74,15 @@ engine.addEntity(cube)
 
 In the example above, the newly created entity isn't viewable by users of your scene until it's added to the engine.
 
-> Note: Entities aren't added to [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}) until they are added to the engine.
+> Note: Entities aren't added to [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}) either until they are added to the engine.
 
-It’s sometimes useful to preemptively create entities and not add them to the engine until they are needed. This is especially true for entities that have elaborate geometries that might otherwise take time to load.
+It’s sometimes useful to preemptively create entities and not add them to the engine until they are needed. This is especially true for entities that have elaborate geometries that might otherwise take long to load.
 
 When an entity is added to the engine, its `alive` property is implicitly set to _true_. You can check if an entity is currently added to the engine via this property.
 
 ```ts
-if (!myEntity.alive) {
-  log("entity isn't added to the engine")
+if (myEntity.alive) {
+  log("the entity is added to the engine")
 }
 ```
 
@@ -99,28 +95,31 @@ Entities that have been added to the engine can also be removed from it. When an
 engine.removeEntity(cube)
 ```
 
-Removed entities are also removed from all [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}). If your scene has a pointer referencing a removed entity, it will remain in memory, allowing you to still access and change its component's values and add it back.
+Note: Removed entities are also removed from all [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}). 
+
+If your scene has a pointer referencing a removed entity, it will remain in memory, allowing you to still access and change its component's values and add it back.
 
 If a removed entity has child entities, you can determine what to do with them through the optional second and third arguments of the `.removeEntity()` function.
 
-- `removeChildren`: Boolean to determine whether child entities are removed too. By default, this is _false_.
-- `newParent`: Set a new parent entity to children of the removed entity.
+- `removeChildren`: Boolean to determine whether child entities are removed too. _false_ by default.
+- `newParent`: Set a new parent entity for all children of the removed entity.
 
 ```ts
-// Remove an entity with these arguments:
-// - Entity to remove: cube
-// - removeChildren: false
-// - newParent: cube2
+/* These are the arguments being used:
+ - Entity to remove: cube
+ - removeChildren: false
+ - newParent: cube2
+*/
 engine.removeEntity(cube, false, cube2)
 ```
 
-> Note: Keep in mind that if child entities aren't removed and their position depends on that of the removed parent's, they will now be positioned relative to the scene (or to their new parent entity).
+> Note: Keep in mind that the position, rotation and scale of a child entity is always relative to their parent. If the children of an entity aren't removed together with the parent, they will now be positioned relative to the scene (or to their new parent entity).
 
 ## Nested entities
 
 An entity can have other entities as children. Thanks to this, we can arrange entities into trees, just like the HTML of a webpage.
 
-[DIAGRAM : ENTITY W children]
+![](/images/media/ecs-nested-entities.png)
 
 To set an entity as the parent of another, simply use `.setParent()`:
 
@@ -159,7 +158,7 @@ Entities with no shape component are invisible in the scene. These can be used a
 
 ## Add a component to an entity
 
-When an instance of a component is added to an entity, the component's values affect the entity.
+When a component is added to an entity, the component's values affect the entity.
 
 One way of doing this is to first create the component instance, and then add it to an entity in a separate expression:
 
@@ -170,11 +169,11 @@ cube = new Entity()
 // Create component
 const myMaterial = new Material()
 
-// Add component
-cube.set(myMaterial)
-
 // Configure component
 myMaterial.albedoColor = Color3.Red()
+
+// Add component
+cube.set(myMaterial)
 ```
 
 You can otherwise use a single expression to both create a new instance of a component and add it to an entity:
@@ -194,9 +193,11 @@ cube.get(Material).albedoColor = Color3.Red()
 
 #### set vs add
 
-You can add a component to an entity either through `.set()` or `.add()`. The only difference between them is that a component assigned with `.set()` is overwritten whenever a component of the same kind is assigned to the entity. 
+You can add a component to an entity either through `.set()` or `.add()`. The only difference between them is that a component assigned with `.set()` is overwritten whenever a component of the same kind is assigned to the entity.
 
 A component assigned with `.add()` can't be overwritten like that. To change it, you must first remove it before assigning a replacement component.
+
+For example, if you first assign a `BoxShape` component to an entity with `.set()` and then assign a `SphereShape` component to it aslo with `.set()`, the shape will be overwritten. If you instead use `.add()` to assign the first shape, it won't be possible to overwrite it.
 
 ## Remove a component from an entity
 
@@ -206,9 +207,7 @@ To remove a component from an entity, simply use the entity's `remove()` method.
 myEntity.remove(Material)
 ```
 
-A removed component might still remain in memory even after removed.
-
-If your scene adds new components and removes them regularly, these removed components will add up and cause memory problems. It's advisable to instead use an object pool to handle these components.
+A removed component might still remain in memory even after removed. If your scene adds new components and removes them regularly, these removed components will add up and cause memory problems. It's advisable to instead use an [object pool](#pooling-entities-and-components) when possible to handle these components.
 
 If you try to remove a component that doesn't exist in the entity, this action won't raise any errors.
 
