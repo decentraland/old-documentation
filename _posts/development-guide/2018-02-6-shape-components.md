@@ -140,9 +140,11 @@ To ensure that 3D models in your scene load faster and take up less memory, foll
 - If you have multiple entities using the same 3D model and no animations, instance a single `GLTFShape` component and assign that same one to the entities that will use it.
 - If your scene has entities that appear and disappear, it might be a good idea to pool these entities and keep them already defined but removed from the engine until needed. This will help them appear faster, the trade-off is that they will occupy memory when not in use. See ({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}#pooling-entities-and-components)
 
-#### Reuse shapes
+## Reuse shapes
 
-If multiple entities in your scene use a same primitive or 3D model, there's no need to create an instance of the shape component for each. All entities can share one same instance, this keeps your scene lighter to load and prevents you from exceeding the maximum amount of triangles per scene.
+If multiple entities in your scene use a same primitive or 3D model, there's no need to create an instance of the shape component for each. All entities can share one same instance. 
+
+This keeps your scene lighter to load and prevents you from exceeding the [maximum amount]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}) of triangles per scene.
 
 ```ts
 // Create shape component
@@ -158,3 +160,7 @@ myEntity.set(house)
 mySecondEntity.set(house)
 myThirdEntity.set(house)
 ```
+
+Each entity that shares a shape can apply different scales, rotations or even materials (in the case of primitives) without affecting how the other entities are being rendered.
+
+Reusing shape components is often advisable, except for 3D models that you plan to animate. If you animate a 3D model that's shared amongst multiple entities, all the entities will move together. If you want to be able to animate entities individually, each will have to own a separate `GLTFComponent` to keep track of what part of the animation is currently being played.
