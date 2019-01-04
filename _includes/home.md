@@ -9,7 +9,7 @@
     <div>
       <div class="image"><img src="/images/home/1.png"/></div>
       <div class="title">Coding scenes</div>
-      <div class="description">An overview the tools and the essential concepts surrounding the SDK.</div>
+      <div class="description">An overview of the tools and the essential concepts surrounding the SDK.</div>
     </div>
   </a>
   <a href="">
@@ -23,7 +23,7 @@
     <div>
       <div class="image"><img src="/images/home/3.png"/></div>
       <div class="title">Sample scenes</div>
-      <div class="description">Several scene examples to get you started, and inspire your creations.</div>
+      <div class="description">Several code examples to get you started, and inspire your creations.</div>
     </div>
   </a>
 </div>
@@ -65,7 +65,7 @@ Read more about the scene preview in [preview a scene]({{ site.baseurl }}{% post
 
 ## Edit the scene
 
-Open the `game.ts` file in your scene folder with the source code editor of your choice.
+Open the `src/game.ts` file from your scene folder with the source code editor of your choice.
 
 
 ```tsx
@@ -150,7 +150,7 @@ Check your scene preview once again to see that the 3D model is now there too.
 
 The lines you just added create a new [entity]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}), give it a [shape]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) based on the 3D model you downloaded, and [set its position]({{ site.baseurl }}{% post_url /development-guide/2018-02-5-set-entity-position %}).
 
-Note that the avocado you added rotates, just like all other entities in the scene. That's because the `RotatorSystem` [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) is iterating over every entity in the scene. 
+Note that the avocado you added rotates, just like all other entities in the scene. That's because the `RotatorSystem` [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) defined in this scene is iterating over every entity in the scene and rotating it. 
 
 Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) for a high-level understanding of how Decentraland scenes function.
 
@@ -159,8 +159,8 @@ Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-c
 <div class="examples">
   <a target="_blank" href="https://github.com/decentraland/sample-scene-script">
     <div>
-      <img src="/images/home/door.png"/>
-      <span>Door scene</span>
+      <img src="/images/home/example-hypno-wheel.png"/>
+      <span>Hypno wheels</span>
     </div>
   </a>
   <a target="_blank" href="https://github.com/decentraland/sample-scene-array-of-entities">

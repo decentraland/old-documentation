@@ -191,7 +191,7 @@ cube.get(Material).albedoColor = Color3.Red()
 
 > Note: In the example above, as you never define a pointer to the entity's material component, you need to refer to it through its parent entity using `.get()`.
 
-#### set vs add
+#### set or add
 
 You can add a component to an entity either through `.set()` or `.add()`. The only difference between them is that a component assigned with `.set()` is overwritten whenever a component of the same kind is assigned to the entity.
 
