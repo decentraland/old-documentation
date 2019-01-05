@@ -8,6 +8,10 @@ redirect_from:
   - /docs/command-line-interface/
   - /docs/sdk-quick-start-guide/
   - /sdk-reference/introduction/
+  - /sdk-reference/scriptable-scene/
+  - /development-guide/scriptable-scene/
+  - /documentation/tsx-coding-guide/
+  - /development-guide/typescript-tips/ 
 categories:
   - getting-started
 type: Document

@@ -39,7 +39,7 @@ The `dcl init` command creates a Decentraland **project** in your current workin
 
 The default scene is defined in a TypeScript file featuring an example with a door that can be opened. The scene features a basic state and handles click events.
 
-See [Files in a scene]({{ site.baseurl }}{% post_url /development-guide/2018-02-4-files-in-a-scene %}) for an overview of the default files that are created in your scene.
+See [Files in a scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-11-scene-files %}) for an overview of the default files that are created in your scene.
 
 ## Clone a sample scene
 

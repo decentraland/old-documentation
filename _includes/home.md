@@ -148,7 +148,7 @@ Check your scene preview once again to see that the 3D model is now there too.
 
 ![](/images/media/landing_avocado_in_scene.png)
 
-The lines you just added create a new [entity]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}), give it a [shape]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) based on the 3D model you downloaded, and [set its position]({{ site.baseurl }}{% post_url /development-guide/2018-02-5-set-entity-position %}).
+The lines you just added create a new [entity]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}), give it a [shape]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) based on the 3D model you downloaded, and [set its position]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}).
 
 Note that the avocado you added rotates, just like all other entities in the scene. That's because the `RotatorSystem` [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) defined in this scene is iterating over every entity in the scene and rotating it. 
 

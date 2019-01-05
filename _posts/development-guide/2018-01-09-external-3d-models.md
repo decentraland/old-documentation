@@ -13,7 +13,7 @@ set_order: 9
 
 3D models are imported into decentraland in glTF format. There are a number of supported features that these models can include. This section goes over ways to make them compatible with Decentraland and best practices.
 
-See [Set entity position]({{ site.baseurl }}{% post_url /development-guide/2018-02-5-set-entity-position %}) for information on how you can configure a 3D model in a Decentraland scene to set its position, scale, etc.
+See [Set entity position]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}) for information on how you can configure a 3D model in a Decentraland scene to set its position, scale, etc.
 
 Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
