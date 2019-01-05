@@ -4,6 +4,8 @@ title: Set Entity positions
 description: How to set the position, rotation and scale of an entity in a scene
 categories:
   - development-guide
+redirect_from:
+  - /documentation/entity-positioning/
 type: Document
 set: development-guide
 set_order: 5

@@ -4,6 +4,8 @@ title: Files in a scene
 description: Default files created in a new scene.
 categories:
   - development-guide
+redirect_from:
+  - /documentation/scene-files/
 type: Document
 set: development-guide
 set_order: 4
