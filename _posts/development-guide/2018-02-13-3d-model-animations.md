@@ -9,7 +9,9 @@ set: development-guide
 set_order: 13
 ---
 
-3D models in _.glTF_ and _.glb_ format can include as many animations as you want in them. Animations tell the mesh how to move, by specifying a series of poses that are laid out over time, the mesh then blends from one pose to the other to simulate continuous movement. See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for details on how to create models and animations for them. Read [Shape components]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) for instructions on how to import a 3D model to a scene.
+3D models in _.glTF_ and _.glb_ format can include as many animations as you want in them. Animations tell the mesh how to move, by specifying a series of poses that are laid out over time, the mesh then blends from one pose to the other to simulate continuous movement. 
+
+See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for details on how to create models and animations for them. Read [Shape components]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) for instructions on how to import a 3D model to a scene.
 
 > Tip: Animations are more suited for moving in place, not to change the position of an entity in the scene. For example, can set an animation to move a character's feet in place, but to change the location of the entity use the Transform component. See [Positioning entities]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}) for more details.
 
@@ -25,7 +27,9 @@ Typically, an animation name is comprised of its armature name, an underscore an
 
 ## Instance and add an animation clip
 
-To use one of the animations in a 3D model, you must create a clip object and add it to a `GLTFShape` component.
+To use one of the animations in a 3D model, you must create an `AnimationClip` object and add it to a `GLTFShape` component.
+
+![](/images/media/ecs-animations.png)
 
 ```ts
 let shark = new Entity()
@@ -38,7 +42,7 @@ const clipSwim = new AnimationClip("swim")
 shark.get(GLTFShape).addClip(clipSwim)
 ```
 
-You can also create and add a clip in a single statement:
+You can also create and add an `AnimationClip` in a single statement:
 
 ```ts
 // Instance and add a clip
@@ -48,16 +52,16 @@ shark.get(GLTFShape).addClip(new AnimationClip("swim"))
 let swim = swim.get(GLTFShape).getClip("swim")
 ```
 
-The steps of creating and adding a clip can also be avoided. If you try to get a clip that was never added to the component, the clip is created and added automatically:
+The steps of creating and adding an `AnimationClip` can also be avoided. If you try to get an `AnimationClip` that was never added to the component, the clip is created and added automatically:
 
 ```ts
 // Create and get a clip
 let swim = swim.get(GLTFShape).getClip("swim")
 ```
 
-Each instance of an animation object has a state of its own that keeps track how far it has advanced along the animation. If you add a same animation clip instance to multiple `GLTFShape` components from different entities, they will all reference this same state. This means that if you play the clip, all entities using the instance will be animated together at the same time.
+Each instance of an `AnimationClip` object has a state of its own that keeps track how far it has advanced along the animation. If you add a same `AnimationClip` instance to multiple `GLTFShape` components from different entities, they will all reference this same state. This means that if you play the clip, all entities using the instance will be animated together at the same time.
 
-If you want to independently animate several entities using a same clip, you must instance multiple clip objects, one for each entity using it.
+If you want to independently animate several entities using a same animation, you must instance multiple an `AnimationClip` objects, one for each entity using it.
 
 ```ts
 // Create an entity
@@ -77,7 +81,7 @@ shark2.get(GLTFShape).addClip(new AnimationClip("swim"))
 
 ## Play an animation
 
-Once an animation clip is added to a _GLTFShape_ component, it starts out as paused by default.
+Once an an `AnimationClip` is added to a `GLTFShape` component, it starts out as paused by default.
 
 The simplest way to play or pause it is to use the `play()` and `pause()` methods of the `AnimationClip`.
 
@@ -92,7 +96,7 @@ clipSwim.play()
 clipSwim.pause()
 ```
 
-If your scene's code doesn't have a pointer to refer to the clip object directly, you can fetch a clip from the GLTFShape by name using `getClip()`.
+If your scene's code doesn't have a pointer to refer to the clip object directly, you can fetch a clip from the `GLTFShape` by name using `getClip()`.
 
 ```ts
 // Create and add clip
@@ -121,14 +125,14 @@ clipSwim.playing = true
 
 ## Set clip parameters
 
-You can configure the following parameters for an animation clip:
+You can configure the following parameters for an `AnimationClip`:
 
 - `loop`: Boolean to determine if the animation is played in a continuous loop. If set to _false_, the animation plays just once and stops.
 - `playing`: Boolean to determine if the animation is currently being played.
 - `speed`: A number that determines how fast the animation is played, by default equal to _1_. Set it higher or lower to make the animation play faster or slower.
 - `weight`: Allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance that animation will be given in the average. By default equal to _1_, it can't be any higher than _1_.
 
-When creating a clip object, the constructor has a second optional parameter to pass all the values for the clip's parameters as an object:
+When creating an `AnimationClip`, the constructor has a second optional parameter to pass all the values for the clip's parameters as an object:
 
 ```ts
 const clipSwim = new AnimationClip("swim", {
@@ -138,16 +142,31 @@ const clipSwim = new AnimationClip("swim", {
 })
 ```
 
-You can also modify the parameters of an existing clip, by using the `setParams()` function and passing an object with the parameter values you want to change:
+You can also modify the parameters of an existing `AnimationClip`, by using the `setParams()` function and passing an object with the parameter values you want to change:
 
 ```ts
 clipSwim.setParams({ loop: true, speed: 3, weight: 0.2 })
 ```
 
+#### About the weight parameter
+
 The `weight` value of all active animations should add up to 1 at all times. If it adds up to less than 1, the weighted average will be referencing the default position of the armature for the remaining part of the calculation.
 
-For example, in the code example above, if only the _swim_ animation is playing and has a `weight` of _0.2_, then the swimming movement is quite subtle, only 20% of what the animation says it should move. The other 80% of what's averaged represents the default position of the armature.
+```ts
+const clipSwim = new AnimationClip("swim", {
+  weight: 0.2
+})
+const clipBite = new AnimationClip("bite", {
+  weight: 0.8
+})
+shark.get(GLTFShape).addClip(clipSwim)
+shark.get(GLTFShape).addClip(clipBite)
+
+clipSwim.play()
+```
+
+For example, in the code example above, we're only playing the _swim_ animation, that has a `weight` of _0.2_. In this case the swimming movement is quite subtle: only 20% of what the animation says it should move. The other 80% of what's being averaged to get the final armature position is the default posture of the armature.
 
 The `weight` property can be used in interesting ways, for example the `weight` property of _swim_ could be set in proportion to how fast the shark is swimming, so you don't need to create multiple animations for fast and slow swimming.
 
-You could also change the `weight` value gradually when starting and stopping an animation to give it a more natural transition and avoid jumps from the default position to the first pose in the animation if these are different.
+You could also change the `weight` value gradually when starting and stopping an animation to give it a more natural transition and avoid jumps from the default pose to the first pose in the animation.
