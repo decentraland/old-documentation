@@ -47,13 +47,12 @@ myEntity.set(sphere)
 
 Primitive shapes don't include materials. To give it a color or a texture, you must assign a [material component]({{ site.baseurl }}{% post_url /development-guide/2018-02-7-materials %}) to the same entity.
 
-## Import 3D models
+## 3D models
 
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in _.glTF_ or _.glb_ (binary _.glTF_). [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
 To add an external model into a scene, add a `GLTFShape` component to an entity and set its `src` to the path of the glTF file containing the model.
 
-> Note: 3D models in _.obj_ format are also supported, but will might not be supported for much longer. To add one, create an `OBJShape` component instead. Note that _.obj_ models don't support animations and other features.
 
 ```ts
 myEntity.set(new GLTFShape("models/House.gltf"))
@@ -68,6 +67,8 @@ In the example above, the model is located in a `models` folder at root level of
 glTF models can include their own embedded textures, materials, colliders and animations. See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more information on this.
 
 Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
+
+> Note: 3D models in _.obj_ format are also supported, but less encouraged. To add one, create an `OBJShape` component instead. Note that _.obj_ models don't support animations and other features.
 
 #### Free libraries for 3D models
 
