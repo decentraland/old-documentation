@@ -178,7 +178,7 @@ The function requires that you specify an Ethereum wallet address to receive the
 
 If accepted by the user, the function returns the hash number of the transaction.
 
-> Warning: This function informs you that a transaction was requested, but not that it was confirmed. If the gas price is too low, or it doesn't get mined for any reason, the transaction won't be completed. We don't advise relying on this function for dealing with things that are of value.
+> Warning: This function informs you that a transaction was requested, but not that it was confirmed. If the gas price is too low, or it doesn't get mined for any reason, the transaction won't be completed.
 
 
 ```tsx
@@ -211,6 +211,45 @@ The example above listens for clicks on a _button_ entity. When clicked, the use
 
 > Tip: We recommend defining the wallet address and the amount to pay as global constants at the start of the _.tsx_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
 
+
+#### Wait for a transaction to be mined
+
+The Ethereum controller allows you to check if a specific transaction has been already mined. It looks for a specific transaction's hash number and verifies that it has been validated by a miner and added to the blockchain. 
+
+> Important: Because of how a blockchain works, there might be [reorgs]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-ethereum-essentials %}#blockchain-reorgs) of the network that can lead to a mined transaction being reverted. A transaction that was confirmed once by one node has no guarantee of ending up in the official consensus of the network. We don't advise relying on this function for dealing with things that are of value.
+
+
+```tsx
+await this.eth.waitForMinedTx(currency, tx, receivingAddress)
+```
+
+The function requires that you specify a currency to use (for example, MANA or ETH), a transaction hash number and the Ethereum wallet address that received the payment.
+
+```tsx
+const myWallet = ‘0x0123456789...’
+const enterPrice = 10
+
+function payment(){
+  executeTask(async () => {
+    try {
+      const tx = await eth.requirePayment(myWallet, entrancePrice, ‘MANA’)
+      await eth.waitForMinedTx(‘MANA’, tx, myWallet)
+      openDoor()
+    } catch {
+      log("failed process payment")
+    }
+  })
+}
+
+const button = new Entity()
+button.set(new BoxShape())
+button.set(new OnClick( e => {
+    payment()
+  }))
+engine.addEntity(button)
+```
+
+The example above first requires the user to accept a transaction, if the user accepts it, then `requirePayment` returns a hash that can be used to track the transaction and see if it's been mined. Once the transaction is mined and accepted as part of the blockchain, the `openDoor()` function is called.
 
 
 #### Async sending
