@@ -13,7 +13,7 @@ To move, rotate or resize an entity in your scene, change the  _position_, _rota
 
 You can easily perform these incremental changes by moving entities a small amount each time the `update()` function of a [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) is called.
 
-## Move gradually
+## Move
 
 The easiest way to move an entity is to use the `translate()` function to change the _position_ value stored in the `Transform` component.
 
@@ -52,7 +52,7 @@ export class SimpleMove {
 // (...)
 ```
 
-## Rotate gradually
+## Rotate
 
 The easiest way to rotate an entity is to use the `rotate()` function to change the values in the Transform component incrementally, and run this as part of the `update()` function of a system.
 
@@ -75,7 +75,7 @@ engine.addSystem(new SimpleRotate())
 
 > Tip: To make an entity always rotate to face the user, you can use the `billboardMode` setting. See [Set entity poision]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}#face-the-user) for details.
 
-## Rotate using a pivot point
+## Rotate over a pivot point
 
 When rotating an entity, the rotation is always in reference to the entity's center coordinate. To rotate an entity using another set of coordinates as a pivot point, create a second (invisible) entity with the pivot point as its position and make it a parent of the entity you with to rotate.
 
@@ -180,7 +180,7 @@ myEntity.get(LerpData).target = new Vector3(8, 1, 3)
 engine.addEntity(myEntity)
 ```
 
-## Rotate from one angle to another
+## Rotate between two angles
 
 To rotate smoothly between two angles, use the _slerp_ (_spherical_ linear interpolation) algorithm. This algorithm is very similar to a _lerp_, but it handles quaternion rotations.
 
@@ -236,7 +236,7 @@ engine.addEntity(myEntity)
 > Note: You could instead represent the rotation with Vector3 values and carry out a normal `lerp` function, but that would imply a conversion from Vector3 to Quaternions on each frame, as rotation values are stored as Quaternions in the Transform component.
 
 
-## Change scale smoothly
+## Change scale between two sizes
 
 If you want an entity to change size move smoothly and you want it to keep its axis in proportion, use the _lerp_ (linear interpolation) algorithm of the `Scalar` object. Otherwise, you can represent scale as a `Vector3` and lerp between two vectors just as you would for changing the position.
 
@@ -255,7 +255,7 @@ let newScale = Scalar.Lerp(originScale, targetScale, 0.6)
 To implement this in your scene, you should store the data that goes into the lerp function in a component. We recommend creating a specific component to store the necessary information for the lerp to happen. You also need to define a system that implements the gradual scaling in each frame.
 
 
-## Move non-linearly between two points
+## Move at irregular speeds between two points
 
 While using the lerp method, you can make the movement speed non-linear. In the previous example we increment the lerp amount by a given amount each frame, but we could also use a mathematical function to increase the number exponentially or in other measures that give you a different movement pace.
 
@@ -287,7 +287,7 @@ export class LerpMove {
 
 The example above adds a `time` field to the custom component. The `time` field is incremented on every frame, and then `fraction` is set to the _sin_ of that value. Because of the nature of the _sin_ operation, the entity will lerp back and forth between both points.
 
-## Move following a path
+## Follow a path
 
 A `Path3` object stores a series of vectors that describe a path. You can have an entity loop over the list of vectors, performing a lerp movement between each.
 

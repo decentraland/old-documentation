@@ -264,7 +264,7 @@ If the component you're trying to retrieve doesn't exist in the entity:
 - `getOrNull()` returns `Null`.
 - `getOrCreate()` instances a new component in its place and retrieves it.
 
-## Define a custom component
+## Custom components
 
 If you need to store information about an entity that isn't handled by the default components of the SDK (see [component reference]() ), then you can create a custom type of component on your scene.
 
