@@ -39,7 +39,7 @@ This simple scene features a couple of wheels that you can spin by clicking them
 
 ![](/images/media/example-hypno-wheel.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Hypno-wheels)
 
 [Explore the scene]()
 
@@ -53,7 +53,7 @@ This simple scene shows how to add animations to a `GLTFComponent` and handle cl
 
 ![](/images/media/example-shark-animation.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Shark-animation)
 
 [Explore the scene]()
 
@@ -70,11 +70,11 @@ A simple interactive scene with a door that can be opened and closed.
 
 ![](/images/home/door.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Open-door)
 
 [Explore the scene]()
 
-#### Sliding doors
+#### Sliding door
 
 A simple interactive scene with a two-sided door that can be opened by clicking.
 
@@ -87,7 +87,7 @@ A simple interactive scene with a two-sided door that can be opened by clicking.
 
 ![](/images/media/example-sliding-doors.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Sliding-door)
 
 [Explore the scene]()
 
@@ -106,7 +106,7 @@ A scene where you can play different songs by pressing buttons on a jukebox.
 
 ![](/images/media/example-jukebox.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Jukebox)
 
 [Explore the scene]()
 
@@ -123,7 +123,7 @@ A scene with animations, sound, and tiles on the floor that randomly change colo
 
 ![](/images/media/example-dance-floor.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Dance-floor)
 
 [Explore the scene]()
 
@@ -140,7 +140,7 @@ A Simon Says game, with click interactions and sequenced actions. The game gener
 ![](/images/media/example-memory-game.png)
 
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Memory-game)
 
 [Explore the scene]()
 
@@ -152,7 +152,7 @@ A scene where hummingbirds spawn when you click a tree. Each bird moves on its o
 
 ![](/images/home/hummingbirds.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Hummingbirds)
 
 [Explore the scene]()
 
@@ -162,14 +162,14 @@ A scene that shows a character walking along a fixed path, using lerp over each 
 
 ![](/images/media/example-gnark.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Gnark-patrol)
 
 [Explore the scene]()
 
 
 ## Network connections
 
-#### Weather API
+#### Weather simulation
 
 A scene that checks a weather API for the weather in a location and displays that weather condition, showing rain, thunder or snowflakes
 Use real weather data from different locations by changing the coordinates, or change the value of the “fakeWeather” variable to see different weather conditions manifest.
@@ -178,7 +178,7 @@ Use real weather data from different locations by changing the coordinates, or c
 
 ![](/images/media/example-weather.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Weather-simulation)
 
 [Explore the scene]()
 
@@ -191,7 +191,7 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 
 ![](/images/home/door.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Remote-door)
 
 [Explore the scene]()
 
@@ -206,7 +206,7 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 ![](/images/media/example-remote-mural.png)
 
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Remote-mural)
 
 [Explore the scene]()
 
@@ -218,7 +218,7 @@ A scene with a simple AI character. It randomly chooses what action to take: fol
 
 ![](/images/home/blockdog.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Block-dog)
 
 [Explore the scene]()
 
@@ -228,7 +228,7 @@ A fully-fledged game where a random 2d path is generated along which enemies wal
 
 ![](/images/media/example-tower-defense.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Tower-defense)
 
 [Explore the scene]()
 
@@ -238,6 +238,6 @@ A fully fledged game, based on the popular game 2048, where the values are repre
 
 ![](/images/media/example-2048.png)
 
-[Code]()
+[Code](https://github.com/decentraland-scenes/Castaway-2048)
 
 [Explore the scene]()
