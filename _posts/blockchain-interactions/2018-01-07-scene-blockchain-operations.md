@@ -8,7 +8,7 @@ categories:
   - blockchain-interactions
 type: Document
 set: blockchain-interactions
-set_order: 7
+set_order: 5
 ---
 
 A Decentraland scene can interface with the Ethereum blockchain. This can serve to obtain data about the user's wallet and the tokens in it, or to trigger transactions that could involve any Ethereum token, fungible or non-fungible. This can be used in many ways, for example to sell tokens, to reward tokens as part of a game-mechanic, to change how a user interacts with a scene if they own certain tokens, etc.

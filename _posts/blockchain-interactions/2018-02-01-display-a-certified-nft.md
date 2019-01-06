@@ -6,7 +6,7 @@ categories:
   - blockchain-interactions
 type: Document
 set: blockchain-interactions
-set_order: 7
+set_order: 4
 ---
 
 You can display an NFT (Non-Fungible Token) that you own in your Decentraland scenes. A glowing badge will appear above the NFT to certify that you indeed own it.

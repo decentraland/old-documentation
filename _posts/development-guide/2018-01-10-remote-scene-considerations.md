@@ -1,6 +1,6 @@
 ---
 date: 2018-01-10
-title: Remote scene considerations
+title: About remote scenes
 description: Tips and tricks for remote scenes with multiple users
 redirect_from:
   - /documentation/remote-scene-considerations/
@@ -8,7 +8,7 @@ categories:
   - development-guide
 type: Document
 set: development-guide
-set_order: 10
+set_order: 30
 ---
 
 By default, the current version of Decentraland runs scenes locally in a user's machine. This is the simplest way to code a scene, but it has its limitations. Users are able to see each other and interact directly, but each interacts with the environment independently. If a user opens a door and walks into a house, other users will see that door still closed and the user will appear to walk directly through the closed door.
