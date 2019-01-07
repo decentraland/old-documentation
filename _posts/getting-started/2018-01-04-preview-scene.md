@@ -85,12 +85,8 @@ You can add the following flags to the `dcl start` command to change its behavio
 
 - `--no-browser` to prevent the preview from opening a new browser tab.
 - `--port` to assign a specific port to run the scene. Otherwise it will use whatever port is available.
-
-<!--
-Seems to be removed:
-
-- `--skip` to skip the confirmation prompt.
--->
+- `--w` or `--no-watch` to not open watch for filesystem changes
+- `--c` or `--ci` To run the parcel previewer on a remote unix server
 
 > To preview old scenes that were built for older versions of the SDK, you must install the latest versions of `decentraland-ecs` in your project. Check the CLI version via the command `dcl -v`
 

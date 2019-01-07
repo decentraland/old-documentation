@@ -62,19 +62,13 @@ To synchronize the scene's state amongst users, it's currently necessary to use 
 
 If you created your scene based on the remote scene examples, then you need to make two separate deployments to Now, one for the server and another for the scene client.
 
-1. First deploy the `/server` folder. You can use the command line version of Now, or follow these instructions to download and use the desktop client.
+1. Change directory to the `/server` folder and run the following command to deploy just the server:
+   
+   ```
+   npm run deploy:now
+   ```
 
-   1. Go to [zeit.co’s website](https://zeit.co/now) to download the _Now Desktop Client_.
-
-   2. Install and open the desktop client. You should see the triangular _Now_ icon appear next to your other running programs.
-
-      ![](/images/media/now_deployment.png)
-
-   3. Drag and drop the entire `/server` folder onto the _Now_ icon on the toolbar. That will start uploading the folder’s contents to the server.
-
-   4. A new tab will open automatically in your web browser, showing you the server’s console as it installs the necessary dependencies. This takes a few minutes, but eventually the scene preview should open automatically once everything is installed.
-
-2) Copy the URL from the browser tab.
+2) Copy the URL from the deployed project.
 
 3) In the `/scene` folder, modify the code so that it points to the link of the server you deployed to Now (the URL you just copied).
 
