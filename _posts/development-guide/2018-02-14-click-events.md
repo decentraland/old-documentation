@@ -24,9 +24,9 @@ You declare what to do in the event of a click by writing a lambda function in t
 
 ```tsx
 const myEntity = new Entity()
-myEntity.set(new BoxShape())
+myEntity.add(new BoxShape())
 
-myEntity.set(
+myEntity.add(
   new OnClick(e => {
     log("myEntity clicked")
   })
@@ -41,9 +41,9 @@ The _click event_ object is always implicitly passed as a parameter of the funct
 
 ```tsx
 const myEntity = new Entity()
-myEntity.set(new BoxShape())
+myEntity.add(new BoxShape())
 
-myEntity.set(
+myEntity.add(
   new OnClick(e => {
     log("pointer Id" + e.pointerId)
   })

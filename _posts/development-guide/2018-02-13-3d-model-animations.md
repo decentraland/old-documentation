@@ -33,7 +33,7 @@ To use one of the animations in a 3D model, you must create an `AnimationClip` o
 
 ```ts
 let shark = new Entity()
-shark.set(new GLTFShape("models/shark.gltf"))
+shark.add(new GLTFShape("models/shark.gltf"))
 
 // Instance animation clip
 const clipSwim = new AnimationClip("swim")
@@ -66,14 +66,14 @@ If you want to independently animate several entities using a same animation, yo
 ```ts
 // Create an entity
 let shark1 = new Entity()
-shark1.set(new GLTFShape("models/shark.gltf"))
+shark1.add(new GLTFShape("models/shark.gltf"))
 
 // Instance and add a clip
 shark1.get(GLTFShape).addClip(new AnimationClip("swim"))
 
 // Create a second entity
 let shark2 = new Entity()
-shark2.set(new GLTFShape("models/shark.gltf"))
+shark2.add(new GLTFShape("models/shark.gltf"))
 
 // Instance and add a new clip
 shark2.get(GLTFShape).addClip(new AnimationClip("swim"))

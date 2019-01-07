@@ -97,10 +97,10 @@ function spawnCube(x: number, y: number, z: number) {
   const cube = new Entity()
 
   // set a transform to the entity
-  cube.set(new Transform({ position: new Vector3(x, y, z) }))
+  cube.add(new Transform({ position: new Vector3(x, y, z) }))
 
   // set a shape to the entity
-  cube.set(new BoxShape())
+  cube.add(new BoxShape())
 
   // add the entity to the engine
   engine.addEntity(cube)
@@ -112,7 +112,7 @@ function spawnCube(x: number, y: number, z: number) {
 
 const cube = spawnCube(5, 1, 5)
 
-cube.set(
+cube.add(
   new OnClick(() => {
     cube.get(Transform).scale.z *= 1.1
     cube.get(Transform).scale.x *= 0.9
@@ -136,8 +136,8 @@ At the end of your scene’s code, add the following lines:
 
 ```tsx
 let avocado = new Entity()
-avocado.set(new GLTFShape("models/avocado.gltf"))
-avocado.set(new Transform({ 
+avocado.add(new GLTFShape("models/avocado.gltf"))
+avocado.add(new Transform({ 
     position: new Vector3(3, 1, 3), 
     scale: new Vector3(10, 10, 10)
     }))

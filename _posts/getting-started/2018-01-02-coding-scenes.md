@@ -163,12 +163,12 @@ engine.addSystem(new RotatorSystem())
 const cube = new Entity()
 
 // Give the entity a transform component
-cube.set(new Transform({
+cube.add(new Transform({
     position: new Vector3(5, 1, 5)
   }))
 
 // Give the entity a box shape
-cube.set(new BoxShape())
+cube.add(new BoxShape())
 
 // Add the entity to the engine
 engine.addEntity(cube)

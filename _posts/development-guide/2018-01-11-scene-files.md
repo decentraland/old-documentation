@@ -51,10 +51,10 @@ export class RotatorSystem {
 const cube = new Entity()
 
 // Add a cube shape to the entity
-cube.set(new BoxShape())
+cube.add(new BoxShape())
 
 // Add a transform component to the entity
-cube.set(new Transform({
+cube.add(new Transform({
   position: new Vector3(5, 0, 5)
 }))
 

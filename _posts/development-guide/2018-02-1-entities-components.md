@@ -49,13 +49,13 @@ Entities and components are declared as TypeScript objects. The example below sh
 const cube = new Entity()
 
 // Create and add a `Transform` component to that entity
-cube.set(new Transform())
+cube.add(new Transform())
 
 // Set the fields in the component
 cube.get(Transform).position.set(3, 1, 3)
 
 // Create and apply a `CubeShape` component to give the entity a visible form
-cube.set(new CubeShape())
+cube.add(new CubeShape())
 
 // Add the entity to the engine
 engine.addEntity(cube)
@@ -74,7 +74,7 @@ The engine is the part of the scene that sits in the middle and manages all of t
 const cube = new Entity()
 
 // Give the entity a shape
-cube.set(new CubeShape())
+cube.add(new CubeShape())
 
 // Add the entity to the engine
 engine.addEntity(cube)
@@ -181,7 +181,7 @@ const myMaterial = new Material()
 myMaterial.albedoColor = Color3.Red()
 
 // Add component
-cube.set(myMaterial)
+cube.add(myMaterial)
 ```
 
 You can otherwise use a single expression to both create a new instance of a component and add it to an entity:
@@ -191,7 +191,7 @@ You can otherwise use a single expression to both create a new instance of a com
 cube = new Entity()
 
 // Create and add component
-cube.set(new Material())
+cube.add(new Material())
 
 // Configure component
 cube.get(Material).albedoColor = Color3.Red()
@@ -205,7 +205,7 @@ You can add a component to an entity either through `.set()` or `.add()`. The on
 
 A component assigned with `.add()` can't be overwritten like that. To change it, you must first remove it before assigning a replacement component.
 
-For example, if you first assign a `BoxShape` component to an entity with `.set()` and then assign a `SphereShape` component to it aslo with `.set()`, the shape will be overwritten. If you instead use `.add()` to assign the first shape, it won't be possible to overwrite it.
+For example, if you first do `.set(new BoxShape())` on an entity entity and then do `.set(nwe SphereShape())` to the same entity, the shape will be overwritten. If you instead use `.add()` to assign the first shape, it won't be possible to overwrite it.
 
 ## Remove a component from an entity
 
@@ -230,7 +230,7 @@ You can reach components through their parent entity by using the entity's `.get
 cube = new Entity()
 
 // Create and add component
-cube.set(new Transform())
+cube.add(new Transform())
 
 // Using get
 let transform = cube.get(Transform)
@@ -290,8 +290,8 @@ wheel = new Entity()
 wheel2 = new Entity()
 
 // Create instances of the component
-wheel.set(new WheelSpin())
-wheel2.set(new WheelSpin())
+wheel.add(new WheelSpin())
+wheel2.add(new WheelSpin())
 
 // Set values on component
 wheel.get(WheelSpin).spinning = true
@@ -325,7 +325,7 @@ If the component includes a constructor, you can use the following syntax:
 wheel = new Entity()
 
 // Create instance of component and set its values
-wheel.set(new WheelSpin(true, 10))
+wheel.add(new WheelSpin(true, 10))
 ```
 
 > Tip: If you use a source code editor, when instancing a component that has a constructor, you can see what the parameters are by mousing over the expression.
@@ -350,7 +350,7 @@ export class WheelSpin {
 wheel = new Entity()
 
 // Create instance of component with default values
-wheel.set(new WheelSpin())
+wheel.add(new WheelSpin())
 ```
 
 #### Inheritance from other components

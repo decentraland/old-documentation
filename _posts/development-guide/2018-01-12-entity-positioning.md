@@ -20,7 +20,7 @@ You can set the _position_, _rotation_ and _scale_ of an entity by using the `Tr
 const ball = new Entity()
 
 // Add a transform component to the entity
-ball.set(new Transform())
+ball.add(new Transform())
 ball.get(Transform).position.set(5, 1, 5)
 ball.get(Transform).scale.set(2, 2, 2)
 ```
@@ -28,7 +28,7 @@ ball.get(Transform).scale.set(2, 2, 2)
 For brevity, you can also create a `Transform` entity and give it initial values in a single statement, passing it an object that can optionally include _position_, _rotation_ and _scale_ properties.
 
 ```ts
-myEntity.set(new Transform({ 
+myEntity.add(new Transform({ 
     position: new Vector3(5, 1, 5), 
     rotation: new Quaternion(0, 0, 0, 0),
     scale: new Vector3(2, 2, 2)
@@ -214,14 +214,19 @@ let parentTransform = new Transform({
   scale: new Vecot3(0.5, 0.5, 0.5)
 })
 
+parentEntity.add(parentTransform)
+
 // Create a transform for the child
 let childTransform = new Transform({
   position: new Vector3(0, 1, 0)
 })
 
-// Add both entities to the engine
-parentEntity.set(parentTransform)
-childEntity.set(childTransform)
+childEntity.add(childTransform)
+
+// Add entities to the engine
+engine.addEntity(childEntity)
+engine.addEntity(parentEntity)
+
 ```
 
 You can use an invisible entity with no shape component to wrap a set of other entities. This entity won't be visible in the rendered scene, but can be used to group its children and apply a transform to all of them.

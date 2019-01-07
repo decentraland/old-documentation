@@ -69,7 +69,7 @@ Note that there are two `await` statements here, one to get data from
 You can add an `OnCLick` component to any entity to trigger an asynchronous lambda function every time that entity is clicked.
 
 ```ts
-myEntity.set(
+myEntity.add(
   new OnClick(e => {
     log("clicked on the entity", e)
   })
