@@ -37,6 +37,9 @@ Use our CLI tool to automatically build the initial boilerplate scene. To do so:
 
 The `dcl init` command creates a Decentraland **project** in your current working directory containing a **scene**.
 
+> Tip: to create an [XML static scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-13-xml-static-scenes %}), run instead `dcl init --boilerplate static`.
+
+
 The default scene is defined in a TypeScript file featuring an example with a door that can be opened. The scene features a basic state and handles click events.
 
 See [Files in a scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-11-scene-files %}) for an overview of the default files that are created in your scene.

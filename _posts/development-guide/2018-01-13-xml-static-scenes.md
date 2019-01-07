@@ -13,7 +13,14 @@ You can create a static scene with XML. The advantage of this is that the code i
 
 ## Create a static scene
 
-Copy the [XML sample scene](https://github.com/decentraland/sample-scene-static-xml), following the steps in the [create scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) to clone a sample scene.
+1. Create a new folder where you want to create the scene
+2. Open Terminal in Mac or Command prompt in Windows and run the following command in the folder you just created:
+
+   ```bash
+   dcl init --boilerplate static
+   ```
+
+This command creates a Decentraland **project** in your current working directory containing a **scene**.
 
 ## Elements of a static scene
 
