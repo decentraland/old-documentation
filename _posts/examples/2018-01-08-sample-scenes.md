@@ -55,7 +55,7 @@ This simple scene shows how to add animations to a `GLTFComponent` and handle cl
 
 [Code](https://github.com/decentraland-scenes/Shark-animation)
 
-[Explore the scene]()
+[Explore the scene](https://shark-animation-xriykgapld.now.sh/)
 
 #### Open the door
 
@@ -89,7 +89,7 @@ A simple interactive scene with a two-sided door that can be opened by clicking.
 
 [Code](https://github.com/decentraland-scenes/Sliding-door)
 
-[Explore the scene]()
+[Explore the scene](https://slidingdoor-fmydyuprjl.now.sh)
 
 #### Jukebox
 
@@ -108,8 +108,9 @@ A scene where you can play different songs by pressing buttons on a jukebox.
 
 [Code](https://github.com/decentraland-scenes/Jukebox)
 
+<!--
 [Explore the scene]()
-
+-->
 
 #### Dance floor
 A scene with animations, sound, and tiles on the floor that randomly change color to the beat.
@@ -125,7 +126,9 @@ A scene with animations, sound, and tiles on the floor that randomly change colo
 
 [Code](https://github.com/decentraland-scenes/Dance-floor)
 
+<!--
 [Explore the scene]()
+-->
 
 #### Memory game
 
@@ -142,7 +145,9 @@ A Simon Says game, with click interactions and sequenced actions. The game gener
 
 [Code](https://github.com/decentraland-scenes/Memory-game)
 
+<!--
 [Explore the scene]()
+-->
 
 ## Movement
 
@@ -180,7 +185,7 @@ Use real weather data from different locations by changing the coordinates, or c
 
 [Code](https://github.com/decentraland-scenes/Weather-simulation)
 
-[Explore the scene]()
+[Explore the scene](https://weather-yvahddfxgo.now.sh)
 
 #### Remote door
 
@@ -230,7 +235,9 @@ A fully-fledged game where a random 2d path is generated along which enemies wal
 
 [Code](https://github.com/decentraland-scenes/Tower-defense)
 
+<!--
 [Explore the scene]()
+-->
 
 #### Castaway 2048 (WIP)
 
@@ -240,4 +247,6 @@ A fully fledged game, based on the popular game 2048, where the values are repre
 
 [Code](https://github.com/decentraland-scenes/Castaway-2048)
 
+<!--
 [Explore the scene]()
+-->
