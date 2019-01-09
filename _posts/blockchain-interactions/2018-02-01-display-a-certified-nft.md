@@ -11,7 +11,7 @@ set_order: 4
 
 You can display an NFT (Non-Fungible Token) that you own in your Decentraland scenes. A glowing badge will appear above the NFT to certify that you indeed own it.
 
-![](/images/media/verified-nft.png)
+<img src="/images/media/verified-nft.png" alt="nested entities" width="300"/>
 
 > Note: The NTF's image data is taken from [Opensea](https://opensea.io/), based on the token's contract and id. Currently, Opensea only supports 2D tokens such as CriptoKitties or CriptoPunks. So 3D tokens currently can't be displayed in this way.
 
