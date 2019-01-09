@@ -6,7 +6,7 @@ categories:
   - blockchain-interactions
 type: Document
 set: blockchain-interactions
-set_order: 9
+set_order: 20
 ---
 
 You can create your own decentralized apps (dApps) to interface with Decentraland's smart contracts and expose their functionality in more elaborate and friendlier ways.

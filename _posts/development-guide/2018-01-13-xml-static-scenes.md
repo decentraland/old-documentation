@@ -9,11 +9,18 @@ set: development-guide
 set_order: 13
 ---
 
-You can create a static scene with XML. The advantage of this is that the code is simpler and straight forward, very similar to the code of an [A-frame](aframe.io) scene. The disadvantage is that you can't make the scene dynamic or interactive in any way, users will only be able to walk around it.
+You can create a static scene with XML. The advantage of this is that the code is simpler and straight forward, very similar to the code of an [A-frame](aframe.io) scene. The disadvantage is that you can't make the scene dynamic or interactive in any way, users will only be able to walk around it and interact with each other.
 
 ## Create a static scene
 
-Copy the [XML sample scene](https://github.com/decentraland/sample-scene-static-xml), following the steps in the [create scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) to clone a sample scene.
+1. Create a new folder where you want to create the scene
+2. Open Terminal in Mac or Command prompt in Windows and run the following command in the folder you just created:
+
+   ```bash
+   dcl init --boilerplate static
+   ```
+
+This command creates a Decentraland **project** in your current working directory containing a **scene**.
 
 ## Elements of a static scene
 
@@ -84,86 +91,3 @@ To migrate a scene that was developed in A-frame into decentraland:
   - In every tag name that starts with _a-_ remove the _a-_. So tags like `<a-entity>` and `<a-gltf-model>` become `<entity>` and `<gltf-model>`.
   - For all _position_ attributes, inverse the z axis. For example `position=”10 5 15”` should become `position=”10 5 -15”`.
 
-<!--
-
-## Migrating an XML scene to TypeScript
-
-If you have a static XML scene and want to add dynamic capabilities to it, you must migrate it to TSX format. To do this, follow these steps:
-
-- Create a new scene following the steps in [Create scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) and choose the scene type _Basic_.
-- Copy the entire contents of _scene.xml_ in the static scene. Paste it in the _scene.tsx_ file of the new scene, replacing the boilerplate content in the `return` statement of the `render()` function.
-- Make some minor changes to the entity syntax that are explained in the subsections below.
-
-#### Data types
-
-> **TL;DR**
-> in XML: `position="10 10 10"`
-> in TSX: `position={ { x:10, y: 10, z: 10 } }`
-
-There are subtle differences between the _text/xml_ representation and the _.tsx_ representation of a scene. Our approach is _TSX-first_, and the _XML_ representation of the scene is only a compatibility view. Because of this, attributes in _TSX_ must be objects, not
-plain text.
-
-```xml
-<scene>
-  <box position="10 10 10" />
-</scene>
-```
-
-The static scene above becomes the following dynamic scene when migrating it to _TSX_:
-
-{% raw %}
-
-```tsx
-class Scene extends ScriptableScene {
-  async render() {
-    return (
-      <scene>
-        <box position={{ x: 10, y: 10, z: 10 }} />
-      </scene>
-    )
-  }
-}
-```
-
-{% endraw %}
--->
-<!--
-
-#### Attribute naming
-
-> **TL;DR**
-> in XML: `albedo-color="#ffeeaa"` (kebab-case)
-> in TSX: `albedoColor="#ffeeaa"` (camelCase)
-
-HTML and XHTML are case insensitive for attributes, this generates conflicts with the implementation of certain attributes like `albedoColor`. Because reading `albedocolor` was confusing, and having hardcoded keys with hyphens in the code was so dirty, we decided to follow the React convention of having every property camel cased in code and hyphenated in the HTML/XML representation.
-
-{% raw %}
-
-```xml
-<scene>
-  <material id="test" albedo-color="#ffeeaa" />
-</scene>
-```
-
-{% endraw %}
-
-The static scene above becomes the following dynamic scene when migrating it to TSX:
-
-{% raw %}
-
-```tsx
-// TSX
-class Scene extends ScriptableScene {
-  async render() {
-    return (
-      <scene>
-        <material id="test" albedoColor="#ffeeaa" />
-      </scene>
-    )
-  }
-}
-```
-
-{% endraw %}
-
--->

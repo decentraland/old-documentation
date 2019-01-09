@@ -13,7 +13,7 @@ set_order: 9
 
 3D models are imported into decentraland in glTF format. There are a number of supported features that these models can include. This section goes over ways to make them compatible with Decentraland and best practices.
 
-See [Scene content guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for information on how you can configure a 3D model in a Decentraland scene to set its position, scale, activate its animations, etc.
+See [Set entity position]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}) for information on how you can configure a 3D model in a Decentraland scene to set its position, scale, etc.
 
 Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
@@ -122,8 +122,6 @@ The image below shows two identical models, created with the same colors and tex
 
 ![](/images/media/materials_pbr_basic.png)
 
-See [entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}) for a full list of all the properties that can be configured in a material.
-
 #### Transparent and emissive materials
 
 You can set a material to be _transparent_. Transparent materials can be seen through to varying degrees, depending on their _alpha_. To do this, activate the transparency property of the material and then set its _alpha_ to the desired amount. An alpha of 1 will make the material completely opaque, an alpha of 0 will make it invisible.
@@ -145,7 +143,7 @@ There are different kinds of textures you can use in a 3D model:
 - albedo textures: don't use light
 - alpha textures: determine only the transparency regions and its degree
 - bump texture: Stores surface normal data used to displace a mesh in a texture. Used with BPR.
-- emisiveTexture
+- emissiveTexture
 - refractionTexture
 
 
@@ -305,7 +303,7 @@ Currently, other forms of animations that aren't based on armatures are not supp
 
 There's no specific rule about the names animations must have. You can verify the names of the animations in an exported model by opening the contents of a _.gltf_ file with a text editor. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-You can include any number of animations in a _glTF model_. All animations in a _glTF_ model are disabled by default when loading the model into a Decentraland scene. See [Scene content guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for instructions on how to activate and handle animations in a scene.
+You can include any number of animations in a _glTF model_. All animations in a _glTF_ model are disabled by default when loading the model into a Decentraland scene. See [3D model animations]({{ site.baseurl }}{% post_url /development-guide/2018-02-13-3d-model-animations %}) for instructions on how to activate and handle animations in a scene.
 
 > Note: There currently isn't a way to change the frame rate of an animation displayed in your scene, the speed is fixed to a default setting. To change an animation's speed, you must change the number of frames.
 
@@ -361,7 +359,7 @@ In the NLA Editor, select each action that you want to embed in the glTF model a
 
 <img src="/images/media/blender-nla-editor2.png" alt="Stash actions into glTF model" width="600"/>
 
-When adding the model to your Decentraland scene, you must activate animations by configuring the _gltf-model_ entity. See [Scene content guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for instructions.
+When adding the model to your Decentraland scene, you must activate animations by configuring the _gltf-model_ entity. See [3D model animations]({{ site.baseurl }}{% post_url /development-guide/2018-02-13-3d-model-animations %}) for instructions.
 
 #### Best practices for animations
 

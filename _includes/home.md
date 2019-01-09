@@ -5,25 +5,25 @@
 ## Shortcuts
 
 <div class="shortcuts">
-  <a href="{{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}">
+  <a href="{{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}">
     <div>
       <div class="image"><img src="/images/home/1.png"/></div>
-      <div class="title">Scene content</div>
-      <div class="description">An overview of the entities and components that make up scenes.</div>
+      <div class="title">Coding scenes</div>
+      <div class="description">An overview of the tools and the essential concepts surrounding the SDK.</div>
     </div>
   </a>
-  <a href="{{ site.baseurl }}{% post_url /development-guide/2018-06-21-entity-interfaces %}">
+  <a href="">
     <div>
       <div class="image"><img src="/images/home/2.png"/></div>
-      <div class="title">Entity reference</div>
-      <div class="description">A complete reference of Decentraland’s most basic building blocks.</div>
+      <div class="title">Component and object reference</div>
+      <div class="description">A complete reference of the default components and other available objects, with their functions.</div>
     </div>
   </a>
   <a href="{{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}">
     <div>
       <div class="image"><img src="/images/home/3.png"/></div>
       <div class="title">Sample scenes</div>
-      <div class="description">Several scene examples to get you started, and inspire your creations.</div>
+      <div class="description">Several code examples to get you started, and inspire your creations.</div>
     </div>
   </a>
 </div>
@@ -65,44 +65,65 @@ Read more about the scene preview in [preview a scene]({{ site.baseurl }}{% post
 
 ## Edit the scene
 
-Open the `scene.tsx` file in your scene folder with the source code editor of your choice.
+Open the `src/game.ts` file from your scene folder with the source code editor of your choice.
 
-{% raw %}
 
 ```tsx
-import * as DCL from "decentraland-api"
+/// --- Set up a system ---
 
-export default class SampleScene extends DCL.ScriptableScene {
-  async render() {
-    return (
-      <scene>
-        <box
-          position={{ x: 5, y: 0.5, z: 5 }}
-          rotation={{ x: 0, y: 45, z: 0 }}
-          color="#4CC3D9"
-        />
-        <sphere position={{ x: 6, y: 1.25, z: 4 }} color="#EF2D5E" />
-        <cylinder
-          position={{ x: 7, y: 0.75, z: 3 }}
-          radius={0.5}
-          scale={{ x: 0, y: 1.5, z: 0 }}
-          color="#FFC65D"
-        />
-        <plane
-          position={{ x: 5, y: 0, z: 6 }}
-          rotation={{ x: -90, y: 0, z: 0 }}
-          scale={4}
-          color="#7BC8A4"
-        />
-      </scene>
-    )
+class RotatorSystem {
+  // this group will contain every entity that has a Transform component
+  group = engine.getComponentGroup(Transform)
+
+  update(dt: number) {
+    // iterate over the entities of the group
+    for (let entity of this.group.entities) {
+      // get the Transform component of the entity
+      const transform = entity.get(Transform)
+
+      // mutate the rotation
+      transform.rotate(Vector3.Up(), dt * 10) 
+    }
   }
 }
+
+// Add a new instance of the system to the engine
+engine.addSystem(new RotatorSystem())
+
+/// --- Spawner function ---
+
+function spawnCube(x: number, y: number, z: number) {
+  // create the entity
+  const cube = new Entity()
+
+  // set a transform to the entity
+  cube.add(new Transform({ position: new Vector3(x, y, z) }))
+
+  // set a shape to the entity
+  cube.add(new BoxShape())
+
+  // add the entity to the engine
+  engine.addEntity(cube)
+
+  return cube
+}
+
+/// --- Spawn a cube ---
+
+const cube = spawnCube(5, 1, 5)
+
+cube.add(
+  new OnClick(() => {
+    cube.get(Transform).scale.z *= 1.1
+    cube.get(Transform).scale.x *= 0.9
+
+    spawnCube(Math.random() * 8 + 1, Math.random() * 8, Math.random() * 8 + 1)
+  })
+)
 ```
 
-{% endraw %}
 
-Change anything you want from this code, for example change the _x_ position of one of the entities. If you kept the preview running in a browser tab, you should now see the changes show in the preview.
+Change anything you want from this code, for example change the _x_ position of the first `cube` entity that's spawned. If you kept the preview running in a browser tab, you should now see the changes show in the preview.
 
 Download this 3D model of an avocado from [Google Poly](https://poly.google.com) in _glTF_ format. [link](https://poly.google.com/view/cgLBGFfm5FU)
 
@@ -110,45 +131,48 @@ Download this 3D model of an avocado from [Google Poly](https://poly.google.com)
 
 Create a new folder under your scene’s directory named `/models`. Extract the downloaded files and place them all in that folder.
 
-In your scene’s code, add the following line in between the other XML entities:
+At the end of your scene’s code, add the following lines:
 
-{% raw %}
 
 ```tsx
-<gltf-model
-  src="models/Avocado.gltf"
-  position={{ x: 3, y: 0.75, z: 2 }}
-  scale={10}
-/>
+let avocado = new Entity()
+avocado.add(new GLTFShape("models/avocado.gltf"))
+avocado.add(new Transform({ 
+    position: new Vector3(3, 1, 3), 
+    scale: new Vector3(10, 10, 10)
+    }))
+engine.addEntity(avocado)
 ```
-
-{% endraw %}
 
 Check your scene preview once again to see that the 3D model is now there too.
 
 ![](/images/media/landing_avocado_in_scene.png)
 
-Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) for a high-level understanding of how Decentraland scenes function. Check [scene-content]({{ site.baseurl }}{% post_url /development-guide/2018-01-21-scene-content %}) for specifics about how to add content to a scene.
+The lines you just added create a new [entity]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}), give it a [shape]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) based on the 3D model you downloaded, and [set its position]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}).
+
+Note that the avocado you added rotates, just like all other entities in the scene. That's because the `RotatorSystem` [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) defined in this scene is iterating over every entity in the scene and rotating it. 
+
+Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) for a high-level understanding of how Decentraland scenes function.
 
 ## Scene examples
 
 <div class="examples">
-  <a target="_blank" href="https://github.com/decentraland/sample-scene-script">
+  <a target="_blank" href="https://github.com/decentraland-scenes/Hypno-wheels">
     <div>
-      <img src="/images/home/door.png"/>
-      <span>Door scene</span>
+      <img src="/images/home/example-hypno-wheel.png"/>
+      <span>Hypno wheels</span>
     </div>
   </a>
-  <a target="_blank" href="https://github.com/decentraland/sample-scene-array-of-entities">
+  <a target="_blank" href="https://github.com/decentraland-scenes/Hummingbirds">
     <div>
       <img src="/images/home/hummingbirds.png"/>
       <span>Hummingbirds</span>
     </div>
   </a>
-  <a target="_blank" href="https://github.com/decentraland/sample-scene-Block-Dog">
+  <a target="_blank" href="https://github.com/decentraland-scenes/Gnark-patrol">
     <div>
-      <img src="/images/home/blockdog.png"/>
-      <span>BlockDog</span>
+      <img src="/images/home/example-gnark.png"/>
+      <span>Gnark patrolling</span>
     </div>
   </a>
 </div>
@@ -160,6 +184,5 @@ Also see [tutorials]({{ site.baseurl }}{% post_url /tutorials/2018-01-03-tutoria
 ## Other useful information
 
 - [Design constraints for games]({{ site.baseurl }}{% post_url /design-experience/2018-01-08-design-games %})
-- [TypeScript tips]({{ site.baseurl }}{% post_url /development-guide/2018-01-08-typescript-tips %})
 - [3D model considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %})
 - [Scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %})

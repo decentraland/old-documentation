@@ -9,11 +9,17 @@ set: tutorials
 set_order: 3
 ---
 
+More coming soon!
+
+<!--
+
 ## A simple interactive scene
 
 This simple tutorial walks you through creating a simple scene where user clicks can cause an entity to rotate.
 
 {%  include youtube.html video_id='OtkrvHOHIDg'  %}
+
+-->
 
 ## Using 3D models in Decentraland
 
@@ -38,7 +44,7 @@ It then also goes over how you can activate these animations in a Decentraland s
 This tutorial shows how you can add a collider to a 3D model. Colliders prevent users of your scene from walking through things. They are separate objects that are invisible but occupy space and stand in for what are often more geometrically complex objects.
 
 {%  include youtube.html video_id='UrByRRwfGjY'  %}
-
+<!--
 ## Advanced coding in Decentraland scenes
 
 #### Jukebox
@@ -93,3 +99,5 @@ This tutorial shows how to build a more complex scene that involves predators an
 This tutorial includes a [written guide](https://steemit.com/tutorial/@hardlydifficult/decentraland-tutorial-dog-cat-mouse-cheese-using-a-fsm) to accompany the video.
 
 {%  include youtube.html video_id='Ur9YyycvhEE'  %}
+
+-->

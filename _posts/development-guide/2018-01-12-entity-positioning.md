@@ -1,199 +1,232 @@
 ---
-date: 2018-01-12
-title: Entity positioning
+date: 2018-02-5
+title: Set Entity positions
 description: How to set the position, rotation and scale of an entity in a scene
-redirect_from:
-  - /documentation/entity-positioning/
 categories:
   - development-guide
+redirect_from:
+  - /documentation/entity-positioning/
 type: Document
 set: development-guide
-set_order: 2
+set_order: 5
 ---
 
-All entities, including _primitives_, _glTF_ models and _base entities_, have a _position_, a _rotation_ and a _scale_. These can be easily configured, as shown below:
+You can set the _position_, _rotation_ and _scale_ of an entity by using the `Transform` component. This can be used on any entity, which can also a primitive shape component (cube, sphere, plane, etc) or a 3D model component (glTF, Obj).
 
-{% raw %}
+![](/images/media/ecs-simple-components.png)
 
-```tsx
-<box
-  position={{ x: 5, y: 3, z: 5 }}
-  rotation={{ x: 180, y: 90, z: 0 }}
-  scale={0.5}
-/>
+```ts
+// Create a new entity
+const ball = new Entity()
+
+// Add a transform component to the entity
+ball.add(new Transform())
+ball.get(Transform).position.set(5, 1, 5)
+ball.get(Transform).scale.set(2, 2, 2)
 ```
 
-{% endraw %}
+For brevity, you can also create a `Transform` entity and give it initial values in a single statement, passing it an object that can optionally include _position_, _rotation_ and _scale_ properties.
+
+```ts
+myEntity.add(new Transform({ 
+    position: new Vector3(5, 1, 5), 
+    rotation: new Quaternion(0, 0, 0, 0),
+    scale: new Vector3(2, 2, 2)
+    }))
+```
+
+To move, rotate or resize an entity in your scene, change the values on this component incrementally, frame by frame. See [Move entities]({{ site.baseurl }}{% post_url /development-guide/2018-02-12-move-entities %}) for more details and best practices.
 
 ## Position
 
-`position` is a _3D vector_, it sets the position of the entity's center on all three axes.
+`position` is a _3D vector_, it sets the position of the entity's center on all three axes, stored as a `Vector3` object.
 
-- By default, coordinates are measured in _meters_. If you're positioning a child of a parent entity that has a scale that's different from 1, the position vector is scaled accordingly.
-- `x:0, y:0, z:0` refers is the middle of the scene's base parcel, at ground level. You can change this by setting a different position on the _scene_ entity, or by editing the `base` attribute of _scene.json_. The position of a child entity is relative to the center position of its parent entity, so `x:0, y:0, z:0` always refers to the center of the parent, wherever it is in the scene.
+```ts
+// Create transform with a predefined position
+let myTransform = new Transform({position: new Vector3(1, 0, 1)})
 
-{% raw %}
+// Set each axis individually
+myTransform.position.x = 3
+myTransform.position.y = 1
+myTransform.position.z = 3
 
-```tsx
-<box position={{ x: 5, y: 3, z: 5 }} />
+// Set the position with three numbers (x, y, z)
+myTransform.position.set(3, 1, 3)
+
+// Set the position with an object
+myTransform.position = new Vector3(5, 1, 5)
 ```
 
-{% endraw %}
+> Note: When setting the value of the position with an object, you can either use a `Vector3` object, or any other object with _x_, _y_ and _z_ fields.
 
-> Tip: When previewing a scene locally, a compass appears in the (0,0,0) point of the scene with labels for each axis.
+When setting a position, keep the following considerations in mind:
+
+- `x:0, y:0, z:0` refers to the _South-East_ corner of the scene's base parcel, at ground level.
+
+  > Tip: When viewing a scene preview, a compass appears in the (0,0,0) point of the scene with labels for each axis as reference.
+
+  > Note: You can change the base parcel of a scene by editing the `base` attribute of _scene.json_.
+
+- If an entity is a child of another, then `x:0, y:0, z:0` refers to the center of its parent entity, wherever it is in the scene.
+
+- By default, coordinates are measured in _meters_.
+
+  > Note: If you're positioning a child of a parent entity that has a scale that's different from 1, the position vector is scaled accordingly.
+
+- Every entity in your scene must be positioned within the bounds of the parcels it occupies at all times. If an entity leaves these boundaries, it will raise an error.
+
+  > Note: When viewing a scene in preview mode, entities that are out of bounds are highlighted in _red_.
+
+- Your scene is also limited in height. The more parcels that make up the scene, the higher you're allowed to build. See [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}) for more details.
 
 ## Rotation
 
-`rotation` is a _3D vector_ too, but where _x_, _y_ and _z_ represent the rotation in that axis.
+`rotation` is stored as a [_quaternion_](https://en.wikipedia.org/wiki/Quaternion), a system of four numbers, _x_, _y_, _z_ and _w_.
 
-{% raw %}
+```ts
+// Create transform with a predefined rotation in Quaternions
+let myTransform = new Transform({rotation: new Quaternion(0, 0, 0, 1)})
 
-```tsx
-<box rotation={{ x: 180, y: 90, z: 0 }} />
+// Set rotation with four numbers (x, y, z, w)
+myTransform.rotation.set(0, 0, 1, 0)
+
+// Set rotation with a quaternion
+myTransform.rotation = new Quaternion(1, 0, 0, 0)
 ```
 
-{% endraw %}
+You can also set the rotation field with [_Euler_ angles](https://en.wikipedia.org/wiki/Euler_angles), the more common _x_, _y_ and _z_ notation that most people are familiar with. To use Euler angles, use the `setEuler()` method.
 
-#### Turn to face the user
+```ts
+// Create transform with a predefined rotation in Euler angles
+let myTransform = new Transform({rotation: Quaternion.Euler(0, 90, 0)})
 
-You can set an entity to act as a _billboard_, this means that it will always rotate to face the user. This was a common technique used in 3D games of the 90s, where most entities were planes that always faced the player, but the same can be used with and 3D model. This is also very handy to add to _text_ entities, since it makes them always legible.
+// Use the .setEuler() function
+myTransform.rotation.setEuler(0, 90, 180)
 
-{% raw %}
-
-```tsx
-<box billboard={7} />
+// Set the `eulerAngles` field
+myTransform.rotation.eulerAngles = new Vector3(0, 90, 0)
 ```
 
-{% endraw %}
+When using a _3D vector_ to represent Euler angles, _x_, _y_ and _z_ represent the rotation in that axis, measured in degrees. A full turn requires 360 degrees.
 
-You must provide this setting with a number that selects between the following modes:
+> Note: If you set the rotation using _Euler_ angles, the rotation value is still stored internally as a quaternion.
 
-- 0: No movement on any axis
-- 1: Only move in the **X** axis, the rotation on other axis is fixed.
-- 2: Only move in the **Y** axis, the rotation on other axis is fixed.
-- 4: Only move in the **Z** axis, the rotation on other axis is fixed.
-- 7: Rotate on all axis to follow the user.
+When you retrieve the rotation of an entity, it returns a quaternion by default. To obtain the rotation expressed as in Euler angles, get the `.eulerAngles` field:
 
-If the entity is configured with both a specific rotation and a billboard setting, it uses the rotation set on by its billboard behavior.
-
-#### Turn to face a position
-
-You can set an entity to face a specific position in the scene using `lookAt`. This is a way to set the rotation of an entity without having to deal with angles.
-
-{% raw %}
-
-```tsx
-<box lookAt={{ x: 2, y: 1, z: 3 }} transition={{ lookAt: { duration: 500 } }} />
+```ts
+myEntity.get(Transform).rotation.eulerAngles
 ```
 
-{% endraw %}
+## Face the user
 
-This setting needs a _Vector3Component_ as a value, this vector indicates the coordinates of the point in the scene that it will look at. You can, for example, set this value to a variable in the scene state that is updated with another entity's position.
+You can set a shape component to act as a _billboard_, this means that it will always rotate the entity to face the user. All components for primitive shapes and glTF models have a `billboard` field to allow you to set this.
 
-You can use a transition to make movements caused by lookAt smoother and more natural.
+Billboards were a common technique used in 3D games of the 90s, where most entities were 2D planes that always faced the player, but the same can also be used to rotate a 3D model.
 
-If the entity is configured with both a specific rotation and a lookAt setting, it uses the rotation set on by its lookAt behavior.
+You can also choose to only rotate the shape in this way in one of its axis. For example, if you set the billboard mode of a cube to only rotate in the Y axis, it will follow the user when moving at ground level, but the user will be able to look at it from above or from below.
+
+Set the `billboard` field with a value from the `BillboardMode` enum. For example, to rotate in all axis, set the value to `BillboardMode.BILLBOARDMODE_ALL`.
+
+- `BILLBOARDMODE_NONE` (0): No movement on any axis (default value)
+- `BILLBOARDMODE_X` (1): Only move in the **X** axis, the rotation on other axis is fixed.
+- `BILLBOARDMODE_Y` (2): Only move in the **Y** axis, the rotation on other axis is fixed.
+- `BILLBOARDMODE_Z` (4): Only move in the **Z** axis, the rotation on other axis is fixed.
+- `BILLBOARDMODE_ALL` (7): Rotate on all axis to follow the user.
+
+```ts
+// Create a transform
+let myTransform = new Transform()
+
+// Set its billboard mode
+myTransform.billboard = BillboardMode.BILLBOARDMODE_Y
+```
+
+Billboards are also very handy to add to _text_ entities, since it makes them always legible.
+
+If an entity has both a Transform component configured with a specific `rotation` and also a shape component with a `billboard` value other than 0, the user will see the entity behaving according to the billboard mode.
+
+> Note: If there are multiple users present at the same time, each will see the entities with billboard mode facing themselves.
+
+## Face a set of coordinates
+
+You can use `lookAt()` on the Transform component to orient an entity fo face a specific point in space by simply passing it that point's coordinates. This is a way to avoid dealing with the math for calculating the necessary angles.
+
+```ts
+// Create a transform
+let myTransform = new Transform()
+
+// Rotate to face the coordinates (4, 1, 2)
+myTransform.lookAt(new Vector3(4, 1, 2))
+```
+
+This field requires a _Vector3_ object as a value, or any object with _x_, _y_ and _z_ attributes. This vector indicates the coordinates of the position of the point in the scene to look at.
+
+The `lookAt()` function has a second optional argument that sets the global direction for _up_ to use as reference. For most cases, you won't need to set this field.
 
 ## Scale
 
-`scale` can either be a _number_, to maintain the entity's proportions, or a _3D vector_, in case you want to scale the axis in different proportions.
+`scale` is also a _3D vector_, stored as a `Vector3` object, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, whether it's a primitive or a 3D model.
 
-{% raw %}
+You can either use the `set()` operation to provide a value for each of the three axis, or use `setAll()` to provide a single number and maintain the entity's proportions as you scale it.
 
-```tsx
-<box scale={0.5} />
+The default scale is 1, so assign a value larger to 1 to stretch an entity or smaller than 1 to shrink it.
+
+You can either set each dimension individually, or use the `set` operation to set all dimensions.
+
+```ts
+// Create a transform with a predefined scale
+let myTransform = new Transform({scale: new Vector3(2, 2, 2)})
+
+// Set each dimension individually
+myTransform.scale.x = 1
+myTransform.scale.y = 5
+myTransform.scale.z = 1
+
+// Set the whole scale with one expression  (x, y, z)
+myTransform.scale.set(1, 5, 1)
+
+// Set the scale with a single number to maintain proportions
+myTransform.scale.setAll(2)
+
+// Set the scale with an object
+myTransform.scale = new Vector3(1, 1, 1.5)
 ```
 
-{% endraw %}
+When setting the value of the scale with an object, you can either use a `Vector3` object, or any other object with _x_, _y_ and _z_ fields.
 
-## Inherit positioning from parent
+## Inherit transformations from parent
 
 When an entity is nested inside another, the child entities inherit components from the parents. This means that if a parent entity is positioned, scaled or rotated, its children are also affected. The position, rotation and scale values of children entities don't override those of the parents, instead these are compounded.
 
-You can include an invisible base entity to wrap a set of other entities and define their positioning as a group.
-
-{% raw %}
+If a parent entity is scaled, all position values of its children are also scaled.
 
 ```tsx
-<entity position={{ x: 0, y: 0, z: 1 }} rotation={{ x: 45, y: 0, z: 0 }}>
-  <box position={{ x: 10, y: 0, z: 0 }} scale={2} />
-  <box position={{ x: 10, y: 10, z: 0 }} scale={1} />
-  <box position={{ x: 0, y: 10, z: 0 }} scale={2} />
-</entity>
+// Create entities
+const parentEntity = new Entity()
+const childEntity = new Entity()
+
+// Set one as the parent of the other
+childEntity.setParent(parentEntity)
+
+// Create a transform for the parent
+let parentTransform = new Transform({
+  position: new Vector3(3, 1, 1),
+  scale: new Vecot3(0.5, 0.5, 0.5)
+})
+
+parentEntity.add(parentTransform)
+
+// Create a transform for the child
+let childTransform = new Transform({
+  position: new Vector3(0, 1, 0)
+})
+
+childEntity.add(childTransform)
+
+// Add entities to the engine
+engine.addEntity(childEntity)
+engine.addEntity(parentEntity)
+
 ```
 
-{% endraw %}
-
-You can also set a position, rotation and scale for the entire `<scene/>` entity and affect everything in the scene.
-
-## Transitions
-
-In dynamic scenes, you can configure an entity to affect the way in which it moves. By default, all changes to an entity are rendered as a sudden shift from one state to another. By adding a _transition_, you can make the change be gradual and more natural.
-
-The example below shows a box entity that is configured to rotate smoothly.
-
-{% raw %}
-
-```tsx
-<box
-  rotation={currentRotation}
-  transition={{
-    rotation: { duration: 1000, timing: "ease-in" }
-  }}
-/>
-```
-
-{% endraw %}
-
-> Note: The transition doesn't make the box rotate, it just sets the way it rotates whenever the value of the entity's rotation changes, usually as the result of an event.
-
-The transition can be added to affect the following properties of an entity:
-
-- position
-- rotation
-- scale
-- lookAt
-
-Note that the transition for each of these properties is configured separately.
-
-{% raw %}
-
-```tsx
-<box
-  rotation={currentRotation}
-  scale={currentScale}
-  transition={{
-    rotation: { duration: 1000, timing: "ease-in" },
-    scale: { duration: 300, timing: "bounce-in" }
-  }}
-/>
-```
-
-{% endraw %}
-
-The transition allows you to set:
-
-- A delay: milliseconds to wait before the change begins occuring.
-- A duration: milliseconds from when the change begins to when it ends.
-- Timing: select a function to shape the transition. For example, the transition could be _linear_, _ease-in_, _ease-out_, _exponential-in_ or _bounce-in_, among other options.
-
-In the example below, a transition is applied to the rotation of an invisible entity that wraps a box. As the box is off-center from the parent entity, the box pivots like an opening door.
-
-{% raw %}
-
-```tsx
-<entity
-  rotation={currentRotation}
-  transition={{
-    rotation: { duration: 1000, timing: "ease-in" }
-  }}
->
-  <box
-    id="door"
-    scale={{ x: 1, y: 2, z: 0.05 }}
-    position={{ x: 0.5, y: 1, z: 0 }}
-  />
-</entity>
-```
-
-{% endraw %}
+You can use an invisible entity with no shape component to wrap a set of other entities. This entity won't be visible in the rendered scene, but can be used to group its children and apply a transform to all of them.

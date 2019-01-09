@@ -16,7 +16,7 @@ scene exceeds these limitations, then the parcel won't be loaded and the preview
 
 For a straight-forward reference of what limitations you'll have for a specific number of parcels, check the following table:
 
-[Reference table](https://docs.google.com/spreadsheets/d/1JTK8oVEASS2WXMg26D4cXV-xaCeB_dL2MUvhi7m3Cr0/edit#gid=0)
+[Reference table](https://docs.google.com/spreadsheets/d/1BTm0C20PqdQDAN7vOQ6FpnkVncPecJt-EwTSNHzrsmg/edit#gid=0)
 
 ## Scene limitation rules
 
@@ -24,9 +24,9 @@ Below are the maximum number of elements allowed allowed in a scene:
 
 > _n_ represents the number of parcels that a scene occupies.
 
-- **Triangles:** `log2(n+1) x 10000` Total amount of triangles for all the models in the scene.
-- **Entities:** `log2(n+1) x 200` Amount of entities in the scene.
-- **Bodies:** `log2(n+1) x 300` Amount of meshes in the scene.
+- **Triangles:** `n x 10000` Total amount of triangles for all the models in the scene.
+- **Entities:** `n x 200` Amount of entities in the scene.
+- **Bodies:** `n x 300` Amount of meshes in the scene.
 - **Materials:** `log2(n+1) x 20` Amount of materials in the scene. It includes materials imported as part of models.
 - **Textures:** `log2(n+1) x 10` Amount of textures in the scene. It includes textures imported as part of models.
 - **Height:** `log2(n+1) x 20` Height in meters.
@@ -37,37 +37,58 @@ Below are the maximum number of elements allowed allowed in a scene:
 
 From a scene's code, you can query both the limitations that apply to the scene and how much the scene is currently using. This is especially useful with scenes where the content changes dynamically. For example, in a scene where you add a new entity each time the user clicks, you could stop adding entities when you reach the scene limits.
 
+To use this functionality, you must first import `EntityController` into your scene.
+
+```ts
+import { querySceneLimits } from "@decentraland/EntityController"
+```
+
 #### Obtain scene limitations
 
 Run `this.entityController.querySceneLimits()` to obtain the limits of your scene. The limits are calculated for your scene based on how many parcels it occupies, according to the _scene.json_ file. The values returned by this command don't change over time, as the scene's size is always the same.
 
-The `querySceneLimits()` is asynchronous, so we recommend calling it with an `await` statement.
+The `querySceneLimits()` is asynchronous, so we recommend calling it using the `executeTask()` function, including an `await` statement.
+
+```ts
+executeTask(async () => {
+  try {
+    const limits = await querySceneLimits()
+    log('limits' + limits)
+  }
+})
+```
 
 The `querySceneLimits()` function returns a promise of an object with the following properties, all of type _number_.
 
-{% raw %}
 
 ```tsx
+// import controller
+import { querySceneLimits } from '@decentraland/EntityController'
+
+
 // get limits object
-const limits = await this.entityController.querySceneLimits()
+executeTask(async () => {
+  try {
+    const limits = await querySceneLimits()
 
-// print maximum triangles
-console.log(limits.triangles)
+    // print maximum triangles
+    log(limits.triangles)
 
-// print maximum entities
-console.log(limits.entities)
+    // print maximum entities
+    log(limits.entities)
 
-// print maximum bodies
-console.log(limits.bodies)
+    // print maximum bodies
+    log(limits.bodies)
 
-// print maximum materials
-console.log(limits.materials)
+    // print maximum materials
+    log(limits.materials)
 
-// print maximum textures
-console.log(limits.textures)
+    // print maximum textures
+    log(limits.textures)
+  }
+}
 ```
 
-{% endraw %}
 
 For example, if your scene has only one parcel, logging `limits.triangles` should print `10000`.
 
@@ -75,33 +96,47 @@ For example, if your scene has only one parcel, logging `limits.triangles` shoul
 
 Just as you can check via code the maximum allowed values for your scene, you can also check how much of that is currently used by the scene. You do this by running `this.querySceneMetrics()`. The values returned by this command change over time as your scene renders different content.
 
-The `querySceneMetrics()` is asynchronous, so we recommend calling it with an `await` statement.
+The `querySceneMetrics()` is asynchronous, so we recommend calling it using the `executeTask()` function, including an `await` statement.
+
+```ts
+executeTask(async () => {
+  try {
+    const limits = await querySceneLimits()
+    log('limits' + limits)
+  }
+})
+```
 
 The `querySceneMetrics()` function returns a promise of an object with the following properties, all of type _number_.
 
-{% raw %}
 
 ```tsx
-// get metrics object
-const limits = await this.entityController.querySceneMetrics()
+// import controller
+import { querySceneMetrics } from '@decentraland/EntityController'
 
-// print maximum triangles
-console.log(limits.triangles)
 
-// print maximum entities
-console.log(limits.entities)
+// get limits object
+executeTask(async () => {
+  try {
+    const limits = await querySceneMetrics()
 
-// print maximum bodies
-console.log(limits.bodies)
+    // print maximum triangles
+    log(limits.triangles)
 
-// print maximum materials
-console.log(limits.materials)
+    // print maximum entities
+    log(limits.entities)
 
-// print maximum textures
-console.log(limits.textures)
+    // print maximum bodies
+    log(limits.bodies)
+
+    // print maximum materials
+    log(limits.materials)
+
+    // print maximum textures
+    log(limits.textures)
+  }
+}
 ```
-
-{% endraw %}
 
 For example, if your scene is only rendering one box entity at the time, logging `limits.entities` should print `1`.
 
@@ -149,5 +184,5 @@ Examples of other valid sizes:
 
 When deploying your scene, you can't upload more than 100 files to IPFS, as having too many files in a scene will make it take too long to load in the client.
 
-If you have more than 100 files in your scene folder, it's likely that many of those files aren't being used directly when loading the scene. You can make the CLI ignore specific files from the scene folder and not upload them by specifying them in the _dclignore_ file for the scene. Learn more about it in [Scene files]({{ site.baseurl }}{% post_url /development-guide/2018-01-11-scene-files %}).
+If you have more than 100 files in your scene folder, it's likely that many of those files aren't being used directly when loading the scene. You can make the CLI ignore specific files from the scene folder and not upload them to IPFS by specifying them in the _dclignore_ file for the scene. Learn more about it in [Scene files]({{ site.baseurl }}{% post_url /development-guide/2018-01-11-scene-files %}).
 -->

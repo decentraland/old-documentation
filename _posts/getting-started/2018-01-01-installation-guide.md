@@ -24,11 +24,10 @@ The Decentraland CLI is distributed via [npm](https://www.npmjs.com/get-npm?utm_
 Please install the following dependencies before you install the CLI:
 
 - [Node.js](https://github.com/decentraland/cli#nodejs-installation) (version 8)
-- [Python 2.7.x](https://www.python.org/downloads/)
 
-## To install the CLI on Mac OS
+## To install the CLI
 
-On Mac OS, open the _Terminal_ app and run the following command:
+Open the _Terminal_ app and run the following command:
 
 ```bash
 npm install -g decentraland
@@ -36,26 +35,6 @@ npm install -g decentraland
 
 Once the installation is complete, the `dcl` command will be globally available.
 
-## To install the CLI on Linux
-
-If you are installing the CLI on a Linux-based operating system, run
-
-```bash
-npm i -g --unsafe-perm decentraland
-```
-
-Once the installation is complete, the `dcl` command will be globally available.
-
-## To install the CLI on Windows
-
-1.  Find the Command Prompt app and select **Run as Administrator**
-2.  Install windows-build-tools by running :
-    `npm install --global --production windows-build-tools`
-    ... Wait for both the Visual Studio Build Tools and Python installers to both read `Successfully installed xxxx`. Once these have installed successfully, you will be returned to the command prompt.
-3.  Install the CLI by running:
-    `npm install -g decentraland`
-
-Once the installation is complete, the `dcl` command will be globally available.
 
 #### Optional: Install Git
 
@@ -86,11 +65,13 @@ npm update -g decentraland
 
 By updating the CLI, the new scenes you create with it will use the latest version of the SDK. Projects that you created before you updated the CLI will keep using the original version of the SDK that they had when you created them. The only way to change this is to manually update the SDK version in the scene.
 
+> Note: To migrate from versions that are older than 5.0 to 5.0 or newer, you're going to have to create a new scene project and migrate content manually.
+
 To update the version of the Decentraland SDK:
 
 1.  Open the file _package-lock.json_ in the scene folder.
-2.  Look for the version of _decentraland-api_ (or _metaverse-api_ in older versions) being used and manually change it to the latest version of the SDK.
+2.  Look for the version of _decentraland-ecs being used and manually change it to the latest version of the SDK.
 
-> Tip: If you're not sure what's the latest version, check the [release notes]({{ site.baseurl }}{% post_url /releases/sdk/2018-01-02-4.1.0 %}).
+> Tip: If you're not sure what's the latest version, check the release notes.
 
-> Note: Checking the SDK version you have installed using `npm` won't tell you what version of the SDK is being used when previewing your scenes. The only way to know what version they are using is by checking _package-lock.json_.
+> Note: Checking the SDK version you have installed using `npm` won't tell you what version of the SDK is being used when previewing a specific scene. The only way to know what version they are using is by checking _package-lock.json_.
