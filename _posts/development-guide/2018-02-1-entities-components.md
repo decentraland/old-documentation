@@ -37,7 +37,7 @@ Components like `Transform`, `Material` or any of the _shape_ components are clo
 
 Components are meant to store data about their parent entity. They only store this data, they shouldn't modify it themselves. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}). Systems are completely decoupled from the components and entities themselves. Entities and components are agnostic to what _systems_ are acting upon them.
 
-See [Component Reference]() for a reference of all the available constructors for predefined components.
+See [Component Reference](https://github.com/decentraland/ecs-reference) for a reference of all the available constructors for predefined components.
 
 
 ## Syntax for entities and components
@@ -270,7 +270,7 @@ If the component you're trying to retrieve doesn't exist in the entity:
 
 ## Custom components
 
-If you need to store information about an entity that isn't handled by the default components of the SDK (see [component reference]() ), then you can create a custom type of component on your scene.
+If you need to store information about an entity that isn't handled by the default components of the SDK (see [component reference](https://github.com/decentraland/ecs-reference) ), then you can create a custom type of component on your scene.
 
 Tip: Custom components can be defined in your scene's `.ts` file, but for larger projects we recommend defining them in a separate `ts` file and importing them.
 
