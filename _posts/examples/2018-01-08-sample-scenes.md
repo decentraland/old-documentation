@@ -41,7 +41,7 @@ This simple scene features a couple of wheels that you can spin by clicking them
 
 [Code](https://github.com/decentraland-scenes/Hypno-wheels)
 
-[Explore the scene]()
+[Explore the scene](https://hypno-wheels-owyfnqfimw.now.sh/?position=0%2C-1)
 
 #### Shark animation
 
@@ -72,7 +72,7 @@ A simple interactive scene with a door that can be opened and closed.
 
 [Code](https://github.com/decentraland-scenes/Open-door)
 
-[Explore the scene]()
+[Explore the scene](https://open-door-gssoyhoyrt.now.sh)
 
 #### Sliding door
 
@@ -154,7 +154,7 @@ A scene where hummingbirds spawn when you click a tree. Each bird moves on its o
 
 [Code](https://github.com/decentraland-scenes/Hummingbirds)
 
-[Explore the scene]()
+[Explore the scene](https://hummingbirds-ujovmbtmui.now.sh)
 
 #### Gnark patrolling
 
@@ -164,7 +164,7 @@ A scene that shows a character walking along a fixed path, using lerp over each 
 
 [Code](https://github.com/decentraland-scenes/Gnark-patrol)
 
-[Explore the scene]()
+[Explore the scene](https://gnark-patrol-azhbtehsge.now.sh)
 
 
 ## Network connections
@@ -220,7 +220,7 @@ A scene with a simple AI character. It randomly chooses what action to take: fol
 
 [Code](https://github.com/decentraland-scenes/Block-dog)
 
-[Explore the scene]()
+[Explore the scene](https://blockdog-wtciaozdbo.now.sh/?position=0%2C0)
 
 #### Tower defense game (WIP)
 
