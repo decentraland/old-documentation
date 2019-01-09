@@ -30,7 +30,7 @@ The following primitive shape components are available:
 
 Each of these components has certain fields that are specific to that shape, for example the _cylinder_ shape has `arc`, `radiusTop`, `radiusBottom`, etc.
 
-See [Component reference]() for more details on the fields available on each component.
+See [Component reference](https://github.com/decentraland/ecs-reference) for more details on the fields available on each component.
 
 To apply a component to an entity, you can instance a new component and assign it all in one operation:
 

@@ -12,7 +12,7 @@
       <div class="description">An overview of the tools and the essential concepts surrounding the SDK.</div>
     </div>
   </a>
-  <a href="">
+  <a href="https://github.com/decentraland/ecs-reference">
     <div>
       <div class="image"><img src="/images/home/2.png"/></div>
       <div class="title">Component and object reference</div>

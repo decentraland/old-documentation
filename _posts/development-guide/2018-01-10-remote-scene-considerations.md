@@ -19,7 +19,7 @@ Remote scenes use a remote server to synchronize data amongst all users in a sce
 
 To copy one of the [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) that implements a remote server, follow the steps in the [create scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) to clone a sample scene.
 
-To transform an existing local scene into remote, we recommend cloning the [remote door scene]() and then copying the _game.ts_ file of the old scene into the new remote scene folder.
+To transform an existing local scene into remote, we recommend cloning the [remote door scene](https://github.com/decentraland-scenes/Remote-door) and then copying the _game.ts_ file of the old scene into the new remote scene folder.
 
 ## Preview remote scenes
 
