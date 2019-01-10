@@ -136,10 +136,10 @@ Set the `billboard` field with a value from the `BillboardMode` enum. For exampl
 
 ```ts
 // Create a transform
-let myTransform = new Transform()
+let box = new BoxShape()
 
 // Set its billboard mode
-myTransform.billboard = BillboardMode.BILLBOARDMODE_Y
+box.billboard = BillboardMode.BILLBOARDMODE_Y
 ```
 
 Billboards are also very handy to add to _text_ entities, since it makes them always legible.
