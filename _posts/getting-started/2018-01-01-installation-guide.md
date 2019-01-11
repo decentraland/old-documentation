@@ -55,9 +55,13 @@ Since Windows machines don't use bash, we recommend that you install git and inc
 
 ## Update the CLI on any platform
 
-To update the CLI to the latest supported version, run the following command:
+To update the CLI to the latest supported version, we recommend first uninstalling the CLI and then reinstalling a fresh version. To do this, run the following commands:
 
 ```bash
+// uninstall
+npm rm decentraland -g
+
+// install
 npm install -g decentraland
 ```
 
