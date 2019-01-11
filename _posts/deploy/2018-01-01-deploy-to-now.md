@@ -17,7 +17,7 @@ Once uploaded to Now, the only thing that others have to do in order to explore 
 
 For example here are some scenes that are currently running in Now:
 
-- [Block Dog](https://blockdog-wtciaozdbo.now.sh/?position=0%2C0)
+- [Block Dog](https://blockdog-wtciaozdbo.now.sh)
 - [Humming birds](https://hummingbirds-ujovmbtmui.now.sh)
 
 Note that it's not necessary to own LAND to upload a scene preview to Now. The uploaded content isn't linked to the blockchain in any way. When running the preview, other adjacent parcels appear as empty.
