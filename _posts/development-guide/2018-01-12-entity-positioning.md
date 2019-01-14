@@ -13,7 +13,8 @@ set_order: 5
 
 You can set the _position_, _rotation_ and _scale_ of an entity by using the `Transform` component. This can be used on any entity, which can also a primitive shape component (cube, sphere, plane, etc) or a 3D model component (glTF, Obj).
 
-![](/images/media/ecs-simple-components.png)
+<img src="/images/media/ecs-simple-components.png" alt="nested entities" width="400"/>
+
 
 ```ts
 // Create a new entity
@@ -135,10 +136,10 @@ Set the `billboard` field with a value from the `BillboardMode` enum. For exampl
 
 ```ts
 // Create a transform
-let myTransform = new Transform()
+let box = new BoxShape()
 
 // Set its billboard mode
-myTransform.billboard = BillboardMode.BILLBOARDMODE_Y
+box.billboard = BillboardMode.BILLBOARDMODE_Y
 ```
 
 Billboards are also very handy to add to _text_ entities, since it makes them always legible.
