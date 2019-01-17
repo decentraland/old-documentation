@@ -21,6 +21,8 @@ Make sure of the following:
 
 - You own the necessary amount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}).
 
+> Note: Multi-parcel scenes can only be deployed to adjacent parcels.
+
 <!--
 - If you're deploying a single scene to multiple adjacent parcels, you must first merge them together into an _Estate_ before you can deploy to them. See [Marketplace]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-marketplace %}) for instructions on how to create an estate.
 -->
@@ -81,6 +83,17 @@ If you're using one of these, the process of uploading content to your LAND is s
 5.  The Ledger device will then ask you for a confirmation, which you must give by pushing the device's buttons.
 
 > Tip: If you're implementing a continuous integration flow, where changes to your scene are deployed automatically, then you can use the `--y` flag to skip the manual confirmations when running the deploy command.
+
+## Scene overwriting
+
+When a new scene is deployed, it overwrites older content that existed on the parcels it occupies.
+
+If a scene that takes up multiple parcels is only partially overwritten by another, its remaining parcels can't be rendered. Scenes can only be rendered in their entirety.
+
+Suppose you deployed your scene _A_ over two parcels _[100, 100]_ and _[100, 101]_. Then you sell parcel _[100, 101]_ to a user who owns adjacent land and that deploys a large scene (_B_) to several parcels, including _[100, 101]_. 
+
+Your scene _A_ can't be partially rendered in just one parcel, so _[100, 100]_ won't display any content. You must build a new version of scene _A_ that only takes up one parcel and deploy it to only parcel _[100, 100]_.
+
 
 ## What is the content server
 
