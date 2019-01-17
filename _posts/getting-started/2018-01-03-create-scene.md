@@ -16,13 +16,13 @@ In Decentraland, a scene is the representation of the content of an estate or pa
 
 ## Install the CLI
 
-Make sure you first install the CLI tools. In Mac OS, you do this by running the following command:
+Make sure you first install the CLI tools:
 
 ```bash
 npm install -g decentraland
 ```
 
-See the [Installation Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) for more details and specific instructions for Windows and Linux systems.
+See the [Installation Guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) for more details.
 
 ## Create a default scene
 
@@ -38,9 +38,6 @@ Use our CLI tool to automatically build the initial boilerplate scene. To do so:
 The `dcl init` command creates a Decentraland **project** in your current working directory containing a **scene**.
 
 > Tip: to create an [XML static scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-13-xml-static-scenes %}), run instead `dcl init --boilerplate static`.
-
-
-The default scene is defined in a TypeScript file featuring an example with a door that can be opened. The scene features a basic state and handles click events.
 
 See [Files in a scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-11-scene-files %}) for an overview of the default files that are created in your scene.
 
@@ -66,9 +63,9 @@ dcl start
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
-For more about what you can see in a scene preview, and instructions for how to run a preview of a remote scene, see [preview your scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %}).
+See [preview your scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %}). for more details about using the preview.
 
-You can also deploy your scene to a third-party server by just running a command using the CLI. This is a great way to share your content with others, without them needing to install any of the development tools necessary to build the scene locally. See [Deploy to Now](({{ site.baseurl }}{% post_url /deploy/2018-01-01-deploy-to-now %})).
+You can also deploy your scene to a third-party server by just running a CLI command. This is a great way to share your content with others as a simple link, without them needing to install any development tools. See [Deploy to Now](({{ site.baseurl }}{% post_url /deploy/2018-01-01-deploy-to-now %})).
 
 ## Edit your scene
 
@@ -77,7 +74,8 @@ To edit scenes, we recommend using a source code editor like [Visual Studio Code
 - You create the logic of your scene by editing the _game.ts_ file.
 - You define scene properties, like the parcels it covers or owner information, in the _scene.json_ file.
 
-See the _Development guide_ section for simple instructions about adding content to your scene.
+See the **Development guide** section for instructions about adding content to your scene.
+
 
 ## Publish your scene
 
