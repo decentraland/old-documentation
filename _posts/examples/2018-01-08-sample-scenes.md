@@ -26,6 +26,17 @@ A completely static scene. It's built entirely using XML, which makes it easier 
 
 ## Essentials
 
+#### Static Scene with Animations
+
+A simple static scene that just displays 3D models. The 3D models include animations to move the butterflies, flames, etc.
+
+![](/images/media/example-muna.png)
+
+[Code](https://github.com/decentraland-scenes/the-munastery)
+
+[Explore the scene](https://the-munastery-lwbodqmcwg.now.sh/?position=-13%2C-14)
+
+
 #### Hypno wheels
 
 This simple scene features a couple of wheels that you can spin by clicking them. 
