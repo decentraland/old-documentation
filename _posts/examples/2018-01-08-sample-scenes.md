@@ -43,6 +43,8 @@ This simple scene features a couple of wheels that you can spin by clicking them
 
 [Explore the scene](https://hypno-wheels-owyfnqfimw.now.sh/?position=0%2C-1)
 
+Read a tutorial [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5) about this scene.
+
 #### Shark animation
 
 This simple scene shows how to add animations to a `GLTFComponent` and handle click events.
@@ -171,6 +173,10 @@ A scene that shows a character walking along a fixed path, using lerp over each 
 
 [Explore the scene](https://gnark-patrol-azhbtehsge.now.sh)
 
+Read a tutorial blog post about this scene:
+
+- [Part 1]((https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5))
+- Part 2 (coming soon)
 
 ## Network connections
 
