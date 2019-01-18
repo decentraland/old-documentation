@@ -26,6 +26,17 @@ A completely static scene. It's built entirely using XML, which makes it easier 
 
 ## Essentials
 
+#### Static Scene with Animations
+
+A simple static scene that just displays 3D models. The 3D models include animations to move the butterflies, flames, etc.
+
+![](/images/media/example-muna.png)
+
+[Code](https://github.com/decentraland-scenes/the-munastery)
+
+[Explore the scene](https://the-munastery-lwbodqmcwg.now.sh/?position=-13%2C-14)
+
+
 #### Hypno wheels
 
 This simple scene features a couple of wheels that you can spin by clicking them. 
@@ -42,6 +53,8 @@ This simple scene features a couple of wheels that you can spin by clicking them
 [Code](https://github.com/decentraland-scenes/Hypno-wheels)
 
 [Explore the scene](https://hypno-wheels-owyfnqfimw.now.sh/?position=0%2C-1)
+
+Read a tutorial [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5) about this scene.
 
 #### Shark animation
 
@@ -171,6 +184,10 @@ A scene that shows a character walking along a fixed path, using lerp over each 
 
 [Explore the scene](https://gnark-patrol-azhbtehsge.now.sh)
 
+Read a tutorial blog post about this scene:
+
+- [Part 1]((https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5))
+- Part 2 (coming soon)
 
 ## Network connections
 

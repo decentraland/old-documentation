@@ -9,7 +9,37 @@ set: tutorials
 set_order: 2
 ---
 
-Coming soon!
+
+
+#### Introduction to the ECS (Entity Component System)
+
+This blogpost walks you through creating a first scene with basic interactions. It explains some of the basic concepts of the Entity Component System architecture (ECS).
+
+Read the [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5)
+
+![](/images/media/example-hypno-wheel.png)
+
+
+#### Motion and animations in ECS
+
+This blogpost shows different ways to move an entity, as well as how to apply animations to a 3D model.
+
+Read the blog post:
+
+- [Part 1](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5)
+- Part 2 (coming soon)
+
+![](/images/media/example-gnark.png)
+
+
+#### Migrate scenes from the old SDK to the latest
+
+This blogpost is a reference for migrating content that was written for earlier versions of the Decentraland SDK to version 5.0.
+
+Read the blog post:
+
+- [Part 1](https://decentraland.org/blog/tutorials/sdk-migration)
+- Part 2 (coming soon)
 
 <!--
 ## Simple interactive scene
