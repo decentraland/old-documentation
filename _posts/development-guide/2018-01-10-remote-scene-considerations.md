@@ -1,6 +1,6 @@
 ---
 date: 2018-01-10
-title: About remote scenes
+title: About multiplayer scenes
 description: Tips and tricks for remote scenes with multiple users
 redirect_from:
   - /documentation/remote-scene-considerations/
