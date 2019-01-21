@@ -17,7 +17,7 @@ You can also set up your own external server to aid your scene and serve to sync
 
 Your scene's code can send calls to a REST API to fetch data.
 
-Since the server might take time to send its response, you must execute this command as an _async_ task, using `executeTask()`.
+Since the server might take time to send its response, you must execute this command as an [asynchronous function]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %}), using `executeTask()`.
 
 ```ts
 executeTask(async () => {

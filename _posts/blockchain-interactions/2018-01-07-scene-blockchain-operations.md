@@ -22,6 +22,8 @@ There currently are three tools to use for this, all of them provided by Decentr
 
 Note that all transactions triggered by a scene will require a user to approve and pay a gas fee.
 
+All blockchain operations also need to be carried out as [asynchronous functions]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %}), since the timing depends on external events.
+
 ## User identity
 
 #### Import the identity library
