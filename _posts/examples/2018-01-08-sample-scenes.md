@@ -198,8 +198,9 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 
 [Code](https://github.com/decentraland-scenes/Remote-door)
 
+<!--
 [Explore the scene]()
-
+-->
 
 #### Remote mural
 
@@ -213,7 +214,9 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 
 [Code](https://github.com/decentraland-scenes/Remote-mural)
 
+<!--
 [Explore the scene]()
+-->
 
 ## Advanced
 
