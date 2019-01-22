@@ -12,6 +12,8 @@ redirect_from:
   - /development-guide/scriptable-scene/
   - /documentation/tsx-coding-guide/
   - /development-guide/typescript-tips/ 
+  - /decentraland/SDK-Overview/
+  - /sdk-reference/SDK-Overview/
 categories:
   - getting-started
 type: Document
