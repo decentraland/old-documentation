@@ -1,6 +1,6 @@
 ---
 date: 2018-01-06
-title: Sample scenes
+title: Scene examples
 description: Code and scene examples using our SDK
 categories:
   - examples
