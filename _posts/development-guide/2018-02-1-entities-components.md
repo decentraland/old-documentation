@@ -168,6 +168,14 @@ If a parent entity has a `transform` component that affects its position, scale 
 
 Entities with no shape component are invisible in the scene. These can be used as wrappers to handle and position multiple entities as a group.
 
+To remove an entity's parent, you can assign the entity's parent to `null`.
+
+```ts
+childEntity.setParent(null)
+```
+
+If you set a new parent to an entity that already had a parent, the new parent will overwrite the old one.
+
 ## Add a component to an entity
 
 When a component is added to an entity, the component's values affect the entity.
