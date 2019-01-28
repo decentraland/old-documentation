@@ -162,6 +162,6 @@ mySecondEntity.add(house)
 myThirdEntity.add(house)
 ```
 
-Each entity that shares a shape can apply different scales, rotations or even materials (in the case of primitives) without affecting how the other entities are being rendered.
+Each entity that shares a shape can apply different scales, rotations or even materials (in the case of primitives) without affecting how the other entities are being rendered. 
 
-Reusing shape components is often advisable, except for 3D models that you plan to animate. If you animate a 3D model that's shared amongst multiple entities, all the entities will move together. If you want to be able to animate entities individually, each will have to own a separate `GLTFComponent` to keep track of what part of the animation is currently being played.
+Entities that share a 3D model instance can also have animations that can run independently of each other. Each must have a separate `Animator` component, with separate `AnimationClip` objects to keep track of what part of the animation is currently being played.
