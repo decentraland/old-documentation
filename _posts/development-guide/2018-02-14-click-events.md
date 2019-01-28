@@ -50,6 +50,8 @@ myEntity.add(
 )
 ```
 
+> Note: Entities that don't have a shape component, or that have their shape's `visible` field set to _false_ can't be clicked.
+
 ## Button down and button up event
 
 The _button down_ and _button up_ events are fired whenever the user presses or releases an input controller.
