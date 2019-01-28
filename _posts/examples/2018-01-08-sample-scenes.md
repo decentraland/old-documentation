@@ -21,7 +21,7 @@ A completely static scene. It's built entirely using XML, which makes it easier 
 
 ![](/images/media/example-static.png)
 
-[Code](https://github.com/decentraland/sample-scene-static-xml)
+[Code](https://github.com/decentraland-scenes/XML-static-scene)
 
 
 ## Essentials
