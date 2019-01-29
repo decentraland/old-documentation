@@ -37,6 +37,17 @@ function cta(email) {
     {% if jekyll.environment == 'production' and site.segment_write_key != '' %}
       analytics.identify({ email: email })
       analytics.track('Subscribe Newsletter', { email: email })
+
+      $.ajax({
+        type: 'POST',
+        url: 'https://decentraland.org/subscribe',
+        data: {
+          email: email,
+          interest: 'docs'
+        },
+        crossDomain: true,
+        success: console.log
+      })
     {% else %}
       console.log(email)
     {% endif %}
