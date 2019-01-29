@@ -11,27 +11,27 @@ set_order: 13
 
 3D models in _.glTF_ and _.glb_ format can include as many animations as you want in them. Animations tell the mesh how to move, by specifying a series of _keyframes_ that are laid out over time, the mesh then blends from one pose to the other to simulate continuous movement. 
 
-Most 3D model animations are [_skeletal animations_](https://en.wikipedia.org/wiki/Skeletal_animation), where the complex geometry of the model is simplified into a "stick figure". Modelers shift the skeleton frame into different poses, and the position of each vertex is calculated based on that of its closest _bone_.
+Most 3D model animations are [_skeletal animations_](https://en.wikipedia.org/wiki/Skeletal_animation). These animations simplify the complex geometry of the model into a "stick figure", linking every vertex in the mesh to the closest _bone_ in the _skeleton_. Modelers adjust the skeleton into different poses, and the mesh stretches and bends to follow these movements.
 
-You can also use _vertex animations_ to animate a model without the need of a skeleton. These animations specify the position of each vertex in the model directly.
+As an alternative, _vertex animations_ animate a model without the need of a skeleton. These animations specify the position of each vertex in the model directly. Decentraland supports these animations as well.
 
-See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for details on how to create models and animations for them. Read [Shape components]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) for instructions on how to import a 3D model to a scene.
+See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for details on how to create animations for a 3D model. Read [Shape components]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) for instructions on how to import a 3D model to a scene.
 
-> Tip: Animations are more suited for moving in place, not to change the position of an entity in the scene. For example, you can set an animation to move a character's feet in place, but to change the location of the entity it's best to use the Transform component. See [Positioning entities]({{ site.baseurl }}{% post_url /development-guide/2018-02-12-move-entities %}) for more details.
+> Tip: Animations are usually better for moving something in place, not for changing the position of an entity. For example, you can set an animation to move a character's feet in place, but to change the location of the entity it's best to use the Transform component. See [Positioning entities]({{ site.baseurl }}{% post_url /development-guide/2018-02-12-move-entities %}) for more details.
 
 ## Check a 3D model for animations
 
 Not all _glTF_ files include animations. To see if there are any available, you can do the following:
 
 - If using [VS Code](https://code.visualstudio.com/)(recommended), install the _GLTF Tools_ extension and view the contents of a glTF file there.
-- Open the [Babylon Sandbox](https://sandbox.babylonjs.com/) and drag the glTF file (and any _.jpg_ or _.bin_ dependencies) there.
+- Open the [Babylon Sandbox](https://sandbox.babylonjs.com/) site and drag the glTF file (and any _.jpg_ or _.bin_ dependencies) to the browser.
 - Open the _.glTF_ file with a text editor and scroll down till you find _"animations":_.
 
-> Tip: In _skeletal_ animations, an animation name is typically comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
+> Tip: In _skeletal_ animations, an animation name is often comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
 ## Add animations
 
-An `Animator` component handles all the animations of the entity. Each animation is stored as an `AnimationClip` object.
+An `Animator` component manages all the animations of the entity. Each animation is handled by an `AnimationClip` object.
 
 
 ![](/images/media/ecs-animations.png)
@@ -70,19 +70,35 @@ You can retrieve an `AnimationClip` object from an `Animator` component with the
 
 ```ts
 // Create and get a clip
-let swim = animator.getClip("swim")
+let clipSwim = animator.getClip("swim")
 ```
 
-If you try to get an `AnimationClip` that was never added to the component, the clip is created and added automatically.
+The `AnimationClip` object doesn't store the actual transformations that go into the animation, that's all in the .glTF file. Instead, the `AnimationClip` object has a state that keeps track how far it has advanced along the animation. 
 
-Each instance of an `AnimationClip` object has a state of its own that keeps track how far it has advanced along the animation. 
+## Fetch an animation
 
-The object doesn't store the actual transformations that go into the animation, that's all in the .glTF file.
 
+If you don't have a pointer to refer to the clip object directly, you can fetch a clip from the `Animator` by name using `getClip()`.
+
+```ts
+// Create and add a clip
+shark.get(Animator).addClip(new AnimationClip("swim"))
+
+// Fetch the clip
+shark.get(Animator).getClip("swim")
+```
+
+<!--
+... which one is true?
+
+> Note: If you attempt to use `getClip()` to fetch a clip that doesn't exist in the Animator component, it returns `null`.
+
+If you try to get an `AnimationClip` that was never added to the `Animator` component, the clip is created and added automatically.
+-->
 
 ## Play an animation
 
-Once an an `AnimationClip` is added to a `Animator` component, it starts out as paused by default.
+When an `AnimationClip` is created, it starts as paused by default.
 
 The simplest way to play or pause it is to use the `play()` and `pause()` methods of the `AnimationClip`.
 
@@ -97,27 +113,6 @@ clipSwim.play()
 clipSwim.pause()
 ```
 
-If your scene's code doesn't have a pointer to refer to the clip object directly, you can fetch a clip from the `Animator` by name using `getClip()`.
-
-```ts
-// Create and add clip
-shark.get(Animator).addClip(new AnimationClip("swim"))
-
-// Start playing the clip
-shark
-  .get(Animator)
-  .getClip("swim")
-  .play()
-
-// Pause the playing of the clip
-shark
-  .get(Animator)
-  .getClip("swim")
-  .pause()
-```
-
-> Note: If you attempt to use `getClip()` to fetch a clip that doesn't exist in the Animator component, it returns `null`.
-
 The `AnimationClip` object also has a `playing` boolean parameter. You can start or stop the animation by changing the value of this parameter.
 
 ```ts
@@ -126,22 +121,22 @@ clipSwim.playing = true
 
 ## Looping animations
 
-Animations are played forever in a loop by default.
+By default, animations are played in a loop that keeps repeating the animation forever.
 
-Change this setting by setting the `loop` property in the `AnimationClip` object.
+Change this setting by setting the `looping` property in the `AnimationClip` object.
 
 ```ts
 // Create animation clip
 const clipSwim = new AnimationClip("swim")
 
 // Set loop to false
-clipSwim.loop = false
+clipSwim.looping = false
 
 // Start playing the clip
 clipSwim.play()
 ```
 
-If `loop` is set to _false_, the animation plays just once and stops.
+If `looping` is set to _false_, the animation plays just once and then stops.
 
 ## Animation speed
 
@@ -159,7 +154,7 @@ clipSwim.speed = 2
 clipSwim.play()
 ```
 
-Set the speed lower than 1 to play it slower, set it higher than 1 to play it faster.
+Set the speed lower than 1 to play it slower, for example to 0.5 to play it at half the speed. Set it higher than 1 to play it faster, for example to 2 to play it at double the speed.
 
 ## Animation weight
 
@@ -172,7 +167,7 @@ By default, `weight` is equal to _1_, it can't be any higher than _1_.
 // Create animation clip
 const clipSwim = new AnimationClip("swim")
 
-// Set speed to twice as fast
+// Set weight
 clipSwim.weight = 0.5
 
 // Start playing the clip
@@ -184,33 +179,28 @@ The `weight` value of all active animations in an entity should add up to 1 at a
 ```ts
 const clipSwim = new AnimationClip("swim")
 clipSwim.weight = 0.2
-const clipBite = new AnimationClip("bite")
-clipBite.weight = 0.8
 
-shark.get(Animator).addClip(clipSwim)
-shark.get(Animator).addClip(clipBite)
+animator.addClip(clipSwim)
 
 clipSwim.play()
 ```
 
-For example, in the code example above, we're only playing the _swim_ animation, that has a `weight` of _0.2_. In this case the swimming movement is quite subtle: only 20% of what the animation defines. The remaining 80% of the calculation takes values from the default posture of the armature.
+For example, in the code example above, we're playing the _swim_ animation, that only has a `weight` of _0.2_. This swimming movement will be quite subtle: only 20% of what the animation defines. The remaining 80% of the calculation takes values from the default posture of the armature.
 
 The `weight` property can be used in interesting ways, for example the `weight` property of _swim_ could be set in proportion to how fast the shark is swimming, so you don't need to create multiple animations for fast and slow swimming.
 
-You could also change the `weight` value gradually when starting and stopping an animation to give it a more natural transition and avoid jumps from the default pose to the first pose in the animation.
+You could also change the `weight` value gradually when starting and stopping an animation to give it a more natural transition and to avoid jumps from the default pose to the first pose in the animation.
 
 ## Set clip parameters in bulk
 
-Use the `setParams()` function of the `AnimationClip` object to set multiple parameters in one statement.
+Use the `setParams()` function of the `AnimationClip` object to set multiple parameters at once.
 
-
-You can configure the following parameters for an `AnimationClip`:
+You can configure the following parameters:
 
 - `playing`: Boolean to determine if the animation is currently being played.
-- `loop`: Boolean to determine if the animation is played in a continuous loop.
-- `speed`: A number that determines how fast the animation is played, _1_ by default.
+- `looping`: Boolean to determine if the animation is played in a continuous loop.
+- `speed`: A number that determines how fast the animation is played.
 - `weight`: Used to blend animations using weighted average.
-
 
 
 ```ts
@@ -219,14 +209,11 @@ const clipSwim = new AnimationClip("swim")
 clipSwim.setParams({playing:true, looping:true, speed: 2, weight: 0.5})
 ```
 
+## Animations on shared shapes
 
-## Reuse shapes instead of animations
+You can use a same instance of a `GLTFShape` component on multiple entities to save resources. If each entity has both its own `Animator` component and its own `AnimationClip` objects, then they can each be animated independently.
 
-You can use a same instance of a `GLTFShape` component on multiple entities to save resources. If each entity has its own `Animator` component and its own `AnimationClip` objects, then they can move independently.
-
-If you add a same `AnimationClip` instance to multiple `Animator` components from different entities, they will all reference this same state. This means that if you play the clip, all entities using the instance will be animated together at the same time.
-
-If you want to independently animate several entities using a same animation, you must instance multiple `AnimationClip` objects, one for each entity using it.
+If you define a single `AnimationClip` object instance and add it to multiple `Animator` components from different entities, all entities using the `AnimationClip` instance will be animated together at the same time.
 
 ```ts
 //create entities
