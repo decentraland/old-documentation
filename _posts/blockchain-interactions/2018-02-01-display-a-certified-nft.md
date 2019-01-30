@@ -25,7 +25,7 @@ const nft = new Entity()
 
 // position entity
 nft.add(new Transform({
-  position: new Vector(1, 1.2, 1)
+  position: new Vector3(1, 1.2, 1)
   }))
 
 // add an NFTShape, instanced with a token contract and token id

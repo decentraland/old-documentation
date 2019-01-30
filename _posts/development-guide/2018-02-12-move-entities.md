@@ -35,7 +35,11 @@ myEntity.set(new BoxShape())
 engine.addEntity(myEntity)
 ```
 
-## Scale movement based on delay time
+In this example we're moving an entity by 0.1 meters per frame. 
+
+`Vector3.Forward()` returns a vector that faces forward and measures 1 meter in length. In this example we're then scaling this vector down to 1/10 of its length with `scale()`. If our scene has 30 frames per second, the entity is moving at 3 meters per second in speed.
+
+## Adjust movement to delay time
 
 Suppose that the user running your scene is struggling to keep up with the pace of the frame rate. That could result in the movement appearing jumpy, as not all frames are evenly timed but each moves the entity in the same amount.
 
@@ -52,6 +56,9 @@ export class SimpleMove {
 // (...)
 ```
 
+The example above keeps movement at approximately the same speed as before, even if the frame rate drops. When running at 30 frames per second, the value of `dt` is 1/30 .
+
+
 ## Rotate
 
 The easiest way to rotate an entity is to use the `rotate()` function to change the values in the Transform component incrementally, and run this as part of the `update()` function of a system.
@@ -59,7 +66,7 @@ The easiest way to rotate an entity is to use the `rotate()` function to change 
 The `rotate()` function takes two arguments:
 
 - The direction in which to rotate (as a _Vector3_)
-- The amount to rotate, in euler degrees
+- The amount to rotate, in [euler](https://en.wikipedia.org/wiki/Euler_angles) degrees (from 0 to 360)
 
 ```ts
 export class SimpleRotate {
@@ -79,30 +86,36 @@ engine.addSystem(new SimpleRotate())
 
 When rotating an entity, the rotation is always in reference to the entity's center coordinate. To rotate an entity using another set of coordinates as a pivot point, create a second (invisible) entity with the pivot point as its position and make it a parent of the entity you with to rotate.
 
-When rotating the parent entity, its children will be all rotated using the parent's position as a pivot point. Note that the position of the child entity is in reference to that of the parent entity.
+When rotating the parent entity, its children will be all rotated using the parent's position as a pivot point. Note that the `position` of the child entity is in reference to that of the parent entity.
 
 ```ts
 // Create entity you wish to rotate
 const door = new Entity()
-door.set(new Transform())
 
 // Create the pivot entity
 const pivot = new Entity()
-pivot.set(new Transform())
-pivot.get(Transform).position.set(4, 1, 3)
+
+// Position the pivot entity on the pivot point of the rotation
+pivot.set(new Transform({
+  position: new Vector3(4, 1, 3)
+}))
 
 // Set pivot as the parent
 door.setParent(pivot)
 
 // Position child in reference to parent
-door.get(Transform).position.set(0.5, 0, 0)
+door.set(new Transform({
+  position: new Vector3(0.5, 0, 0)
+}))
 
 // Rotate the parent. The child rotates using the parent's location as a pivot point.
-pivot.get(Transform).rotation.set(0, 90, 0)
+pivot.get(Transform).rotation.setEuler(0, 90, 0)
 
+// Add both entities to the engine
 engine.addEntity(door)
 engine.addEntity(pivot)
 
+// Define a system that updates the rotation on every frame
 export class PivotRotate {
   update() {
     let transform = myEntity.get(pivot)
@@ -111,8 +124,10 @@ export class PivotRotate {
   }
 }
 
+// Add the system
 engine.addSystem(new PivotRotate())
 ```
+
 Note that in this example, the system is rotating the `pivot` entity, that's a parent of the `door` entity.
 
 ## Move between two points
@@ -140,7 +155,7 @@ For example, if the origin vector is _(0, 0, 0)_ and the target vector is _(10, 
 - Using an amount of 0.3 would return _(3, 0, 3)_
 - Using an amount of 1 would return _(10, 0, 10)_
 
-To implement this in your scene, you should store the data that goes into the lerp function in a component. We recommend creating a specific component to store the necessary information for the lerp to happen. You also need to define a system that implements the gradual movement in each frame.
+To implement this `lerp()` in your scene, we recommend creating a custom component to store the necessary information. You also need to define a system that implements the gradual movement in each frame.
 
 ```ts
 @Component("lerpData")
@@ -186,9 +201,12 @@ To rotate smoothly between two angles, use the _slerp_ (_spherical_ linear inter
 
 The `slerp()` function takes three parameters:
 
-- The quaternion for the origin rotation
-- The quaternion for the target rotation
+- The [quaternion](https://en.wikipedia.org/wiki/Quaternion) angle for the origin rotation
+- The [quaternion](https://en.wikipedia.org/wiki/Quaternion) angle for the target rotation
 - The amount, a value from 0 to 1 that represents what fraction of the translation to do.
+
+> Tip: You can pass rotation values in [euler](https://en.wikipedia.org/wiki/Euler_angles) degrees (from 0 to 360) by using `Quaternion.Euler()`.
+
 
 ```ts
 const originRotation = Quaternion.Euler(0, 90, 0)
@@ -196,7 +214,9 @@ const targetRotation = Quaternion.Euler(0, 0, 0)
 
 let newRotation = Scalar.Lerp(originRotation, targetRotation, 0.6)
 ```
-To implement this in your scene, you should store the data that goes into the slerp function in a component. We recommend creating a specific component to store the necessary information for the lerp to happen. You also need to define a system that implements the gradual rotation in each frame.
+
+To implement this in your scene, we recommend storing the data that goes into the `Slerp()` function in a custom component. You also need to define a system that implements the gradual rotation in each frame.
+
 
 ```ts
 @Component('slerpData')
@@ -233,17 +253,19 @@ myEntity.get(SlerpData).targetRot = Quaternion.Euler(0, 0, 0)
 engine.addEntity(myEntity)
 ```
 
-> Note: You could instead represent the rotation with Vector3 values and carry out a normal `lerp` function, but that would imply a conversion from Vector3 to Quaternions on each frame, as rotation values are stored as Quaternions in the Transform component.
+> Note: You could instead represent the rotation with `Vector3` values and use a `Lerp()` function, but that would imply a conversion from `Vector3` to `Quaternion` on each frame. Rotation values are internally stored as quaternions in the `Transform` component, so it's more efficient to work with quaternions.
 
 
 ## Change scale between two sizes
 
-If you want an entity to change size move smoothly and you want it to keep its axis in proportion, use the _lerp_ (linear interpolation) algorithm of the `Scalar` object. Otherwise, you can represent scale as a `Vector3` and lerp between two vectors just as you would for changing the position.
+If you want an entity to change size smoothly and without changing its proportions, use the _lerp_ (linear interpolation) algorithm of the `Scalar` object. 
+
+Otherwise, if you want to change the axis in different proportions, use `Vector3` to represent the origin scale and the target scale, and then use the _lerp_ function of the `Vector3`.
 
 The `lerp()` function of the `Scalar` object takes three parameters:
 
-- An origin number
-- A target number
+- A number for the origin scale
+- A number for the target scale
 - The amount, a value from 0 to 1 that represents what fraction of the scaling to do.
 
 ```ts
@@ -252,7 +274,7 @@ const targetScale = 10
 
 let newScale = Scalar.Lerp(originScale, targetScale, 0.6)
 ```
-To implement this in your scene, you should store the data that goes into the lerp function in a component. We recommend creating a specific component to store the necessary information for the lerp to happen. You also need to define a system that implements the gradual scaling in each frame.
+To implement this lerp in your scene, we recommend creating a custom component to store the necessary information. You also need to define a system that implements the gradual scaling in each frame.
 
 
 ## Move at irregular speeds between two points

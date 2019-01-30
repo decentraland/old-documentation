@@ -1,6 +1,6 @@
 ---
 date: 2018-01-06
-title: Sample scenes
+title: Scene examples
 description: Code and scene examples using our SDK
 categories:
   - examples
@@ -81,7 +81,7 @@ A simple interactive scene with a door that can be opened and closed.
 - custom components 
 - component groups
 
-![](/images/home/door.png)
+![](/images/media/example-door.png)
 
 [Code](https://github.com/decentraland-scenes/Open-door)
 
@@ -168,7 +168,7 @@ A Simon Says game, with click interactions and sequenced actions. The game gener
 
 A scene where hummingbirds spawn when you click a tree. Each bird moves on its own to random positions.
 
-![](/images/home/hummingbirds.png)
+![](/images/media/example-hummingbirds.png)
 
 [Code](https://github.com/decentraland-scenes/Hummingbirds)
 
@@ -211,12 +211,13 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 - Create a REST server
 - Call REST API
 
-![](/images/home/door.png)
+![](/images/media/example-door.png)
 
 [Code](https://github.com/decentraland-scenes/Remote-door)
 
+<!--
 [Explore the scene]()
-
+-->
 
 #### Remote mural
 
@@ -230,7 +231,9 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 
 [Code](https://github.com/decentraland-scenes/Remote-mural)
 
+<!--
 [Explore the scene]()
+-->
 
 ## Advanced
 
@@ -238,7 +241,7 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 
 A scene with a simple AI character. It randomly chooses what action to take: follow you, sit or remain idle. You can also tell it to sit or stand up by clicking it, or tell it to drink water by clicking its bowl.
 
-![](/images/home/blockdog.png)
+![](/images/media/example-blockdog.png)
 
 [Code](https://github.com/decentraland-scenes/Block-dog)
 

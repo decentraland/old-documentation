@@ -1,7 +1,7 @@
 ---
 date: 2018-01-01
-title: Deploy to Zeit
-description: Upload a scene to Zeit to share it offchain.
+title: Deploy to Now
+description: Upload a scene to ZEIT Now to share it offchain.
 categories:
   - deploy
 type: Document
