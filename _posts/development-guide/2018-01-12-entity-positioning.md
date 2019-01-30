@@ -61,6 +61,11 @@ myTransform.position = new Vector3(5, 1, 5)
 
 When setting a position, keep the following considerations in mind:
 
+
+- The numbers in a position vector represent _meters_.
+
+  > Note: If you're positioning a child of a parent entity that has a scale that's different from 1, the position vector is scaled accordingly.
+
 - `x:0, y:0, z:0` refers to the _South-East_ corner of the scene's base parcel, at ground level.
 
   > Tip: When viewing a scene preview, a compass appears in the (0,0,0) point of the scene with labels for each axis as reference.
@@ -69,13 +74,9 @@ When setting a position, keep the following considerations in mind:
 
 - If an entity is a child of another, then `x:0, y:0, z:0` refers to the center of its parent entity, wherever it is in the scene.
 
-- By default, coordinates are measured in _meters_.
-
-  > Note: If you're positioning a child of a parent entity that has a scale that's different from 1, the position vector is scaled accordingly.
-
 - Every entity in your scene must be positioned within the bounds of the parcels it occupies at all times. If an entity leaves these boundaries, it will raise an error.
 
-  > Note: When viewing a scene in preview mode, entities that are out of bounds are highlighted in _red_.
+  > Tip: When viewing a scene in preview mode, entities that are out of bounds are highlighted in _red_.
 
 - Your scene is also limited in height. The more parcels that make up the scene, the higher you're allowed to build. See [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}) for more details.
 
@@ -94,7 +95,7 @@ myTransform.rotation.set(0, 0, 1, 0)
 myTransform.rotation = new Quaternion(1, 0, 0, 0)
 ```
 
-You can also set the rotation field with [_Euler_ angles](https://en.wikipedia.org/wiki/Euler_angles), the more common _x_, _y_ and _z_ notation that most people are familiar with. To use Euler angles, use the `setEuler()` method.
+You can also set the rotation field with [_Euler_ angles](https://en.wikipedia.org/wiki/Euler_angles), the more common _x_, _y_ and _z_ notation with numbers that go from 0 to 360 that most people are familiar with. To use Euler angles, use one of the following notations:
 
 ```ts
 // Create transform with a predefined rotation in Euler angles
