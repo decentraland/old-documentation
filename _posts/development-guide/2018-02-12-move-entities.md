@@ -84,25 +84,31 @@ When rotating the parent entity, its children will be all rotated using the pare
 ```ts
 // Create entity you wish to rotate
 const door = new Entity()
-door.set(new Transform())
 
 // Create the pivot entity
 const pivot = new Entity()
-pivot.set(new Transform())
-pivot.get(Transform).position.set(4, 1, 3)
+
+// Position the pivot entity on the pivot point of the rotation
+pivot.set(new Transform({
+  position: new Vector3(4, 1, 3)
+}))
 
 // Set pivot as the parent
 door.setParent(pivot)
 
 // Position child in reference to parent
-door.get(Transform).position.set(0.5, 0, 0)
+door.set(new Transform({
+  position: new Vector3(0.5, 0, 0)
+}))
 
 // Rotate the parent. The child rotates using the parent's location as a pivot point.
-pivot.get(Transform).rotation.set(0, 90, 0)
+pivot.get(Transform).rotation.setEuler(0, 90, 0)
 
+// Add both entities to the engine
 engine.addEntity(door)
 engine.addEntity(pivot)
 
+// Define a system that updates the rotation on every frame
 export class PivotRotate {
   update() {
     let transform = myEntity.get(pivot)
@@ -111,6 +117,7 @@ export class PivotRotate {
   }
 }
 
+// Add the system
 engine.addSystem(new PivotRotate())
 ```
 Note that in this example, the system is rotating the `pivot` entity, that's a parent of the `door` entity.
