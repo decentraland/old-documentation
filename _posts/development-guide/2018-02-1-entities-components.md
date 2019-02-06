@@ -31,7 +31,7 @@ If you're familiar with web development, think of entities as the equivalent of 
 
 > Note: In previous versions of the SDK, the _scene state_ was stored in an object that was separate from the entities themselves. As of version 5.0, the _scene state_ is directly embodied by the components that are used by the entities in the scene.
 
-![](/images/media/ecs-components.png)
+<img src="/images/media/ecs-components.png" alt="Armature" width="400"/>
 
 Components like `Transform`, `Material` or any of the _shape_ components are closely tied in with the rendering of the scene. If the values in these components change, that alone is enough to change how the scene is rendered in the next frame.
 
@@ -127,7 +127,8 @@ engine.removeEntity(cube, false, cube2)
 
 An entity can have other entities as children. Thanks to this, we can arrange entities into trees, just like the HTML of a webpage.
 
-![](/images/media/ecs-nested-entities.png)
+<img src="/images/media/ecs-nested-entities.png" alt="nested entities" width="400"/>
+
 
 To set an entity as the parent of another, simply use `.setParent()`:
 
@@ -167,6 +168,14 @@ If a parent entity has a `transform` component that affects its position, scale 
 - For **scale**, the parent is considered to have a size of _1_. Any resizing of the parent affects scale and position in proportion.
 
 Entities with no shape component are invisible in the scene. These can be used as wrappers to handle and position multiple entities as a group.
+
+To remove an entity's parent, you can assign the entity's parent to `null`.
+
+```ts
+childEntity.setParent(null)
+```
+
+If you set a new parent to an entity that already had a parent, the new parent will overwrite the old one.
 
 ## Add a component to an entity
 

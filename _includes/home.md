@@ -37,7 +37,6 @@ The CLI allows you to compile and preview your scene locally. After testing your
 > **Note**: Install the following dependencies before you install the CLI:
 >
 > - [Node.js](https://github.com/decentraland/cli#nodejs-installation) (version 8)
-> - [Python 2.7.x](https://www.python.org/downloads/)
 
 To install the CLI, run the following command in your command line tool of choice:
 

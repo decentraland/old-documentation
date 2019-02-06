@@ -1,7 +1,7 @@
 ---
 date: 2018-01-01
-title: Deploy to Zeit
-description: Upload a scene to Zeit to share it offchain.
+title: Deploy to Now
+description: Upload a scene to ZEIT Now to share it offchain.
 categories:
   - deploy
 type: Document
@@ -17,8 +17,9 @@ Once uploaded to Now, the only thing that others have to do in order to explore 
 
 For example here are some scenes that are currently running in Now:
 
-- Block Dog
-- Humming birds
+
+- [Block Dog](https://blockdog-wtciaozdbo.now.sh)
+- [Humming birds](https://hummingbirds-ujovmbtmui.now.sh)
 
 Note that it's not necessary to own LAND to upload a scene preview to Now. The uploaded content isn't linked to the blockchain in any way. When running the preview, other adjacent parcels appear as empty.
 

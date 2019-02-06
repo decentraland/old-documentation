@@ -13,7 +13,7 @@ Three dimensional scenes in Decentraland are based on the [Entity-Component](htt
 
 The rendered shape of an entity is determined by what component it uses. Each entity can have only one shape component assigned to it.
 
-![](/images/media/ecs-simple-components.png)
+<img src="/images/media/ecs-simple-components.png" alt="nested entities" width="400"/>
 
 
 ## Primitive shapes
@@ -145,7 +145,9 @@ To ensure that 3D models in your scene load faster and take up less memory, foll
 
 If multiple entities in your scene use a same primitive or 3D model, there's no need to create an instance of the shape component for each. All entities can share one same instance. 
 
-This keeps your scene lighter to load and prevents you from exceeding the [maximum amount]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}) of triangles per scene.
+This keeps your scene lighter to load and prevents you from exceeding the [maximum amount]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}) of _bodies_ per scene.
+
+> Note: Reused shapes are added to the _triangle_ count of the scene. So it is possible to exceed the triangle limit by reusing shapes.
 
 ```ts
 // Create shape component

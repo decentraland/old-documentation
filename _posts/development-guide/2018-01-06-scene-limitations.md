@@ -47,7 +47,7 @@ import { querySceneLimits } from "@decentraland/EntityController"
 
 Run `this.entityController.querySceneLimits()` to obtain the limits of your scene. The limits are calculated for your scene based on how many parcels it occupies, according to the _scene.json_ file. The values returned by this command don't change over time, as the scene's size is always the same.
 
-The `querySceneLimits()` is asynchronous, so we recommend calling it using the `executeTask()` function, including an `await` statement.
+The `querySceneLimits()` is [asynchronous]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %}), so we recommend calling it using the `executeTask()` function, including an `await` statement.
 
 ```ts
 executeTask(async () => {
