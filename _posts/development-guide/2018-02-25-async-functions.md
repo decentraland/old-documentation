@@ -9,8 +9,6 @@ set: development-guide
 set_order: 30
 ---
 
-// LINK TO THIS PAGE FROM ALL THAT USE executeTask()
-
 ## Overview
 
 Most of the code in your scene runs synchronously using a single thread. That means that commands are executed sequentially line by line. Each command must first wait for the previous command to finish executing before it can start.
