@@ -15,13 +15,15 @@ set_order: 30
 
 Most of the code in your scene runs synchronously using a single thread. That means that commands are executed sequentially line by line. Each command must first wait for the previous command to finish executing before it can start.
 
-Even the `update()` functions in your scene's systems are executed one by one, following the priority numbers set when adding the systems to the engine.
+Even the `update()` functions in your scene's systems are executed one by one, following a [priority order](({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}#system-execution-order)).
 
 Running code synchronously ensures consistency, as you can always be sure you'll know the order in which the commands in your code run.
 
-In some special cases though, you want some commands to run asynchronously. This means that you can start off a task and the execution of the next line of code can start without waiting for that task to return a result.
+On the other hand, your scene needs to be updated many times per second, building the next frame. If a part of your code takes too long to respond, then the whole main thread is stuck and this results in lagging frame rates.
 
-This is useful for tasks that rely on external services that could take time to respond.
+That's why, in some cases you want some commands to run asynchronously. This means that you can start off a task in a new thread, and meanwhile the main thread can keep running over the the next lines of code.
+
+This is especially useful for tasks that rely on external services that could take time to respond, as you don't want that idle time waiting for that response to block other tasks.
 
 For example:
 
@@ -33,9 +35,9 @@ For example:
 - When parsing a JSON file (??)
 -->
 
-Since your scene needs to be updated many times per second, you can't afford to have the scene's main thread stuck waiting for an answer from an external service. The rest of your code needs to keep running, building the next frame, while the task is idle waiting for a response.
-
+<!--
 [ ASYNC DIAGRAMS]
+-->
 
 ## The executeTask function
 
@@ -57,10 +59,6 @@ executeTask(async () => {
 ```
 
 The example above executes a function that includes a `fetch()` operation to retrieve data from an external API. The rest of the code in the scene will keep being executed while this asynchronous process takes place.
-
-<!--
-Note that there are two `await` statements here, one to get data from
--->
 
 > Note: Keep in mind that several frames of your scene might be rendered before the task finishes executing. Make sure your scene's code is flexible enough to handle the in-between scenarios while the asynchronous task is being completed.
 

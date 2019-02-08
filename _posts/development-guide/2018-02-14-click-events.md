@@ -79,10 +79,18 @@ input.subscribe("BUTTON_A_UP", e => {
 
 All click event objects contain the following parameters:
 
-- `from`: Origin point of the ray, as a _Vector3_
+- `origin`: Origin point of the ray, as a _Vector3_
 - `direction`: Direction vector of the ray, as a normalized _Vector3_
 - `length`: The length of the ray, as a _number_
 - `pointerId`: ID of the pointer that triggered the event (_PRIMARY_ or _SECONDARY_)
+- `hit`: _(Optional)_ Object describing the entity that was clicked on. If the click didn't hit any specific entity, this field isn't present. The `hit` object contains the following parameters:
+ 
+    - `length`: Length of the ray in meters, as a _number_
+    - `hitPoint`: The intersection point between the ray and the entity's mesh, as a _Vector3_
+    - `meshName`: The name of the mesh, if applicable, as a _string_
+    - `normal`: The normal of the hit, as a _Vector3_
+    - `worldNormal`: The normal of the hit, in world space, as a _Vector3_
+    - `entityId`: The ID of the entity, if applicable, as a _string_
 
 ## Pointer state
 
