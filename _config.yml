@@ -23,7 +23,7 @@ content_url: "https://decentraland.org/content"
 ethics_url: "https://decentraland.org/ethics"
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
-logo: /images/logo.png
+logo: /images/favicon.png
 description: Decentraland Documentation
 author:
   name: Decentraland
