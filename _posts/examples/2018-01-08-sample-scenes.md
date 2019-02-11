@@ -235,6 +235,28 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 [Explore the scene]()
 -->
 
+## Blockchain transactions
+
+#### MANA Transfer
+
+A simple scene that uses the MANA smart contract and the EthConnect library to send the user MANA on the Ropsten test network.
+
+[Code](https://github.com/decentraland-scenes/MANA-Transaction)
+
+[Explore the scene](https://mana-transaction-sxjmryeayj.now.sh)
+
+#### MANA Burning Altar
+
+Fees collected by the Marketplace are stored in a wallet. This scene interacts with the MANA contract to burn this MANA that was collected.
+
+The flame is created as a particle system, handling various entities that spiral around as they change colors.
+
+![](/images/media/example-mana-altar.png)
+
+[Code](https://github.com/decentraland-scenes/MANA-Burning-Altar)
+
+[Explore the scene](https://mana-altar-master-iehcppnlvz.now.sh/)
+
 ## Advanced
 
 #### Block Dog
