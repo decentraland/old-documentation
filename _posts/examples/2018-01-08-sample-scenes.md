@@ -187,7 +187,20 @@ A scene that shows a character walking along a fixed path, using lerp over each 
 Read a tutorial blog post about this scene:
 
 - [Part 1]((https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5))
-- Part 2 (coming soon)
+- [Part 2](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5-part-2)
+
+#### Swimming shark
+
+This scene shows a shark moving around in circles along a curved circular path, using lerp over each segment of the path. It also rotates smoothly with a spherical lerp function.
+
+The speed of the shark and the intensity with which it swims depends on the steepness of the segment.
+
+![](/images/media/example-shark-animation.png)
+
+[Code](https://github.com/decentraland-scenes/Swimming-shark)
+
+[Explore the scene](https://swimming-shark-mfakqegnto.now.sh)
+
 
 ## Network connections
 
