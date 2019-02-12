@@ -143,6 +143,17 @@ A scene with animations, sound, and tiles on the floor that randomly change colo
 [Explore the scene]()
 -->
 
+#### Smoke
+
+This scene shows how to handle a particle system to create smoke. Each smoke puff is an entity that moves in a specific direction. These entities are reused from an object pool instead of creating a new entity for each. When an entity floats away from the fire, it's removed from the scene and waits in the object pool to be reused.
+
+![](/images/media/example-smoke.png)
+
+[Code](https://github.com/decentraland-scenes/Smoke)
+
+[Explore the scene](https://smoke-iqntujtjgb.now.sh)
+
+
 #### Memory game
 
 A Simon Says game, with click interactions and sequenced actions. The game generates a random sequence of colors and you must click buttons to match those.
