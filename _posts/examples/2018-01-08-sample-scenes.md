@@ -12,7 +12,7 @@ set_order: 1
 To get you up and running, and to illustrate what kind of experiences you can build using the SDK, we’ve put together some code and scene examples.
 
 Some of these scenes feature a link to a version of the scene that's deployed on a remote server. There you can interact with it just as if you were running `dcl start` locally.
-
+<!--
 ## Static XML Scenes
 
 #### Static XML Scene
@@ -22,7 +22,7 @@ A completely static scene. It's built entirely using XML, which makes it easier 
 ![](/images/media/example-static.png)
 
 [Code](https://github.com/decentraland-scenes/XML-static-scene)
-
+-->
 
 ## Essentials
 
@@ -34,7 +34,7 @@ A simple static scene that just displays 3D models. The 3D models include animat
 
 [Code](https://github.com/decentraland-scenes/the-munastery)
 
-[Explore the scene](https://the-munastery-lwbodqmcwg.now.sh/?position=-13%2C-14)
+[Explore the scene](https://the-munastery-bsapskmwaq.now.sh)
 
 
 #### Hypno wheels

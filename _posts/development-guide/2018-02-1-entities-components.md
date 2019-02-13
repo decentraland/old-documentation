@@ -61,8 +61,6 @@ cube.add(new CubeShape())
 engine.addEntity(cube)
 ```
 
-Note: It's also possible to declare entities and components in [XML]({{ site.baseurl }}{% post_url /development-guide/2018-01-13-xml-static-scenes %}). Writing a scene in this way is easier but very limiting. You can't make the entities in the scene move or be interactive in any way.
-
 ## Add entities to the engine
 
 When you create a new entity, you're instancing an object and storing it in memory. A newly created entity isn't _rendered_ and it won't be possible for a user to interact with it until it's added to the _engine_.
