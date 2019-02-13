@@ -165,3 +165,29 @@ EventManager.on("test", function(e) {
  ```
 
 -->
+
+
+## Recognize clicks on a specific mesh in a model
+
+Often, _.glTF_ 3D models are made up of multiple meshes, that each have an individual internal name. The click event includes the information of what specific mesh was clicked, so you can use this information to trigger different click behaviors in each case.
+
+To see how the meshes inside the model are named, you must open the 3D model with an editing tool, like [Blender](https://www.blender.org/) for example.
+
+<img src="/images/media/mesh-names.png" alt="Mesh internal names in an editor" width="250"/>
+
+> Tip: You can also learn the name of the clicked mesh by logging it and reading it off console.
+
+
+You access the `meshName` property as part of the `hit` object, that's returned by the click event.
+
+```ts
+const input = Input.instance
+
+input.subscribe("BUTTON_A_DOWN", e => {
+  log("button A Down", e.hit.meshName)
+
+  if (e.hit.meshName === "firePlace"){
+    // light fire
+  }
+})
+```
