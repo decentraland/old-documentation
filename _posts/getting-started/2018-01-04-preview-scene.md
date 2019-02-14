@@ -108,7 +108,7 @@ Click on the graph to switch through these metrics.
 
 ## Preview scene size
 
-The scene size shown in the preview is based on the scene's configuration, you set this when building the scene using the CLI. By default, the scene occupies a single parcel (10 x 10 meters).
+The scene size shown in the preview is based on the scene's configuration, you set this when building the scene using the CLI. By default, the scene occupies a single parcel (16 x 16 meters).
 
 If you're building a scene to be uploaded to an estate that occupies more parcels than the preview shows, you can edit the _scene.json_ file to reflect this, listing multiple parcels in the "parcels" field.
 

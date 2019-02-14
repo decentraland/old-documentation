@@ -73,6 +73,8 @@ When setting a position, keep the following considerations in mind:
 
   > Note: You can change the base parcel of a scene by editing the `base` attribute of _scene.json_.
 
+- A scene that is made up of a single parcel measures 16m x 16m. The center of the scene (at ground level) is at `x:8, y:0, z:8`. If the scene is made up of multiple parcels, then the center will vary depending on their arrangement.
+
 - If an entity is a child of another, then `x:0, y:0, z:0` refers to the center of its parent entity, wherever it is in the scene.
 
 - Every entity in your scene must be positioned within the bounds of the parcels it occupies at all times. If an entity leaves these boundaries, it will raise an error.
