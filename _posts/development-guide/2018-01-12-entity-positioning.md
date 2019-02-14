@@ -216,7 +216,7 @@ When an entity is nested inside another, the child entities inherit components f
 
 If a parent entity is scaled, all position values of its children are also scaled.
 
-```tsx
+```ts
 // Create entities
 const parentEntity = new Entity()
 const childEntity = new Entity()

@@ -67,7 +67,7 @@ Read more about the scene preview in [preview a scene]({{ site.baseurl }}{% post
 Open the `src/game.ts` file from your scene folder with the source code editor of your choice.
 
 
-```tsx
+```ts
 /// --- Set up a system ---
 
 class RotatorSystem {
@@ -133,7 +133,7 @@ Create a new folder under your scene’s directory named `/models`. Extract the 
 At the end of your scene’s code, add the following lines:
 
 
-```tsx
+```ts
 let avocado = new Entity()
 avocado.add(new GLTFShape("models/avocado.gltf"))
 avocado.add(new Transform({ 

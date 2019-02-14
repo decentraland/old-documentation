@@ -118,7 +118,7 @@ For example, you might like to keep the Blender files for the 3D models in your 
 
 | What to ignore | Example      | Description                                                                             |
 | -------------- | ------------ | --------------------------------------------------------------------------------------- |
-| Specific files | `BACKUP.tsx` | Ignores a specific file                                                                 |
+| Specific files | `BACKUP.ts` | Ignores a specific file                                                                 |
 | Folders        | `drafts/`    | Ignores entire contents of a folder and its subfolders                                  |
 | Extensions     | `*.blend`    | Ignores all files with a given extension                                                |
 | Name sections  | `test*`      | Ignores all files with names that match the query. In this case, that start with _test_ |

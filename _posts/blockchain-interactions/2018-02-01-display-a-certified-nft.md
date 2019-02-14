@@ -29,7 +29,7 @@ nft.add(new Transform({
   }))
 
 // add an NFTShape, instanced with a token contract and token id
-nft.add(new NFTShape("0x06012c8cf97bead5deae237070f9587f8e7a266d", "1384838"))
+nft.add(new NFTShape("0x06012c8cf97bead5deae237070f9587f8e7a266d", "475577"))
 
 // add entity to engine
 engine.addEntity(nft)

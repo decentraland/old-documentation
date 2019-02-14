@@ -61,7 +61,7 @@ executeTask(async () => {
 The `querySceneLimits()` function returns a promise of an object with the following properties, all of type _number_.
 
 
-```tsx
+```ts
 // import controller
 import { querySceneLimits } from '@decentraland/EntityController'
 
@@ -110,7 +110,7 @@ executeTask(async () => {
 The `querySceneMetrics()` function returns a promise of an object with the following properties, all of type _number_.
 
 
-```tsx
+```ts
 // import controller
 import { querySceneMetrics } from '@decentraland/EntityController'
 

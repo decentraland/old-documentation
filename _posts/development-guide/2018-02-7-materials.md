@@ -44,7 +44,7 @@ See [component reference](https://github.com/decentraland/ecs-reference)) for a 
 
 Instead of the `Material` component, you can define a material through the `BasicMaterial` entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistently bright, it can also be used to give your scene a more minimalist look.
 
-```tsx
+```ts
 const myMaterial = new BasicMaterial()
 ```
 
@@ -172,7 +172,7 @@ Use the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprite
 
 To handle texture mapping manually, you set _u_ and _v_ coordinates on the 2D image of the texture to correspond to the vertices of the shape. The more vertices the entity has, the more _uv_ coordinates need to be defined on the texture, a plane for example needs to have 8 _uv_ points defined, 4 for each of its two faces.
 
-```tsx
+```ts
 //Create material and configure fields
 const myMaterial = new BasicMaterial()
 myMaterial.texture = "materials/atlas.png"
@@ -238,7 +238,7 @@ To make a material transparent, you must add an alpha channel to the image you u
 - Set `hasAlpha` to true.
 - Set an image in `alphaTexture`. This image can be the same as the texture, or a different image.
 
-```tsx
+```ts
 const myMaterial = new Material()
 myMaterial.hasAlpha = true
 // or
@@ -250,7 +250,7 @@ myMaterial2.alphaTexture = "materials/alphaTexture.png"
 
 When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The `BasicMaterial` component uses the _bilinear_ algorithm by default, but you can configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode`.
 
-```tsx
+```ts
 const myMaterial = new BasicMaterial()
 myMaterial.samplingMode = 1
 ```

@@ -137,7 +137,7 @@ executeTask(async () => {
 To verify that the message that the user signed is in fact the one that you want to send, you can use the `toHex()` function from `eth-connect` library, to convert it and easily compare it. See further below for instructions on how to import the `eth-connect` library.
 
 
-```tsx
+```ts
 import * as EthConnect from '../node_modules/eth-connect/esm'
 import * as EthereumController from "@decentraland/EthereumController"
 
@@ -172,7 +172,7 @@ The `requirePayment()` function prompts the user to accept paying a sum to an Et
 Users must always accept payments manually, a payment can never be implied directly from the user's actions in the scene.
 
 
-```tsx
+```ts
 eth.requirePayment(receivingAddress, amount, currency)
 ```
 
@@ -183,7 +183,7 @@ If accepted by the user, the function returns the hash number of the transaction
 > Warning: This function informs you that a transaction was requested, but not that it was confirmed. If the gas price is too low, or it doesn't get mined for any reason, the transaction won't be completed.
 
 
-```tsx
+```ts
 const myWallet = ‘0x0123456789...’
 const enterPrice = 10
 
@@ -211,7 +211,7 @@ The example above listens for clicks on a _button_ entity. When clicked, the use
 
 ![](/images/media/metamask_confirm.png)
 
-> Tip: We recommend defining the wallet address and the amount to pay as global constants at the start of the _.tsx_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
+> Tip: We recommend defining the wallet address and the amount to pay as global constants at the start of the _.ts_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
 
 
 #### Wait for a transaction to be mined
@@ -221,13 +221,13 @@ The Ethereum controller allows you to check if a specific transaction has been a
 > Important: Because of how a blockchain works, there might be [reorgs]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-ethereum-essentials %}#blockchain-reorgs) of the network that can lead to a mined transaction being reverted. A transaction that was confirmed once by one node has no guarantee of ending up in the official consensus of the network. We don't advise relying on this function for dealing with things that are of value.
 
 
-```tsx
+```ts
 await this.eth.waitForMinedTx(currency, tx, receivingAddress)
 ```
 
 The function requires that you specify a currency to use (for example, MANA or ETH), a transaction hash number and the Ethereum wallet address that received the payment.
 
-```tsx
+```ts
 const myWallet = ‘0x0123456789...’
 const enterPrice = 10
 
@@ -480,7 +480,7 @@ We have only whitelisted the following methods from the API, all others are curr
 Below is a sample that uses this API to get the contents of a block in the blockchain.
 
 
-```tsx
+```ts
 import { createElement, ScriptableScene } from "decentraland-api"
 import Web3 = require("web3")
 

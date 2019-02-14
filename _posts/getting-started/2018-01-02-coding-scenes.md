@@ -58,7 +58,7 @@ These early releases of the SDK are intended for users that are comfortable work
 
 #### TypeScript (recommended)
 
-We use [TypeScript (.tsx)](https://www.typescriptlang.org/docs/handbook/jsx.html)
+We use [TypeScript (.ts)](https://www.typescriptlang.org/docs/handbook/jsx.html)
 to create our scenes.
 
 TypeScript is a superset of JavaScript, so if you're familiar with JavaScript you'll find it's almost the same, but TypeScript allows you to employ object-oriented programming and type declarations. Features like autocomplete and type-checking speed up development times and allow for the creation of a more solid codebase. These features are all key components to a positive developer experience.

@@ -12,6 +12,8 @@ set_order: 15
 
 There are several special component types that are meant for using in a 2D screen space as part of the UI, instead of in the 3D world space. These components are displayed fixed on the user's screen as long as the user is standing inside the area of the scene.
 
+UI elements are only visible when the user is standing inside the scene's LAND. When there's a UI to be seen, an icon will appear on the user's top-right corner. When the user clicks this icon, the full UI is displayed.
+
 
 ## Add a Screenspace UI
 
@@ -41,6 +43,8 @@ textShape.value = 'Hello world!'
 
 When creating any UI component, the first argument on the constructor sets the component's parent. In this case, we assign the `UIScreenSpaceShape` component we created as the parent. 
 
+
+(image)
 
 
 ## Types of UI content
@@ -138,12 +142,25 @@ To handle the clicks, add an `OnClick()` component to the entity, just as you do
 ```
 
 
-If a UI component is positioned over the pointer, it will prevent the user from clicking on world-space entities that are behind it. To make a UI component non-clickable, set the `isPointerBlocker` property to _false_. This property is _true_ by default.
+`UIButtonShape`   (just a shape, still need OnCLick)
+includes hover over colors and animations when clicked
 
 ```ts
-
+const button = new UIButtonShape(screenSpaceUI)
+button.text = 'Discard'
+button.fontSize = 15
+button.color = 'black'
+button.background = 'yellow'
+button.cornerRadius = 10
+button.thickness = 1
+button.width = '120px'
+button.height = '30px'
+button.vAlign = 'bottom'
+button.top = '-80px'
 ```
 
+
+(gif)
 
 <!--
 

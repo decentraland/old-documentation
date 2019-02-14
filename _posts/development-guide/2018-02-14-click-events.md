@@ -22,7 +22,7 @@ The easiest way to handle click events is to add an `OnClick` component to the e
 
 You declare what to do in the event of a click by writing a lambda function in the `OnClick` component.
 
-```tsx
+```ts
 const myEntity = new Entity()
 myEntity.add(new BoxShape())
 
@@ -39,7 +39,7 @@ The _click event_ object is always implicitly passed as a parameter of the funct
 
 - `pointerId`: ID of the pointer that triggered the event (_PRIMARY_ or _SECONDARY_)
 
-```tsx
+```ts
 const myEntity = new Entity()
 myEntity.add(new BoxShape())
 
@@ -60,7 +60,7 @@ These events are triggered every time that the buttons are pressed or released, 
 
 Use the `subscribe()` method of the Input object to initiate a listener that's subscribed to one of the click events. Whenever the event it caught, it executes a lambda function.
 
-```tsx
+```ts
 // Instance the input object
 const input = Input.instance
 
@@ -96,7 +96,7 @@ All click event objects contain the following parameters:
 
 Instead of creating a listener to catch events from the buttons changing state, you can check for the button's current state using the _Input_ object.
 
-```tsx
+```ts
 let buttonState = input.state[Pointer.PRIMARY].BUTTON_A_DOWN
 ```
 
@@ -104,7 +104,7 @@ If the _A_ button is down, `BUTTON_A_DOWN` has the value _true_, if the _A_ butt
 
 You can implement this in a system's `update()` function to check the button state regularly.
 
-```tsx
+```ts
 // Instance the input object
 const input = Input.instance
 
