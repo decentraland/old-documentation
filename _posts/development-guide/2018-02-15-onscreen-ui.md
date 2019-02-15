@@ -10,9 +10,13 @@ set_order: 15
 ---
 
 
-There are several special component types that are meant for using in a 2D screen space as part of the UI, instead of in the 3D world space. These components are displayed fixed on the user's screen as long as the user is standing inside the area of the scene.
+There are several special component types that are meant for using in a 2D screen space as part of the UI, instead of in the 3D world space. These components are displayed fixed on the user's screen when the user clicks the _open UI_ button, on the top-right corner of the screen.
 
-UI elements are only visible when the user is standing inside the scene's LAND. When there's a UI to be seen, an icon will appear on the user's top-right corner. When the user clicks this icon, the full UI is displayed.
+UI elements are only visible when the user is standing inside the scene's LAND parcels, as neighboring scenes might have their own UI to display.
+
+UIs in Decentraland aren't designed to provide constant feedback while a game takes place, but rather to be used as a screen to access occasionally, to get information or take decisions. This is ideal for displaying an inventory or to prompt users to make decisions.
+
+The UI can also be triggered to open when certain events occur in the world-space, for example if the user clicks on a specific place.
 
 
 ## Add a Screenspace UI
@@ -44,8 +48,6 @@ textShape.value = 'Hello world!'
 When creating any UI component, the first argument on the constructor sets the component's parent. In this case, we assign the `UIScreenSpaceShape` component we created as the parent. 
 
 
-(image)
-
 
 ## Types of UI content
 
@@ -57,13 +59,12 @@ There are several different types of UI elements you can add to the screenspace:
 - Text: Add a `UITextShape`component to display text. The properties you can set are the same as in a `TextShape` component.  See link
 (also add section to that doc)
 
+- Buttons: Add a `UIButtonShape` to add a clickable button. The button offers some visual feedback when users mouse over it and when they click it.
+
 - Text input box: Add a `UIInputTextShape` to have an input box where users can type in text with their keyboards.
 
 - Slider: Add a `UISliderShape` to have a slider that users can drag to provide input.
 
-```ts
-
-```
 
 ## Positioning
 
@@ -85,10 +86,17 @@ All UI components have several fields you can set to determine the position of t
 - `adaptWidth`, `adaptHeight`: Set on parent components. If these are set to true, the width and height wrap the child comopnents (plus padding). If these are true, `width` and `height` values are ignored
 
 ```ts
-
+const message = new UITextShape(container)
+message.text = 'Close UI'
+message.fontSize = 15
+message.width = '120px'
+message.height = '30px'
+message.vAlign = 'bottom'
+message.top = '-80px'
+message.zIndex = 1
 ```
 
-## Use parent elements to oganize
+## Use parent elements for organizing
 
 Certain UI components are there to help you organize how you place other components.
 
@@ -99,8 +107,15 @@ For this, you can use the `UIContainerStackShape` and the `UIContainerRectShape`
 Both these shapes have properties to set their color, line thickness, and rounded corners.
 
 ```ts
-
-
+const inventoryContainer = new UIContainerStackShape(container)
+inventoryContainer.adaptWidth = true
+inventoryContainer.width = '40%'
+inventoryContainer.top = '100px'
+inventoryContainer.left = '10px'
+inventoryContainer.color = 'white'
+inventoryContainer.background = 'blue'
+inventoryContainer.hAlign = 'left'
+inventoryContainer.vAlign = 'top'
 ```
 
 
@@ -110,8 +125,11 @@ You can make a UI element partly transparent by setting its `opacity` property.
 
 
 ```ts
-
-
+const container = new UIContainerRectShape(screenSpaceUI)
+container.width = '100%'
+container.height = '100%'
+container.color = 'blue'
+container.opacity = 0.5
 ```
 
 
@@ -129,25 +147,20 @@ All of the UI components must be children of a single `UIScreenSpaceShape` compo
 
 
 ```ts
+const button = new UIButtonShape(container)
+button.text = 'Close UI'
 
+close.set(button)
+engine.addEntity(close)
 ```
 
 > Note: If PC users want to click on a UI component, they must first unlock themselves from the view control, in order to be able to move the cursor over the UI component.
 
-
 To handle the clicks, add an `OnClick()` component to the entity, just as you do with world-space entities.
 
 ```ts
-
-```
-
-
-`UIButtonShape`   (just a shape, still need OnCLick)
-includes hover over colors and animations when clicked
-
-```ts
-const button = new UIButtonShape(screenSpaceUI)
-button.text = 'Discard'
+const button = new UIButtonShape(container)
+button.text = 'Close UI'
 button.fontSize = 15
 button.color = 'black'
 button.background = 'yellow'
@@ -157,31 +170,48 @@ button.width = '120px'
 button.height = '30px'
 button.vAlign = 'bottom'
 button.top = '-80px'
+
+const close = new Entity()
+close.set(
+  new OnClick(() => {
+    log('clicked on the close image')
+    screenSpaceUI.visible = false
+  })
+)
+close.set(button)
+engine.addEntity(close)
 ```
 
 
-(gif)
 
-<!--
+
+
 
 ## Sliders
 
-Sliders are can be added to the UI to provide interaction. Users can click and drag sliders to set a value. 
+Sliders can be added to the UI to provide more interaction. Users can click and drag sliders to set a value. 
 
 You can configure various aspects of the slider, including its appearance, orientation, what the maximum and minimum values represent, its default value, etc.
 
 ```ts
 
+const slider1 = new Entity()
+const volumeSlider = new UISliderShape(container)
+volumeSlider.minimum = 0
+volumeSlider.maximum = 10
+volumeSlider.color = '#fff'
+volumeSlider.value = 0
+slider1.set(sliderShape1)
+engine.addEntity(slider1)
+
 ```
 
-The slider's clickable space is very small, so it can be tricky to click with the cursor directly over it. To help make it easier, you can set the `thumbWidth`, `isThumbCircle` and `isThumbClamped` properties.
+The slider's clickable space is very small by default, so it can be tricky to click with the cursor directly over it. To help make it easier, you can set the `thumbWidth`, `isThumbCircle` and `isThumbClamped` properties. The `thumbWidth` property is set in pixels.
 
 ```ts
-
+volumeSlider.thumbWidth = '30px'
+volumeSlider.isThumbClamped = false
 ```
-
-The `thumbWidth` property is set in pixels, maybe also %???
-
 
 To handle input provided via the slider, add an `OnChanged()` component to the same entity. This component will execute a function each time that the slider's value is changed.
 
@@ -193,6 +223,36 @@ slider1.set(
   })
 )
 ```
+
+See a full implementation of a slider below:
+
+```ts
+const slider1 = new Entity()
+const volumeSlider = new UISliderShape(container)
+volumeSlider.minimum = 0
+volumeSlider.maximum = 10
+volumeSlider.color = '#fff'
+volumeSlider.value = 0
+volumeSlider.borderColor = '#fff'
+volumeSlider.background = 'black'
+volumeSlider.thumbWidth = '30px'
+volumeSlider.isThumbClamped = false
+volumeSlider.hAlign = 'right'
+volumeSlider.vAlign = 'top'
+volumeSlider.width = '20px'
+volumeSlider.height = '100px'
+slider1.set(
+  new OnChanged((data: { value: number }) => {
+    const value = Math.round(data.value)
+    sceneVolume = value.toString()
+  })
+)
+slider1.set(sliderShape1)
+engine.addEntity(slider1)
+```
+
+
+<!--
 
 ## Input text
 
@@ -224,6 +284,67 @@ In some cases, it's best to add a _submit_ button next to the input box. In this
 
 ```
 -->
+
+
+
+
+## Open the UI
+
+Users can always open the UI by clicking the icon on the top-right corner.  As an alternative, you can have the code of your scene open the UI when specific events occurs, for example at the end of a game to display the final score.
+
+To do this, simply set the `visible` property of the main `UIScreenSpaceShape` component that wraps the UI to _true_.
+
+The following code adds a cube to the world-space of the scene that opens the UI when clicked.
+
+```ts
+const uiTrigger = new Entity()
+const transform = new Transform({ position: new Vector3(5, 1, 5), scale: new Vector3(0.3, 0.3, 0.3) })
+uiTrigger.set(transform)
+
+uiTrigger.set(
+  new OnClick(() => {
+    ui.visible = true
+  })
+)
+
+uiTrigger.set(new BoxShape())
+engine.addEntity(uiTrigger)
+```
+
+## Close the UI
+
+Users can close the UI by clicking on the margins outside the UI. It's also a good practice to add a button on your UI to close it, in case the user doesn't realize how to close it.
+
+You might also want to set the UI to invisible when a specific event occurs, for example when a new match of a game starts.
+
+To do this, simply set the `visible` property of the main `UIScreenSpaceShape` component that wraps the UI to _false_.
+
+
+```ts
+const button = new UIButtonShape(container)
+button.text = 'Close UI'
+button.fontSize = 15
+button.color = 'black'
+button.background = 'yellow'
+button.cornerRadius = 10
+button.thickness = 1
+button.width = '120px'
+button.height = '30px'
+button.vAlign = 'bottom'
+button.top = '-80px'
+
+const close = new Entity()
+close.set(
+  new OnClick(() => {
+    log('clicked on the close image')
+    screenSpaceUI.visible = false
+  })
+)
+close.set(button)
+engine.addEntity(close)
+```
+
+
 
 <!--
 
