@@ -54,7 +54,7 @@ When creating any UI component, the first argument on the constructor sets the c
 There are several different types of UI elements you can add to the screenspace:
 
 
-- Images: Add a `UIImageShape` component to display any image. Use the `source` field to point to the path of the image.
+- Images: Add a ``UIImageShape`` component to display any image. Use the `source` field to point to the path of the image.
 
 - Text: Add a `UITextShape`component to display text. The properties you can set are the same as in a `TextShape` component.  See link
 (also add section to that doc)
@@ -96,6 +96,13 @@ message.top = '-80px'
 message.zIndex = 1
 ```
 
+UIs are intentionally limited to only occupy a fraction of the full screen. This is to prevent UIs from covering other UI elements like the chat widget. Because of this, a "centered" UI is centered in relation to the available space, not to the entire screen space. 
+
+Below is a screenshot of what a UI looks like in relation to the full screen when centered and at maximum size.
+
+<img src="/images/media/UI-full-size.png" alt="Full size UI" width="300"/>
+
+
 ## Use parent elements for organizing
 
 Certain UI components are there to help you organize how you place other components.
@@ -130,6 +137,56 @@ container.width = '100%'
 container.height = '100%'
 container.color = 'blue'
 container.opacity = 0.5
+```
+
+
+## Images from an image atlas
+
+You can use an image atlas to store multiple images and icons in a single image file. You then display rectangular parts of this image file in your UI based on pixel positions, pixel width, and pixel height inside the source image.
+
+Below is an example of an image atlas with multiple icons arranged into a single file.
+
+![](/images/media/UI-atlas.png)
+
+The `UIImageShape` component has the following fields to crop a sub-section of the original image:
+
+- `sourceTop`: the _y_ coordinate, in pixels, of the top of the selection
+- `sourceLeft`: the _x_ coordinate, in pixels, of the left side of the selection.
+- `sourceWidth`: the width, in pixels, of the selected area
+- `sourceHeight`: the height, in pixels, of the selected area
+
+
+```ts
+let imageAtlas = "images/image-atlas.jpg"
+
+
+const playButton = new UIImageShape(container)
+playButton.source = imageAtlas
+playButton.sourceLeft = `26px`
+playButton.sourceTop = `128px`
+playButton.sourceWidth = `128px`
+playButton.sourceHeight = `128px`
+
+const startButton = new UIImageShape(container)
+startButton.source = imageAtlas
+startButton.sourceLeft = `183px`
+startButton.sourceTop = `128px`
+startButton.sourceWidth = `128px`
+startButton.sourceHeight = `128px`
+
+const exitButton = new UIImageShape(container)
+exitButton.source = imageAtlas
+exitButton.sourceLeft = `346px`
+exitButton.sourceTop = `128px`
+exitButton.sourceWidth = `128px`
+exitButton.sourceHeight = `128px`
+
+const expandButton = new UIImageShape(container)
+expandButton.source = imageAtlas
+expandButton.sourceLeft = `496px`
+expandButton.sourceTop = `128px`
+expandButton.sourceWidth = `128px`
+expandButton.sourceHeight = `128px`
 ```
 
 
@@ -290,7 +347,11 @@ In some cases, it's best to add a _submit_ button next to the input box. In this
 
 ## Open the UI
 
-Users can always open the UI by clicking the icon on the top-right corner.  As an alternative, you can have the code of your scene open the UI when specific events occurs, for example at the end of a game to display the final score.
+Users can always open the UI by clicking the icon on the top-right corner.  
+
+![](/images/media/UI-open-icon.png)
+
+As an alternative, you can have the code of your scene open the UI when specific events occurs, for example at the end of a game to display the final score.
 
 To do this, simply set the `visible` property of the main `UIScreenSpaceShape` component that wraps the UI to _true_.
 
@@ -313,9 +374,11 @@ engine.addEntity(uiTrigger)
 
 ## Close the UI
 
-Users can close the UI by clicking on the margins outside the UI. It's also a good practice to add a button on your UI to close it, in case the user doesn't realize how to close it.
+Users can close the UI by clicking anywhere on the margins outside the UI. 
 
-You might also want to set the UI to invisible when a specific event occurs, for example when a new match of a game starts.
+It's a good practice to also add a button on your UI for closing it, to provide a more obvious way to do it.
+
+You might also want to close the UI automatically when a specific event occurs, for example when a new match of a game starts.
 
 To do this, simply set the `visible` property of the main `UIScreenSpaceShape` component that wraps the UI to _false_.
 
