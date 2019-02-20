@@ -222,6 +222,17 @@ To swap the material:
 
 3D models have a _mesh_ composed of triangular _faces_. These faces meet each other on _edges_ (the lines along which they touch) and _vertices_ (the points where their corners join).
 
+#### Scene limits
+
+All 3D models in your scene must fit within the limits of its parcels. If they extend beyond these limits when running a preview, the meshes will be marked in red and bounding boxes will be highlighted in white.
+
+For performance reasons, Decentraland checks the positions of the _bounding boxes_ around meshes (not the vertices in the meshes themselves) to verify that they are within the scene's limits. 
+
+If you have a model that has all of its vertices neatly inside the scene area, but that has large bounding boxes that are mostly empty and extend beyond the scene limits, the entire model will be marked as outside the scene limits.
+
+To avoid this problem, you can clean up your 3D models to reset positions and rotations of meshes so that bounding boxes don't extend beyond the meshes they wrap.
+
+
 #### Smooth geometries
 
 You can configure a mesh to be _smooth_. This tells the engine to render its shape as if there was an infinite number of intermediate faces rounding it off. This setting can greatly help you reduce the number of triangles needed to make a shape appear to be rounded.

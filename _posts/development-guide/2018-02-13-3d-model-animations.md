@@ -138,6 +138,31 @@ clipSwim.play()
 
 If `looping` is set to _false_, the animation plays just once and then stops.
 
+
+## Play an animation once
+
+Trigger an animation to play only once by using the `playOnce()` function of the `AnimationClip` object. When the animation finishes playing, the 3D model will remain in the final posture of the animation.
+
+If the animation was already playing, the `playOnce()` function disables looping and resets the animation to play one more time from the start.
+
+```ts
+
+```
+
+## Reset a model's posture
+
+When an animation finishes playing or is interrupted, the 3D model remains in the last posture it had. If you want the model to return to the first posture in the animation and stay there, you can reset the animation clip.
+
+To do this, use the `reset()` function of the `AnimationClip` object.
+
+```ts
+
+
+```
+
+> Note: Resetting the posture is an abrupt change. If you want to make the model transition smoothly tinto the default posture, create an animation clip (in an external modeling tool) that describes a movement from the posture you want to transition from to the default posture you want.
+
+
 ## Animation speed
 
 Change the speed at which an animation is played by changing the `speed` property. The value of the speed is 1 by default. 
