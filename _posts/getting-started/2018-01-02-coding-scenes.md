@@ -154,7 +154,7 @@ export class RotatorSystem implements ISystem {
   update() {
     // The function iterates over all the entities in myGroup
     for (let entity of myGroup.entities) {
-      const transform = entity.get(Transform)
+      const transform = entity.getComponent(Transform)
       transform.rotate(Vector3.Left(), 0.1)
     }
   }
@@ -167,12 +167,12 @@ engine.addSystem(new RotatorSystem())
 const cube = new Entity()
 
 // Give the entity a transform component
-cube.add(new Transform({
+cube.addComponent(new Transform({
     position: new Vector3(5, 1, 5)
   }))
 
 // Give the entity a box shape
-cube.add(new BoxShape())
+cube.addComponent(new BoxShape())
 
 // Add the entity to the engine
 engine.addEntity(cube)

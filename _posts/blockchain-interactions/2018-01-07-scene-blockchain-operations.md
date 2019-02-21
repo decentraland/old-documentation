@@ -199,8 +199,8 @@ function payment(){
 }
 
 const button = new Entity()
-button.add(new BoxShape())
-button.add(new OnClick( e => {
+button.addComponent(new BoxShape())
+button.addComponent(new OnClick( e => {
     payment()
   }))
 engine.addEntity(button)
@@ -244,8 +244,8 @@ function payment(){
 }
 
 const button = new Entity()
-button.add(new BoxShape())
-button.add(new OnClick( e => {
+button.addComponent(new BoxShape())
+button.addComponent(new OnClick( e => {
     payment()
   }))
 engine.addEntity(button)

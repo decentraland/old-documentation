@@ -21,15 +21,15 @@ You can set the _position_, _rotation_ and _scale_ of an entity by using the `Tr
 const ball = new Entity()
 
 // Add a transform component to the entity
-ball.add(new Transform())
-ball.get(Transform).position.set(5, 1, 5)
-ball.get(Transform).scale.set(2, 2, 2)
+ball.addComponent(new Transform())
+ball.getComponent(Transform).position.set(5, 1, 5)
+ball.getComponent(Transform).scale.set(2, 2, 2)
 ```
 
 For brevity, you can also create a `Transform` entity and give it initial values in a single statement, passing it an object that can optionally include _position_, _rotation_ and _scale_ properties.
 
 ```ts
-myEntity.add(new Transform({ 
+myEntity.addComponent(new Transform({ 
     position: new Vector3(5, 1, 5), 
     rotation: new Quaternion(0, 0, 0, 0),
     scale: new Vector3(2, 2, 2)
@@ -118,7 +118,7 @@ When using a _3D vector_ to represent Euler angles, _x_, _y_ and _z_ represent t
 When you retrieve the rotation of an entity, it returns a quaternion by default. To obtain the rotation expressed as in Euler angles, get the `.eulerAngles` field:
 
 ```ts
-myEntity.get(Transform).rotation.eulerAngles
+myEntity.getComponent(Transform).rotation.eulerAngles
 ```
 
 ## Face the user
@@ -130,11 +130,11 @@ Billboards were a common technique used in 3D games of the 90s, where most entit
 
 ```ts
 let box = new Entity()
-box.add(new BoxShape())
-box.set(new Transform({
+box.addComponent(new BoxShape())
+box.addComponent(new Transform({
   position: new Vector3(5, 1, 5)
 }))
-box.add(new Billboard)
+box.addComponent(new Billboard())
 engine.addEntity(box)
 ```
 
@@ -232,14 +232,14 @@ let parentTransform = new Transform({
   scale: new Vecot3(0.5, 0.5, 0.5)
 })
 
-parentEntity.add(parentTransform)
+parentEntity.addComponent(parentTransform)
 
 // Create a transform for the child
 let childTransform = new Transform({
   position: new Vector3(0, 1, 0)
 })
 
-childEntity.add(childTransform)
+childEntity.addComponent(childTransform)
 
 // Add entities to the engine
 engine.addEntity(childEntity)

@@ -41,7 +41,7 @@ export class RotatorSystem {
   update() {
     // Cycle over the entities in the component group
     for (let entity of group.entities) {
-      const transform = entity.get(Transform)
+      const transform = entity.getComponent(Transform)
       transform.rotation.y += 2
     }
   }
@@ -51,10 +51,10 @@ export class RotatorSystem {
 const cube = new Entity()
 
 // Add a cube shape to the entity
-cube.add(new BoxShape())
+cube.addComponent(new BoxShape())
 
 // Add a transform component to the entity
-cube.add(new Transform({
+cube.addComponent(new Transform({
   position: new Vector3(5, 0, 5)
 }))
 

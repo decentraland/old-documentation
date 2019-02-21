@@ -78,7 +78,7 @@ class RotatorSystem {
     // iterate over the entities of the group
     for (let entity of this.group.entities) {
       // get the Transform component of the entity
-      const transform = entity.get(Transform)
+      const transform = entity.getComponent(Transform)
 
       // mutate the rotation
       transform.rotate(Vector3.Up(), dt * 10) 
@@ -96,10 +96,10 @@ function spawnCube(x: number, y: number, z: number) {
   const cube = new Entity()
 
   // set a transform to the entity
-  cube.add(new Transform({ position: new Vector3(x, y, z) }))
+  cube.addComponent(new Transform({ position: new Vector3(x, y, z) }))
 
   // set a shape to the entity
-  cube.add(new BoxShape())
+  cube.addComponent(new BoxShape())
 
   // add the entity to the engine
   engine.addEntity(cube)
@@ -111,10 +111,10 @@ function spawnCube(x: number, y: number, z: number) {
 
 const cube = spawnCube(5, 1, 5)
 
-cube.add(
+cube.addComponent(
   new OnClick(() => {
-    cube.get(Transform).scale.z *= 1.1
-    cube.get(Transform).scale.x *= 0.9
+    cube.getComponent(Transform).scale.z *= 1.1
+    cube.getComponent(Transform).scale.x *= 0.9
 
     spawnCube(Math.random() * 8 + 1, Math.random() * 8, Math.random() * 8 + 1)
   })
@@ -135,8 +135,8 @@ At the end of your scene’s code, add the following lines:
 
 ```ts
 let avocado = new Entity()
-avocado.add(new GLTFShape("models/avocado.gltf"))
-avocado.add(new Transform({ 
+avocado.addComponent(new GLTFShape("models/avocado.gltf"))
+avocado.addComponent(new Transform({ 
     position: new Vector3(3, 1, 3), 
     scale: new Vector3(10, 10, 10)
     }))

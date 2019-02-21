@@ -20,7 +20,7 @@ The easiest way to move an entity is to use the `translate()` function to change
 ```ts
 export class SimpleMove {
   update() {
-    let transform = myEntity.get(Transform)
+    let transform = myEntity.getComponent(Transform)
     let distance = Vector3.Forward().scale(0.1)
     transform.translate(distance)
   }
@@ -29,8 +29,8 @@ export class SimpleMove {
 engine.addSystem(new SimpleMove())
 
 const myEntity = new Entity()
-myEntity.add(new Transform())
-myEntity.add(new BoxShape())
+myEntity.addComponent(new Transform())
+myEntity.addComponent(new BoxShape())
 
 engine.addEntity(myEntity)
 ```
@@ -53,7 +53,7 @@ The `rotate()` function takes two arguments:
 ```ts
 export class SimpleRotate {
   update() {
-    let transform = myEntity.get(Transform)
+    let transform = myEntity.getComponent(Transform)
     transform.rotate(Vector3.Left(), 3)
   }
 }
@@ -75,14 +75,14 @@ When rotating the parent entity, its children will be all rotated using the pare
 ```ts
 // Create entity you wish to rotate
 const myEntity = new Entity()
-myEntity.add(redMaterial)
-myEntity.add(new BoxShape())
+myEntity.addComponent(redMaterial)
+myEntity.addComponent(new BoxShape())
 
 // Create the pivot entity
 const pivot = new Entity()
 
 // Position the pivot entity on the pivot point of the rotation
-pivot.add(new Transform({
+pivot.addComponent(new Transform({
   position: new Vector3(3, 2, 3)
 }))
 
@@ -90,7 +90,7 @@ pivot.add(new Transform({
 myEntity.setParent(pivot)
 
 // Position child in reference to parent
-myEntity.add(new Transform({
+myEntity.addComponent(new Transform({
   position: new Vector3(0, 0.5, 0.5)
 }))
 
@@ -101,7 +101,7 @@ engine.addEntity(pivot)
 // Define a system that updates the rotation on every frame
 export class PivotRotate {
   update() {
-    let transform = pivot.get(Transform)
+    let transform = pivot.getComponent(Transform)
     transform.rotate(Vector3.Left(), 3 )
   }
 }
@@ -123,7 +123,7 @@ You can compensate for this uneven timing by using the `dt` parameter to adjust 
 ```ts
 export class SimpleMove {
   update(dt: number) {
-    let transform = myEntity.get(Transform)
+    let transform = myEntity.getComponent(Transform)
     let distance = Vector3.Forward.scale(dt * 3)
     transform.translate(distance)
   }
@@ -173,8 +173,8 @@ export class LerpData {
 // a system to carry out the movement
 export class LerpMove {
   update(dt: number) {
-    let transform = myEntity.get(Transform)
-    let lerp = myEntity.get(LerpData)
+    let transform = myEntity.getComponent(Transform)
+    let lerp = myEntity.getComponent(LerpData)
     if (lerp.fraction < 1) {
       transform.position = Vector3.Lerp(
         lerp.origin,
@@ -190,12 +190,12 @@ export class LerpMove {
 engine.addSystem(new LerpMove())
 
 const myEntity = new Entity()
-myEntity.add(new Transform())
-myEntity.add(new BoxShape())
+myEntity.addComponent(new Transform())
+myEntity.addComponent(new BoxShape())
 
-myEntity.add(new LerpData())
-myEntity.get(LerpData).origin = new Vector3(1, 1, 1)
-myEntity.get(LerpData).target = new Vector3(8, 1, 3)
+myEntity.addComponent(new LerpData())
+myEntity.getComponent(LerpData).origin = new Vector3(1, 1, 1)
+myEntity.getComponent(LerpData).target = new Vector3(8, 1, 3)
 
 engine.addEntity(myEntity)
 ```
@@ -237,8 +237,8 @@ export class SlerpData {
 export class SlerpRotate implements ISystem {
  
   update(dt: number) {
-      let slerp = myEntity.get(SlerpData)
-      let transform = myEntity.get(Transform)
+      let slerp = myEntity.getComponent(SlerpData)
+      let transform = myEntity.getComponent(Transform)
       if (slerp.fraction < 1) {
         let rot = Quaternion.Slerp(slerp.originRot, slerp.targetRot, slerp.fraction)
         transform.rotation = rot  
@@ -251,12 +251,12 @@ export class SlerpRotate implements ISystem {
 engine.addSystem(new SlerpRotate())
 
 const myEntity = new Entity()
-myEntity.add(new Transform())
-myEntity.add(new BoxShape())
+myEntity.addComponent(new Transform())
+myEntity.addComponent(new BoxShape())
 
-myEntity.add(new SlerpData())
-myEntity.get(SlerpData).originRot = Quaternion.Euler(0, 90, 0)
-myEntity.get(SlerpData).targetRot = Quaternion.Euler(0, 0, 0)
+myEntity.addComponent(new SlerpData())
+myEntity.getComponent(SlerpData).originRot = Quaternion.Euler(0, 90, 0)
+myEntity.getComponent(SlerpData).targetRot = Quaternion.Euler(0, 0, 0)
 
 engine.addEntity(myEntity)
 ```
@@ -296,8 +296,8 @@ export class LerpSizeData {
 // a system to carry out the movement
 export class LerpSize {
   update(dt: number) {
-    let transform = myEntity.get(Transform)
-    let lerp = myEntity.get(LerpSizeData)
+    let transform = myEntity.getComponent(Transform)
+    let lerp = myEntity.getComponent(LerpSizeData)
     if (lerp.fraction < 1) {
       let newScale = Scalar.Lerp(
         lerp.origin,
@@ -315,12 +315,12 @@ engine.addSystem(new LerpSize())
 
 
 const myEntity = new Entity()
-myEntity.add(new Transform())
-myEntity.add(new BoxShape())
+myEntity.addComponent(new Transform())
+myEntity.addComponent(new BoxShape())
 
-myEntity.add(new LerpSizeData())
-myEntity.get(LerpSizeData).origin = 0.1
-myEntity.get(LerpSizeData).target = 2
+myEntity.addComponent(new LerpSizeData())
+myEntity.getComponent(LerpSizeData).origin = 0.1
+myEntity.getComponent(LerpSizeData).target = 2
 
 engine.addEntity(myEntity)
 ```
@@ -343,8 +343,8 @@ export class LerpData {
 
 export class LerpMove {
   update(dt: number) {
-    let transform = myEntity.get(Transform)
-    let lerp = myEntity.get(LerpData)
+    let transform = myEntity.getComponent(Transform)
+    let lerp = myEntity.getComponent(LerpData)
     lerp.fraction += (dt + lerp.fraction)/10
     transform.position = Vector3.Lerp(
       lerp.origin,
@@ -384,8 +384,8 @@ export class PathData {
 
 export class PatrolPath {
   update(dt: number) {
-    let transform = myEntity.get(Transform)
-    let path = myEntity.get(PathData)
+    let transform = myEntity.getComponent(Transform)
+    let path = myEntity.getComponent(PathData)
     if (path.fraction < 1) {
       transform.position = Vector3.Lerp(
         path.origin,
@@ -408,9 +408,9 @@ export class PatrolPath {
 engine.addSystem(new PatrolPath())
 
 const myEntity = new Entity()
-myEntity.add(new Transform())
-myEntity.add(new BoxShape())
-myEntity.add(new PathData())
+myEntity.addComponent(new Transform())
+myEntity.addComponent(new BoxShape())
+myEntity.addComponent(new PathData())
 
 engine.addEntity(myEntity)
 ```

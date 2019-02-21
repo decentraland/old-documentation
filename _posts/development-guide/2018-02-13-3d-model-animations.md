@@ -41,13 +41,13 @@ An `Animator` component manages all the animations of the entity. Each animation
 let shark = new Entity()
 
 // Add a 3D model to it
-shark.add(new GLTFShape("models/shark.gltf"))
+shark.addComponent(new GLTFShape("models/shark.gltf"))
 
 // Create animator component
 let animator = new Animator()
 
 // Add animator component to the entity
-shark.add(animator)
+shark.addComponent(animator)
 
 // Instance animation clip object
 const clipSwim = new AnimationClip("swim")
@@ -60,10 +60,10 @@ You can also achieve the same with less statements:
 
 ```ts
 // Create and add animator component
-shark.add(new Animator())
+shark.addComponent(new Animator())
 
 // Instance and add a clip
-shark.get(Animator).addClip(new AnimationClip("swim"))
+shark.getComponent(Animator).addClip(new AnimationClip("swim"))
 ```
 
 You can retrieve an `AnimationClip` object from an `Animator` component with the `getClip()` function. 
@@ -82,10 +82,10 @@ If you don't have a pointer to refer to the clip object directly, you can fetch 
 
 ```ts
 // Create and add a clip
-shark.get(Animator).addClip(new AnimationClip("swim"))
+shark.getComponent(Animator).addClip(new AnimationClip("swim"))
 
 // Fetch the clip
-shark.get(Animator).getClip("swim")
+shark.getComponent(Animator).getClip("swim")
 ```
 
 <!--
@@ -249,16 +249,16 @@ let shark2 = new Entity()
 let sharkShape = new GLTFShape('models/shark.gltf')
 
 // Add the same GLTFShape instance to both entities
-shark1.add(sharkShape)
-shark2.add(sharkShape)
+shark1.addComponent(sharkShape)
+shark2.addComponent(sharkShape)
 
 // Create separate animator components
 let animator1 = new Animator()
 let animator2 = new Animator()
 
 // Add separate animator components to the entities
-shark1.add(animator1)
-shark2.add(animator2)
+shark1.addComponent(animator1)
+shark2.addComponent(animator2)
 
 // Instance separate animation clip objects
 const clipSwim1 = new AnimationClip("swim")

@@ -65,7 +65,7 @@ The example above executes a function that includes a `fetch()` operation to ret
 You can add an `OnCLick` component to any entity to trigger an asynchronous lambda function every time that entity is clicked.
 
 ```ts
-myEntity.add(
+myEntity.addComponent(
   new OnClick(e => {
     log("clicked on the entity", e)
   })
