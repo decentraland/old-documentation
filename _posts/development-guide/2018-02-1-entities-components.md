@@ -210,13 +210,25 @@ cube.getComponent(Material).albedoColor = Color3.Red()
 
 > Note: In the example above, as you never define a pointer to the entity's material component, you need to refer to it through its parent entity using `.getComponent()`.
 
-#### set or add
+#### Add or replace a component
 
-You can add a component to an entity either through `.addOrReplaceComponent()` or `.addComponent()`. The only difference between them is that a component assigned with `.addOrReplaceComponent()` is overwritten whenever a component of the same kind is assigned to the entity.
+By using `.addComponentOrReplace()` instead of `.addComponent()` you overwrite any existing components of the same kind on a specific entity.
+
+<!--
 
 A component assigned with `.addComponent()` can't be overwritten like that. To change it, you must first remove it before assigning a replacement component.
 
-For example, if you first do `.addOrReplaceComponent(new BoxShape())` on an entity entity and then do `.addOrReplaceComponent(nwe SphereShape())` to the same entity, the shape will be overwritten. If you instead use `.addComponent()` to assign the first shape, it won't be possible to overwrite it.
+
+
+For example, if you first do `.addComponentOrReplace(new BoxShape())` on an entity entity and then do `.addComponentOrReplace(nwe SphereShape())` to the same entity, the shape will be overwritten. If you instead use `.addComponent()` to assign the first shape, it won't be possible to overwrite it.
+
+```ts
+
+```
+
+-->
+
+
 
 ## Remove a component from an entity
 
@@ -226,11 +238,13 @@ To remove a component from an entity, simply use the entity's `removeComponent()
 myEntity.removeComponent(Material)
 ```
 
+If you attempt to remove a component that doesn't exist in the entity, this action won't raise any errors.
+
 A removed component might still remain in memory even after removed. If your scene adds new components and removes them regularly, these removed components will add up and cause memory problems. It's advisable to instead use an [object pool](#pooling-entities-and-components) when possible to handle these components.
 
-If you try to remove a component that doesn't exist in the entity, this action won't raise any errors.
-
-If a component was added using `.addOrReplaceComponent()`, then it can be overwritten directly by a component of the same category, without needing to remove it first.
+<!--
+If a component was added using `.addComponentOrReplace()`, then it can be overwritten directly by a component of the same category, without needing to remove it first.
+-->
 
 ## Access a component from an entity
 
@@ -250,7 +264,7 @@ let transform = cube.getComponent(Transform)
 transform.position = (5, 0, 5)
 ```
 
-The `get()` function fetches a reference to the component object. If you change the values of what's returned by this function, you're changing the component itself. For example, in the example above, we're setting the `position` stored in the component to _(5, 0, 5)_.
+The `getComponent()` function fetches a reference to the component object. If you change the values of what's returned by this function, you're changing the component itself. For example, in the example above, we're setting the `position` stored in the component to _(5, 0, 5)_.
 
 ```ts
 let XScale = cube.getComponent(Transform).scale.x
@@ -259,21 +273,27 @@ XScale = Math.random() * 10
 
 The example above directly modifies the value of the _x_ scale on the Transform component.
 
-If you're not entirely sure if the entity does have the component you're trying to retrieve, use `getOrNull()` or `getOrCreate()`
+If you're not entirely sure if the entity does have the component you're trying to retrieve, use `getComponentOrNull()` or `getComponentOrCreate()`
 
 ```ts
-//  getOrNull
-scale = cube.getOrNull(Transform)
+//  getComponentOrNull
+scale = cube.getComponentOrNull(Transform)
 
-// getOrCreate
-scale = cube.getOrCreate(Transform)
+// getComponentOrCreate
+scale = cube.getComponentOrCreate(Transform)
 ```
 
 If the component you're trying to retrieve doesn't exist in the entity:
 
-- `get()` returns an error.
-- `getOrNull()` returns `Null`.
-- `getOrCreate()` instances a new component in its place and retrieves it.
+- `getComponent()` returns an error.
+- `getComponentOrNull()` returns `Null`.
+- `getComponentOrCreate()` instances a new component in its place and retrieves it.
+
+When you're dealing with [Interchangeable component](#interchangeable-components), you can also get a component by _space name_ instead of by type. For example, both `BoxShape` and `SphereShape` occupy the `shape` space of an entity. If you don't know which of these an entity has, you can fetch the `shape` of the entity, and it will return whichever component is occupying the `shape` space.
+
+```ts
+let entityShape = myEntity.getComponent(shape)
+```
 
 ## Custom components
 
@@ -291,7 +311,7 @@ export class WheelSpin {
 }
 ```
 
-Note that we're defining two names for the component: `wheelSpin` and `WheelSpin` in this case. The class name, the one in upper case, is the one you use to add the component to entities. The other name, the one in lowe case, can mostly be ignored, except if you want to use it as an [Interchangeable component](#interchangeable-components).
+Note that we're defining two names for the component: `wheelSpin` and `WheelSpin` in this case. The _class name_, the one in upper case, is the one you use to add the component to entities. The _space name_, the one starting with a lower case letter, can mostly be ignored, except if you want to use it as an [Interchangeable component](#interchangeable-components).
 
 Once defined, you can use the component in the entities of your scene:
 
@@ -382,7 +402,7 @@ export class Velocity extends Vector3 {
 
 #### Interchangeable components
 
-Certain components intentionally can't coexist in a single entity. For example, an entity can't have both `BoxShape` and `PlaneShape`. If you assign one using `.addOrReplaceComponent()`, you overwrite the other if present.
+Certain components intentionally can't coexist in a single entity. For example, an entity can't have both `BoxShape` and `PlaneShape`. If you assign one using `.addComponentOrReplace()`, you overwrite the other if present.
 
 You can create custom components that follow this same behavior against each other, where it only makes sense for each entity to have only one of them assigned.
 
@@ -402,7 +422,7 @@ export class Cat {
 
 In the example above, note that both components occupy the _animal_ space. Each entity in the scene can only have one _animal_ component assigned.
 
-If you use `.addOrReplaceComponent()` to assign a _Dog_ component to an entity that has a _Cat_ component, then the _Dog_ component will overwrite the _Cat_ component.
+If you use `.addComponentOrReplace()` to assign a _Dog_ component to an entity that has a _Cat_ component, then the _Dog_ component will overwrite the _Cat_ component.
 
 ## Components as flags
 
@@ -434,7 +454,7 @@ const spawner = {
     if (!ent) return
 
     // Add a transform component to the entity
-    let t = ent.getOrCreate(Transform)
+    let t = ent.getComponentOrCreate(Transform)
     t.scale.setAll(0.5)
     t.position = (5, 0, 5)
 
