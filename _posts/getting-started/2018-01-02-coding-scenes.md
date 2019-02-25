@@ -40,7 +40,7 @@ Our SDK includes the following components:
 - **The Decentraland CLI** (Command Line Interface): Use it to [generate]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) new Decentraland scenes locally on your own machine, preview them and upload them to the content server.
 - **The Decentraland API**: A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between users or other applications.
 
-- **Scene examples**: Take inspiration and coding best practices from the [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
+- **Scene examples**: Take inspiration and coding best practices from the [scene examples]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
 
 ## CLI Requirements
 
