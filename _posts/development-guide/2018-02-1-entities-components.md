@@ -145,6 +145,7 @@ Once a parent is assigned, it can be read off the child entity with `.getParent(
 // Get parent from an entity
 const parent = childEntity.getParent()
 ```
+
 <!--
 You can also iterate over an entity's children in the following way.
 
@@ -214,21 +215,6 @@ cube.getComponent(Material).albedoColor = Color3.Red()
 
 By using `.addComponentOrReplace()` instead of `.addComponent()` you overwrite any existing components of the same kind on a specific entity.
 
-<!--
-
-A component assigned with `.addComponent()` can't be overwritten like that. To change it, you must first remove it before assigning a replacement component.
-
-
-
-For example, if you first do `.addComponentOrReplace(new BoxShape())` on an entity entity and then do `.addComponentOrReplace(nwe SphereShape())` to the same entity, the shape will be overwritten. If you instead use `.addComponent()` to assign the first shape, it won't be possible to overwrite it.
-
-```ts
-
-```
-
--->
-
-
 
 ## Remove a component from an entity
 
@@ -242,9 +228,6 @@ If you attempt to remove a component that doesn't exist in the entity, this acti
 
 A removed component might still remain in memory even after removed. If your scene adds new components and removes them regularly, these removed components will add up and cause memory problems. It's advisable to instead use an [object pool](#pooling-entities-and-components) when possible to handle these components.
 
-<!--
-If a component was added using `.addComponentOrReplace()`, then it can be overwritten directly by a component of the same category, without needing to remove it first.
--->
 
 ## Access a component from an entity
 
