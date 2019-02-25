@@ -88,7 +88,7 @@ See [entity interfaces]({{ site.baseurl }}{% post_url /development-guide/2018-01
 
 To migrate a scene that was developed in A-frame into decentraland:
 
-- Create a new static scene with the CLI as explained in [Create scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}).
+- Create a new static scene with the CLI as explained in Create scene.
   > Note: If the size of the A-frame scene is larger than 1 Decentraland parcel, make sure you configure the scene to have enough parcels to fit it.
 - Copy the entire entity structure from your the A-Frame's _index.html_ file. Paste it in the Decentraland's _scene.xml_ file, in between the `<scene>` and `</scene>` lines. Delete the existing boilerplate box, sphere and cylinder primitives from the scene.
 - Make the following changes to the A-frame primitives:

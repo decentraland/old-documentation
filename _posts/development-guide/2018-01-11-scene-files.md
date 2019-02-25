@@ -11,7 +11,7 @@ set: development-guide
 set_order: 4
 ---
 
-After [creating a new scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) using the CLI, the scene folder will have a series of files with default content.
+After [creating a new scene(https://docs.decentraland.org/#create-your-first-scene) using the CLI, the scene folder will have a series of files with default content.
 
 ## Default files in a local scene
 
