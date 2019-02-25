@@ -65,17 +65,17 @@ Use the `subscribe()` method of the Input object to initiate a listener that's s
 const input = Input.instance
 
 // button down event
-input.subscribe("BUTTON_A_DOWN", e => {
+input.subscribe("BUTTON_DOWN", e => {
   log("button A Down", e)
 })
 
 // button up event
-input.subscribe("BUTTON_A_UP", e => {
+input.subscribe("BUTTON_UP", e => {
   log("button A Up", e)
 })
 ```
 
-Both the`BUTTON_A_DOWN` and the `BUTTON_A_UP` events contain various properties that might be useful for the function. See [Properties of button events](#properties-of-button-events) for more details.
+Both the`BUTTON_DOWN` and the `BUTTON_UP` events contain various properties that might be useful for the function. See [Properties of button events](#properties-of-button-events) for more details.
 
 > Note: This code only needs to be executed once for the `subscribe()` method to keep polling for the event. Don't add this into a system's `update()` function, as that would register a new listener on every frame.
 
@@ -101,10 +101,10 @@ All _button down_ and _button up_ event objects contain the following parameters
 Instead of creating a listener to catch events from the buttons changing state, you can check for the button's current state using the _Input_ object.
 
 ```ts
-let buttonState = input.state[Pointer.PRIMARY].BUTTON_A_DOWN
+let buttonState = input.state[Pointer.PRIMARY].BUTTON_DOWN
 ```
 
-If the _A_ button is down, `BUTTON_A_DOWN` has the value _true_, if the _A_ button is up, it has the value _false_.
+If the _A_ button is down, `BUTTON_DOWN` has the value _true_, if the _A_ button is up, it has the value _false_.
 
 You can implement this in a system's `update()` function to check the button state regularly.
 
@@ -114,7 +114,7 @@ const input = Input.instance
 
 class ButtonChecker {
   update() {
-    if (input.state[Pointer.PRIMARY].BUTTON_A_DOWN) {
+    if (input.state[Pointer.PRIMARY].BUTTON_DOWN) {
       log("button A down")
     } else {
       log("button A up")
