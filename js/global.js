@@ -323,16 +323,15 @@ $(function() {
     $('.toggle[data-id="' + data + '"]').toggle('fast')
   })
 
-  const $window = $(window)
-  $window.bind('scroll', function () {
+  window.addEventListener('scroll', function () {
     const $languageSelector = $('.select-language.visible')
     const offset = $header.height() + $header.offset().top
     const threshold = ($languageSelector.length > 0)
       ? offset + $languageSelector.height()
       : offset
 
-    $sidebarDropdown.toggleClass('sticky', $window.scrollTop() > threshold)
-  })
+    $sidebarDropdown.toggleClass('sticky', window.scrollY > threshold)
+  }, { passive: true })
 
   // HEADINGS ==>
 
