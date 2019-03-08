@@ -87,7 +87,7 @@ defaults:
       path: ""
     values:
       layout: "default"
-      image: "/images/thumb.jpg"
+      image: "/images/icon.png"
   - scope:
       type: "posts"
     values:
