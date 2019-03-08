@@ -100,6 +100,27 @@ To buy LAND in Decentraland, follow these steps:
 
 > Note: Aside from the gas fee that the Ethereum network pays to the miners of the transaction, Decentraland does not collect any surplus trading fees.
 
+## Make a bid on a parcel or Estate
+
+If a parcel or estate isn't listed on sale, you can still place a bid on it and offer to buy it at a specific price.
+
+1. To enable the _bid_ feature on the Marketplace, navigate to your Settings, and check the box next to _Assets using MANA (bid)_. You’ll have to pay a small gas fee, just like any other Ethereum transaction.
+
+2. Navigate back to the LAND you want to bid on, then click _Bid_ to make an offer!
+
+3. Enter the amount of MANA you want to offer the seller. 
+
+4. Set the date for when you want your offer to expire. Bids can be open for no more than six months. After six months, you’ll have to place another bid.
+
+5. Click Submit.
+
+6. Re-enter your offer amount one more time to confirm the bid.
+
+To view a list of your open and pending bids, click _MY LAND_ on the top navbar and select _Bids_. 
+
+From this screen you can also change the price of your bid by clicking _Update_.
+
+
 ## Sell a parcel or Estate
 
 To sell one of your plots of LAND for MANA:
