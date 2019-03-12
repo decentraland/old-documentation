@@ -63,17 +63,17 @@ myTransform.position = new Vector3(5, 1, 5)
 When setting a position, keep the following considerations in mind:
 
 
-- The numbers in a position vector represent _meters_.
+- The numbers in a position vector represent _meters_ (unless the entity is a child of a scaled entity).
 
-  > Note: If you're positioning a child of a parent entity that has a scale that's different from 1, the position vector is scaled accordingly.
+- A scene that is made up of a single parcel measures 16m x 16m. The center of the scene (at ground level) is at `x:8, y:0, z:8`. If the scene is made up of multiple parcels, then the center will vary depending on their arrangement.
 
 - `x:0, y:0, z:0` refers to the _South-East_ corner of the scene's base parcel, at ground level.
 
   > Tip: When viewing a scene preview, a compass appears in the (0,0,0) point of the scene with labels for each axis as reference.
 
-  > Note: You can change the base parcel of a scene by editing the `base` attribute of _scene.json_.
+  > Tip: Take your _left_ hand, your index finger (pointing forward) is the _z_ axis, your middle finger (pointing sideways) is the _x_ axis, and your thumb (pointing up) is the _y_ axis.
 
-- A scene that is made up of a single parcel measures 16m x 16m. The center of the scene (at ground level) is at `x:8, y:0, z:8`. If the scene is made up of multiple parcels, then the center will vary depending on their arrangement.
+  > Note: You can change the base parcel of a scene by editing the `base` attribute of _scene.json_.
 
 - If an entity is a child of another, then `x:0, y:0, z:0` refers to the center of its parent entity, wherever it is in the scene.
 
