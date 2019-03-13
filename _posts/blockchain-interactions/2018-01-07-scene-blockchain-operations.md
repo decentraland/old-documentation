@@ -13,9 +13,12 @@ set_order: 5
 
 A Decentraland scene can interface with the Ethereum blockchain. This can serve to obtain data about the user's wallet and the tokens in it, or to trigger transactions that could involve any Ethereum token, fungible or non-fungible. This can be used in many ways, for example to sell tokens, to reward tokens as part of a game-mechanic, to change how a user interacts with a scene if they own certain tokens, etc.
 
-There currently are three tools to use for this, all of them provided by Decentraland.
+The following tools currently exist, all of them provided by Decentraland:
 
+<!--
 - The `Identity` library: used to obtain general user data.
+-->
+
 - The `Ethereum controller`: A basic library that offers some limited but simple functionality.
 - The `eth-connect` library: A lower level library to interface with Ethereum contracts and call their functions, for example to trigger transactions or check balances.
 
@@ -23,6 +26,8 @@ There currently are three tools to use for this, all of them provided by Decentr
 Note that all transactions triggered by a scene will require a user to approve and pay a gas fee.
 
 All blockchain operations also need to be carried out as [asynchronous functions]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %}), since the timing depends on external events.
+
+<!--
 
 ## User identity
 
@@ -71,6 +76,8 @@ executeTask(async () => {
 Users can change their display name at any time while in Decentraland. For this reason, the public key is generally a more recommendable way to keep track of users over time.
 
 > Note: The user must be logged into their Metamask account on their browser for this method to work.
+
+-->
 
 ## High level operations
 

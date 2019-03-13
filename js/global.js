@@ -323,16 +323,15 @@ $(function() {
     $('.toggle[data-id="' + data + '"]').toggle('fast')
   })
 
-  const $window = $(window)
-  $window.bind('scroll', function () {
+  window.addEventListener('scroll', function () {
     const $languageSelector = $('.select-language.visible')
     const offset = $header.height() + $header.offset().top
     const threshold = ($languageSelector.length > 0)
       ? offset + $languageSelector.height()
       : offset
 
-    $sidebarDropdown.toggleClass('sticky', $window.scrollTop() > threshold)
-  })
+    $sidebarDropdown.toggleClass('sticky', window.scrollY > threshold)
+  }, { passive: true })
 
   // HEADINGS ==>
 
@@ -471,6 +470,30 @@ $(function() {
   })
 
   // SCROLLABLE TABLES ==>
-
   $('.tutorial-main table').wrap('<div class="scrollable"></div>')
+
+  // Fetch CLI release notes
+  const cliDiv = document.getElementById('cli-releases')
+
+  if(cliDiv) {
+    fetch('https://api.github.com/repos/decentraland/cli/releases')
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      const converter = new showdown.Converter()
+      const releases = data
+        .filter(release => !release.prerelease)
+        .map(release => ({
+          version: release.tag_name,
+          notes: converter.makeHtml(release.body.indexOf('Credits') !== -1
+            ? release.body.substring(0, release.body.indexOf('Credits'))
+            : release.body)
+        }))
+        .filter(release => release.notes && release.notes.trim() !== '')
+      const text = releases.map(({ version, notes }) => `<h2>${version}<h2><div>${notes}</div>`)
+      console.log(text)
+      document.getElementById('cli-releases').innerHTML = releases.map(({ version, notes }) => `<h1>${version}:</h1><div>${notes}</div>`).join('')
+    })
+  }
 })

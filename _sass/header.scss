@@ -309,7 +309,7 @@ header {
     }
 
     a {
-      color: #0d0d17;
+      color: $base-font-color;
       padding: 20px 16px;
       display: flex;
       align-items: flex-start;
@@ -325,7 +325,7 @@ header {
     }
 
     strong {
-      color: #0d0d17;
+      color: $base-font-color;
     }
 
     .title,
