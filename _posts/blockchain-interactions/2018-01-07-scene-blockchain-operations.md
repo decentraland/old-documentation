@@ -237,7 +237,7 @@ The example above listens for clicks on a _button_ entity. When clicked, the use
 
 > Tip: We recommend defining the wallet address and the amount to pay as global constants at the start of the _.tsx_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
 
-
+<!--
 #### Wait for a transaction to be mined
 
 The Ethereum controller allows you to check if a specific transaction has been already mined. It looks for a specific transaction's hash number and verifies that it has been validated by a miner and added to the blockchain. 
@@ -276,7 +276,7 @@ engine.addEntity(button)
 ```
 
 The example above first requires the user to accept a transaction, if the user accepts it, then `requirePayment` returns a hash that can be used to track the transaction and see if it's been mined. Once the transaction is mined and accepted as part of the blockchain, the `openDoor()` function is called.
-
+-->
 
 #### Async sending
 
