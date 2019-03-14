@@ -26,7 +26,7 @@ The following example creates a material, sets some of its fields to give it a r
 ```ts
 //Create entity and assign shape
 const myEntity = new Entity()
-myEntity.set(new BoxShape())
+myEntity.addComponent(new BoxShape())
 
 //Create material and configure its fields
 const myMaterial = new Material()
@@ -35,7 +35,7 @@ myMaterial.metallic = 0.9
 myMaterial.roughness = 0.1
 
 //Assign the material to the entity
-myEntity.set(myMaterial)
+myEntity.addComponent(myMaterial)
 ```
 
 See [component reference](https://github.com/decentraland/ecs-reference)) for a full list of all the fields that can be configured in a `Material` of `BasicMatieral` component.
@@ -139,14 +139,38 @@ The example above changes the color of a material from red to yellow, incrementa
 
 ## Using textures
 
-Use an image file as a texture in a material. In a `BasicMaterial` component, you set the `texture` field. In a `Material` component, you set the `albedoTexture` field. Albedo textures respond to light and can include shades on them.
-
-The `Material` component allows you to use several image files as layers to compose more realistic textures, for example including a `bumpTexture` and a `refractionTexture`.
+Use an image file as a texture by adding a `Texture` component.
 
 ```ts
 //Create entity and assign shape
 const myEntity = new Entity()
-myEntity.set(new BoxShape())
+myEntity.addComponent(new BoxShape())
+
+//Create material and configure its fields
+const myTexture = new Texture()
+myTexture.src = "materials/wood.png"
+
+//Assign the material to the entity
+myEntity.addComponent(myTexture)
+```
+
+The `Texture` component lets you configure the wrapping mode by setting the `wrap` field. The wrapping mode can be `CLAMP`, `WRAP` or `MIRROR`.
+
+```ts
+myTexture.wrap = 3
+```
+
+The example above sets the wrapping mode to `MIRROR`.
+
+
+#### Multi-layered textures
+
+In a `Material` component, you can set the `albedoTexture` field to a texture image. Albedo textures respond to light and can include shades on them. It also allows you to use several image files as layers to compose more realistic textures, for example including a `bumpTexture` and a `refractionTexture`.
+
+```ts
+//Create entity and assign shape
+const myEntity = new Entity()
+myEntity.addComponent(new BoxShape())
 
 //Create material and configure its fields
 const myMaterial = new Material()
@@ -154,14 +178,31 @@ myMaterial.albedoTexture = "materials/wood.png"
 myMaterial.bumpTexture = "materials/woodBump.png"
 
 //Assign the material to the entity
-myEntity.set(myMaterial)
+myEntity.addComponent(myMaterial)
 ```
 
 In the example above, the image for the material is located in a `materials` folder, which is located at root level of the scene project folder.
 
 > Tip: We recommend keeping your texture image files separate in a `/materials` folder inside your scene.
 
-#### Texture mapping
+#### Basic textures
+
+In a `BasicMaterial` component, you can set the `texture` field to an image texture. This will render a texture that isn't affected by lighting. 
+
+```ts
+//Create entity and assign shape
+const myEntity = new Entity()
+myEntity.addComponent(new BoxShape())
+
+//Create material and configure its fields
+const myMaterial = new BasicMaterial()
+myMaterial.texture = "materials/wood.png"
+
+//Assign the material to the entity
+myEntity.addComponent(myMaterial)
+```
+
+#### Manual texture mapping
 
 If you want the texture to be mapped to specific scale or alignment on your entities, then you need to configure _uv_ properties on the [shape components]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}).
 
@@ -201,35 +242,12 @@ plane.uvs = [
 
 //Create entity and assign shape and material
 const myEntity = new Entity()
-myEntity.set(plane)
-myEntity.set(myMaterial)
+myEntity.addComponent(plane)
+myEntity.addComponent(myMaterial)
 ```
 
 To create an animated sprite, use texture mapping to change the selected regions of a same texture that holds all the frames.
 
-## Reuse materials
-
-If multiple entities in your scene use a same material, there's no need to create an instance of the material component for each. All entities can share one same instance, this keeps your scene lighter to load and prevents you from exceeding the maximum amount of materials per scene.
-
-```ts
-//Create entities and assign shapes
-const box = new BoxShape()
-const myEntity = new Entity()
-myEntity.set(box)
-const mySecondEntity = new Entity()
-mySecondEntity.set(box)
-const myThirdEntity = new Entity()
-myThirdEntity.set(box)
-
-//Create material and configure fields
-const myMaterial = new Material()
-myMaterial.albedoColor = Color3.Blue()
-
-//Assign same material to all entities
-myEntity.set(myMaterial)
-mySecondEntity.set(myMaterial)
-myThirdEntity.set(myMaterial)
-```
 
 ## Transparent materials
 
@@ -246,13 +264,39 @@ const myMaterial2 = new Material()
 myMaterial2.alphaTexture = "materials/alphaTexture.png"
 ```
 
-## Texture stretching in basic materials
+## Texture stretching
 
-When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The `BasicMaterial` component uses the _bilinear_ algorithm by default, but you can configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode`.
+When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The `Texture` and the `BasicMaterial` components use the _bilinear_ algorithm by default, but let you configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode`.
 
 ```ts
-const myMaterial = new BasicMaterial()
-myMaterial.samplingMode = 1
+const myTexture = new Texture()
+myTexture.samplingMode = 1
 ```
 
 The example above uses a nearest neighbor algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
+
+
+
+## Reuse materials
+
+If multiple entities in your scene use a same material, there's no need to create an instance of the material component for each. All entities can share one same instance, this keeps your scene lighter to load and prevents you from exceeding the maximum amount of materials per scene.
+
+```ts
+//Create entities and assign shapes
+const box = new BoxShape()
+const myEntity = new Entity()
+myEntity.addComponent(box)
+const mySecondEntity = new Entity()
+mySecondEntity.addComponent(box)
+const myThirdEntity = new Entity()
+myThirdEntity.addComponent(box)
+
+//Create material and configure fields
+const myMaterial = new Material()
+myMaterial.albedoColor = Color3.Blue()
+
+//Assign same material to all entities
+myEntity.addComponent(myMaterial)
+mySecondEntity.addComponent(myMaterial)
+myThirdEntity.addComponent(myMaterial)
+```

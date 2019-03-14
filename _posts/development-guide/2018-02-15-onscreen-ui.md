@@ -34,7 +34,7 @@ const ui = new Entity()
 const screenSpaceUI = new UIScreenSpaceShape()
 
 // Add screenspace component to entity
-ui.set(screenSpaceUI)
+ui.addComponent(screenSpaceUI)
 
 // Add entity to engine
 engine.addEntity(ui)
@@ -207,7 +207,7 @@ All of the UI components must be children of a single `UIScreenSpaceShape` compo
 const button = new UIButtonShape(container)
 button.text = 'Close UI'
 
-close.set(button)
+close.addComponent(button)
 engine.addEntity(close)
 ```
 
@@ -229,13 +229,13 @@ button.vAlign = 'bottom'
 button.top = '-80px'
 
 const close = new Entity()
-close.set(
+close.addComponent(
   new OnClick(() => {
     log('clicked on the close image')
     screenSpaceUI.visible = false
   })
 )
-close.set(button)
+close.addComponent(button)
 engine.addEntity(close)
 ```
 
@@ -258,7 +258,7 @@ volumeSlider.minimum = 0
 volumeSlider.maximum = 10
 volumeSlider.color = '#fff'
 volumeSlider.value = 0
-slider1.set(sliderShape1)
+slider1.addComponent(sliderShape1)
 engine.addEntity(slider1)
 
 ```
@@ -273,7 +273,7 @@ volumeSlider.isThumbClamped = false
 To handle input provided via the slider, add an `OnChanged()` component to the same entity. This component will execute a function each time that the slider's value is changed.
 
 ```ts
-slider1.set(
+slider1.addComponent(
   new OnChanged((data: { value: number }) => {
     const value = Math.round(data.value)
     valueFromSlider1.value = value.toString()
@@ -298,13 +298,13 @@ volumeSlider.hAlign = 'right'
 volumeSlider.vAlign = 'top'
 volumeSlider.width = '20px'
 volumeSlider.height = '100px'
-slider1.set(
+slider1.addComponent(
   new OnChanged((data: { value: number }) => {
     const value = Math.round(data.value)
     sceneVolume = value.toString()
   })
 )
-slider1.set(sliderShape1)
+slider1.addComponent(sliderShape1)
 engine.addEntity(slider1)
 ```
 
@@ -328,7 +328,7 @@ You can change the background color to indicate that the input box is currently 
 To handle events as the user changes the value in the text, add an `OnChanged()` component to the same entity. This component will execute a function each time that the string is changed.
 
 ```ts
-inputEntity.set(
+inputEntity.addComponent(
   new OnChanged((data: { value: string }) => {
     inputTextState = data.value
   })
@@ -360,15 +360,15 @@ The following code adds a cube to the world-space of the scene that opens the UI
 ```ts
 const uiTrigger = new Entity()
 const transform = new Transform({ position: new Vector3(5, 1, 5), scale: new Vector3(0.3, 0.3, 0.3) })
-uiTrigger.set(transform)
+uiTrigger.addComponent(transform)
 
-uiTrigger.set(
+uiTrigger.addComponent(
   new OnClick(() => {
     ui.visible = true
   })
 )
 
-uiTrigger.set(new BoxShape())
+uiTrigger.addComponent(new BoxShape())
 engine.addEntity(uiTrigger)
 ```
 
@@ -397,13 +397,13 @@ button.vAlign = 'bottom'
 button.top = '-80px'
 
 const close = new Entity()
-close.set(
+close.addComponent(
   new OnClick(() => {
     log('clicked on the close image')
     screenSpaceUI.visible = false
   })
 )
-close.set(button)
+close.addComponent(button)
 engine.addEntity(close)
 ```
 
