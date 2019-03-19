@@ -2,15 +2,12 @@
 date: 2019-03-19
 title: Builder FAQ
 redirect_from:
-  - /docs/faq
-  - /docs/builder-frequently-asked-questions
 description: Frequently Asked Questions for the Decentraland Builder
 categories:
   - Decentraland
-  - Builder
 type: Document
 set: general
-set_order: 1
+set_order: 2
 ---
 
 _How do scene limits work? What are triangles? How about materials? What’s going on?_
