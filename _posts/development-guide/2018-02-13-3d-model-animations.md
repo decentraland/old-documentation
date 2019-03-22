@@ -119,6 +119,13 @@ The `AnimationClip` object also has a `playing` boolean parameter. You can start
 clipSwim.playing = true
 ```
 
+If the animation is currently paused, the `play()` function resumes the animation from the last frame that was played before. If you want to instead play an animation starting from the beginning, use the `restart()` function.
+
+```ts
+clipSwim.restart()
+```
+
+
 ## Looping animations
 
 By default, animations are played in a loop that keeps repeating the animation forever.
@@ -139,28 +146,27 @@ clipSwim.play()
 If `looping` is set to _false_, the animation plays just once and then stops.
 
 
-## Play an animation once
 
-Trigger an animation to play only once by using the `playOnce()` function of the `AnimationClip` object. When the animation finishes playing, the 3D model will remain in the final posture of the animation.
+## Reset an animation
 
-If the animation was already playing, the `playOnce()` function disables looping and resets the animation to play one more time from the start.
+When an animation finishes playing or is paused, the 3D model remains in the last posture it had. 
 
-```ts
-
-```
-
-## Reset a model's posture
-
-When an animation finishes playing or is interrupted, the 3D model remains in the last posture it had. If you want the model to return to the first posture in the animation and stay there, you can reset the animation clip.
-
-To do this, use the `reset()` function of the `AnimationClip` object.
+To stop an animation and set the posture back to the first frame in the animation, use the `stop()` function of the `AnimationClip` object.
 
 ```ts
-
-
+clipSwim.stop()
 ```
 
-> Note: Resetting the posture is an abrupt change. If you want to make the model transition smoothly tinto the default posture, create an animation clip (in an external modeling tool) that describes a movement from the posture you want to transition from to the default posture you want.
+To play an animation from the start, regardless of what frame the animation is currently in, use the `restart()` function of the `AnimationClip` object.
+
+```ts
+clipSwim.restart()
+```
+
+> Note: Resetting the posture is an abrupt change. If you want to make the model transition smoothly tinto another posture, you can either: 
+
+    - apply an animation with a `weight` property of 0 and gradually increase the `weight`
+    - create an animation clip that describes a movement from the posture you want to transition from to the default posture you want.
 
 
 ## Animation speed
@@ -238,7 +244,6 @@ clipSwim.setParams({playing:true, looping:true, speed: 2, weight: 0.5})
 
 You can use a same instance of a `GLTFShape` component on multiple entities to save resources. If each entity has both its own `Animator` component and its own `AnimationClip` objects, then they can each be animated independently.
 
-If you define a single `AnimationClip` object instance and add it to multiple `Animator` components from different entities, all entities using the `AnimationClip` instance will be animated together at the same time.
 
 ```ts
 //create entities
@@ -271,3 +276,6 @@ animator2.addClip(clipSwim2)
 engine.addEntity(shark1)
 engine.addEntity(shark2)
 ```
+
+
+> Note: If you define a single `AnimationClip` object instance and add it to multiple `Animator` components from different entities, all entities using the `AnimationClip` instance will be animated together at the same time.
