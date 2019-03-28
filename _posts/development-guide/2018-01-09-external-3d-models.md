@@ -308,15 +308,15 @@ Now when users view the stairs in your scene, they’ll see the more elaborate m
 
 ## Animations
 
-3D models can be animated in a Decentraland scene using skeletal animations. All animations of a 3D model must be embedded inside its _glTF_ file, you can't reference animations in separate files.
+3D models can be animated in a Decentraland scene using animations. All animations of a 3D model must be embedded inside its _glTF_ file, you can't reference animations in separate files.
 
-Currently, other forms of animations that aren't based on armatures are not supported.
+Most 3D model animations are [_skeletal animations_](https://en.wikipedia.org/wiki/Skeletal_animation). These animations simplify the complex geometry of the model into a "stick figure", linking every vertex in the mesh to the closest _bone_ in the _skeleton_. Modelers adjust the skeleton into different poses, and the mesh stretches and bends to follow these movements.
+
+As an alternative, _vertex animations_ animate a model without the need of a skeleton. These animations specify the position of each vertex in the model directly. Decentraland supports these animations as well.
 
 There's no specific rule about the names animations must have. You can verify the names of the animations in an exported model by opening the contents of a _.gltf_ file with a text editor. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
 You can include any number of animations in a _glTF model_. All animations in a _glTF_ model are disabled by default when loading the model into a Decentraland scene. See [3D model animations]({{ site.baseurl }}{% post_url /development-guide/2018-02-13-3d-model-animations %}) for instructions on how to activate and handle animations in a scene.
-
-> Note: There currently isn't a way to change the frame rate of an animation displayed in your scene, the speed is fixed to a default setting. To change an animation's speed, you must change the number of frames.
 
 In a Decentraland scene, you can use `weight` to blend several animations or to make an animation more subtle.
 
