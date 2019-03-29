@@ -21,10 +21,11 @@ The UI can also be triggered to open when certain events occur in the world-spac
 
 ## Add a Screenspace UI
 
-To add a screenspace UI to your scene, you must create an entity and add a `UIScreenSpaceShape` component to it. All the visible UI elements that you want the user to see must be added as children of this `UIScreenSpaceShape` component.
+To add a screenspace UI to your scene, you must create an entity and add a `UIScreenSpaceShape` component to it. All the visible UI elements that you want the user to see are added as additional objects that are children of this parent object with a `UIScreenSpaceShape` component.
 
+<!--
 ![](/images/media/UI-basic.png)
-
+-->
 
 ```ts
 // Create entity
@@ -40,12 +41,11 @@ ui.addComponent(screenSpaceUI)
 engine.addEntity(ui)
 
 // Create a textShape component, setting the screenspace component as parent
-const textShape = new UITextShape(screenSpaceUI)
-textShape.value = 'Hello world!'
+const text = new Entity()
+text.addComponent(new UITextShape('Hello world!'))
+text.setParent(ui)
+engine.addEntity(text)
 ```
-
-
-When creating any UI component, the first argument on the constructor sets the component's parent. In this case, we assign the `UIScreenSpaceShape` component we created as the parent. 
 
 
 
@@ -75,25 +75,23 @@ All UI components have several fields you can set to determine the position of t
 - `vAlign` horizontal alignment relative to the parent. Possible values: `Left`, `Right`, `Center`.
 
 
-- `paddingLeft`, `paddingRight`, `paddingTop`, `paddingBottom`: padding space to leave empty around. This can either be set in pixels or as a percentage of the parent's width. To set in pixels, use `100 px`. To set in percentage use `10 %`
+- `paddingLeft`, `paddingRight`, `paddingTop`, `paddingBottom`: padding space to leave empty around. To set these fields in pixels, write the value as a number. To set these fields as a percentage of the parent's measurements, write the value as a string that ends in "%", for example `10 %`
 
-- `zIndex`: The z value determines what is shown in front when two components overlap in the screenspace. 
-
-
-- `with`, `height`: Set the size of the component in the screen. This can either be set in pixels or as a percentage of the parent's width. To set in pixels, use `100 px`. To set in percentage use `10 %`
+- `with`, `height`: Set the size of the component in the screen. To set these fields in pixels, write the value as a number. To set these fields as a percentage of the parent's measurements, write the value as a string that ends in "%", for example `10 
 
 
-- `adaptWidth`, `adaptHeight`: Set on parent components. If these are set to true, the width and height wrap the child comopnents (plus padding). If these are true, `width` and `height` values are ignored
+- `adaptWidth`, `adaptHeight`: Set on parent components. If these are set to true, the width and height wrap the child components (plus padding). If these are true, `width` and `height` values are ignored
 
 ```ts
-const message = new UITextShape(container)
-message.text = 'Close UI'
+let messageEntity = new Entity()
+const message = new UITextShape('Close UI')
+messageEntity.addComponent(message)
 message.fontSize = 15
-message.width = '120px'
-message.height = '30px'
+message.width = 120
+message.height = 30
 message.vAlign = 'bottom'
-message.top = '-80px'
-message.zIndex = 1
+message.top = -80
+engine.addEntity(messageEntity)
 ```
 
 UIs are intentionally limited to only occupy a fraction of the full screen. This is to prevent UIs from covering other UI elements like the chat widget. Because of this, a "centered" UI is centered in relation to the available space, not to the entire screen space. 
@@ -103,26 +101,34 @@ Below is a screenshot of what a UI looks like in relation to the full screen whe
 <img src="/images/media/UI-full-size.png" alt="Full size UI" width="300"/>
 
 
+To determine the z position of UI elements, the UI uses the parenting hierarchy of the entities. So, if an entity is a child of another, it will appear in front of another.
+
+
+
 ## Use parent elements for organizing
 
-Certain UI components are there to help you organize how you place other components.
+Certain UI elements are there to help you organize how you place other elements.
 
+<!--
 ![](/images/media/UI-rectangle.png)
+-->
 
 For this, you can use the `UIContainerStackShape` and the `UIContainerRectShape`.
 
 Both these shapes have properties to set their color, line thickness, and rounded corners.
 
 ```ts
-const inventoryContainer = new UIContainerStackShape(container)
+let container = new Entity()
+const inventoryContainer = new UIContainerStackShape()
 inventoryContainer.adaptWidth = true
 inventoryContainer.width = '40%'
-inventoryContainer.top = '100px'
-inventoryContainer.left = '10px'
-inventoryContainer.color = 'white'
-inventoryContainer.background = 'blue'
+inventoryContainer.top = 100
+inventoryContainer.left = 10
+inventoryContainer.color = Color3.White()
 inventoryContainer.hAlign = 'left'
 inventoryContainer.vAlign = 'top'
+container.addComponent(inventoryContainer)
+engine.addEntity(container)
 ```
 
 
@@ -132,11 +138,14 @@ You can make a UI element partly transparent by setting its `opacity` property.
 
 
 ```ts
-const container = new UIContainerRectShape(screenSpaceUI)
-container.width = '100%'
-container.height = '100%'
-container.color = 'blue'
-container.opacity = 0.5
+let container = new Entity()
+const rect = new UIContainerRectShape()
+rect.width = '100%'
+rect.height = '100%'
+rect.color =  Color3.Blue()
+rect.opacity = 0.5
+container.addComponent(rect)
+engine.addEntity(container)
 ```
 
 
@@ -159,89 +168,81 @@ The `UIImageShape` component has the following fields to crop a sub-section of t
 ```ts
 let imageAtlas = "images/image-atlas.jpg"
 
-
+let play = new Entity()
 const playButton = new UIImageShape(container)
 playButton.source = imageAtlas
-playButton.sourceLeft = `26px`
-playButton.sourceTop = `128px`
-playButton.sourceWidth = `128px`
-playButton.sourceHeight = `128px`
+playButton.sourceLeft = 26
+playButton.sourceTop = 128
+playButton.sourceWidth = 128
+playButton.sourceHeight = 128
+play.addComponent(playButton)
+engine.addEntity(play)
 
+let start = new Entity()
 const startButton = new UIImageShape(container)
 startButton.source = imageAtlas
-startButton.sourceLeft = `183px`
-startButton.sourceTop = `128px`
-startButton.sourceWidth = `128px`
-startButton.sourceHeight = `128px`
+startButton.sourceLeft = 183
+startButton.sourceTop = 128
+startButton.sourceWidth = 128
+startButton.sourceHeight = 128
+start.addComponent(startButton)
+engine.addEntity(start)
 
+let exit = new Entity()
 const exitButton = new UIImageShape(container)
 exitButton.source = imageAtlas
-exitButton.sourceLeft = `346px`
-exitButton.sourceTop = `128px`
-exitButton.sourceWidth = `128px`
-exitButton.sourceHeight = `128px`
+exitButton.sourceLeft = 346
+exitButton.sourceTop = 128
+exitButton.sourceWidth = 128
+exitButton.sourceHeight = 128
+exit.addComponent(exitButton)
+engine.addEntity(exit)
 
+let expand = new Entity()
 const expandButton = new UIImageShape(container)
 expandButton.source = imageAtlas
-expandButton.sourceLeft = `496px`
-expandButton.sourceTop = `128px`
-expandButton.sourceWidth = `128px`
-expandButton.sourceHeight = `128px`
+expandButton.sourceLeft = 496
+expandButton.sourceTop = 128
+expandButton.sourceWidth = 128
+expandButton.sourceHeight = 128
+expand.addComponent(expandButton)
+engine.addEntity(expand)
 ```
 
 
 ## Clicking UI elements
 
-
 The UI elements on the screenspace can also be interactive, instead of just showing information.
 
-As click events are handled per entity, you must create a separate entity for each UI component that you want to make clickable. If you add multiple UI components to a single clickable entity, you won't be able to distinguish which of the components was clicked. 
-
+<!--
 ![](/images/media/UI-clicks.png)
-
-All of the UI components must be children of a single `UIScreenSpaceShape` component. Even components that are added to different entities must be instantiated as children of a `UIScreenSpaceShape` component. 
-
+-->
 
 
-```ts
-const button = new UIButtonShape(container)
-button.text = 'Close UI'
-
-close.addComponent(button)
-engine.addEntity(close)
-```
-
-> Note: If PC users want to click on a UI component, they must first unlock themselves from the view control, in order to be able to move the cursor over the UI component.
+> Note: If desktop users want to click on a UI component, they must first unlock themselves from the view control, in order to be able to move the cursor over the UI component.
 
 To handle the clicks, add an `OnClick()` component to the entity, just as you do with world-space entities.
 
 ```ts
-const button = new UIButtonShape(container)
-button.text = 'Close UI'
+let close = new Entity()
+const button = new UIButtonShape("Close UI")
 button.fontSize = 15
-button.color = 'black'
-button.background = 'yellow'
-button.cornerRadius = 10
+button.color = Color3.Yellow()
 button.thickness = 1
-button.width = '120px'
-button.height = '30px'
+button.width = 120
+button.height = 30
 button.vAlign = 'bottom'
-button.top = '-80px'
+button.top = -80
+close.addComponent(button)
 
-const close = new Entity()
 close.addComponent(
   new OnClick(() => {
     log('clicked on the close image')
     screenSpaceUI.visible = false
   })
 )
-close.addComponent(button)
 engine.addEntity(close)
 ```
-
-
-
-
 
 
 ## Sliders
@@ -253,12 +254,12 @@ You can configure various aspects of the slider, including its appearance, orien
 ```ts
 
 const slider1 = new Entity()
-const volumeSlider = new UISliderShape(container)
+const volumeSlider = new UISliderShape()
 volumeSlider.minimum = 0
 volumeSlider.maximum = 10
 volumeSlider.color = '#fff'
 volumeSlider.value = 0
-slider1.addComponent(sliderShape1)
+slider1.addComponent(volumeSlider)
 engine.addEntity(slider1)
 
 ```
@@ -266,7 +267,7 @@ engine.addEntity(slider1)
 The slider's clickable space is very small by default, so it can be tricky to click with the cursor directly over it. To help make it easier, you can set the `thumbWidth`, `isThumbCircle` and `isThumbClamped` properties. The `thumbWidth` property is set in pixels.
 
 ```ts
-volumeSlider.thumbWidth = '30px'
+volumeSlider.thumbWidth = 30
 volumeSlider.isThumbClamped = false
 ```
 
@@ -288,16 +289,15 @@ const slider1 = new Entity()
 const volumeSlider = new UISliderShape(container)
 volumeSlider.minimum = 0
 volumeSlider.maximum = 10
-volumeSlider.color = '#fff'
+volumeSlider.color = Color3.Black()
 volumeSlider.value = 0
-volumeSlider.borderColor = '#fff'
-volumeSlider.background = 'black'
-volumeSlider.thumbWidth = '30px'
+volumeSlider.borderColor = Color3.Blue()
+volumeSlider.thumbWidth = 30
 volumeSlider.isThumbClamped = false
 volumeSlider.hAlign = 'right'
 volumeSlider.vAlign = 'top'
-volumeSlider.width = '20px'
-volumeSlider.height = '100px'
+volumeSlider.width = 20
+volumeSlider.height = 100
 slider1.addComponent(
   new OnChanged((data: { value: number }) => {
     const value = Math.round(data.value)
@@ -363,7 +363,7 @@ const transform = new Transform({ position: new Vector3(5, 1, 5), scale: new Vec
 uiTrigger.addComponent(transform)
 
 uiTrigger.addComponent(
-  new OnClick(() => {
+  new OnPointerDown(() => {
     ui.visible = true
   })
 )
@@ -384,26 +384,25 @@ To do this, simply set the `visible` property of the main `UIScreenSpaceShape` c
 
 
 ```ts
+const close = new Entity()
 const button = new UIButtonShape(container)
 button.text = 'Close UI'
 button.fontSize = 15
-button.color = 'black'
-button.background = 'yellow'
-button.cornerRadius = 10
+button.color = Color3.Black()
+button.background = Color3.Yellow()
 button.thickness = 1
-button.width = '120px'
-button.height = '30px'
+button.width = 120
+button.height = 30
 button.vAlign = 'bottom'
-button.top = '-80px'
+button.top = -80
+close.addComponent(button)
 
-const close = new Entity()
 close.addComponent(
   new OnClick(() => {
     log('clicked on the close image')
     screenSpaceUI.visible = false
   })
 )
-close.addComponent(button)
 engine.addEntity(close)
 ```
 
