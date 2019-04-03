@@ -1,16 +1,15 @@
 footer {
-  margin: 48px 0;
-
+  padding: 48px 0;
   font-size: 14px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.67;
   letter-spacing: -0.1px;
-  color: #5c5c6e;
+  color: $medium-grey;
   text-align: center;
 
-  @media #{$desktop} {
+  @media #{$tablet-landscape} {
     margin-bottom: 0;
     padding: 10px 0;
   }
@@ -21,7 +20,7 @@ footer {
     padding: 0 15px;
     margin: 0 auto;
 
-    @media #{$desktop} {
+    @media #{$tablet-landscape} {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -37,16 +36,20 @@ footer {
       justify-content: center;
       margin-bottom: 40px;
     }
-    @media #{$desktop} {
+    @media #{$tablet-landscape} {
       margin-bottom: 0;
     }
   }
 
   .social-copyright-wrapper {
-    @media #{$desktop} {
+    @media #{$tablet-landscape} {
       display: flex;
       flex-direction: row;
       align-items: center;
+    }
+
+    a {
+      display: inline-flex;
     }
   }
 
@@ -62,9 +65,14 @@ footer {
   a {
     color: #fff;
     text-decoration: none;
+    font-size: 14px;
 
-    &:hover svg {
-      fill: #f05;
+    &:hover {
+      text-decoration: none;
+
+      svg rect {
+        fill: $action-color;
+      }
     }
   }
 
@@ -78,16 +86,17 @@ footer {
     padding: 0;
     list-style: none;
     margin: 0 0 12px;
+    display: flex;
+    justify-content: center;
 
-    @media #{$desktop} {
+    @media #{$tablet-landscape} {
       margin: 0;
       margin-right: 24px;
-      margin-top: 2px;
     }
 
     li {
-      display: inline-block;
-      margin: 0 0 0 24px;
+      display: flex;
+      margin: 0 0 0 16px;
 
       &:first-child {
         margin-left: 0;
@@ -96,14 +105,15 @@ footer {
   }
 
   svg {
-    fill: #5c5c6e;
     position: relative;
     top: 5px;
-    transition: fill 200ms ease;
 
-    @media #{$desktop} {
+    rect {
+      transition: fill 200ms ease;
+    }
+
+    @media #{$tablet-landscape} {
       top: initial;
-      max-height: 18px;
     }
   }
 
@@ -176,13 +186,18 @@ footer {
     li {
       margin: 0 10px;
       display: inline-block;
+
+      @media #{$tablet-landscape} {
+        margin: 0 20px 0 0;
+      }
     }
 
     a {
-      color: #5c5c6e;
+      color: $medium-grey;
+      transition: color $default-transition;
 
       &:hover {
-        color: #f05;
+        color: $action-color;
       }
     }
   }
