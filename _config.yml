@@ -17,10 +17,8 @@ reddit_url: "https://reddit.com/r/decentraland"
 fb_url: "https://www.facebook.com/decentraland/"
 faq_url: "https://decentraland.org/#faqs"
 telegram_url: "https://t.me/decentralandTG"
-tos_url: "https://decentraland.org/terms"
-privacy_url: "https://decentraland.org/privacy"
-content_url: "https://decentraland.org/content"
-ethics_url: "https://decentraland.org/ethics"
+legal_url:  'https://decentraland.org/legal'
+press_url: 'https://decentraland.org/press'
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /images/favicon.png
