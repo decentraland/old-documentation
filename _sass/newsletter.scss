@@ -28,7 +28,7 @@
   }
 
   &.sent {
-    transition: all 400ms ease;
+    transition: background-size 400ms ease;
     background-size: 120%;
 
     .newsletter__content,
