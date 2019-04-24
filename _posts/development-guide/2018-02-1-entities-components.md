@@ -105,21 +105,7 @@ Note: Removed entities are also removed from all [Component groups]({{ site.base
 
 If your scene has a pointer referencing a removed entity, it will remain in memory, allowing you to still access and change its component's values and add it back.
 
-If a removed entity has child entities, you can determine what to do with them through the optional second and third arguments of the `.removeEntity()` function.
-
-- `removeChildren`: Boolean to determine whether child entities are removed too. _false_ by default.
-- `newParent`: Set a new parent entity for all children of the removed entity.
-
-```ts
-/* These are the arguments being used:
- - Entity to remove: cube
- - removeChildren: false
- - newParent: cube2
-*/
-engine.removeEntity(cube, false, cube2)
-```
-
-> Note: Keep in mind that the position, rotation and scale of a child entity is always relative to their parent. If the children of an entity aren't removed together with the parent, they will now be positioned relative to the scene (or to their new parent entity).
+If a removed entity has child entities, all children of that entity are removed too.
 
 ## Nested entities
 
