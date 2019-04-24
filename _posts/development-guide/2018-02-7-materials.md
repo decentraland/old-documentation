@@ -149,8 +149,7 @@ const myEntity = new Entity()
 myEntity.addComponent(new BoxShape())
 
 //Create texture
-const myTexture = new Texture()
-myTexture.src = "materials/wood.png"
+const myTexture = new Texture("materials/wood.png")
 
 //Create a material
 const myMaterial = new Material()
@@ -170,8 +169,7 @@ const myEntity = new Entity()
 myEntity.addComponent(new BoxShape())
 
 //Create texture
-const myTexture = new Texture()
-myTexture.src = "materials/wood.png"
+const myTexture = new Texture("materials/wood.png")
 
 //Create material and configure its fields
 const myMaterial = new BasicMaterial()
@@ -191,12 +189,10 @@ const myEntity = new Entity()
 myEntity.addComponent(new BoxShape())
 
 //Create texture
-const myTexture = new Texture()
-myTexture.src = "materials/wood.png"
+const myTexture = new Texture("materials/wood.png")
 
 //Create second texture
-const myBumpTexture = new Texture()
-myBumpTexture.src = "materials/woodBump.png"
+const myBumpTexture = new Texture("materials/woodBump.png")
 
 
 //Create material and configure its fields
@@ -281,7 +277,7 @@ To create an animated sprite, use texture mapping to change the selected regions
 When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. In a 3D environment, the effects of perspective cause this naturally. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The `Texture` and the `BasicMaterial` components use the _bilinear_ algorithm by default, but let you configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode`.
 
 ```ts
-const myTexture = new Texture()
+const myTexture = new Texture("materials/myTexture.png")
 myTexture.samplingMode = 1
 ```
 
@@ -303,8 +299,7 @@ const myMaterial = new Material()
 myMaterial.hasAlpha = true
 // or
 //Create texture
-const myTexture = new Texture()
-myTexture.src = "materials/alpha.png"
+const myTexture = new Texture("materials/alpha.png")
 
 const myMaterial2 = new Material()
 myMaterial2.alphaTexture = myTexture
