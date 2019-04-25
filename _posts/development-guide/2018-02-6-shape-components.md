@@ -166,4 +166,4 @@ myThirdEntity.addComponent(house)
 
 Each entity that shares a shape can apply different scales, rotations or even materials (in the case of primitives) without affecting how the other entities are being rendered. 
 
-Entities that share a 3D model instance can also have animations that run independently of each other. Each must have a separate `Animator` component, with separate `AnimationClip` objects to keep track of what part of the animation is currently being played. See [3D model animations]({{ site.baseurl }}{% post_url /development-guide/2018-02-13-3d-model-animations %})
+Entities that share a 3D model instance can also have animations that run independently of each other. Each must have a separate `Animator` component, with separate `AnimationState` objects to keep track of what part of the animation is currently being played. See [3D model animations]({{ site.baseurl }}{% post_url /development-guide/2018-02-13-3d-model-animations %})

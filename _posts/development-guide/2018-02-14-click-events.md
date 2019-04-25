@@ -142,7 +142,7 @@ You access the `meshName` property as part of the `hit` object, that's returned 
 ```ts
 const input = Input.instance
 
-input.subscribe("BUTTON_A_DOWN", e => {
+input.subscribe("BUTTON_DOWN", e => {
   log("button A Down", e.hit.meshName)
 
   if (e.hit.meshName === "firePlace"){

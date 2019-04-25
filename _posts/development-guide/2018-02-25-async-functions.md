@@ -81,7 +81,7 @@ Another way to run asynchronous code is to instance an event listener. Event lis
 const input = Input.instance
 
 // Subscribe to an event
-input.subscribe("BUTTON_A_DOWN", e => {
+input.subscribe("BUTTON_DOWN", e => {
   log("pointerUp works", e)
 })
 ```
