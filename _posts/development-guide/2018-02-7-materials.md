@@ -159,6 +159,16 @@ myMaterial.albedoTexture = myTexture
 myEntity.addComponent(myMaterial)
 ```
 
+While creating a texture, you can also pass additional parameters:
+
+- `hasAlpha`: Allows the texture to have transparent regions
+- `samplingMode`: Determines how pixels in the texture are stretched or compressed when rendered
+- `wrap`: Determines how a texture is tiled onto an object (CLAMP, WRAP, or MIRROR)
+
+```ts
+let smokeTexture = new Texture('textures/smoke-puff3.png',{hasAlpha: true, wrap:CLAMP})
+```
+
 #### Textures on basic textures
 
 In a `BasicMaterial` component, you can set the `texture` field to an image texture. This will render a texture that isn't affected by lighting. 

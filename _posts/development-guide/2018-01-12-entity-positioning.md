@@ -156,6 +156,7 @@ let YBillboard = new Billboard(false, true ,false)
 let ZBillboard = new Billboard(false, false ,true)
 ```
 
+Tip: To rotate an entity so that it follows the user around while at ground level, give it _Y_ axis rotation.
 
 Billboards are also very handy to add to _text_ entities, since it makes them always legible.
 
