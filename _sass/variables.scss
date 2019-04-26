@@ -2,6 +2,7 @@ $default-transition: 250ms ease;
 
 // Breakpoints
 $tablet: "(min-width: 450px)";
+$mobile-landscape: "(min-width: 568px)";
 $mid-point: "(min-width: 750px)";
 $tablet-landscape: "(min-width: 960px)";
 $desktop: "(min-width: 1096px)";
@@ -14,12 +15,12 @@ $white-color: #fff;
 $black-color: #000;
 $blue-color: #4080ff;
 $dark-gray-color: #333;
-$dark-grey: #222;
+$dark-grey: #16141A;
 $medium-grey: #777;
 $light-grey: #ccc;
 $header-color: rgba(255, 255, 255, 0.98);
 
-$action-color: $blue-color;
+$action-color: #f05;
 
 //Redesign Colors
 $docs_primary_black: #0a0f1f;
@@ -59,7 +60,7 @@ $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
 // Font Colors
-$base-font-color: #000;
+$base-font-color: #16141A;
 
 // Animations
 $base-duration: 150ms;

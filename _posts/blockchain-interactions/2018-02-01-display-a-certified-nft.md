@@ -18,7 +18,7 @@ You can display an NFT (Non-Fungible Token) that you own in your Decentraland sc
 
 <img src="/images/media/verified-nft.png" alt="nested entities" width="300"/>
 
-> Note: The NTF's image data is taken from [Opensea](https://opensea.io/), based on the token's contract and id. Currently, Opensea only supports 2D tokens such as CriptoKitties or CriptoPunks. So 3D tokens currently can't be displayed in this way.
+> Note: The NTF's image data is taken from the [OpenSea](https://opensea.io/) API, based on the token's contract and id. Note that most images from the OpenSea API are 2D, but categories like [Chainbreakers](https://opensea.io/assets/chainbreakerspresale) will return 3D assets.
 
 ## Add an NFT
 
@@ -57,6 +57,7 @@ This verification is carried out by users loading your scene, every time the ent
 
 Above the image of the token, we display a badge that certifies its authenticity. The badge glows in a pulsating pattern, providing a stamp that is difficult to falsify.
 
-> Note: If you want to display a token that you don't own, or prefer to display it without the authenticity badge, you can otherwise obtain an NFT image from [Opensea's API](https://docs.opensea.io/reference#api-overview) and set that as a texture for a material. Then you can use that material on any primitive object in the scene.
+
+> Note: If you want to display a token that you don't own, or prefer to display it without the authenticity badge, you can otherwise obtain an NFT image from [OpenSea's API](https://docs.opensea.io/reference#api-overview) and set that as a texture for a material. Then you can use that material on any primitive object in the scene.
 
 -->

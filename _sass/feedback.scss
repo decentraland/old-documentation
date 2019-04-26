@@ -142,7 +142,7 @@
 
       &.no {
         background-color: #f2f2f5;
-        color: #0d0d17;
+        color: $base-font-color;
 
         &:hover {
           background-color: #e8eaed;
@@ -150,7 +150,7 @@
       }
 
       &.yes {
-        background-color: #0d0d17;
+        background-color: $base-font-color;
         color: $white-color;
       }
     }
@@ -161,7 +161,7 @@
     font-weight: 500;
     line-height: 1.4;
     letter-spacing: 0.3px;
-    color: #0d0d17;
+    color: $base-font-color;
 
     _:-ms-lang(x),
     & {
@@ -193,7 +193,7 @@
       min-height: 44px;
       font-size: 15px;
       line-height: 1.6;
-      color: #0d0d17;
+      color: $base-font-color;
       font-family: $base-font-family;
       word-spacing: normal;
       letter-spacing: normal;

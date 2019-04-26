@@ -28,7 +28,7 @@
   }
 
   &.sent {
-    transition: all 400ms ease;
+    transition: background-size 400ms ease;
     background-size: 120%;
 
     .newsletter__content,
@@ -72,7 +72,7 @@
       font-size: 17px;
       line-height: 1.53;
       letter-spacing: -0.2px;
-      color: #0d0d17;
+      color: $base-font-color;
       margin-bottom: 0;
     }
   }

@@ -46,6 +46,11 @@ jobs:
           command: |
             JEKYLL_ENV=production bundle exec jekyll build
 
+      - run:
+          name: take snapshots
+          command: |
+            JEKYLL_ENV=production percy snapshot _site/
+
       - save_cache:
           paths:
             - _site
