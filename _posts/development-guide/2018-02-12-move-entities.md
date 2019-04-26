@@ -20,8 +20,8 @@ The easiest way to move an entity is to use the `translate()` function to change
 ```ts
 export class SimpleMove {
   update() {
-    let transform = myEntity.get(Transform)
-    let distance = Vector3.Forward.scale(0.1)
+    let transform = myEntity.getComponent(Transform)
+    let distance = Vector3.Forward().scale(0.1)
     transform.translate(distance)
   }
 }
@@ -29,8 +29,8 @@ export class SimpleMove {
 engine.addSystem(new SimpleMove())
 
 const myEntity = new Entity()
-myEntity.set(new Transform())
-myEntity.set(new BoxShape())
+myEntity.addComponent(new Transform())
+myEntity.addComponent(new BoxShape())
 
 engine.addEntity(myEntity)
 ```
@@ -39,25 +39,7 @@ In this example we're moving an entity by 0.1 meters per frame.
 
 `Vector3.Forward()` returns a vector that faces forward and measures 1 meter in length. In this example we're then scaling this vector down to 1/10 of its length with `scale()`. If our scene has 30 frames per second, the entity is moving at 3 meters per second in speed.
 
-## Adjust movement to delay time
-
-Suppose that the user running your scene is struggling to keep up with the pace of the frame rate. That could result in the movement appearing jumpy, as not all frames are evenly timed but each moves the entity in the same amount.
-
-You can compensate for this uneven timing by using the `dt` parameter to adjust the scale the movement.
-
-```ts
-export class SimpleMove {
-  update(dt: number) {
-    let transform = myEntity.get(Transform)
-    let distance = Vector3.Forward.scale(dt * 3)
-    transform.translate(distance)
-  }
-}
-// (...)
-```
-
-The example above keeps movement at approximately the same speed as before, even if the frame rate drops. When running at 30 frames per second, the value of `dt` is 1/30 .
-
+ <img src="/images/media/gifs/move.gif" alt="Move entity" width="300"/>
 
 ## Rotate
 
@@ -71,16 +53,18 @@ The `rotate()` function takes two arguments:
 ```ts
 export class SimpleRotate {
   update() {
-    let transform = myEntity.get(Transform)
-    let distance = dt * 3
-    transform.rotate(Vector3.Left(), distance)
+    let transform = myEntity.getComponent(Transform)
+    transform.rotate(Vector3.Left(), 3)
   }
 }
 
 engine.addSystem(new SimpleRotate())
 ```
 
-> Tip: To make an entity always rotate to face the user, you can use the `billboardMode` setting. See [Set entity poision]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}#face-the-user) for details.
+> Tip: To make an entity always rotate to face the user, you can add a [`Billboard` component]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}#face-the-user).
+
+
+ <img src="/images/media/gifs/rotate.gif" alt="Move entity" width="300"/>
 
 ## Rotate over a pivot point
 
@@ -90,37 +74,35 @@ When rotating the parent entity, its children will be all rotated using the pare
 
 ```ts
 // Create entity you wish to rotate
-const door = new Entity()
+const myEntity = new Entity()
+myEntity.addComponent(redMaterial)
+myEntity.addComponent(new BoxShape())
 
 // Create the pivot entity
 const pivot = new Entity()
 
 // Position the pivot entity on the pivot point of the rotation
-pivot.set(new Transform({
-  position: new Vector3(4, 1, 3)
+pivot.addComponent(new Transform({
+  position: new Vector3(3, 2, 3)
 }))
 
 // Set pivot as the parent
-door.setParent(pivot)
+myEntity.setParent(pivot)
 
 // Position child in reference to parent
-door.set(new Transform({
-  position: new Vector3(0.5, 0, 0)
+myEntity.addComponent(new Transform({
+  position: new Vector3(0, 0.5, 0.5)
 }))
 
-// Rotate the parent. The child rotates using the parent's location as a pivot point.
-pivot.get(Transform).rotation.setEuler(0, 90, 0)
-
 // Add both entities to the engine
-engine.addEntity(door)
+engine.addEntity(myEntity)
 engine.addEntity(pivot)
 
 // Define a system that updates the rotation on every frame
 export class PivotRotate {
   update() {
-    let transform = myEntity.get(pivot)
-    let distance = dt * 3
-    transform.rotate(Vector3.Left(), distance )
+    let transform = pivot.getComponent(Transform)
+    transform.rotate(Vector3.Left(), 3 )
   }
 }
 
@@ -129,6 +111,29 @@ engine.addSystem(new PivotRotate())
 ```
 
 Note that in this example, the system is rotating the `pivot` entity, that's a parent of the `door` entity.
+
+ <img src="/images/media/gifs/pivot-rotate.gif" alt="Move entity" width="300"/>
+
+## Adjust movement to delay time
+
+Suppose that the user running your scene is struggling to keep up with the pace of the frame rate. That could result in the movement appearing jumpy, as not all frames are evenly timed but each moves the entity in the same amount.
+
+You can compensate for this uneven timing by using the `dt` parameter to adjust the scale the movement.
+
+```ts
+export class SimpleMove {
+  update(dt: number) {
+    let transform = myEntity.getComponent(Transform)
+    let distance = Vector3.Forward.scale(dt * 3)
+    transform.translate(distance)
+  }
+}
+// (...)
+```
+
+The example above keeps movement at approximately the same speed as the movement example above, even if the frame rate drops. When running at 30 frames per second, the value of `dt` is 1/30.
+
+You can also smoothen rotations in the same way by multiplying the rotation amount by `dt`.
 
 ## Move between two points
 
@@ -168,8 +173,8 @@ export class LerpData {
 // a system to carry out the movement
 export class LerpMove {
   update(dt: number) {
-    let transform = myEntity.get(Transform)
-    let lerp = myEntity.get(LerpData)
+    let transform = myEntity.getComponent(Transform)
+    let lerp = myEntity.getComponent(LerpData)
     if (lerp.fraction < 1) {
       transform.position = Vector3.Lerp(
         lerp.origin,
@@ -185,15 +190,17 @@ export class LerpMove {
 engine.addSystem(new LerpMove())
 
 const myEntity = new Entity()
-myEntity.set(new Transform())
-myEntity.set(new BoxShape())
+myEntity.addComponent(new Transform())
+myEntity.addComponent(new BoxShape())
 
-myEntity.set(new LerpData())
-myEntity.get(LerpData).origin = new Vector3(1, 1, 1)
-myEntity.get(LerpData).target = new Vector3(8, 1, 3)
+myEntity.addComponent(new LerpData())
+myEntity.getComponent(LerpData).origin = new Vector3(1, 1, 1)
+myEntity.getComponent(LerpData).target = new Vector3(8, 1, 3)
 
 engine.addEntity(myEntity)
 ```
+
+ <img src="/images/media/gifs/lerp-move.gif" alt="Move entity" width="300"/>
 
 ## Rotate between two angles
 
@@ -230,12 +237,13 @@ export class SlerpData {
 export class SlerpRotate implements ISystem {
  
   update(dt: number) {
-      let slerp = myEntity.get(SlerpData)
-      let transform = myEntity.get(Transform)
-
-      slerp.fraction += dt
-      let rot = Quaternion.Slerp(slerp.originRot, slerp.targetRot, slerp.fraction)
-      transform.rotation = rot   
+      let slerp = myEntity.getComponent(SlerpData)
+      let transform = myEntity.getComponent(Transform)
+      if (slerp.fraction < 1) {
+        let rot = Quaternion.Slerp(slerp.originRot, slerp.targetRot, slerp.fraction)
+        transform.rotation = rot  
+        slerp.fraction += dt/5 
+      }
   }
 }
 
@@ -243,18 +251,19 @@ export class SlerpRotate implements ISystem {
 engine.addSystem(new SlerpRotate())
 
 const myEntity = new Entity()
-myEntity.set(new Transform())
-myEntity.set(new BoxShape())
+myEntity.addComponent(new Transform())
+myEntity.addComponent(new BoxShape())
 
-myEntity.set(new SlerpData())
-myEntity.get(SlerpData).originRot = Quaternion.Euler(0, 90, 0)
-myEntity.get(SlerpData).targetRot = Quaternion.Euler(0, 0, 0)
+myEntity.addComponent(new SlerpData())
+myEntity.getComponent(SlerpData).originRot = Quaternion.Euler(0, 90, 0)
+myEntity.getComponent(SlerpData).targetRot = Quaternion.Euler(0, 0, 0)
 
 engine.addEntity(myEntity)
 ```
 
 > Note: You could instead represent the rotation with `Vector3` values and use a `Lerp()` function, but that would imply a conversion from `Vector3` to `Quaternion` on each frame. Rotation values are internally stored as quaternions in the `Transform` component, so it's more efficient to work with quaternions.
 
+ <img src="/images/media/gifs/lerp-rotate.gif" alt="Move entity" width="300"/>
 
 ## Change scale between two sizes
 
@@ -276,6 +285,47 @@ let newScale = Scalar.Lerp(originScale, targetScale, 0.6)
 ```
 To implement this lerp in your scene, we recommend creating a custom component to store the necessary information. You also need to define a system that implements the gradual scaling in each frame.
 
+```ts
+@Component("lerpData")
+export class LerpSizeData {
+  origin: number = 0.1
+  target: number = 2
+  fraction: number = 0
+}
+
+// a system to carry out the movement
+export class LerpSize {
+  update(dt: number) {
+    let transform = myEntity.getComponent(Transform)
+    let lerp = myEntity.getComponent(LerpSizeData)
+    if (lerp.fraction < 1) {
+      let newScale = Scalar.Lerp(
+        lerp.origin,
+        lerp.target,
+        lerp.fraction
+      )
+      transform.scale.setAll(newScale)
+      lerp.fraction += dt / 6
+    }
+  }
+}
+
+// Add system to engine
+engine.addSystem(new LerpSize())
+
+
+const myEntity = new Entity()
+myEntity.addComponent(new Transform())
+myEntity.addComponent(new BoxShape())
+
+myEntity.addComponent(new LerpSizeData())
+myEntity.getComponent(LerpSizeData).origin = 0.1
+myEntity.getComponent(LerpSizeData).target = 2
+
+engine.addEntity(myEntity)
+```
+
+ <img src="/images/media/gifs/lerp-scale.gif" alt="Move entity" width="300"/>
 
 ## Move at irregular speeds between two points
 
@@ -289,15 +339,13 @@ export class LerpData {
   origin: Vector3 = Vector3.Zero()
   target: Vector3 = Vector3.Zero()
   fraction: number = 0
-  time: number = 0
 }
 
 export class LerpMove {
   update(dt: number) {
-    let transform = lerpEntity.get(Transform)
-    let lerp = lerpEntity.get(LerpData)
-    lerp.time += dt / 6
-    lerp.fraction = Math.sin(lerp.time)
+    let transform = myEntity.getComponent(Transform)
+    let lerp = myEntity.getComponent(LerpData)
+    lerp.fraction += (dt + lerp.fraction)/10
     transform.position = Vector3.Lerp(
       lerp.origin,
       lerp.target,
@@ -305,9 +353,14 @@ export class LerpMove {
     )
   }
 }
+
+// Add system to engine
+engine.addSystem(new LerpMove())
 ```
 
-The example above adds a `time` field to the custom component. The `time` field is incremented on every frame, and then `fraction` is set to the _sin_ of that value. Because of the nature of the _sin_ operation, the entity will lerp back and forth between both points.
+The example above is just like the linear lerp example we've shown before, but the `fraction` field is increased in a non-linear way, resulting in a curve moves the entity by greater increments on each frame.
+
+ <img src="/images/media/gifs/lerp-speed-up.gif" alt="Move entity" width="300"/>
 
 ## Follow a path
 
@@ -331,8 +384,8 @@ export class PathData {
 
 export class PatrolPath {
   update(dt: number) {
-    let transform = myEntity.get(Transform)
-    let path = myEntity.get(PathData)
+    let transform = myEntity.getComponent(Transform)
+    let path = myEntity.getComponent(PathData)
     if (path.fraction < 1) {
       transform.position = Vector3.Lerp(
         path.origin,
@@ -355,9 +408,9 @@ export class PatrolPath {
 engine.addSystem(new PatrolPath())
 
 const myEntity = new Entity()
-myEntity.set(new Transform())
-myEntity.set(new BoxShape())
-myEntity.set(new PathData())
+myEntity.addComponent(new Transform())
+myEntity.addComponent(new BoxShape())
+myEntity.addComponent(new PathData())
 
 engine.addEntity(myEntity)
 ```
@@ -365,6 +418,8 @@ engine.addEntity(myEntity)
 The example above defines a 3D path that's made up of four 3D vectors. We also define a custom `PathData` component, that includes the same data used by the custom component in the _lerp_ example above, but adds a `nextPathIndex` field to keep track of what vector to use next from the path.
 
 The system is very similar to the system in the _lerp_ example, but when a lerp action is completed, it sets the `target` and `origin` fields to new values. If we reach the end of the path, we return to the first value in the path.
+
+ <img src="/images/media/gifs/lerp-path.gif" alt="Move entity" width="300"/>
 
 <!--
 

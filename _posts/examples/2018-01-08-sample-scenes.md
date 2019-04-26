@@ -13,6 +13,19 @@ To get you up and running, and to illustrate what kind of experiences you can bu
 
 Some of these scenes feature a link to a version of the scene that's deployed on a remote server. There you can interact with it just as if you were running `dcl start` locally.
 
+## Clone an example scene
+
+Instead of creating a new scene from scratch, you can clone one of the existing example scenes and use that as a starting point.
+
+To do so:
+
+1. Find an example you like from the ones listed below. 
+2. Open the **Code** link to visit its GitHub repo.
+3. From there you can either:
+   1. _Fork the repo_ to work on your own version of it, that will exist in a cloned GitHub repo that belongs to you.
+   2. Click **Clone or Download** and select to download it as a _.zip_ file, to work on the files locally, without GitHub being involved.
+
+<!--
 ## Static XML Scenes
 
 #### Static XML Scene
@@ -22,7 +35,7 @@ A completely static scene. It's built entirely using XML, which makes it easier 
 ![](/images/media/example-static.png)
 
 [Code](https://github.com/decentraland-scenes/XML-static-scene)
-
+-->
 
 ## Essentials
 
@@ -34,7 +47,7 @@ A simple static scene that just displays 3D models. The 3D models include animat
 
 [Code](https://github.com/decentraland-scenes/the-munastery)
 
-[Explore the scene](https://the-munastery-lwbodqmcwg.now.sh/?position=-13%2C-14)
+[Explore the scene](https://the-munastery-bsapskmwaq.now.sh)
 
 
 #### Hypno wheels
@@ -143,6 +156,17 @@ A scene with animations, sound, and tiles on the floor that randomly change colo
 [Explore the scene]()
 -->
 
+#### Smoke
+
+This scene shows how to handle a particle system to create smoke. Each smoke puff is an entity that moves in a specific direction. These entities are reused from an object pool instead of creating a new entity for each. When an entity floats away from the fire, it's removed from the scene and waits in the object pool to be reused.
+
+![](/images/media/example-smoke.png)
+
+[Code](https://github.com/decentraland-scenes/Smoke)
+
+[Explore the scene](https://smoke-iqntujtjgb.now.sh)
+
+
 #### Memory game
 
 A Simon Says game, with click interactions and sequenced actions. The game generates a random sequence of colors and you must click buttons to match those.
@@ -187,7 +211,20 @@ A scene that shows a character walking along a fixed path, using lerp over each 
 Read a tutorial blog post about this scene:
 
 - [Part 1]((https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5))
-- Part 2 (coming soon)
+- [Part 2](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5-part-2)
+
+#### Swimming shark
+
+This scene shows a shark moving around in circles along a curved circular path, using lerp over each segment of the path. It also rotates smoothly with a spherical lerp function.
+
+The speed of the shark and the intensity with which it swims depends on the steepness of the segment.
+
+![](/images/media/example-shark-animation.png)
+
+[Code](https://github.com/decentraland-scenes/Swimming-shark)
+
+[Explore the scene](https://swimming-shark-mfakqegnto.now.sh)
+
 
 ## Network connections
 
@@ -234,6 +271,28 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 <!--
 [Explore the scene]()
 -->
+
+## Blockchain transactions
+
+#### MANA Transfer
+
+A simple scene that uses the MANA smart contract and the EthConnect library to send the user MANA on the Ropsten test network.
+
+[Code](https://github.com/decentraland-scenes/MANA-Transaction)
+
+[Explore the scene](https://mana-transaction-sxjmryeayj.now.sh)
+
+#### MANA Burning Altar
+
+Fees collected by the Marketplace are stored in a wallet. This scene interacts with the MANA contract to burn this MANA that was collected.
+
+The flame is created as a particle system, handling various entities that spiral around as they change colors.
+
+![](/images/media/example-mana-altar.png)
+
+[Code](https://github.com/decentraland-scenes/MANA-Burning-Altar)
+
+[Explore the scene](https://mana-altar-master-iehcppnlvz.now.sh/)
 
 ## Advanced
 

@@ -222,6 +222,17 @@ To swap the material:
 
 3D models have a _mesh_ composed of triangular _faces_. These faces meet each other on _edges_ (the lines along which they touch) and _vertices_ (the points where their corners join).
 
+#### Scene limits
+
+All 3D models in your scene must fit within the limits of its parcels. If they extend beyond these limits when running a preview, the meshes will be marked in red and bounding boxes will be highlighted in white.
+
+For performance reasons, Decentraland checks the positions of the _bounding boxes_ around meshes (not the vertices in the meshes themselves) to verify that they are within the scene's limits. 
+
+If you have a model that has all of its vertices neatly inside the scene area, but that has large bounding boxes that are mostly empty and extend beyond the scene limits, the entire model will be marked as outside the scene limits.
+
+To avoid this problem, you can clean up your 3D models to reset positions and rotations of meshes so that bounding boxes don't extend beyond the meshes they wrap.
+
+
 #### Smooth geometries
 
 You can configure a mesh to be _smooth_. This tells the engine to render its shape as if there was an infinite number of intermediate faces rounding it off. This setting can greatly help you reduce the number of triangles needed to make a shape appear to be rounded.
@@ -297,15 +308,15 @@ Now when users view the stairs in your scene, they’ll see the more elaborate m
 
 ## Animations
 
-3D models can be animated in a Decentraland scene using skeletal animations. All animations of a 3D model must be embedded inside its _glTF_ file, you can't reference animations in separate files.
+3D models can be animated in a Decentraland scene using animations. All animations of a 3D model must be embedded inside its _glTF_ file, you can't reference animations in separate files.
 
-Currently, other forms of animations that aren't based on armatures are not supported.
+Most 3D model animations are [_skeletal animations_](https://en.wikipedia.org/wiki/Skeletal_animation). These animations simplify the complex geometry of the model into a "stick figure", linking every vertex in the mesh to the closest _bone_ in the _skeleton_. Modelers adjust the skeleton into different poses, and the mesh stretches and bends to follow these movements.
+
+As an alternative, _vertex animations_ animate a model without the need of a skeleton. These animations specify the position of each vertex in the model directly. Decentraland supports these animations as well.
 
 There's no specific rule about the names animations must have. You can verify the names of the animations in an exported model by opening the contents of a _.gltf_ file with a text editor. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
 You can include any number of animations in a _glTF model_. All animations in a _glTF_ model are disabled by default when loading the model into a Decentraland scene. See [3D model animations]({{ site.baseurl }}{% post_url /development-guide/2018-02-13-3d-model-animations %}) for instructions on how to activate and handle animations in a scene.
-
-> Note: There currently isn't a way to change the frame rate of an animation displayed in your scene, the speed is fixed to a default setting. To change an animation's speed, you must change the number of frames.
 
 In a Decentraland scene, you can use `weight` to blend several animations or to make an animation more subtle.
 

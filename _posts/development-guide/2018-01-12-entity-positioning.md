@@ -21,15 +21,15 @@ You can set the _position_, _rotation_ and _scale_ of an entity by using the `Tr
 const ball = new Entity()
 
 // Add a transform component to the entity
-ball.add(new Transform())
-ball.get(Transform).position.set(5, 1, 5)
-ball.get(Transform).scale.set(2, 2, 2)
+ball.addComponent(new Transform())
+ball.getComponent(Transform).position.set(5, 1, 5)
+ball.getComponent(Transform).scale.set(2, 2, 2)
 ```
 
 For brevity, you can also create a `Transform` entity and give it initial values in a single statement, passing it an object that can optionally include _position_, _rotation_ and _scale_ properties.
 
 ```ts
-myEntity.add(new Transform({ 
+myEntity.addComponent(new Transform({ 
     position: new Vector3(5, 1, 5), 
     rotation: new Quaternion(0, 0, 0, 0),
     scale: new Vector3(2, 2, 2)
@@ -63,13 +63,15 @@ myTransform.position = new Vector3(5, 1, 5)
 When setting a position, keep the following considerations in mind:
 
 
-- The numbers in a position vector represent _meters_.
+- The numbers in a position vector represent _meters_ (unless the entity is a child of a scaled entity).
 
-  > Note: If you're positioning a child of a parent entity that has a scale that's different from 1, the position vector is scaled accordingly.
+- A scene that is made up of a single parcel measures 16m x 16m. The center of the scene (at ground level) is at `x:8, y:0, z:8`. If the scene is made up of multiple parcels, then the center will vary depending on their arrangement.
 
 - `x:0, y:0, z:0` refers to the _South-East_ corner of the scene's base parcel, at ground level.
 
   > Tip: When viewing a scene preview, a compass appears in the (0,0,0) point of the scene with labels for each axis as reference.
+
+  > Tip: Take your _left_ hand, your index finger (pointing forward) is the _z_ axis, your middle finger (pointing sideways) is the _x_ axis, and your thumb (pointing up) is the _y_ axis.
 
   > Note: You can change the base parcel of a scene by editing the `base` attribute of _scene.json_.
 
@@ -116,38 +118,53 @@ When using a _3D vector_ to represent Euler angles, _x_, _y_ and _z_ represent t
 When you retrieve the rotation of an entity, it returns a quaternion by default. To obtain the rotation expressed as in Euler angles, get the `.eulerAngles` field:
 
 ```ts
-myEntity.get(Transform).rotation.eulerAngles
+myEntity.getComponent(Transform).rotation.eulerAngles
 ```
 
 ## Face the user
 
-You can set a shape component to act as a _billboard_, this means that it will always rotate the entity to face the user. All components for primitive shapes and glTF models have a `billboard` field to allow you to set this.
+Add a _Billboard_ component to an entity so that it always rotates to face the user.
 
-Billboards were a common technique used in 3D games of the 90s, where most entities were 2D planes that always faced the player, but the same can also be used to rotate a 3D model.
+Billboards were a common technique used in 3D games of the 90s, where most entities were 2D planes that always faced the player. The same idea can also be used to rotate a 3D model.
 
-You can also choose to only rotate the shape in this way in one of its axis. For example, if you set the billboard mode of a cube to only rotate in the Y axis, it will follow the user when moving at ground level, but the user will be able to look at it from above or from below.
-
-Set the `billboard` field with a value from the `BillboardMode` enum. For example, to rotate in all axis, set the value to `BillboardMode.BILLBOARDMODE_ALL`.
-
-- `BILLBOARDMODE_NONE` (0): No movement on any axis (default value)
-- `BILLBOARDMODE_X` (1): Only move in the **X** axis, the rotation on other axis is fixed.
-- `BILLBOARDMODE_Y` (2): Only move in the **Y** axis, the rotation on other axis is fixed.
-- `BILLBOARDMODE_Z` (4): Only move in the **Z** axis, the rotation on other axis is fixed.
-- `BILLBOARDMODE_ALL` (7): Rotate on all axis to follow the user.
 
 ```ts
-// Create a transform
-let box = new BoxShape()
-
-// Set its billboard mode
-box.billboard = BillboardMode.BILLBOARDMODE_Y
+let box = new Entity()
+box.addComponent(new BoxShape())
+box.addComponent(new Transform({
+  position: new Vector3(5, 1, 5)
+}))
+box.addComponent(new Billboard())
+engine.addEntity(box)
 ```
+
+You can choose which axis to rotate as a billboard. For example, if the Billboard of a cube only rotates in the Y axis, it will follow the user when moving at ground level, but the user will be able to look at it from above or from below.
+
+The three optional parameters when creating a `Billboard` component are booleans that refer to the _x_, _y_, and _z_ axis. They are all `true` by default.
+
+```ts
+// rotate on all three axis
+let FullBillboard = new Billboard())
+
+// rotate only in the X axis
+let XBillboard = new Billboard(true, false ,false)
+
+// rotate only in theY axis
+let YBillboard = new Billboard(false, true ,false)
+
+// rotate only in the Z axis
+let ZBillboard = new Billboard(false, false ,true)
+```
+
+Tip: To rotate an entity so that it follows the user around while at ground level, give it _Y_ axis rotation.
 
 Billboards are also very handy to add to _text_ entities, since it makes them always legible.
 
-If an entity has both a Transform component configured with a specific `rotation` and also a shape component with a `billboard` value other than 0, the user will see the entity behaving according to the billboard mode.
+The `rotation` value of the entity's `Transform` component doesn't change as the billboard follows users around.
 
-> Note: If there are multiple users present at the same time, each will see the entities with billboard mode facing themselves.
+If an entity has both a `Billboard` component and `Transform` component with `rotation` values, users will see the entity rotating as a billboard. If the billboard doesn't affect all axis, the remaining axis will be rotated according to the `Transform` component.
+
+> Note: If there are multiple users present at the same time, each will see the entities with billboard mode facing them.
 
 ## Face a set of coordinates
 
@@ -202,7 +219,7 @@ When an entity is nested inside another, the child entities inherit components f
 
 If a parent entity is scaled, all position values of its children are also scaled.
 
-```tsx
+```ts
 // Create entities
 const parentEntity = new Entity()
 const childEntity = new Entity()
@@ -216,14 +233,14 @@ let parentTransform = new Transform({
   scale: new Vecot3(0.5, 0.5, 0.5)
 })
 
-parentEntity.add(parentTransform)
+parentEntity.addComponent(parentTransform)
 
 // Create a transform for the child
 let childTransform = new Transform({
   position: new Vector3(0, 1, 0)
 })
 
-childEntity.add(childTransform)
+childEntity.addComponent(childTransform)
 
 // Add entities to the engine
 engine.addEntity(childEntity)

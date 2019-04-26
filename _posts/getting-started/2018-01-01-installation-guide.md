@@ -80,8 +80,10 @@ To update the version of the Decentraland SDK used by a project:
 
     * If the value is `latest`, keep it.
     * If the version points to a number or a build that isn't the latest version of the SDK, change it to `latest`.
+    <!--
     * If your project is a [static XML scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-13-xml-static-scenes %}) then you won't find this field. Instead, set the field `decentraland-api` to `latest`.
-    * If your scene is written in TypeScript and you can't find the field `decentraland-ecs`, but do find the field `decentraland-api`, then your project is written with a deprecated version that's older than `5.0`. Create a new project with the CLI and [migrate the content manually](https://decentraland.org/blog/tutorials/sdk-migration) to it.
+    -->
+    * If you can't find the field `decentraland-ecs`, but do find the field `decentraland-api`, then your project is written with a deprecated version that's older than `5.0`. Create a new project with the CLI and [migrate the content manually](https://decentraland.org/blog/tutorials/sdk-migration) to it.
 
 3. Delete the file `package-lock.json` and the folder `node-modules` from the project.
 4. Run the scene preview with `dcl start`. All the dependencies should be automatically reinstalled, according to the versions listed in `package.json`.

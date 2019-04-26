@@ -61,7 +61,7 @@ executeTask(async () => {
 The `querySceneLimits()` function returns a promise of an object with the following properties, all of type _number_.
 
 
-```tsx
+```ts
 // import controller
 import { querySceneLimits } from '@decentraland/EntityController'
 
@@ -110,7 +110,7 @@ executeTask(async () => {
 The `querySceneMetrics()` function returns a promise of an object with the following properties, all of type _number_.
 
 
-```tsx
+```ts
 // import controller
 import { querySceneMetrics } from '@decentraland/EntityController'
 
@@ -143,6 +143,10 @@ For example, if your scene is only rendering one box entity at the time, logging
 ## Scene boundaries
 
 When running a preview, any content that is located outside the parcel boundaries is highlighted in red when rendered. If any content is outside these boundaries, you won't be allowed to deploy this scene to Decentraland.
+
+If the tip a large object leaves the boundaries, this object is considered out of bounds too.
+
+A single parcel scene measures 16 meters x 16 meters. If the scene has multiple parcels, the dimensions vary depending on the arrangement of the parcels.
 
 ## Shader limitations
 

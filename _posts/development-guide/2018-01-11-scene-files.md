@@ -11,7 +11,7 @@ set: development-guide
 set_order: 4
 ---
 
-After [creating a new scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-03-create-scene %}) using the CLI, the scene folder will have a series of files with default content.
+After [creating a new scene(https://docs.decentraland.org/#create-your-first-scene) using the CLI, the scene folder will have a series of files with default content.
 
 ## Default files in a local scene
 
@@ -41,7 +41,7 @@ export class RotatorSystem {
   update() {
     // Cycle over the entities in the component group
     for (let entity of group.entities) {
-      const transform = entity.get(Transform)
+      const transform = entity.getComponent(Transform)
       transform.rotation.y += 2
     }
   }
@@ -51,10 +51,10 @@ export class RotatorSystem {
 const cube = new Entity()
 
 // Add a cube shape to the entity
-cube.add(new BoxShape())
+cube.addComponent(new BoxShape())
 
 // Add a transform component to the entity
-cube.add(new Transform({
+cube.addComponent(new Transform({
   position: new Vector3(5, 0, 5)
 }))
 
@@ -118,7 +118,7 @@ For example, you might like to keep the Blender files for the 3D models in your 
 
 | What to ignore | Example      | Description                                                                             |
 | -------------- | ------------ | --------------------------------------------------------------------------------------- |
-| Specific files | `BACKUP.tsx` | Ignores a specific file                                                                 |
+| Specific files | `BACKUP.ts` | Ignores a specific file                                                                 |
 | Folders        | `drafts/`    | Ignores entire contents of a folder and its subfolders                                  |
 | Extensions     | `*.blend`    | Ignores all files with a given extension                                                |
 | Name sections  | `test*`      | Ignores all files with names that match the query. In this case, that start with _test_ |

@@ -40,7 +40,7 @@ Our SDK includes the following components:
 - **The Decentraland CLI** (Command Line Interface): Use it to [generate]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) new Decentraland scenes locally on your own machine, preview them and upload them to the content server.
 - **The Decentraland API**: A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between users or other applications.
 
-- **Scene examples**: Take inspiration and coding best practices from the [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
+- **Scene examples**: Take inspiration and coding best practices from the [scene examples]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
 
 ## CLI Requirements
 
@@ -58,17 +58,19 @@ These early releases of the SDK are intended for users that are comfortable work
 
 #### TypeScript (recommended)
 
-We use [TypeScript (.tsx)](https://www.typescriptlang.org/docs/handbook/jsx.html)
+We use [TypeScript (.ts)](https://www.typescriptlang.org/docs/handbook/jsx.html)
 to create our scenes.
 
 TypeScript is a superset of JavaScript, so if you're familiar with JavaScript you'll find it's almost the same, but TypeScript allows you to employ object-oriented programming and type declarations. Features like autocomplete and type-checking speed up development times and allow for the creation of a more solid codebase. These features are all key components to a positive developer experience.
+
+<!--
 
 #### XML
 
 For scenes that only render motionless content and that won't be interactive, you can use [XML](https://en.wikipedia.org/wiki/XML). XML takes a lot less effort to learn and use, but it's more limited. See [XML static scenes]({{ site.baseurl }}{% post_url /development-guide/2018-01-13-xml-static-scenes %}) for an overview.
 
 We encourage developers to build their scenes using TypeScript, as that allows for far more interesting possibilities.
-
+-->
 
 #### Other languages
 
@@ -78,7 +80,7 @@ You can use another tool or language instead of TypeScript and compile it into J
 
 The content you deploy to your LAND is called a **scene**. A scene is an interactive program that renders content, this could be a game, an interactive experience, an art gallery, whatever you want!
 
-Scenes are deployed to virtual LAND in Decentraland. LAND is a scarce and non-fungible asset maintained in an Ethereum smart contract. Deploy to a single **parcel**, a 10 meter by 10 meter piece of LAND, or to an **estate**, comprised of multiple adjacent parcels.
+Scenes are deployed to virtual LAND in Decentraland. LAND is a scarce and non-fungible asset maintained in an Ethereum smart contract. Deploy to a single **parcel**, a 16 meter by 16 meter piece of LAND, or to an **estate**, comprised of multiple adjacent parcels.
 
 We are developing the web client that will allow users to explore Decentraland. All of the content you upload to your LAND will be rendered and viewable through this client. We have included a preview tool in the SDK so that you can preview, test, and interact with your content in the meantime.
 
@@ -152,7 +154,7 @@ export class RotatorSystem implements ISystem {
   update() {
     // The function iterates over all the entities in myGroup
     for (let entity of myGroup.entities) {
-      const transform = entity.get(Transform)
+      const transform = entity.getComponent(Transform)
       transform.rotate(Vector3.Left(), 0.1)
     }
   }
@@ -165,12 +167,12 @@ engine.addSystem(new RotatorSystem())
 const cube = new Entity()
 
 // Give the entity a transform component
-cube.add(new Transform({
+cube.addComponent(new Transform({
     position: new Vector3(5, 1, 5)
   }))
 
 // Give the entity a box shape
-cube.add(new BoxShape())
+cube.addComponent(new BoxShape())
 
 // Add the entity to the engine
 engine.addEntity(cube)

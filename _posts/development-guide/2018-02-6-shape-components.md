@@ -35,14 +35,14 @@ See [Component reference](https://github.com/decentraland/ecs-reference) for mor
 To apply a component to an entity, you can instance a new component and assign it all in one operation:
 
 ```ts
-myEntity.add(new SphereShape())
+myEntity.addComponent(new SphereShape())
 ```
 
 Or you can first create the component instance and then assign it to the entity.
 
 ```ts
 let shpere = new SphereShape()
-myEntity.add(sphere)
+myEntity.addComponent(sphere)
 ```
 
 Primitive shapes don't include materials. To give it a color or a texture, you must assign a [material component]({{ site.baseurl }}{% post_url /development-guide/2018-02-7-materials %}) to the same entity.
@@ -55,7 +55,7 @@ To add an external model into a scene, add a `GLTFShape` component to an entity 
 
 
 ```ts
-myEntity.add(new GLTFShape("models/House.gltf"))
+myEntity.addComponent(new GLTFShape("models/House.gltf"))
 ```
 
 Since the `src` field is required, you must give it a value when constructing the component.
@@ -107,7 +107,7 @@ Entities don't use collisions by default. Depending on the type of the shape com
   ```ts
   let box = new BoxShape()
   box.withCollisions = true
-  myEntity.add(box)
+  myEntity.addComponent(box)
   ```
   > Note: Planes only block movement in one direction. 
 
@@ -128,8 +128,8 @@ All components for primitive shape and 3D models are visible by default.
 
 ```ts
 const myEntity = new Entity()
-myEntity.add(new BoxShape())
-myEntity.get(BoxShape).visible = false
+myEntity.addComponent(new BoxShape())
+myEntity.getComponent(BoxShape).visible = false
 ```
 
 ## Optimize 3D models
@@ -138,8 +138,8 @@ To ensure that 3D models in your scene load faster and take up less memory, foll
 
 - Save your models in _.glb_ format, which is a lighter version of _.gltf_.
 - If you have multiple models that share the same textures, export your models with textures in a separate file. That way multiple models can refer to a single texture file that only needs to be loaded once.
-- If you have multiple entities using the same 3D model and no animations, instance a single `GLTFShape` component and assign that same one to the entities that will use it.
-- If your scene has entities that appear and disappear, it might be a good idea to pool these entities and keep them already defined but removed from the engine until needed. This will help them appear faster, the trade-off is that they will occupy memory when not in use. See ({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}#pooling-entities-and-components)
+- If you have multiple entities using the same 3D model, instance a single `GLTFShape` component and assign that same one to the entities that will use it.
+- If your scene has entities that appear and disappear, it might be a good idea to pool these entities and keep them already defined but removed from the engine until needed. This will help them appear faster, the trade-off is that they will occupy memory when not in use. See [entities and components]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}#pooling-entities-and-components)
 
 ## Reuse shapes
 
@@ -159,11 +159,11 @@ const mySecondEntity = new Entity()
 const myThirdEntity = new Entity()
 
 // Assign shape component to entities
-myEntity.add(house)
-mySecondEntity.add(house)
-myThirdEntity.add(house)
+myEntity.addComponent(house)
+mySecondEntity.addComponent(house)
+myThirdEntity.addComponent(house)
 ```
 
-Each entity that shares a shape can apply different scales, rotations or even materials (in the case of primitives) without affecting how the other entities are being rendered.
+Each entity that shares a shape can apply different scales, rotations or even materials (in the case of primitives) without affecting how the other entities are being rendered. 
 
-Reusing shape components is often advisable, except for 3D models that you plan to animate. If you animate a 3D model that's shared amongst multiple entities, all the entities will move together. If you want to be able to animate entities individually, each will have to own a separate `GLTFComponent` to keep track of what part of the animation is currently being played.
+Entities that share a 3D model instance can also have animations that run independently of each other. Each must have a separate `Animator` component, with separate `AnimationClip` objects to keep track of what part of the animation is currently being played. See [3D model animations]({{ site.baseurl }}{% post_url /development-guide/2018-02-13-3d-model-animations %})

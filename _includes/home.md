@@ -1,3 +1,4 @@
+
 # Let’s build the metaverse together
 
 ### The Decentraland SDK provides everything you need to build interactive 3D content for Decentraland.
@@ -22,7 +23,7 @@
   <a href="{{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}">
     <div>
       <div class="image"><img src="/images/home/3.png"/></div>
-      <div class="title">Sample scenes</div>
+      <div class="title">Scene examples</div>
       <div class="description">Several code examples to get you started, and inspire your creations.</div>
     </div>
   </a>
@@ -66,8 +67,9 @@ Read more about the scene preview in [preview a scene]({{ site.baseurl }}{% post
 
 Open the `src/game.ts` file from your scene folder with the source code editor of your choice.
 
+> Tip: We recommend using a source code editor like [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/). An editor like this helps you by marking syntax errors, autocompleting while you write and even showing smart suggestions that depend on context. Also click on an object to see the full definition of its class.
 
-```tsx
+```ts
 /// --- Set up a system ---
 
 class RotatorSystem {
@@ -78,7 +80,7 @@ class RotatorSystem {
     // iterate over the entities of the group
     for (let entity of this.group.entities) {
       // get the Transform component of the entity
-      const transform = entity.get(Transform)
+      const transform = entity.getComponent(Transform)
 
       // mutate the rotation
       transform.rotate(Vector3.Up(), dt * 10) 
@@ -96,10 +98,10 @@ function spawnCube(x: number, y: number, z: number) {
   const cube = new Entity()
 
   // set a transform to the entity
-  cube.add(new Transform({ position: new Vector3(x, y, z) }))
+  cube.addComponent(new Transform({ position: new Vector3(x, y, z) }))
 
   // set a shape to the entity
-  cube.add(new BoxShape())
+  cube.addComponent(new BoxShape())
 
   // add the entity to the engine
   engine.addEntity(cube)
@@ -111,10 +113,10 @@ function spawnCube(x: number, y: number, z: number) {
 
 const cube = spawnCube(5, 1, 5)
 
-cube.add(
+cube.addComponent(
   new OnClick(() => {
-    cube.get(Transform).scale.z *= 1.1
-    cube.get(Transform).scale.x *= 0.9
+    cube.getComponent(Transform).scale.z *= 1.1
+    cube.getComponent(Transform).scale.x *= 0.9
 
     spawnCube(Math.random() * 8 + 1, Math.random() * 8, Math.random() * 8 + 1)
   })
@@ -133,10 +135,10 @@ Create a new folder under your scene’s directory named `/models`. Extract the 
 At the end of your scene’s code, add the following lines:
 
 
-```tsx
+```ts
 let avocado = new Entity()
-avocado.add(new GLTFShape("models/avocado.gltf"))
-avocado.add(new Transform({ 
+avocado.addComponent(new GLTFShape("models/avocado.gltf"))
+avocado.addComponent(new Transform({ 
     position: new Vector3(3, 1, 3), 
     scale: new Vector3(10, 10, 10)
     }))
@@ -147,11 +149,17 @@ Check your scene preview once again to see that the 3D model is now there too.
 
 ![](/images/media/landing_avocado_in_scene.png)
 
-The lines you just added create a new [entity]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}), give it a [shape]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) based on the 3D model you downloaded, and [set its position]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}).
+The lines you just added create a new [entity]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}), give it a [shape]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) based on the 3D model you downloaded, and [set its position and scale]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}).
 
-Note that the avocado you added rotates, just like all other entities in the scene. That's because the `RotatorSystem` [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) defined in this scene is iterating over every entity in the scene and rotating it. 
+Note that the avocado you added rotates, just like all other entities in the scene. That's because the `RotatorSystem` [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) that was defined in the default code of this scene is iterating over every entity in the scene and rotating it. 
 
 Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) for a high-level understanding of how Decentraland scenes function.
+
+See the **Development guide** section for more instructions about adding content to your scene.
+
+## Publish your scene
+
+Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /deploy/2018-01-07-publishing %}).
 
 ## Scene examples
 
@@ -176,7 +184,7 @@ Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-c
   </a>
 </div>
 
-See [sample scenes]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) for more scene examples.
+See [scene examples]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) for more scene examples.
 
 Also see [tutorials]({{ site.baseurl }}{% post_url /tutorials/2018-01-03-tutorials %}) for detailed instructions for building scenes like these.
 

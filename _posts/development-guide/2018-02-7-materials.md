@@ -26,7 +26,7 @@ The following example creates a material, sets some of its fields to give it a r
 ```ts
 //Create entity and assign shape
 const myEntity = new Entity()
-myEntity.set(new BoxShape())
+myEntity.addComponent(new BoxShape())
 
 //Create material and configure its fields
 const myMaterial = new Material()
@@ -35,7 +35,7 @@ myMaterial.metallic = 0.9
 myMaterial.roughness = 0.1
 
 //Assign the material to the entity
-myEntity.set(myMaterial)
+myEntity.addComponent(myMaterial)
 ```
 
 See [component reference](https://github.com/decentraland/ecs-reference)) for a full list of all the fields that can be configured in a `Material` of `BasicMatieral` component.
@@ -44,7 +44,7 @@ See [component reference](https://github.com/decentraland/ecs-reference)) for a 
 
 Instead of the `Material` component, you can define a material through the `BasicMaterial` entity. This creates materials that are shadeless and are not affected by light. This is useful for creating user interfaces that should be consistently bright, it can also be used to give your scene a more minimalist look.
 
-```tsx
+```ts
 const myMaterial = new BasicMaterial()
 ```
 
@@ -139,40 +139,109 @@ The example above changes the color of a material from red to yellow, incrementa
 
 ## Using textures
 
-Use an image file as a texture in a material. In a `BasicMaterial` component, you set the `texture` field. In a `Material` component, you set the `albedoTexture` field. Albedo textures respond to light and can include shades on them.
+Reference an image file as a texture by creating a `Texture` component. You can then reference this texture component in the fields of both `Material` and `BasicMaterial` components.
 
-The `Material` component allows you to use several image files as layers to compose more realistic textures, for example including a `bumpTexture` and a `refractionTexture`.
+In a `Material` component, you can set the `albedoTexture` field to a texture image. Albedo textures respond to light and can include shades on them. 
 
 ```ts
 //Create entity and assign shape
 const myEntity = new Entity()
-myEntity.set(new BoxShape())
+myEntity.addComponent(new BoxShape())
+
+//Create texture
+const myTexture = new Texture("materials/wood.png")
+
+//Create a material
+const myMaterial = new Material()
+myMaterial.albedoTexture = myTexture
+
+//Assign the material to the entity
+myEntity.addComponent(myMaterial)
+```
+
+While creating a texture, you can also pass additional parameters:
+
+- `hasAlpha`: Allows the texture to have transparent regions
+- `samplingMode`: Determines how pixels in the texture are stretched or compressed when rendered
+- `wrap`: Determines how a texture is tiled onto an object (CLAMP, WRAP, or MIRROR)
+
+```ts
+let smokeTexture = new Texture('textures/smoke-puff3.png',{hasAlpha: true, wrap:CLAMP})
+```
+
+#### Textures on basic textures
+
+In a `BasicMaterial` component, you can set the `texture` field to an image texture. This will render a texture that isn't affected by lighting. 
+
+```ts
+//Create entity and assign shape
+const myEntity = new Entity()
+myEntity.addComponent(new BoxShape())
+
+//Create texture
+const myTexture = new Texture("materials/wood.png")
+
+//Create material and configure its fields
+const myMaterial = new BasicMaterial()
+myMaterial.texture = myTexture
+
+//Assign the material to the entity
+myEntity.addComponent(myMaterial)
+```
+
+#### Multi-layered textures
+
+It also allows you to use several image files as layers to compose more realistic textures, for example including a `bumpTexture` and a `refractionTexture`.
+
+```ts
+//Create entity and assign shape
+const myEntity = new Entity()
+myEntity.addComponent(new BoxShape())
+
+//Create texture
+const myTexture = new Texture("materials/wood.png")
+
+//Create second texture
+const myBumpTexture = new Texture("materials/woodBump.png")
+
 
 //Create material and configure its fields
 const myMaterial = new Material()
-myMaterial.albedoTexture = "materials/wood.png"
-myMaterial.bumpTexture = "materials/woodBump.png"
+myMaterial.albedoTexture = myTexture
+myMaterial.bumpTexture = myBumpTexture
 
 //Assign the material to the entity
-myEntity.set(myMaterial)
+myEntity.addComponent(myMaterial)
 ```
 
 In the example above, the image for the material is located in a `materials` folder, which is located at root level of the scene project folder.
 
 > Tip: We recommend keeping your texture image files separate in a `/materials` folder inside your scene.
 
-#### Texture mapping
+> Tip: A material can have multiple layers of texture, you can see what these are on a source code editor by clicking `.` and letting the autocomplete menu show you the list.
+
+
+#### Texture wrapping
 
 If you want the texture to be mapped to specific scale or alignment on your entities, then you need to configure _uv_ properties on the [shape components]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}).
 
-<!--
-Use the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) library to map textures easily. Read documentation on how to use this library in the provided link.
 
--->
+The `Texture` component lets you configure the wrapping mode by setting the `wrap` field. The wrapping mode can be `CLAMP`, `WRAP` or `MIRROR`.
+
+```ts
+myTexture.wrap = 3
+```
+
+The example above sets the wrapping mode to `MIRROR`.
+
+- `CLAMP`: The texture is only displayed once in the specified size. The rest of the surface of the mesh will be left transparent.
+- `WRAP`: The texture will be repeated as many times as it fits in the mesh, using the specified size.
+- `MIRROR`: As in wrap, the texture is repeated as many times as it fits, but the orientation of these repetitions will be mirrored.
+
 
 To handle texture mapping manually, you set _u_ and _v_ coordinates on the 2D image of the texture to correspond to the vertices of the shape. The more vertices the entity has, the more _uv_ coordinates need to be defined on the texture, a plane for example needs to have 8 _uv_ points defined, 4 for each of its two faces.
 
-```tsx
+```ts
 //Create material and configure fields
 const myMaterial = new BasicMaterial()
 myMaterial.texture = "materials/atlas.png"
@@ -201,11 +270,51 @@ plane.uvs = [
 
 //Create entity and assign shape and material
 const myEntity = new Entity()
-myEntity.set(plane)
-myEntity.set(myMaterial)
+myEntity.addComponent(plane)
+myEntity.addComponent(myMaterial)
 ```
 
+
+<!--
+Use the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) library to map textures easily. Read documentation on how to use this library in the provided link.
+
 To create an animated sprite, use texture mapping to change the selected regions of a same texture that holds all the frames.
+
+-->
+
+#### Texture scaling
+
+When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. In a 3D environment, the effects of perspective cause this naturally. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The `Texture` and the `BasicMaterial` components use the _bilinear_ algorithm by default, but let you configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode`.
+
+```ts
+const myTexture = new Texture("materials/myTexture.png")
+myTexture.samplingMode = 1
+```
+
+The example above uses a nearest neighbor algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
+
+
+
+
+
+## Transparent materials
+
+To make a material transparent, you must add an alpha channel to the image you use for the texture. The _material_ component ignores the alpha channel of the texture image by default, so you must either:
+
+- Set `hasAlpha` to true.
+- Set an image in `alphaTexture`. This image can be the same as the texture, or a different image.
+
+```ts
+const myMaterial = new Material()
+myMaterial.hasAlpha = true
+// or
+//Create texture
+const myTexture = new Texture("materials/alpha.png")
+
+const myMaterial2 = new Material()
+myMaterial2.alphaTexture = myTexture
+```
+
 
 ## Reuse materials
 
@@ -215,44 +324,18 @@ If multiple entities in your scene use a same material, there's no need to creat
 //Create entities and assign shapes
 const box = new BoxShape()
 const myEntity = new Entity()
-myEntity.set(box)
+myEntity.addComponent(box)
 const mySecondEntity = new Entity()
-mySecondEntity.set(box)
+mySecondEntity.addComponent(box)
 const myThirdEntity = new Entity()
-myThirdEntity.set(box)
+myThirdEntity.addComponent(box)
 
 //Create material and configure fields
 const myMaterial = new Material()
 myMaterial.albedoColor = Color3.Blue()
 
 //Assign same material to all entities
-myEntity.set(myMaterial)
-mySecondEntity.set(myMaterial)
-myThirdEntity.set(myMaterial)
+myEntity.addComponent(myMaterial)
+mySecondEntity.addComponent(myMaterial)
+myThirdEntity.addComponent(myMaterial)
 ```
-
-## Transparent materials
-
-To make a material transparent, you must add an alpha channel to the image you use for the texture. The _material_ component ignores the alpha channel of the texture image by default, so you must either:
-
-- Set `hasAlpha` to true.
-- Set an image in `alphaTexture`. This image can be the same as the texture, or a different image.
-
-```tsx
-const myMaterial = new Material()
-myMaterial.hasAlpha = true
-// or
-const myMaterial2 = new Material()
-myMaterial2.alphaTexture = "materials/alphaTexture.png"
-```
-
-## Texture stretching in basic materials
-
-When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The `BasicMaterial` component uses the _bilinear_ algorithm by default, but you can configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode`.
-
-```tsx
-const myMaterial = new BasicMaterial()
-myMaterial.samplingMode = 1
-```
-
-The example above uses a nearest neighbor algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
