@@ -31,7 +31,7 @@ Not all _glTF_ files include animations. To see if there are any available, you 
 
 ## Add animations
 
-An `Animator` component manages all the animations of the entity. Each animation is handled by an `AnimationClip` object.
+An `Animator` component manages all the animations of the entity. Each animation is handled by an `AnimationState` object.
 
 
 ![](/images/media/ecs-animations.png)
@@ -50,7 +50,7 @@ let animator = new Animator()
 shark.addComponent(animator)
 
 // Instance animation clip object
-const clipSwim = new AnimationClip("swim")
+const clipSwim = new AnimationState("swim")
 
 // Add animation clip to Animator component
 animator.addClip(clipSwim)
@@ -63,17 +63,17 @@ You can also achieve the same with less statements:
 shark.addComponent(new Animator())
 
 // Instance and add a clip
-shark.getComponent(Animator).addClip(new AnimationClip("swim"))
+shark.getComponent(Animator).addClip(new AnimationState("swim"))
 ```
 
-You can retrieve an `AnimationClip` object from an `Animator` component with the `getClip()` function. 
+You can retrieve an `AnimationState` object from an `Animator` component with the `getClip()` function. 
 
 ```ts
 // Create and get a clip
 let clipSwim = animator.getClip("swim")
 ```
 
-The `AnimationClip` object doesn't store the actual transformations that go into the animation, that's all in the .glTF file. Instead, the `AnimationClip` object has a state that keeps track how far it has advanced along the animation. 
+The `AnimationState` object doesn't store the actual transformations that go into the animation, that's all in the .glTF file. Instead, the `AnimationState` object has a state that keeps track how far it has advanced along the animation. 
 
 ## Fetch an animation
 
@@ -82,7 +82,7 @@ If you don't have a pointer to refer to the clip object directly, you can fetch 
 
 ```ts
 // Create and add a clip
-shark.getComponent(Animator).addClip(new AnimationClip("swim"))
+shark.getComponent(Animator).addClip(new AnimationState("swim"))
 
 // Fetch the clip
 shark.getComponent(Animator).getClip("swim")
@@ -93,18 +93,18 @@ shark.getComponent(Animator).getClip("swim")
 
 > Note: If you attempt to use `getClip()` to fetch a clip that doesn't exist in the Animator component, it returns `null`.
 
-If you try to get an `AnimationClip` that was never added to the `Animator` component, the clip is created and added automatically.
+If you try to get an `AnimationState` that was never added to the `Animator` component, the clip is created and added automatically.
 -->
 
 ## Play an animation
 
-When an `AnimationClip` is created, it starts as paused by default.
+When an `AnimationState` is created, it starts as paused by default.
 
-The simplest way to play or pause it is to use the `play()` and `pause()` methods of the `AnimationClip`.
+The simplest way to play or pause it is to use the `play()` and `pause()` methods of the `AnimationState`.
 
 ```ts
 // Create animation clip
-const clipSwim = new AnimationClip("swim")
+const clipSwim = new AnimationState("swim")
 
 // Start playing the clip
 clipSwim.play()
@@ -113,7 +113,7 @@ clipSwim.play()
 clipSwim.pause()
 ```
 
-The `AnimationClip` object also has a `playing` boolean parameter. You can start or stop the animation by changing the value of this parameter.
+The `AnimationState` object also has a `playing` boolean parameter. You can start or stop the animation by changing the value of this parameter.
 
 ```ts
 clipSwim.playing = true
@@ -130,11 +130,11 @@ clipSwim.restart()
 
 By default, animations are played in a loop that keeps repeating the animation forever.
 
-Change this setting by setting the `looping` property in the `AnimationClip` object.
+Change this setting by setting the `looping` property in the `AnimationState` object.
 
 ```ts
 // Create animation clip
-const clipSwim = new AnimationClip("swim")
+const clipSwim = new AnimationState("swim")
 
 // Set loop to false
 clipSwim.looping = false
@@ -151,13 +151,13 @@ If `looping` is set to _false_, the animation plays just once and then stops.
 
 When an animation finishes playing or is paused, the 3D model remains in the last posture it had. 
 
-To stop an animation and set the posture back to the first frame in the animation, use the `stop()` function of the `AnimationClip` object.
+To stop an animation and set the posture back to the first frame in the animation, use the `stop()` function of the `AnimationState` object.
 
 ```ts
 clipSwim.stop()
 ```
 
-To play an animation from the start, regardless of what frame the animation is currently in, use the `restart()` function of the `AnimationClip` object.
+To play an animation from the start, regardless of what frame the animation is currently in, use the `restart()` function of the `AnimationState` object.
 
 ```ts
 clipSwim.restart()
@@ -176,7 +176,7 @@ Change the speed at which an animation is played by changing the `speed` propert
 
 ```ts
 // Create animation clip
-const clipSwim = new AnimationClip("swim")
+const clipSwim = new AnimationState("swim")
 
 // Set speed to twice as fast
 clipSwim.speed = 2
@@ -196,7 +196,7 @@ By default, `weight` is equal to _1_, it can't be any higher than _1_.
 
 ```ts
 // Create animation clip
-const clipSwim = new AnimationClip("swim")
+const clipSwim = new AnimationState("swim")
 
 // Set weight
 clipSwim.weight = 0.5
@@ -208,7 +208,7 @@ clipSwim.play()
 The `weight` value of all active animations in an entity should add up to 1 at all times. If it adds up to less than 1, the weighted average will be using the default position of the armature for the remaining part of the calculation.
 
 ```ts
-const clipSwim = new AnimationClip("swim")
+const clipSwim = new AnimationState("swim")
 clipSwim.weight = 0.2
 
 animator.addClip(clipSwim)
@@ -224,7 +224,7 @@ You could also change the `weight` value gradually when starting and stopping an
 
 ## Set clip parameters in bulk
 
-Use the `setParams()` function of the `AnimationClip` object to set multiple parameters at once.
+Use the `setParams()` function of the `AnimationState` object to set multiple parameters at once.
 
 You can configure the following parameters:
 
@@ -235,14 +235,14 @@ You can configure the following parameters:
 
 
 ```ts
-const clipSwim = new AnimationClip("swim")
+const clipSwim = new AnimationState("swim")
 
 clipSwim.setParams({playing:true, looping:true, speed: 2, weight: 0.5})
 ```
 
 ## Animations on shared shapes
 
-You can use a same instance of a `GLTFShape` component on multiple entities to save resources. If each entity has both its own `Animator` component and its own `AnimationClip` objects, then they can each be animated independently.
+You can use a same instance of a `GLTFShape` component on multiple entities to save resources. If each entity has both its own `Animator` component and its own `AnimationState` objects, then they can each be animated independently.
 
 
 ```ts
@@ -266,8 +266,8 @@ shark1.addComponent(animator1)
 shark2.addComponent(animator2)
 
 // Instance separate animation clip objects
-const clipSwim1 = new AnimationClip("swim")
-const clipSwim2 = new AnimationClip("swim")
+const clipSwim1 = new AnimationState("swim")
+const clipSwim2 = new AnimationState("swim")
 
 // Add animation clips to Animator components
 animator1.addClip(clipSwim1)
@@ -278,4 +278,4 @@ engine.addEntity(shark2)
 ```
 
 
-> Note: If you define a single `AnimationClip` object instance and add it to multiple `Animator` components from different entities, all entities using the `AnimationClip` instance will be animated together at the same time.
+> Note: If you define a single `AnimationState` object instance and add it to multiple `Animator` components from different entities, all entities using the `AnimationState` instance will be animated together at the same time.
