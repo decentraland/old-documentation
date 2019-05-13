@@ -45,8 +45,22 @@ If you haven't compiled your scene with the latest changes, you can do it by run
     - dist
     - export
 
-## Deploy to Zeit Now
 
+## Prepare a scene for deploying
+
+To deploy your scene to a hosting service like Zeit Now, GitHub pages, or Amazon S3, you must first export your scene's code to the format of a static webpage. To do this, run the following command:
+
+```
+dcl export
+```
+
+This creates a new folder named `export` in your project directory. This folder contains everything needed to run your scene, in a format that's compatible with most hosting services.
+
+Upload only the contents of the `export` folder to the hosting service.
+
+> Note: The `/export` folder is built based on the contents of the `/bin` folder. Make sure that the latest version of your scene's source code has been compiled before running the `dcl export` command. You can compile your scene by running `npm install` or `dcl start`.
+
+## Deploy to Zeit Now
 
 To deploy a scene to now:
 
@@ -56,7 +70,7 @@ To deploy a scene to now:
     npm install -g now
     ```
 
-2. Run the following command form the scene folder:
+2. Run the following command form the scene's `export` folder (that you created with the `dcl export` command):
 
    ```
    npm run deploy:now
@@ -72,19 +86,11 @@ To deploy a scene to now:
 
 > Note: Keep in mind that the free version of Now enforces a maximum file size of 50 MB.
 
-## Prepare a scene for deploying
-
-To deploy your scene to other hosting services (that are not Zeit Now) like GitHub pages or Amazon S3, you must first export your scene's code to the format of a static webpage. To do this, run the following command:
+Optionally, you can alias your deployment with now.sh domain, or any domain you have registered at Now. The following eample uses the decentraland.now.sh domain:
 
 ```
-dcl export
+now alias {deploymentId} decentraland.now.sh
 ```
-
-This creates a new folder named `export` in your project directory. This folder contains everything needed to run your scene, in a format that's compatible with most hosting services.
-
-Upload only the contents of the `export` folder to the hosting service.
-
-> Note: The `/export` folder is built based on the contents of the `/bin` folder. Make sure that the latest version of your scene's source code has been compiled before running the `dcl export` command. You can compile your scene by running `npm install` or `dcl start`.
 
 ## Multiplayer considerations
 
