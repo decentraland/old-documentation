@@ -16,6 +16,7 @@
     padding: 10px 0;
     align-items: center;
     width: 100%;
+    text-transform: capitalize;
 
     @media #{$tablet-landscape} {
       margin-left: 4px;

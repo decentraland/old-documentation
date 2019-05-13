@@ -101,7 +101,7 @@ The `querySceneMetrics()` is asynchronous, so we recommend calling it using the 
 ```ts
 executeTask(async () => {
   try {
-    const limits = await querySceneLimits()
+    const limits = await querySceneMetrics()
     log('limits' + limits)
   }
 })

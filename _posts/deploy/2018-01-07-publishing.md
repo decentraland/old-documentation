@@ -38,11 +38,15 @@ Open your scene's _scene.json_ file and verify the following:
 - **Parcels**: The coordinates of the parcels that will be occupied by your scene
 
 - **Base**: The coordinates of the parcel that will be considered the [0,0] coordinate of the scene.
+
 <!--
+
 - **Estate**: The ID of the estate you're deploying to. If you're deploying to a single parcel, this field isn't necessary.
 
   > Note: To find your estate's id, open the estate's detail page in the Marketplace. The URL should include a number for the ID. For example if the URL is _market.decentraland.org/estates/84/detail_, the estate's ID is _84_.
+  
 -->
+
 ## To publish the scene
 
 1.  To make sure the scene has been locally built with your latest changes, run `npm run build`.
