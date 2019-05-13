@@ -91,6 +91,23 @@ import * as EthereumController from "@decentraland/EthereumController"
 
 Below we explain some of the things you can do with this controller.
 
+#### Get user ethereum account
+
+Use the `getUserAccount()` function from the EthereumController to find a user's Ethereum public key.
+
+```ts
+import { getUserAccount } from '@decentraland/EthereumController'
+
+executeTask(async () => {
+    try {
+      const address = await getUserAccount()
+      log(address)
+    } catch (error) {
+      log(error.toString())
+    }
+  })
+```
+
 
 #### Signing messages
 
@@ -220,7 +237,7 @@ The example above listens for clicks on a _button_ entity. When clicked, the use
 
 > Tip: We recommend defining the wallet address and the amount to pay as global constants at the start of the _.ts_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
 
-
+<!--
 #### Wait for a transaction to be mined
 
 The Ethereum controller allows you to check if a specific transaction has been already mined. It looks for a specific transaction's hash number and verifies that it has been validated by a miner and added to the blockchain. 
@@ -259,7 +276,7 @@ engine.addEntity(button)
 ```
 
 The example above first requires the user to accept a transaction, if the user accepts it, then `requirePayment` returns a hash that can be used to track the transaction and see if it's been mined. Once the transaction is mined and accepted as part of the blockchain, the `openDoor()` function is called.
-
+-->
 
 #### Async sending
 
@@ -378,25 +395,31 @@ Once you've created a `contract` object, you can easily call the functions that 
 
 
 ```ts
+import { getProvider } from '@decentraland/web3-provider'
+import { getUserAccount } from '@decentraland/EthereumController'
 import * as EthConnect from '../node_modules/eth-connect/esm'
 import {abi} from '../contracts/mana'
-import { getProvider } from '@decentraland/web3-provider'
-import { getUserPublicKey } from '@decentraland/Identity'
 
 
 executeTask(async () => {
-  // Setup steps explained in the section above
-  const provider = await getProvider()
-  const requestManager = new EthConnect.RequestManager(provider)
-  const factory = new EthConnect.ContractFactory(requestManager, abi)
-  const contract = (await factory.at('0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb')) as any
+   try {
+      // Setup steps explained in the section above
+      const provider = await getProvider()
+      const requestManager = new EthConnect.RequestManager(provider)
+      const factory = new EthConnect.ContractFactory(requestManager, abi)
+      const contract = (await factory.at('0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb')) as any
+      const address = await getUserAccount()
+      log(address)
 
-  // Perform a function from the contract
-  const res = await contract.setBalance('0xaFA48Fad27C7cAB28dC6E970E4BFda7F7c8D60Fb', 100, {
-    from: await getUserPublicKey()
-  })
-  // Log response
-  log(res)
+      // Perform a function from the contract
+      const res = await contract.setBalance('0xaFA48Fad27C7cAB28dC6E970E4BFda7F7c8D60Fb', 100, {
+        from: address
+      })
+      // Log response
+      log(res)
+    } catch (error) {
+      log(error.toString())
+    }
 })
 
 ```
