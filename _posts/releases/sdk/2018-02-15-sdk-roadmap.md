@@ -18,7 +18,6 @@ set_order: 1
 	- Various optimizations
 - Components for player UIs
 
-## Next features
 
 ## By approx June 5
 
