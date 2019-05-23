@@ -40,7 +40,8 @@ engine.addEntity(ui)
 
 // Create a textShape component, setting the object with the canvas as parent
 const text = new Entity()
-text.addComponent(new UIText('Hello world!'))
+text.addComponent(new UIText())
+text.value = 'Hello world!'
 text.setParent(ui)
 engine.addEntity(text)
 ```
@@ -67,6 +68,11 @@ There are several different types of UI elements you can add to the screenspace:
 
 All UI components have several fields you can set to determine the position of the component on the screenspace.
 
+
+- `positionX`, `positionY`: the position of the top-left corner of the component, in reference to the top-left corner of its parent.
+
+> Tip: Since we're measuring from the top, the numbers for `positionY` should be negative, unless you want the component to be positioned outside the parent. Example: to position a component leaving a margin of 20 pixels with respect to the parent on the top and left sides, set `positionX` to 20 and `positionY` to -20.
+
 - `hAlign` horizontal alignment relative to the parent. Possible values: `Top`, `Botton`, `Center`.
 
 - `vAlign` horizontal alignment relative to the parent. Possible values: `Left`, `Right`, `Center`.
@@ -79,8 +85,9 @@ All UI components have several fields you can set to determine the position of t
 
 ```ts
 let messageEntity = new Entity()
-const message = new UIText('Close UI')
+const message = new UIText()
 messageEntity.addComponent(message)
+message.text = 'Close UI'
 message.fontSize = 15
 message.width = 120
 message.height = 30
@@ -112,11 +119,12 @@ let container = new Entity()
 const inventoryContainer = new UIContainerStack()
 inventoryContainer.adaptWidth = true
 inventoryContainer.width = '40%'
-inventoryContainer.top = 100
-inventoryContainer.left = 10
-inventoryContainer.color = Color3.White()
+inventoryContainer.positionY = 100
+inventoryContainer.positionX = 10
+inventoryContainer.color = Color4.White()
 inventoryContainer.hAlign = 'left'
 inventoryContainer.vAlign = 'top'
+inventoryContainer.stackOrientation = 0
 container.addComponent(inventoryContainer)
 engine.addEntity(container)
 ```
@@ -168,7 +176,7 @@ let container = new Entity()
 const rect = new UIContainerRect()
 rect.width = '100%'
 rect.height = '100%'
-rect.color =  Color3.Blue()
+rect.color =  Color4.Blue()
 rect.opacity = 0.5
 container.addComponent(rect)
 engine.addEntity(container)
@@ -191,12 +199,14 @@ The `UIImage` component has the following fields to crop a sub-section of the or
 - `sourceHeight`: the height, in pixels, of the selected area
 
 
+When constructing a `UIImage` component, you must pass a `Texture` component as an argument. Read more about `Texture` components in [materials]({{ site.baseurl }}{% post_url /development-guide/2018-02-7-materials %})
+
 ```ts
 let imageAtlas = "images/image-atlas.jpg"
+let imageTexture = new Texture(imageAtlas)
 
 let play = new Entity()
-const playButton = new UIImage(container)
-playButton.source = imageAtlas
+const playButton = new UIImage(imageTexture)
 playButton.sourceLeft = 26
 playButton.sourceTop = 128
 playButton.sourceWidth = 128
@@ -205,8 +215,7 @@ play.addComponent(playButton)
 engine.addEntity(play)
 
 let start = new Entity()
-const startButton = new UIImage(container)
-startButton.source = imageAtlas
+const startButton = new UIImage(imageTexture)
 startButton.sourceLeft = 183
 startButton.sourceTop = 128
 startButton.sourceWidth = 128
@@ -215,8 +224,7 @@ start.addComponent(startButton)
 engine.addEntity(start)
 
 let exit = new Entity()
-const exitButton = new UIImage(container)
-exitButton.source = imageAtlas
+const exitButton = new UIImage(imageTexture)
 exitButton.sourceLeft = 346
 exitButton.sourceTop = 128
 exitButton.sourceWidth = 128
@@ -225,8 +233,7 @@ exit.addComponent(exitButton)
 engine.addEntity(exit)
 
 let expand = new Entity()
-const expandButton = new UIImage(container)
-expandButton.source = imageAtlas
+const expandButton = new UIImage(imageTexture)
 expandButton.sourceLeft = 496
 expandButton.sourceTop = 128
 expandButton.sourceWidth = 128
@@ -253,12 +260,12 @@ To handle clicks, add an `OnClick()` or `OnPointerDown()` component to the entit
 let close = new Entity()
 const button = new UIButton("Close UI")
 button.fontSize = 15
-button.color = Color3.Yellow()
+button.color = Color4.Yellow()
 button.thickness = 1
 button.width = 120
 button.height = 30
 button.vAlign = 'bottom'
-button.top = -80
+button.positionY = -80
 close.addComponent(button)
 
 close.addComponent(
@@ -318,9 +325,9 @@ const slider1 = new Entity()
 const volumeSlider = new UISliderShape(container)
 volumeSlider.minimum = 0
 volumeSlider.maximum = 10
-volumeSlider.color = Color3.Black()
+volumeSlider.color = Color4.Black()
 volumeSlider.value = 0
-volumeSlider.borderColor = Color3.Blue()
+volumeSlider.borderColor = Color4.Blue()
 volumeSlider.thumbWidth = 30
 volumeSlider.isThumbClamped = false
 volumeSlider.hAlign = 'right'
@@ -344,10 +351,12 @@ engine.addEntity(slider1)
 
 Input boxes can be added to the UI to provide a place to type in text. You add a text box with an `UIInputText` component. Players must first click on this box before they can write into it.
 
-
+<!--
 ```ts
 
 ```
+-->
+
 
 Here are some of the main properties you can set:
 
@@ -376,10 +385,11 @@ inputEntity.addComponent(
 
 In some cases, it's best to add a _submit_ button next to the input box. In this case instead of reacting when the string is changed, or to the `OnTextSubmit` event, you only react when the button is clicked.
 
+<!--
 ```ts
 
 ```
-
+-->
 
 ## Open the UI
 
@@ -419,13 +429,12 @@ const close = new Entity()
 const button = new UIButton(container)
 button.text = 'Close UI'
 button.fontSize = 15
-button.color = Color3.Black()
-button.background = Color3.Yellow()
+button.color = Color4.Yellow()
 button.thickness = 1
 button.width = 120
 button.height = 30
 button.vAlign = 'bottom'
-button.top = -80
+button.positionY = -80
 close.addComponent(button)
 
 close.addComponent(
