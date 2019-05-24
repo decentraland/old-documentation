@@ -10,7 +10,7 @@ set: releases
 set_order: 1
 ---
 
-## 6.1  (approx May 30)
+## 6.1  (by end of May)
 
 - Unity engine integration
 	- Shadows
@@ -19,7 +19,7 @@ set_order: 1
 - Components for player UIs
 
 
-## By approx June 10
+## By end of June
 
 - Improve scene boundaries checking
 - Serverless multiplayer: Send messages over content server, publish - subscribe
@@ -28,9 +28,6 @@ set_order: 1
 	- Execute every x milliseconds
 	- Delay x milliseconds
 	- Remove entity after x milliseconds
-
-## By approx June 27
-
 - Collision triggers - clipping events (contact with surface)
 - Sticky collisions (enable user movement, ex: elevator)
 - Smooth animation transitions
@@ -39,7 +36,7 @@ set_order: 1
 	- Get and set the full transformation matrix from a Transform
 	- OutOfBounds component: remove entity if it leaves a region
 
-## By approx July 11
+## By end of July
 
 - Collision triggers - AABB (overlapping with area)
 - Raycasting functions
@@ -48,7 +45,7 @@ set_order: 1
 	- OnPointerIn: Called when cursor points at an entity
 	- OnPointerOut: Called when cursor stops pointing at an entity
 
-## In tentative scope for Q3
+## In tentative scope for July
 
 - State-machine component
 - Change GLTF materials in runtime
