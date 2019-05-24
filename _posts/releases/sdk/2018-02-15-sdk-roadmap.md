@@ -10,7 +10,7 @@ set: releases
 set_order: 1
 ---
 
-## 6.1  (approx May 27)
+## 6.1  (approx May 30)
 
 - Unity engine integration
 	- Shadows
@@ -19,9 +19,9 @@ set_order: 1
 - Components for player UIs
 
 
-## By approx June 5
+## By approx June 10
 
-- Improve scene limits checking
+- Improve scene boundaries checking
 - Serverless multiplayer: Send messages over content server, publish - subscribe
 - Display 2D NFTs
 - Timing helpers:
@@ -29,7 +29,7 @@ set_order: 1
 	- Delay x milliseconds
 	- Remove entity after x milliseconds
 
-## By approx June 20
+## By approx June 27
 
 - Collision triggers - clipping events (contact with surface)
 - Sticky collisions (enable user movement, ex: elevator)
@@ -39,7 +39,7 @@ set_order: 1
 	- Get and set the full transformation matrix from a Transform
 	- OutOfBounds component: remove entity if it leaves a region
 
-## By approx July 5
+## By approx July 11
 
 - Collision triggers - AABB (overlapping with area)
 - Raycasting functions
