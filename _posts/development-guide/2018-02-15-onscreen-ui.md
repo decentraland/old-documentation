@@ -69,14 +69,13 @@ There are several different types of UI elements you can add to the screenspace:
 All UI components have several fields you can set to determine the position of the component on the screenspace.
 
 
-- `positionX`, `positionY`: the position of the top-left corner of the component, in reference to the top-left corner of its parent.
-
-> Tip: Since we're measuring from the top, the numbers for `positionY` should be negative, unless you want the component to be positioned outside the parent. Example: to position a component leaving a margin of 20 pixels with respect to the parent on the top and left sides, set `positionX` to 20 and `positionY` to -20.
-
 - `hAlign` horizontal alignment relative to the parent. Possible values: `Top`, `Botton`, `Center`.
 
 - `vAlign` horizontal alignment relative to the parent. Possible values: `Left`, `Right`, `Center`.
 
+- `positionX`, `positionY`: the position of the top-left corner of the component, relative to the parent. By default, to the top-left corner of its parent. If the `hAlign` or `vAlign` properties are set, then `positionX` and `positionY` offset the UI component relative to the position of these alignment properties.
+
+> Tip: When measuring from the top, the numbers for `positionY` should be negative. Example: to position a component leaving a margin of 20 pixels with respect to the parent on the top and left sides, set `positionX` to 20 and `positionY` to -20.
 
 - `paddingLeft`, `paddingRight`, `paddingTop`, `paddingBottom`: padding space to leave empty around. To set these fields in pixels, write the value as a number. To set these fields as a percentage of the parent's measurements, write the value as a string that ends in "%", for example `10 %`
 
@@ -124,7 +123,7 @@ inventoryContainer.positionX = 10
 inventoryContainer.color = Color4.White()
 inventoryContainer.hAlign = 'left'
 inventoryContainer.vAlign = 'top'
-inventoryContainer.stackOrientation = 0
+inventoryContainer.stackOrientation = UIStackOrientation.VERTICAL
 container.addComponent(inventoryContainer)
 engine.addEntity(container)
 ```
@@ -134,41 +133,44 @@ Container components also have following properties:
 
 - `adaptWidth` `adaptHeight`: Set on parent components. If these are set to true, the width and height wrap the child components (plus padding). If these are true, `width` and `height` values are ignored
 
+- `stackOrientation`: The `UIContainerStack` component has this property to set if the stack will expand vertically or horizontally. 
+
 
 #### Scrollable rectangles
 
-You can also add UI elements into a `UIScrollRect`. If these rectangles have more content in them that what fits in their width or height, they will display a slider, that players can interact with to explore this content.
+You can also add UI elements into a `UIScrollRect`. If these rectangles have more content in them that what fits in their width or height, a slider will appear on the margins, that players can interact with to explore this content.
 
-Scrollable rectangles can be horizontal or vertical, or both.
-
-<!--
-```ts
-
-```
-
-onChanged
+Scrollable rectangles can be horizontal or vertical, or both. 
 
 
-To handle input provided via the slider, add an `OnChanged()` component to the same entity. This component will execute a function each time that the slider's value is changed.
 
 ```ts
-sliderRect.addComponent(
-  new OnChanged((data: { value: number }) => {
-    const value = Math.round(data.value)
-    valueFromSlider1.value = value.toString()
-  })
-)
+let container = new Entity()
+const scrollableContainer = new UIScrollRect()
+scrollableContainer.width = '50%'
+scrollableContainer.height = '50%'
+scrollableContainer.backgroundColor = Color4.Gray()
+scrollableContainer.isVertical = true
+scrollableContainer.onChanged = new OnChanged(() => {
+  log("scrolled to ", scrollableContainer.positionY)
+})
+
+container.addComponent(scrollableContainer)
+engine.addEntity(container)
 ```
--->
+
+
+Scrolling values are always normalized from 0 to 1. You can set the scrolling value manually via the `valueX` and `valueY` properties.
+
+
+The `onChanged` property lets you run a function whenever the value of the scrollbar changes.
 
 
 
+## Set transparency
 
+You can make a UI element partly transparent by setting its `opacity` property to a value that's less than 1. 
 
-
-## Set alpha
-
-You can make a UI element partly transparent by setting its `opacity` property.
 
 
 ```ts
@@ -181,6 +183,24 @@ rect.opacity = 0.5
 container.addComponent(rect)
 engine.addEntity(container)
 ```
+
+Setting an element's opacity also affects all of its children. If you don't want its children to be transparent, for example you want the background to be transparent but not the text on it, you can set the color with a hex string that has four values, one of them being the alpha channel.
+
+
+## Text
+
+
+The `UIText` component lets you add text. It has properties that are similar to the `TextShape` component.  See [text]({{ site.baseurl }}{% post_url /development-guide/2018-02-11-text %}).
+
+- `value`: the string to display
+- `color`: `Color4` for the text color
+- `fontSize`: font size
+- `fontWeight`: 'normal', 'bold' or 'italic'
+- `lineSpacing` : space between lines of text
+- `lineCount`: how many max lines of text
+- `textWrapping`: if text automatically occupies more lines
+- `outlineWidth`, `outlineColor`: add an outline to the text
+- `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`, `shadowColor`: Add a shadow to the text
 
 
 ## Images from an image atlas
@@ -245,7 +265,26 @@ engine.addEntity(expand)
 
 ## Clicking UI elements
 
-The UI elements on the screenspace can be interactive, instead of just displaying information.
+All UI elements have an `isPointerBlocker` property, that determines if they can be clicked. If this value is false, the pointer should ignore them and respond to whatever is behind the element.
+
+Clickable UI elements also have an `OnClick` property, that lets you add a function to execute every time it's clicked.
+
+```ts
+let button = new Entity()
+const clickableImage = new UIImage(new Texture('icon.png'))
+clickableImage.name = 'clickable-image'
+clickableImage.width = '92px'
+clickableImage.height = '91px'
+clickableImage.sourceWidth = 92
+clickableImage.sourceHeight = 91
+clickableImage.isPointerBlocker = true
+clickableImage.onClick = new OnClick(() => {
+  var randomColor = Color3.Random()
+  panel.color = new Color4(randomColor.r, randomColor.g, randomColor.b, 1)
+})
+button.addComponent(clickableImage)
+engine.addEntity(button)
+```
 
 <!--
 ![](/images/media/UI-clicks.png)
@@ -254,108 +293,43 @@ The UI elements on the screenspace can be interactive, instead of just displayin
 
 > Note: If desktop users want to click on a UI component, they must first unlock the cursor from the view control, to move the cursor over the UI component. They do this by clicking `Esc`.
 
-To handle clicks, add an `OnClick()` or `OnPointerDown()` component to the entity, just as you do with world-space entities. See [click-events]({{ site.baseurl }}{% post_url /development-guide/2018-02-14-click-events %}) for more details.
-
-```ts
-let close = new Entity()
-const button = new UIButton("Close UI")
-button.fontSize = 15
-button.color = Color4.Yellow()
-button.thickness = 1
-button.width = 120
-button.height = 30
-button.vAlign = 'bottom'
-button.positionY = -80
-close.addComponent(button)
-
-close.addComponent(
-  new OnClick(() => {
-    log('clicked on the close image')
-    screenSpaceUI.visible = false
-  })
-)
-engine.addEntity(close)
-```
-
-
-<!--
-UIScrollRect
-
-
-
-Sliders can be added to the UI to provide more interaction. players can click and drag sliders to set a value. 
-
-You can configure various aspects of the slider, including its appearance, orientation, what the maximum and minimum values represent, its default value, etc.
-
-```ts
-
-const slider1 = new Entity()
-const volumeSlider = new UISliderShape()
-volumeSlider.minimum = 0
-volumeSlider.maximum = 10
-volumeSlider.color = '#fff'
-volumeSlider.value = 0
-slider1.addComponent(volumeSlider)
-engine.addEntity(slider1)
-
-```
-
-The slider's clickable space is very small by default, so it can be tricky to click with the cursor directly over it. To help make it easier, you can set the `thumbWidth`, `isThumbCircle` and `isThumbClamped` properties. The `thumbWidth` property is set in pixels.
-
-```ts
-volumeSlider.thumbWidth = 30
-volumeSlider.isThumbClamped = false
-```
-
-To handle input provided via the slider, add an `OnChanged()` component to the same entity. This component will execute a function each time that the slider's value is changed.
-
-```ts
-slider1.addComponent(
-  new OnChanged((data: { value: number }) => {
-    const value = Math.round(data.value)
-    valueFromSlider1.value = value.toString()
-  })
-)
-```
-
-See a full implementation of a slider below:
-
-```ts
-const slider1 = new Entity()
-const volumeSlider = new UISliderShape(container)
-volumeSlider.minimum = 0
-volumeSlider.maximum = 10
-volumeSlider.color = Color4.Black()
-volumeSlider.value = 0
-volumeSlider.borderColor = Color4.Blue()
-volumeSlider.thumbWidth = 30
-volumeSlider.isThumbClamped = false
-volumeSlider.hAlign = 'right'
-volumeSlider.vAlign = 'top'
-volumeSlider.width = 20
-volumeSlider.height = 100
-slider1.addComponent(
-  new OnChanged((data: { value: number }) => {
-    const value = Math.round(data.value)
-    sceneVolume = value.toString()
-  })
-)
-slider1.addComponent(sliderShape1)
-engine.addEntity(slider1)
-```
--->
-
+> Tip: If you want to add text over a button, keep in mind that the text needs to have the `isPointerBlocker` property set to `false`, otherwise players might be clicking the text instead of the button.
 
 
 ## Input text
 
 Input boxes can be added to the UI to provide a place to type in text. You add a text box with an `UIInputText` component. Players must first click on this box before they can write into it.
 
-<!--
 ```ts
+let message = new Entity()
+const textInput = new UIInputText(rt)
+textInput.width = '80%'
+textInput.height = '25px'
+textInput.vAlign = 'bottom'
+textInput.hAlign = 'center'
+textInput.fontSize = 10
+textInput.placeholder = 'Write message here'
+textInput.placeholderColor = Color4.Gray()
+textInput.positionX = '25px'
+textInput.positionY = '25px'
+textInput.isPointerBlocker = true
 
+textInput.onTextSubmit = new OnTextSubmit(x => {
+  const text = new UIText(container)
+  text.value = '<USER-ID> ' + x.text
+  text.width = '100%'
+  text.height = '20px'
+  text.vAlign = 'top'
+  text.hAlign = 'left'
+  text.positionY = curOffset
+  container.valueY = 1
+  curOffset -= 25
+})
+
+message.addComponent(textInput)
+engine.addEntity(message)
 ```
--->
+
 
 
 Here are some of the main properties you can set:
@@ -383,9 +357,11 @@ inputEntity.addComponent(
 )
 ```
 
-In some cases, it's best to add a _submit_ button next to the input box. In this case instead of reacting when the string is changed, or to the `OnTextSubmit` event, you only react when the button is clicked.
 
 <!--
+In some cases, it's best to add a _submit_ button next to the input box. In this case instead of reacting when the string is changed, or to the `OnTextSubmit` event, you only react when the button is clicked.
+
+
 ```ts
 
 ```
