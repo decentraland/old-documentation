@@ -10,6 +10,8 @@ set: releases
 set_order: 1
 ---
 
+Features after 6.1 will be released one at a time as they're developed.
+
 ## 6.1  (by end of May)
 
 - Unity engine integration
@@ -19,7 +21,7 @@ set_order: 1
 - Components for player UIs
 
 
-## By end of June
+## Next
 
 - Improve scene boundaries checking
 - Serverless multiplayer: Send messages over content server, publish - subscribe
@@ -36,7 +38,8 @@ set_order: 1
 	- Get and set the full transformation matrix from a Transform
 	- OutOfBounds component: remove entity if it leaves a region
 
-## By end of July
+## Later
+
 
 - Collision triggers - AABB (overlapping with area)
 - Raycasting functions
@@ -44,9 +47,6 @@ set_order: 1
 - Raycasting helpers: 
 	- OnPointerIn: Called when cursor points at an entity
 	- OnPointerOut: Called when cursor stops pointing at an entity
-
-## In tentative scope for July
-
 - State-machine component
 - Change GLTF materials in runtime
 - Event when player leaves scene
