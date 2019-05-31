@@ -38,12 +38,9 @@ ui.addComponent(canvas)
 // Add entity to engine
 engine.addEntity(ui)
 
-// Create a textShape component, setting the object with the canvas as parent
-const text = new Entity()
-text.addComponent(new UIText())
+// Create a textShape component, setting the canvas as parent
+const text = new UIText(canvas)
 text.value = 'Hello world!'
-text.setParent(ui)
-engine.addEntity(text)
 ```
 
 
@@ -83,16 +80,13 @@ All UI components have several fields you can set to determine the position of t
 
 
 ```ts
-let messageEntity = new Entity()
-const message = new UIText()
-messageEntity.addComponent(message)
-message.text = 'Close UI'
+const message = new UIText(canvas)
+message.value = 'Close UI'
 message.fontSize = 15
 message.width = 120
 message.height = 30
 message.vAlign = 'bottom'
-message.top = -80
-engine.addEntity(messageEntity)
+message.positionX = -80
 ```
 
 UIs are intentionally limited so that they can't cover the top 10% of the screen. This is to prevent UIs from exposing fake menus that may pose as menus by the Decentraland explorer. Because of this, a "centered" UI is centered vertically in relation to the available space, not to the entire screen space. 
@@ -114,8 +108,7 @@ For this, you can use the `UIContainerStack` and the `UIContainerRect`.
 Both these shapes have properties to set their color, line thickness, and rounded corners.
 
 ```ts
-let container = new Entity()
-const inventoryContainer = new UIContainerStack()
+const inventoryContainer = new UIContainerStack(canvas)
 inventoryContainer.adaptWidth = true
 inventoryContainer.width = '40%'
 inventoryContainer.positionY = 100
@@ -124,8 +117,6 @@ inventoryContainer.color = Color4.White()
 inventoryContainer.hAlign = 'left'
 inventoryContainer.vAlign = 'top'
 inventoryContainer.stackOrientation = UIStackOrientation.VERTICAL
-container.addComponent(inventoryContainer)
-engine.addEntity(container)
 ```
 
 
@@ -145,8 +136,7 @@ Scrollable rectangles can be horizontal or vertical, or both.
 
 
 ```ts
-let container = new Entity()
-const scrollableContainer = new UIScrollRect()
+const scrollableContainer = new UIScrollRect(canvas)
 scrollableContainer.width = '50%'
 scrollableContainer.height = '50%'
 scrollableContainer.backgroundColor = Color4.Gray()
@@ -154,9 +144,6 @@ scrollableContainer.isVertical = true
 scrollableContainer.onChanged = new OnChanged(() => {
   log("scrolled to ", scrollableContainer.positionY)
 })
-
-container.addComponent(scrollableContainer)
-engine.addEntity(container)
 ```
 
 
@@ -174,14 +161,11 @@ You can make a UI element partly transparent by setting its `opacity` property t
 
 
 ```ts
-let container = new Entity()
-const rect = new UIContainerRect()
+const rect = new UIContainerRect(canvas)
 rect.width = '100%'
 rect.height = '100%'
 rect.color =  Color4.Blue()
 rect.opacity = 0.5
-container.addComponent(rect)
-engine.addEntity(container)
 ```
 
 Setting an element's opacity also affects all of its children. If you don't want its children to be transparent, for example you want the background to be transparent but not the text on it, you can set the color with a hex string that has four values, one of them being the alpha channel.
@@ -225,41 +209,29 @@ When constructing a `UIImage` component, you must pass a `Texture` component as 
 let imageAtlas = "images/image-atlas.jpg"
 let imageTexture = new Texture(imageAtlas)
 
-let play = new Entity()
-const playButton = new UIImage(imageTexture)
+const playButton = new UIImage(canvas, imageTexture)
 playButton.sourceLeft = 26
 playButton.sourceTop = 128
 playButton.sourceWidth = 128
 playButton.sourceHeight = 128
-play.addComponent(playButton)
-engine.addEntity(play)
 
-let start = new Entity()
-const startButton = new UIImage(imageTexture)
+const startButton = new UIImage(canvas, imageTexture)
 startButton.sourceLeft = 183
 startButton.sourceTop = 128
 startButton.sourceWidth = 128
 startButton.sourceHeight = 128
-start.addComponent(startButton)
-engine.addEntity(start)
 
-let exit = new Entity()
-const exitButton = new UIImage(imageTexture)
+const exitButton = new UIImage(canvas, imageTexture)
 exitButton.sourceLeft = 346
 exitButton.sourceTop = 128
 exitButton.sourceWidth = 128
 exitButton.sourceHeight = 128
-exit.addComponent(exitButton)
-engine.addEntity(exit)
 
-let expand = new Entity()
-const expandButton = new UIImage(imageTexture)
+const expandButton = new UIImage(canvas, imageTexture)
 expandButton.sourceLeft = 496
 expandButton.sourceTop = 128
 expandButton.sourceWidth = 128
 expandButton.sourceHeight = 128
-expand.addComponent(expandButton)
-engine.addEntity(expand)
 ```
 
 
@@ -270,8 +242,7 @@ All UI elements have an `isPointerBlocker` property, that determines if they can
 Clickable UI elements also have an `OnClick` property, that lets you add a function to execute every time it's clicked.
 
 ```ts
-let button = new Entity()
-const clickableImage = new UIImage(new Texture('icon.png'))
+const clickableImage = new UIImage(canvas, new Texture('icon.png'))
 clickableImage.name = 'clickable-image'
 clickableImage.width = '92px'
 clickableImage.height = '91px'
@@ -279,11 +250,8 @@ clickableImage.sourceWidth = 92
 clickableImage.sourceHeight = 91
 clickableImage.isPointerBlocker = true
 clickableImage.onClick = new OnClick(() => {
-  var randomColor = Color3.Random()
-  panel.color = new Color4(randomColor.r, randomColor.g, randomColor.b, 1)
+  // DO SOMETHING
 })
-button.addComponent(clickableImage)
-engine.addEntity(button)
 ```
 
 <!--
@@ -301,8 +269,7 @@ engine.addEntity(button)
 Input boxes can be added to the UI to provide a place to type in text. You add a text box with an `UIInputText` component. Players must first click on this box before they can write into it.
 
 ```ts
-let message = new Entity()
-const textInput = new UIInputText(rt)
+const textInput = new UIInputText(canvas)
 textInput.width = '80%'
 textInput.height = '25px'
 textInput.vAlign = 'bottom'
@@ -315,19 +282,13 @@ textInput.positionY = '25px'
 textInput.isPointerBlocker = true
 
 textInput.onTextSubmit = new OnTextSubmit(x => {
-  const text = new UIText(container)
+  const text = new UIText(textInput)
   text.value = '<USER-ID> ' + x.text
   text.width = '100%'
   text.height = '20px'
   text.vAlign = 'top'
   text.hAlign = 'left'
-  text.positionY = curOffset
-  container.valueY = 1
-  curOffset -= 25
 })
-
-message.addComponent(textInput)
-engine.addEntity(message)
 ```
 
 
@@ -350,11 +311,9 @@ When the user interacts with the component, you can use the following events to 
 
 
 ```ts
-inputEntity.addComponent(
-  new OnChanged((data: { value: string }) => {
-    inputTextState = data.value
-  })
-)
+textInput.onChanged = new OnChanged((data: { value: string }) => {
+  inputTextState = data.value
+})
 ```
 
 
@@ -383,7 +342,7 @@ uiTrigger.addComponent(transform)
 
 uiTrigger.addComponent(
   new OnPointerDown(() => {
-    ui.visible = true
+    canvas.visible = true
   })
 )
 
@@ -401,25 +360,18 @@ To do this, simply set the `visible` property of the main `UIScreenSpace` compon
 
 
 ```ts
-const close = new Entity()
-const button = new UIButton(container)
-button.text = 'Close UI'
-button.fontSize = 15
-button.color = Color4.Yellow()
-button.thickness = 1
-button.width = 120
-button.height = 30
-button.vAlign = 'bottom'
-button.positionY = -80
-close.addComponent(button)
-
-close.addComponent(
-  new OnClick(() => {
-    log('clicked on the close image')
-    screenSpaceUI.visible = false
-  })
-)
-engine.addEntity(close)
+const close = new UIImage(canvas, new Texture('icon.png'))
+close.name = 'clickable-image'
+close.width = '120px'
+close.height = '30px'
+close.sourceWidth = 92
+close.sourceHeight = 91
+close.vAlign = 'bottom'
+close.isPointerBlocker = true
+close.onClick = new OnClick(() => {
+	log('clicked on the close image')
+    canvas.visible = false
+})
 ```
 
 
