@@ -91,7 +91,7 @@ message.positionX = -80
 
 UIs are intentionally limited so that they can't cover the top 10% of the screen. This is to prevent UIs from exposing fake menus that may pose as menus by the Decentraland explorer. Because of this, a "centered" UI is centered vertically in relation to the available space, not to the entire screen space. 
 
-To determine the z position of UI elements, the UI uses the parenting hierarchy of the entities. So, if an entity is a child of another, it will appear in front of another.
+To determine the z position of UI elements, the UI uses the parenting hierarchy of the components. So, if a component is a child of another, it will appear in front of the other.
 
 
 
