@@ -13,6 +13,9 @@ In future versions of the SDK, it will be possible to display an NFT (Non-Fungib
 
 This feature is not currently supported, but is on the roadmap.
 
+> Note: As a workaround, if you want to display a token you can obtain an NFT image from [OpenSea's API](https://docs.opensea.io/reference#api-overview) and set that as a texture for a material. Then you can use that material on any primitive object in the scene.	
+
+
 <!--
 You can display an NFT (Non-Fungible Token) that you own in your Decentraland scenes. A glowing badge will appear above the NFT to certify that you indeed own it.
 
@@ -56,4 +59,4 @@ If you don't own the token, the image isn't displayed in the scene.
 This verification is carried out by users loading your scene, every time the entity with the `NFTShape` component is added to the engine.
 
 Above the image of the token, we display a badge that certifies its authenticity. The badge glows in a pulsating pattern, providing a stamp that is difficult to falsify.
-
+-->
