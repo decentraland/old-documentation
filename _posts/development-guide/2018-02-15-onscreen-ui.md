@@ -16,6 +16,10 @@ UI elements are only visible when the player is standing inside the scene's LAND
 
 The UI can also be triggered to open when certain events occur in the world-space, for example if the player clicks on a specific place.
 
+To prevent malicious use of UIs by exposing fake menus that may pose as a wallet like Metamask or Dapper wallet, or like the Decentraland explorer app, you can't occupy the top 10% of the player's screen with any UI content.
+
+The default Decentraland explorer UI includes a chat widget, a map, and other elements. These UI elements are always displayed on the top layer, above any scene-specific UI. So if your scene has UI elements that occupy the same screen space as these, they will be occluded.
+
 
 ## Add a Screenspace UI
 
@@ -89,7 +93,7 @@ message.vAlign = 'bottom'
 message.positionX = -80
 ```
 
-UIs are intentionally limited so that they can't cover the top 10% of the screen. This is to prevent UIs from exposing fake menus that may pose as menus by the Decentraland explorer. Because of this, a "centered" UI is centered vertically in relation to the available space, not to the entire screen space. 
+> Note: UIs are intentionally limited so that they can't cover the top 10% of the screen. Because of this, a vertically "centered" UI is centered in relation to the available 90% of the screen, not to the entire screen space. 
 
 To determine the z position of UI elements, the UI uses the parenting hierarchy of the components. So, if a component is a child of another, it will appear in front of the other.
 
