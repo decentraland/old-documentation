@@ -30,17 +30,8 @@ To add a screenspace UI to your scene, you must create an entity and add a `UICa
 -->
 
 ```ts
-// Create entity
-const ui = new Entity()
-
 // Create screenspace component
 const canvas = new UICanvas()
-
-// Add screenspace component to entity
-ui.addComponent(canvas)
-
-// Add entity to engine
-engine.addEntity(ui)
 
 // Create a textShape component, setting the canvas as parent
 const text = new UIText(canvas)
