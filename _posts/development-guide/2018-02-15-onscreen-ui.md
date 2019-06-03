@@ -12,7 +12,7 @@ set_order: 15
 
 There are several special component types that are meant for using in a 2D screen space as part of the UI, instead of in the 3D world space. These components are displayed fixed on the player's screen.
 
-UI elements are only visible when the player is standing inside the scene's LAND parcels, as neighboring scenes might have their own UI to display.  When the player clicks the _close UI_ button, on the top-right corner of the screen, all UI elements go away.
+UI elements are only visible when the player is standing inside the scene's LAND parcels, as neighboring scenes might have their own UI to display.  When the player clicks the _close UI_ button, on the bottom-right corner of the screen, all UI elements go away.
 
 The UI can also be triggered to open when certain events occur in the world-space, for example if the player clicks on a specific place.
 
@@ -58,7 +58,9 @@ There are several different types of UI elements you can add to the screenspace:
 
 - Text: Add a `UIText`component to display text. The properties you can set are the same as in a `TextShape` component.  See [text]({{ site.baseurl }}{% post_url /development-guide/2018-02-11-text %}).
 
+<!--
 - Buttons: Add a `UIButton` to add a clickable button. The button offers some visual feedback when players mouse over it and when they click it.
+-->
 
 - Text input box: Add a `UIInputText` to have an input box where players can type in text with their keyboards or their mobile devices.
 
@@ -109,7 +111,7 @@ Certain UI elements are there to help you organize how you place other elements.
 
 For this, you can use the `UIContainerStack` and the `UIContainerRect`.
 
-Both these shapes have properties to set their color, line thickness, and rounded corners.
+Both these shapes have properties to set their color, and line thickness.
 
 ```ts
 const inventoryContainer = new UIContainerStack(canvas)
