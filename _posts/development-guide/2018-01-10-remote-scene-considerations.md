@@ -40,8 +40,8 @@ Use the `.emit` command of the message bus to send a message to all other player
 const sceneMessageBus = new MessageBus()
 
 box1.AddComponent(
-	 new OnClick(e => {
-		sceneMessageBus.emit("box1Clicked")
+  new OnClick(e => {
+    sceneMessageBus.emit("box1Clicked")
 }))
 
 ```
@@ -67,11 +67,11 @@ To handle messages from all other players in that scene, use `.on`. When using t
 const sceneMessageBus = new MessageBus()
 
 sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
-	let newCube = new Entity()
-	let transform = new Transform()
-	transform.position.set(info.position.x, info.position.y, info.position.z)
-	newCube.addComponent(transform)
-	engine.addComponent(newCube)
+  let newCube = new Entity()
+  let transform = new Transform()
+  transform.position.set(info.position.x, info.position.y, info.position.z)
+  newCube.addComponent(transform)
+  engine.addComponent(newCube)
 });
 ```
 
@@ -82,14 +82,57 @@ sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
 This example uses a message bus to send a new message every time the main cube is clicked, generating a new cube in a random position. The message includes the position of the new cube, so that all players see these new cubes in the same positions.
 
 ```ts
+/// --- Set up a system ---
+
+class RotatorSystem {
+  // this group will contain every entity that has a Transform component
+  group = engine.getComponentGroup(Transform);
+  
+  update(dt: number) {
+     // iterate over the entities of the group
+    for (let entity of this.group.entities) {
+      // get the Transform component of the entity
+      const transform = entity.getComponent(Transform);
+  
+      // mutate the rotation
+      transform.rotate(Vector3.Up(), dt * 10);
+      }
+    }
+  }
+  
+  // Add a new instance of the system to the engine
+  engine.addSystem(new RotatorSystem());
+  
+  /// --- Spawner function ---
+  
+  function spawnCube(x: number, y: number, z: number) {
+    // create the entity
+    const cube = new Entity();
+  
+    // add a transform to the entity
+    cube.addComponent(new Transform({ position: new Vector3(x, y, z) }));
+  
+    // add a shape to the entity
+    cube.addComponent(new BoxShape());
+  
+    // add the entity to the engine
+    engine.addEntity(cube);
+  
+    return cube;
+  }
+  
+/// --- Create message bus ---
 const sceneMessageBus = new MessageBus();
 
+/// --- Define a custom type to pass in messages ---
 type NewBoxPosition = {
   position: ReadOnlyVector3;
 };
 
+/// --- Call spawner function ---
 const cube = spawnCube(8, 1, 8);
 
+/// --- Emit messages ---
 cube.addComponent(
   new OnClick(() => {
     const action: NewBoxPosition = {
@@ -104,6 +147,7 @@ cube.addComponent(
   })
 );
 
+/// --- Receive messages ---
 sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
   cube.getComponent(Transform).scale.z *= 1.1;
   cube.getComponent(Transform).scale.x *= 0.9;
