@@ -12,16 +12,8 @@ set_order: 1
 
 Features after 6.1 will be released one at a time as they're developed.
 
-## 6.1  (by end of May)
 
-- Unity engine integration
-	- Shadows
-	- Player jumping with _spacebar_
-	- Various optimizations
-- Components for player UIs
-
-
-## Next
+## Next features
 
 - Improve scene boundaries checking
 - Serverless multiplayer: Send messages over content server, publish - subscribe
