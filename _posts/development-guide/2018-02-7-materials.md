@@ -108,7 +108,7 @@ You can also edit the following fields in a `Material` component to fine-tune ho
 
 #### Change a color gradually
 
-Change a color gradually with linear interpolation between two colors, using the `.lerp()` function.
+Change a color gradually with linear interpolation between two colors, using the `.Lerp()` function.
 
 ```ts
 // This variable will store the ratio between both colors
@@ -124,7 +124,7 @@ const myMaterial = new Material()
 // This system changes the value of colorRatio every frame, and sets a new color on the material
 export class ColorSystem implements ISystem {
   update(dt: number) {
-    myMaterial.albedoColor = Color3.lerp(red, yellow, colorRatio)
+    myMaterial.albedoColor = Color3.Lerp(red, yellow, colorRatio)
     if (colorRatio < 1) {
       colorRatio += 0.01
     }
