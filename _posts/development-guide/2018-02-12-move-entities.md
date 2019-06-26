@@ -18,7 +18,7 @@ You can easily perform these incremental changes by moving entities a small amou
 The easiest way to move an entity is to use the `translate()` function to change the _position_ value stored in the `Transform` component.
 
 ```ts
-export class SimpleMove {
+export class SimpleMove implements ISystem {
   update() {
     let transform = myEntity.getComponent(Transform)
     let distance = Vector3.Forward().scale(0.1)
@@ -51,7 +51,7 @@ The `rotate()` function takes two arguments:
 - The amount to rotate, in [euler](https://en.wikipedia.org/wiki/Euler_angles) degrees (from 0 to 360)
 
 ```ts
-export class SimpleRotate {
+export class SimpleRotate implements ISystem {
   update() {
     let transform = myEntity.getComponent(Transform)
     transform.rotate(Vector3.Left(), 3)
@@ -59,6 +59,12 @@ export class SimpleRotate {
 }
 
 engine.addSystem(new SimpleRotate())
+
+const myEntity = new Entity()
+myEntity.addComponent(new Transform())
+myEntity.addComponent(new BoxShape())
+
+engine.addEntity(myEntity)
 ```
 
 > Tip: To make an entity always rotate to face the user, you can add a [`Billboard` component]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}#face-the-user).
@@ -68,14 +74,14 @@ engine.addSystem(new SimpleRotate())
 
 ## Rotate over a pivot point
 
-When rotating an entity, the rotation is always in reference to the entity's center coordinate. To rotate an entity using another set of coordinates as a pivot point, create a second (invisible) entity with the pivot point as its position and make it a parent of the entity you with to rotate.
+When rotating an entity, the rotation is always in reference to the entity's center coordinate. To rotate an entity using another set of coordinates as a pivot point, create a second (invisible) entity with the pivot point as its position and make it a parent of the entity you want to rotate.
 
 When rotating the parent entity, its children will be all rotated using the parent's position as a pivot point. Note that the `position` of the child entity is in reference to that of the parent entity.
 
 ```ts
+
 // Create entity you wish to rotate
 const myEntity = new Entity()
-myEntity.addComponent(redMaterial)
 myEntity.addComponent(new BoxShape())
 
 // Create the pivot entity
@@ -86,6 +92,9 @@ pivot.addComponent(new Transform({
   position: new Vector3(3, 2, 3)
 }))
 
+// add pivot entity
+engine.addEntity(pivot)
+
 // Set pivot as the parent
 myEntity.setParent(pivot)
 
@@ -94,12 +103,12 @@ myEntity.addComponent(new Transform({
   position: new Vector3(0, 0.5, 0.5)
 }))
 
-// Add both entities to the engine
+// Add child entity to the engine
 engine.addEntity(myEntity)
-engine.addEntity(pivot)
+
 
 // Define a system that updates the rotation on every frame
-export class PivotRotate {
+export class PivotRotate implements ISystem {
   update() {
     let transform = pivot.getComponent(Transform)
     transform.rotate(Vector3.Left(), 3 )
@@ -121,7 +130,7 @@ Suppose that the user running your scene is struggling to keep up with the pace 
 You can compensate for this uneven timing by using the `dt` parameter to adjust the scale the movement.
 
 ```ts
-export class SimpleMove {
+export class SimpleMove implements ISystem {
   update(dt: number) {
     let transform = myEntity.getComponent(Transform)
     let distance = Vector3.Forward.scale(dt * 3)
@@ -164,7 +173,7 @@ To implement this `lerp()` in your scene, we recommend creating a custom compone
 
 ```ts
 @Component("lerpData")
-export class LerpData {
+export class LerpData implements ISystem {
   origin: Vector3 = Vector3.Zero()
   target: Vector3 = Vector3.Zero()
   fraction: number = 0
@@ -227,7 +236,7 @@ To implement this in your scene, we recommend storing the data that goes into th
 
 ```ts
 @Component('slerpData')
-export class SlerpData {
+export class SlerpData implements ISystem {
   originRot: Quaternion = Quaternion.Euler(0, 90, 0)
   targetRot: Quaternion = Quaternion.Euler(0, 0, 0)
   fraction: number = 0
@@ -294,7 +303,7 @@ export class LerpSizeData {
 }
 
 // a system to carry out the movement
-export class LerpSize {
+export class LerpSize implements ISystem {
   update(dt: number) {
     let transform = myEntity.getComponent(Transform)
     let lerp = myEntity.getComponent(LerpSizeData)
@@ -341,7 +350,7 @@ export class LerpData {
   fraction: number = 0
 }
 
-export class LerpMove {
+export class LerpMove implements ISystem {
   update(dt: number) {
     let transform = myEntity.getComponent(Transform)
     let lerp = myEntity.getComponent(LerpData)
@@ -382,7 +391,7 @@ export class PathData {
   nextPathIndex: number = 1
 }
 
-export class PatrolPath {
+export class PatrolPath implements ISystem {
   update(dt: number) {
     let transform = myEntity.getComponent(Transform)
     let path = myEntity.getComponent(PathData)
