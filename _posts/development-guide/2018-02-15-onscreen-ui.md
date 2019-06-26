@@ -23,7 +23,7 @@ The default Decentraland explorer UI includes a chat widget, a map, and other el
 
 ## Add a Screenspace UI
 
-To add a screenspace UI to your scene, you must create an entity and add a `UICanvas` component to it. All the visible UI elements that you want the player to see are added as additional objects that are children of this parent object with a `UICanvas` component.
+To add a screenspace UI to your scene, you must create a `UICanvas` component, this component doesn't need to belong to any Entities to work. All the visible UI elements that you want the player to see are added as additional objects that are children of this parent component.
 
 <!--
 ![](/images/media/UI-basic.png)
@@ -38,6 +38,7 @@ const text = new UIText(canvas)
 text.value = 'Hello world!'
 ```
 
+> Note: Create only one `UICanvas` per scene. To have different menus that appear at different times, make them all children of the same `UICanvas`, and set their visibility at that level.
 
 
 ## Types of UI content
@@ -330,6 +331,9 @@ You can have the code of your scene make the the UI visible when specific events
 
 To do this, simply set the `visible` property of the main `UICanvas` component that wraps the UI to _true_ or _false_.
 
+If the UI is clickable, or has clickable parts, you should also set the `isPointerBlocker` property to _true_ or _false_, so that the player can freely click in the world space when the UI is not on the way.
+
+
 The following code adds a cube to the world-space of the scene that opens the UI when clicked.
 
 ```ts
@@ -339,7 +343,8 @@ uiTrigger.addComponent(transform)
 
 uiTrigger.addComponent(
   new OnPointerDown(() => {
-    canvas.visible = true
+	canvas.visible = true
+	canvas.isPointerBlocker = true
   })
 )
 
@@ -353,7 +358,10 @@ It's a good practice to add a button on your UI elements for closing them in a w
 
 You might also want to close the UI automatically when a specific event occurs, for example when a new match of a game starts.
 
-To do this, simply set the `visible` property of the main `UIScreenSpace` component that wraps the UI to _false_.
+To do this, simply set the `visible` property of the main `UIScreenSpace` component that wraps the UI to _false_. 
+
+If the UI is clickable, or has clickable parts, you should also set the `isPointerBlocker` property to _false_, so that the player can freely click in the world space.
+
 
 
 ```ts
@@ -367,7 +375,8 @@ close.vAlign = 'bottom'
 close.isPointerBlocker = true
 close.onClick = new OnClick(() => {
 	log('clicked on the close image')
-    canvas.visible = false
+	canvas.visible = false
+	canvas.isPointerBlocker = false
 })
 ```
 
