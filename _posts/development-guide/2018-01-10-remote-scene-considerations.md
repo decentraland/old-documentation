@@ -41,19 +41,19 @@ const sceneMessageBus = new MessageBus()
 
 box1.AddComponent(
   new OnClick(e => {
-    sceneMessageBus.emit("box1Clicked")
+    sceneMessageBus.emit("box1Clicked", {})
 }))
 
 ```
 
-Each message can optionally contain a payload as a second argument. The payload can contain any relevant data you wish to send, it can be of any type that you decide. 
+Each message can contain a payload as a second argument. The payload is of type `Object`, and can contain any relevant data you wish to send. 
 
 ```ts
 const sceneMessageBus = new MessageBus()
 
 let spawnPos = new Vector3(5, 0, 5)
 
-sceneMessageBus.emit("spawn", spawnPos)
+sceneMessageBus.emit("spawn", {position: spawnPos })
 ```
 
 > Tip: If you need a single message to include data from more than one variable, create a custom type to hold all this data in a single object.
@@ -82,27 +82,7 @@ sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
 This example uses a message bus to send a new message every time the main cube is clicked, generating a new cube in a random position. The message includes the position of the new cube, so that all players see these new cubes in the same positions.
 
 ```ts
-/// --- Set up a system ---
 
-class RotatorSystem {
-  // this group will contain every entity that has a Transform component
-  group = engine.getComponentGroup(Transform);
-  
-  update(dt: number) {
-     // iterate over the entities of the group
-    for (let entity of this.group.entities) {
-      // get the Transform component of the entity
-      const transform = entity.getComponent(Transform);
-  
-      // mutate the rotation
-      transform.rotate(Vector3.Up(), dt * 10);
-      }
-    }
-  }
-  
-  // Add a new instance of the system to the engine
-  engine.addSystem(new RotatorSystem());
-  
   /// --- Spawner function ---
   
   function spawnCube(x: number, y: number, z: number) {
