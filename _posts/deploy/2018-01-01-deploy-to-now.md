@@ -64,16 +64,16 @@ Upload only the contents of the `export` folder to the hosting service.
 
 To deploy a scene to now:
 
-1. Make sure you have the latest version of the _Zeit Now CLI_ installed.
+1. Make sure you have the latest version of the _Zeit Now CLI_, and of the _Decentraland CLI_ installed.
 
     ```
-    npm install -g now
+    npm i -g decentraland now
     ```
 
 2. Run the following command form the scene's `export` folder (that you created with the `dcl export` command):
 
    ```
-   npm run deploy:now
+   now
    ```
 
    The console will show you the output of the server as it installs the necessary dependencies to run your scene. This takes a few minutes.
@@ -81,6 +81,8 @@ To deploy a scene to now:
 2. When done, the URL to the server should automatically be added to your clipboard, ready to paste in a browser!
 
    You can otherwise get the link in the console's output, it will resemble something like `https://myscene-gnezxvoayw.now.sh`.
+
+   > Tip: The URL will take the folder name as part of the path. You can rename the `export` folder to anything you want. That won't affect the scene, but it will change the URL.
 
 3. Share the link with anyone you want! _Now_ will keep hosting your scene at that link indeterminably.
 
@@ -92,15 +94,18 @@ Optionally, you can alias your deployment with now.sh domain, or any domain you 
 now alias {deploymentId} decentraland.now.sh
 ```
 
+
+> Note: for scenes that were originally built with version 6.0 or older, you will have to make a couple of manual adjustments to your project. See [this blogpost](https://decentraland.org/blog/announcements/decentraland-on-now/) for more details.
+
 ## Multiplayer considerations
 
 Note that scenes deployed to a server behave as single player experiences, even though you're able to see other users moving around.
 
 User positions are shared, but each user runs the scene locally in their browser. If the scene can be modified by a user's interaction, each user will see the scene in a different state.
 
-To synchronize the scene's state amongst users, it's currently necessary to use a remote server to sync the state amongst the various users.
+To synchronize the scene's state amongst users, there are two approaches (see [multiplayer considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-10-remote-scene-considerations %}) ) If you use a remote server to sync the state amongst the various users, then you should also deploy the server somewhere, separate from the scene. You can also deploy the server to `now`, by following the steps below.
 
-## Upload multiplayer scenes
+#### Upload multiplayer scenes
 
 If you created your scene based on one of the remote scene examples, then you need to make two separate deployments, one for the server and another for the scene client.
 
@@ -109,7 +114,7 @@ For example, to deploy both server and the scene client to Zeit now, follow thes
 1. Change directory to the `/server` folder and run the following command to deploy just the server:
    
    ```
-   npm run deploy:now
+   now
    ```
 
 2) Copy the URL from the deployed project.
@@ -123,7 +128,7 @@ For example, to deploy both server and the scene client to Zeit now, follow thes
 4) Deploy the full scene folder, running
 
    ```
-   npm run deploy:now
+   now
    ```
 
 5) Once the upload is completed, the URL to the scene preview should be in your clipboard, ready to share.

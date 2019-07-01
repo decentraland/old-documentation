@@ -28,7 +28,7 @@ myVector.x = 5
 let normalizedVector = myVector.normalize()
 
 // Call functions from the vector class
-let distance = Vector3.distance(myVector1, myVector2)
+let distance = Vector3.Distance(myVector1, myVector2)
 
 let midPoint = Vector3.lerp(myVector1, myVector2, 0.5)
 ```
@@ -45,7 +45,7 @@ The following shortcuts exist for defining generic vectors:
 - `Vector3.Left()` returns _(-1, 0, 0)_
 - `Vector3.Right()` returns _(1, 0, 0)_
 - `Vector3.Forward()` returns _(0, 0, 1)_
-- `Vector3.Back()` returns _(0, 0, -1)_
+- `Vector3.Backward()` returns _(0, 0, -1)_
 
 ## Scalars
 
