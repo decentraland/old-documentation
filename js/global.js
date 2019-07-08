@@ -133,31 +133,6 @@ $(function() {
     showSearchResults()
   })
 
-  function zoomDisable() {
-    $('head meta[name=viewport]').remove()
-    $('head').prepend('<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />')
-  }
-
-  function zoomEnable() {
-    $('head meta[name=viewport]').remove()
-    $('head').prepend('<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1" />')
-  }
-
-  const touchableInputs = [
-    '.header_search input[type="text"]',
-    '.newsletter input[type="email"]',
-    'select',
-  ]
-  const $inputs = $(touchableInputs.join(','))
-
-  $inputs.on('touchstart', function() {
-    zoomDisable()
-  })
-
-  $inputs.on('touchend', function() {
-    setTimeout(zoomEnable, 500)
-  })
-
   function showSearchResults() {
     const userInput = $searchInput.val().toLowerCase()
 
