@@ -28,7 +28,7 @@
   span {
     padding-right: 32px;
 
-    @media #{$mobile-landscape} {
+    @media #{$mid-point} {
       padding-right: 0;
     }
   }
