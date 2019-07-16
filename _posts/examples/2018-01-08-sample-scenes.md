@@ -13,7 +13,7 @@ To get you up and running, and to illustrate what kind of experiences you can bu
 
 Some of these scenes feature a link to a version of the scene that's deployed on a remote server. There you can interact with it just as if you were running `dcl start` locally.
 
-## Clone an example scene
+# Clone an example scene
 
 Instead of creating a new scene from scratch, you can clone one of the existing example scenes and use that as a starting point.
 
@@ -37,9 +37,9 @@ A completely static scene. It's built entirely using XML, which makes it easier 
 [Code](https://github.com/decentraland-scenes/XML-static-scene)
 -->
 
-## Essentials
+# Essentials
 
-#### Static Scene with Animations
+## Static Scene with Animations
 
 A simple static scene that just displays 3D models. The 3D models include animations to move the butterflies, flames, etc.
 
@@ -47,10 +47,10 @@ A simple static scene that just displays 3D models. The 3D models include animat
 
 [Code](https://github.com/decentraland-scenes/the-munastery)
 
-[Explore the scene](https://the-munastery-bsapskmwaq.now.sh)
+[Explore the scene](https://the-munastery-ggtyhuetbt.now.sh)
 
 
-#### Hypno wheels
+## Hypno wheels
 
 This simple scene features a couple of wheels that you can spin by clicking them. 
 
@@ -65,11 +65,11 @@ This simple scene features a couple of wheels that you can spin by clicking them
 
 [Code](https://github.com/decentraland-scenes/Hypno-wheels)
 
-[Explore the scene](https://hypno-wheels-owyfnqfimw.now.sh/?position=0%2C-1)
+[Explore the scene](https://hypno-wheels-xmirhqdurz.now.sh)
 
 Read a tutorial [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5) about this scene.
 
-#### Shark animation
+## Shark animation
 
 This simple scene shows how to add animations to a `GLTFComponent` and handle click events.
 
@@ -81,9 +81,9 @@ This simple scene shows how to add animations to a `GLTFComponent` and handle cl
 
 [Code](https://github.com/decentraland-scenes/Shark-animation)
 
-[Explore the scene](https://shark-animation-xriykgapld.now.sh/)
+[Explore the scene](https://shark-animation-qehbwatsry.now.sh)
 
-#### Open the door
+## Open the door
 
 A simple interactive scene with a door that can be opened and closed.
 
@@ -98,9 +98,9 @@ A simple interactive scene with a door that can be opened and closed.
 
 [Code](https://github.com/decentraland-scenes/Open-door)
 
-[Explore the scene](https://open-door-gssoyhoyrt.now.sh)
+[Explore the scene](https://open-door-inqgibkgwc.now.sh)
 
-#### Sliding door
+## Sliding door
 
 A simple interactive scene with a two-sided door that can be opened by clicking.
 
@@ -115,9 +115,9 @@ A simple interactive scene with a two-sided door that can be opened by clicking.
 
 [Code](https://github.com/decentraland-scenes/Sliding-door)
 
-[Explore the scene](https://slidingdoor-fmydyuprjl.now.sh)
+[Explore the scene](https://sliding-door-nzpxlhlaiy.now.sh)
 
-#### Jukebox
+## Jukebox
 
 A scene where you can play different songs by pressing buttons on a jukebox.
 
@@ -134,11 +134,10 @@ A scene where you can play different songs by pressing buttons on a jukebox.
 
 [Code](https://github.com/decentraland-scenes/Jukebox)
 
-<!--
-[Explore the scene]()
--->
 
-#### Dance floor
+[Explore the scene](https://jukebox-ilgtrpcfvb.now.sh)
+
+## Dance floor
 A scene with animations, sound, and tiles on the floor that randomly change color to the beat.
 
 - audio
@@ -152,11 +151,11 @@ A scene with animations, sound, and tiles on the floor that randomly change colo
 
 [Code](https://github.com/decentraland-scenes/Dance-floor)
 
-<!--
-[Explore the scene]()
--->
 
-#### Smoke
+[Explore the scene](https://dancefloor-rsylsclrna.now.sh)
+
+
+## Smoke
 
 This scene shows how to handle a particle system to create smoke. Each smoke puff is an entity that moves in a specific direction. These entities are reused from an object pool instead of creating a new entity for each. When an entity floats away from the fire, it's removed from the scene and waits in the object pool to be reused.
 
@@ -164,10 +163,10 @@ This scene shows how to handle a particle system to create smoke. Each smoke puf
 
 [Code](https://github.com/decentraland-scenes/Smoke)
 
-[Explore the scene](https://smoke-iqntujtjgb.now.sh)
+[Explore the scene](https://smoke-sjjygzpfug.now.sh)
 
 
-#### Memory game
+## Memory game
 
 A Simon Says game, with click interactions and sequenced actions. The game generates a random sequence of colors and you must click buttons to match those.
 
@@ -182,13 +181,13 @@ A Simon Says game, with click interactions and sequenced actions. The game gener
 
 [Code](https://github.com/decentraland-scenes/Memory-game)
 
-<!--
-[Explore the scene]()
--->
 
-## Movement
+[Explore the scene](https://memory-game-vkysoawcea.now.sh)
 
-#### Hummingbirds
+
+# Movement
+
+## Hummingbirds
 
 A scene where hummingbirds spawn when you click a tree. Each bird moves on its own to random positions.
 
@@ -196,9 +195,9 @@ A scene where hummingbirds spawn when you click a tree. Each bird moves on its o
 
 [Code](https://github.com/decentraland-scenes/Hummingbirds)
 
-[Explore the scene](https://hummingbirds-ujovmbtmui.now.sh)
+[Explore the scene](https://hummingbirds-unrchjydpo.now.sh)
 
-#### Gnark patrolling
+## Gnark patrolling
 
 A scene that shows a character walking along a fixed path, using lerp over each segment of the path. If you approach it, it will switch to yelling at you.
 
@@ -206,14 +205,14 @@ A scene that shows a character walking along a fixed path, using lerp over each 
 
 [Code](https://github.com/decentraland-scenes/Gnark-patrol)
 
-[Explore the scene](https://gnark-patrol-azhbtehsge.now.sh)
+[Explore the scene](https://gnark-patrol-ypvlmwbkhe.now.sh)
 
 Read a tutorial blog post about this scene:
 
 - [Part 1]((https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5))
 - [Part 2](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5-part-2)
 
-#### Swimming shark
+## Swimming shark
 
 This scene shows a shark moving around in circles along a curved circular path, using lerp over each segment of the path. It also rotates smoothly with a spherical lerp function.
 
@@ -223,12 +222,12 @@ The speed of the shark and the intensity with which it swims depends on the stee
 
 [Code](https://github.com/decentraland-scenes/Swimming-shark)
 
-[Explore the scene](https://swimming-shark-mfakqegnto.now.sh)
+[Explore the scene](https://swimming-shark-fnbuyslcqi.now.sh)
 
 
-## Network connections
+# Network connections
 
-#### Weather simulation
+## Weather simulation
 
 A scene that checks a weather API for the weather in a location and displays that weather condition, showing rain, thunder or snowflakes
 Use real weather data from different locations by changing the coordinates, or change the value of the “fakeWeather” variable to see different weather conditions manifest.
@@ -239,9 +238,9 @@ Use real weather data from different locations by changing the coordinates, or c
 
 [Code](https://github.com/decentraland-scenes/Weather-simulation)
 
-[Explore the scene](https://weather-yvahddfxgo.now.sh)
+[Explore the scene](https://weather-pkfkpxankv.now.sh)
 
-#### Remote door
+## Remote door
 
 A scene that uses a server and a REST API to sync a scene state amongst multiple users. It’s built around the basic “open the door” example.
 
@@ -256,7 +255,7 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 [Explore the scene]()
 -->
 
-#### Remote mural
+## Remote mural
 
 A scene that uses a server and a REST API to sync a scene state amongst multiple users. You can paint pixels in a mural that other users can see. The colors of each pixel are stored in a remote server.
 
@@ -272,17 +271,29 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 [Explore the scene]()
 -->
 
-## Blockchain transactions
 
-#### MANA Transfer
+# Custom UI
+
+## Mining rocks
+
+A simple scene that shows how to build a custom UI that can be interacted with by the player and that is upated as the player interacts with the world
+
+[Code](https://github.com/decentraland-scenes/Mining-rocks)
+
+[Explore the scene](https://mining-rocks-pjyyjqdfdt.now.sh)
+
+
+# Blockchain transactions
+
+## MANA Transfer
 
 A simple scene that uses the MANA smart contract and the EthConnect library to send the user MANA on the Ropsten test network.
 
 [Code](https://github.com/decentraland-scenes/MANA-Transaction)
 
-[Explore the scene](https://mana-transaction-sxjmryeayj.now.sh)
+[Explore the scene](https://mana-transaction-jfsdmqqnmp.now.sh)
 
-#### MANA Burning Altar
+## MANA Burning Altar
 
 Fees collected by the Marketplace are stored in a wallet. This scene interacts with the MANA contract to burn this MANA that was collected.
 
@@ -292,11 +303,11 @@ The flame is created as a particle system, handling various entities that spiral
 
 [Code](https://github.com/decentraland-scenes/MANA-Burning-Altar)
 
-[Explore the scene](https://mana-altar-master-iehcppnlvz.now.sh/)
+[Explore the scene](https://mana-altar-nmfgwmfbjo.now.sh)
 
-## Advanced
+# Advanced
 
-#### Block Dog
+## Block Dog
 
 A scene with a simple AI character. It randomly chooses what action to take: follow you, sit or remain idle. You can also tell it to sit or stand up by clicking it, or tell it to drink water by clicking its bowl.
 
@@ -304,9 +315,9 @@ A scene with a simple AI character. It randomly chooses what action to take: fol
 
 [Code](https://github.com/decentraland-scenes/Block-dog)
 
-[Explore the scene](https://blockdog-wtciaozdbo.now.sh/?position=0%2C0)
+[Explore the scene](https://blockdog-flbnuykvwf.now.sh)
 
-#### Tower defense game (WIP)
+## Tower defense game (WIP)
 
 A fully-fledged game where a random 2d path is generated along which enemies walk, and where traps are randomly placed. You need to activate the traps as the enemies advance along the path to kill them. It’s all about timing.
 
@@ -318,7 +329,7 @@ A fully-fledged game where a random 2d path is generated along which enemies wal
 [Explore the scene]()
 -->
 
-#### Castaway 2048 (WIP)
+## Castaway 2048 (WIP)
 
 A fully fledged game, based on the popular game 2048, where the values are represented by a series of gems of increasing values. Click and drag to displace the gems on the board and merge them into greater values till you reach 2048.
 
