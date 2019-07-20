@@ -67,7 +67,7 @@ This simple scene features a couple of wheels that you can spin by clicking them
 
 [Explore the scene](https://hypno-wheels-xmirhqdurz.now.sh)
 
-Read a tutorial [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5) about this scene.
+Read a tutorial [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5/) about this scene.
 
 ## Shark animation
 
@@ -209,8 +209,8 @@ A scene that shows a character walking along a fixed path, using lerp over each 
 
 Read a tutorial blog post about this scene:
 
-- [Part 1]((https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5))
-- [Part 2](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5-part-2)
+- [Part 1](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5/)
+- [Part 2](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5-part-2/)
 
 ## Swimming shark
 
