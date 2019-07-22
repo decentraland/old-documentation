@@ -15,7 +15,7 @@ set_order: 2
 
 This blogpost walks you through creating a first scene with basic interactions. It explains some of the basic concepts of the Entity Component System architecture (ECS).
 
-Read the [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5)
+Read the [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5/)
 
 ![](/images/media/example-hypno-wheel.png)
 
@@ -26,8 +26,8 @@ This blogpost shows different ways to move an entity, as well as how to apply an
 
 Read the blog post:
 
-- [Part 1](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5)
-- [Part 2](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5-part-2)
+- [Part 1](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5/)
+- [Part 2](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5-part-2/)
 
 ![](/images/media/example-gnark.png)
 
@@ -36,7 +36,7 @@ Read the blog post:
 
 This blogpost is a reference for migrating content that was written for earlier versions of the Decentraland SDK to version 5.0.
 
-Read the [blog post](https://decentraland.org/blog/tutorials/sdk-migration)
+Read the [blog post](https://decentraland.org/blog/tutorials/sdk-migration/)
 
 <!--
 ## Simple interactive scene
