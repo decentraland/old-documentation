@@ -230,14 +230,13 @@ cube.addComponent(new Transform())
 let transform = cube.getComponent(Transform)
 
 // Edit values in the component
-transform.position = (5, 0, 5)
+transform.position = new Vector3(5, 0, 5)
 ```
 
 The `getComponent()` function fetches a reference to the component object. If you change the values of what's returned by this function, you're changing the component itself. For example, in the example above, we're setting the `position` stored in the component to _(5, 0, 5)_.
 
 ```ts
-let XScale = cube.getComponent(Transform).scale.x
-XScale = Math.random() * 10
+cube.getComponent(Transform).scale.x = Math.random() * 10
 ```
 
 The example above directly modifies the value of the _x_ scale on the Transform component.
@@ -425,7 +424,7 @@ const spawner = {
     // Add a transform component to the entity
     let t = ent.getComponentOrCreate(Transform)
     t.scale.setAll(0.5)
-    t.position = (5, 0, 5)
+    t.position.set(5, 0, 5)
 
     //add entity to engine
     engine.addEntity(ent)
