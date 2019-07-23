@@ -78,6 +78,8 @@ All UI components have several fields you can set to determine the position of t
 
 
 ```ts
+const canvas = new UICanvas()
+
 const message = new UIText(canvas)
 message.value = 'Close UI'
 message.fontSize = 15
@@ -106,6 +108,8 @@ For this, you can use the `UIContainerStack` and the `UIContainerRect`.
 Both these shapes have properties to set their color, and line thickness.
 
 ```ts
+const canvas = new UICanvas()
+
 const inventoryContainer = new UIContainerStack(canvas)
 inventoryContainer.adaptWidth = true
 inventoryContainer.width = '40%'
@@ -134,6 +138,8 @@ Scrollable rectangles can be horizontal or vertical, or both.
 
 
 ```ts
+const canvas = new UICanvas()
+
 const scrollableContainer = new UIScrollRect(canvas)
 scrollableContainer.width = '50%'
 scrollableContainer.height = '50%'
@@ -159,6 +165,8 @@ You can make a UI element partly transparent by setting its `opacity` property t
 
 
 ```ts
+const canvas = new UICanvas()
+
 const rect = new UIContainerRect(canvas)
 rect.width = '100%'
 rect.height = '100%'
@@ -207,6 +215,8 @@ When constructing a `UIImage` component, you must pass a `Texture` component as 
 let imageAtlas = "images/image-atlas.jpg"
 let imageTexture = new Texture(imageAtlas)
 
+const canvas = new UICanvas()
+
 const playButton = new UIImage(canvas, imageTexture)
 playButton.sourceLeft = 26
 playButton.sourceTop = 128
@@ -240,6 +250,8 @@ All UI elements have an `isPointerBlocker` property, that determines if they can
 Clickable UI elements also have an `OnClick` property, that lets you add a function to execute every time it's clicked.
 
 ```ts
+const canvas = new UICanvas()
+
 const clickableImage = new UIImage(canvas, new Texture('icon.png'))
 clickableImage.name = 'clickable-image'
 clickableImage.width = '92px'
@@ -267,6 +279,8 @@ clickableImage.onClick = new OnClick(() => {
 Input boxes can be added to the UI to provide a place to type in text. You add a text box with an `UIInputText` component. Players must first click on this box before they can write into it.
 
 ```ts
+const canvas = new UICanvas()
+
 const textInput = new UIInputText(canvas)
 textInput.width = '80%'
 textInput.height = '25px'
@@ -275,8 +289,7 @@ textInput.hAlign = 'center'
 textInput.fontSize = 10
 textInput.placeholder = 'Write message here'
 textInput.placeholderColor = Color4.Gray()
-textInput.positionX = '25px'
-textInput.positionY = '25px'
+textInput.positionY = '200px'
 textInput.isPointerBlocker = true
 
 textInput.onTextSubmit = new OnTextSubmit(x => {
@@ -365,6 +378,8 @@ If the UI is clickable, or has clickable parts, you should also set the `isPoint
 
 
 ```ts
+const canvas = new UICanvas()
+
 const close = new UIImage(canvas, new Texture('icon.png'))
 close.name = 'clickable-image'
 close.width = '120px'
