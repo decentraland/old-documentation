@@ -32,7 +32,7 @@ In most cases, you'll only need to edit this file to create your scene. It conta
 Below is a basic example of a _game.ts_ file:
 
 ```ts
-// Create a component group to track entities with Transition components
+// Create a component group to track entities with Transform components
 let group = engine.getComponentGroup(Transform)
 
 // Create a system
@@ -97,7 +97,7 @@ Directories containing a _tsconfig.json_ file are root directories for TypeScrip
 
 Keep in mind that when you deploy your scene to Decentraland, any assets or external libraries that are needed to use your scene must be either packaged inside the scene folder or available via a remote server.
 
-Anything that is meant to run in the user's client must located inside the scene folder. You shouldn't reference files or libraries that are installed elsewhere in your local machine, because they won't not be available to the deployed scene.
+Anything that is meant to run in the user's client must located inside the scene folder. You shouldn't reference files or libraries that are installed elsewhere in your local machine, because they won't be available to the deployed scene.
 
 We suggest using these folder names consistently for storing the different types of assets that your scene might need:
 

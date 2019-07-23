@@ -57,7 +57,7 @@ Give a material a plain color. In a `BasicMaterial` component, you set the `colo
 All color fields are of type `Color3`, these hold three values, for _Red_, _Green_ and _Blue_. Each of these numbers is between 0 and 1.
 
 ```ts
-myMaterial.albedoColor = new Color3.(0.5, 0, 0.5)
+myMaterial.albedoColor = new Color3(0.5, 0, 0.5)
 ```
 
 You can also pick predetermined colors using the following functions of the `Color3` object:
