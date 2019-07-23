@@ -71,7 +71,7 @@ Different types of tokens can be handled in the Ethereum network. A few standard
 
 In Decentraland, you can use tokens to represent items that relate to your game or experience, such as a weapon or a trophy. As tokens are held in a user’s wallet, they accompany a user from scene to scene, so each scene can choose if and how they want to react to every existing kind of token.
 
-Read [What are NFTs](https://decentraland.org/blog/technology/what-are-nfts) on our blog for a more in-depth look at the emergence and evolution of non-fungible tokens.
+Read [What are NFTs](https://decentraland.org/blog/technology/what-are-nfts/) on our blog for a more in-depth look at the emergence and evolution of non-fungible tokens.
 
 #### Fungible tokens
 

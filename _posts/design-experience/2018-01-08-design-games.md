@@ -155,7 +155,7 @@ The blockchain isn’t used to store the game state, user position or anything t
 
 **You can use special non-fungible tokens (NFTs) to represent game items, custom avatars or wearables.** If a user owns one of these tokens, your scene could respond to it in different ways.
 
-Read about what NFTs are in [this blogpost](https://decentraland.org/blog/technology/what-are-nfts).
+Read about what NFTs are in [this blogpost](https://decentraland.org/blog/technology/what-are-nfts/).
 
 #### In-game transactions
 
