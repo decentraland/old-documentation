@@ -155,11 +155,22 @@ anything special to use alpha
 
 what special layers PBR uses?
 
-show how to change a model with an unsopported shader. Delete material, create new and assign the same texture it used to have
 
 -->
 
-#### Texture size constraints
+##### Default textures
+
+All of the assets from the default Decentraland asset libraries (available in the Builder or as wearables) share a set of optimized plane textures. These textures are pre-loaded by players when they open the explorer, which makes these assets a lot faster to load. 
+
+If you build your own custom 3D models and use these same Decentraland default textures, your assets will also load faster when players walk to your parcels.
+
+These textures are composed of a palette of plain colors, that you can map to different parts of a 3D model.
+
+<img src="/images/media/MiniTown_TX.png" alt="Minitown texture" width="250"/>
+
+You can find the full collection of Decentrlanad default textures in [this repo](https://github.com/decentraland/builder-assets/tree/master/textures)
+
+##### Texture size constraints
 
 Texture sizes must use width and height numbers (in pixels) that match the following numbers:
 
@@ -215,6 +226,7 @@ To swap the material:
 
 - If your scene includes multiple models that use the same texture, reference the texture as an external file instead of having it embedded in the 3D model. Embedded textures get duplicated for each model and add to the scene's size.
   > Note: After referencing a file for a texture that won’t be embedded, make sure that file won’t be moved or renamed, as otherwise the reference to the file will be lost. The file must also be inside the scene folder so that it’s uploaded together with the scene.
+- Use the Decentraland [default textures](https://github.com/decentraland/builder-assets/tree/master/textures), which are pre-loaded by players, making your assets render a lot faster. 
 - Read [this article](https://www.khronos.org/blog/art-pipeline-for-gltf) for a detailed overview of a full art pipeline that uses PBR textures in glTF models.
 - Find free, high quality PBR textures in [cgbookcase](https://cgbookcase.com/).
 
