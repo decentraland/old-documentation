@@ -16,6 +16,7 @@ Clicks can be done either with a mouse, a touch screen, a VR controller or some 
 
 > Note: Clicks can be made from a maximum distance of 10 meters away from the entity.
 
+<!--
 ## OnPointerDown
 
 The easiest way to handle click events is to add an `OnPointerDown` component to the entity you want to click.
@@ -150,7 +151,7 @@ input.subscribe("BUTTON_DOWN", e => {
   }
 })
 ```
-
+-->
 
 ## OnClick
 

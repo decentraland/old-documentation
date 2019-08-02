@@ -121,7 +121,7 @@ Although the Decentraland world is not yet open to all, you can upload a scene p
 
 Even once Decentraland is made available to all, we still recommend testing changes with test users in a separate preview server first, before uploading a new version of your scene to Decentraland.
 
-Read [this blogpost](https://decentraland.org/blog/tutorials/developer-tutorial-deploy-and-share-live-scene-previews) for details on how to upload your scene preview to a free server.
+Read [this blogpost](https://decentraland.org/blog/tutorials/developer-tutorial-deploy-and-share-live-scene-previews/) for details on how to upload your scene preview to a free server.
 
 ## Additional considerations
 
