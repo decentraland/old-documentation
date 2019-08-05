@@ -35,33 +35,35 @@ The picture frame is displayed adjusting to the dimensions of the NFT image. If 
 Add an `NFTShape` component to an entity to display a 2D token in your scene.
 
 ```ts
-// create entity
-const nft = new Entity()
-
-// position entity
-nft.addComponent(new Transform({
-  position: new Vector3(1, 1.2, 1)
-  }))
-
-// add an NFTShape, instanced with a token contract and token id
-nft.addComponent(new NFTShape("0x06012c8cf97bead5deae237070f9587f8e7a266d", "475577"))
-
-// add entity to engine
-engine.addEntity(nft)
+const entity = new Entity()
+const shapeComponent = new NFTShape('ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536')
+entity.addComponent(shapeComponent)
+entity.addComponent(
+  new Transform({
+    position: new Vector3(4, 1.5, 4)
+  })
+)
+engine.addEntity(entity)
 ```
 
-The `NFTShape` component must be instanced with two parameters:
+The `NFTShape` component must be instanced with a parameter that includes the following:
 
 - The _contract_ of the token (for example, the CryptoKitties contract)
 - The _id_ of the specific token you own
+
+The example above fetches an NFT with the contract address `0x06012c8cf97BEaD5deAe237070F9587f8E7A266d`, and the specific identifier `558536`. The corresponding asset asset can be found in OpenSea at [https://opensea.io/assets/0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536](https://opensea.io/assets/0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536).
+
 
 When the token is displayed, it's shown as having a pulsating frame around it.
 
 You can change the background color of the frame, by changing the `color` property in the `NFTShape`. This affects back side of the model, and also the background of the image in case the NFT image has transparency.
 
 ```ts
-nft.getComponent(NFTShape()).color = Color3.FromHexString("#ff0000")
+const shapeComponent = new NFTShape('ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536', Color3.Green())
 ```
+
+ <img src="/images/media/nft-cat.png" alt="Move entity" width="300"/>
+
 
 
 
