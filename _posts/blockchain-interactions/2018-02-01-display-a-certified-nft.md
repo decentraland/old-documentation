@@ -23,6 +23,8 @@ Currently, only a limited list of NFTs are supported:
 - Chibi Fighters
 - Blockchain Cuties
 - HyperDragons
+- Chainbreakers
+- Chainguardians
 
 The picture frame is displayed adjusting to the dimensions of the NFT image. If the image's dimensions are 512 X 512 pixels, the frame keeps its original size. If the image has different dimensions, the frame will be resized and stretched to match these dimensions.
 
