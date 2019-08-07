@@ -64,9 +64,9 @@ There are several different types of UI elements you can add to the screenspace:
 All UI components have several fields you can set to determine the position of the component on the screenspace.
 
 
-- `hAlign` horizontal alignment relative to the parent. Possible values: `Top`, `Botton`, `Center`.
+- `hAlign` horizontal alignment relative to the parent. Possible values: `left`, `right`, `center`.
 
-- `vAlign` horizontal alignment relative to the parent. Possible values: `Left`, `Right`, `Center`.
+- `vAlign` horizontal alignment relative to the parent. Possible values: `top`, `bottom`, `center`.
 
 - `positionX`, `positionY`: the position of the top-left corner of the component, relative to the parent. By default, to the top-left corner of its parent. If the `hAlign` or `vAlign` properties are set, then `positionX` and `positionY` offset the UI component relative to the position of these alignment properties.
 

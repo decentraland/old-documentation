@@ -37,7 +37,7 @@ Open your scene's _scene.json_ file and verify the following:
 
 - **Parcels**: The coordinates of the parcels that will be occupied by your scene
 
-- **Base**: The coordinates of the parcel that will be considered the [0,0] coordinate of the scene.
+- **Base**: The coordinates of the parcel that will be considered the [0,0] coordinate of the scene. If your scene has multiple parcels, it should be the bottom-left (South-West) parcel.
 
 > Note: See [scene metadata]({{ site.baseurl }}{% post_url /development-guide/2018-02-26-scene-metadata %}) for more details on how to set these parameters.
 
