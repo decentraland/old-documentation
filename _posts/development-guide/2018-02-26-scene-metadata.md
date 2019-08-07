@@ -30,7 +30,7 @@ When [deploying](({{ site.baseurl }}{% post_url /deploy/2018-01-07-publishing %}
 
 This information is not necessary while developing a scene offline, unless you're building a scene that occupies more than one parcel. 
 
-The `base` field defines which parcel to consider the base parcel. All entity positions will be measured in reference to the South-East corner of this parcel.
+The `base` field defines which parcel to consider the base parcel. If your scene has a single parcel, the base should be that parcel. If your scene has multiple parcels, the base should be the bottom-left (South-West) parcel. All entity positions will be measured in reference to the South-West corner of this parcel.
 
 To display multiple parcels in the scene preview, list as many parcels as you intend to use. They don't need to be the exact parcels you'll deploy to, but they should all be adjacent and arranged in the same way in relation to each other.
 
