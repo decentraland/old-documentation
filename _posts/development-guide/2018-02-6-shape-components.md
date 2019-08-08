@@ -92,33 +92,51 @@ Note that in several of these sites, you can choose what format to download the 
 
 Entities that have collisions enabled occupy space and block a user's path, entities without collisions can be walked through by a user`s avatar.
 
-Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the user's avatar.
+_primitive_ shapes (boxes, spheres, planes etc), have collisions already built into them. An imported _glTF_ or _glb_ model must have a collider geometry in it for collisions to work.
 
-Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
+> Note: Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the user's avatar. Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
+
+<!--
 > Tip: To view the limits of all collider meshes in the scene, launch your scene preview with `dcl start` and then click `c`. This draws blue lines that delimit all colliders in place.
+-->
 
-Entities don't use collisions by default. Depending on the type of the shape component it has, collisions are enabled as follows:
+#### Disable collisions
 
-- For _primitive_ shapes (boxes, spheres, planes etc), you enable collisions by setting the `withCollisions` field of the shape component to _true_.
+To turn off collisions, either in a primitive shape or a GLTF model, set the `withCollisions` field in the shape component to _false_. 
 
-  This example defines a box entity that can't be walked through.
+This example defines a box entity that can be walked through.
 
-  ```ts
-  let box = new BoxShape()
-  box.withCollisions = true
-  myEntity.addComponent(box)
-  ```
-  > Note: Planes only block movement in one direction. 
+```ts
+let box = new BoxShape()
+box.withCollisions = false
+myEntity.addComponent(box)
+```
+> Note: Planes only block movement in one direction. 
 
-- To use collisions in a _glTF_ shape, you can either:
-
-  - Overlay an invisible entity with a primitive shape and the `withCollisions` field set to _true_.
-  - Edit the model in an external tool like Blender to include a _collider object_. The collider must be named _x_collider_, where _x_ is the name of the model. So for a model named _house_, the collider must be named _house_collider_.
+#### Add colliders to a model
 
 A _collider_ is a set of geometric shapes or planes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision object is usually a lot simpler (with less vertices) than the original model.
 
+> Note: Primitive shapes already have colliders built into them.
+
+You can edit a model in an external tool like Blender to include a collider, if it doesn't already include one.
+
+Any objects that are named `x_collider`, where `x` can be any name you want, are considered colliders by the SDK, as long as the name ends in `_collider`. 
+
+For example, if you have a 3D model of a house that you can walk through, you can:
+
+1) Import it into Blender
+2) Add a new cube object that overlaps with the shape of the house
+3) Name this cube `house_collider` 
+4) Export the model and use it in your scene
+5) The SDK will now interpret the shape of this cube as a collider. It will be invisible, but it will block players form walking through the house.
+
 See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more details on how to add colliders to a 3D model.
+
+
+> Tip: In many cases, a simpler solution than editing the model is to overlay an entity with a primitive shape (like a box or a plane) and the `visible` field set to _false_, so that it acts as a collider.
+
 
 ## Make invisible
 
