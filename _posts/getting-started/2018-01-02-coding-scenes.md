@@ -63,15 +63,6 @@ to create our scenes.
 
 TypeScript is a superset of JavaScript, so if you're familiar with JavaScript you'll find it's almost the same, but TypeScript allows you to employ object-oriented programming and type declarations. Features like autocomplete and type-checking speed up development times and allow for the creation of a more solid codebase. These features are all key components to a positive developer experience.
 
-<!--
-
-#### XML
-
-For scenes that only render motionless content and that won't be interactive, you can use [XML](https://en.wikipedia.org/wiki/XML). XML takes a lot less effort to learn and use, but it's more limited. See [XML static scenes]({{ site.baseurl }}{% post_url /development-guide/2018-01-13-xml-static-scenes %}) for an overview.
-
-We encourage developers to build their scenes using TypeScript, as that allows for far more interesting possibilities.
--->
-
 #### Other languages
 
 You can use another tool or language instead of TypeScript and compile it into JavaScript, as long as your compiled scripts are contained within a single JavaScript file named _game.js_. All provided type declarations are made in TypeScript, and other languages and transpilers are not officially supported.

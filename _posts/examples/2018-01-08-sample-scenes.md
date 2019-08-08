@@ -25,17 +25,6 @@ To do so:
    1. _Fork the repo_ to work on your own version of it, that will exist in a cloned GitHub repo that belongs to you.
    2. Click **Clone or Download** and select to download it as a _.zip_ file, to work on the files locally, without GitHub being involved.
 
-<!--
-## Static XML Scenes
-
-#### Static XML Scene
-
-A completely static scene. It's built entirely using XML, which makes it easier to write and edit, but doesn't support any changes over time or interactions with the user.
-
-![](/images/media/example-static.png)
-
-[Code](https://github.com/decentraland-scenes/XML-static-scene)
--->
 
 # Essentials
 
