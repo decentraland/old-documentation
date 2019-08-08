@@ -23,7 +23,7 @@ The Decentraland CLI is distributed via [npm](https://www.npmjs.com/get-npm?utm_
 
 Please install the following dependencies before you install the CLI:
 
-- [Node.js](https://github.com/decentraland/cli#nodejs-installation) (version 8)
+- [Node.js](https://www.npmjs.com/) (version 8 or later)
 
 ## To install the CLI
 
