@@ -32,6 +32,8 @@ Below are the maximum number of elements allowed allowed in a scene:
 - **Height:** `log2(n+1) x 20` Height in meters.
 
   > Note: User avatars and any items brought by users from outside the scene don't count for calculating these limits.
+
+
 <!--
 
 ## Query scene limitations via code
@@ -140,6 +142,7 @@ executeTask(async () => {
 ```
 
 For example, if your scene is only rendering one box entity at the time, logging `limits.entities` should print `1`.
+
 -->
 
 
