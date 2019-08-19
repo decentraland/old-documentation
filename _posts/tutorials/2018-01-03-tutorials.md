@@ -32,11 +32,38 @@ Read the blog post:
 ![](/images/media/example-gnark.png)
 
 
+#### Using UIs
+
+This guest blog post by Surz shows how to add a custom UI to your scene.
+
+Read the [blog post](https://decentraland.org/blog/tutorials/adding-a-ui/)
+
+
+#### Picking and dragging objects in-world
+
+This guest blog post by Interweaver shows how players can pick up an object and move it around with them in the scene.
+
+Read the [blog post](https://decentraland.org/blog/announcements/building-blocks/)
+
+
+
 #### Migrate scenes from the old SDK to the latest
 
 This blogpost is a reference for migrating content that was written for earlier versions of the Decentraland SDK to version 5.0.
 
 Read the [blog post](https://decentraland.org/blog/tutorials/sdk-migration/)
+
+
+#### Using the blockchain
+
+This series of tutorials by Miles show how to build a scene, starting from the basics to using blockchain transactions in the Ethereum network to monetize.
+
+- [Part 1](https://www.decentral.games/tutorial-1-setting-up-the-decentraland-environment-and-building-your-first-scene)
+- [Part 2](https://www.decentral.games/tutorial-2-using-custom-models-and-introduction-to-scripting)
+- [Part 3](https://www.decentral.games/decentral-games-tutorial-3-advanced-scripting-with-systems)
+- [Part 4](https://www.decentral.games/tutorial-4-using-the-ethereum-blockchain-in-your-scene)
+
+
 
 <!--
 ## Simple interactive scene
