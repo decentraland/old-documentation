@@ -4,10 +4,11 @@ title: 3D model considerations
 description: Learn what assets and components are supported in external 3D models and how to configure them before importing them to Decentraland.
 redirect_from:
   - /sdk-reference/external-3d-models/
+  - /development-guide/external-3d-models/
 categories:
-  - development-guide
+  - 3d-modeling
 type: Document
-set: development-guide
+set: 3d-modeling
 set_order: 9
 ---
 
