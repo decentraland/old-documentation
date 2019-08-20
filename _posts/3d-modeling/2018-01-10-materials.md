@@ -1,6 +1,6 @@
 ---
 date: 2018-01-10
-title: Materials
+title: 3D model materials
 description: Learn what material properties and textures are supported on 3D models imported to Decentraland.
 
 categories:
@@ -131,6 +131,12 @@ To swap the material:
 5. The texture should be mapped to the new material just as it was mapped to the old material.
 
    <img src="/images/media/materials_final.png" alt="Model with valid material" width="300"/>
+
+<!--
+## Optimize a glb
+
+_.glb_
+-->
 
 ## Best practices for materials
 

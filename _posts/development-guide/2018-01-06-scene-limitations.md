@@ -156,7 +156,7 @@ A single parcel scene measures 16 meters x 16 meters. If the scene has multiple 
 
 ## Shader limitations
 
-3D models used in decentraland must use supported shaders and materials. See [3D model considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for a list of supported shaders.
+3D models used in decentraland must use supported shaders and materials. See [3D model materials]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-10-materials %}) for a list of supported shaders.
 
 ## Lighting
 
