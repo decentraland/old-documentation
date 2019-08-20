@@ -1,6 +1,6 @@
 ---
 date: 2018-02-13
-title: 3D model animations
+title: Handle animations
 description: How to move and animate entities in your scene
 categories:
   - development-guide
