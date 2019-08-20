@@ -1,0 +1,23 @@
+environment:
+  matrix:
+    - RUBY_VERSION: 25
+    - RUBY_VERSION: 24
+    - RUBY_VERSION: 23
+
+# Install scripts. (runs after repo cloning)
+install:
+  - set PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
+  - gem install bundler
+  - bundle install
+
+before_test:
+  - ruby -v
+  - gem -v
+  - bundle -v
+
+# Post-install test scripts.
+test_script:
+  - bundle exec rspec
+
+build:
+  off

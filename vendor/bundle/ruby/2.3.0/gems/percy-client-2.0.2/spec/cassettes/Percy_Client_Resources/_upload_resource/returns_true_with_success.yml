@@ -1,0 +1,236 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3000/api/v1/builds/
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"builds","attributes":{"commit-sha":"fc4d2c2e6b55d995a005dba2d071e2f2fca5e04b","commit-branch":"master","commit-committed-at":"2015-06-09
+        23:22:31 -0700","commit-author-name":"<COMMIT_AUTHOR_NAME>","commit-author-email":"<COMMIT_AUTHOR_EMAIL>","commit-committer-name":"<COMMIT_AUTHOR_NAME>","commit-committer-email":"<COMMIT_AUTHOR_EMAIL>","commit-message":"Fix
+        test environment issue.","pull-request-number":null}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 11 Jun 2015 00:20:36 GMT
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Token token="<FILTERED_PERCY_TOKEN>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 11 Jun 2015 00:20:36 GMT
+      Status:
+      - 201 Created
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Authorization, Content-Type
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Request-Id:
+      - 2680d68e-d8b3-4b0d-8d5f-d8fe9810a080
+      X-Runtime:
+      - '0.198242'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"25","type":"builds","attributes":{"build-number":25,"state":"pending","is-pull-request":false,"pull-request-number":0,"pull-request-title":null,"approved-at":null,"created-at":"2015-06-11T00:20:36.192Z","updated-at":"2015-06-11T00:20:36.192Z"},"links":{"self":"/api/v1/builds/25"},"relationships":{"commit":{"links":{"self":"/api/v1/builds/25/relationships/commit","related":"/api/v1/builds/25/commit"},"data":{"type":"commits","id":"2"}},"repo":{"links":{"self":"/api/v1/builds/25/relationships/repo","related":"/api/v1/builds/25/repo"}},"base-build":{"links":{"self":"/api/v1/builds/25/relationships/base-build","related":"/api/v1/builds/25/base-build"},"data":{"type":"builds","id":"22"}},"approved-by":{"links":{"self":"/api/v1/builds/25/relationships/approved-by","related":"/api/v1/builds/25/approved-by"}},"snapshots":{"links":{"self":"/api/v1/builds/25/relationships/snapshots","related":"/api/v1/builds/25/snapshots"}},"comparisons":{"links":{"self":"/api/v1/builds/25/relationships/comparisons","related":"/api/v1/builds/25/comparisons"}},"missing-resources":{"links":{"self":"/api/v1/builds/25/relationships/missing-resources","related":"/api/v1/builds/25/missing-resources"}}},"meta":{"finalize-link":"/api/v1/builds/25/finalize","approve-link":"/api/v1/builds/25/approve"}},"included":[{"id":"2","type":"commits","attributes":{"sha":"fc4d2c2e6b55d995a005dba2d071e2f2fca5e04b","branch":"master","message":"Fix
+        test environment issue.","committed-at":"2015-06-09 23:22:31 -0700","author-name":"<COMMIT_AUTHOR_NAME>","committer-name":"<COMMIT_AUTHOR_NAME>","created-at":"2015-06-11T00:15:24.000Z","updated-at":"2015-06-11T00:15:24.000Z"},"links":{"self":"/api/v1/commits/2"}},{"id":"22","type":"builds","attributes":{"build-number":22,"state":"finished","is-pull-request":false,"pull-request-number":0,"pull-request-title":null,"approved-at":null,"created-at":"2015-06-11T00:17:46.000Z","updated-at":"2015-06-11T00:17:46.000Z"},"links":{"self":"/api/v1/builds/22"},"relationships":{"commit":{"links":{"self":"/api/v1/builds/22/relationships/commit","related":"/api/v1/builds/22/commit"},"data":{"type":"commits","id":"2"}},"repo":{"links":{"self":"/api/v1/builds/22/relationships/repo","related":"/api/v1/builds/22/repo"}},"base-build":{"links":{"self":"/api/v1/builds/22/relationships/base-build","related":"/api/v1/builds/22/base-build"}},"approved-by":{"links":{"self":"/api/v1/builds/22/relationships/approved-by","related":"/api/v1/builds/22/approved-by"}},"snapshots":{"links":{"self":"/api/v1/builds/22/relationships/snapshots","related":"/api/v1/builds/22/snapshots"}},"comparisons":{"links":{"self":"/api/v1/builds/22/relationships/comparisons","related":"/api/v1/builds/22/comparisons"}},"missing-resources":{"links":{"self":"/api/v1/builds/22/relationships/missing-resources","related":"/api/v1/builds/22/missing-resources"}}},"meta":{"finalize-link":"/api/v1/builds/22/finalize","approve-link":"/api/v1/builds/22/approve"}}]}'
+    http_version:
+  recorded_at: Thu, 11 Jun 2015 00:20:36 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/api/v1/builds/25/snapshots/
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"snapshots","attributes":{"name":"homepage"},"relationships":{"resources":{"data":[{"type":"resources","id":"0ae24db123b4b8b506d27ccd61fb20de2d29e71ca6c2737dee6078db0f716602","attributes":{"resource-url":"/foo/test.html","mimetype":null,"is-root":true}}]}}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 11 Jun 2015 00:20:36 GMT
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Token token="<FILTERED_PERCY_TOKEN>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 11 Jun 2015 00:20:36 GMT
+      Status:
+      - 201 Created
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Authorization, Content-Type
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Request-Id:
+      - 760611ed-20eb-4f5f-b77a-643662f9bec8
+      X-Runtime:
+      - '0.051560'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"1108","type":"snapshots","attributes":{"name":"homepage","created-at":"2015-06-11T00:20:36.248Z","updated-at":"2015-06-11T00:20:36.248Z","finished-processing-at":null},"links":{"self":"/api/v1/snapshots/1108"},"relationships":{"build":{"links":{"self":"/api/v1/snapshots/1108/relationships/build","related":"/api/v1/snapshots/1108/build"}},"screenshots":{"links":{"self":"/api/v1/snapshots/1108/relationships/screenshots","related":"/api/v1/snapshots/1108/screenshots"}},"missing-resources":{"links":{"self":"/api/v1/snapshots/1108/relationships/missing-resources","related":"/api/v1/snapshots/1108/missing-resources"},"data":[{"type":"resources","id":"0ae24db123b4b8b506d27ccd61fb20de2d29e71ca6c2737dee6078db0f716602"}]}}},"included":[{"id":"0ae24db123b4b8b506d27ccd61fb20de2d29e71ca6c2737dee6078db0f716602","type":"resources","attributes":{},"links":{"self":"/api/v1/resources/0ae24db123b4b8b506d27ccd61fb20de2d29e71ca6c2737dee6078db0f716602"}}]}'
+    http_version:
+  recorded_at: Thu, 11 Jun 2015 00:20:36 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/api/v1/builds/25/resources/
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"resources","attributes":{"id":"0ae24db123b4b8b506d27ccd61fb20de2d29e71ca6c2737dee6078db0f716602","base64-content":"aGVsbG8gd29ybGQhIFBlcmN5OjpDbGllbnQ6OlJlc291cmNlcw=="}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 11 Jun 2015 00:20:36 GMT
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Token token="<FILTERED_PERCY_TOKEN>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 11 Jun 2015 00:20:37 GMT
+      Status:
+      - 201 Created
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Authorization, Content-Type
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Request-Id:
+      - edc5ac12-5b5a-410f-b94e-a46166a3b218
+      X-Runtime:
+      - '1.109584'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"success":true}'
+    http_version:
+  recorded_at: Thu, 11 Jun 2015 00:20:37 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/api/v1/builds/25/resources/
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"resources","attributes":{"id":"0ae24db123b4b8b506d27ccd61fb20de2d29e71ca6c2737dee6078db0f716602","base64-content":"aGVsbG8gd29ybGQhIFBlcmN5OjpDbGllbnQ6OlJlc291cmNlcw=="}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 11 Jun 2015 00:20:37 GMT
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Token token="<FILTERED_PERCY_TOKEN>"
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Date:
+      - Thu, 11 Jun 2015 00:20:37 GMT
+      Status:
+      - 409 Conflict
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Authorization, Content-Type
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Request-Id:
+      - f08955d9-c4b2-4bb8-af7d-377049445251
+      X-Runtime:
+      - '0.025972'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"status":"conflict","detail":"Upload failed, resource with
+        SHA-256 ''0ae24db123b4b8b506d27ccd61fb20de2d29e71ca6c2737dee6078db0f716602''
+        already exists."}]}'
+    http_version:
+  recorded_at: Thu, 11 Jun 2015 00:20:37 GMT
+recorded_with: VCR 2.9.3

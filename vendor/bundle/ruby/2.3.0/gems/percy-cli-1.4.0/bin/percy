@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'commander'
+require 'percy/cli'
+
+Percy::Cli.new.run

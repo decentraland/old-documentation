@@ -1,0 +1,10 @@
+inherit_gem:
+  percy-style:
+    - default.yml
+
+AllCops:
+  TargetRubyVersion: 2.2
+
+Style/GlobalVars:
+  Exclude:
+    - 'lib/percy/cli.rb'

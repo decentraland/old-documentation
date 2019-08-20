@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3000/api/v1/builds/
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"builds","attributes":{"branch":"map/update-to-token-only-build-endpoint","target-branch":null,"target-commit-sha":null,"commit-sha":"573b0e7995c8a8b7f77039f969cb15794e2e969d","commit-committed-at":"2018-08-08
+        09:22:26 -0500","commit-author-name":"<COMMIT_AUTHOR_NAME>","commit-author-email":"<COMMIT_AUTHOR_EMAIL>","commit-committer-name":"<COMMIT_AUTHOR_NAME>","commit-committer-email":"<COMMIT_AUTHOR_EMAIL>","commit-message":"Manually
+        update cassettes to use projects endpoint instead of repos","pull-request-number":null,"parallel-nonce":null,"parallel-total-shards":null}}}'
+    headers:
+      User-Agent:
+      - Percy/v1 percy-client/1.15.0 (ruby/2.3.3p222; )
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Token token="<FILTERED_PERCY_TOKEN>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 201 Created
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 42bb4220-344f-40ec-a7f4-2a611cccca9b
+      Access-Control-Allow-Headers:
+      - Authorization, Content-Type
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      X-Runtime:
+      - '0.286637'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Date:
+      - Wed, 08 Aug 2018 19:09:33 GMT
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"builds","id":"17","attributes":{"branch":"map/update-to-token-only-build-endpoint","build-number":8,"web-url":"http://dev.percy.local:4200/fotinakis/percy-examples/builds/17","state":"pending","review-state":null,"review-state-reason":null,"is-pull-request":false,"pull-request-number":null,"pull-request-title":null,"pull-request-html-url":null,"user-agent":"Percy/v1
+        percy-client/1.15.0 (ruby/2.3.3p222; )","total-snapshots":null,"total-snapshots-unreviewed":null,"total-comparisons":null,"total-comparisons-finished":null,"total-comparisons-diff":null,"failure-reason":null,"failure-details":null,"parallel-nonce":null,"parallel-total-shards":null,"finished-at":null,"approved-at":null,"created-at":"2018-08-08T19:09:33.000Z","updated-at":"2018-08-08T19:09:33.000Z"},"links":{"self":"/api/v1/builds/17"},"relationships":{"project":{"links":{"self":"/api/v1/builds/17/relationships/project","related":"/api/v1/builds/17/project"},"data":{"type":"projects","id":"9"}},"commit":{"links":{"self":"/api/v1/builds/17/relationships/commit","related":"/api/v1/builds/17/commit"},"data":{"type":"commits","id":"5"}},"repo":{"links":{"self":"/api/v1/builds/17/relationships/repo","related":"/api/v1/builds/17/repo"},"data":null},"base-build":{"links":{"self":"/api/v1/builds/17/relationships/base-build","related":"/api/v1/builds/17/base-build"},"data":null},"approved-by":{"links":{"self":"/api/v1/builds/17/relationships/approved-by","related":"/api/v1/builds/17/approved-by"},"data":null},"snapshots":{"links":{"self":"/api/v1/builds/17/relationships/snapshots","related":"/api/v1/builds/17/snapshots"}},"comparisons":{"links":{"self":"/api/v1/builds/17/relationships/comparisons","related":"/api/v1/builds/17/comparisons"}},"browsers":{"links":{"self":"/api/v1/builds/17/relationships/browsers","related":"/api/v1/builds/17/browsers"},"data":[{"type":"browsers","id":"5"},{"type":"browsers","id":"7"}]},"missing-resources":{"links":{"self":"/api/v1/builds/17/relationships/missing-resources","related":"/api/v1/builds/17/missing-resources"}}},"meta":{"finalize-link":"/api/v1/builds/17/finalize","approve-link":"/api/v1/builds/17/approve"}},"included":[{"type":"projects","id":"9","attributes":{"name":"percy-examples","slug":"percy-examples","full-slug":"fotinakis/percy-examples","is-enabled":true,"diff-base":"automatic","auto-approve-branch-filter":"master","created-at":"2018-08-07T21:55:38.000Z","updated-at":"2018-08-07T21:55:38.000Z"},"links":{"self":"/api/v1/projects/fotinakis/percy-examples"},"relationships":{"organization":{"links":{"self":"/api/v1/projects/fotinakis/percy-examples/relationships/organization","related":"/api/v1/projects/fotinakis/percy-examples/organization"}},"repo":{"links":{"self":"/api/v1/projects/fotinakis/percy-examples/relationships/repo","related":"/api/v1/projects/fotinakis/percy-examples/repo"}},"builds":{"links":{"self":"/api/v1/projects/fotinakis/percy-examples/relationships/builds","related":"/api/v1/projects/fotinakis/percy-examples/builds"}},"tokens":{"links":{"self":"/api/v1/projects/fotinakis/percy-examples/relationships/tokens","related":"/api/v1/projects/fotinakis/percy-examples/tokens"}},"browser-targets":{},"project-browser-targets":{}}},{"type":"commits","id":"5","attributes":{"sha":"573b0e7995c8a8b7f77039f969cb15794e2e969d","message":"Manually
+        update cassettes to use projects endpoint instead of repos","committed-at":"2018-08-08
+        09:22:26 -0500","author-name":"<COMMIT_AUTHOR_NAME>","committer-name":"<COMMIT_AUTHOR_NAME>","created-at":"2018-08-08T18:54:38.000Z","updated-at":"2018-08-08T18:54:38.000Z"},"links":{"self":"/api/v1/commits/5"}},{"type":"browsers","id":"5","attributes":{"version":"52.5.3esr","created-at":"2018-06-01T01:31:13.000Z","updated-at":"2018-06-01T01:31:13.000Z"},"links":{"self":"/api/v1/browsers/5"},"relationships":{"operating-system":{},"browser-family":{"data":{"type":"browser-families","id":"1"}}}},{"type":"browsers","id":"7","attributes":{"version":"67.0.3396.99","created-at":"2018-07-12T17:17:04.000Z","updated-at":"2018-07-12T17:17:04.000Z"},"links":{"self":"/api/v1/browsers/7"},"relationships":{"operating-system":{},"browser-family":{"data":{"type":"browser-families","id":"2"}}}},{"type":"browser-families","id":"1","attributes":{"name":"Firefox","slug":"firefox"}},{"type":"browser-families","id":"2","attributes":{"name":"Chrome","slug":"chrome"}}]}'
+    http_version:
+  recorded_at: Wed, 08 Aug 2018 19:09:33 GMT
+recorded_with: VCR 3.0.3
