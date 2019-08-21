@@ -1,0 +1,122 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3000/api/v1/builds/
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"builds","attributes":{"commit-sha":"fc4d2c2e6b55d995a005dba2d071e2f2fca5e04b","commit-branch":"master","commit-committed-at":"2015-06-09
+        23:22:31 -0700","commit-author-name":"<COMMIT_AUTHOR_NAME>","commit-author-email":"<COMMIT_AUTHOR_EMAIL>","commit-committer-name":"<COMMIT_AUTHOR_NAME>","commit-committer-email":"<COMMIT_AUTHOR_EMAIL>","commit-message":"Fix
+        test environment issue.","pull-request-number":null}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 11 Jun 2015 00:20:37 GMT
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Token token="<FILTERED_PERCY_TOKEN>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 11 Jun 2015 00:20:37 GMT
+      Status:
+      - 201 Created
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Authorization, Content-Type
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Request-Id:
+      - 30b2e83e-e33e-475d-87e8-5e937cc7a092
+      X-Runtime:
+      - '0.028035'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"27","type":"builds","attributes":{"build-number":27,"state":"pending","is-pull-request":false,"pull-request-number":0,"pull-request-title":null,"approved-at":null,"created-at":"2015-06-11T00:20:37.746Z","updated-at":"2015-06-11T00:20:37.746Z"},"links":{"self":"/api/v1/builds/27"},"relationships":{"commit":{"links":{"self":"/api/v1/builds/27/relationships/commit","related":"/api/v1/builds/27/commit"},"data":{"type":"commits","id":"2"}},"repo":{"links":{"self":"/api/v1/builds/27/relationships/repo","related":"/api/v1/builds/27/repo"}},"base-build":{"links":{"self":"/api/v1/builds/27/relationships/base-build","related":"/api/v1/builds/27/base-build"},"data":{"type":"builds","id":"22"}},"approved-by":{"links":{"self":"/api/v1/builds/27/relationships/approved-by","related":"/api/v1/builds/27/approved-by"}},"snapshots":{"links":{"self":"/api/v1/builds/27/relationships/snapshots","related":"/api/v1/builds/27/snapshots"}},"comparisons":{"links":{"self":"/api/v1/builds/27/relationships/comparisons","related":"/api/v1/builds/27/comparisons"}},"missing-resources":{"links":{"self":"/api/v1/builds/27/relationships/missing-resources","related":"/api/v1/builds/27/missing-resources"}}},"meta":{"finalize-link":"/api/v1/builds/27/finalize","approve-link":"/api/v1/builds/27/approve"}},"included":[{"id":"2","type":"commits","attributes":{"sha":"fc4d2c2e6b55d995a005dba2d071e2f2fca5e04b","branch":"master","message":"Fix
+        test environment issue.","committed-at":"2015-06-09 23:22:31 -0700","author-name":"<COMMIT_AUTHOR_NAME>","committer-name":"<COMMIT_AUTHOR_NAME>","created-at":"2015-06-11T00:15:24.000Z","updated-at":"2015-06-11T00:15:24.000Z"},"links":{"self":"/api/v1/commits/2"}},{"id":"22","type":"builds","attributes":{"build-number":22,"state":"finished","is-pull-request":false,"pull-request-number":0,"pull-request-title":null,"approved-at":null,"created-at":"2015-06-11T00:17:46.000Z","updated-at":"2015-06-11T00:17:46.000Z"},"links":{"self":"/api/v1/builds/22"},"relationships":{"commit":{"links":{"self":"/api/v1/builds/22/relationships/commit","related":"/api/v1/builds/22/commit"},"data":{"type":"commits","id":"2"}},"repo":{"links":{"self":"/api/v1/builds/22/relationships/repo","related":"/api/v1/builds/22/repo"}},"base-build":{"links":{"self":"/api/v1/builds/22/relationships/base-build","related":"/api/v1/builds/22/base-build"}},"approved-by":{"links":{"self":"/api/v1/builds/22/relationships/approved-by","related":"/api/v1/builds/22/approved-by"}},"snapshots":{"links":{"self":"/api/v1/builds/22/relationships/snapshots","related":"/api/v1/builds/22/snapshots"}},"comparisons":{"links":{"self":"/api/v1/builds/22/relationships/comparisons","related":"/api/v1/builds/22/comparisons"}},"missing-resources":{"links":{"self":"/api/v1/builds/22/relationships/missing-resources","related":"/api/v1/builds/22/missing-resources"}}},"meta":{"finalize-link":"/api/v1/builds/22/finalize","approve-link":"/api/v1/builds/22/approve"}}]}'
+    http_version:
+  recorded_at: Thu, 11 Jun 2015 00:20:37 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/api/v1/builds/27/snapshots/
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"snapshots","attributes":{"name":null},"relationships":{"resources":{"data":[]}}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 11 Jun 2015 00:20:37 GMT
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Token token="<FILTERED_PERCY_TOKEN>"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 11 Jun 2015 00:20:37 GMT
+      Status:
+      - 400 Bad Request
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Authorization, Content-Type
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Request-Id:
+      - 9d073ca2-3028-40e0-b8f6-0637e20470c8
+      X-Runtime:
+      - '0.014258'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"status":"bad_request","detail":"Exactly one resource with
+        ''is-root'': true must be present in the ''resources'' array. Found 0 root
+        resources in 0 total resources."}]}'
+    http_version:
+  recorded_at: Thu, 11 Jun 2015 00:20:37 GMT
+recorded_with: VCR 2.9.3

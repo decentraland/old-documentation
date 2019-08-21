@@ -53,7 +53,7 @@ You can add primitive shapes like boxes, cones, or spheres.
 
 #### 3D Models
 
-You can import 3D models in _glTF_ format into your scene. See [3D model considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for details about what can be supported in 3D models.
+You can import 3D models in _glTF_ format into your scene. See [3D model considerations]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %}) for details about what can be supported in 3D models.
 
 ```xml
 <gltf-model position="1 2 3" scale="4 4 4" src="models/dog.gltf"></gltf-model>

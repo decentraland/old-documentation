@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3000/api/v1/builds/
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"builds","attributes":{"commit-sha":"fc4d2c2e6b55d995a005dba2d071e2f2fca5e04b","commit-branch":"master","commit-committed-at":"2015-06-09
+        23:22:31 -0700","commit-author-name":"<COMMIT_AUTHOR_NAME>","commit-author-email":"<COMMIT_AUTHOR_EMAIL>","commit-committer-name":"<COMMIT_AUTHOR_NAME>","commit-committer-email":"<COMMIT_AUTHOR_EMAIL>","commit-message":"Fix
+        test environment issue.","pull-request-number":"123"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 11 Jun 2015 00:20:38 GMT
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Token token="<FILTERED_PERCY_TOKEN>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 11 Jun 2015 00:20:39 GMT
+      Status:
+      - 201 Created
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Authorization, Content-Type
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Request-Id:
+      - 446304d0-e682-46b1-b0c0-39eefc375c40
+      X-Runtime:
+      - '0.422910'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"31","type":"builds","attributes":{"build-number":31,"state":"pending","is-pull-request":true,"pull-request-number":123,"pull-request-title":null,"approved-at":null,"created-at":"2015-06-11T00:20:38.926Z","updated-at":"2015-06-11T00:20:38.926Z"},"links":{"self":"/api/v1/builds/31"},"relationships":{"commit":{"links":{"self":"/api/v1/builds/31/relationships/commit","related":"/api/v1/builds/31/commit"},"data":{"type":"commits","id":"2"}},"repo":{"links":{"self":"/api/v1/builds/31/relationships/repo","related":"/api/v1/builds/31/repo"}},"base-build":{"links":{"self":"/api/v1/builds/31/relationships/base-build","related":"/api/v1/builds/31/base-build"},"data":{"type":"builds","id":"29"}},"approved-by":{"links":{"self":"/api/v1/builds/31/relationships/approved-by","related":"/api/v1/builds/31/approved-by"}},"snapshots":{"links":{"self":"/api/v1/builds/31/relationships/snapshots","related":"/api/v1/builds/31/snapshots"}},"comparisons":{"links":{"self":"/api/v1/builds/31/relationships/comparisons","related":"/api/v1/builds/31/comparisons"}},"missing-resources":{"links":{"self":"/api/v1/builds/31/relationships/missing-resources","related":"/api/v1/builds/31/missing-resources"}}},"meta":{"finalize-link":"/api/v1/builds/31/finalize","approve-link":"/api/v1/builds/31/approve"}},"included":[{"id":"2","type":"commits","attributes":{"sha":"fc4d2c2e6b55d995a005dba2d071e2f2fca5e04b","branch":"master","message":"Fix
+        test environment issue.","committed-at":"2015-06-09 23:22:31 -0700","author-name":"<COMMIT_AUTHOR_NAME>","committer-name":"<COMMIT_AUTHOR_NAME>","created-at":"2015-06-11T00:15:24.000Z","updated-at":"2015-06-11T00:15:24.000Z"},"links":{"self":"/api/v1/commits/2"}},{"id":"29","type":"builds","attributes":{"build-number":29,"state":"finished","is-pull-request":false,"pull-request-number":0,"pull-request-title":null,"approved-at":null,"created-at":"2015-06-11T00:20:38.000Z","updated-at":"2015-06-11T00:20:38.000Z"},"links":{"self":"/api/v1/builds/29"},"relationships":{"commit":{"links":{"self":"/api/v1/builds/29/relationships/commit","related":"/api/v1/builds/29/commit"},"data":{"type":"commits","id":"2"}},"repo":{"links":{"self":"/api/v1/builds/29/relationships/repo","related":"/api/v1/builds/29/repo"}},"base-build":{"links":{"self":"/api/v1/builds/29/relationships/base-build","related":"/api/v1/builds/29/base-build"}},"approved-by":{"links":{"self":"/api/v1/builds/29/relationships/approved-by","related":"/api/v1/builds/29/approved-by"}},"snapshots":{"links":{"self":"/api/v1/builds/29/relationships/snapshots","related":"/api/v1/builds/29/snapshots"}},"comparisons":{"links":{"self":"/api/v1/builds/29/relationships/comparisons","related":"/api/v1/builds/29/comparisons"}},"missing-resources":{"links":{"self":"/api/v1/builds/29/relationships/missing-resources","related":"/api/v1/builds/29/missing-resources"}}},"meta":{"finalize-link":"/api/v1/builds/29/finalize","approve-link":"/api/v1/builds/29/approve"}}]}'
+    http_version:
+  recorded_at: Thu, 11 Jun 2015 00:20:39 GMT
+recorded_with: VCR 2.9.3

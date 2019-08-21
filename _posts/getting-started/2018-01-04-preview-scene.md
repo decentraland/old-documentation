@@ -154,7 +154,7 @@ While viewing the preview, you can press `c` to view any collision meshes loaded
 
 ![](/images/media/collision-meshes.png)
 
-Collision meshes can be added to any model in an external 3D modeling tool like Blender. Large models like houses often include these, they are usually a lot simpler geometrically than the original shape, as this implies much less computational requirements. Stairs typically use a simplified collision mesh like a ramp to make it easier to climb. See [External 3D models]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more details.
+Collision meshes can be added to any model in an external 3D modeling tool like Blender. Large models like houses often include these, they are usually a lot simpler geometrically than the original shape, as this implies much less computational requirements. Stairs typically use a simplified collision mesh like a ramp to make it easier to climb. See [colliders]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-12-colliders %}) for more details.
 
 ## View bounding boxes
 

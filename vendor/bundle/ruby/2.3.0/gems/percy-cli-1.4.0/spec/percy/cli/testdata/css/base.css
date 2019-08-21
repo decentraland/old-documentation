@@ -1,0 +1,4 @@
+@import url( //ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css);
+@import url('/local/not-included.css');
+
+h1 { color: red; }

@@ -1,0 +1,10 @@
+inherit_gem:
+  percy-style:
+    - default.yml
+
+RSpec/InstanceVariable:
+  Exclude:
+    - spec/lib/percy/client/environment_spec.rb
+
+AllCops:
+  TargetRubyVersion: 2.2

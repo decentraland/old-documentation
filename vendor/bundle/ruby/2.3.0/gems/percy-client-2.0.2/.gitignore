@@ -1,0 +1,14 @@
+/.bundle/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+*.bundle
+*.so
+*.o
+*.a
+*.rbc
+mkmf.log
+.DS_Store
+Gemfile.lock
