@@ -4,5 +4,5 @@ description: Read tips and recommendations about how to design the experiences y
 color: "#f4821e"
 accent_color: "#f4821e"
 order: 4
-img: design-experience.svg
+img: design-experiences.svg
 ---

@@ -132,15 +132,12 @@ To swap the material:
 
    <img src="/images/media/materials_final.png" alt="Model with valid material" width="300"/>
 
-<!--
-## Optimize a glb
 
-_.glb_
--->
 
 ## Best practices for materials
 
-- If your scene includes multiple models that use the same texture, reference the texture as an external file instead of having it embedded in the 3D model. Embedded textures get duplicated for each model and add to the scene's size.
+- If your scene includes multiple models that use the same texture, reference the texture as an external file instead of having it embedded in the 3D model. Embedded textures get duplicated for each model and add to the scene's size. _.glb_ files have their textures embedded by default, but you can use [glTF pipeline](https://github.com/AnalyticalGraphicsInc/gltf-pipeline) to extract it outside.
+
   > Note: After referencing a file for a texture that won’t be embedded, make sure that file won’t be moved or renamed, as otherwise the reference to the file will be lost. The file must also be inside the scene folder so that it’s uploaded together with the scene.
 - Use the Decentraland [default textures](https://github.com/decentraland/builder-assets/tree/master/textures), which are pre-loaded by players, making your assets render a lot faster. 
 - Read [this article](https://www.khronos.org/blog/art-pipeline-for-gltf) for a detailed overview of a full art pipeline that uses PBR textures in glTF models.
