@@ -1,0 +1,21 @@
+# Test on Ruby 2.2
+environment:
+  matrix:
+    - RUBY_VERSION: 22
+
+# Install scripts. (runs after repo cloning)
+install:
+  - set PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
+  - bundle install
+
+before_test:
+  - ruby -v
+  - gem -v
+  - bundle -v
+
+# Post-install test scripts.
+test_script:
+  - bundle exec rspec
+
+build:
+  off

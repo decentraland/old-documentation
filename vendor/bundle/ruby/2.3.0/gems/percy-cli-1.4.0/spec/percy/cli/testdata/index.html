@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <title>Test Percy CLI</title>
+  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="//example.com:12345/test-no-protocol.css" rel="stylesheet" type="text/css">
+  <link href='http://example.com:12345/test-single-quotes.css' rel="stylesheet" type="text/css">
+  <link href="http://example.com:12345/test-query-param.css?v=1" rel="stylesheet" type="text/css">
+
+  <link href="http://example.com:12345/test-duplicate.css" rel="stylesheet" type="text/css">
+  <link href="http://example.com:12345/test-duplicate.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" href="http://example.com:12345/test-diff-tag-order.css">
+
+  <link rel="author" href="https://example.com/should-not-be-included"/>
+
+  <h1>Hello World!</h1>
+
+  Just some text, should not be included:
+  http://example.com/should-not-be-included.css
+</html>

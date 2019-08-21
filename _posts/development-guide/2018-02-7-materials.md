@@ -1,6 +1,6 @@
 ---
 date: 2018-02-7
-title: Materials
+title: Materials via code
 description: Learn how to add materials and textures to entities with primitive shapes.
 categories:
   - development-guide
@@ -17,7 +17,7 @@ You can either set a `Material` or a `BasicMaterial` component. Each entity can 
 
 You can't add material components to _glTF_ models. _glTF_ models include their own materials that are implicitly imported into a scene together with the model.
 
-When importing a 3D model with its own materials, keep in mind that not all shaders are supported by the Decentraland engine. Only standard materials and PBR (physically based rendering) materials are supported. See [external 3D model considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}#materials) for more details.
+When importing a 3D model with its own materials, keep in mind that not all shaders are supported by the Decentraland engine. Only standard materials and PBR (physically based rendering) materials are supported. See [external 3D model considerations]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-10-materials %}) for more details.
 
 ## Create and apply a material
 

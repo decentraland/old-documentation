@@ -1,0 +1,164 @@
+current directory: /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c
+/System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/bin/ruby -r ./siteconf20190820-9540-1f4rxj5.rb extconf.rb
+/System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/lib/ruby/2.3.0/universal-darwin18/rbconfig.rb:215: warning: Insecure world writable dir /Users/Nico in PATH, mode 040777
+checking for ffi.h... no
+checking for ffi.h in /usr/local/include,/usr/include/ffi... no
+checking for shlwapi.h... no
+checking for ruby/thread.h... yes
+checking for rb_thread_blocking_region()... no
+checking for rb_thread_call_with_gvl()... yes
+checking for rb_thread_call_without_gvl()... yes
+creating extconf.h
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/extensions/universal-darwin-18/2.3.0/ffi-1.9.25/mkmf.log
+
+current directory: /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c
+make "DESTDIR=" clean
+
+current directory: /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c
+make "DESTDIR="
+Configuring libffi
+clang: error: unsupported option '-print-multi-os-directory'
+clang: error: no input files
+cd "/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18" && make
+make[1]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+make 'AR_FLAGS=' 'CC_FOR_BUILD=' 'CFLAGS=-Wall -fexceptions' 'CXXFLAGS=-g -O2' 'CFLAGS_FOR_BUILD=' 'CFLAGS_FOR_TARGET=' 'INSTALL=/usr/bin/install -c' 'INSTALL_DATA=/usr/bin/install -c -m 644' 'INSTALL_PROGRAM=/usr/bin/install -c' 'INSTALL_SCRIPT=/usr/bin/install -c' 'JC1FLAGS=' 'LDFLAGS=' 'LIBCFLAGS=' 'LIBCFLAGS_FOR_TARGET=' 'MAKE=make' 'MAKEINFO=/bin/sh /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/missing makeinfo ' 'PICFLAG=' 'PICFLAG_FOR_TARGET=' 'RUNTESTFLAGS=' 'SHELL=/bin/sh' 'exec_prefix=/usr/local' 'infodir=/usr/local/share/info' 'libdir=/usr/local/lib' 'mandir=/usr/local/share/man' 'prefix=/usr/local' 'AR=ar' 'AS=as' 'CC=xcrun clang' 'CXX=g++' 'LD=ld' 'NM=/usr/bin/nm -B' 'RANLIB=ranlib' 'DESTDIR=' all-recursive
+make[2]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+Making all in include
+make[3]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/include'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/include'
+Making all in testsuite
+make[3]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/testsuite'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/testsuite'
+Making all in man
+make[3]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/man'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/man'
+make[3]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+/bin/sh ./libtool  --tag=CC   --mode=compile xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi  -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/prep_cif.lo /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/prep_cif.c
+libtool: compile:  xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src -Wall -fexceptions -c /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/prep_cif.c  -fno-common -DPIC -o src/.libs/prep_cif.o
+/bin/sh ./libtool  --tag=CC   --mode=compile xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi  -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/types.lo /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/types.c
+libtool: compile:  xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src -Wall -fexceptions -c /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/types.c  -fno-common -DPIC -o src/.libs/types.o
+/bin/sh ./libtool  --tag=CC   --mode=compile xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi  -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/raw_api.lo /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/raw_api.c
+libtool: compile:  xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src -Wall -fexceptions -c /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/raw_api.c  -fno-common -DPIC -o src/.libs/raw_api.o
+/bin/sh ./libtool  --tag=CC   --mode=compile xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi  -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/java_raw_api.lo /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/java_raw_api.c
+libtool: compile:  xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src -Wall -fexceptions -c /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/java_raw_api.c  -fno-common -DPIC -o src/.libs/java_raw_api.o
+/bin/sh ./libtool  --tag=CC   --mode=compile xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi  -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/closures.lo /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/closures.c
+libtool: compile:  xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src -Wall -fexceptions -c /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/closures.c  -fno-common -DPIC -o src/.libs/closures.o
+/bin/sh ./libtool  --tag=CC   --mode=compile xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi  -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/x86/ffi64.lo /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/x86/ffi64.c
+libtool: compile:  xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src -Wall -fexceptions -c /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/x86/ffi64.c  -fno-common -DPIC -o src/x86/.libs/ffi64.o
+/bin/sh ./libtool    --mode=compile xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi  -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src  -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src  -c -o src/x86/unix64.lo /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/x86/unix64.S
+libtool: compile:  xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src -c /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/x86/unix64.S  -fno-common -DPIC -o src/x86/.libs/unix64.o
+/bin/sh ./libtool  --tag=CC   --mode=compile xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi  -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/x86/ffiw64.lo /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/x86/ffiw64.c
+libtool: compile:  xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src -Wall -fexceptions -c /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/x86/ffiw64.c  -fno-common -DPIC -o src/x86/.libs/ffiw64.o
+/bin/sh ./libtool    --mode=compile xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi  -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src  -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src  -c -o src/x86/win64.lo /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/x86/win64.S
+libtool: compile:  xcrun clang -DHAVE_CONFIG_H -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src -I. -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/include -Iinclude -I/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src -c /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/x86/win64.S  -fno-common -DPIC -o src/x86/.libs/win64.o
+/bin/sh ./libtool  --tag=CC   --mode=link xcrun clang  -Wall -fexceptions   -o libffi_convenience.la  src/prep_cif.lo src/types.lo src/raw_api.lo src/java_raw_api.lo src/closures.lo   src/x86/ffi64.lo src/x86/unix64.lo src/x86/ffiw64.lo src/x86/win64.lo 
+libtool: link: ar cru .libs/libffi_convenience.a src/.libs/prep_cif.o src/.libs/types.o src/.libs/raw_api.o src/.libs/java_raw_api.o src/.libs/closures.o src/x86/.libs/ffi64.o src/x86/.libs/unix64.o src/x86/.libs/ffiw64.o src/x86/.libs/win64.o 
+libtool: link: ranlib .libs/libffi_convenience.a
+libtool: link: ( cd ".libs" && rm -f "libffi_convenience.la" && ln -s "../libffi_convenience.la" "libffi_convenience.la" )
+/bin/sh ./libtool  --tag=CC   --mode=link xcrun clang  -Wall -fexceptions -no-undefined -version-info `grep -v '^#' /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/libtool-version`     -o libffi.la -rpath /usr/local/lib src/prep_cif.lo src/types.lo src/raw_api.lo src/java_raw_api.lo src/closures.lo  src/x86/ffi64.lo src/x86/unix64.lo src/x86/ffiw64.lo src/x86/win64.lo 
+libtool: link: xcrun clang -dynamiclib  -o .libs/libffi.7.dylib  src/.libs/prep_cif.o src/.libs/types.o src/.libs/raw_api.o src/.libs/java_raw_api.o src/.libs/closures.o src/x86/.libs/ffi64.o src/x86/.libs/unix64.o src/x86/.libs/ffiw64.o src/x86/.libs/win64.o      -install_name  /usr/local/lib/libffi.7.dylib -compatibility_version 9 -current_version 9.0 -Wl,-single_module
+ld: warning: could not create compact unwind for _ffi_call_unix64: does not use RBP or RSP based frame
+libtool: link: (cd ".libs" && rm -f "libffi.dylib" && ln -s "libffi.7.dylib" "libffi.dylib")
+libtool: link: ( cd ".libs" && rm -f "libffi.la" && ln -s "../libffi.la" "libffi.la" )
+make[3]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+make[2]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+make[1]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+compiling AbstractMemory.c
+compiling ArrayType.c
+compiling Buffer.c
+compiling Call.c
+compiling ClosurePool.c
+compiling DataConverter.c
+compiling DynamicLibrary.c
+compiling Function.c
+Function.c:951:17: warning: 'ffi_prep_closure' is deprecated [-Wdeprecated-declarations]
+    ffiStatus = ffi_prep_closure(code, &fnInfo->ffi_cif, callback_invoke, closure);
+                ^
+/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/include/ffi.h:339:18: note: 'ffi_prep_closure' has been explicitly marked deprecated here
+  __attribute__((deprecated))
+                 ^
+1 warning generated.
+compiling FunctionInfo.c
+compiling LastError.c
+compiling LongDouble.c
+compiling MappedType.c
+compiling MemoryPointer.c
+compiling MethodHandle.c
+compiling Platform.c
+compiling Pointer.c
+compiling Struct.c
+compiling StructByReference.c
+compiling StructByValue.c
+compiling StructLayout.c
+compiling Thread.c
+compiling Type.c
+compiling Types.c
+compiling Variadic.c
+compiling ffi.c
+linking shared-object ffi_c.bundle
+ld: warning: could not create compact unwind for _ffi_call_unix64: does not use RBP or RSP based frame
+
+current directory: /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c
+make "DESTDIR=" install
+cd "/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18" && make
+make[1]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+make 'AR_FLAGS=' 'CC_FOR_BUILD=' 'CFLAGS=-Wall -fexceptions' 'CXXFLAGS=-g -O2' 'CFLAGS_FOR_BUILD=' 'CFLAGS_FOR_TARGET=' 'INSTALL=/usr/bin/install -c' 'INSTALL_DATA=/usr/bin/install -c -m 644' 'INSTALL_PROGRAM=/usr/bin/install -c' 'INSTALL_SCRIPT=/usr/bin/install -c' 'JC1FLAGS=' 'LDFLAGS=' 'LIBCFLAGS=' 'LIBCFLAGS_FOR_TARGET=' 'MAKE=make' 'MAKEINFO=/bin/sh /Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi/missing makeinfo ' 'PICFLAG=' 'PICFLAG_FOR_TARGET=' 'RUNTESTFLAGS=' 'SHELL=/bin/sh' 'exec_prefix=/usr/local' 'infodir=/usr/local/share/info' 'libdir=/usr/local/lib' 'mandir=/usr/local/share/man' 'prefix=/usr/local' 'AR=ar' 'AS=as' 'CC=xcrun clang' 'CXX=g++' 'LD=ld' 'NM=/usr/bin/nm -B' 'RANLIB=ranlib' 'DESTDIR=' all-recursive
+make[2]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+Making all in include
+make[3]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/include'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/include'
+Making all in testsuite
+make[3]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/testsuite'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/testsuite'
+Making all in man
+make[3]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/man'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/man'
+make[3]: Entering directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+make[3]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+make[2]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+make[1]: Leaving directory '/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18'
+compiling AbstractMemory.c
+compiling ArrayType.c
+compiling Buffer.c
+compiling Call.c
+compiling ClosurePool.c
+compiling DataConverter.c
+compiling DynamicLibrary.c
+compiling Function.c
+Function.c:951:17: warning: 'ffi_prep_closure' is deprecated [-Wdeprecated-declarations]
+    ffiStatus = ffi_prep_closure(code, &fnInfo->ffi_cif, callback_invoke, closure);
+                ^
+/Users/Nico/Documents/github/documentation/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.25/ext/ffi_c/libffi-universal-darwin18/include/ffi.h:339:18: note: 'ffi_prep_closure' has been explicitly marked deprecated here
+  __attribute__((deprecated))
+                 ^
+1 warning generated.
+compiling FunctionInfo.c
+compiling LastError.c
+compiling LongDouble.c
+compiling MappedType.c
+compiling MemoryPointer.c
+compiling MethodHandle.c
+compiling Platform.c
+compiling Pointer.c
+compiling Struct.c
+compiling StructByReference.c
+compiling StructByValue.c
+compiling StructLayout.c
+compiling Thread.c
+compiling Type.c
+compiling Types.c
+compiling Variadic.c
+compiling ffi.c
+linking shared-object ffi_c.bundle
+ld: warning: could not create compact unwind for _ffi_call_unix64: does not use RBP or RSP based frame
+/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20190820-9540-110zhvb

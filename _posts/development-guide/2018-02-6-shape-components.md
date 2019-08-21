@@ -64,7 +64,7 @@ In the example above, the model is located in a `models` folder at root level of
 
 > Tip: We recommend keeping your models separate in a `/models` folder inside your scene.
 
-glTF models can include their own embedded textures, materials, colliders and animations. See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more information on this.
+glTF models can include their own embedded textures, materials, colliders and animations. See [3D models]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %}) for more information on this.
 
 Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
@@ -118,7 +118,7 @@ Entities don't use collisions by default. Depending on the type of the shape com
 
 A _collider_ is a set of geometric shapes or planes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision object is usually a lot simpler (with less vertices) than the original model.
 
-See [3D models considerations]({{ site.baseurl }}{% post_url /development-guide/2018-01-09-external-3d-models %}) for more details on how to add colliders to a 3D model.
+See [3D models]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %}) for more details on how to add colliders to a 3D model.
 
 ## Make invisible
 
