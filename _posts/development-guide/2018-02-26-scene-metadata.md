@@ -57,15 +57,109 @@ In case you want other developers to be able to reach out to you, you can add co
 
 ## Spawn location
 
-The `teleportPosition` field, inside the `policy` section defines where users spawn when they access your scene directly, either by directly typing in the coordinates into the browser of teleporting. 
+The `spawnPoints` field defines where users spawn when they access your scene directly, either by directly typing in the coordinates into the browser of teleporting. 
 
-Your scene might have objects that can block users from moving if they happen to spawn right over them, like trees or stairs, or your scene might have an elevated terrain. It would be a bad experience for users if they spawned over something that doesn't let them move. That's why you have the option to set a custom spawn position that differs from the default.
+Your scene might have objects that can block users from moving if they happen to spawn right over them, like trees or stairs, or your scene might have an elevated terrain. It would be a bad experience for users if they spawned over something that doesn't let them move. That's why you have the option to set multiple spawn positions in ad-hoc locations.
 
 ```json
-  "policy": {
-    "teleportPosition": "3, 0, 3"
-  }
+"spawnPoints": [
+    {
+      "name": "spawn1",
+      "default": true,
+      "position": {
+        "x": 5,
+        "y": 1,
+        "z": 4
+      }
+    }
+  ],
 ```
+
+The position is comprised of coordinates inside the scene. These numbers refer to a position within the parcel, similar to what you'd use in the scene's code in a Transform component to [position an entity](({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %})). 
+
+
+### Multiple spawn points
+
+A single scene can have multiple spawn points. This is useful to limit the overlapping of players if they all visit a scene at the same time. To have many spawn points, simply list them as an array.
+
+
+```json
+"spawnPoints": [
+    {
+      "name": "spawn1",
+      "default": true,
+      "position": {
+        "x": 5,
+        "y": 1,
+        "z": 4
+      }
+	},
+	{
+      "name": "spawn2",
+      "default": true,
+      "position": {
+        "x": 3,
+        "y": 1,
+        "z": 1
+      }
+    }
+  ],
+```
+
+
+Spawn points marked as `default` are given preference. When there are multiple spawn points marked as `default`, one of them will be picked randomly from the list.
+
+> Note: In future releases, when a player tries to spawn into a scene and the default spawn points are occupied by other players, the player will be sent to another of the listed locations. It will also be possible to teleport to a spawn point by using its name as described in the `scene.json`.
+
+
+### Spawn regions
+
+You can set a whole region in the scene to act as a spawn point. By specifying an array of two numbers on any of the dimensions of the position, players will appear in a random location within this range of numbers. This helps prevent the overlapping of entering players.
+
+
+```json
+"spawnPoints": [
+    {
+      "name": "spawn1",
+      "default": true,
+      "position": {
+        "x": [1,5],
+        "y": 1,
+        "z": [2,4]
+      }
+    }
+  ],
+```
+
+In the example above, players may appear anywhere in the square who's corners are on _1,1,2_ and _5,1,4_.
+
+
+### Rotation
+
+You can also specify the rotation of players when they spawn, so that they're facing a specific direction. This allows you to have better control over their first impression, and can be useful when wanting to help steer them towards a specific direction.
+
+Simply add a `cameraTarget` field to the spawn point data.
+
+
+```json
+"spawnPoints": [
+    {
+      "name": "spawn1",
+      "default": true,
+      "position": {
+        "x": 5,
+        "y": 1,
+        "z": 4
+	  },
+	  "cameraTarget": {
+		"x": 0,
+        "y": 90,
+        "z": 0
+	  }
+    }
+  ],
+```
+
 
 ## Custom metadata
 
