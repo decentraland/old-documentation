@@ -25,6 +25,8 @@ Currently, only a limited list of NFTs are supported:
 - HyperDragons
 - Chainbreakers
 - Chainguardians
+- Cryptomorph
+- Josie
 
 The picture frame is displayed adjusting to the dimensions of the NFT image. If the image's dimensions are 512 X 512 pixels, the frame keeps its original size. If the image has different dimensions, the frame will be resized and stretched to match these dimensions.
 
