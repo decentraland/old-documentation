@@ -33,6 +33,9 @@ Below are the maximum number of elements allowed allowed in a scene:
 
   > Note: User avatars and any items brought by users from outside the scene don't count for calculating these limits.
 
+- **File size:** `15 MB per parcel` Total size of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages.
+
+- **File count:** ` 200 files per parcel`  Total count of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages.
 
 <!--
 
