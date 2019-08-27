@@ -121,7 +121,6 @@ When you retrieve the rotation of an entity, it returns a quaternion by default.
 myEntity.getComponent(Transform).rotation.eulerAngles
 ```
 
-<!--
 ## Face the user
 
 Add a _Billboard_ component to an entity so that it always rotates to face the user.
@@ -182,7 +181,7 @@ myTransform.lookAt(new Vector3(4, 1, 2))
 This field requires a _Vector3_ object as a value, or any object with _x_, _y_ and _z_ attributes. This vector indicates the coordinates of the position of the point in the scene to look at.
 
 The `lookAt()` function has a second optional argument that sets the global direction for _up_ to use as reference. For most cases, you won't need to set this field.
--->
+
 ## Scale
 
 `scale` is also a _3D vector_, stored as a `Vector3` object, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, whether it's a primitive or a 3D model.
