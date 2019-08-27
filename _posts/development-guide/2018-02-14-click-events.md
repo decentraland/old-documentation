@@ -108,7 +108,7 @@ If the player's pointer is pointing at a mesh that has a collider, the event obj
 
 ## Properties of button events
 
-All _button down_ and _button up_ event objects contain the following parameters:
+All _button down_ and _button up_ event objects, as well as events from `OnPointerDown` and `OnPointerUp` components, contain the following parameters:
 
 - `origin`: Origin point of the ray, as a _Vector3_
 - `direction`: Direction vector of the ray, as a normalized _Vector3_
