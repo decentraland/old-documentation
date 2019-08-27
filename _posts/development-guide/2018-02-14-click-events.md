@@ -70,14 +70,17 @@ myEntity.addComponent(
 ```
 
 
+## Button down and button up event
+
+The _button down_ and _button up_ events are fired whenever the user presses or releases an input controller button.
+
+These events are triggered every time that the buttons are pressed or released, regardless of where the player's pointer is pointing at, as long as the player is standing inside the scene's parcels.
+
 <!--
-## Generic button down and button up event
+ It doesn't make a difference if the click is also being handled by an entity's `OnClick` component.
+ -->
 
-The _button down_ and _button up_ events are fired whenever the user presses or releases an input controller.
-
-These events are triggered every time that the buttons are pressed or released, regardless of where the pointer is pointing at. It doesn't make a difference if the click is also being handled by an entity's `OnClick` component.
-
-Use the `subscribe()` method of the Input object to initiate a listener that's subscribed to one of the click events. Whenever the event it caught, it executes a lambda function.
+Instance an `Input` object and use its `subscribe()` method to initiate a listener that's subscribed to one of the button events. Whenever the event it caught, it executes a provided function.
 
 ```ts
 // Instance the input object
@@ -94,10 +97,13 @@ input.subscribe("BUTTON_UP", e => {
 })
 ```
 
-Both the`BUTTON_DOWN` and the `BUTTON_UP` events contain various properties that might be useful for the function. See [Properties of button events](#properties-of-button-events) for more details.
+The example above logs messages and the contents of the event object every time a controller button is pushed down or released.
+
+The event objects of both the `BUTTON_DOWN` and the `BUTTON_UP` contain various useful properties. See [Properties of button events](#properties-of-button-events) for more details.
+
+If the player's pointer is pointing at a mesh that has a collider, the event object also includes a nested `hit` object, with information about the collision and the entity that was hit. Entities that have `Click`, `OnPointerDown` or `OnPointerUp` components can also be hit, even if they don't have a collider mesh. This is because the engine gives entities with these components their own colliders, used to detect clicks.
 
 > Note: This code only needs to be executed once for the `subscribe()` method to keep polling for the event. Don't add this into a system's `update()` function, as that would register a new listener on every frame.
--->
 
 
 ## Properties of button events
