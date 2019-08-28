@@ -151,14 +151,14 @@ Simply add a `cameraTarget` field to the spawn point data. The value of `cameraT
         "x": 5,
         "y": 1,
         "z": 4
-	  },
-	  "cameraTarget": {
-		"x": 10,
+      },
+      "cameraTarget": {
+        "x": 10,
         "y": 1,
         "z": 4
-	  }
+      }
     }
-  ],
+],
 ```
 
 This example spawns a player on _5, 1, 4_ looking East at _10, 1, 4_. If the spawn position is a range, then the player's rotation will always match the indicated target. If there are multiple spawn points, each can have its own separate target.
