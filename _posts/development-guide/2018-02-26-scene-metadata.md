@@ -136,9 +136,10 @@ In the example above, players may appear anywhere in the square who's corners ar
 
 ### Rotation
 
-You can also specify the rotation of players when they spawn, so that they're facing a specific direction. This allows you to have better control over their first impression, and can be useful when wanting to help steer them towards a specific direction.
+You can also specify the rotation of players when they spawn, so that they're facing in a specific direction. This allows you to have better control over their first impression, and can be useful when wanting to help steer them towards a specific direction.
 
-Simply add a `cameraTarget` field to the spawn point data.
+Simply add a `cameraTarget` field to the spawn point data. The value of `cameraTarget` should reference a location in space, with _x_, _y_ and _z_ coordinates relative to the scene, just like the `position` field.
+
 
 
 ```json
@@ -152,13 +153,15 @@ Simply add a `cameraTarget` field to the spawn point data.
         "z": 4
 	  },
 	  "cameraTarget": {
-		"x": 0,
-        "y": 90,
-        "z": 0
+		"x": 10,
+        "y": 1,
+        "z": 4
 	  }
     }
   ],
 ```
+
+This example spawns a player on _5, 1, 4_ looking East at _10, 1, 4_. If the spawn position is a range, then the player's rotation will always match the indicated target. If there are multiple spawn points, each can have its own separate target.
 
 
 ## Custom metadata
