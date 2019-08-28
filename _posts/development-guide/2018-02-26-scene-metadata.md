@@ -109,7 +109,7 @@ A single scene can have multiple spawn points. This is useful to limit the overl
 
 Spawn points marked as `default` are given preference. When there are multiple spawn points marked as `default`, one of them will be picked randomly from the list.
 
-> Note: In future releases, when a player tries to spawn into a scene and the default spawn points are occupied by other players, the player will be sent to another of the listed locations. It will also be possible to teleport to a spawn point by using its name as described in the `scene.json`.
+> Note: In future releases, when a player tries to spawn into a scene and the default spawn points are occupied by other players, the player will be sent to another of the listed locations. This will open the door to allowing players to teleport to a spawn point based on the spawn point's name, as described in the `scene.json`.
 
 
 ### Spawn regions
