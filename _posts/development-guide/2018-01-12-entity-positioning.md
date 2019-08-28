@@ -121,10 +121,9 @@ When you retrieve the rotation of an entity, it returns a quaternion by default.
 myEntity.getComponent(Transform).rotation.eulerAngles
 ```
 
-<!--
-## Face the user
+## Face the player
 
-Add a _Billboard_ component to an entity so that it always rotates to face the user.
+Add a _Billboard_ component to an entity so that it always rotates to face the player.
 
 Billboards were a common technique used in 3D games of the 90s, where most entities were 2D planes that always faced the player. The same idea can also be used to rotate a 3D model.
 
@@ -139,7 +138,7 @@ box.addComponent(new Billboard())
 engine.addEntity(box)
 ```
 
-You can choose which axis to rotate as a billboard. For example, if the Billboard of a cube only rotates in the Y axis, it will follow the user when moving at ground level, but the user will be able to look at it from above or from below.
+You can choose which axis to rotate as a billboard. For example, if the Billboard of a cube only rotates in the Y axis, it will follow the player when moving at ground level, but the user will be able to look at it from above or from below.
 
 The three optional parameters when creating a `Billboard` component are booleans that refer to the _x_, _y_, and _z_ axis. They are all `true` by default.
 
@@ -163,9 +162,9 @@ Billboards are also very handy to add to _text_ entities, since it makes them al
 
 The `rotation` value of the entity's `Transform` component doesn't change as the billboard follows users around.
 
-If an entity has both a `Billboard` component and `Transform` component with `rotation` values, users will see the entity rotating as a billboard. If the billboard doesn't affect all axis, the remaining axis will be rotated according to the `Transform` component.
+If an entity has both a `Billboard` component and `Transform` component with `rotation` values, players will see the entity rotating as a billboard. If the billboard doesn't affect all axis, the remaining axis will be rotated according to the `Transform` component.
 
-> Note: If there are multiple users present at the same time, each will see the entities with billboard mode facing them.
+> Note: If there are multiple players present at the same time, each will see the entities with billboard mode facing them.
 
 ## Face a set of coordinates
 
@@ -182,7 +181,7 @@ myTransform.lookAt(new Vector3(4, 1, 2))
 This field requires a _Vector3_ object as a value, or any object with _x_, _y_ and _z_ attributes. This vector indicates the coordinates of the position of the point in the scene to look at.
 
 The `lookAt()` function has a second optional argument that sets the global direction for _up_ to use as reference. For most cases, you won't need to set this field.
--->
+
 ## Scale
 
 `scale` is also a _3D vector_, stored as a `Vector3` object, including the scale factor on the _x_, _y_ and _z_ axis. The shape of the entity scaled accordingly, whether it's a primitive or a 3D model.
