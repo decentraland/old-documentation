@@ -59,6 +59,7 @@ In case you want other developers to be able to reach out to you, you can add co
 
 The `spawnPoints` field defines where users spawn when they access your scene directly, either by directly typing in the coordinates into the browser of teleporting. 
 
+
 Your scene might have objects that can block users from moving if they happen to spawn right over them, like trees or stairs, or your scene might have an elevated terrain. It would be a bad experience for users if they spawned over something that doesn't let them move. That's why you have the option to set multiple spawn positions in ad-hoc locations.
 
 ```json
@@ -109,7 +110,8 @@ A single scene can have multiple spawn points. This is useful to limit the overl
 
 Spawn points marked as `default` are given preference. When there are multiple spawn points marked as `default`, one of them will be picked randomly from the list.
 
-> Note: In future releases, when a player tries to spawn into a scene and the default spawn points are occupied by other players, the player will be sent to another of the listed locations. It will also be possible to teleport to a spawn point by using its name as described in the `scene.json`.
+
+> Note: In future releases, when a player tries to spawn into a scene and the default spawn points are occupied by other players, the player will be sent to another of the listed locations. This will open the door to allowing players to teleport to a spawn point based on the spawn point's name, as described in the `scene.json`.
 
 
 ### Spawn regions
@@ -136,9 +138,10 @@ In the example above, players may appear anywhere in the square who's corners ar
 
 ### Rotation
 
-You can also specify the rotation of players when they spawn, so that they're facing a specific direction. This allows you to have better control over their first impression, and can be useful when wanting to help steer them towards a specific direction.
+You can also specify the rotation of players when they spawn, so that they're facing in a specific direction. This allows you to have better control over their first impression, and can be useful when wanting to help steer them towards a specific direction.
 
-Simply add a `cameraTarget` field to the spawn point data.
+Simply add a `cameraTarget` field to the spawn point data. The value of `cameraTarget` should reference a location in space, with _x_, _y_ and _z_ coordinates relative to the scene, just like the `position` field.
+
 
 
 ```json
@@ -150,15 +153,17 @@ Simply add a `cameraTarget` field to the spawn point data.
         "x": 5,
         "y": 1,
         "z": 4
-	  },
-	  "cameraTarget": {
-		"x": 0,
-        "y": 90,
-        "z": 0
-	  }
+      },
+      "cameraTarget": {
+        "x": 10,
+        "y": 1,
+        "z": 4
+      }
     }
-  ],
+],
 ```
+
+This example spawns a player on _5, 1, 4_ looking East at _10, 1, 4_. If the spawn position is a range, then the player's rotation will always match the indicated target. If there are multiple spawn points, each can have its own separate target.
 
 
 ## Custom metadata
