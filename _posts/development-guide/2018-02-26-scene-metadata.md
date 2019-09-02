@@ -57,7 +57,7 @@ In case you want other developers to be able to reach out to you, you can add co
 
 ## Spawn location
 
-The `spawnPoints` field defines where users spawn when they access your scene directly, either by directly typing in the coordinates into the browser of teleporting. 
+The `spawnPoints` field defines where users spawn when they access your scene directly, either by directly typing in the coordinates into the browser or teleporting. 
 
 Your scene might have objects that can block users from moving if they happen to spawn right over them, like trees or stairs, or your scene might have an elevated terrain. It would be a bad experience for users if they spawned over something that doesn't let them move. That's why you have the option to set multiple spawn positions in ad-hoc locations.
 
