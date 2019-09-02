@@ -17,6 +17,9 @@ The NTF's image data is taken from an API, based on the token's contract and id.
 Currently, only a limited list of NFTs are supported:
 
 - CriptoKitties
+- Editional
+- Makersplace
+- KnownOrigin
 - Axie Infinity
 - MyCryptoHeroes
 - MLB Champions
@@ -27,6 +30,8 @@ Currently, only a limited list of NFTs are supported:
 - Chainguardians
 - Cryptomorph
 - Josie
+- Blockcities
+
 
 The picture frame is displayed adjusting to the dimensions of the NFT image. If the image's dimensions are 512 X 512 pixels, the frame keeps its original size. If the image has different dimensions, the frame will be resized and stretched to match these dimensions.
 
