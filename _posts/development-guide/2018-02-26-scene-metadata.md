@@ -47,7 +47,7 @@ To display multiple parcels in the scene preview, list as many parcels as you in
 
 When players navigate the world and enter your scene, they will be able to read the scene name from under the minimap.
 
-
+<img src="/images/media/scene-name.png" alt="Scene name" width="200"/>
 
 ```json
   "display": {
@@ -61,7 +61,7 @@ When players navigate the world and enter your scene, they will be able to read 
 
 In case you want other developers to be able to reach out to you, you can add contact information into the `scene.json` file.
 
-<img src="/images/media/scene-name.png" alt="Scene name" width="200"/>
+
 
 
 ```json
