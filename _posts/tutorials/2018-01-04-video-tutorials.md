@@ -22,7 +22,7 @@ It's composed of several 5 minute videos, each covering a different functionalit
 
 > Tip: The videos are presented in the above link together with written accompanying content, including all the code in case you want to copy and paste parts of it.
 
-The full code from the tutorial is available in this [repo](https://github.com/HardlyDifficult/dcl-escape-room-tutorial)
+The full code from the tutorial is available in this [repository](https://github.com/HardlyDifficult/dcl-escape-room-tutorial).
 
 ## Using 3D models in Decentraland
 
