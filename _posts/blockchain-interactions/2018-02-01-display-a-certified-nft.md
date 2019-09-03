@@ -16,7 +16,7 @@ The NTF's image data is taken from an API, based on the token's contract and id.
 
 Currently, only a limited list of NFTs are supported:
 
-- CriptoKitties
+- CryptoKitties
 - Editional
 - Makersplace
 - KnownOrigin
