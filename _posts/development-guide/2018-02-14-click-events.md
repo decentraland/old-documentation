@@ -74,13 +74,15 @@ myEntity.addComponent(
 
 The _button down_ and _button up_ events are fired whenever the user presses or releases an input controller button.
 
+> Tip: On a computer, that refers to the _left mouse button_ (or trackpad), the _E_, and the _F_ keys.
+
 These events are triggered every time that the buttons are pressed or released, regardless of where the player's pointer is pointing at, as long as the player is standing inside the scene's parcels.
 
 <!--
  It doesn't make a difference if the click is also being handled by an entity's `OnClick` component.
  -->
 
-Instance an `Input` object and use its `subscribe()` method to initiate a listener that's subscribed to one of the button events. Whenever the event it caught, it executes a provided function.
+Instance an `Input` object and use its `subscribe()` method to initiate a listener that's subscribed to one of the button events. Whenever the event is caught, it executes a provided function.
 
 ```ts
 // Instance the input object
@@ -99,11 +101,44 @@ input.subscribe("BUTTON_UP", e => {
 
 The example above logs messages and the contents of the event object every time a controller button is pushed down or released.
 
+> Note: This code only needs to be executed once for the `subscribe()` method to keep polling for the event. Don't add this into a system's `update()` function, as that would register a new listener on every frame.
+
 The event objects of both the `BUTTON_DOWN` and the `BUTTON_UP` contain various useful properties. See [Properties of button events](#properties-of-button-events) for more details.
 
-If the player's pointer is pointing at a mesh that has a collider, the event object also includes a nested `hit` object, with information about the collision and the entity that was hit. Entities that have `Click`, `OnPointerDown` or `OnPointerUp` components can also be hit, even if they don't have a collider mesh. This is because the engine gives entities with these components their own colliders, used to detect clicks.
+### Differentiate buttons
 
-> Note: This code only needs to be executed once for the `subscribe()` method to keep polling for the event. Don't add this into a system's `update()` function, as that would register a new listener on every frame.
+The `BUTTON_DOWN` and the `BUTTON_UP` events are created by three buttons: the _POINTER_, _PRIMARY_ and _SECONDARY_ buttons. On a computer, this refers to the _left mouse button_, the _E_ key, and the _F_ key.
+
+Both types of events contain a _pointerId_ property, that you can check to find out which button was actioned.
+
+```ts
+input.subscribe("BUTTON_DOWN", e => {
+  if ( e.pointerId == ActionButton.POINTER){
+	  log("pushed pointer button")
+  } else if ( e.pointerId == ActionButton.PRIMARY){
+	  log("pushed primary button")
+  } else if ( e.pointerId == ActionButton.SECONDARY){
+	  log("pushed secondary button")
+  } 
+})
+```
+
+### Differentiate entities
+
+If the player's pointer is pointing at a mesh that has a collider, the event object also includes a nested `hit` object, with information about the collision and the entity that was hit. Entities that have `Click`, `OnPointerDown` or `OnPointerUp` components can also be hit, even if they don't have a collider mesh. This is because the engine gives entities with these components their own colliders, that are used to detect clicks.
+
+```ts
+input.subscribe("BUTTON_DOWN", e => {
+  if ( e.hit){
+	let hitEntity = engine.entities[e.hit.entityId]
+	hitEntity.addComponent(greenMaterial)
+  } 
+})
+```
+
+The example above checks if any entities were hit, and if so it fetches the entity and applies a material component to it.
+
+> Tip: The event data returns an `entityId`. If you want to reference the actual entity by that ID and affect it in some way, call if via `engine.entities[e.hit.entityId]`.
 
 
 ## Properties of button events
@@ -112,7 +147,7 @@ All _button down_ and _button up_ event objects, as well as events from `OnPoint
 
 - `origin`: Origin point of the ray, as a _Vector3_
 - `direction`: Direction vector of the ray, as a normalized _Vector3_
-- `pointerId`: ID of the pointer that triggered the event (_PRIMARY_ or _SECONDARY_)
+- `pointerId`: ID of the pointer that triggered the event (_POINTER_, _PRIMARY_ or _SECONDARY_)
 - `hit`: _(Optional)_ Object describing the entity that was clicked on. If the click didn't hit any specific entity, this field isn't present. The `hit` object contains the following parameters:
  
     - `length`: Length of the ray in meters, as a _number_
