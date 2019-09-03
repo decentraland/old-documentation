@@ -291,7 +291,7 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 
 ## Picture frame
 
-A scene that displays a crypto collectible NFT in a picture frame. See [display a certified NFT]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-21-01-display-a-certified-nft %}) for more details.
+A scene that displays a crypto collectible NFT in a picture frame. See [display a certified NFT]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-02-01-display-a-certified-nft %}) for more details.
 
 ![](/images/media/example-kitty.png)
 
