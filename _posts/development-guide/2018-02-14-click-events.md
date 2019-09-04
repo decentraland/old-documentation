@@ -1,6 +1,6 @@
 ---
 date: 2018-02-14
-title: Click events
+title: Button events
 description: Learn how to handle user clicks in your scene.
 categories:
   - development-guide
@@ -156,16 +156,18 @@ All _button down_ and _button up_ event objects, as well as events from `OnPoint
     - `worldNormal`: The normal of the hit, in world space, as a _Vector3_
     - `entityId`: The ID of the entity, if applicable, as a _string_
 
-<!--
-## Pointer state
 
-Instead of creating a listener to catch events from the buttons changing state, you can check for the button's current state using the _Input_ object.
+## Button state
+
+You can check for the button's current state (up or down) using the _Input_ object.
 
 ```ts
-let buttonState = input.state[Pointer.PRIMARY].BUTTON_DOWN
+let buttonState = input.isButtonPressed(ActionButton.POINTER)
 ```
 
-If the _A_ button is down, `BUTTON_DOWN` has the value _true_, if the _A_ button is up, it has the value _false_.
+If the pointer button is currently being held down, the statement above returns the value _true_, otherwise it returns _false_.
+
+You can check for the states of the `PRIMARY` and `SECONDARY` buttons in the same way, providing `ActionButton.PRIMARY` or `ActionButton.SECONDARY` as arguments for the `isButtonPressed()` function.
 
 You can implement this in a system's `update()` function to check the button state regularly.
 
@@ -175,10 +177,10 @@ const input = Input.instance
 
 class ButtonChecker {
   update() {
-    if (input.state[Pointer.PRIMARY].BUTTON_DOWN) {
-      log("button A down")
+    if (input.isButtonPressed(ActionButton.POINTER)) {
+      log("pointer button down")
     } else {
-      log("button A up")
+      log("pointer button up")
     }
   }
 }
@@ -186,7 +188,7 @@ class ButtonChecker {
 engine.addSystem(new ButtonChecker())
 ```
 
--->
+
 ## Differentiate meshes inside a model
 
 Often, _.glTF_ 3D models are made up of multiple meshes, that each have an individual internal name. _button down_ and _button up_ events include the information of what specific mesh was clicked, so you can use this information to trigger different click behaviors in each case.
