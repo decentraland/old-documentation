@@ -29,7 +29,7 @@ myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
   new OnPointerDown(e => {
-    log("myEntity clicked")
+    log("myEntity clicked", e)
   })
 )
 ```
@@ -64,7 +64,7 @@ myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
   new OnPointerUp(e => {
-    log("poiner up")
+    log("pointer up", e)
   })
 )
 ```
@@ -84,51 +84,43 @@ These events are triggered every time that the buttons are pressed or released, 
 
 Instance an `Input` object and use its `subscribe()` method to initiate a listener that's subscribed to one of the button events. Whenever the event is caught, it executes a provided function.
 
+The `subscribe()` method takes four arguments:
+
+- `eventName`: The type of action, this can be either `"BUTTON_DOWN"` or `"BUTTON_UP"`
+- `buttonId`: Which button to listen for. This can either be `ActionButton.POINTER`, `ActionButton.PRIMARY`, or `ActionButton.SECONDARY` 
+- `useRaycast`: Boolean to define if raycasting will be used. If `false`, the button event will not contain information about any `hit` objects that align with the pointer at the time of the event.
+- `fn`: The function to execute when the event occurs. 
+
 ```ts
 // Instance the input object
 const input = Input.instance
 
 // button down event
-input.subscribe("BUTTON_DOWN", e => {
-  log("button A Down", e)
+input.subscribe("BUTTON_DOWN", ActionButton.POINTER, false, e => {
+  log("pointer Down", e)
 })
 
 // button up event
-input.subscribe("BUTTON_UP", e => {
-  log("button A Up", e)
+input.subscribe("BUTTON_UP", ActionButton.POINTER, false, e => {
+  log("pointer Up", e)
 })
 ```
 
-The example above logs messages and the contents of the event object every time a controller button is pushed down or released.
+The example above logs messages and the contents of the event object every time the pointer button is pushed down or released.
 
 > Note: This code only needs to be executed once for the `subscribe()` method to keep polling for the event. Don't add this into a system's `update()` function, as that would register a new listener on every frame.
 
 The event objects of both the `BUTTON_DOWN` and the `BUTTON_UP` contain various useful properties. See [Properties of button events](#properties-of-button-events) for more details.
 
-### Differentiate buttons
 
-The `BUTTON_DOWN` and the `BUTTON_UP` events are created by three buttons: the _POINTER_, _PRIMARY_ and _SECONDARY_ buttons. On a computer, this refers to the _left mouse button_, the _E_ key, and the _F_ key.
+### Detect hit entities
 
-Both types of events contain a _pointerId_ property, that you can check to find out which button was actioned.
+If the `useRaycast` field in the `subscribe()` function is true, and the player's pointer is pointing at an entity, the event object includes a nested `hit` object. The `hit` object includes information about the collision and the entity that was hit. 
 
-```ts
-input.subscribe("BUTTON_DOWN", e => {
-  if ( e.pointerId == ActionButton.POINTER){
-	  log("pushed pointer button")
-  } else if ( e.pointerId == ActionButton.PRIMARY){
-	  log("pushed primary button")
-  } else if ( e.pointerId == ActionButton.SECONDARY){
-	  log("pushed secondary button")
-  } 
-})
-```
-
-### Differentiate entities
-
-If the player's pointer is pointing at a mesh that has a collider, the event object also includes a nested `hit` object, with information about the collision and the entity that was hit. Entities that have `Click`, `OnPointerDown` or `OnPointerUp` components can also be hit, even if they don't have a collider mesh. This is because the engine gives entities with these components their own colliders, that are used to detect clicks.
+The raycast of these events only detects entities that have a collider mesh, or that have `Click`, `OnPointerDown` or `OnPointerUp` components. The engine gives entities with these components their own colliders, that are used to detect clicks.
 
 ```ts
-input.subscribe("BUTTON_DOWN", e => {
+input.subscribe("BUTTON_DOWN",  e => {
   if ( e.hit){
 	let hitEntity = engine.entities[e.hit.entityId]
 	hitEntity.addComponent(greenMaterial)
