@@ -40,6 +40,14 @@ The image below shows two identical models created with standard materials. The 
 
 ![](/images/media/materials_transparent_emissive.png)
 
+There are two main different transparency modes: _Aplha Clip_ and _Aplha Blend_. 
+
+_Alpha Clip_ sets that each part of a model is either 100% opaque or 100% transparent. _Alpha Blend_ allows you to pick intermediate values per region.
+
+![](/images/media/transparency-modes.png)
+
+Unless you specifically want to be able to have an intermediate level of transparency, it's always better to use _Alpha Clip_.
+
 ## Emissive materials
 
 You can also make a material _emissive_. Emissive materials cast their own light. Note that when rendered, they don't actually illuminate nearby objects in the scene, they just seem to have a blurred glow around them.
@@ -176,3 +184,4 @@ To swap the material:
 - Use the Decentraland [default textures](https://github.com/decentraland/builder-assets/tree/master/textures), which are pre-loaded by players, making your assets render a lot faster. 
 - Read [this article](https://www.khronos.org/blog/art-pipeline-for-gltf) for a detailed overview of a full art pipeline that uses PBR textures in glTF models.
 - Find free, high quality PBR textures in [cgbookcase](https://cgbookcase.com/).
+- When setting transparency of a material, try to always use _Alpha clip_ rather than _Alpha blend_, unless you specifically need to have a material that's partially transparent (like glass). This will avoid problems where the engine renders the wrong model in front of the other.
