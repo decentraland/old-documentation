@@ -134,19 +134,36 @@ Change this setting by setting the `looping` property in the `AnimationState` ob
 
 ```ts
 // Create animation clip
-const clipSwim = new AnimationState("swim")
+const biteClip = new AnimationState("bite")
 
 // Set loop to false
-clipSwim.looping = false
+biteClip.looping = false
 
 // Start playing the clip
-clipSwim.play()
+biteClip.play()
 ```
 
 If `looping` is set to _false_, the animation plays just once and then stops.
 
 
 > Note: After a non-looping animation has finished playing, it will continue to be in a state of `playing = true`, even though the 3D model remains still. This can bring you problems if you then try to play other animations. Before playing an animation, make sure you've stopped all others, including non-looping animations that are finished.
+
+```ts
+ 
+  const biteClip = new AnimationState("bite")
+  biteClip.looping = false
+
+  shark.getComponent(Animator).addClip(biteClip)
+
+  shark.addComponent(
+    new OnClick((): void => {
+		// stop previous animation
+		biteClip.stop()
+		// play bite animation
+		biteClip.play()
+	}
+```
+
 
 
 ## Reset an animation

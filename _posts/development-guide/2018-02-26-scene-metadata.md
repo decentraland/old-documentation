@@ -43,10 +43,26 @@ To display multiple parcels in the scene preview, list as many parcels as you in
   }
 ```
 
+## Scene title
+
+When players navigate the world and enter your scene, they will be able to read the scene name from under the minimap.
+
+<img src="/images/media/scene-name.png" alt="Scene name" width="200"/>
+
+```json
+  "display": {
+    "title": "My Cool Scene",
+    "favicon": "favicon_asset"
+   }
+```
+
 
 ## Contact information
 
 In case you want other developers to be able to reach out to you, you can add contact information into the `scene.json` file.
+
+
+
 
 ```json
   "contact": {
@@ -62,7 +78,7 @@ The `spawnPoints` field defines where users spawn when they access your scene di
 Your scene might have objects that can block users from moving if they happen to spawn right over them, like trees or stairs, or your scene might have an elevated terrain. It would be a bad experience for users if they spawned over something that doesn't let them move. That's why you have the option to set multiple spawn positions in ad-hoc locations.
 
 ```json
-"spawnPoints": [
+  "spawnPoints": [
     {
       "name": "spawn1",
       "default": true,
@@ -84,7 +100,7 @@ A single scene can have multiple spawn points. This is useful to limit the overl
 
 
 ```json
-"spawnPoints": [
+  "spawnPoints": [
     {
       "name": "spawn1",
       "default": true,
@@ -118,7 +134,7 @@ You can set a whole region in the scene to act as a spawn point. By specifying a
 
 
 ```json
-"spawnPoints": [
+  "spawnPoints": [
     {
       "name": "spawn1",
       "default": true,
@@ -143,7 +159,7 @@ Simply add a `cameraTarget` field to the spawn point data. The value of `cameraT
 
 
 ```json
-"spawnPoints": [
+  "spawnPoints": [
     {
       "name": "spawn1",
       "default": true,
@@ -158,7 +174,7 @@ Simply add a `cameraTarget` field to the spawn point data. The value of `cameraT
         "z": 4
       }
     }
-],
+  ],
 ```
 
 This example spawns a player on _5, 1, 4_ looking East at _10, 1, 4_. If the spawn position is a range, then the player's rotation will always match the indicated target. If there are multiple spawn points, each can have its own separate target.

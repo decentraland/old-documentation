@@ -9,17 +9,20 @@ set: tutorials
 set_order: 3
 ---
 
-More coming soon!
 
-<!--
+## Escape room tutorial series
 
-## A simple interactive scene
+This series of short videos covers a number of essential concepts, game mechanics and coding best practices.
 
-This simple tutorial walks you through creating a simple scene where user clicks can cause an entity to rotate.
+It's composed of several 5 minute videos, each covering a different functionality. The videos take you through the whole process of building a full escape room game.
 
-{%  include youtube.html video_id='OtkrvHOHIDg'  %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/j7XbiTZ9GN0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
--->
+[See the videos](https://hardlydifficult.github.io/dcl-escape-room-tutorial/)
+
+> Tip: The videos are presented in the above link together with written accompanying content, including all the code in case you want to copy and paste parts of it.
+
+The full code from the tutorial is available in this [repository](https://github.com/HardlyDifficult/dcl-escape-room-tutorial).
 
 ## Using 3D models in Decentraland
 

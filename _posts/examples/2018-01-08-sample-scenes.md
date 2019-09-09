@@ -83,6 +83,21 @@ This simple scene shows how to add animations to a `GLTFComponent` and handle cl
 
 [Explore the scene](https://shark-animation-qehbwatsry.now.sh)
 
+## Puffer fish
+
+This simple scene shows how to use the [utils library](https://www.npmjs.com/package/decentraland-ecs-utils) to scale an entity gradually.
+
+- glTF models
+- scaling an entity
+- delaying a function
+- adding a sound clip
+
+![](/images/media/example-puffer.png)
+
+[Code](https://github.com/decentraland-scenes/Puffer)
+
+[Explore the scene](https://puffer.decentraland1.now.sh/?position=-132,-40)
+
 ## Open the door
 
 A simple interactive scene with a door that can be opened and closed.
