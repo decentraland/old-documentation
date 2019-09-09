@@ -137,6 +137,24 @@ A scene where you can play different songs by pressing buttons on a jukebox.
 
 [Explore the scene](https://jukebox-ilgtrpcfvb.now.sh)
 
+## Basic interactions
+
+A scene with a simple example of each way in which players can interact. Each shape's color is activated by interacting with it.
+
+- Click events
+- PointerUp and PointerDown events
+- Player position
+- Global pointer events
+- Animations
+
+![](/images/media/example-basic-interactions.png)
+
+[Code](https://github.com/decentraland-scenes/Basic-Interactions)
+
+<!--
+[Explore the scene]()
+-->
+
 ## Dance floor
 A scene with animations, sound, and tiles on the floor that randomly change color to the beat.
 
@@ -271,6 +289,13 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 [Explore the scene]()
 -->
 
+## Picture frame
+
+A scene that displays a crypto collectible NFT in a picture frame. See [display a certified NFT]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-02-01-display-a-certified-nft %}) for more details.
+
+![](/images/media/example-kitty.png)
+
+[Code](https://github.com/decentraland-scenes/Certified-criptokitty)
 
 # Custom UI
 
@@ -316,6 +341,19 @@ A scene with a simple AI character. It randomly chooses what action to take: fol
 [Code](https://github.com/decentraland-scenes/Block-dog)
 
 [Explore the scene](https://blockdog-flbnuykvwf.now.sh)
+
+## Escape room
+
+A full escape room game, where each room is a puzzle to be interacted with in different ways. 
+
+This scene is showcased by a [video tutorial series](https://www.youtube.com/watch?v=OtkrvHOHIDg&list=PLAcRraQmr_GPi-8qgv17ewdGl50OHuOhH) that walks you through all the mechanics, starting from the basic concepts.
+
+
+![](/images/media/example-escaperoom.png)
+
+[Code](https://github.com/decentraland-scenes/Escape-Room)
+
+
 
 ## Tower defense game (WIP)
 
