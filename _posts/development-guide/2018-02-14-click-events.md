@@ -117,7 +117,9 @@ The event objects of both the `BUTTON_DOWN` and the `BUTTON_UP` contain various 
 
 If the `useRaycast` field in the `subscribe()` function is true, and the player's pointer is pointing at an entity, the event object includes a nested `hit` object. The `hit` object includes information about the collision and the entity that was hit. 
 
-The raycast of these events only detects entities that have a collider mesh, or that have `Click`, `OnPointerDown` or `OnPointerUp` components. The engine gives entities with these components their own colliders, that are used to detect clicks.
+The ray of a global button event only detects entities that have a collider mesh. Primitive shapes have a collider mesh on by default, 3D models need to have one built into them.
+
+> Tip: See [Colliders]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-12-colliders %}) for details on how to add collider meshes to a 3D model.
 
 ```ts
 input.subscribe("BUTTON_DOWN",  e => {
@@ -138,7 +140,7 @@ The example above checks if any entities were hit, and if so it fetches the enti
 All _button down_ and _button up_ event objects, as well as events from `OnPointerDown` and `OnPointerUp` components, contain the following parameters:
 
 - `origin`: Origin point of the ray, as a _Vector3_
-- `direction`: Direction vector of the ray, as a normalized _Vector3_
+- `direction`: Direction vector of the ray, as a normalized _Vector3_ that points in the same direction.
 - `pointerId`: ID of the pointer that triggered the event (_POINTER_, _PRIMARY_ or _SECONDARY_)
 - `hit`: _(Optional)_ Object describing the entity that was clicked on. If the click didn't hit any specific entity, this field isn't present. The `hit` object contains the following parameters:
  
