@@ -48,7 +48,7 @@ To develop a scene locally, you don't need to own LAND tokens. Developing and te
 
 These early releases of the SDK are intended for users that are comfortable working with code and a terminal. You must have the following:
 
-- **npm** (Node package manager): Used in the terminal to handle scene dependencies. [Download link](https://www.npmjs.com/)
+- **npm** (Node package manager): Used in the terminal to handle scene dependencies. [Download link](nodejs.org)
 
 - **A source code editor**: Helps you create scenes a lot faster and with less errors. A source code editor marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. You can also click on an object in the code to see the full definition of its class and what attributes it supports. We recommend [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/).
 
