@@ -190,6 +190,7 @@ Also see [tutorials]({{ site.baseurl }}{% post_url /tutorials/2018-01-03-tutoria
 
 ## Other useful information
 
+- [Utils library](https://www.npmjs.com/package/decentraland-ecs-utils)
 - [Design constraints for games]({{ site.baseurl }}{% post_url /design-experience/2018-01-08-design-games %})
 - [3D modeling]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %})
 - [Scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %})

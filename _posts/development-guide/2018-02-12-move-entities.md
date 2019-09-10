@@ -13,6 +13,8 @@ To move, rotate or resize an entity in your scene, change the  _position_, _rota
 
 You can easily perform these incremental changes by moving entities a small amount each time the `update()` function of a [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) is called.
 
+> Tip: You can use the helper functions in the [utils library](https://www.npmjs.com/package/decentraland-ecs-utils) to achieve most of the tasks described in this doc. The code shown in these examples is handled in the background by the library, so in most cases it only takes a single line of code to use them.
+
 ## Move
 
 The easiest way to move an entity is to use the `translate()` function to change the _position_ value stored in the `Transform` component.

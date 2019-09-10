@@ -32,15 +32,57 @@ The image below shows two identical models, created with the same colors and tex
 
 ![](/images/media/materials_pbr_basic.png)
 
-## Transparent and emissive materials
+## Transparent materials
 
 You can set a material to be _transparent_. Transparent materials can be seen through to varying degrees, depending on their _alpha_. To do this, activate the transparency property of the material and then set its _alpha_ to the desired amount. An alpha of 1 will make the material completely opaque, an alpha of 0 will make it invisible.
 
-You can also make a material _emissive_. Emissive materials cast their own light. Note that when rendered, they don't actually illuminate nearby objects in the scene, they just seem to have a blurred glow around them.
-
-The image below shows two identical models created with standard materials. The one on the left uses only opaque materials, the one on the right uses both transparent and emissive materials in some of its parts.
+The image below shows two identical models created with standard materials. The one on the left uses only opaque materials, the one on the right uses both transparent and opaque materials in some of its parts.
 
 ![](/images/media/materials_transparent_emissive.png)
+
+There are two main different transparency modes: _Aplha Clip_ and _Aplha Blend_. 
+
+_Alpha Clip_ sets that each part of a model is either 100% opaque or 100% transparent. _Alpha Blend_ allows you to pick intermediate values per region.
+
+![](/images/media/transparency-modes.png)
+
+Unless you specifically want to be able to have an intermediate level of transparency, it's always better to use _Alpha Clip_.
+
+## Emissive materials
+
+You can also make a material _emissive_. Emissive materials cast their own light. Note that when rendered, they don't actually illuminate nearby objects in the scene, they just seem to have a blurred glow around them.
+
+The image below shows two identical models created with standard materials. The one on the right has glowing emissive materials on some of its surfaces.
+
+![](/images/media/materials_transparent_emissive.png)
+
+
+To make a material emissive in Blender, simply add an `emission` shader to the material.
+
+![](/images/media/simple-emissive.png)
+
+
+To make a material both emissive and have a texture, you can use two shaders in parallel, one of the `emission` and another `principled BDSF` for the texture. You can then use a `mix shader` node to join them.
+
+![](/images/media/apply-emissive.png)
+
+> Tip: By using a color atlas as a texture, you can get away with having various possible colors counted as a single texture. This is useful for making sure you don't exceed the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
+
+![](/images/media/neon-texture.png)
+
+
+
+#### Soften an emissive
+
+The `emission` shader has a `strength` property that can lower the glow of an emissive material. However, due to a known issue with the _.glTF_ specification, an exported _.glTF_ or _.glb_ file doesn't retain this property. When importing the model into a Decentraland scene it will always have the emissive strength at 100%.
+
+To make a material glow less, the best workaround is to set the `color` property on the `emission` shader to something less bright, or to reference a color from a texture that is less bright.
+
+For example, if using the below color map, you can achieve a less bright emissive material by picking a color from the bottom half of the image. Anything on the top half will be fully emissive, but as you go lower the material will have less glow.
+
+![](/images/media/neon-texture.png)
+
+
 
 ## Textures
 
@@ -142,3 +184,4 @@ To swap the material:
 - Use the Decentraland [default textures](https://github.com/decentraland/builder-assets/tree/master/textures), which are pre-loaded by players, making your assets render a lot faster. 
 - Read [this article](https://www.khronos.org/blog/art-pipeline-for-gltf) for a detailed overview of a full art pipeline that uses PBR textures in glTF models.
 - Find free, high quality PBR textures in [cgbookcase](https://cgbookcase.com/).
+- When setting transparency of a material, try to always use _Alpha clip_ rather than _Alpha blend_, unless you specifically need to have a material that's partially transparent (like glass). This will avoid problems where the engine renders the wrong model in front of the other.
