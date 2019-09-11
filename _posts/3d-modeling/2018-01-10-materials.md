@@ -1,6 +1,6 @@
 ---
 date: 2018-01-10
-title: 3D model materials
+title: Materials
 description: Learn what material properties and textures are supported on 3D models imported to Decentraland.
 
 categories:
