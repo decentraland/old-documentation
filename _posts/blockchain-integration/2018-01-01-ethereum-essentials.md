@@ -3,9 +3,11 @@ date: 2018-01-01
 title: Ethereum essentials
 description: How Decentraland uses the Ethereum blockchain.
 categories:
-  - blockchain-interactions
+  - blockchain-integration
 type: Document
-set: blockchain-interactions
+redirect_from:
+  - /blockchain-interactions/ethereum-essentials
+set: blockchain-integration
 set_order: 2
 ---
 
@@ -118,7 +120,7 @@ _dApps_ (decentralized applications) are applications that are built upon smart 
 
 A dApp can be as simple as something that validates that your wallet holds a certain token and lets you use a service. Or it can be a fully fledged application with its own UI, such as the Decentraland Marketplace.
 
-If you want to build your own dApp around Decentrlanad, see [Create a dApp]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-09-create-a-dapp %}).
+If you want to build your own dApp around Decentrlanad, see [Create a dApp]({{ site.baseurl }}{% post_url /blockchain-integration/2018-01-09-create-a-dapp %}).
 
 ## Ropsten test network
 

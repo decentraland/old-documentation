@@ -3,9 +3,11 @@ date: 2018-01-01
 title: Create a dApp
 description: Reference for creating your own Decentralized App
 categories:
-  - blockchain-interactions
+  - blockchain-integration
 type: Document
-set: blockchain-interactions
+redirect_from:
+  - /blockchain-interactions/create-a-dapp
+set: blockchain-integration
 set_order: 20
 ---
 

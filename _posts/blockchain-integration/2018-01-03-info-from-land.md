@@ -2,10 +2,12 @@
 date: 2018-01-03
 title: Get parcel info
 description: Get info from land parcels, estates or addresses using the CLI.
+redirect_from:
+  - /blockchain-interactions/info-from-land
 categories:
-  - blockchain-interactions
+  - blockchain-integration
 type: Document
-set: blockchain-interactions
+set: blockchain-integration
 set_order: 3
 ---
 
