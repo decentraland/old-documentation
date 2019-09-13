@@ -9,124 +9,164 @@ set: development-guide
 set_order: 27
 ---
 
-Raycasting is a fundamental tool in game development. With raycasting, you can trace an imaginary line in space, and query if any entities are intersected by the line.
+Raycasting is a fundamental tool in game development. With raycasting, you can trace an imaginary line in space, and query if any entities are intersected by the line. This is useful for calculating lines of sight, trajectories of bullets, pathfinding algorithms and many other applications.
 
-This is useful for calculating lines of sight, trajectories of bullets, pathfinding algorithms and many other applications.
+When a player clicks or pushes the primary or secondary button, a ray is traced from the player's position in the direction they are looking, see [button events]({{ site.baseurl }}{% post_url /development-guide/2018-02-14-click-events %}) for more details about this. This document covers how to trace an invisible ray from any arbitrary position and direction, independent of player actions, which you can use in many other scenarios.
 
-When a player clicks or pushes the primary or secondary button, a ray is traced from the player's position in the direction they are looking, see [button events]({{ site.baseurl }}{% post_url /development-guide/2018-02-14-click-events %}) for more details about this. This document covers how to trace a ray from any arbitrary position and direction, which you can use in a wider set of scenarios.
+## PhysicsCast
 
-## Create a raycast query
+The `PhysicsCast` object is a static class that serves as the main raycasting interface. You can refer to it in your scene as `PhysicsCast.instance`. You'll see it has several methods that are all specific to raycasting.
 
-A raycast query is an object that stores the properties of the ray that will be traced.
-
-There are two methods to set the ray of a raycast query 
-
-- `setOriginTarget()`: takes two vectors, one for the origin point, the other for the target point. Origin and target are absolute coordinates in scene space.
-- `setRay()`: takes an already constructed ray
 
 ```typescript
-// Create a new raycast query
-let query = new RaycastQuery()
-
-// Set the ray with two vectors
-query.setOriginTarget( new Vector3(0,0,0), new Vector3(1,1,1) )
-
-// Set the ray by assigning a ray
-let myRay = new ray(origin:Vector3.zero, direction:Vector3.one)
-query.setRay(myRay)
+let physicsCast = PhysicsCast.instance
 ```
 
-You can also create and set a raycast query in a single line like this
+## Create a ray
+
+A ray object describes the invisible ray that will be used to query for entities. Rays are defined using three bits of information:
+
+- `origin`: _Vector3_ with the coordinates in scene space to start the ray from.
+- `direction`: _Vector3_ describing the direction (as if the ray started from _0,0,0_).
+- `distance`: _number_ to set the length with which this ray will be traced.
+
 
 ```typescript
-new RaycastQuery { ray:{origin:Vector3.zero, direction:Vector3.one} }
+let originPos = new Vector3(2, 1, 4)
+let direction = new Vector3(0, 1, 1)
+
+let ray: Ray = {
+      origin: originPos,
+      direction: direction,
+      distance: 10
+    }
 ```
 
-Ray.distance ????
+As an alternative, you can also generate a ray from providing two points in space. Both the direction and distance will be implicit in this information. To do this, use the `getRayFromPositions()` method of the `PhysicsCast` object.
 
+```typescript
+let physicsCast = PhysicsCast.instance
+
+let originPos = new Vector3(2, 1, 1)
+let targetPos = new Vector3(2, 3, 3)
+
+let rayFromPoints = physicsCast.getRayFromPositions(originPos, targetPos)
+```
+
+You can also get generate a ray from the player's current position and rotation. The only piece of information you need to pass in this case is the distance. To do this, use the `getRayFromCamera()` method of the `PhysicsCast` object.
+
+```typescript
+let physicsCast = PhysicsCast.instance
+
+let rayFromCamera = physicsCast.getRayFromCamera(1000)
+```
 
 ## Run a raycast query
 
-Raycast queries are run by the `PhysicsCast` class. This static class is home to the main raycasting interface. All physics casting methods receive queries in form of RaycastQuery objects. 
+Raycast queries are run by the `PhysicsCast` class. there are two methods available for doing this:
 
-There are two methods available in the `PhysicsCast` class:
+- `hitFirst()`: this method only returns the first hit entity, starting from the origin point.
+- `hitAll()`: this method returns all hit entities, from the origin through to the length of the ray. 
 
-- `hitFirst()`: returns the first hit object
-- `hitAll()`: returns all hit objects 
-
+Both these methods need to be passed a ray and a callback function to execute. Note that the callback function is always executed, even if no entities were hit by the ray.
 
 ![](/images/media/raycast.png)
 
-
-
-Only fist object
+This sample queries only for the first entity hit by the ray:
 
 ```typescript
-let query = new RaycastQuery()
+let physicsCast = PhysicsCast.instance
 
-query.setOriginTarget( new Vector3(0,0,0), new Vector3(1,1,1) )
+let originPos = new Vector3(2, 1, 4)
+let direction = new Vector3(0, 1, 1)
 
-PhysicsCast.hitFirst( query, hitCallback:hitEntity )
+let ray: Ray = {
+      origin: originPos,
+      direction: direction,
+      distance: 10
+	}
 
-function hitEntity( hit:RaycastHitEntity ) : void {
-    //do X with entity
-}
+physicsCast.hitFirst(ray, (e) => {
+	log(e.entity.entityId)
+})
 ```
 
-All objects
+This sample queries for all entities hit by the ray:
 
 ```typescript
-let query2 = new RaycastQuery()
+let physicsCast = PhysicsCast.instance
 
+let originPos = new Vector3(2, 1, 4)
+let direction = new Vector3(0, 1, 1)
 
-query2.setOriginTarget( new Vector3(0,0,0), new Vector3(1,1,1) )
+let ray: Ray = {
+      origin: originPos,
+      direction: direction,
+      distance: 10
+	}
 
-PhysicsCast.hitAll( query2, hitCallback:hitEntities )
-
-function hitEntities( hit:RaycastHitEntities ) : void {
-    //do X with entities
-}
+physicsCast.hitAll(ray, (e) => {
+	for (let entity of e.entities) {
+         log(entity.entityId)
+    }
+})
 ```
 
-This performs the cast defined in the provided query. hitCallback will come back with the first entity detected by the cast.
+## Results from raycast query
 
-This performs the cast defined in the provided query. hitCallback will come back with all the entities detected by the cast.
+After running a raycast query, the callback function will be able to use the following information from the event object:
 
-One liner alternative:
+- `didHit`: _boolean_ that is _true_ if at least one entity was hit, _false_ if there were none.
+- `ray`: _Ray_ that has been used in the query
+- `hitPoint`: _Vector3_ for the point in scene space where the hit occurred. If multiple entities were hit, it returns the first point of ray collision.
+- `hitNormal`: _Vector3_ for the normal of the hit in world space. If multiple entities did hit, it returns the normal of the first point of ray collision.
+
+- `entity`: _Object_ with info about the entity that was hit. This is returned when using `hitFirst()`, and it's only returned if there were any entities hit.
+- `entities` : _Array of objects_ with info about the entities that were hit. This is returned when using `hitAll()`, and it's only returned if there were any entities hit.
+
+The `entity` object, and the objects in the `entities` array contain the following data:
+
+- `entityId`: _String_ with the id for the hit entity
+- `meshName`: _String_ with the internal name of the specific mesh in the 3D model that was hit. This is useful when a 3D model is composed of multiple meshes.
+
+The example below shows how you can access these properties from the event object in the callback function:
 
 ```typescript
-PhysicsCast.hitFirst( 
-    new RaycastQuery { ray:{origin:Vector3.zero, direction:Vector3.one} }, 
-    (entity)=> {
-         // Do stuff
-    } )
+let physicsCast = PhysicsCast.instance
 
+let originPos = new Vector3(2, 1, 4)
+let direction = new Vector3(0, 1, 1)
+
+let ray: Ray = {
+      origin: originPos,
+      direction: direction,
+      distance: 10
+	}
+
+physicsCast.hitFirst(ray, (e) => {
+	if (e.didHit) {
+		engine.entities[e.entity.entityId].addComponentOrReplace(hitMaterial)
+	}
+	else {
+		for (let entity of this.group.entities) {
+			if (entity != rayCube && entity != rayCubeObject) {
+				entity.addComponentOrReplace(defaultMaterial)
+			}
+		}
+	}
+})
 ```
 
+> Tip: To reference an entity based on its ID, use engine's `entities` array, like this: `engine.entities[e.entity.entityId]`. 
 
-## Query results
+<!--
 
-After running a query, you'll get the following information
+## Collide with the player
 
+You can't directly hit the player with a ray, but what you can do as a workaround is position an entity occupying the same space as the player
 
-- `didHit`:boolean   Returns true if any entities were hit
-- `ray`:Ray
-- `hitPoint`:Vector3   Ray hit point in scene space—If multiple entities did hit, it returns the first point of ray collision.
-- `hitNormal`:Vector3   Ray normal in world space using the hit geometry—If multiple entities did hit, it returns the normal of the first point of ray collision.
-
-Optionally, if one or more entites were hit, you will also have an array?  made of this info
-
-class HitEntityInfo
-{
-    entityId:string
-    meshName:string
-}
-
-class RaycastHit
-	This is the base class that serves as an argument for all PhysicsCast callbacks.
-
-
-
+would the entity's colliders bother?
+-->
 
 <!--
 
