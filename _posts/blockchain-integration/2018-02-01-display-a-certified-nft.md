@@ -3,9 +3,11 @@ date: 2018-02-07
 title: Display an NFT in a scene
 description: Learn how to display a certified NFT that you own in your scene
 categories:
-  - blockchain-interactions
+  - blockchain-integration
 type: Document
-set: blockchain-interactions
+redirect_from:
+  - /blockchain-interactions/display-a-certified-nft
+set: blockchain-integration
 set_order: 4
 ---
 

@@ -4,10 +4,11 @@ title: Scene blockchain operations
 description: Learn what the SDK offers for performing operations with the Ethereum blockchain
 redirect_from:
   - /sdk-reference/blockchain-operations/
+  - /blockchain-interactions/scene-blockchain-operations
 categories:
-  - blockchain-interactions
+  - blockchain-integration
 type: Document
-set: blockchain-interactions
+set: blockchain-integration
 set_order: 5
 ---
 
@@ -249,7 +250,7 @@ The example above listens for clicks on a _button_ entity. When clicked, the use
 
 The Ethereum controller allows you to check if a specific transaction has been already mined. It looks for a specific transaction's hash number and verifies that it has been validated by a miner and added to the blockchain. 
 
-> Important: Because of how a blockchain works, there might be [reorgs]({{ site.baseurl }}{% post_url /blockchain-interactions/2018-01-01-ethereum-essentials %}#blockchain-reorgs) of the network that can lead to a mined transaction being reverted. A transaction that was confirmed once by one node has no guarantee of ending up in the official consensus of the network. We don't advise relying on this function for dealing with things that are of value.
+> Important: Because of how a blockchain works, there might be [reorgs]({{ site.baseurl }}{% post_url /blockchain-integration/2018-01-01-ethereum-essentials %}#blockchain-reorgs) of the network that can lead to a mined transaction being reverted. A transaction that was confirmed once by one node has no guarantee of ending up in the official consensus of the network. We don't advise relying on this function for dealing with things that are of value.
 
 
 ```ts

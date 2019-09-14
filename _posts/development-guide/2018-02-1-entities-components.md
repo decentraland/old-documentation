@@ -162,6 +162,16 @@ childEntity.setParent(null)
 
 If you set a new parent to an entity that already had a parent, the new parent will overwrite the old one.
 
+## Get an entity by ID
+
+Every entity in your scene has a unique autogenrated _id_ property. You can retrieve a specific entity from the engine based on this ID, by referring to the `engine.entities[]` array.
+
+```typescript
+engine.entities[entityId]
+```
+
+For example, if a player's click or a raycast hits an entity, this will return the id of the hit entity, and you can use the command above to fetch the entity that matches that id.
+
 ## Add a component to an entity
 
 When a component is added to an entity, the component's values affect the entity.
