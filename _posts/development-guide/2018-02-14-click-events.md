@@ -1,6 +1,6 @@
 ---
 date: 2018-02-14
-title: Click events
+title: Button events
 description: Learn how to handle user clicks in your scene.
 categories:
   - development-guide
@@ -29,7 +29,7 @@ myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
   new OnPointerDown(e => {
-    log("myEntity clicked")
+    log("myEntity clicked", e)
   })
 )
 ```
@@ -64,49 +64,84 @@ myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
   new OnPointerUp(e => {
-    log("poiner up")
+    log("pointer up", e)
   })
 )
 ```
 
 
+## Button down and button up event
+
+The _button down_ and _button up_ events are fired whenever the user presses or releases an input controller button.
+
+> Tip: On a computer, that refers to the _left mouse button_ (or trackpad), the _E_, and the _F_ keys.
+
+These events are triggered every time that the buttons are pressed or released, regardless of where the player's pointer is pointing at, as long as the player is standing inside the scene's parcels.
+
 <!--
-## Generic button down and button up event
+ It doesn't make a difference if the click is also being handled by an entity's `OnClick` component.
+ -->
 
-The _button down_ and _button up_ events are fired whenever the user presses or releases an input controller.
+Instance an `Input` object and use its `subscribe()` method to initiate a listener that's subscribed to one of the button events. Whenever the event is caught, it executes a provided function.
 
-These events are triggered every time that the buttons are pressed or released, regardless of where the pointer is pointing at. It doesn't make a difference if the click is also being handled by an entity's `OnClick` component.
+The `subscribe()` method takes four arguments:
 
-Use the `subscribe()` method of the Input object to initiate a listener that's subscribed to one of the click events. Whenever the event it caught, it executes a lambda function.
+- `eventName`: The type of action, this can be either `"BUTTON_DOWN"` or `"BUTTON_UP"`
+- `buttonId`: Which button to listen for. This can either be `ActionButton.POINTER`, `ActionButton.PRIMARY`, or `ActionButton.SECONDARY` 
+- `useRaycast`: Boolean to define if raycasting will be used. If `false`, the button event will not contain information about any `hit` objects that align with the pointer at the time of the event.
+- `fn`: The function to execute when the event occurs. 
 
 ```ts
 // Instance the input object
 const input = Input.instance
 
 // button down event
-input.subscribe("BUTTON_DOWN", e => {
-  log("button A Down", e)
+input.subscribe("BUTTON_DOWN", ActionButton.POINTER, false, e => {
+  log("pointer Down", e)
 })
 
 // button up event
-input.subscribe("BUTTON_UP", e => {
-  log("button A Up", e)
+input.subscribe("BUTTON_UP", ActionButton.POINTER, false, e => {
+  log("pointer Up", e)
 })
 ```
 
-Both the`BUTTON_DOWN` and the `BUTTON_UP` events contain various properties that might be useful for the function. See [Properties of button events](#properties-of-button-events) for more details.
+The example above logs messages and the contents of the event object every time the pointer button is pushed down or released.
 
 > Note: This code only needs to be executed once for the `subscribe()` method to keep polling for the event. Don't add this into a system's `update()` function, as that would register a new listener on every frame.
--->
+
+The event objects of both the `BUTTON_DOWN` and the `BUTTON_UP` contain various useful properties. See [Properties of button events](#properties-of-button-events) for more details.
+
+
+### Detect hit entities
+
+If the `useRaycast` field in the `subscribe()` function is true, and the player's pointer is pointing at an entity, the event object includes a nested `hit` object. The `hit` object includes information about the collision and the entity that was hit. 
+
+The ray of a global button event only detects entities that have a collider mesh. Primitive shapes have a collider mesh on by default, 3D models need to have one built into them.
+
+> Tip: See [Colliders]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-12-colliders %}) for details on how to add collider meshes to a 3D model.
+
+```ts
+input.subscribe("BUTTON_DOWN",  e => {
+  if ( e.hit){
+	let hitEntity = engine.entities[e.hit.entityId]
+	hitEntity.addComponent(greenMaterial)
+  } 
+})
+```
+
+The example above checks if any entities were hit, and if so it fetches the entity and applies a material component to it.
+
+> Tip: The event data returns an `entityId`. If you want to reference the actual entity by that ID and affect it in some way, call if via `engine.entities[e.hit.entityId]`.
 
 
 ## Properties of button events
 
-All _button down_ and _button up_ event objects contain the following parameters:
+All _button down_ and _button up_ event objects, as well as events from `OnPointerDown` and `OnPointerUp` components, contain the following parameters:
 
 - `origin`: Origin point of the ray, as a _Vector3_
-- `direction`: Direction vector of the ray, as a normalized _Vector3_
-- `pointerId`: ID of the pointer that triggered the event (_PRIMARY_ or _SECONDARY_)
+- `direction`: Direction vector of the ray, as a normalized _Vector3_ that points in the same direction.
+- `pointerId`: ID of the pointer that triggered the event (_POINTER_, _PRIMARY_ or _SECONDARY_)
 - `hit`: _(Optional)_ Object describing the entity that was clicked on. If the click didn't hit any specific entity, this field isn't present. The `hit` object contains the following parameters:
  
     - `length`: Length of the ray in meters, as a _number_
@@ -115,16 +150,18 @@ All _button down_ and _button up_ event objects contain the following parameters
     - `worldNormal`: The normal of the hit, in world space, as a _Vector3_
     - `entityId`: The ID of the entity, if applicable, as a _string_
 
-<!--
-## Pointer state
 
-Instead of creating a listener to catch events from the buttons changing state, you can check for the button's current state using the _Input_ object.
+## Button state
+
+You can check for the button's current state (up or down) using the _Input_ object.
 
 ```ts
-let buttonState = input.state[Pointer.PRIMARY].BUTTON_DOWN
+let buttonState = input.isButtonPressed(ActionButton.POINTER)
 ```
 
-If the _A_ button is down, `BUTTON_DOWN` has the value _true_, if the _A_ button is up, it has the value _false_.
+If the pointer button is currently being held down, the statement above returns the value _true_, otherwise it returns _false_.
+
+You can check for the states of the `PRIMARY` and `SECONDARY` buttons in the same way, providing `ActionButton.PRIMARY` or `ActionButton.SECONDARY` as arguments for the `isButtonPressed()` function.
 
 You can implement this in a system's `update()` function to check the button state regularly.
 
@@ -134,10 +171,10 @@ const input = Input.instance
 
 class ButtonChecker {
   update() {
-    if (input.state[Pointer.PRIMARY].BUTTON_DOWN) {
-      log("button A down")
+    if (input.isButtonPressed(ActionButton.POINTER)) {
+      log("pointer button down")
     } else {
-      log("button A up")
+      log("pointer button up")
     }
   }
 }
@@ -145,7 +182,7 @@ class ButtonChecker {
 engine.addSystem(new ButtonChecker())
 ```
 
--->
+
 ## Differentiate meshes inside a model
 
 Often, _.glTF_ 3D models are made up of multiple meshes, that each have an individual internal name. _button down_ and _button up_ events include the information of what specific mesh was clicked, so you can use this information to trigger different click behaviors in each case.
