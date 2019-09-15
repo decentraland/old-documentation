@@ -218,6 +218,20 @@ A Simon Says game, with click interactions and sequenced actions. The game gener
 [Explore the scene](https://memory-game-vkysoawcea.now.sh)
 
 
+## Laser ray casting
+
+A scene that shows how to use [raycasting]({{ site.baseurl }}{% post_url /development-guide/2018-02-27-raycasting %}) to trace an imaginary line in space and check for intersections with it.
+
+In this example you see both a ray being traced from the player, and another being traced from an arbitrary point in space (represented by laser turret).
+
+![](/images/media/raycasting.png)
+
+[Code](https://github.com/decentraland-scenes/Laser-ray-casting)
+
+
+[Explore the scene](https://laser-ray-cast.decentraland1.now.sh)
+
+
 # Movement
 
 ## Hummingbirds
