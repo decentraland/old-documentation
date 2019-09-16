@@ -113,16 +113,16 @@ The example above logs messages and the contents of the event object every time 
 The event objects of both the `BUTTON_DOWN` and the `BUTTON_UP` contain various useful properties. See [Properties of button events](#properties-of-button-events) for more details.
 
 
-### Detect hit entities
+#### Detect hit entities
 
-If the `useRaycast` field in the `subscribe()` function is true, and the player's pointer is pointing at an entity, the event object includes a nested `hit` object. The `hit` object includes information about the collision and the entity that was hit. 
+If the `useRaycast` field (the third argument) in the `subscribe()` function is true, and the player's pointer is pointing at an entity, the event object includes a nested `hit` object. The `hit` object includes information about the collision and the entity that was hit. 
 
 The ray of a global button event only detects entities that have a collider mesh. Primitive shapes have a collider mesh on by default, 3D models need to have one built into them.
 
 > Tip: See [Colliders]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-12-colliders %}) for details on how to add collider meshes to a 3D model.
 
 ```ts
-input.subscribe("BUTTON_DOWN",  e => {
+input.subscribe("BUTTON_DOWN", ActionButton.POINTER, true, e => {
   if ( e.hit){
 	let hitEntity = engine.entities[e.hit.entityId]
 	hitEntity.addComponent(greenMaterial)
