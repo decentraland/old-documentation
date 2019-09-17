@@ -54,11 +54,13 @@ const myMaterial = new BasicMaterial()
 
 Give a material a plain color. In a `BasicMaterial` component, you set the `color` field. In a `Material` component, you set the `albedoColor` field. Albedo colors respond to light and can include shades on them.
 
-All color fields are of type `Color3`, these hold three values, for _Red_, _Green_ and _Blue_. Each of these numbers is between 0 and 1.
+All color fields are of type `Color3`, these hold three values, for _Red_, _Green_ and _Blue_. Each of these numbers is between _0_ and _1_.
 
 ```ts
 myMaterial.albedoColor = new Color3(0.5, 0, 0.5)
 ```
+
+> Note: If you set any color in `albedoColor` to a value higher than _1_, it will appear as _emissive_, with more intensity the higher the value. So for example, `new Color3(15, 0, 0)` produces a very bright red glowing color.
 
 You can also pick predetermined colors using the following functions of the `Color3` object:
 
