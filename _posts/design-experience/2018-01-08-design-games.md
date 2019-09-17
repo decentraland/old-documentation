@@ -23,7 +23,8 @@ We're continually improving the SDK, so some of the following limitations will b
 
 Users that step outside your scene keep rendering it as long as it’s at a visible range. If they walk away too far, they will stop rendering it entirely.
 
-You could also build a game that spreads out throughout several disconnected plots of land that are unknown to players, and where the exploration of the rest of the world becomes part of the gameplay.
+You could also build a game that spreads out throughout several disconnected plots of land that are unknown to players, and where the exploration of the rest of the world becomes part of the gameplay. A game like that would be made up of multiple separate _scenes_, that could share data with each other via a server.
+
 
 #### User inventory
 
@@ -33,11 +34,11 @@ You could also build a game that spreads out throughout several disconnected plo
 - You can use an external custom storage and sync all of your scenes to it. This is a more robust solution that can deal with larger volumes of users. It can also extend the access to this inventory to multiple separate scenes that you or others own.
 - Use tokens in the blockchain to handle the ownership of items.
 
-  When earning a game item, it could be stored as a special token in a user’s Ethereum wallet. When a user that possesses the token walks into your scene, your scene could grant the user certain characteristics within the game.
+When earning a game item, it could be stored as a special token in a user’s Ethereum wallet. When a user that possesses the token walks into your scene, your scene could grant the user certain characteristics within the game.
 
-  Other scenes could potentially also respond to the same token in different ways, which can make for interesting interplay between games.
+Other scenes could potentially also respond to the same token in different ways, which can make for interesting interplay between games.
 
-  The downside of using the blockchain to store inventory items is that all transactions have a cost for the user and aren’t immediate. Read more about the blockchain in a specialized section further below.
+The downside of using the blockchain to store inventory items is that all transactions have a cost for the user and aren’t immediate. Read more about the blockchain in a specialized section further below.
 
 In future releases, users will have an inventory they carry everywhere which will include both on-chain and off-chain assets.
 
@@ -59,13 +60,13 @@ Your scene could have a reset mechanism that sets it to an initial state, but yo
 
 **Currently, scene states aren't shared between players unless manually implemented.** This is the simplest way to build a scene, but it’s not ideal for social experiences.
 
-In future versions of the SDK, default scenes will share state information between users in a peer to peer manner, at least for part of the scene data. Peer to peer has the advantage of needing no servers, but it can lead to significant latency, as users could have poor internet connections or be geographically far away. If no users are currently near the scene and loading it, the scene will reset to a default state the next time it’s loaded.
+Scenes can share state information between users in a peer to peer manner. Peer to peer has the advantage of needing no servers, but it can lead to significant latency, as users could have poor internet connections or be geographically far away. If no users are currently near the scene and loading it, the scene will reset to a default state the next time it’s loaded.
 
 **You can host your own server to store information about your scene and keep all players in sync with it.** This ensures good connection speeds and keeps the scene running continuously even when no users are near. If you do this, your latency limitations would be no different to any other massively played online games.
 
 Hosting your own server is also a recommended safety measure for games that involve transactions with valuable game items, as peer to peer connections place trust in the user that assumes the role of server.
 
-> Note: In future releases, we will provide code examples for how to implement your own server.
+> Note: In future releases, we will provide out-of-the-box solutions and code examples for how to implement your own server.
 
 #### Game timing
 
@@ -77,11 +78,11 @@ For games where the timing of actions between players is critical, like a first 
 
 **Players are identified in Decentraland using their Ethereum wallet address.** This wallet is used as a persistent ID that’s already associated with all of the tokens that the user owns.
 
-**There is no way to limit how many players can be present in Decentraland at the same time.** Unlike a lot of other games where there may be different game sessions hosted in separate servers, there’s only one instance of Decentraland shared between all players.
+**There currently is no way to limit how many players can be present in Decentraland at the same time.** Unlike a lot of other games where there may be different game sessions hosted in separate servers, there’s only one instance of Decentraland shared between all players, at least for now.
 
 You need to keep in mind that there may be several players walking around your scene at any given time. Some of them might be walking through and not participating in the game. Make sure that the game mechanics can’t be easily disrupted by this.
 
-**The game loop of your scene can’t affect users directly**, the scene has a reactive approach to the user’s actions. There will be exceptions to this, such as elevators or cars that can move the user.
+**The game loop of your scene can’t affect users directly**, the scene has a reactive approach to the user’s actions. If a player is standing on an entity and the entity moves or rotates, the player will move with this entity. This is especially useful for elevators, floating platforms, and the like.
 
 As the owner of a scene, you can’t forcefully push or teleport an offending user out of your scene. However, you will be able to blacklist users in the signaling server. You can also implement a blacklist in your scene’s code and deny certain services to blacklisted users.
 
@@ -101,31 +102,27 @@ New users will start their experience in Genesis Plaza, in the center of the map
 
 Users can also manually type a URL for a specific coordinate in the Decentraland map to spawn to that location. You can also share links to URLs that have hard-coded initial coordinates.
 
-Keep in mind that if a user starts at a location that is walled out or below the level of the terrain, it won’t be a pleasant experience. To avoid this, there’s a way you can define a specific location in your scene that is safe to spawn into.
+Keep in mind that if a user starts at a location that is walled out or below the level of the terrain, it won’t be a pleasant experience. To avoid this, there’s a way you can define a set of specific locations in your scene that is safe to spawn into. See [scene metadata]({{ site.baseurl }}{% post_url /development-guide/2018-02-26-scene-metadata %}) for details.
 
 In future releases, users will also be able to navigate the world rapidly using maps with spawn points, lists of popular locations, and friend locations. The SDK will also make it possible to add teleports in your scene that can transport to other parts of the world.
 
 ## User UI
 
-**The default overlaid UI that users see when entering Decentraland is minimal.** You can add extra elements to that UI while a user is on your scene.
+**The default overlaid UI that users see when entering Decentraland has only the essentials.** You can add extra elements to that UI while a user is on your scene.  Keep in mind that the Decentraland default UI is displayed above anything from your scene, so design your UI so that it doesn't overlap with this. 
 
-Currently, UI elements must be composed using in-world objects like planes and sprites, requiring custom implementations.
+When a user steps outside the scene, all UI elements are removed to not intervene with other scenes. Players also have a button available in their screen to toggle all UI elements in the scene off, this is mainly useful to prevent abusive behavior by scenes that may want to cover all of the player's field of view.
 
-Future versions of the SDK will support toolkits and easier ways to implement UI widgets.
+The top 10% of the screen is reserved only for the default Decentraland UI. This measure is to prevent scene UIs to pose as official Decentraland UIs or even Browser wallets like Metamask, ensuring a safer experience for players.
 
 ## Controller Inputs
 
-**Your game controls should be limited to basic movements, and point and click.** We support mobile and Virtual Reality controllers, so we can't assume that everyone has a keyboard.
+**Your game controls should be limited to basic movements, jumping, point and click, as well as a primary and secondary button.** We will support mobile and Virtual Reality controllers, so we can't assume that everyone has a keyboard.
 
-The current version of the SDK supports only one type of click, but future versions will soon support two types of clicks, one of which might be treated as jump.
+We have support for global _button up_ and _button down_ events for all three buttons. All three buttons also have hit events that let you identify if an entity was in the player's aim. 
 
 ## Avatars
 
-**Currently, users can only choose from a set of default avatars.** These avatars remain consistent as they walk through any part of the world.
-
-In future versions of Decentraland, customizable avatars will be possible. Users will be able to purchase custom avatars that will be traded as Ethereum tokens in the marketplace.
-
-Users will also be able to craft and sell their own avatars. The same will eventually also apply to wearable items and avatar emote expressions.
+**Users can build their avatars based on a set of default wearable items.** We will expand the list of available wearables and options, and in the future we'll also make it possible for third parties to create and sell wearables.
 
 ## Communication between users
 
@@ -136,8 +133,6 @@ In future releases they will also be able to do voice chat and to perform gestur
 ## Game notifications
 
 **There currently is no cross-scene notification system.** Any game requiring notifications displayed outside of the current scene is going to have to implement them using an external service.
-
-In future releases of the SDK, notifications outside a scene could be handled by the scripts in portable experiences.
 
 ## Using the blockchain
 
