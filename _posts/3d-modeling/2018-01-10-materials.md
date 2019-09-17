@@ -122,6 +122,15 @@ These textures are composed of a palette of plain colors, that you can map to di
 
 You can find the full collection of Decentrlanad default textures in [this repo](https://github.com/decentraland/builder-assets/tree/master/textures)
 
+
+### Lighting conditions
+
+It's currently not possible to have custom light sources in a Decentraland scene. You may want to consider baking lighting into a texture, for example to simulate a lighting focal point on a wall.
+
+Note that objects cast shadows over others. The default lighting conditions have a light source that is positioned at 45 degrees on all three axis.
+
+Emissive materials aren't affected by shadows from other objects, but they do cast their own shadow.
+
 ### Texture size constraints
 
 Texture sizes must use width and height numbers (in pixels) that match the following numbers:
