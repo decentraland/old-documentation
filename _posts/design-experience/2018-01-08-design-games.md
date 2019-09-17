@@ -114,6 +114,27 @@ When a user steps outside the scene, all UI elements are removed to not interven
 
 The top 10% of the screen is reserved only for the default Decentraland UI. This measure is to prevent scene UIs to pose as official Decentraland UIs or even Browser wallets like Metamask, ensuring a safer experience for players.
 
+## Physics
+
+
+no physics or gravity
+
+
+detect overlaps
+
+collisions in the future
+
+
+raycasting
+
+
+
+
+
+
+
+
+
 ## Controller Inputs
 
 **Your game controls should be limited to basic movements, jumping, point and click, as well as a primary and secondary button.** We will support mobile and Virtual Reality controllers, so we can't assume that everyone has a keyboard.
