@@ -116,24 +116,7 @@ The top 10% of the screen is reserved only for the default Decentraland UI. This
 
 ## Physics
 
-
-no physics or gravity
-
-
-detect overlaps
-
-collisions in the future
-
-
-raycasting
-
-
-
-
-
-
-
-
+Keep in mind that the SDK doesn't provide its own physics engine. If you want to use physics in your scene, you can import a library or code the behavior yourself.
 
 ## Controller Inputs
 
