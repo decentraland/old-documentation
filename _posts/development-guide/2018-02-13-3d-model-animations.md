@@ -75,6 +75,9 @@ let clipSwim = animator.getClip("swim")
 
 The `AnimationState` object doesn't store the actual transformations that go into the animation, that's all in the .glTF file. Instead, the `AnimationState` object has a state that keeps track how far it has advanced along the animation. 
 
+> Note: If a 3D model contains embedded animations, but its Entity doesn't have an `Animator` component to control them, then the animations will start playing when the entity is added to the engine. If an `Animator` component is present in the entity, all animations default to a `stopped` state, and need to be manually played.
+
+
 ## Fetch an animation
 
 

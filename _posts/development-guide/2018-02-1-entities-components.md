@@ -92,6 +92,8 @@ if (myEntity.alive) {
 }
 ```
 
+> Note: It's always recommended to add a `Transform` component to an entity before adding it to the engine. Entities that don't have a Transform component are rendered in the _(0, 0, 0)_ position of the scene, so if the entity is added before it has a `Transform`, it will be momentarily rendered in that position, and with its original size and rotation.
+
 ## Remove entities from the engine
 
 Entities that have been added to the engine can also be removed from it. When an entity is removed, it stops being rendered by the scene and users can no longer interact with it.

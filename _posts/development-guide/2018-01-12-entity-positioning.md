@@ -249,3 +249,24 @@ engine.addEntity(parentEntity)
 ```
 
 You can use an invisible entity with no shape component to wrap a set of other entities. This entity won't be visible in the rendered scene, but can be used to group its children and apply a transform to all of them.
+
+
+## Scene boundaries
+
+All entities in your scene must fit within the scene boundaries, as what's outside those boundaries is parcels of land that are owned by other users.
+
+When running a preview of your scene, any entities outside the scene's parcels are colored red and their colliders are removed. When deployed to Decentraland, any entities outside the parcels will not be rendered at all by the engine.
+
+The position of entities in your scene is constantly being checked as they move, if an entity leaves the scene and then returns it will be removed and then rendered normally again.
+
+A grid on the scene's ground shows the limits of the scene, which by default rage from 0 to 16 on the _x_ and _z_ axis, and up to 20 on the _y_ axis. You're free to place entities underground, below 0 on the _y_ axis. 
+
+> Tip: If your scene needs more parcels, you can add them in the project's `scene.json` file. See [Scene metadata]({{ site.baseurl }}{% post_url /development-guide/2018-02-26-scene-metadata %}) for instructions. Once added, you should see the grid extend to cover the additional parcels.
+
+It's important to note that the *entire* 3D model must be within the scene's bounds. This includes the model's *bounding box*. Some 3D models may have bounding boxes that unnecessarily extend beyond the meshes themselves, and it can sometimes be tricky to tell when this happens. When an entity extends beyond the scene's boundaries, in the preview you'll see a cube that marks these bounding boxes. The entire cube must fit within your scene.
+
+![](/images/media/bounding-box.png)
+
+If an entity's cube extends beyond the shape of its meshes, you might need to edit the 3D model in an external editor to reduce these margins, or to _bake_ the rotation and scale of the meshes in the model.
+
+

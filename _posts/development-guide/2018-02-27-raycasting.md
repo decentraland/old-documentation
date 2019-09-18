@@ -106,8 +106,8 @@ let ray: Ray = {
 	}
 
 physicsCast.hitAll(ray, (e) => {
-	for (let entity of e.entities) {
-         log(entity.entityId)
+	for (let entityHit of e.entities) {
+         log(entityHit.entity.entityId)
     }
 })
 ```
@@ -122,7 +122,7 @@ After running a raycast query, the callback function will be able to use the fol
 - `hitNormal`: _Vector3_ for the normal of the hit in world space. If multiple entities did hit, it returns the normal of the first point of ray collision.
 
 - `entity`: _Object_ with info about the entity that was hit. This is returned when using `hitFirst()`, and it's only returned if there were any entities hit.
-- `entities` : _Array of objects_ with info about the entities that were hit. This is returned when using `hitAll()`, and it's only returned if there were any entities hit.
+- `entities` : _Array of `entity` objects_, each with info about the entities that were hit. This is returned when using `hitAll()`, and it's only returned if there were any entities hit.
 
 The `entity` object, and the objects in the `entities` array contain the following data:
 
@@ -147,17 +147,35 @@ physicsCast.hitFirst(ray, (e) => {
 	if (e.didHit) {
 		engine.entities[e.entity.entityId].addComponentOrReplace(hitMaterial)
 	}
-	else {
-		for (let entity of this.group.entities) {
-			if (entity != rayCube && entity != rayCubeObject) {
-				entity.addComponentOrReplace(defaultMaterial)
-			}
-		}
-	}
 })
 ```
 
 > Tip: To reference an entity based on its ID, use engine's `entities` array, like this: `engine.entities[e.entity.entityId]`. 
+
+The example below does the same, but dealing with an array of entities returned from the `hitAll()` function:
+
+
+```typescript
+let physicsCast = PhysicsCast.instance
+
+let originPos = new Vector3(2, 1, 4)
+let direction = new Vector3(0, 1, 1)
+
+let ray: Ray = {
+      origin: originPos,
+      direction: direction,
+      distance: 10
+	}
+
+physicsCast.hitAll(ray, (e) => {
+	if (e.didHit) {
+		for (let entityHit of e.entities) {
+			engine.entities[entityHit.entity.entityId].addComponentOrReplace(hitMaterial)
+		}	
+	}
+})
+```
+
 
 <!--
 
