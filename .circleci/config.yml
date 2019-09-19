@@ -71,8 +71,8 @@ jobs:
             sudo pip install awscli
       - run:
           name: configure aws cli
-            command: |
-              aws configure set aws_access_key_id ${AWS_ACCESS_KEY} && aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
+          command: |
+            aws configure set aws_access_key_id ${AWS_ACCESS_KEY} && aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
       - run:
           name: Deploy to S3 if tests pass and branch is Master
           command: aws s3 sync _site s3://docs.decentraland.org/ --acl public-read
