@@ -54,7 +54,7 @@ const myMaterial = new BasicMaterial()
 
 Give a material a plain color. In a `BasicMaterial` component, you set the `color` field. In a `Material` component, you set the `albedoColor` field. Albedo colors respond to light and can include shades on them.
 
-All color fields are of type `Color3`, these hold three values, for _Red_, _Green_ and _Blue_. Each of these numbers is between _0_ and _1_.
+All color fields are either of type `Color3` or `Color4`.  `Color3` holds three values, for _Red_, _Green_ and _Blue_. Each of these numbers is between _0_ and _1_. `Color4` holds those same three values and a fourth value for _Alpha_, also between _0_ and _1_, where _0_ is completely transparent and _1_ is completely opaque. 
 
 ```ts
 myMaterial.albedoColor = new Color3(0.5, 0, 0.5)
@@ -301,10 +301,27 @@ The example above uses a nearest neighbor algorithm. This setting is ideal for p
 
 ## Transparent materials
 
-To make a material transparent, you must add an alpha channel to the image you use for the texture. The _material_ component ignores the alpha channel of the texture image by default, so you must either:
+To make a material with a plain color transparent, simply define the color as a `Color4`, and set the 4th value to something between _0_ and _1_. The closer to _1_, the more opaque it will be.
 
-- Set `hasAlpha` to true.
-- Set an image in `alphaTexture`. This image can be the same as the texture, or a different image.
+To make a material with texture transparent:
+
+- Set an image in `alphaTexture`.
+- Optionally set the `transparencyMode`. This can set to either:
+	- `OPAQUE`:  No transparency at all
+	- `ALPHATEST`: Each pixel is either completely opaque or completely transparent, based on a threshold.
+	- `ALPHABLEND`: Intermediate values are possible based on the value of each pixel.
+	- `AUTO`: Default value, 
+
+
+
+ This image can be the same as the texture, or a different image that determines that certain parts of the texture as transparent and others aren't.
+
+
+- Set the `AlphaTest` channel to `TRANSPARENT`
+
+
+ you must add an alpha channel to the image you use for the texture. The _material_ component ignores the alpha channel of the texture image by default, so you must either:
+
 
 ```ts
 const myMaterial = new Material()
