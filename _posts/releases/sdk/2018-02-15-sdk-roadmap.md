@@ -10,27 +10,27 @@ set: releases
 set_order: 1
 ---
 
-Features after 6.1 will be released one at a time as they're developed.
-
 
 ## Next features
 
-- Improve scene boundaries checking
-- Collision triggers - clipping events (contact with surface)
-- Moving ground moves player (enable user movement, ex: elevator)
-- Raycasting functions
-- A/B buttons with actions defined by developer
+- Collision triggers:
+	- when overlapping with area
+	- when in contact with surface
+	
+- Raycasting additional features:
+	- Ray hits on avatars
+	- Filtering layers
+	- Sphere casting
 
 ## Later
 
-- Multiplayer helpers
-- Smooth animation transitions
-- Collision triggers - AABB (overlapping with area)
-- Raycasting helpers: 
-	- OnPointerIn: Called when cursor points at an entity
-	- OnPointerOut: Called when cursor stops pointing at an entity
-- Change GLTF materials in runtime
+- Easier Multiplayer tools
+- Extensions to Transform component:
+	- global position/rotation/scale (not relative to parent)
+	- forward vector
+	- clone Transform component
 - Event when player leaves scene
-- Improve the experience of setting UVs somehow for texture tiling.
-- Integrate with Identity service to query player data
-- In-world UIs (not fixed on the player's screen)
+- Attach an entity to be fixed to the player
+- Improvements adding sound to a scene
+- Reposition a player to a spawn point via code
+- Fetch data from the scene's parcels to know size and shape of the scene
