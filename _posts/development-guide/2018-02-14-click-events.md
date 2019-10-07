@@ -52,6 +52,32 @@ myEntity.addComponent(
 
 > Note: Entities that don't have a shape component, or that have their shape's `visible` field set to _false_ can't be clicked.
 
+### Filter per button
+
+The `OnPointerDown` component detects events for all three buttons, the `POINTER`, `PRIMARY`, and `SECONDARY` buttons (on a PC that maps to the left mouse click, _E_ and _F_).
+
+You can detect which button was clicked, by checking the `buttonId` field from the event data. The value of this field will either return a _0_, _1_ or _2_, which map to the `POINTER`, `PRIMARY`, and `SECONDARY` buttons respectively.
+
+```ts
+const myEntity = new Entity()
+myEntity.addComponent(new BoxShape())
+
+myEntity.addComponent(
+  new OnPointerDown(e => {
+	if (e.pointerId == 0){
+  		log("Clicked pointer)
+	} else if (e.pointerId == 1){
+  		log("Pressed primary button)
+	} else if (e.pointerId == 2){
+  		log("Pressed secondary button)
+	}
+  })
+)
+```
+
+> Note: the `OnPointerUp` component exposes the same data in its event object.
+
+
 ## OnPointerUp
 
 Similarly, the `OnPointerUp` component can be added to an entity to track when a player releases the mouse button while pointing at the entity.
@@ -87,7 +113,7 @@ Instance an `Input` object and use its `subscribe()` method to initiate a listen
 The `subscribe()` method takes four arguments:
 
 - `eventName`: The type of action, this can be either `"BUTTON_DOWN"` or `"BUTTON_UP"`
-- `buttonId`: Which button to listen for. This can either be `ActionButton.POINTER`, `ActionButton.PRIMARY`, or `ActionButton.SECONDARY` 
+- `buttonId`: Which button to listen for. This can either be `ActionButton.POINTER`, `ActionButton.PRIMARY`, or `ActionButton.SECONDARY`. It can also take numbers 0, 1 or 2 that map to these values.
 - `useRaycast`: Boolean to define if raycasting will be used. If `false`, the button event will not contain information about any `hit` objects that align with the pointer at the time of the event.
 - `fn`: The function to execute when the event occurs. 
 
