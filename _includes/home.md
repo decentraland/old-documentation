@@ -49,7 +49,7 @@ Read [Installation guide]({{ site.baseurl }}{% post_url /getting-started/2018-01
 
 ## Create your first scene
 
-Create a new scene by running the following code in an empty folder:
+Create a new scene by going to an *empty folder* and running the following code:
 
 ```bash
 dcl init
