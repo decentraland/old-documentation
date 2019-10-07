@@ -219,8 +219,7 @@ The `UIImage` component has the following fields to crop a sub-section of the or
 - `sourceWidth`: the width, in pixels, of the selected area
 - `sourceHeight`: the height, in pixels, of the selected area
 
-
-When constructing a `UIImage` component, you must pass a `Texture` component as an argument. Read more about `Texture` components in [materials]({{ site.baseurl }}{% post_url /development-guide/2018-02-7-materials %})
+When constructing a `UIImage` component, you must pass a `Texture` component as an argument. Read more about `Texture` components in [materials]({{ site.baseurl }}{% post_url /development-guide/2018-02-7-materials %}).
 
 ```ts
 let imageAtlas = "images/image-atlas.jpg"
@@ -251,6 +250,12 @@ expandButton.sourceLeft = 496
 expandButton.sourceTop = 128
 expandButton.sourceWidth = 128
 expandButton.sourceHeight = 128
+```
+
+You can change the texture being used by an existing `UIImage` component, set the `data` field.
+
+```ts
+playButton.data = imageTexture2
 ```
 
 
