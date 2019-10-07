@@ -55,6 +55,10 @@ You can use a tool like Blender to create animations for a 3D model.
 
 6.  By default all frames in between the ones you defined will transition linearly from one pose to the next. You can also configure these transitions to behave exponentially, ease-in, bounce, etc.
 
+## Vertex animations
+
+Vertex animations, also known as morph-targets, aren't currently supported by Decentraland's engine.
+
 ## How to handle multiple animations with Blender
 
 To export a model with several embedded animations in Blender, you must create multiple _actions_ from the _Dope-Sheet_.
