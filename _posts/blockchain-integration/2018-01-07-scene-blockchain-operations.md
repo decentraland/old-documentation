@@ -86,7 +86,7 @@ Users can change their display name at any time while in Decentraland. For this 
 
 -->
 
-## High level operations
+## Ethereum controller library
 
 The simplest way to perform operations on the Ethereum blockchain is through the _ethereum controller_ library. This controller is packaged with the SDK, so you don't need to run any manual installations.
 
@@ -99,7 +99,7 @@ import * as EthereumController from "@decentraland/EthereumController"
 Below we explain some of the things you can do with this controller.
 
 
-#### Get user ethereum account
+## Get a player's ethereum account
 
 Use the `getUserAccount()` function from the EthereumController to find a user's Ethereum public key.
 
@@ -116,8 +116,37 @@ executeTask(async () => {
   })
 ```
 
+As shown in the example above, you should wrap the function in an `async()` function, learn more about this in [async functions]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %})
 
-#### Signing messages
+The following example keeps track of provided addresses.
+
+```ts
+import { getUserAccount } from '@decentraland/EthereumController'
+
+let registeredAddresses: String[] = []
+
+executeTask(async () => {
+    try {
+	  const address  = await getUserAccount()
+	  let lowerCaseAddress = address.toLowerCase()
+	  for (let i = 0 ; i < registeredAddresses.length; i ++){
+		if (lowerCaseAddress == registeredAddresses[i] ){
+			log("already registered")
+		} else {
+			registeredAddresses.push(lowerCaseAddress)
+		}
+	  }
+    } catch (error) {
+      log(error.toString())
+    }
+  })
+```
+
+> Note: Even though the eth address may contain upper case characters, some browsers convert the returned string to lower case automatically. If you wish compare address values and have it work on all browsers, use the `.toLowerCase()` method to convert the value into lower case.
+
+
+
+## Sign messages
 
 A user can sign a message using their Ethereum public key. This signature is a secure way to give consent or to register an accomplishment or action that is registered with the block chain.
 
@@ -164,7 +193,7 @@ executeTask(async () => {
 ```
 
 
-#### Checking if a message is correct
+## Check if a message is correct
 
 To verify that the message that the user signed is in fact the one that you want to send, you can use the `toHex()` function from `eth-connect` library, to convert it and easily compare it. See further below for instructions on how to import the `eth-connect` library.
 
@@ -286,7 +315,7 @@ engine.addEntity(button)
 The example above first requires the user to accept a transaction, if the user accepts it, then `requirePayment` returns a hash that can be used to track the transaction and see if it's been mined. Once the transaction is mined and accepted as part of the blockchain, the `openDoor()` function is called.
 -->
 
-#### Async sending
+## Async sending
 
 Use the function `sendAsync()` to send messages over [RPC protocol](https://en.wikipedia.org/wiki/Remote_procedure_call).
 
