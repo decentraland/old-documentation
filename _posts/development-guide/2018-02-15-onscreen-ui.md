@@ -193,6 +193,17 @@ The `UIText` component lets you add text. It has properties that are similar to 
 - `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`, `shadowColor`: Add a shadow to the text
 
 
+```ts
+const canvas = new UICanvas()
+
+const myText = new UIText(canvas)
+myText.value = "Hello"
+myText.fontSize = 20
+myText.positionX = '15px'
+myText.color =  Color4.Blue()
+```
+
+
 ## Images from an image atlas
 
 You can use an image atlas to store multiple images and icons in a single image file. You then display rectangular parts of this image file in your UI based on pixel positions, pixel width, and pixel height inside the source image.
