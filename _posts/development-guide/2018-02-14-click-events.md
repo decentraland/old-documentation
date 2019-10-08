@@ -65,11 +65,11 @@ myEntity.addComponent(new BoxShape())
 myEntity.addComponent(
   new OnPointerDown(e => {
 	if (e.pointerId == 0){
-  		log("Clicked pointer)
+  		log("Clicked pointer")
 	} else if (e.pointerId == 1){
-  		log("Pressed primary button)
+  		log("Pressed primary button")
 	} else if (e.pointerId == 2){
-  		log("Pressed secondary button)
+  		log("Pressed secondary button")
 	}
   })
 )
