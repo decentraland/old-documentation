@@ -122,10 +122,10 @@ The `AnimationState` object also has a `playing` boolean parameter. You can star
 clipSwim.playing = true
 ```
 
-If the animation is currently paused, the `play()` function resumes the animation from the last frame that was played before. If you want to instead play an animation starting from the beginning, use the `restart()` function.
+If the animation is currently paused, the `play()` function resumes the animation from the last frame that was played before. If you want to instead play an animation starting from the beginning, use the `reset()` function.
 
 ```ts
-clipSwim.restart()
+clipSwim.reset()
 ```
 
 
@@ -179,10 +179,10 @@ To stop an animation and set the posture back to the first frame in the animatio
 clipSwim.stop()
 ```
 
-To play an animation from the start, regardless of what frame the animation is currently in, use the `restart()` function of the `AnimationState` object.
+To play an animation from the start, regardless of what frame the animation is currently in, use the `reset()` function of the `AnimationState` object.
 
 ```ts
-clipSwim.restart()
+clipSwim.reset()
 ```
 
 > Note: Resetting the posture is an abrupt change. If you want to make the model transition smoothly tinto another posture, you can either: 

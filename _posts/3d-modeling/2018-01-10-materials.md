@@ -82,7 +82,9 @@ For example, if using the below color map, you can achieve a less bright emissiv
 
 ![](/images/media/neon-texture.png)
 
+## Vertex painting
 
+Vertex painting of 3D models isn't currently supported by Decentraland's engine. We recommend using texture mapping with a pallette of plain colors for a similar effect.
 
 ## Textures
 
