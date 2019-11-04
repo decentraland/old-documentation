@@ -19,13 +19,13 @@ The CLI allows you to compile and preview your scene in an "off-chain" developme
 
 The Decentraland CLI is distributed via [npm](https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm).
 
-### Before you Begin
+## Before you Begin
 
 Please install the following dependencies before you install the CLI:
 
 - [Node.js](nodejs.org) (version 8 or later)
 
-### Install the CLI
+## Install the CLI
 
 Open the _Terminal_ app and run the following command:
 
@@ -36,7 +36,7 @@ npm install -g decentraland
 Once the installation is complete, the `dcl` command will be globally available.
 
 
-### Update the CLI on any platform
+## Update the CLI on any platform
 
 To update the CLI to the latest supported version, we recommend first uninstalling the CLI and then reinstalling a fresh version. To do this, run the following commands:
 
@@ -48,7 +48,7 @@ npm rm decentraland -g
 npm install -g decentraland
 ```
 
-### Update the SDK version of a scene
+#### Update the SDK version of a scene
 
 If your CLI is up to date, the new projects you create with it will use the latest version of the SDK.
 
