@@ -366,7 +366,7 @@ This scene is showcased by a [video tutorial series](https://www.youtube.com/wat
 
 ![](/images/media/example-escaperoom.png)
 
-[Code](https://github.com/decentraland-scenes/Escape-Room)
+[Code](https://github.com/decentraland-scenes/dcl-escape-room-tutorial)
 
 
 
