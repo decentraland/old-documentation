@@ -68,9 +68,17 @@ Raycast queries are run by the `PhysicsCast` class. there are two methods availa
 - `hitFirst()`: this method only returns the first hit entity, starting from the origin point.
 - `hitAll()`: this method returns all hit entities, from the origin through to the length of the ray. 
 
-Both these methods need to be passed a ray and a callback function to execute. Note that the callback function is always executed, even if no entities were hit by the ray.
+Both these methods need to be passed the following:
 
+- a Ray object
+- a callback function to execute after the query
+- an optional raycast id, to handle separate lossy queues
+
+<!--
 ![](/images/media/raycast.png)
+-->
+
+Note that the callback function is always executed, even if no entities were hit by the ray.
 
 This sample queries only for the first entity hit by the ray:
 
@@ -88,7 +96,9 @@ let ray: Ray = {
 
 physicsCast.hitFirst(ray, (e) => {
 	log(e.entity.entityId)
-})
+	},
+	0
+)
 ```
 
 This sample queries for all entities hit by the ray:
@@ -106,10 +116,12 @@ let ray: Ray = {
 	}
 
 physicsCast.hitAll(ray, (e) => {
-	for (let entityHit of e.entities) {
-         log(entityHit.entity.entityId)
-    }
-})
+		for (let entityHit of e.entities) {
+			log(entityHit.entity.entityId)
+		}
+	},
+	0
+)
 ```
 
 ## Results from raycast query
@@ -144,13 +156,15 @@ let ray: Ray = {
 	}
 
 physicsCast.hitFirst(ray, (e) => {
-	if (e.didHit) {
-		engine.entities[e.entity.entityId].addComponentOrReplace(hitMaterial)
-	}
-})
+		if (e.didHit) {
+			engine.entities[e.entity.entityId].addComponentOrReplace(hitMaterial)
+		}
+	},
+	0
+)
 ```
 
-> Tip: To reference an entity based on its ID, use engine's `entities` array, like this: `engine.entities[e.entity.entityId]`. 
+> Tip: To reference an entity based on its ID, use the engine's `entities` array, like this: `engine.entities[e.entity.entityId]`. 
 
 The example below does the same, but dealing with an array of entities returned from the `hitAll()` function:
 
@@ -168,13 +182,58 @@ let ray: Ray = {
 	}
 
 physicsCast.hitAll(ray, (e) => {
-	if (e.didHit) {
-		for (let entityHit of e.entities) {
-			engine.entities[entityHit.entity.entityId].addComponentOrReplace(hitMaterial)
-		}	
-	}
-})
+		if (e.didHit) {
+			for (let entityHit of e.entities) {
+				engine.entities[entityHit.entity.entityId].addComponentOrReplace(hitMaterial)
+			}	
+		}
+	},
+	0
+)
 ```
+
+
+## Recurrent raycasting
+
+If your scene does raycasting on every frame via a [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}), then you should be careful about how it affects your scene's performance.
+
+Both the `hitAll` and `hitFirst` methods have a third argument that takes a _raycast id_. All raycast queries that share a same id are handled in a lossy queue, so that if these requests pile up over time then only the latest one to arrive is processed. This can potentially save a lot of resources and makes your scene run a lot more smoothly.
+
+In some cases you may want to have several separate raycast queries running at the same time, for example you might have a character that sends multiple rays in different directions to check for walls as it walks around. In these cases you should make sure that each raycast query has a separate id. Otherwise, if these different queries share a same id, the results of each might overwrite one another and valuable information will be lost on every frame.
+
+```typescript
+
+const Ray1 = {origin:Vector3.zero, direction:Vector3.Left()}
+const Ray2 = {origin:Vector3.zero, direction:Vector3.Right()}
+let id1: number = 0
+let id2: number = 1
+
+class RaycastSystem implements ISystem {
+  
+  update(dt: number) {
+    PhysicsCast.instance().hitFirst(
+		Ray1, 
+    	(e)=> {
+         	// Do stuff
+    	},
+    	id1
+	)
+
+    PhysicsCast.instance().hitFirst(
+    	Ray2, 
+    	(e)=> {
+         	// Do stuff
+    	},
+    	id2
+	)
+  }
+}
+
+engine.addSystem(RaycastSystem)
+```
+
+This example runs two raycast queries on every frame of the scene.  Since they each have a different id, the requests from the first query and from the second query are handled on different queues that are independent from the other.
+
 
 
 <!--
