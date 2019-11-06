@@ -25,49 +25,8 @@ To do so:
    1. _Fork the repo_ to work on your own version of it, that will exist in a cloned GitHub repo that belongs to you.
    2. Click **Clone or Download** and select to download it as a _.zip_ file, to work on the files locally, without GitHub being involved.
 
-<!--
-## Static XML Scenes
-
-#### Static XML Scene
-
-A completely static scene. It's built entirely using XML, which makes it easier to write and edit, but doesn't support any changes over time or interactions with the user.
-
-![](/images/media/example-static.png)
-
-[Code](https://github.com/decentraland-scenes/XML-static-scene)
--->
 
 # Essentials
-
-## Static Scene with Animations
-
-A simple static scene that just displays 3D models. The 3D models include animations to move the butterflies, flames, etc.
-
-![](/images/media/example-muna.png)
-
-[Code](https://github.com/decentraland-scenes/the-munastery)
-
-[Explore the scene](https://the-munastery-ggtyhuetbt.now.sh)
-
-
-## Hypno wheels
-
-This simple scene features a couple of wheels that you can spin by clicking them. 
-
-- rotate an entity
-- glTF models
-- click events
-- textures
-- custom components 
-- component groups
-
-![](/images/media/example-hypno-wheel.png)
-
-[Code](https://github.com/decentraland-scenes/Hypno-wheels)
-
-[Explore the scene](https://hypno-wheels-xmirhqdurz.now.sh)
-
-Read a tutorial [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5/) about this scene.
 
 ## Shark animation
 
@@ -97,6 +56,27 @@ This simple scene shows how to use the [utils library](https://www.npmjs.com/pac
 [Code](https://github.com/decentraland-scenes/Puffer)
 
 [Explore the scene](https://puffer.decentraland1.now.sh/?position=-132,-40)
+
+
+## Hypno wheels
+
+This simple scene features a couple of wheels that you can spin by clicking them. 
+
+- rotate an entity
+- glTF models
+- click events
+- textures
+- custom components 
+- component groups
+
+![](/images/media/example-hypno-wheel.png)
+
+[Code](https://github.com/decentraland-scenes/Hypno-wheels)
+
+[Explore the scene](https://hypno-wheels-xmirhqdurz.now.sh)
+
+Read a tutorial [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5/) about this scene.
+
 
 ## Open the door
 
