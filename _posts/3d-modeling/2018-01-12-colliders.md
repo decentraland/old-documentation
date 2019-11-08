@@ -26,6 +26,17 @@ In this case, we can name the box "Box*Tree_collider" and export both the tree a
 
 Whenever a player views the tree model in your scene, they will see the complex model for your tree. However, when they walk into your tree, they will collide with the box, not the tree.
 
+
+## Player spatial constraints
+
+When you design models that are meant for players to walk around in, you need to keep in mind the following reference measurements:
+
+- Players can walk up a step of up to 30 centimeters in height without jumping
+- Players can walk up slopes of an angle of up to 45 degrees without jumping
+- Players can jump up to 1,8 meters in height
+- Avatars measure around 1.9 meters in height, but consider that they might have hats or other wearables on their head.
+
+
 ## Add a collider to a staircase
 
 Stairs are a very common use-case for collider objects. In order for users to climb stairs, there must be a corresponding \_collider object that the users are able to step on.
