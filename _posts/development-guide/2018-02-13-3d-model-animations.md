@@ -218,6 +218,7 @@ clipSwim.play()
 
 Set the speed lower than 1 to play it slower, for example to 0.5 to play it at half the speed. Set it higher than 1 to play it faster, for example to 2 to play it at double the speed.
 
+<!--
 ## Animation weight
 
 The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance that animation will be given in the average. 
@@ -254,6 +255,8 @@ The `weight` property can be used in interesting ways, for example the `weight` 
 You could also change the `weight` value gradually when starting and stopping an animation to give it a more natural transition and to avoid jumps from the default pose to the first pose in the animation.
 
 >Note: The added `weight` value of all animations that are acting on a 3D model's bone can't be more than 1. If more than one animation is affecting the same bones at the same time, they need to have their weight set to values that add to less than 1.
+
+-->
 
 ## Set clip parameters in bulk
 

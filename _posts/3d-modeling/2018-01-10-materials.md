@@ -112,7 +112,7 @@ what special layers PBR uses?
 
 -->
 
-### Default textures
+#### Default textures
 
 All of the assets from the default Decentraland asset libraries (available in the Builder or as wearables) share a set of optimized plane textures. These textures are pre-loaded by players when they open the explorer, which makes these assets a lot faster to load. 
 
@@ -125,7 +125,7 @@ These textures are composed of a palette of plain colors, that you can map to di
 You can find the full collection of Decentrlanad default textures in [this repo](https://github.com/decentraland/builder-assets/tree/master/textures)
 
 
-### Lighting conditions
+#### Lighting conditions
 
 It's currently not possible to have custom light sources in a Decentraland scene. You may want to consider baking lighting into a texture, for example to simulate a lighting focal point on a wall.
 
@@ -133,7 +133,7 @@ Note that objects cast shadows over others. The default lighting conditions have
 
 Emissive materials aren't affected by shadows from other objects, but they do cast their own shadow.
 
-### Texture size constraints
+#### Texture size constraints
 
 Texture sizes must use width and height numbers (in pixels) that match the following numbers:
 

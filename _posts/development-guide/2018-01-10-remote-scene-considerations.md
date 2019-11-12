@@ -24,7 +24,7 @@ The first of these options is the easiest to implement. The downside is that you
 
 ## P2P messaging
 
-### Initiate a message bus
+#### Initiate a message bus
 
 Create a message bus object to handle the methods that are needed to send and receive messages between players.
 
@@ -32,7 +32,7 @@ Create a message bus object to handle the methods that are needed to send and re
 const sceneMessageBus = new MessageBus();
 ```
 
-### Send messages
+#### Send messages
 
 Use the `.emit` command of the message bus to send a message to all other players in the scene.
 
@@ -59,7 +59,7 @@ sceneMessageBus.emit("spawn", {position: spawnPos })
 > Tip: If you need a single message to include data from more than one variable, create a custom type to hold all this data in a single object.
 
 
-### Receive messages
+#### Receive messages
 
 To handle messages from all other players in that scene, use `.on`. When using this function, you provide a message string and define a function to execute. For each time that a message with a matching string arrives, the given function is executed once.
 
@@ -77,7 +77,7 @@ sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
 
 > Note: Messages that are sent by a player are also picked up by that same player. The `.on` method can't distinguish between a message that was emitted by that same player from a message emitted from other players.
 
-### Full example
+#### Full example
 
 This example uses a message bus to send a new message every time the main cube is clicked, generating a new cube in a random position. The message includes the position of the new cube, so that all players see these new cubes in the same positions.
 
@@ -136,7 +136,7 @@ sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
 });
 ```
 
-### Test a P2P scene locally
+#### Test a P2P scene locally
 
 If you launch a scene preview and open it in two (or more) different browser windows, each open window will be interpreted as a separate player, and a mock communications server will keep these players in sync.
 
@@ -146,7 +146,7 @@ Interact with the scene on one window, then switch to the other to see that the 
 
 ## Use an authoritative server
 
-### Example scenes with authoritative server
+#### Example scenes with authoritative server
 
 To copy one of the scene examples that implements an authoritative server, follow the steps in [copy a scene example]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}#clone-an-example-scene).
 
@@ -156,7 +156,7 @@ To copy one of the scene examples that implements an authoritative server, follo
 [Mural scene](https://github.com/decentraland-scenes/Remote-mural)
 
 
-### Preview scenes with authoritative servers
+#### Preview scenes with authoritative servers
 
 To preview a scene that uses an authoritative server, you must run both the scene and the server it relies on. The server can be run locally in the same machine as the preview, as an easier way to test it.
 
@@ -168,14 +168,14 @@ Once the scene preview is running, you can open multiple browser tabs pointing a
 
 See [preview a scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %}) for more details.
 
-### Multiplayer persistance
+#### Multiplayer persistance
 
 Unlike local scenes that are newly mounted each time a player walks into them, scenes that use authoritative servers have a life span that extends well beyond when the player enters and leaves the scene.
 
 You must therefore design the experience taking into account that player won't always find the scene in the same initial state.
 Any changes made to the scene will linger on for other players to find, you must make sure that these don't interfere with future player's experiences in an undesired way.
 
-#### Reset the state
+##### Reset the state
 
 When loading the scene, make sure its built based on the shared information stored in the server, and not in a default state.
 
