@@ -19,7 +19,7 @@ We recommend keeping game object definitions each in a separate file.
 
 Below is an example of a `Door` game object. This object has a constructor that requires that you pass it a shape, a sound and a position. It also exposes an `openDoor`, `closeDoor` and `toggleDoor` method, that can be called from other files.
 
-```TypeScript
+```ts
 export class Door extends Entity {
   public isOpen: boolean;
 
@@ -109,7 +109,7 @@ None of the code above produces any changes in the scene on its own. It just exp
 Once the `Door` class is defined in your scene, you can use it in your `game.ts` or any other file:
 
 
-```Typescript
+```ts
 import { Door } from "./door"
 
 const door = new Door(
