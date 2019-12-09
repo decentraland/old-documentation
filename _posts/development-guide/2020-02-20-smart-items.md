@@ -1,0 +1,404 @@
+---
+date: 2020-02-20
+title: Smart items
+description: Create your own smart items to use in the Builder
+categories:
+  - development-guide
+type: Document
+set: development-guide
+set_order: 29
+---
+
+Through the Builder, you can drag and drop smart items into a scene. These are items that have configurable parameters and actions that can be triggered, like doors that can be opened or levers that can be activated. There is a default collection of smart items in the Builder, but you can also create your own and import them.
+
+Smart items are written using the same SDK code that you use for creating a scene, making use of [entities, components]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}) and [systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}). This document assumes that you're familiar with these concepts and will focus on how to encapsulate this code so that it interfaces with the scene and other smart items.
+
+## Smart item references
+
+We recommend that you start working from an existing smart item, and use it as a template.
+
+You can find the default collection of smart items that are in the builder in this repository:
+
+https://github.com/decentraland/smart-items
+
+You can also obtain the code of a smart item by using it in a scene in the Builder and then exporting that scene. The code for the smart item will be in a sub-folder of `src`.
+
+## The asset manifest
+
+Every smart item has an `asset.json` file. This is a manifest that exposes how the item can be configured via the Builder UI, and how other items can activate it.
+
+> TIP: We recommend starting the development of your smart item from the manifest. There you can first define the item's interface and configurable parameters, and then develop the supporting backend for that.
+
+### General item data
+
+`Tags` let you make the item easier to find when using the search.
+
+`Category` places the item into a subcategory inside the asset pack, for example "nature" or "decorations".
+
+`Name` Refers to the name that this model will have in the Builder UI.
+
+> Note: Today, the itm name that's visible in the UI is taken directly from the name of the 3d model file. Don't leave any spaces in the file name, use underscores to separate the words in it.
+
+`Model` refers to the 3D model that is used as a placeholder when dragging the item into the scene in edit mode. This can be especially useful when the item is made up of several 3D models, as you'll want to display an alternative placeholder model that includes all the meshes together. Make sure this placeholder model is in the same size and orientation as the item that will be seen in the scene.
+
+### Parameters
+
+The `asset.json` file contains an array of parameters that can be configured via UI. The corresponding UI is generated in the Builder, automatically taking care of spacial arrangement and formatting of these menu items.
+
+[screenshot]
+
+Every parameter must have:
+
+- a `label` to display in the UI
+- an `id` by which its value can be used in your code
+- a `type` that determines the accepted values. The UI will change accordingly to match the type.
+
+Parameters can also have a `default` value, to help make the item easier to use out of the box.
+
+```json
+ {
+      "id": "distance",
+      "label": "Distance",
+      "type": "integer",
+      "default": 10
+  },
+```
+
+The basic supported types for parameters are :
+
+- string
+- integer
+- float
+- boolean
+
+##### Special types
+
+Type `actions` refers to an action in this or another smart item. When this type is used, the field will present two dropdown menus to select a smart item and an action from that item.
+
+```json
+  {
+      "id": "onUse",
+      "label": "When used",
+      "type": "actions"
+    },
+```
+
+[screenshot]
+
+Type `entity` refers to another item. When this type is used, the field will presetn a single dropdown to select a smart item.
+
+```json
+    {
+      "id": "target",
+      "label": "Used on",
+      "type": "entity"
+    },
+```
+
+Type `textarea` refers to a multi-line string, that appears in the UI as a text box.
+
+```json
+    {
+      "id": "text",
+      "label": "Text",
+      "type": "textarea",
+      "default": "Some text"
+    },
+```
+
+Type `slider` exposes a draggable slider bar in the UI. This bar has a maximum and minimum value, and moves by fixed steps.
+
+```json
+    {
+      "id": "speed",
+      "label": "Speed",
+      "type": "slider",
+      "default": 3,
+      "max": 20,
+      "min": 0,
+      "step": 1
+    },
+```
+
+Type `options` exposes a dropdown menu with a set of options you can list.
+
+```json
+"parameters": [
+{
+"id": "sound",
+"label": "Sound",
+"type": "options",
+"options": [
+{
+"value": "Birds",
+"label": "Birds"
+},
+{
+"value": "City",
+"label": "City"
+},
+{
+"value": "Factory",
+"label": "Factory"
+},
+{
+"value": "Field",
+"label": "Field"
+},
+{
+"value": "Swamp",
+"label": "Swamp"
+},
+{
+"value": "Town",
+"label": "Town"
+}
+],
+"default": "Birds"
+},
+```
+
+### Actions
+
+Actions can be called by this item or others to trigger a specific behavior. These don't appear in the item's own UI, but all fields of type `actions` list all of the actions available on all the items that are currently in the scene.
+
+Actions have a `label` that is shown in the dropdown menus, and an `id` that lets you refer to this value in the item's code.
+
+```json
+ "actions": [
+    {
+      "id": "goToEnd",
+      "label": "Go to end",
+      "parameters": []
+    },
+    {
+      "id": "goToStart",
+      "label": "Return to start",
+      "parameters": []
+    }
+  ]
+```
+
+Actions can also have `parameters` that you can use to pass information with the action event. These parameters follow the same syntax, types and conventions as explained for the item parameters.
+
+```json
+  "actions": [
+    {
+      "id": "changeText",
+      "label": "Change Text",
+      "parameters": [
+        {
+          "id": "newText",
+          "label": "New Text",
+          "type": "textarea"
+        }
+      ]
+    }
+  ]
+```
+
+## the item.ts file
+
+The `item.ts` file is where you place the main logic for the item. This mainly includes creating an object that exposes at least an `init()` and a `spawn()` function.
+
+Below is an example of the `item.ts` of a door smart item:
+
+```ts
+export type Props = {
+  onClick?: Actions
+  onOpen?: Actions
+  onClose?: Actions
+}
+
+export default class Door implements IScript<Props> {
+  openClip = new AudioClip("sounds/open.mp3")
+  closeClip = new AudioClip("sounds/close.mp3")
+
+  active: Record<string, boolean> = {}
+
+  init() {}
+
+  toggle(entity: Entity, value: boolean, playSound = true) {
+    if (this.active[entity.name] === value) return
+
+    if (playSound) {
+      const source = new AudioSource(value ? this.openClip : this.closeClip)
+      entity.addComponentOrReplace(source)
+      source.playing = true
+    }
+
+    const animator = entity.getComponent(Animator)
+    const openClip = animator.getClip("open")
+    const closeClip = animator.getClip("close")
+    openClip.stop()
+    closeClip.stop()
+    const clip = value ? openClip : closeClip
+    clip.play()
+
+    this.active[entity.name] = value
+  }
+
+  spawn(host: Entity, props: Props, channel: IChannel) {
+    const door = new Entity(host.name + "-button")
+    door.setParent(host)
+
+    const animator = new Animator()
+    const closeClip = new AnimationState("close", { looping: false })
+    const openClip = new AnimationState("open", { looping: false })
+    animator.addClip(closeClip)
+    animator.addClip(openClip)
+    door.addComponent(animator)
+    openClip.stop()
+
+    door.addComponent(new GLTFShape("models/Door_Genesis.glb"))
+
+    door.addComponent(
+      new OnPointerDown(() => {
+        channel.sendActions(props.onClick)
+      })
+    )
+
+    this.active[door.name] = false
+
+    // handle actions
+    channel.handleAction("open", ({ sender }) => {
+      this.toggle(door, true)
+      if (sender === channel.id) {
+        channel.sendActions(props.onOpen)
+      }
+    })
+    channel.handleAction("close", ({ sender }) => {
+      this.toggle(door, false)
+      if (sender === channel.id) {
+        channel.sendActions(props.onClose)
+      }
+    })
+    channel.handleAction("toggle", ({ sender }) => {
+      const newValue = !this.active[door.name]
+      this.toggle(door, newValue)
+      if (sender === channel.id) {
+        channel.sendActions(newValue ? props.onOpen : props.onClose)
+      }
+    })
+
+    // sync initial values
+    channel.request<boolean>("isOpen", isOpen =>
+      this.toggle(door, isOpen, false)
+    )
+    channel.reply<boolean>("isOpen", () => this.active[door.name])
+  }
+}
+```
+
+> Note: Keep in mind that external libraries aren't supported in smart items, not even the `decentraland-esc-utils` library, so all of your item's logic should be written using the SDK directly.
+
+### Item class setup
+
+The `init()` function is executed once the first time that a smart item of this kind is added to a scene.
+It's a great place to define elements that will be shared amongst all instances of the item, like materials, a system, etc.
+
+### Item instancing
+
+The `spawn()` function is executed every time a new instance of the smart item is added to the scene. This is where you should instance the entity and components of the item, as well as initiate all the action handlers.
+
+`spawn(host: Entity, props: Props, channel: IChannel)`
+
+The `spawn()` function takes a _host_ entity as a parameter. This host's positioning will be applied to the positioning of the item in the scene. Instead of adding components like a shape, audiosource, etc directly to the host entity, create a new entity and set it as a child of the host.
+
+The `props` parameter will expose all the properties that are defined in the `asset.josn` file, calling them by the `id` specified for each in that file.
+
+You should define a custom type for props, that includes the specific set of properties used by the item. You can then refer to these properties in the `spawn()` function via the parameter's id: `props.onClick`.
+
+The `channel` parameter refers to the name of the channel of communication that will be used by this smart item. Smart items use the [message bus]({{ site.baseurl }}{% post_url /development-guide/2018-01-10-remote-scene-considerations %}#p2p-messaging) to communicate between items and to sync state changes with other players. Having separate channels for each item avoids unwanted crosstalk between unrelated items.
+
+### Handling actions
+
+In the spawn function you should also set up handlers to respond when another item calls this item to trigger an action.
+
+For example, a door can have an 'open' action, that could be called by a button, a key, or even another door.
+
+```ts
+channel.handleAction("open", ({ sender }) => {
+  this.toggle(door, true)
+  if (sender === channel.id) {
+    channel.sendActions(props.onOpen)
+  }
+})
+```
+
+In the example above, each time an `open` action arrives, the door runs the `toggle` function to play its corresponding animation and sound and to change its state. Then it verifies that the `open` action effectively came from this player instance and not from another player; if so, it will call any actions that were configured to be called on the item's `OnOpen`. If this check isn't done, then the actions would be sent out multiple times, once for every player in the scene. This, besides being inefficient, can be quite disruptive when dealing with toggle-type actions.
+
+> TIP: As your item gets more complex, we recommend keeping the action handlers light, and keep most of the logic in external functions that can be called from these.
+
+## Testing your item
+
+Use the `game.ts` file to test out your item just as you would test a scene. Add an instance of your item to the `game.ts` item, giving it a transform and then including all the required parameters inside an object.
+
+```ts
+import { Spawner } from "../node_modules/decentraland-builder-scripts/spawner"
+import Door, { Props } from "./item"
+
+const door = new Door()
+const spawner = new Spawner<Props>(door)
+
+spawner.spawn(
+  "door",
+  new Transform({
+    position: new Vector3(4, 0, 8)
+  }),
+  {
+    onClick: [
+      {
+        actionId: "toggle",
+        entityName: "door",
+        values: {}
+      }
+    ]
+  }
+)
+```
+
+Then simply run `dcl start` on the item's folder, as you would for a normal scene. You'll be able to interact with the item, and will also have hot reload in the preview as you change your item's code.
+
+Try providing different values to the item's properties, to make sure it functions as expected.
+
+When you're ready to export the item, run `dcl pack` on the item's folder. This will generate an `item.zip` file. Then import this file into a custom asset pack in the Builder.
+
+You can then test it in a Builder scene. We recommend you test the following:
+
+- Set different values in the item's parameters
+- Have its actions called by other items
+- Call other items from it
+- Add multiple instances of the item to make sure they don't interfere with each other
+
+If this all works then congratulations, you have a fully stable smart item!
+
+## Storing state data
+
+Your item might need to store information at an instance level. For example each door needs to keep track of if its open or closed, but other more complex items might keep track of more information.
+
+storing in a list
+
+custom compoennt
+
+recommend in its own separate file
+
+the name must be unique per item
+
+## Custom systems
+
+the name must be unique
+
+start it in the init function
+
+no utils library
+
+## multiplayer behavior
+
+state is shared p2p
+
+keep in mind that what one player does affects others
+
+you can avoid this by not sending via message bus or by filtering out the player id
+
+resets to initial state when all players leave the area
