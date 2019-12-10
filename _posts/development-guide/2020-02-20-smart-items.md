@@ -29,28 +29,28 @@ Every smart item has an `asset.json` file. This is a manifest that exposes how t
 
 > TIP: We recommend starting the development of your smart item from the manifest. There you can first define the item's interface and configurable parameters, and then develop the supporting backend for that.
 
-### General item data
+#### General item data
+
+`Name` Refers to the name that this model will have in the Builder UI.
+
+> Note: Today, the item name that's visible in the UI is taken directly from the name of the 3d model file. Don't leave any spaces in the file name, use underscores to separate the words in it.
+
+`Model` refers to the 3D model that is used as a placeholder when dragging the item into the scene in edit mode. This can be especially useful when the item is made up of several 3D models, as you'll want to display an alternative placeholder model that includes all the meshes together. Make sure this placeholder model has the same size and orientation as the item that will be seen in the scene. Also make sure that the item isn't displaced via code from its default location, unless the placeholder matches this.
 
 `Tags` let you make the item easier to find when using the search.
 
 `Category` places the item into a subcategory inside the asset pack, for example "nature" or "decorations".
 
-`Name` Refers to the name that this model will have in the Builder UI.
-
-> Note: Today, the itm name that's visible in the UI is taken directly from the name of the 3d model file. Don't leave any spaces in the file name, use underscores to separate the words in it.
-
-`Model` refers to the 3D model that is used as a placeholder when dragging the item into the scene in edit mode. This can be especially useful when the item is made up of several 3D models, as you'll want to display an alternative placeholder model that includes all the meshes together. Make sure this placeholder model is in the same size and orientation as the item that will be seen in the scene.
-
-### Parameters
+#### Parameters
 
 The `asset.json` file contains an array of parameters that can be configured via UI. The corresponding UI is generated in the Builder, automatically taking care of spacial arrangement and formatting of these menu items.
 
-[screenshot]
+![](/images/media/smart-item-params.png)
 
 Every parameter must have:
 
 - a `label` to display in the UI
-- an `id` by which its value can be used in your code
+- an `id` by which its value can be used in your item's code
 - a `type` that determines the accepted values. The UI will change accordingly to match the type.
 
 Parameters can also have a `default` value, to help make the item easier to use out of the box.
@@ -66,14 +66,14 @@ Parameters can also have a `default` value, to help make the item easier to use 
 
 The basic supported types for parameters are :
 
-- string
-- integer
-- float
-- boolean
+- _string_
+- _integer_
+- _float_
+- _boolean_
 
 ##### Special types
 
-Type `actions` refers to an action in this or another smart item. When this type is used, the field will present two dropdown menus to select a smart item and an action from that item.
+Type _actions_ refers to an action in this or another smart item. When this type is used, the field will present two dropdown menus. One selects a smart item, the other an action from that item.
 
 ```json
   {
@@ -83,9 +83,11 @@ Type `actions` refers to an action in this or another smart item. When this type
     },
 ```
 
-[screenshot]
+> Note: Decorators can use the plus sign to add as many actions as they want to one single _actions_ field.
 
-Type `entity` refers to another item. When this type is used, the field will presetn a single dropdown to select a smart item.
+![](/images/media/smart-item-actions.png)
+
+Type `entity` refers to another item. When this type is used, the field will present a single dropdown to select a smart item.
 
 ```json
     {
@@ -94,6 +96,10 @@ Type `entity` refers to another item. When this type is used, the field will pre
       "type": "entity"
     },
 ```
+
+> Note: Decorators can add a single entity in fields of type _entity_.
+
+![](/images/media/smart-item-entity-field.png)
 
 Type `textarea` refers to a multi-line string, that appears in the UI as a text box.
 
@@ -158,7 +164,7 @@ Type `options` exposes a dropdown menu with a set of options you can list.
 },
 ```
 
-### Actions
+#### Actions
 
 Actions can be called by this item or others to trigger a specific behavior. These don't appear in the item's own UI, but all fields of type `actions` list all of the actions available on all the items that are currently in the scene.
 
@@ -167,17 +173,24 @@ Actions have a `label` that is shown in the dropdown menus, and an `id` that let
 ```json
  "actions": [
     {
-      "id": "goToEnd",
-      "label": "Go to end",
+      "id": "open",
+      "label": "Open",
       "parameters": []
     },
     {
-      "id": "goToStart",
-      "label": "Return to start",
+      "id": "close",
+      "label": "Close",
+      "parameters": []
+    },
+    {
+      "id": "toggle",
+      "label": "Open or Close",
       "parameters": []
     }
   ]
 ```
+
+![](/images/media/smart-item-select-action.png)
 
 Actions can also have `parameters` that you can use to pass information with the action event. These parameters follow the same syntax, types and conventions as explained for the item parameters.
 
@@ -197,7 +210,9 @@ Actions can also have `parameters` that you can use to pass information with the
   ]
 ```
 
-## the item.ts file
+![](/images/media/smart-item-action-params.png)
+
+## Item code
 
 The `item.ts` file is where you place the main logic for the item. This mainly includes creating an object that exposes at least an `init()` and a `spawn()` function.
 
@@ -292,12 +307,12 @@ export default class Door implements IScript<Props> {
 
 > Note: Keep in mind that external libraries aren't supported in smart items, not even the `decentraland-esc-utils` library, so all of your item's logic should be written using the SDK directly.
 
-### Item class setup
+#### Item class setup
 
 The `init()` function is executed once the first time that a smart item of this kind is added to a scene.
 It's a great place to define elements that will be shared amongst all instances of the item, like materials, a system, etc.
 
-### Item instancing
+#### Item instancing
 
 The `spawn()` function is executed every time a new instance of the smart item is added to the scene. This is where you should instance the entity and components of the item, as well as initiate all the action handlers.
 
@@ -311,7 +326,7 @@ You should define a custom type for props, that includes the specific set of pro
 
 The `channel` parameter refers to the name of the channel of communication that will be used by this smart item. Smart items use the [message bus]({{ site.baseurl }}{% post_url /development-guide/2018-01-10-remote-scene-considerations %}#p2p-messaging) to communicate between items and to sync state changes with other players. Having separate channels for each item avoids unwanted crosstalk between unrelated items.
 
-### Handling actions
+#### Handling actions
 
 In the spawn function you should also set up handlers to respond when another item calls this item to trigger an action.
 
@@ -332,7 +347,7 @@ In the example above, each time an `open` action arrives, the door runs the `tog
 
 ## Testing your item
 
-Use the `game.ts` file to test out your item just as you would test a scene. Add an instance of your item to the `game.ts` item, giving it a transform and then including all the required parameters inside an object.
+Use the `game.ts` file to test out your item just as you would test a scene. Add an instance of your item to the `game.ts` item, giving it a transform to position it and including all the required parameters inside an object.
 
 ```ts
 import { Spawner } from "../node_modules/decentraland-builder-scripts/spawner"
@@ -358,13 +373,13 @@ spawner.spawn(
 )
 ```
 
-Then simply run `dcl start` on the item's folder, as you would for a normal scene. You'll be able to interact with the item, and will also have hot reload in the preview as you change your item's code.
+Then simply run `dcl start` on the item's folder, as you would for a normal scene. You'll be able to interact with the item. The preview will hot-reload as you change your item's code.
 
 Try providing different values to the item's properties, to make sure it functions as expected.
 
 When you're ready to export the item, run `dcl pack` on the item's folder. This will generate an `item.zip` file. Then import this file into a custom asset pack in the Builder.
 
-You can then test it in a Builder scene. We recommend you test the following:
+You can then test it in a Builder scene. We recommend you do the following tests:
 
 - Set different values in the item's parameters
 - Have its actions called by other items
@@ -375,30 +390,58 @@ If this all works then congratulations, you have a fully stable smart item!
 
 ## Storing state data
 
-Your item might need to store information at an instance level. For example each door needs to keep track of if its open or closed, but other more complex items might keep track of more information.
+Your item might need to store information at an instance level. For example, each door needs to keep track of if its open or closed, but other more complex items might keep track of more information about themselves.
 
-storing in a list
+The example above uses a list of booleans to represent the open/closed state of each door, where the entity name of each door is used as a key. For items with more information, it's advisable to instead define a [custom component]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}#custom-components) that holds all of the data of the item.
 
-custom compoennt
+When instancing an item in the `spawn()` function, you should then add this component to new items.
 
-recommend in its own separate file
+> TIP: We recommend defining the custom component in a separate file from `item.ts`, to keep your code cleaner.
 
-the name must be unique per item
+It's important that you name your custom components with unique names that shouldn't overlap with names used by other smart items. We recommend including the item name as part of the component name to avoid this. Otherwise, conflicting smart items in a same scene could interfere with each other in unexpected ways.
 
 ## Custom systems
 
-the name must be unique
+If you need your item to perform a gradual action that is executed frame by frame, like moving or rotating (not by animation), then you need to define [systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) to carry this out. Delaying an action also requires creating a system that waits x milliseconds.
 
-start it in the init function
+> NOTE: The `decentralaland-ecs-utils` library can perform many of these actions in a scene's code, but this library is not supported in smart items. Any transition needs to be explicitly written as a system.
 
-no utils library
+As with custom components, systems need to have unique names that don't overlap with those of other smart items used in the same scene. Again, we recommend using the item name as part of the system name to avoid this.
 
-## multiplayer behavior
+Note that besides defining the system, you also need to add an instance of it to the engine. The ideal place for that is in the `init()` function of the smart item, which is executed once when the first item of this type is added.
 
-state is shared p2p
+> TIP: We recommend defining systems in a separate file from `item.ts`, to keep your code cleaner.
 
-keep in mind that what one player does affects others
+## Multiplayer behavior
 
-you can avoid this by not sending via message bus or by filtering out the player id
+All the smart items that are available by default in the Builder have multiplayer capabilities. They achieve this by using the [message bus]({{ site.baseurl }}{% post_url /development-guide/2018-01-10-remote-scene-considerations %}#p2p-messaging) to send peer to peer messages between players every time that something changes.
 
-resets to initial state when all players leave the area
+Since the state of the item is shared amongst peers, if all players leave the area of the scene, the state of the item is no longer stored anywhere, and it reverts to its initial state.
+
+To keep the state of your smart item in sync between players, make sure that any relevant changes send out messages via the item's channel for other instances to follow it.
+
+When new players join the scene, the make sure that they obtain any relevant information from other players about the current state of the item. To do this, the door item sends out a `channel.request` when spawning, and if there are any other players with instances of that door they will reply with a boolean indicating if the door is currently open.
+
+```ts
+// we send a request to all other players
+channel.request<boolean>("isOpen", isOpen => this.toggle(door, isOpen, false))
+
+// we respond to this incoming request from other players
+channel.reply<boolean>("isOpen", () => this.active[door.name])
+```
+
+In some cases, you might not want the actions of a player affecting others. For example, when one player picks up a key, you don't want all players to have that key equipped. To avoid this, you can filter the sender of a message and only react when it matches the channel id.
+
+```ts
+channel.handleAction("equip", action => {
+  if (!this.isEquipped(key)) {
+    // we only equip the key for the player who triggered the action
+    if (action.sender === channel.id) {
+      this.equip(key)
+      channel.sendActions(props.onEquip)
+    }
+    // we remove the key from the scene for everybody
+    this.hide(key)
+  }
+})
+```
