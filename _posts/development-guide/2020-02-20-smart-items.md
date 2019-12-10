@@ -135,6 +135,10 @@ Type `options` exposes a dropdown menu with a set of options you can list.
       "label": "Sound",
       "type": "options",
       "options": [
+		{
+          "value": "Birds",
+          "label": "Birds"
+        },
         {
           "value": "City",
           "label": "City"
