@@ -161,7 +161,7 @@ Type `options` exposes a dropdown menu with a set of options you can list.
 }
 ],
 "default": "Birds"
-},
+}
 ```
 
 #### Actions
