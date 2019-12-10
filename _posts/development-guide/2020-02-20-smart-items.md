@@ -130,38 +130,39 @@ Type `options` exposes a dropdown menu with a set of options you can list.
 
 ```json
 "parameters": [
-{
-"id": "sound",
-"label": "Sound",
-"type": "options",
-"options": [
-{
-"value": "Birds",
-"label": "Birds"
-},
-{
-"value": "City",
-"label": "City"
-},
-{
-"value": "Factory",
-"label": "Factory"
-},
-{
-"value": "Field",
-"label": "Field"
-},
-{
-"value": "Swamp",
-"label": "Swamp"
-},
-{
-"value": "Town",
-"label": "Town"
-}
-],
-"default": "Birds"
-}
+	{
+	"id": "sound",
+	"label": "Sound",
+	"type": "options",
+	"options": [
+		{
+			"value": "Birds",
+			"label": "Birds"
+		},
+		{
+			"value": "City",
+			"label": "City"
+		},
+		{
+			"value": "Factory",
+			"label": "Factory"
+		},
+		{
+			"value": "Field",
+			"label": "Field"
+		},
+		{
+			"value": "Swamp",
+			"label": "Swamp"
+		},
+		{
+			"value": "Town",
+			"label": "Town"
+		}
+	],
+	"default": "Birds"
+	}
+]
 ```
 
 #### Actions
