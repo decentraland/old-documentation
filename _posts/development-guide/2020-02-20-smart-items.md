@@ -1,5 +1,5 @@
 ---
-date: 2020-02-20
+date: 2019-02-20
 title: Smart items
 description: Create your own smart items to use in the Builder
 categories:
