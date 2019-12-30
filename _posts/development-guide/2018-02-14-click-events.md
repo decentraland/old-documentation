@@ -18,12 +18,18 @@ Clicks can be done either with a mouse, a touch screen, a VR controller or some 
 
 The primary and secondary buttons map respectively to the E and F key on a keyboard.
 
+> Note: Entities that don't have a shape component, or that have their shape's `visible` field set to _false_ don't respond to pointer events.
 
-## OnPointerDown
+## Pointer event components
+
+#### OnPointerDown
 
 The best way to handle pointer and button down events is to add an `OnPointerDown` component to an entity.
 
-The component requires that you pass it a function as a parameter. This function declares what to do in the event of a pointer down or a button down event while pointing at the entity.
+The component requires that you pass it:
+
+- `callback`: A function that declares what to do in the event of a button down event while pointing at the entity.
+- `button`: What button to respond to (`POINTER`, `PRIMARY`, or `SECONDARY` buttons - on a PC the left mouse click, _E_ and _F_)
 
 ```ts
 const myEntity = new Entity()
@@ -31,60 +37,21 @@ myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
   new OnPointerDown(e => {
-    log("myEntity clicked", e)
-  })
+    log("myEntity was clicked", e)
+  }, ActionButton.POINTER)
 )
 ```
 
-> Tip: To keep your code easier to read, the lambda function in the `OnPointerDown` can consist of just a call to a separate function that contains all of the logic.
+> Tip: To keep your code easier to read, the function in the `OnPointerDown` can consist of just a call to a separate function that contains all of the logic.
 
-The _pointer down event_ object is always implicitly passed as a parameter of the function in the `OnPointerDown`. This event object contains various properties that might be useful for the function. See [Properties of button events](#properties-of-button-events) for more details.
-
-
-```ts
-const myEntity = new Entity()
-myEntity.addComponent(new BoxShape())
-
-myEntity.addComponent(
-  new OnPointerDown(e => {
-    log("Click distance: " + e.length)
-  })
-)
-```
-
-> Note: Entities that don't have a shape component, or that have their shape's `visible` field set to _false_ can't be clicked.
-
-#### Filter per button
-
-The `OnPointerDown` component detects events for all three buttons, the `POINTER`, `PRIMARY`, and `SECONDARY` buttons (on a PC that maps to the left mouse click, _E_ and _F_).
-
-You can detect which button was clicked, by checking the `buttonId` field from the event data. The value of this field will either return a _0_, _1_ or _2_, which map to the `POINTER`, `PRIMARY`, and `SECONDARY` buttons respectively.
-
-```ts
-const myEntity = new Entity()
-myEntity.addComponent(new BoxShape())
-
-myEntity.addComponent(
-  new OnPointerDown(e => {
-	if (e.pointerId == 0){
-  		log("Clicked pointer")
-	} else if (e.pointerId == 1){
-  		log("Pressed primary button")
-	} else if (e.pointerId == 2){
-  		log("Pressed secondary button")
-	}
-  })
-)
-```
-
-> Note: the `OnPointerUp` component also exposes the button id in its event object, you can filter it in the same way.
-
-
-## OnPointerUp
+#### OnPointerUp
 
 The `OnPointerUp` component can be added to an entity to track when a player releases the mouse button, the primary or the secondary button while pointing at the entity.
 
-You declare what to do in the event of a mouse up event by writing a lambda function in the `OnPointerUp` component.
+Like the `OnPointerDown`, the `OnPointerUp` component requires:
+
+- `callback`: A function that declares what to do in the event of a button up event while pointing at the entity.
+- `button`: What button to respond to (`POINTER`, `PRIMARY`, or `SECONDARY` buttons - on a PC the left mouse click, _E_ and _F_)
 
 ```ts
 const myEntity = new Entity()
@@ -93,30 +60,155 @@ myEntity.addComponent(new BoxShape())
 myEntity.addComponent(
   new OnPointerUp(e => {
     log("pointer up", e)
-  })
+  }, ActionButton.POINTER)
 )
 ```
 
-Just as with the `OnPointerDown` component, the `OnPointerUp` exposes the button id in its event object. You can use it to filter its values. These will either return a _0_, _1_ or _2_, which map to the `POINTER`, `PRIMARY`, and `SECONDARY` buttons respectively.
+#### Hint messages
 
+When a player hovers the cursor over an item with an `OnPointerDown` or `OnPointerUp` component, the cursor responds by changing to hint to the player that the entity is interactive.
+
+You can optionally also display a toast message in the UI that lets the player know what interacting with the entity does.
+
+```ts
+  myEntity.addComponent(
+  new OnPointerDown( e => {
+    log("myEntity clicked", e)
+  },
+  ActionButton.PRIMARY,
+  true,
+  "open")
+```
+
+This `OnPointerDown` component has two additional arguments, besides `callback` and `button` that were already covered.
+
+- `showPointerFeeback`: Boolean to turn the feedback on or off. It's _true_ by default.
+- `hoverText`: String to display in the UI while pointing at the entity. By default, this string spells _Interact_, as long as `showPointerFeeback` is _true_.
+
+[IMAGE]
+
+> TIP: The string to display when hovering on the item should describe the action that would happen when interacting. For example `Open`, `Activate`, `Grab`, `Select`. These strings should be as short as possible, to avoid distracting the player.
+
+The hint message of the `OnPointerUp` is only displayed while the player is already holding down the corresponding key and pointing at the entity. So if an entity has both an `OnPointerDown` and an `OnPointerUp` component, the hint for the `OnPointerDown` is shown while the button is not being pressed, and then once the button is pressed and remains pressed the hint for the `OnPointerUp` is shown.
+
+```ts
+  myEntity.addComponent(
+  new OnPointerDown(e => {
+    log("myEntity clicked", e)
+  }, ActionButton.PRIMARY, true, "Drag")
+
+myEntity.addComponent(
+  new OnPointerUp(e => {
+    log("myEntity released", e)
+  }, ActionButton.PRIMARY, true, "Drop")
+```
+
+[IMAGE or GIF?]
+
+#### Max click distance
+
+By default, entities are only clickable when the player is within a close range of the entity, at a maximum distance of _4 meters_. You can optionally configure the maximum distance through the `interactionDistance` parameter of the `OnPointerDown` and `OnPointerUp` components.
+
+```ts
+  myEntity.addComponent(
+  new OnPointerDown(e => {
+    log("myEntity clicked", e)
+  }, ActionButton.PRIMARY, true, "Activate", 8)
+```
+
+The example above sets the maximum distance to _8 meters_, which is considerably more than the default.
+
+#### Event arguments
+
+The _pointer down event_ and the _pointer up event_ objects are implicitly passed as parameters of the functions in the `OnPointerDown` and `OnPointerUp` components, respectively. This event object contains various properties that might be useful for the function. See [Properties of button events](#properties-of-button-events) for more details.
 
 ```ts
 const myEntity = new Entity()
 myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
-  new OnPointerUp(e => {
-	if (e.pointerId == 0){
-  		log("Released pointer")
-	} else if (e.pointerId == 1){
-  		log("Released primary button")
-	} else if (e.pointerId == 2){
-  		log("Released secondary button")
-	}
+  new OnPointerDown(e => {
+    log("Click distance: " + e.length)
+  }, ActionButton.PRIMARY)
+)
+```
+
+#### Multiple buttons on an entity
+
+You may want to make an entity respond to different buttons in different ways. Each entity can only have _one_ `OnPointerDown` component, and _one_ `OnPointerUp` component, but these components can be configured to support multiple button events.
+
+To do so, simply pass an array of actionbuttons and a hint string for each.
+
+To differentiate between buttons in the function, you can then detect which button was pressed, by checking the `buttonId` field from the event data. The value of this field will either return a _0_, _1_ or _2_, which map to the `POINTER`, `PRIMARY`, and `SECONDARY` buttons respectively.
+
+```ts
+const myEntity = new Entity()
+myEntity.addComponent(new BoxShape())
+
+myEntity.addComponent(
+  new OnPointerDown(
+    [
+      { button: ActionButton.POINTER, actionName: "Do A" },
+      { button: ActionButton.PRIMARY, actionName: "Do B" },
+      { button: ActionButton.SECONDARY, actionName: "Do C" }
+    ],
+    e => {
+      if (e.pointerId == 0) {
+        log("Clicked pointer")
+      } else if (e.pointerId == 1) {
+        log("Pressed primary button")
+      } else if (e.pointerId == 2) {
+        log("Pressed secondary button")
+      }
+    }
+  )
+)
+```
+
+Players will see the multiple different actions that are available stacked up over each other. If an entity has also an `OnPointerUp` component,
+
+## Properties of button events
+
+The events from `OnPointerDown` and `OnPointerUp` components, as well as all the global button event objects, contain the following parameters:
+
+- `origin`: Origin point of the ray, as a _Vector3_
+- `direction`: Direction vector of the ray, as a normalized _Vector3_ that points in the same direction.
+- `pointerId`: ID of the pointer that triggered the event (_POINTER_, _PRIMARY_ or _SECONDARY_)
+- `hit`: _(Optional)_ Object describing the entity that was clicked on. If the click didn't hit any specific entity, this field isn't present. The `hit` object contains the following parameters:
+
+  - `length`: Length of the ray in meters, as a _number_
+  - `hitPoint`: The intersection point between the ray and the entity's mesh, as a _Vector3_
+  - `meshName`: The name of the mesh, if applicable, as a _string_
+  - `worldNormal`: The normal of the hit, in world space, as a _Vector3_
+  - `entityId`: The ID of the entity, if applicable, as a _string_
+
+#### Differentiate meshes inside a model
+
+Often, _.glTF_ 3D models are made up of multiple meshes, that each have an individual internal name. All button events events include the information of what specific mesh was clicked, so you can use this information to trigger different click behaviors in each case.
+
+To see how the meshes inside the model are named, you must open the 3D model with an editing tool, like [Blender](https://www.blender.org/) for example.
+
+<img src="/images/media/mesh-names.png" alt="Mesh internal names in an editor" width="250"/>
+
+> Tip: You can also learn the name of the clicked mesh by logging it and reading it off console.
+
+You access the `meshName` property as part of the `hit` object, that's returned by the click event.
+
+In the example below we have a house model that includes a mesh named `firePlace`. We want to turn on the fireplace only when its corresponding mesh is clicked.
+
+```ts
+houseEntity.addComponent(
+  new OnPointerDown(e => {
+    log("button A Down", e.hit.meshName)
+    if (e.hit.meshName === "firePlace") {
+      // light fire
+      fireAnimation.play()
+    }, ActionButton.POINTER, false
   })
 )
 ```
 
+> Note: Since the `OnPointerDown` component belongs to the whole entity, the on-hover feedback would be seen when hovering over any part of the entity. In this case, any part of the house, not just the fireplace. For that reason, we set the `showPointerFeeback` argument of the `OnPointerDown` component to _false_, so that no on-hover feedback is shown. For a better player experience, it's recommended to instead have the fireplace as a separate entity and maintain the on-hover feedback.
 
 ## Global button events
 
@@ -133,7 +225,7 @@ The `subscribe()` method takes four arguments:
 - `eventName`: The type of action, this can be either `"BUTTON_DOWN"` or `"BUTTON_UP"`
 - `buttonId`: Which button to listen for. This can either be `ActionButton.POINTER`, `ActionButton.PRIMARY`, or `ActionButton.SECONDARY`. It can also take numbers 0, 1 or 2 that map to these values.
 - `useRaycast`: Boolean to define if raycasting will be used. If `false`, the button event will not contain information about any `hit` objects that align with the pointer at the time of the event.
-- `fn`: The function to execute when the event occurs. 
+- `fn`: The function to execute when the event occurs.
 
 ```ts
 // Instance the input object
@@ -158,7 +250,7 @@ The event objects of both the `BUTTON_DOWN` and the `BUTTON_UP` contain various 
 
 #### Detect hit entities
 
-If the third argument of the `subscribe()` function (`useRaycast`)is true, and the player is pointing at an entity that has a collider, the event object includes a nested `hit` object. The `hit` object includes information about the collision and the entity that was hit. 
+If the third argument of the `subscribe()` function (`useRaycast`)is true, and the player is pointing at an entity that has a collider, the event object includes a nested `hit` object. The `hit` object includes information about the collision and the entity that was hit.
 
 The ray of a global button event only detects entities that have a collider mesh. Primitive shapes have a collider mesh on by default, 3D models need to have one built into them.
 
@@ -166,64 +258,20 @@ The ray of a global button event only detects entities that have a collider mesh
 
 ```ts
 input.subscribe("BUTTON_DOWN", ActionButton.POINTER, true, e => {
-  if ( e.hit){
-	let hitEntity = engine.entities[e.hit.entityId]
-	hitEntity.addComponent(greenMaterial)
-  } 
+  if (e.hit) {
+    let hitEntity = engine.entities[e.hit.entityId]
+    hitEntity.addComponent(greenMaterial)
+  }
 })
 ```
 
 The example above checks if any entities were hit, and if so it fetches the entity and applies a material component to it.
 
-> Tip: The event data returns a string for the `entityId`. If you want to reference the actual entity by that ID to affect it in some way, use `engine.entities[e.hit.entityId]`.
+The event data returns a string for the `entityId`. If you want to reference the actual entity by that ID to affect it in some way, use `engine.entities[e.hit.entityId]`.
 
+> Note: We recommend that when possible you use the approach of adding an `OnPointerDown` component to each entity you want to make interactive, instead of using a global button event. The scene's code isn't able to hint to a player that an entity is interactive when hovering on it unless the entity has an `OnPointerDown`, `OnPointerUp`, or `OnClick` component.
 
-## Properties of button events
-
-All _button down_ and _button up_ event objects, as well as events from `OnPointerDown` and `OnPointerUp` components, contain the following parameters:
-
-- `origin`: Origin point of the ray, as a _Vector3_
-- `direction`: Direction vector of the ray, as a normalized _Vector3_ that points in the same direction.
-- `pointerId`: ID of the pointer that triggered the event (_POINTER_, _PRIMARY_ or _SECONDARY_)
-- `hit`: _(Optional)_ Object describing the entity that was clicked on. If the click didn't hit any specific entity, this field isn't present. The `hit` object contains the following parameters:
- 
-    - `length`: Length of the ray in meters, as a _number_
-    - `hitPoint`: The intersection point between the ray and the entity's mesh, as a _Vector3_
-    - `meshName`: The name of the mesh, if applicable, as a _string_
-    - `worldNormal`: The normal of the hit, in world space, as a _Vector3_
-    - `entityId`: The ID of the entity, if applicable, as a _string_
-
-
-
-## Differentiate meshes inside a model
-
-Often, _.glTF_ 3D models are made up of multiple meshes, that each have an individual internal name. _button down_ and _button up_ events include the information of what specific mesh was clicked, so you can use this information to trigger different click behaviors in each case.
-
-To see how the meshes inside the model are named, you must open the 3D model with an editing tool, like [Blender](https://www.blender.org/) for example.
-
-<img src="/images/media/mesh-names.png" alt="Mesh internal names in an editor" width="250"/>
-
-> Tip: You can also learn the name of the clicked mesh by logging it and reading it off console.
-
-You access the `meshName` property as part of the `hit` object, that's returned by the click event.
-
-In the example below we have a house model that includes a mesh named `firePlace`. We want to turn on the fireplace only when its corresponding mesh is clicked.
-
-```ts
-houseEntity.addComponent(
-  new OnPointerDown(e => {
-    log("button A Down", e.hit.meshName)
-	if (e.hit.meshName === "firePlace"){
-		// light fire
-		fireAnimation.play()
-	}
-  })
-)
-```
-
-
-
-## OnClick
+## OnClick Component - DEPRECATED
 
 As an alternative to `OnPointerDown`, you can use the `OnClick` component. This component only tracks button events from the `POINTER`, not from the primary or secondary buttons.
 
@@ -240,7 +288,7 @@ myEntity.addComponent(
 )
 ```
 
-The `OnClick` component passes less event information than the `OnPointerDown` component, like the click distance or the mesh name. 
+The `OnClick` component passes less event information than the `OnPointerDown` component, it lacks the click distance or the mesh name, for example.
 
 <!--
 
@@ -262,7 +310,6 @@ myEntity.addComponent(
 -->
 
 > Note: Entities that don't have a shape component, or that have their shape's `visible` field set to _false_ can't be clicked.
-
 
 ## Button state
 
@@ -294,9 +341,6 @@ class ButtonChecker {
 
 engine.addSystem(new ButtonChecker())
 ```
-
-
-
 
 <!--
 
