@@ -45,7 +45,7 @@ For scenes that follow a linear flow, where each step depends on the previous, w
 If the player’s experience in your scene isn’t meant to be linear, but you still need to provide some basic instructions to ensure they enjoy it fully, you can show instructions on a pop-up. It’s possible to display a popup on the player’s screen as soon as they enter, regardless of what direction they come from, and in that way make sure that players will always know the essentials.
 
 <figure>
-	<img src="/images/media/ux-popup-instructions.png" alt="Pop-up banner" width="300"/>
+	<img src="/images/media/ux-banner.png" alt="Pop-up banner" width="300"/>
     <figcaption>Pop-up instructions</figcaption>
 </figure>
 
