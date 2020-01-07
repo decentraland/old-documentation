@@ -26,10 +26,7 @@ The primary and secondary buttons map respectively to the E and F key on a keybo
 
 The best way to handle pointer and button down events is to add an `OnPointerDown` component to an entity.
 
-The component requires that you pass it:
-
-- `callback`: A function that declares what to do in the event of a button down event while pointing at the entity.
-- `button`: What button to respond to (`POINTER`, `PRIMARY`, or `SECONDARY` buttons - on a PC the left mouse click, _E_ and _F_)
+The component requires that you pass it a function as a main argument. This function declares what to do in the event of a button down event while the player points at the entity.
 
 ```ts
 const myEntity = new Entity()
@@ -38,20 +35,21 @@ myEntity.addComponent(new BoxShape())
 myEntity.addComponent(
   new OnPointerDown(e => {
     log("myEntity was clicked", e)
-  }, ActionButton.POINTER)
+  })
 )
 ```
 
 > Tip: To keep your code easier to read, the function in the `OnPointerDown` can consist of just a call to a separate function that contains all of the logic.
 
+The `OnPointerDown` component has a second optional parameter, this parameter is an object that can include multiple properties about the event. These properties are explained in the next few sub-sections.
+
 #### OnPointerUp
 
-The `OnPointerUp` component can be added to an entity to track when a player releases the mouse button, the primary or the secondary button while pointing at the entity.
+Add an `OnPointerUp` component to track when a player releases the mouse button, the primary or the secondary button while pointing at the entity.
 
-Like the `OnPointerDown`, the `OnPointerUp` component requires:
+Like the `OnPointerDown`, the `OnPointerUp` component requires a _callback function_ that declares what to do in the event of a button up event while pointing at the entity.
 
-- `callback`: A function that declares what to do in the event of a button up event while pointing at the entity.
-- `button`: What button to respond to (`POINTER`, `PRIMARY`, or `SECONDARY` buttons - on a PC the left mouse click, _E_ and _F_)
+This component also takes a second argument that supports the same additional fields as teh `OnPointerDown` component.
 
 ```ts
 const myEntity = new Entity()
@@ -64,59 +62,111 @@ myEntity.addComponent(
 )
 ```
 
-#### Hint messages
+#### Specific button events
 
-When a player hovers the cursor over an item with an `OnPointerDown` or `OnPointerUp` component, the cursor responds by changing to hint to the player that the entity is interactive.
+The `OnPointerDown` and `OnPOinterUp` components can respond to three different buttons: `POINTER`, `PRIMARY`, or `SECONDARY`. On a PC, these map to the left mouse click, _E_ and _F_.
 
-You can optionally also display a toast message in the UI that lets the player know what interacting with the entity does.
+You can configure the components by setting the `button` field in the second argument of the component initializer. The following values are supported:
+
+- `ActionButton.POINTER`
+- `ActionButton.PRIMARY`
+- `ActionButton.SECONDARY`
+- `ActionButton.ANY` _(default)_
+
+`ActionButton.ANY` detects events from all three buttons. If none of them is specified, then `ANY` is used.
 
 ```ts
-  myEntity.addComponent(
-  new OnPointerDown( e => {
-    log("myEntity clicked", e)
-  },
-  ActionButton.PRIMARY,
-  true,
-  "open")
+const myEntity = new Entity()
+myEntity.addComponent(new BoxShape())
+
+myEntity.addComponent(
+  new OnPointerDown(
+    e => {
+      log("myEntity was clicked", e)
+    },
+    { button: ActionButton.POINTER }
+  )
+)
 ```
 
-This `OnPointerDown` component has two additional arguments, besides `callback` and `button` that were already covered.
+#### Hint messages
 
+When a player hovers the cursor over an item with an `OnPointerDown` or `OnPointerUp` component, the cursor changes shape to hint to the player that the entity is interactive.
+
+You can also display a toast message in the UI that lets the player know what happens when interacting with the entity.
+
+```ts
+myEntity.addComponent(
+  new OnPointerDown(
+    e => {
+      log("myEntity clicked", e)
+    },
+    {
+      button: ActionButton.PRIMARY,
+      showFeeback: true,
+      hoverText: "open"
+    }
+  )
+)
+```
+
+In the example above, the second argument of the `OnPointerDown` component has an object with the following arguments:
+
+- `button`: What button to respond to
 - `showPointerFeeback`: Boolean to turn the feedback on or off. It's _true_ by default.
-- `hoverText`: String to display in the UI while pointing at the entity. By default, this string spells _Interact_, as long as `showPointerFeeback` is _true_.
+- `hoverText`: String to display in the UI while the player points at the entity. By default, this string spells _Interact_, unless `showPointerFeeback` is _false_.
 
 [IMAGE]
 
-> TIP: The string to display when hovering on the item should describe the action that would happen when interacting. For example `Open`, `Activate`, `Grab`, `Select`. These strings should be as short as possible, to avoid distracting the player.
+> TIP: The `hoverText` string should describe the action that happens when interacting. For example `Open`, `Activate`, `Grab`, `Select`. These strings should be as short as possible, to avoid stealing too much focus from the player.
 
-The hint message of the `OnPointerUp` is only displayed while the player is already holding down the corresponding key and pointing at the entity. So if an entity has both an `OnPointerDown` and an `OnPointerUp` component, the hint for the `OnPointerDown` is shown while the button is not being pressed, and then once the button is pressed and remains pressed the hint for the `OnPointerUp` is shown.
+The `hoverText` of an `OnPointerUp` component is only displayed while the player is already holding down the corresponding key and pointing at the entity.
+
+If an entity has both an `OnPointerDown` and an `OnPointerUp` component, the hint for the `OnPointerDown` is shown while the button is not being pressed. The hint switches to the one from the `OnPointerUp` only when the button is pressed and remains pressed.
 
 ```ts
-  myEntity.addComponent(
-  new OnPointerDown(e => {
-    log("myEntity clicked", e)
-  }, ActionButton.PRIMARY, true, "Drag")
+myEntity.addComponent(
+  new OnPointerDown(
+    e => {
+      log("myEntity clicked", e)
+    },
+    { button: ActionButton.PRIMARY, showFeeback: true, hoverText: "Drag" }
+  )
+)
 
 myEntity.addComponent(
-  new OnPointerUp(e => {
-    log("myEntity released", e)
-  }, ActionButton.PRIMARY, true, "Drop")
+  new OnPointerUp(
+    e => {
+      log("myEntity released", e)
+    },
+    { button: ActionButton.PRIMARY, showFeeback: true, hoverText: "Drop" }
+  )
+)
 ```
 
 [IMAGE or GIF?]
 
 #### Max click distance
 
-By default, entities are only clickable when the player is within a close range of the entity, at a maximum distance of _4 meters_. You can optionally configure the maximum distance through the `interactionDistance` parameter of the `OnPointerDown` and `OnPointerUp` components.
+By default, entities are only clickable when the player is within a close range of the entity, at a maximum distance of _10 meters_. You can optionally configure the maximum distance through the `distance` parameter of the `OnPointerDown` and `OnPointerUp` components.
 
 ```ts
-  myEntity.addComponent(
-  new OnPointerDown(e => {
-    log("myEntity clicked", e)
-  }, ActionButton.PRIMARY, true, "Activate", 8)
+myEntity.addComponent(
+  new OnPointerDown(
+    e => {
+      log("myEntity clicked", e)
+    },
+    {
+      button: ActionButton.PRIMARY,
+      showFeeback: true,
+      hoverText: "Activate",
+      distance: 8
+    }
+  )
+)
 ```
 
-The example above sets the maximum distance to _8 meters_, which is considerably more than the default.
+The example above sets the maximum distance to _8 meters_.
 
 #### Event arguments
 
@@ -127,12 +177,16 @@ const myEntity = new Entity()
 myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
-  new OnPointerDown(e => {
-    log("Click distance: " + e.length)
-  }, ActionButton.PRIMARY)
+  new OnPointerDown(
+    e => {
+      log("Click distance: " + e.length)
+    },
+    { button: ActionButton.PRIMARY }
+  )
 )
 ```
 
+<!--
 #### Multiple buttons on an entity
 
 You may want to make an entity respond to different buttons in different ways. Each entity can only have _one_ `OnPointerDown` component, and _one_ `OnPointerUp` component, but these components can be configured to support multiple button events.
@@ -167,6 +221,8 @@ myEntity.addComponent(
 
 Players will see the multiple different actions that are available stacked up over each other. If an entity has also an `OnPointerUp` component,
 
+-->
+
 ## Properties of button events
 
 The events from `OnPointerDown` and `OnPointerUp` components, as well as all the global button event objects, contain the following parameters:
@@ -198,13 +254,16 @@ In the example below we have a house model that includes a mesh named `firePlace
 
 ```ts
 houseEntity.addComponent(
-  new OnPointerDown(e => {
-    log("button A Down", e.hit.meshName)
-    if (e.hit.meshName === "firePlace") {
-      // light fire
-      fireAnimation.play()
-    }, ActionButton.POINTER, false
-  })
+  new OnPointerDown(
+    e => {
+      log("button A Down", e.hit.meshName)
+      if (e.hit.meshName === "firePlace") {
+        // light fire
+        fireAnimation.play()
+      }
+    },
+    { button: ActionButton.POINTER, showFeeback: false }
+  )
 )
 ```
 
