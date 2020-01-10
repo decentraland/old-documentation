@@ -405,7 +405,7 @@ It's important that you name your custom components with unique names that shoul
 
 If you need your item to perform a gradual action that is executed frame by frame, like moving or rotating (not by animation), then you need to define [systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) to carry this out. Delaying an action also requires creating a system that waits x milliseconds.
 
-> NOTE: The `decentralaland-ecs-utils` library can perform many of these actions in a scene's code, but this library is not supported in smart items. Any transition needs to be explicitly written as a system.
+> NOTE: The `decentraland-ecs-utils` library can perform many of these actions in a scene's code, but this library is not supported in smart items. Any transition needs to be explicitly written as a system.
 
 As with custom components, systems need to have unique names that don't overlap with those of other smart items used in the same scene. Again, we recommend using the item name as part of the system name to avoid this.
 
