@@ -330,6 +330,23 @@ The event data returns a string for the `entityId`. If you want to reference the
 
 > Note: We recommend that when possible you use the approach of adding an `OnPointerDown` component to each entity you want to make interactive, instead of using a global button event. The scene's code isn't able to hint to a player that an entity is interactive when hovering on it unless the entity has an `OnPointerDown`, `OnPointerUp`, or `OnClick` component.
 
+## Ray Obstacles
+
+Button events cast rays that only interact with the first entity on their path, as long as the entity is closer than its distance limit.
+
+For an entity to be intercepted by the ray of a button event, the entity's shape must either have a collider mesh, or the entity must have a component related to button events (`OnPointerDown`, `OnPointerUp` or `OnClick`).
+
+If another entity's collider is standing on the way of the entity that the player wants to click, the player won't be able to click the entity that's behind, unless the entity that's in-front has a shape with its `isPointerBlocker` property set to false.
+
+```ts
+let myEntity = new Entity()
+let box = new BoxShape()
+box.isPointerBlocker = false
+box.visible = false
+myEntity.addComponent(box)
+engine.addEntity(myEntity)
+```
+
 ## OnClick Component - DEPRECATED
 
 As an alternative to `OnPointerDown`, you can use the `OnClick` component. This component only tracks button events from the `POINTER`, not from the primary or secondary buttons.

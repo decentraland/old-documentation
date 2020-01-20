@@ -15,7 +15,6 @@ The rendered shape of an entity is determined by what component it uses. Each en
 
 <img src="/images/media/ecs-simple-components.png" alt="nested entities" width="400"/>
 
-
 ## Primitive shapes
 
 Several basic shapes, often called _primitives_, can be added to an entity.
@@ -52,7 +51,6 @@ Primitive shapes don't include materials. To give it a color or a texture, you m
 For more complex shapes, you can build a 3D model in an external tool like Blender and then import them in _.glTF_ or _.glb_ (binary _.glTF_). [glTF](https://www.khronos.org/gltf) (GL Transmission Format) is an open project by Khronos providing a common, extensible format for 3D assets that is both efficient and highly interoperable with modern web technologies.
 
 To add an external model into a scene, add a `GLTFShape` component to an entity and set its `src` to the path of the glTF file containing the model.
-
 
 ```ts
 myEntity.addComponent(new GLTFShape("models/House.gltf"))
@@ -110,7 +108,8 @@ Entities don't use collisions by default. Depending on the type of the shape com
   box.withCollisions = true
   myEntity.addComponent(box)
   ```
-  > Note: Planes only block movement in one direction. 
+
+  > Note: Planes only block movement in one direction.
 
 - To use collisions in a _glTF_ shape, you can either:
 
@@ -120,6 +119,22 @@ Entities don't use collisions by default. Depending on the type of the shape com
 A _collider_ is a set of geometric shapes or planes that define which parts of the model are collided with. This allows for much greater control and is a lot less demanding on the system, as the collision object is usually a lot simpler (with less vertices) than the original model.
 
 See [3D models]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %}) for more details on how to add colliders to a 3D model.
+
+## Pointer blocking
+
+All shapes block player [button events]({{ site.baseurl }}{% post_url /development-guide/2018-02-14-click-events %}) by default, so that for example a player can't click through a wall, or pick something up that is locked inside a chest.
+
+You can however disable this behavior on any shape, no matter if it's a primitive or an imported 3D model.
+
+To do so, set the `isPointerBlocker` property of the shape component to _false_.
+
+```ts
+let box = new BoxShape()
+box.isPointerBlocker = false
+myEntity.addComponent(box)
+```
+
+By using this property, you could for example have an invisible wall that players can't walk through, but that does allow them to click on items on the other side of the wall.
 
 ## Make invisible
 
@@ -144,7 +159,7 @@ To ensure that 3D models in your scene load faster and take up less memory, foll
 
 ## Reuse shapes
 
-If multiple entities in your scene use a same primitive or 3D model, there's no need to create an instance of the shape component for each. All entities can share one same instance. 
+If multiple entities in your scene use a same primitive or 3D model, there's no need to create an instance of the shape component for each. All entities can share one same instance.
 
 This keeps your scene lighter to load and prevents you from exceeding the [maximum amount]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}) of _bodies_ per scene.
 
@@ -165,6 +180,6 @@ mySecondEntity.addComponent(house)
 myThirdEntity.addComponent(house)
 ```
 
-Each entity that shares a shape can apply different scales, rotations or even materials (in the case of primitives) without affecting how the other entities are being rendered. 
+Each entity that shares a shape can apply different scales, rotations or even materials (in the case of primitives) without affecting how the other entities are being rendered.
 
 Entities that share a 3D model instance can also have animations that run independently of each other. Each must have a separate `Animator` component, with separate `AnimationState` objects to keep track of what part of the animation is currently being played. See [3D model animations]({{ site.baseurl }}{% post_url /development-guide/2018-02-13-3d-model-animations %})
