@@ -341,7 +341,7 @@ A scene with a simple AI character. It randomly chooses what action to take: fol
 
 A full escape room game, where each room is a puzzle to be interacted with in different ways. 
 
-This scene is showcased by a [video tutorial series](https://www.youtube.com/watch?v=OtkrvHOHIDg&list=PLAcRraQmr_GPi-8qgv17ewdGl50OHuOhH) that walks you through all the mechanics, starting from the basic concepts.
+This scene is showcased by a [video tutorial series](https://www.youtube.com/watch?v=j7XbiTZ9GN0&list=PLAcRraQmr_GOhimaVZSlJrkzCvo8crIBQ) that walks you through all the mechanics, starting from the basic concepts.
 
 
 ![](/images/media/example-escaperoom.png)
