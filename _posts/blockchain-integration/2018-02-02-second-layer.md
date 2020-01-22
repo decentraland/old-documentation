@@ -5,8 +5,6 @@ description:
 categories:
   - blockchain-integration
 type: Document
-redirect_from:
-  - /blockchain-interactions/display-a-certified-nft
 set: blockchain-integration
 set_order: 8
 ---
