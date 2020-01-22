@@ -1,7 +1,7 @@
 ---
 date: 2018-02-07
 title: Second Layer Blockchain
-description:
+description: Use the Matic sidechain in your scene to enable much faster and cheaper blockchain transactions.
 categories:
   - blockchain-integration
 type: Document
