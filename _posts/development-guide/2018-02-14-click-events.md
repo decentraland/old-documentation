@@ -64,7 +64,7 @@ myEntity.addComponent(
 
 #### Specific button events
 
-The `OnPointerDown` and `OnPOinterUp` components can respond to three different buttons: `POINTER`, `PRIMARY`, or `SECONDARY`. On a PC, these map to the left mouse click, _E_ and _F_.
+The `OnPointerDown` and `OnPointerUp` components can respond to three different buttons: `POINTER`, `PRIMARY`, or `SECONDARY`. On a PC, these map to the left mouse click, _E_ and _F_.
 
 You can configure the components by setting the `button` field in the second argument of the component initializer. The following values are supported:
 
@@ -103,7 +103,7 @@ myEntity.addComponent(
     },
     {
       button: ActionButton.PRIMARY,
-      showFeeback: true,
+      showFeedback: true,
       hoverText: "open"
     }
   )
@@ -113,8 +113,8 @@ myEntity.addComponent(
 In the example above, the second argument of the `OnPointerDown` component has an object with the following arguments:
 
 - `button`: What button to respond to
-- `showPointerFeeback`: Boolean to turn the feedback on or off. It's _true_ by default.
-- `hoverText`: String to display in the UI while the player points at the entity. By default, this string spells _Interact_, unless `showPointerFeeback` is _false_.
+- `showFeedback`: Boolean to turn the feedback on or off. It's _true_ by default.
+- `hoverText`: String to display in the UI while the player points at the entity. By default, this string spells _Interact_, unless `showFeedback` is _false_.
 
 [IMAGE]
 
@@ -130,7 +130,7 @@ myEntity.addComponent(
     e => {
       log("myEntity clicked", e)
     },
-    { button: ActionButton.PRIMARY, showFeeback: true, hoverText: "Drag" }
+    { button: ActionButton.PRIMARY, showFeedback: true, hoverText: "Drag" }
   )
 )
 
@@ -139,7 +139,7 @@ myEntity.addComponent(
     e => {
       log("myEntity released", e)
     },
-    { button: ActionButton.PRIMARY, showFeeback: true, hoverText: "Drop" }
+    { button: ActionButton.PRIMARY, showFeedback: true, hoverText: "Drop" }
   )
 )
 ```
@@ -158,7 +158,7 @@ myEntity.addComponent(
     },
     {
       button: ActionButton.PRIMARY,
-      showFeeback: true,
+      showFeedback: true,
       hoverText: "Activate",
       distance: 8
     }
@@ -267,7 +267,7 @@ houseEntity.addComponent(
 )
 ```
 
-> Note: Since the `OnPointerDown` component belongs to the whole entity, the on-hover feedback would be seen when hovering over any part of the entity. In this case, any part of the house, not just the fireplace. For that reason, we set the `showPointerFeeback` argument of the `OnPointerDown` component to _false_, so that no on-hover feedback is shown. For a better player experience, it's recommended to instead have the fireplace as a separate entity and maintain the on-hover feedback.
+> Note: Since the `OnPointerDown` component belongs to the whole entity, the on-hover feedback would be seen when hovering over any part of the entity. In this case, any part of the house, not just the fireplace. For that reason, we set the `showFeedback` argument of the `OnPointerDown` component to _false_, so that no on-hover feedback is shown. For a better player experience, it's recommended to instead have the fireplace as a separate entity and maintain the on-hover feedback.
 
 ## Global button events
 
