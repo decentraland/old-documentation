@@ -168,6 +168,15 @@ Once the scene preview is running, you can open multiple browser tabs pointing a
 
 See [preview a scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %}) for more details.
 
+#### Separate relms
+
+Players in decentraland exist in many separate _realms_. Players in different relms cant see each other, interact or chat with each other, even if they're standing on the same parcels. Dividing players like this allows Decentraland to handle an unlimited ammount of players without running into any limitations. It also pairs players that are in close regions, to ensure that ping times between players that interact are acceptable.
+
+If your scene sends data to a 3rd party server to sync changes between players in real time, then it's important that changes are only synced between players that are on the same realm. You should handle all changes that belong to one realm as separate from those on a different realm. Otherwise, players will see things change in a spooky way, without anyone making the change.
+
+See how to obtain the relm for each player in [get player data]({{ site.baseurl }}{% post_url /examples/2018-02-22-user-data %})
+
+
 #### Multiplayer persistance
 
 Unlike local scenes that are newly mounted each time a player walks into them, scenes that use authoritative servers have a life span that extends well beyond when the player enters and leaves the scene.
