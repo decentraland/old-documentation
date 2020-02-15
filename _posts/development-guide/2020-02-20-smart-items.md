@@ -66,7 +66,7 @@ Parameters can also have a `default` value, to help make the item easier to use 
 
 The basic supported types for parameters are :
 
-- _string_
+- _text_
 - _integer_
 - _float_
 - _boolean_
