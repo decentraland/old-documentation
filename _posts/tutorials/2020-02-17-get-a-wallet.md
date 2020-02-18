@@ -44,9 +44,10 @@ All wallets have a public and private key. A public key Is a unique identifier f
 <span style="text-align:center;display:block">You can localize your wallet address clicking on the extension icon in your browser, and then clicking on your wallet name with the public key to copy it to clipboard</span>
 
 <img src="/images/media/get-a-wallet-public-key-1.png" style="max-width: 40%;margin: 2rem auto;display: block;">
-<img src="/images/media/get-a-wallet-public-key-2.png" style="margin: 2rem auto;display: block; width: 90%;">
 
 <span style="text-align:center;display:block">Or clicking on your account options</span>
+
+<img src="/images/media/get-a-wallet-public-key-2.png" style="margin: 2rem auto;display: block; width: 90%;">
 
 TThe private key is used by your wallet to sign each transaction and certify that it was truly sent by you. It is also used to restore your wallet in case you forget your password.
 
@@ -90,7 +91,7 @@ You need to buy ETH from Coinbase or another exchange using normal fiat currency
 
 <img src="/images/media/get-a-wallet-gas.png" style="margin: 2rem auto;display: block; width:90%">
 
-To summarize, Gas Price (gwei) is the amount of Ether offered per gas unit to pay miners to process your transaction. The higher the gas price you set, the faster your transaction will get processed. So, for more important transactions – such as a collectible that you really like ;D – think about increasing the suggested gas price.
+To summarize, Gas Price (gwei) is the amount of Ether offered per gas unit to pay miners to process your transaction. The higher the gas price you set, the faster your transaction will get processed. So, for more important transactions – such as a collectible that you really like ;D – think about increasing the suggested gas price.\
 
 **For extra technical information, visit this link**
 [https://docs.decentraland.org/blockchain-integration/ethereum-essentials/]({{ site.baseurl }}{% post_url /blockchain-integration/2018-01-01-ethereum-essentials %})
