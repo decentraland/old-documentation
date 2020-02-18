@@ -45,9 +45,10 @@ All wallets have a public and private key. A public key Is a unique identifier f
 <span style="text-align:center;display:block">You can localize your wallet address clicking on the extension icon in your browser, and then clicking on your wallet name with the public key to copy it to clipboard</span>
 
 <img src="/images/media/get-a-wallet-public-key-1.png" style="max-width: 40%;margin: 2rem auto;display: block;">
-<img src="/images/media/get-a-wallet-public-key-2.png" style="margin: 2rem auto;display: block; width: 90%;">
 
 <span style="text-align:center;display:block">Or clicking on your account options</span>
+
+<img src="/images/media/get-a-wallet-public-key-2.png" style="margin: 2rem auto;display: block; width: 90%;">
 
 TThe private key is used by your wallet to sign each transaction and certify that it was truly sent by you. It is also used to restore your wallet in case you forget your password.
 
