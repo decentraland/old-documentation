@@ -11,7 +11,7 @@ redirect_from:
   - /sdk-reference/scriptable-scene/
   - /development-guide/scriptable-scene/
   - /documentation/tsx-coding-guide/
-  - /development-guide/typescript-tips/ 
+  - /development-guide/typescript-tips/
   - /decentraland/SDK-Overview/
   - /sdk-reference/SDK-Overview/
 categories:
@@ -42,17 +42,17 @@ Our SDK includes the following components:
 
 - **Scene examples**: Take inspiration and coding best practices from the [scene examples]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
 
-## CLI Requirements
+## Requirements
 
 To develop a scene locally, you don't need to own LAND tokens. Developing and testing a scene can be done completely offline, without the need to deploy a scene to the Ethereum network (the system Decentraland uses to establish ownership of LAND), or the content server.
 
-These early releases of the SDK are intended for users that are comfortable working with code and a terminal. You must have the following:
+You must have the following:
 
-- **npm** (Node package manager): Used in the terminal to handle scene dependencies. [Download link](nodejs.org)
-
-- **A source code editor**: Helps you create scenes a lot faster and with less errors. A source code editor marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. You can also click on an object in the code to see the full definition of its class and what attributes it supports. We recommend [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/).
+- **npm** (Node package manager): Used in the terminal to handle scene dependencies, required to install the Decentraland CLI. [Download link](nodejs.org)
 
 - **The Decentraland CLI**: Used to build, preview and upload scenes. See [Installation guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %})
+
+- **A source code editor**: Helps you create scenes a lot faster and with less errors. A source code editor marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. You can also click on an object in the code to see the full definition of its class and what attributes it supports. We recommend [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/).
 
 ## Supported languages and syntax
 
@@ -62,15 +62,6 @@ We use [TypeScript (.ts)](https://www.typescriptlang.org/docs/handbook/jsx.html)
 to create our scenes.
 
 TypeScript is a superset of JavaScript, so if you're familiar with JavaScript you'll find it's almost the same, but TypeScript allows you to employ object-oriented programming and type declarations. Features like autocomplete and type-checking speed up development times and allow for the creation of a more solid codebase. These features are all key components to a positive developer experience.
-
-<!--
-
-#### XML
-
-For scenes that only render motionless content and that won't be interactive, you can use [XML](https://en.wikipedia.org/wiki/XML). XML takes a lot less effort to learn and use, but it's more limited. See [XML static scenes]({{ site.baseurl }}{% post_url /development-guide/2018-01-13-xml-static-scenes %}) for an overview.
-
-We encourage developers to build their scenes using TypeScript, as that allows for far more interesting possibilities.
--->
 
 #### Other languages
 
@@ -167,9 +158,11 @@ engine.addSystem(new RotatorSystem())
 const cube = new Entity()
 
 // Give the entity a transform component
-cube.addComponent(new Transform({
+cube.addComponent(
+  new Transform({
     position: new Vector3(5, 1, 5)
-  }))
+  })
+)
 
 // Give the entity a box shape
 cube.addComponent(new BoxShape())

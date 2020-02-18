@@ -8,7 +8,7 @@
 
 ## Develop
 
-Base was built with [Jekyll](http://jekyllrb.com/) version 3.4.3, but should support newer versions as well.
+Base was built with [Jekyll](http://jekyllrb.com/) version 3.8.4, but should support newer versions as well.
 
 Install the dependencies with [Bundler](http://bundler.io/):
 
@@ -20,6 +20,18 @@ Run `jekyll` commands through Bundler to ensure you're using the right versions:
 
 ```bash
 $ bundle exec jekyll serve --incremental
+```
+
+## Develop (Docker)
+
+if you have [Docker](https://www.docker.com/) you also can run your development environment with the follow command
+
+```bash
+docker run --rm -p 4000:4000 \
+  --volume="$PWD:/srv/jekyll" \
+  --volume="$PWD/.vendor/bundle:/usr/local/bundle" \
+  -it jekyll/jekyll:3.8.4 \
+  jekyll serve --incremental
 ```
 
 ## Editing
