@@ -3,9 +3,10 @@ date: 2020-02-17
 title: Get a Wallet – Beginners guide
 description: Decentraland uses the Ethereum blockchain to record the ownership of all digital assets and tradable items.
 redirect_from:
-  - /get-a-wallet
+  - /get-a-wallet/
+  - /blockchain-integration/get-a-wallet/
 categories:
-  - blockchain-integration
+  - examples
 type: Document
 set: tutorials
 set_order: 4
@@ -91,7 +92,7 @@ You need to buy ETH from Coinbase or another exchange using normal fiat currency
 
 <img src="/images/media/get-a-wallet-gas.png" style="margin: 2rem auto;display: block; width:90%">
 
-To summarize, Gas Price (gwei) is the amount of Ether offered per gas unit to pay miners to process your transaction. The higher the gas price you set, the faster your transaction will get processed. So, for more important transactions – such as a collectible that you really like ;D – think about increasing the suggested gas price.\
+To summarize, Gas Price (gwei) is the amount of Ether offered per gas unit to pay miners to process your transaction. The higher the gas price you set, the faster your transaction will get processed. So, for more important transactions – such as a collectible that you really like ;D – think about increasing the suggested gas price.
 
 **For extra technical information, visit this link**
 [https://docs.decentraland.org/blockchain-integration/ethereum-essentials/]({{ site.baseurl }}{% post_url /blockchain-integration/2018-01-01-ethereum-essentials %})
