@@ -15,13 +15,13 @@ set_order: 4
 
 Decentraland uses the Ethereum blockchain to record the ownership of all digital assets and tradable items.
 
-<img src="/images/media/get-a-wallet.png" style="margin: 2rem auto; display: block;width: 90%;">
+<img src="/images/media/get-a-wallet-account.png" style="margin: 2rem auto; display: block;width: 90%;">
 
 Digital wallets are tools that work as a bridge between the blockchain and the dApp (decentralized applications). This means that with a wallet you will be able to monitor your available funds, transaction history and security options.
 
 ## Do I need a wallet to play in Decentraland?
 
-<img src="/images/media/get-a-wallet-play-decentraland.png" style="max-width: 400px;margin: 2rem auto;display: block;">
+<img src="/images/media/get-a-wallet-wallet.png" style="max-width: 400px;margin: 2rem auto;display: block;">
 
 If you want to fully enjoy the Decentraland experience, we highly recommend you get yourself a digital wallet. Why? Because it will work as your personal account, allowing you to connect from different devices, keeping all your digital assets (such as names, collectibles, LANDs) and progress safe.
 
@@ -31,27 +31,32 @@ If you choose to experience Decentraland without a wallet, the information will 
 
 To enter Decentraland, you must use a wallet that is integrated to your web browser, so we recommend you [MetaMask](https://metamask.io/)
 
-<img src="/images/media/get-a-wallet-metamask-logo.png" style="max-width: 400px;margin: 2rem auto;display: block;">
+<img src="/images/media/get-a-wallet-metamask-logo.png" style="max-width: 60%;margin: 2rem auto;display: block;">
 
 <span style="text-align:center;display:block">Once you install it, you will see an icon like this:</span>
 
-<img src="/images/media/get-a-wallet-browser-icon.png" style="margin: 2rem auto;display: block; wicth:90%">
+<img src="/images/media/get-a-wallet-metamask-extension.png" style="margin: 2rem auto;display: block; width: 60%;">
 
 ## Wallet address
 
 All wallets have a public and private key. A public key Is a unique identifier for your wallet and it looks like this: **0xcba113f589805095a892ecefdb4eb83eff45d98**. It is basically a name that you can share freely with others and it’s used to direct assets to your wallet.
 
-<span style="text-align:center;display:block">You can localize your wallet address clicking on the extension icon in your browser:</span>
+<span style="text-align:center;display:block">You can localize your wallet address clicking on the extension icon in your browser, and then clicking on your wallet name with the public key to copy it to clipboard</span>
 
-<img src="/images/media/get-a-wallet-metamask-ui.png" style="max-width: 300px;margin: 2rem auto;display: block;">
+<img src="/images/media/get-a-wallet-public-key-1.png" style="max-width: 40%;margin: 2rem auto;display: block;">
+<img src="/images/media/get-a-wallet-public-key-2.png" style="margin: 2rem auto;display: block; width: 90%;">
 
-The private key is used by your wallet to sign each transaction and certify that it was truly sent by you. It is also used to restore your wallet in case you forget your password.
+<span style="text-align:center;display:block">Or clicking on your account options</span>
+
+TThe private key is used by your wallet to sign each transaction and certify that it was truly sent by you. It is also used to restore your wallet in case you forget your password.
 
 Keep in mind that a digital wallet is like a bank account, so make sure you **don’t forget your password, or backup phrase. Keep them in a safe place and don’t share them with anyone.**
 
 ## What is Ether (ETH), and how do I send it to my wallet?
 
-For executing transactions, you’ll need to put money in your wallet. dApps based on Ethereum, likeDecentraland, use Ether: a digital currency that powers the Ethereum network. It acts like any other currency, in that its value fluctuates with the market.
+<img src="/images/media/get-a-wallet-ether.png" style="max-width: 20%;margin: 2rem auto;display: block;">
+
+For executing transactions, you’ll need to put money in your wallet. dApps based on Ethereum, like Decentraland, use Ether: a digital currency that powers the Ethereum network. It acts like any other currency, in that its value fluctuates with the market.
 
 - You need to convert your currency (e.g. USD, CAD, GBP) into Ether to pay for things such as a collectibles.
 
@@ -83,9 +88,9 @@ You need to buy ETH from Coinbase or another exchange using normal fiat currency
 - _‘Gas’ is composed of two parts: Gas Price and Gas Limit. Gas Price is what you offer to pay the miners (in a tiny measurement of ether called ‘gwei’) for each operation to execute the smart contract. Gas Limit is how many operations you let them do before they run out of gas and drop the transaction_
 - _1 gwei = 1/1,000,000,000th of an Ether_
 
+<img src="/images/media/get-a-wallet-gas.png" style="margin: 2rem auto;display: block; width:90%">
+
 To summarize, Gas Price (gwei) is the amount of Ether offered per gas unit to pay miners to process your transaction. The higher the gas price you set, the faster your transaction will get processed. So, for more important transactions – such as a collectible that you really like ;D – think about increasing the suggested gas price.
 
 **For extra technical information, visit this link**
 [https://docs.decentraland.org/blockchain-integration/ethereum-essentials/]({{ site.baseurl }}{% post_url /blockchain-integration/2018-01-01-ethereum-essentials %})
-
-<!-- {% post_url /getting-started/2018-01-04-preview-scene %}) -->
