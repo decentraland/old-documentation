@@ -4,6 +4,7 @@ title: Publishing the scene
 description: How to publish my project?
 redirect_from:
   - /documentation/publishing/
+  - /getting-started/publishing/
 categories:
   - deploy
 type: Document
@@ -49,7 +50,7 @@ Open your scene's _scene.json_ file and verify the following:
 4.  The command line lists the files it will upload. Confirm with _Y_.
 
     > Tip: If there are files in your project folder that you don't want to deploy, list them in the _.dclignore_ file.
-    If you only want to deploy the files that have changed since your last deploy, add the flag `--p` to the deploy command.
+    > If you only want to deploy the files that have changed since your last deploy, add the flag `--p` to the deploy command.
 
 5.  A browser tab will open, showing what parcels you're deploying to. Click **Sign and Deploy**.
 6.  Metamask opens, notifying you that your signature is requested. Click **Sign** to confirm this action.
@@ -88,10 +89,9 @@ When a new scene is deployed, it overwrites older content that existed on the pa
 
 If a scene that takes up multiple parcels is only partially overwritten by another, its remaining parcels can't be rendered. Scenes can only be rendered in their entirety.
 
-Suppose you deployed your scene _A_ over two parcels _[100, 100]_ and _[100, 101]_. Then you sell parcel _[100, 101]_ to a user who owns adjacent land and that deploys a large scene (_B_) to several parcels, including _[100, 101]_. 
+Suppose you deployed your scene _A_ over two parcels _[100, 100]_ and _[100, 101]_. Then you sell parcel _[100, 101]_ to a user who owns adjacent land and that deploys a large scene (_B_) to several parcels, including _[100, 101]_.
 
 Your scene _A_ can't be partially rendered in just one parcel, so _[100, 100]_ won't display any content. You must build a new version of scene _A_ that only takes up one parcel and deploy it to only parcel _[100, 100]_.
-
 
 ## What is the content server
 
@@ -103,4 +103,3 @@ We use the content server to host and distribute all scene content in a similar 
 2.  The `dcl deploy` command links these assets to the LAND parcel specified in your **scene.json** file. Whenever you redeploy your scene, the CLI will update your LAND smart contract, if needed, to point to the most recent content available on the content server.
 
 Anyone willing to host a copy of the content server will be free to replicate it. The information on each copy of the server will be verifiable, as each scene is signed by the LAND owner's hash. This means that someone hosting a copy of the server won't be able to tamper with the content to display something illegitimate.
-
