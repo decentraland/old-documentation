@@ -15,7 +15,7 @@ set_order: 4
 
 Decentraland uses the Ethereum blockchain to record the ownership of all digital assets and tradable items.
 
-<img src="/images/media/get-a-wallet-account.png" style="margin: 2rem auto; display: block;width: 90%;">
+<img src="/images/media/get-a-wallet-account.png" style="margin: 2rem auto; display: block;width: 90%; max-width: 600px;">
 
 Digital wallets are tools that work as a bridge between the blockchain and the dApp (decentralized applications). This means that with a wallet you will be able to monitor your available funds, transaction history and security options.
 
@@ -35,7 +35,7 @@ To enter Decentraland, you must use a wallet that is integrated to your web brow
 
 <span style="text-align:center;display:block">Once you install it, you will see an icon like this:</span>
 
-<img src="/images/media/get-a-wallet-metamask-extension.png" style="margin: 2rem auto;display: block; width: 60%;">
+<img src="/images/media/get-a-wallet-metamask-extension.png" style="margin: 2rem auto;display: block; width: 70%;">
 
 ## Wallet address
 
@@ -43,7 +43,7 @@ All wallets have a public and private key. A public key Is a unique identifier f
 
 <span style="text-align:center;display:block">You can localize your wallet address clicking on the extension icon in your browser, and then clicking on your wallet name with the public key to copy it to clipboard</span>
 
-<img src="/images/media/get-a-wallet-public-key-1.png" style="max-width: 40%;margin: 2rem auto;display: block;">
+<img src="/images/media/get-a-wallet-public-key-1.png" style="max-width: 50%;margin: 2rem auto;display: block;">
 
 <span style="text-align:center;display:block">Or clicking on your account options</span>
 
@@ -81,6 +81,18 @@ You need to buy ETH from Coinbase or another exchange using normal fiat currency
 - Click `Accounts` in your top navigation
 - Select your ETH wallet and click `buy`
 - Follow the steps to `Add payment method` and paste your MetaMask address with the amount you'd like to transfer
+
+## What is MANA and how do I get it?
+
+<img src="/images/media/get-a-wallet-mana.png" style="margin: 2rem auto; display: block;width: 90%; max-width: 400px;">
+
+[MANA](https://etherscan.io/token/decentraland) is Decentraland’s fungible (reproducible or interchangeable) cryptocurrency token. It is burned, or spent in exchange for LAND parcels, wearables and names.
+
+Steps to buy MANA
+
+- First, you need to register with an exchange that lists MANA (such as [Coinbase](https://www.coinbase.com/), [Huobi](https://www.huobi.io/), [Binance](https://www.binance.com/)).
+- Secondly, you will need to deposit funds into your account. While things change rapidly in the crypto world, it’s not likely that there’s an exchange available to convert your USD directly for MANA. If that’s the case, you’ll first need to obtain a cryptocurrency listed in a currency pair with MANA, such as Ether (ETH), and then exchange it for Decentraland’s native token.
+- Third, once logged into your exchange account, click on the “Markets” or “Exchange” link and search for your desired currency pairing, for example, MANA/ETH. In the “Buy” field, you can then specify the amount of MANA you want to buy or the amount of ETH you want to spend. Make sure you take a moment to review the full details of the transaction including any fees that apply and the total cost of completing your purchase.
 
 ## What is ‘gas’?
 
