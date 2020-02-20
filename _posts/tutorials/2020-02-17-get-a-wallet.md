@@ -76,7 +76,7 @@ _For the rest of the World:_
 
 You need to buy ETH from Coinbase or another exchange using normal fiat currency.
 
-- Copy your MetaMask address by clicking on your name account and adress
+- Copy your MetaMask address by clicking on your name account and address
 - Select `Copy Address to clipboard`
 - Go to Coinbase or another exchange
 - Click `Accounts` in your top navigation
