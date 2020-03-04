@@ -251,7 +251,7 @@ const enterPrice = 10
 function payment(){
   executeTask(async () => {
     try {
-      await eth.requirePayment(myWallet, entrancePrice, ‘MANA’)
+      await eth.requirePayment(myWallet, enterPrice, ‘MANA’)
       openDoor()
     } catch {
       log("failed process payment")
