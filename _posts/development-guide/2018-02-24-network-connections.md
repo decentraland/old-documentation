@@ -68,7 +68,7 @@ The fetch command returns a `response` object with the following data:
 
 ## Use WebSockets
 
-You can also send and obtain data from a WebSocket server.
+You can also send and obtain data from a WebSocket server, as long as this server uses a secured connection with _wss_.
 
 ```ts
 var socket = new WebSocket("url")
