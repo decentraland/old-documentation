@@ -31,7 +31,7 @@ In order to use Matic, players must set their Metamask account up to use Matic n
 
 ## Add Matic support to a scene
 
-To easily make use of the Matic sidechain in your scene, you can leverage the free `decentral-api`, created by [Decentral.io](decentral.io).
+To easily make use of the Matic sidechain in your scene, you can leverage the free `decentral-api`, created by [Decentral.io](https://decentral.io).
 
 You can read all about how to implement it in your scene in [their documentation page](https://www.decentral.io/docs/dcl/overview/).
 
