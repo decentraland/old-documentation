@@ -28,9 +28,21 @@ Scenes are displayed one next to the other and players can freely walk from one 
 
 # The Builder
 
+Go to the [Builder](builder.decentraland.org) and try it out!
+
+Take a look at our video tutorials
+
 # The SDK
 
 ### The Decentraland SDK provides everything you need to build interactive 3D content for Decentraland.
+
+Install the CLI by running:
+
+```bash
+npm install -g decentraland
+```
+
+Then go to the [SDK 101]({{ site.baseurl }}{% post_url /development-guide/2020-03-16-SDK-101 %}) tutorial.
 
 ## Shortcuts
 
@@ -57,6 +69,12 @@ Scenes are displayed one next to the other and players can freely walk from one 
     </div>
   </a>
 </div>
+
+Several libraries are built upon the Decentraland SDK to help you build faster:
+
+- [Utils library](https://www.npmjs.com/package/decentraland-ecs-utils): Simplifies a lot of common tasks like moving or rotating an entity, or triggering a function when the player walks into a cube.
+
+- [Decentral API](https://www.decentral.io/docs/dcl/overview/): Simplifies making fast and cheap blockchain transactions triggered by the scene, using the Matic network.
 
 ## SDK Scene examples
 
@@ -90,4 +108,3 @@ Also see [tutorials]({{ site.baseurl }}{% post_url /tutorials/2018-01-03-tutoria
 - [Design constraints for games]({{ site.baseurl }}{% post_url /design-experience/2018-01-08-design-games %})
 - [3D modeling]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %})
 - [Scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %})
-- [SDK Utils library](https://www.npmjs.com/package/decentraland-ecs-utils)
