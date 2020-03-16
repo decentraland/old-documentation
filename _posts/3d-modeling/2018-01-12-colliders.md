@@ -26,7 +26,6 @@ In this case, we can name the box "Box*Tree_collider" and export both the tree a
 
 Whenever a player views the tree model in your scene, they will see the complex model for your tree. However, when they walk into your tree, they will collide with the box, not the tree.
 
-
 ## Player spatial constraints
 
 When you design models that are meant for players to walk around in, you need to keep in mind the following reference measurements:
@@ -35,7 +34,6 @@ When you design models that are meant for players to walk around in, you need to
 - Players can walk up slopes of an angle of up to 45 degrees without jumping
 - Players can jump up to 1,8 meters in height
 - Avatars measure around 1.9 meters in height, but consider that they might have hats or other wearables on their head.
-
 
 ## Add a collider to a staircase
 
@@ -74,3 +72,5 @@ Now when users view the stairs in your scene, they’ll see the more elaborate m
 - To view the limits of all collider meshes in a Decentraland scene, launch your scene preview with `dcl start` and then click `c`. This draws blue lines that delimit all colliders in place.
 
 - You can avoid adding a collider mesh if you add an invisible primitive shape that overlaps to your 3D model in your scene. Primitive shapes have collisions on by default. For example, an entity with a BoxShape() component, and its `visible` property set to false can do the trick.
+
+- If you're creating a 3D model with many mesh shapes that each need their collider, there are some handy add-ons that can help. For Blender you can use [Simple Renaming Panel](https://github.com/Weisl/simple_renaming_panel) to automatically add a `_collider` suffix to all mesh names in a group.
