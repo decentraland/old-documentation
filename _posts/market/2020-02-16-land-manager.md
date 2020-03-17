@@ -1,11 +1,11 @@
 ---
 date: 2018-01-01
-title: Marketplace
+title: LAND Manager
 redirect_from:
   - /decentraland/marketplace/
   - /docs/land-manager
   - /blockchain-interactions/marketplace
-description: Meet the LAND marketplace
+description: Manage LAND and Estate tokens
 categories:
   - blockchain-integration
 type: Document
@@ -13,20 +13,17 @@ set: blockchain-integration
 set_order: 1
 ---
 
-The Marketplace is the go-to place to trade and manage all your Decentraland on-chain assets.
+The Land Manager allows you to manage your LAND and Estate assets.
 
-Access the Marketplace at [market.decentraland.org](https://market.decentraland.org/)
+Access the Land manager at [land.decentraland.org](land.decentralnad.org)
 
-The Marketplace allows you to:
+The Land Manager allows you to:
 
-- **Sell** parcels and Estates of LAND. Set your own price in MANA and an expiration date for the offer.
-- **Buy** parcels and Estates that are for sale.
 - **Name** your parcels and Estates and give them a public description.
+- **Merge** LAND parecels into an Estate.
+- **Dissolve** an Estate into separate LAND parcels.
 - **Transfer** your parcels and Estates to another user.
 - **Grant permissions** to other users to edit the parcels you own.
-- **Explore** the world through a map to see who owns what.
-
-> The Marketplace is in a beta release. We kindly ask that you protect your personal information, property, and content. If you run into any issues or would like to provide feedback, click on the Intercom Widget right in the Marketplace.
 
 ## Your Wallet
 
@@ -82,56 +79,6 @@ To buy MANA in exchange for Ether, follow these steps:
 3. Click **Buy Mana**
 4. Set an amount of MANA you'd like to receive and click **Submit**.
 5. Confirm this transaction on your Ethereum client and wait for the network to verify it.
-
-## Buy parcels and Estates
-
-To buy LAND in Decentraland, follow these steps:
-
-1. Open your user _Settings page_
-2. Check the box next to _LAND_.
-
-   ![](/images/media/marketplace_authorizations.png)
-
-   > Note: Enabling this setting triggers a transaction on the blockchain. You must confirm this transaction in your Ethereum client, pay a gas fee in Ether and wait for its confirmation before it takes effect.
-
-3. _Optional_: Click the box next to _Estates_ to also authorize the Marketplace to operate Estates.
-4. Explore the _Atlas view_ or the _Marketplace view_ to find a plot of land you like that's on sale and click it to open its details. On it's details page, click **Buy**.
-   ![](/images/media/marketplace_buy_land.png)
-5. Confirm this transaction on your Ethereum client and wait for the network to verify it.
-
-> Note: Aside from the gas fee that the Ethereum network pays to the miners of the transaction, Decentraland does not collect any surplus trading fees.
-
-## Make a bid on a parcel or Estate
-
-If a parcel or estate isn't listed on sale, you can still place a bid on it and offer to buy it at a specific price.
-
-1. To enable the _bid_ feature on the Marketplace, navigate to your Settings, and check the box next to _Assets using MANA (bid)_. You’ll have to pay a small gas fee, just like any other Ethereum transaction.
-
-2. Navigate back to the LAND you want to bid on, then click _Bid_ to make an offer!
-
-3. Enter the amount of MANA you want to offer the seller. 
-
-4. Set the date for when you want your offer to expire. Bids can be open for no more than six months. After six months, you’ll have to place another bid.
-
-5. Click Submit.
-
-6. Re-enter your offer amount one more time to confirm the bid.
-
-To view a list of your open and pending bids, click _MY LAND_ on the top navbar and select _Bids_. 
-
-From this screen you can also change the price of your bid by clicking _Update_.
-
-
-## Sell a parcel or Estate
-
-To sell one of your plots of LAND for MANA:
-
-1. Open **My LAND** and select the parcel or Estate you'd like to sell.
-2. In the details page, click **Sell**.
-3. Set a price and expiration date and click **Confirm**.
-4. Confirm this transaction on your Ethereum client and wait for the network to verify it.
-
-You can change the price of a sale that you already put on offer without having to cancel and re-create the sale. Just click **Update price** in the parcel or estate's details page.
 
 ## Create an Estate
 
@@ -224,40 +171,3 @@ To transfer a LAND parcel or Estate to another user:
 
 3. Click **Submit**.
 4. Confirm this transaction on your Ethereum client and wait for the network to verify it.
-
-## Apply for a mortgage to buy a parcel or estate
-
-Before you can request a LAND mortgage, you will have to approve the Ripio Credit Network’s smart contracts to conduct transactions on your behalf using your MANA and RCN tokens. Open your **Account Settings** in the upper right corner, and check the two **LAND by Mortgage** boxes. (You only need MANA to request a mortgage, RCN will convert the MANA you use to the RCN token for you.)
-
-Next, navigate to the parcel that you wish to request a mortgage for. Click **Request Mortgage**, directly next to the Buy button.
-
-Next, you will have to submit a brief application form including the following details and a deposit of at least 10% of the price of the parcel you wish to buy.
-
-- **Amount requested**: the amount of MANA that you need for your mortgage.
-- **Duration**: how long (in days) you have to pay off your mortgage at the standard interest rate. Once the duration is reached, you will have to pay the punitory interest rate until the mortgage is paid off or defaulted.
-- **Payable at**: this represents the minimum amount of interest you will pay, regardless of when you pay off your mortgage. For example, if you take out a mortgage lasting 30 days, with a Payable at of 10 days, then you will be charged for at least 10 days of interest (even if you pay off your mortgage within one day of your request).
-- **Interest rate**: the annual interest rate for your mortgage.
-- **Punitory interest rate**: the amount of additional interest you must pay if you do not pay off your mortgage before the duration of your mortgage.
-- **Request expiration**: how long the mortgage will be listed on RCN. If this date is reached and no one fulfills your mortgage request, you will have to request another mortgage.
-
-Once you request your mortgage, it will be published to the RCN network. Remember, so long as your mortgage request is still open on RCN, anyone else may purchase the parcel. A mortgage request does not take a parcel off of the Marketplace until a _lender_ fulfills the mortgage.
-
-Any lender on RCN can supply the funds and fulfill the loan (as long as the parcel in question is still for sale). Once a lender fulfils the loan, the parcel will be transferred to a separate smart contract for the mortgage and will no longer be available on the market for other buyers.
-
-As a borrower, you can then repay the loan by making periodic payments through the Decentraland Marketplace.
-
-If you fail to fully repay the loan, you have up to 7 days after the expiration date to repay your loan. After this period, then your lender may request the mortgage back through the RCN dApp. If your lender requests the mortgage back, you will see a “Defaulted” notice on the parcel page. You will lose the MANA you’ve paid, along with your ability to claim that parcel.
-
-You can see a list of your open mortgages by clicking **My Land** in the Decentraland Marketplace, and selecting the **Mortgages** tab.
-
-To make a payment, click **Pay** in the mortgage's details page, enter the amount of MANA you want to include in your payment, and click **Submit**.
-
-Once you have completely paid off your mortgage, you can claim your parcel. Simply navigate to the parcel’s page in the Marketplace, and click **Claim Parcel**. Now, the parcel is freed from the mortgage smart contract is transferred to your account.
-
-## Providing Feedback
-
-We’ve worked hard to ensure that the Marketplace is simple and easy to use but if you ever have questions or feedback please reach out to us using the in-app Intercom widget.
-
-For a more in-depth orientation to the Marketplace, [checkout our video tutorial here](/decentraland/getting-started-marketplace-video)!
-
-As with all of our other tools, the Marketplace is open-source software, and [you can find the code here](https://github.com/decentraland/marketplace). Feel free to create an issue, or submit a pull-request!
