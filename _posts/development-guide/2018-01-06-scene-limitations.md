@@ -31,11 +31,11 @@ Below are the maximum number of elements allowed allowed in a scene:
 - **Textures:** `log2(n+1) x 10` Amount of textures in the scene. It includes textures imported as part of models.
 - **Height:** `log2(n+1) x 20` Height in meters.
 
-  > Note: Only entities that are currently being rendered in the scene are counted for these limits. If your scene switches between 3D models, what matters is the rendered models at any point in time, not the total sum. User avatars and any items brought by users from outside the scene don't count for calculating these limits either.
+  > Note: Only entities that are currently being rendered in the scene are counted for these limits. If your scene switches between 3D models, what matters is the rendered models at any point in time, not the total sum. Player avatars and any items brought by a player from outside the scene don't count for calculating these limits either.
 
 - **File size:** `15 MB per parcel` Total size of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages.
 
-- **File count:** ` 200 files per parcel`  Total count of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages.
+- **File count:** `200 files per parcel` Total count of the files uploaded. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages.
 
 <!--
 
@@ -148,12 +148,11 @@ For example, if your scene is only rendering one box entity at the time, logging
 
 -->
 
-
 ## Scene boundaries
 
 When running a preview, any content that is located outside the parcel boundaries is highlighted in red when rendered. If any content is outside these boundaries, you won't be allowed to deploy this scene to Decentraland.
 
-If the tip a large object leaves the boundaries, this object is considered out of bounds too.
+If the tip of a large object leaves the boundaries, this object is considered out of bounds too.
 
 A single parcel scene measures 16 meters x 16 meters. If the scene has multiple parcels, the dimensions vary depending on the arrangement of the parcels.
 
@@ -164,8 +163,6 @@ A single parcel scene measures 16 meters x 16 meters. If the scene has multiple 
 ## Lighting
 
 The scene's lighting conditions can't be changed from the default setting.
-
-Entities don't cast shadows over other entities and dynamic lighting isn’t supported.
 
 ## Texture size constraints
 
@@ -190,7 +187,7 @@ Examples of other valid sizes:
 512x512
 ```
 
-> Although textures of arbitrary sizes work in the alpha release, the engine displays an alert in the console. We will enforce this restriction in coming releases and invalid texture sizes will cease to work.
+> Note: Although textures of arbitrary sizes sometimes work, they are also often rendered with bugs and are more unstable. We strongly advise that all your textures match these sizes.
 
 <!--
 ## File amount limitations
