@@ -1,6 +1,6 @@
 ---
 date: 2018-01-06
-title: Video Tutorials
+title: SDK Video Tutorials
 description: Videos walking you through how to create scenes in Decentraland.
 categories:
   - examples
@@ -8,7 +8,6 @@ type: Document
 set: tutorials
 set_order: 3
 ---
-
 
 ## Escape room tutorial series
 
@@ -47,6 +46,7 @@ It then also goes over how you can activate these animations in a Decentraland s
 This tutorial shows how you can add a collider to a 3D model. Colliders prevent users of your scene from walking through things. They are separate objects that are invisible but occupy space and stand in for what are often more geometrically complex objects.
 
 {%  include youtube.html video_id='UrByRRwfGjY'  %}
+
 <!--
 ## Advanced coding in Decentraland scenes
 
