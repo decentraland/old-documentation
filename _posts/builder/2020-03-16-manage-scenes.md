@@ -3,11 +3,9 @@ date: 2018-02-11
 title: Manage Builder scenes
 description: Getting started with the Builder
 categories:
-  - development-guide
-redirect_from:
-  - /documentation/scene-files/
+  - builder
 type: Document
-set: development-guide
+set: builder
 set_order: 2
 ---
 

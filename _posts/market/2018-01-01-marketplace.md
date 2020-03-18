@@ -5,11 +5,12 @@ redirect_from:
   - /decentraland/marketplace/
   - /docs/land-manager
   - /blockchain-interactions/marketplace
+  - /blockchain-integration/marketplace
 description: Meet the LAND marketplace
 categories:
-  - blockchain-integration
+  - market
 type: Document
-set: blockchain-integration
+set: market
 set_order: 1
 ---
 

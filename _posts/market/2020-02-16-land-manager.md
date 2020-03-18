@@ -1,15 +1,11 @@
 ---
 date: 2018-01-01
 title: LAND Manager
-redirect_from:
-  - /decentraland/marketplace/
-  - /docs/land-manager
-  - /blockchain-interactions/marketplace
 description: Manage LAND and Estate tokens
 categories:
-  - blockchain-integration
+  - market
 type: Document
-set: blockchain-integration
+set: market
 set_order: 1
 ---
 

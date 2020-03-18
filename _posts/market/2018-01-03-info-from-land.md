@@ -4,10 +4,11 @@ title: Get parcel info
 description: Get info from land parcels, estates or addresses using the CLI.
 redirect_from:
   - /blockchain-interactions/info-from-land
+  - /blockchain-integration/info-from-land
 categories:
-  - blockchain-integration
+  - market
 type: Document
-set: blockchain-integration
+set: market
 set_order: 3
 ---
 

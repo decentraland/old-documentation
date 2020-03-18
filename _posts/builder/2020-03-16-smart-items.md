@@ -3,11 +3,9 @@ date: 2018-02-11
 title: Smart items
 description: Make your scenes interactive. Items with built-in behaviors.
 categories:
-  - development-guide
-redirect_from:
-  - /documentation/scene-files/
+  - builder
 type: Document
-set: development-guide
+set: builder
 set_order: 3
 ---
 
