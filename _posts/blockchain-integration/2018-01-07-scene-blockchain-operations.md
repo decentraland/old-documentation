@@ -237,7 +237,7 @@ Users must always accept payments manually, a payment can never be implied direc
 eth.requirePayment(receivingAddress, amount, currency)
 ```
 
-The function requires that you specify an Ethereum wallet address to receive the payment, an amount for the transaction and a specific currency to use (for example, MANA or ETH).
+The function requires that you specify an Ethereum wallet address to receive the payment, an amount for the transaction and a specific currency to use (for now only `ETH` is supported).
 
 If accepted by the user, the function returns the hash number of the transaction.
 
@@ -246,12 +246,12 @@ If accepted by the user, the function returns the hash number of the transaction
 
 ```ts
 const myWallet = ‘0x0123456789...’
-const enterPrice = 10
+const enterPrice = 0.05
 
 function payment(){
   executeTask(async () => {
     try {
-      await eth.requirePayment(myWallet, enterPrice, 'MANA')
+      await eth.requirePayment(myWallet, enterPrice, 'ETH')
       openDoor()
     } catch {
       log("failed process payment")
@@ -268,7 +268,7 @@ engine.addEntity(button)
 ```
 
 
-The example above listens for clicks on a _button_ entity. When clicked, the user is prompted to make a payment in MANA to a specific wallet for a given amount. Once the user accepts this payment, the rest of the function can be executed. If the user doesn't accept the payment, the rest of the function won't be executed.
+The example above listens for clicks on a _button_ entity. When clicked, the user is prompted to make a payment in ETH to a specific wallet for a given amount. Once the user accepts this payment, the rest of the function can be executed. If the user doesn't accept the payment, the rest of the function won't be executed.
 
 ![](/images/media/metamask_confirm.png)
 
@@ -286,17 +286,16 @@ The Ethereum controller allows you to check if a specific transaction has been a
 await this.eth.waitForMinedTx(currency, tx, receivingAddress)
 ```
 
-The function requires that you specify a currency to use (for example, MANA or ETH), a transaction hash number and the Ethereum wallet address that received the payment.
 
 ```ts
 const myWallet = ‘0x0123456789...’
-const enterPrice = 10
+const enterPrice = 0.05
 
 function payment(){
   executeTask(async () => {
     try {
-      const tx = await eth.requirePayment(myWallet, entrancePrice, ‘MANA’)
-      await eth.waitForMinedTx(‘MANA’, tx, myWallet)
+      const tx = await eth.requirePayment(myWallet, entrancePrice, ‘ETH’)
+      await eth.waitForMinedTx(‘ETH’, tx, myWallet)
       openDoor()
     } catch {
       log("failed process payment")
