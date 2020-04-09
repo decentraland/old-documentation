@@ -15,3 +15,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "percy-cli", "~> 1.4"
+
+gem "jekyll-target-blank", "~> 1.1"

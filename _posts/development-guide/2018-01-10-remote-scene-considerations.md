@@ -174,7 +174,7 @@ Players in decentraland exist in many separate _realms_. Players in different re
 
 If your scene sends data to a 3rd party server to sync changes between players in real time, then it's important that changes are only synced between players that are on the same realm. You should handle all changes that belong to one realm as separate from those on a different realm. Otherwise, players will see things change in a spooky way, without anyone making the change.
 
-See how to obtain the realm for each player in [get player data]({{ site.baseurl }}{% post_url /examples/2018-02-22-user-data %})
+See how to obtain the realm for each player in [get player data]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %})
 
 
 #### Multiplayer persistance
