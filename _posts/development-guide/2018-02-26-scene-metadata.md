@@ -87,6 +87,8 @@ Your scene might have objects that can block players from moving if they happen 
 
 The position is comprised of coordinates inside the scene. These numbers refer to a position within the parcel, similar to what you'd use in the scene's code in a Transform component to [position an entity](({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %})).
 
+> Note: All spawn points must be within the parcels that make up the scene. You can't spawn a player outside the space of these parcels.
+
 ### Multiple spawn points
 
 A single scene can have multiple spawn points. This is useful to limit the overlapping of players if they all visit a scene at the same time. To have many spawn points, simply list them as an array.
