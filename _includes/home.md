@@ -164,19 +164,19 @@ Once you're done creating the scene and want to upload it to your LAND, see [pub
 ## Scene examples
 
 <div class="examples">
-  <a target="_blank" href="https://github.com/decentraland-scenes/Hypno-wheels">
+  <a href="https://github.com/decentraland-scenes/Hypno-wheels">
     <div>
       <img src="/images/home/example-hypno-wheel.png"/>
       <span>Hypno wheels</span>
     </div>
   </a>
-  <a target="_blank" href="https://github.com/decentraland-scenes/Hummingbirds">
+  <a href="https://github.com/decentraland-scenes/Hummingbirds">
     <div>
       <img src="/images/home/hummingbirds.png"/>
       <span>Hummingbirds</span>
     </div>
   </a>
-  <a target="_blank" href="https://github.com/decentraland-scenes/Gnark-patrol">
+  <a href="https://github.com/decentraland-scenes/Gnark-patrol">
     <div>
       <img src="/images/home/example-gnark.png"/>
       <span>Gnark patrolling</span>
