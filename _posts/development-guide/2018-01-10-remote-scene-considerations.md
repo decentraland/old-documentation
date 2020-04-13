@@ -17,7 +17,7 @@ Allowing all players to see a scene as having the same content in the same state
 
 There are two ways to keep the scene state that all players see in sync:
 
-- Send P2P messages between users to update changes
+- Send P2P messages between players to update changes
 - Use an authoritative server to keep track of the scene's state
 
 The first of these options is the easiest to implement. The downside is that you rely more on player's connection speeds. Also, if there are incentives to exploit (eg: there are prizes for players with highest scores in a game, or there are in-game transactions) it's always recommendable to use an authoritative server, as this allows you to have more control and exposes less vulnerabilities.
@@ -29,7 +29,7 @@ The first of these options is the easiest to implement. The downside is that you
 Create a message bus object to handle the methods that are needed to send and receive messages between players.
 
 ```ts
-const sceneMessageBus = new MessageBus();
+const sceneMessageBus = new MessageBus()
 ```
 
 #### Send messages
@@ -40,24 +40,23 @@ Use the `.emit` command of the message bus to send a message to all other player
 const sceneMessageBus = new MessageBus()
 
 box1.AddComponent(
-  new OnClick(e => {
+  new OnClick((e) => {
     sceneMessageBus.emit("box1Clicked", {})
-}))
-
+  })
+)
 ```
 
-Each message can contain a payload as a second argument. The payload is of type `Object`, and can contain any relevant data you wish to send. 
+Each message can contain a payload as a second argument. The payload is of type `Object`, and can contain any relevant data you wish to send.
 
 ```ts
 const sceneMessageBus = new MessageBus()
 
 let spawnPos = new Vector3(5, 0, 5)
 
-sceneMessageBus.emit("spawn", {position: spawnPos })
+sceneMessageBus.emit("spawn", { position: spawnPos })
 ```
 
 > Tip: If you need a single message to include data from more than one variable, create a custom type to hold all this data in a single object.
-
 
 #### Receive messages
 
@@ -72,7 +71,7 @@ sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
   transform.position.set(info.position.x, info.position.y, info.position.z)
   newCube.addComponent(transform)
   engine.addComponent(newCube)
-});
+})
 ```
 
 > Note: Messages that are sent by a player are also picked up by that same player. The `.on` method can't distinguish between a message that was emitted by that same player from a message emitted from other players.
@@ -82,35 +81,34 @@ sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
 This example uses a message bus to send a new message every time the main cube is clicked, generating a new cube in a random position. The message includes the position of the new cube, so that all players see these new cubes in the same positions.
 
 ```ts
+/// --- Spawner function ---
 
-  /// --- Spawner function ---
-  
-  function spawnCube(x: number, y: number, z: number) {
-    // create the entity
-    const cube = new Entity();
-  
-    // add a transform to the entity
-    cube.addComponent(new Transform({ position: new Vector3(x, y, z) }));
-  
-    // add a shape to the entity
-    cube.addComponent(new BoxShape());
-  
-    // add the entity to the engine
-    engine.addEntity(cube);
-  
-    return cube;
-  }
-  
+function spawnCube(x: number, y: number, z: number) {
+  // create the entity
+  const cube = new Entity()
+
+  // add a transform to the entity
+  cube.addComponent(new Transform({ position: new Vector3(x, y, z) }))
+
+  // add a shape to the entity
+  cube.addComponent(new BoxShape())
+
+  // add the entity to the engine
+  engine.addEntity(cube)
+
+  return cube
+}
+
 /// --- Create message bus ---
-const sceneMessageBus = new MessageBus();
+const sceneMessageBus = new MessageBus()
 
 /// --- Define a custom type to pass in messages ---
 type NewBoxPosition = {
-  position: ReadOnlyVector3;
-};
+  position: ReadOnlyVector3
+}
 
 /// --- Call spawner function ---
-const cube = spawnCube(8, 1, 8);
+const cube = spawnCube(8, 1, 8)
 
 /// --- Emit messages ---
 cube.addComponent(
@@ -119,21 +117,21 @@ cube.addComponent(
       position: {
         x: Math.random() * 8 + 1,
         y: Math.random() * 8,
-        z: Math.random() * 8 + 1
-      }
-    };
+        z: Math.random() * 8 + 1,
+      },
+    }
 
-    sceneMessageBus.emit("spawn", action);
+    sceneMessageBus.emit("spawn", action)
   })
-);
+)
 
 /// --- Receive messages ---
 sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
-  cube.getComponent(Transform).scale.z *= 1.1;
-  cube.getComponent(Transform).scale.x *= 0.9;
+  cube.getComponent(Transform).scale.z *= 1.1
+  cube.getComponent(Transform).scale.x *= 0.9
 
-  spawnCube(info.position.x, info.position.y, info.position.z);
-});
+  spawnCube(info.position.x, info.position.y, info.position.z)
+})
 ```
 
 #### Test a P2P scene locally
@@ -150,11 +148,9 @@ Interact with the scene on one window, then switch to the other to see that the 
 
 To copy one of the scene examples that implements an authoritative server, follow the steps in [copy a scene example]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}#clone-an-example-scene).
 
-
 [Door scene](https://github.com/decentraland-scenes/Remote-door)
 
 [Mural scene](https://github.com/decentraland-scenes/Remote-mural)
-
 
 #### Preview scenes with authoritative servers
 
@@ -176,7 +172,6 @@ If your scene sends data to a 3rd party server to sync changes between players i
 
 See how to obtain the realm for each player in [get player data]({{ site.baseurl }}{% post_url /examples/2018-02-22-user-data %})
 
-
 #### Multiplayer persistance
 
 Unlike local scenes that are newly mounted each time a player walks into them, scenes that use authoritative servers have a life span that extends well beyond when the player enters and leaves the scene.
@@ -190,4 +185,4 @@ When loading the scene, make sure its built based on the shared information stor
 
 In some cases, it makes sense to include some kind of reset button in the scene. Pressing the reset button would reset the scene gracefully.
 
-Sometimes, this just implies setting the variables in the scene state back to default values. But resetting the scene might also involve unsubscribing listeners and stopping loops in the server side. If empty loops remain each time the scene is reset, these would keep piling up and will have an ill effect on the scene's performance. 
+Sometimes, this just implies setting the variables in the scene state back to default values. But resetting the scene might also involve unsubscribing listeners and stopping loops in the server side. If empty loops remain each time the scene is reset, these would keep piling up and will have an ill effect on the scene's performance.

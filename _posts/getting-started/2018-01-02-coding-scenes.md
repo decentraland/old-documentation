@@ -38,7 +38,7 @@ Our SDK includes the following components:
 -->
 
 - **The Decentraland CLI** (Command Line Interface): Use it to [generate]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) new Decentraland scenes locally on your own machine, preview them and upload them to the content server.
-- **The Decentraland API**: A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between users or other applications. ( [latest API reference](https://github.com/decentraland/ecs-reference/blob/master/docs-latest/decentraland-ecs.md))
+- **The Decentraland API**: A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between players or other applications. ( [latest API reference](https://github.com/decentraland/ecs-reference/blob/master/docs-latest/decentraland-ecs.md))
 
 - **Scene examples**: Take inspiration and coding best practices from the [scene examples]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
 
@@ -73,7 +73,7 @@ The content you deploy to your LAND is called a **scene**. A scene is an interac
 
 Scenes are deployed to virtual LAND in Decentraland. LAND is a scarce and non-fungible asset maintained in an Ethereum smart contract. Deploy to a single **parcel**, a 16 meter by 16 meter piece of LAND, or to an **estate**, comprised of multiple adjacent parcels.
 
-We are developing the web client that will allow users to explore Decentraland. All of the content you upload to your LAND will be rendered and viewable through this client. We have included a preview tool in the SDK so that you can preview, test, and interact with your content in the meantime.
+We are developing the web client that will allow players to explore Decentraland. All of the content you upload to your LAND will be rendered and viewable through this client. We have included a preview tool in the SDK so that you can preview, test, and interact with your content in the meantime.
 
 ## Entities and Components
 
@@ -91,13 +91,13 @@ See [Entities and components]({{ site.baseurl }}{% post_url /development-guide/2
 
 The [game loop](http://gameprogrammingpatterns.com/game-loop.html) is the backbone of a Decentraland scene's code. It cycles through part of the code at a regular interval and does the following:
 
-- Listen for user input
+- Listen for player input
 - Update the scene
 - Re-render the scene
 
-In most traditional software programs, all events are triggered directly by user actions. Nothing in the program's state will change until the user clicks on a button, opens a menu, etc.
+In most traditional software programs, all events are triggered directly by player actions. Nothing in the program's state will change until the player clicks on a button, opens a menu, etc.
 
-But interactive environments and games are different from that. Not all changes to the scene are necessarily caused by a user's actions. Your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some user actions might also take multiple frames to be completed, for example if the opening of a door needs to take a whole second, the door's rotation must be incrementally updated about 30 times as it moves.
+But interactive environments and games are different from that. Not all changes to the scene are necessarily caused by a player's actions. Your scene could have animated objects that move on their own or even non-player characters that have their own AI. Some player actions might also take multiple frames to be completed, for example if the opening of a door needs to take a whole second, the door's rotation must be incrementally updated about 30 times as it moves.
 
 We call each iteration over the loop a _frame_. Decentraland scenes are rendered at 30 frames per second whenever possible. If a frame takes more time than that to be rendered, then less frames will be processed.
 
@@ -111,7 +111,7 @@ The compiling and rendering of the scene is carried out in the backend, you don'
 
 Entities and components are places to store information about the objects in a scene. _Systems_ hold functions that change the information that's stored in components.
 
-_Systems_ are what make a static scene dynamic, allowing things to change over time or in response to user interaction.
+_Systems_ are what make a static scene dynamic, allowing things to change over time or in response to player interaction.
 
 Each System has an `update()` method that's executed on every frame of the game loop, following the [_update pattern_](http://gameprogrammingpatterns.com/update-method.html).
 
@@ -133,7 +133,7 @@ The _engine_ is what sits in between _entities_, _components_ and _component gro
 
 All of the values stored in the components in the scene represent the scene's state at that point in time. With every frame of the game loop, the engine runs the `update()` function of each of the systems to update the values stored in the components.
 
-After all the systems run, the components on each entity will have new values. When the engine renders the scene, it will use these new updated values and users will see the entities change to match their new states.
+After all the systems run, the components on each entity will have new values. When the engine renders the scene, it will use these new updated values and players will see the entities change to match their new states.
 
 ```ts
 // Create a group to track all entities with a Transform component
@@ -160,7 +160,7 @@ const cube = new Entity()
 // Give the entity a transform component
 cube.addComponent(
   new Transform({
-    position: new Vector3(5, 1, 5)
+    position: new Vector3(5, 1, 5),
   })
 )
 
@@ -181,10 +181,10 @@ Your scenes don't run in the same context as the engine
 (a.k.a. the main thread). We created the SDK in a way that is
 entirely decoupled from the rendering engine. We designed it to be like this for both safety and performance reasons.
 
-Because of this decoupling, your scene's code doesn't have access to the DOM or the `window` object, so you can't access data like the user's browser or geographical location.
+Because of this decoupling, your scene's code doesn't have access to the DOM or the `window` object, so you can't access data like the player's browser or geographical location.
 
 The decoupling works by using RPC protocol, this protocol assigns a small part of the client to only render the scene and control events.
 
 We have also abstracted the communication protocol. This allows us to run the scenes locally in a WebWorker.
 
-We don't want developers to intervene with the internals of the engine or even need to know what lies inside the engine. We need to ensure a consistent experience for users throughout the Decentraland map, and mistakes are more likely to happen at that "low" level.
+We don't want developers to intervene with the internals of the engine or even need to know what lies inside the engine. We need to ensure a consistent experience for players throughout the Decentraland map, and mistakes are more likely to happen at that "low" level.

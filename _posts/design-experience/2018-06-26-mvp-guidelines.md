@@ -58,37 +58,37 @@ Here is the list of factors to consider for your basic MVP. It is acceptable to 
 
 1.  Art Creation
 
-    * First, begin with basic still images
-    * Your first test should be for style: does the style you’ve chosen appeal to your users?
-    * This could be the start of a style guide to provide to an outsourced artist
+    - First, begin with basic still images
+    - Your first test should be for style: does the style you’ve chosen appeal to your users?
+    - This could be the start of a style guide to provide to an outsourced artist
 
 2.  Scene Creation
 
-    * Develop a basic sense of your space
-    * Player should feel they are in a new, unique space
-    * Delineate your space from neighboring spaces
-    * Borders are evident and obvious – if only by a drawn line
-    * Cover entire area with static content/art
+    - Develop a basic sense of your space
+    - Player should feel they are in a new, unique space
+    - Delineate your space from neighboring spaces
+    - Borders are evident and obvious – if only by a drawn line
+    - Cover entire area with static content/art
 
 3.  Art Rendered in Scene
 
-    * Using billboards is ok or other signage (this could simply be actual billboards or more sophisticated camera facing sprites)
-    * Establish the tone and aesthetics of your space (i.e. style, bright, dark)
-    * Note your process: how was art created and deployed into the scene?
-    * How do you want to organize your art files for repeated deployment?
+    - Using billboards is ok or other signage (this could simply be actual billboards or more sophisticated camera facing sprites)
+    - Establish the tone and aesthetics of your space (i.e. style, bright, dark)
+    - Note your process: how was art created and deployed into the scene?
+    - How do you want to organize your art files for repeated deployment?
 
 4.  Player experience
 
-    * Players are able to visit your space/scene
-    * Players can distinguish your space from neighboring spaces
+    - Players are able to visit your space/scene
+    - Players can distinguish your space from neighboring spaces
 
 5.  Pipeline Goals
 
-    * Deploy sample static scene: no interaction with player
-    * Deploy animated scene: elements like water fountains or waving flags loop their animations
-    * Deploy interactive scene: including player engagement
-    * Demonstrate deploy pipeline by re-deploying content: from art creation to in scene including scripting + QA]
-    * Expose pipeline gaps: identify the unknowns in specific content deployment areas
+    - Deploy sample static scene: no interaction with player
+    - Deploy animated scene: elements like water fountains or waving flags loop their animations
+    - Deploy interactive scene: including player engagement
+    - Demonstrate deploy pipeline by re-deploying content: from art creation to in scene including scripting + QA]
+    - Expose pipeline gaps: identify the unknowns in specific content deployment areas
 
 ## Levels of prototypes
 

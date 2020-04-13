@@ -9,7 +9,7 @@ set: development-guide
 set_order: 13
 ---
 
-3D models in _.glTF_ and _.glb_ format can include as many animations as you want in them. Animations tell the mesh how to move, by specifying a series of _keyframes_ that are laid out over time, the mesh then blends from one pose to the other to simulate continuous movement. 
+3D models in _.glTF_ and _.glb_ format can include as many animations as you want in them. Animations tell the mesh how to move, by specifying a series of _keyframes_ that are laid out over time, the mesh then blends from one pose to the other to simulate continuous movement.
 
 Most 3D model animations are [_skeletal animations_](https://en.wikipedia.org/wiki/Skeletal_animation). These animations simplify the complex geometry of the model into a "stick figure", linking every vertex in the mesh to the closest _bone_ in the _skeleton_. Modelers adjust the skeleton into different poses, and the mesh stretches and bends to follow these movements.
 
@@ -29,10 +29,15 @@ Not all _glTF_ files include animations. To see if there are any available, you 
 
 > Tip: In _skeletal_ animations, an animation name is often comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-## Add animations
+## Automatic playing
 
-An `Animator` component manages all the animations of the entity. Each animation is handled by an `AnimationState` object.
+If a 3d model includes any animations, the default behavior is that the first of these is always played on a loop.
 
+To avoid this behavior, add an `Animator` component to the entity that has the model, and then handle the playing of animations explicitly. If an `Animator` component is present in the entity, all animations default to a `stopped` state, and need to be manually played.
+
+## Handle animations explicitly
+
+An `Animator` component is used to access all the animations of the entity and can be used to explicitly tell the entity to play or stop an animation. Each animation is handled by an `AnimationState` object.
 
 ![](/images/media/ecs-animations.png)
 
@@ -66,20 +71,16 @@ shark.addComponent(new Animator())
 shark.getComponent(Animator).addClip(new AnimationState("swim"))
 ```
 
-You can retrieve an `AnimationState` object from an `Animator` component with the `getClip()` function. 
+You can retrieve an `AnimationState` object from an `Animator` component with the `getClip()` function.
 
 ```ts
 // Create and get a clip
 let clipSwim = animator.getClip("swim")
 ```
 
-The `AnimationState` object doesn't store the actual transformations that go into the animation, that's all in the .glTF file. Instead, the `AnimationState` object has a state that keeps track how far it has advanced along the animation. 
-
-> Note: If a 3D model contains embedded animations, but its Entity doesn't have an `Animator` component to control them, then the animations will start playing when the entity is added to the engine. If an `Animator` component is present in the entity, all animations default to a `stopped` state, and need to be manually played.
-
+The `AnimationState` object doesn't store the actual transformations that go into the animation, that's all in the .glTF file. Instead, the `AnimationState` object has a state that keeps track how far it has advanced along the animation.
 
 ## Fetch an animation
-
 
 If you don't have a pointer to refer to the clip object directly, you can fetch a clip from the `Animator` by name using `getClip()`.
 
@@ -128,7 +129,6 @@ If the animation is currently paused, the `play()` function resumes the animatio
 clipSwim.reset()
 ```
 
-
 ## Looping animations
 
 By default, animations are played in a loop that keeps repeating the animation forever.
@@ -148,11 +148,10 @@ biteClip.play()
 
 If `looping` is set to _false_, the animation plays just once and then stops.
 
-
 > Note: After a non-looping animation has finished playing, it will continue to be in a state of `playing = true`, even though the 3D model remains still. This can bring you problems if you then try to play other animations. Before playing an animation, make sure you've stopped all others, including non-looping animations that are finished.
 
 ```ts
- 
+
   const biteClip = new AnimationState("bite")
   biteClip.looping = false
 
@@ -167,11 +166,9 @@ If `looping` is set to _false_, the animation plays just once and then stops.
 	}
 ```
 
-
-
 ## Reset an animation
 
-When an animation finishes playing or is paused, the 3D model remains in the last posture it had. 
+When an animation finishes playing or is paused, the 3D model remains in the last posture it had.
 
 To stop an animation and set the posture back to the first frame in the animation, use the `stop()` function of the `AnimationState` object.
 
@@ -185,11 +182,10 @@ To play an animation from the start, regardless of what frame the animation is c
 clipSwim.reset()
 ```
 
-> Note: Resetting the posture is an abrupt change. If you want to make the model transition smoothly tinto another posture, you can either: 
+> Note: Resetting the posture is an abrupt change. If you want to make the model transition smoothly tinto another posture, you can either:
 
     - apply an animation with a `weight` property of 0 and gradually increase the `weight`
     - create an animation clip that describes a movement from the posture you want to transition from to the default posture you want.
-
 
 ## Models with multiple animations
 
@@ -199,11 +195,9 @@ If one animation only affects a character's legs, and another only affects a cha
 
 > Note: After a non-looping animation has finished playing, it will continue to be in a state of `playing = true`, even though the 3D model remains still. This can bring you problems if you then try to play other animations. Before playing an animation, make sure you've stopped all others, including non-looping animations that are finished.
 
-
 ## Animation speed
 
-Change the speed at which an animation is played by changing the `speed` property. The value of the speed is 1 by default. 
-
+Change the speed at which an animation is played by changing the `speed` property. The value of the speed is 1 by default.
 
 ```ts
 // Create animation clip
@@ -221,7 +215,7 @@ Set the speed lower than 1 to play it slower, for example to 0.5 to play it at h
 <!--
 ## Animation weight
 
-The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance that animation will be given in the average. 
+The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance that animation will be given in the average.
 
 By default, `weight` is equal to _1_, it can't be any higher than _1_.
 
@@ -269,17 +263,15 @@ You can configure the following parameters:
 - `speed`: A number that determines how fast the animation is played.
 - `weight`: Used to blend animations using weighted average.
 
-
 ```ts
 const clipSwim = new AnimationState("swim")
 
-clipSwim.setParams({playing:true, looping:true, speed: 2, weight: 0.5})
+clipSwim.setParams({ playing: true, looping: true, speed: 2, weight: 0.5 })
 ```
 
 ## Animations on shared shapes
 
 You can use a same instance of a `GLTFShape` component on multiple entities to save resources. If each entity has both its own `Animator` component and its own `AnimationState` objects, then they can each be animated independently.
-
 
 ```ts
 //create entities
@@ -287,7 +279,7 @@ let shark1 = new Entity()
 let shark2 = new Entity()
 
 // create reusable shape component
-let sharkShape = new GLTFShape('models/shark.gltf')
+let sharkShape = new GLTFShape("models/shark.gltf")
 
 // Add the same GLTFShape instance to both entities
 shark1.addComponent(sharkShape)
@@ -312,6 +304,5 @@ animator2.addClip(clipSwim2)
 engine.addEntity(shark1)
 engine.addEntity(shark2)
 ```
-
 
 > Note: If you define a single `AnimationState` object instance and add it to multiple `Animator` components from different entities, all entities using the `AnimationState` instance will be animated together at the same time.

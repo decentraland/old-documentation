@@ -36,7 +36,7 @@ Any dependencies that are missing are installed and then the CLI opens the scene
 
 Every time you make changes to the scene, the preview reloads and updates automatically, so there's no need to run the command again.
 
-> Note: Some scenes depend on an external server to store a shared state for all users of the scene. When previewing one of these scenes, you'll likely have to also run the server locally on another port. Check the scene's readme for instructions on how to launch the server as well as the scene.
+> Note: Some scenes depend on an external server to store a shared state for all players in the scene. When previewing one of these scenes, you'll likely have to also run the server locally on another port. Check the scene's readme for instructions on how to launch the server as well as the scene.
 
 ## Upload a scene to decentraland
 

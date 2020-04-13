@@ -9,10 +9,9 @@ set: development-guide
 set_order: 2
 ---
 
-Each component group keeps track of a list of entities that have all the required [components]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}). 
+Each component group keeps track of a list of entities that have all the required [components]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}).
 
 ![](/images/media/ecs-big-picture-w-compgroup.png)
-
 
 The engine automatically updates this list every time that:
 
@@ -33,7 +32,7 @@ const myGroup = engine.getComponentGroup(Transform)
 
 You can access the entities in a component group in the following way: if the group name is `myGroup`, calling `myGroup.entities` returns an array containing all the entities in it.
 
-> Note: Keep in mind that component groups take up space in the local memory of the user's machine. Usually, the benefit in speed you get from having a group is a tradeoff that is well worth it. However, for cases where you'd have a large group that you don't access all that often, it might be better to not have one.
+> Note: Keep in mind that component groups take up space in the local memory of the player's machine. Usually, the benefit in speed you get from having a group is a tradeoff that is well worth it. However, for cases where you'd have a large group that you don't access all that often, it might be better to not have one.
 
 ## Required components
 

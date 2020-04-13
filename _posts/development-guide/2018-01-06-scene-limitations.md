@@ -41,7 +41,7 @@ Below are the maximum number of elements allowed allowed in a scene:
 
 ## Query scene limitations via code
 
-From a scene's code, you can query both the limitations that apply to the scene and how much the scene is currently using. This is especially useful with scenes where the content changes dynamically. For example, in a scene where you add a new entity each time the user clicks, you could stop adding entities when you reach the scene limits.
+From a scene's code, you can query both the limitations that apply to the scene and how much the scene is currently using. This is especially useful with scenes where the content changes dynamically. For example, in a scene where you add a new entity each time the player clicks, you could stop adding entities when you reach the scene limits.
 
 To use this functionality, you must first import `EntityController` into your scene.
 

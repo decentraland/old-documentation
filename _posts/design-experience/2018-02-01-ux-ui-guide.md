@@ -21,7 +21,7 @@ All scenes in Decentraland should be designed with these values in mind:
 - **User-friendly**: The UI is easy and fun to use – you should avoid reinventing the wheel
 - **Easy to learn**: Players find the UI familiar and intuitive. Patterns should be consistently used throughout the scene.
 - **Providing guidance**: The scene provides a helping hand. Text, motion, sound and graphics will lead and hint players in the right direction.
-- **Reactive**: Clear action-reaction to users’ input.
+- **Reactive**: Clear action-reaction to players’ input.
 - **Minimalistic**: Less is more. Players can focus their attention on what matters.
 - **Interesting**: The scene takes advantage of the things that make Decentraland unique and worthy of visiting.
 - **Purposeful**: Players have a strong reason to come back.
@@ -83,7 +83,7 @@ We can’t understate how valuable color, icons, motion and scale are for sendin
 
 #### Layout
 
-Always keep a grid in mind and use it as your main criteria when spatially organizing your UI. If you are working on a scene where a HUD is needed, you can start by putting all the consumables together (e.g. currency, food, life), and on the other side stockables such as tools or weapons. Try to be consistent about the grid metrics and padding. Make the feedback for every user action clear.
+Always keep a grid in mind and use it as your main criteria when spatially organizing your UI. If you are working on a scene where a HUD is needed, you can start by putting all the consumables together (e.g. currency, food, life), and on the other side stockables such as tools or weapons. Try to be consistent about the grid metrics and padding. Make the feedback for every player action clear.
 
 Be careful about placing your UI in screen regions that overlap with the default Decentraland UI elements. Below you can see the regions of the screen that you should avoid:
 
@@ -160,7 +160,7 @@ Icons synthesise information, helping you identify actions through images. They 
 
 #### Motion
 
-Use motion to provide feedback and lead the way when needed. Motion helps users focus their attention and helps maintain continuity as the UI changes.
+Use motion to provide feedback and lead the way when needed. Motion helps players focus their attention and helps maintain continuity as the UI changes.
 
 <figure>
     <img src="/images/media/ux-glow.png" alt="Adding glow" width="300"/>
@@ -169,9 +169,9 @@ Use motion to provide feedback and lead the way when needed. Motion helps users 
 
 #### Writing and content structure
 
-UI text can make interfaces more usable and gives users more confidence in their actions. Always make UI text as concise as possible. Players are there to play, not to read. Any text that seems too long won’t be read by most players.
+UI text can make interfaces more usable and gives players more confidence in their actions. Always make UI text as concise as possible. Players are there to play, not to read. Any text that seems too long won’t be read by most players.
 
-Receive your users with a Welcome Message and tell them the objective of the scene. Start by clarifying their goal in the scene, then the actions needed to achieve it. Then you can reveal information progressively as it’s needed, this way users won’t feel overwhelmed on the very beginning of the experience. As with graphic resources, try to use consistent words across your UI features and storytelling.
+Receive your players with a Welcome Message and tell them the objective of the scene. Start by clarifying their goal in the scene, then the actions needed to achieve it. Then you can reveal information progressively as it’s needed, this way players won’t feel overwhelmed on the very beginning of the experience. As with graphic resources, try to use consistent words across your UI features and storytelling.
 
 SDK New Features - Coming Soon!
 

@@ -245,7 +245,7 @@ Use real weather data from different locations by changing the coordinates, or c
 
 ## Remote door
 
-A scene that uses a server and a REST API to sync a scene state amongst multiple users. It’s built around the basic “open the door” example.
+A scene that uses a server and a REST API to sync a scene state amongst multiple players. It’s built around the basic “open the door” example.
 
 - Create a REST server
 - Call REST API
@@ -260,7 +260,7 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 
 ## Remote mural
 
-A scene that uses a server and a REST API to sync a scene state amongst multiple users. You can paint pixels in a mural that other users can see. The colors of each pixel are stored in a remote server.
+A scene that uses a server and a REST API to sync a scene state amongst multiple players. You can paint pixels in a mural that other players can see. The colors of each pixel are stored in a remote server.
 
 - Create a REST server
 - Call REST API
@@ -295,7 +295,7 @@ A simple scene that shows how to build a custom UI that can be interacted with b
 
 ## MANA Transfer
 
-A simple scene that uses the MANA smart contract and the EthConnect library to send the user MANA on the Ropsten test network.
+A simple scene that uses the MANA smart contract and the EthConnect library to send the player MANA on the Ropsten test network.
 
 [Code](https://github.com/decentraland-scenes/MANA-Transaction)
 

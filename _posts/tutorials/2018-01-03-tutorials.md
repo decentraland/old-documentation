@@ -64,10 +64,10 @@ Read the [blog post](https://decentraland.org/blog/tutorials/creating-a-sprite-f
 
 This series of tutorials by Miles show how to build a scene, starting from the basics to using blockchain transactions in the Ethereum network to monetize.
 
-- [Part 1](https://www.decentral.games/tutorial-1-setting-up-the-decentraland-environment-and-building-your-first-scene)
-- [Part 2](https://www.decentral.games/tutorial-2-using-custom-models-and-introduction-to-scripting)
-- [Part 3](https://www.decentral.games/decentral-games-tutorial-3-advanced-scripting-with-systems)
-- [Part 4](https://www.decentral.games/tutorial-4-using-the-ethereum-blockchain-in-your-scene)
+- [Part 1](https://www.decentral.games/blog/tutorial-1-setting-up-the-decentraland-environment-and-building-your-first-scene)
+- [Part 2](https://www.decentral.games/blog/tutorial-2-using-custom-models-and-introduction-to-scripting)
+- [Part 3](https://www.decentral.games/blog/decentral-games-tutorial-3-advanced-scripting-with-systems)
+- [Part 4](https://www.decentral.games/blog/tutorial-4-using-the-ethereum-blockchain-in-your-scene)
 
 <!--
 ## Simple interactive scene
