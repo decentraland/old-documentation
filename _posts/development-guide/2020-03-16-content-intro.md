@@ -1,6 +1,6 @@
 ---
 date: 2018-02-11
-title: Intro for content creators
+title: Overview
 description: How you can create content for Decentraland
 categories:
   - development-guide

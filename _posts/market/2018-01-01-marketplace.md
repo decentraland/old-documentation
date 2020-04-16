@@ -6,6 +6,7 @@ redirect_from:
   - /docs/land-manager
   - /blockchain-interactions/marketplace
   - /blockchain-integration/marketplace
+  - /decentraland/getting-started-marketplace-video
 description: Meet the LAND marketplace
 categories:
   - market
