@@ -484,3 +484,50 @@ $(function() {
     })
   }
 })
+
+$(function() {
+  const aside = document.querySelector('aside.sidebar')
+  aside.addEventListener('click', function (event) {
+    let current = event.target;
+    while(current && current.tagName !== 'ASIDE') {
+      if (current.tagName === 'LI') {
+        if (current.className.indexOf('toggle') >= 0) {
+          const ul = current.querySelector('ul');
+          const height = Array.from(ul.children, function (el) { return el.offsetHeight })
+            .reduce(function (total, current) { return total + current }, 0)
+          ul.style.height = String(height) + 'px'
+
+          if (current.className.indexOf('open') >= 0) {
+            setTimeout(function () {
+              ul.style.height = '0px'
+              current.className = current.className.replace(' open', '')
+            }, 0)
+
+            setTimeout(function () {
+              ul.style.height = ''
+            }, 300)
+
+          } else {
+            current.className += ' open'
+            setTimeout(function () {
+              ul.style.height = ''
+            }, 300)
+          }
+        }
+
+        return
+      }
+  
+      current = current.parentElement;
+    }
+  })
+
+  let current = aside.querySelector('a.active');
+  while(current && current.tagName !== 'ASIDE') {
+    if (current.tagName === 'LI' && current.className.indexOf('active') === -1) {
+      current.className += ' active open'
+    }
+
+    current = current.parentElement;
+  }
+})

@@ -7,10 +7,9 @@ categories:
   - 3d-modeling
 type: Document
 set: 3d-modeling
-set_order: 10
 ---
 
-Materials are embedded into a _.gltf_ or _.glb_ file. 
+Materials are embedded into a _.gltf_ or _.glb_ file.
 
 This document refers to materials that are imported in a 3D model. For materials defined via code to apply onto primitive shapes, see [materials]({{ site.baseurl }}{% post_url /development-guide/2018-02-7-materials %}).
 
@@ -40,7 +39,7 @@ The image below shows two identical models created with standard materials. The 
 
 ![](/images/media/materials_transparent_emissive.png)
 
-There are two main different transparency modes: _Aplha Clip_ and _Aplha Blend_. 
+There are two main different transparency modes: _Aplha Clip_ and _Aplha Blend_.
 
 _Alpha Clip_ sets that each part of a model is either 100% opaque or 100% transparent. _Alpha Blend_ allows you to pick intermediate values per region.
 
@@ -56,11 +55,9 @@ The image below shows two identical models created with standard materials. The 
 
 ![](/images/media/materials_transparent_emissive.png)
 
-
 To make a material emissive in Blender, simply add an `emission` shader to the material.
 
 ![](/images/media/simple-emissive.png)
-
 
 To make a material both emissive and have a texture, you can use two shaders in parallel, one of the `emission` and another `principled BDSF` for the texture. You can then use a `mix shader` node to join them.
 
@@ -69,8 +66,6 @@ To make a material both emissive and have a texture, you can use two shaders in 
 > Tip: By using a color atlas as a texture, you can get away with having various possible colors counted as a single texture. This is useful for making sure you don't exceed the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
 ![](/images/media/neon-texture.png)
-
-
 
 #### Soften an emissive
 
@@ -114,7 +109,7 @@ what special layers PBR uses?
 
 #### Default textures
 
-All of the assets from the default Decentraland asset libraries (available in the Builder or as wearables) share a set of optimized plane textures. These textures are pre-loaded by players when they open the explorer, which makes these assets a lot faster to load. 
+All of the assets from the default Decentraland asset libraries (available in the Builder or as wearables) share a set of optimized plane textures. These textures are pre-loaded by players when they open the explorer, which makes these assets a lot faster to load.
 
 If you build your own custom 3D models and use these same Decentraland default textures, your assets will also load faster when players walk to your parcels.
 
@@ -123,7 +118,6 @@ These textures are composed of a palette of plain colors, that you can map to di
 <img src="/images/media/MiniTown_TX.png" alt="Minitown texture" width="250"/>
 
 You can find the full collection of Decentrlanad default textures in [this repo](https://github.com/decentraland/builder-assets/tree/master/textures)
-
 
 #### Lighting conditions
 
@@ -185,14 +179,13 @@ To swap the material:
 
    <img src="/images/media/materials_final.png" alt="Model with valid material" width="300"/>
 
-
-
 ## Best practices for materials
 
 - If your scene includes multiple models that use the same texture, reference the texture as an external file instead of having it embedded in the 3D model. Embedded textures get duplicated for each model and add to the scene's size. _.glb_ files have their textures embedded by default, but you can use [glTF pipeline](https://github.com/AnalyticalGraphicsInc/gltf-pipeline) to extract it outside.
 
   > Note: After referencing a file for a texture that won’t be embedded, make sure that file won’t be moved or renamed, as otherwise the reference to the file will be lost. The file must also be inside the scene folder so that it’s uploaded together with the scene.
-- Use the Decentraland [default textures](https://github.com/decentraland/builder-assets/tree/master/textures), which are pre-loaded by players, making your assets render a lot faster. 
+
+- Use the Decentraland [default textures](https://github.com/decentraland/builder-assets/tree/master/textures), which are pre-loaded by players, making your assets render a lot faster.
 - Read [this article](https://www.khronos.org/blog/art-pipeline-for-gltf) for a detailed overview of a full art pipeline that uses PBR textures in glTF models.
 - Find free, high quality PBR textures in [cgbookcase](https://cgbookcase.com/).
 - When setting transparency of a material, try to always use _Alpha clip_ rather than _Alpha blend_, unless you specifically need to have a material that's partially transparent (like glass). This will avoid problems where the engine renders the wrong model in front of the other.

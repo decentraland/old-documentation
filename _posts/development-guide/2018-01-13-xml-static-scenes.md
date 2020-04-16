@@ -5,8 +5,6 @@ description: How to create a static XML scene
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 13
 ---
 
 > Note: XML static scenes are no longer supported. We decided this because the Builder is a much better alternative for non-developers to create static content.

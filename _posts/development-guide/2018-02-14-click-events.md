@@ -8,8 +8,6 @@ redirect_from:
   - /sdk-reference/event-handling/
   - /development-guide/event-handling/
 type: Document
-set: development-guide
-set_order: 14
 ---
 
 Decentraland accepts events from pointer clicks, a primary button and a secondary button.
@@ -33,7 +31,7 @@ const myEntity = new Entity()
 myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
-  new OnPointerDown(e => {
+  new OnPointerDown((e) => {
     log("myEntity was clicked", e)
   })
 )
@@ -56,7 +54,7 @@ const myEntity = new Entity()
 myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
-  new OnPointerUp(e => {
+  new OnPointerUp((e) => {
     log("pointer up", e)
   }, ActionButton.POINTER)
 )
@@ -81,7 +79,7 @@ myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
   new OnPointerDown(
-    e => {
+    (e) => {
       log("myEntity was clicked", e)
     },
     { button: ActionButton.POINTER }
@@ -98,13 +96,13 @@ You can also display a toast message in the UI that lets the player know what ha
 ```ts
 myEntity.addComponent(
   new OnPointerDown(
-    e => {
+    (e) => {
       log("myEntity clicked", e)
     },
     {
       button: ActionButton.PRIMARY,
       showFeedback: true,
-      hoverText: "open"
+      hoverText: "open",
     }
   )
 )
@@ -127,7 +125,7 @@ If an entity has both an `OnPointerDown` and an `OnPointerUp` component, the hin
 ```ts
 myEntity.addComponent(
   new OnPointerDown(
-    e => {
+    (e) => {
       log("myEntity clicked", e)
     },
     { button: ActionButton.PRIMARY, showFeedback: true, hoverText: "Drag" }
@@ -136,7 +134,7 @@ myEntity.addComponent(
 
 myEntity.addComponent(
   new OnPointerUp(
-    e => {
+    (e) => {
       log("myEntity released", e)
     },
     { button: ActionButton.PRIMARY, showFeedback: true, hoverText: "Drop" }
@@ -153,14 +151,14 @@ By default, entities are only clickable when the player is within a close range 
 ```ts
 myEntity.addComponent(
   new OnPointerDown(
-    e => {
+    (e) => {
       log("myEntity clicked", e)
     },
     {
       button: ActionButton.PRIMARY,
       showFeedback: true,
       hoverText: "Activate",
-      distance: 8
+      distance: 8,
     }
   )
 )
@@ -178,7 +176,7 @@ myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
   new OnPointerDown(
-    e => {
+    (e) => {
       log("Click distance: " + e.length)
     },
     { button: ActionButton.PRIMARY }
@@ -255,7 +253,7 @@ In the example below we have a house model that includes a mesh named `firePlace
 ```ts
 houseEntity.addComponent(
   new OnPointerDown(
-    e => {
+    (e) => {
       log("button A Down", e.hit.meshName)
       if (e.hit.meshName === "firePlace") {
         // light fire
@@ -291,12 +289,12 @@ The `subscribe()` method takes four arguments:
 const input = Input.instance
 
 // button down event
-input.subscribe("BUTTON_DOWN", ActionButton.POINTER, false, e => {
+input.subscribe("BUTTON_DOWN", ActionButton.POINTER, false, (e) => {
   log("pointer Down", e)
 })
 
 // button up event
-input.subscribe("BUTTON_UP", ActionButton.POINTER, false, e => {
+input.subscribe("BUTTON_UP", ActionButton.POINTER, false, (e) => {
   log("pointer Up", e)
 })
 ```
@@ -316,7 +314,7 @@ The ray of a global button event only detects entities that have a collider mesh
 > Tip: See [Colliders]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-12-colliders %}) for details on how to add collider meshes to a 3D model.
 
 ```ts
-input.subscribe("BUTTON_DOWN", ActionButton.POINTER, true, e => {
+input.subscribe("BUTTON_DOWN", ActionButton.POINTER, true, (e) => {
   if (e.hit) {
     let hitEntity = engine.entities[e.hit.entityId]
     hitEntity.addComponent(greenMaterial)
@@ -358,7 +356,7 @@ const myEntity = new Entity()
 myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
-  new OnClick(e => {
+  new OnClick((e) => {
     log("myEntity clicked")
   })
 )

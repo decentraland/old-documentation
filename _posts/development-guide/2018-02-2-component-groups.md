@@ -5,14 +5,11 @@ description: Learn about how your scene keeps track of lists of entities that ha
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 2
 ---
 
-Each component group keeps track of a list of entities that have all the required [components]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}). 
+Each component group keeps track of a list of entities that have all the required [components]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}).
 
 ![](/images/media/ecs-big-picture-w-compgroup.png)
-
 
 The engine automatically updates this list every time that:
 

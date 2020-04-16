@@ -5,8 +5,6 @@ description: Create your own smart items to use in the Builder
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 29
 ---
 
 Through the Builder, you can drag and drop smart items into a scene. These are items that have configurable parameters and actions that can be triggered, like doors that can be opened or levers that can be activated. There is a default collection of smart items in the Builder, but you can also create your own and import them.
@@ -298,7 +296,7 @@ export default class Door implements IScript<Props> {
     })
 
     // sync initial values
-    channel.request<boolean>("isOpen", isOpen =>
+    channel.request<boolean>("isOpen", (isOpen) =>
       this.toggle(door, isOpen, false)
     )
     channel.reply<boolean>("isOpen", () => this.active[door.name])
@@ -360,16 +358,16 @@ const spawner = new Spawner<Props>(door)
 spawner.spawn(
   "door",
   new Transform({
-    position: new Vector3(4, 0, 8)
+    position: new Vector3(4, 0, 8),
   }),
   {
     onClick: [
       {
         actionId: "toggle",
         entityName: "door",
-        values: {}
-      }
-    ]
+        values: {},
+      },
+    ],
   }
 )
 ```
@@ -425,7 +423,7 @@ When new players join the scene, the make sure that they obtain any relevant inf
 
 ```ts
 // we send a request to all other players
-channel.request<boolean>("isOpen", isOpen => this.toggle(door, isOpen, false))
+channel.request<boolean>("isOpen", (isOpen) => this.toggle(door, isOpen, false))
 
 // we respond to this incoming request from other players
 channel.reply<boolean>("isOpen", () => this.active[door.name])
@@ -434,7 +432,7 @@ channel.reply<boolean>("isOpen", () => this.active[door.name])
 In some cases, you might not want the actions of a player affecting others. For example, when one player picks up a key, you don't want all players to have that key equipped. To avoid this, you can filter the sender of a message and only react when it matches the channel id.
 
 ```ts
-channel.handleAction("equip", action => {
+channel.handleAction("equip", (action) => {
   if (!this.isEquipped(key)) {
     // we only equip the key for the player who triggered the action
     if (action.sender === channel.id) {

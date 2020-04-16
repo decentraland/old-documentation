@@ -9,8 +9,6 @@ description: Meet the LAND marketplace
 categories:
   - blockchain-integration
 type: Document
-set: blockchain-integration
-set_order: 1
 ---
 
 The Marketplace is the go-to place to trade and manage all your Decentraland on-chain assets.
@@ -109,7 +107,7 @@ If a parcel or estate isn't listed on sale, you can still place a bid on it and 
 
 2. Navigate back to the LAND you want to bid on, then click _Bid_ to make an offer!
 
-3. Enter the amount of MANA you want to offer the seller. 
+3. Enter the amount of MANA you want to offer the seller.
 
 4. Set the date for when you want your offer to expire. Bids can be open for no more than six months. After six months, you’ll have to place another bid.
 
@@ -117,10 +115,9 @@ If a parcel or estate isn't listed on sale, you can still place a bid on it and 
 
 6. Re-enter your offer amount one more time to confirm the bid.
 
-To view a list of your open and pending bids, click _MY LAND_ on the top navbar and select _Bids_. 
+To view a list of your open and pending bids, click _MY LAND_ on the top navbar and select _Bids_.
 
 From this screen you can also change the price of your bid by clicking _Update_.
-
 
 ## Sell a parcel or Estate
 

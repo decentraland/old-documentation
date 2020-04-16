@@ -7,8 +7,7 @@ redirect_from:
 categories:
   - blockchain-integration
 type: Document
-set: blockchain-integration
-set_order: 3
+set: "blockchain-integration/tutorial"
 ---
 
 You can use the Decentraland CLI to query info directly from LAND tokens in the blockchain and from the scene files uploaded to the content server.

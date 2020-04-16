@@ -5,8 +5,6 @@ description: What you need to keep in mind when designing a game for Decentralan
 categories:
   - design-experience
 type: Document
-set: design-experience
-set_order: 8
 ---
 
 This document covers some key points to consider when designing a game for Decentraland. Considerations such as the adjacency of other scenes and the distributed ownership of the LAND make Decentraland a unique place that requires you to reconsider assumptions you may have from previous games.
@@ -24,7 +22,6 @@ We're continually improving the SDK, so some of the following limitations will b
 Users that step outside your scene keep rendering it as long as it’s at a visible range. If they walk away too far, they will stop rendering it entirely.
 
 You could also build a game that spreads out throughout several disconnected plots of land that are unknown to players, and where the exploration of the rest of the world becomes part of the gameplay. A game like that would be made up of multiple separate _scenes_, that could share data with each other via a server.
-
 
 #### User inventory
 
@@ -108,7 +105,7 @@ In future releases, users will also be able to navigate the world rapidly using 
 
 ## User UI
 
-**The default overlaid UI that users see when entering Decentraland has only the essentials.** You can add extra elements to that UI while a user is on your scene.  Keep in mind that the Decentraland default UI is displayed above anything from your scene, so design your UI so that it doesn't overlap with this. 
+**The default overlaid UI that users see when entering Decentraland has only the essentials.** You can add extra elements to that UI while a user is on your scene. Keep in mind that the Decentraland default UI is displayed above anything from your scene, so design your UI so that it doesn't overlap with this.
 
 When a user steps outside the scene, all UI elements are removed to not intervene with other scenes. Players also have a button available in their screen to toggle all UI elements in the scene off, this is mainly useful to prevent abusive behavior by scenes that may want to cover all of the player's field of view.
 
@@ -122,7 +119,7 @@ Keep in mind that the SDK doesn't provide its own physics engine. If you want to
 
 **Your game controls should be limited to basic movements, jumping, point and click, as well as a primary and secondary button.** We will support mobile and Virtual Reality controllers, so we can't assume that everyone has a keyboard.
 
-We have support for global _button up_ and _button down_ events for all three buttons. All three buttons also have hit events that let you identify if an entity was in the player's aim. 
+We have support for global _button up_ and _button down_ events for all three buttons. All three buttons also have hit events that let you identify if an entity was in the player's aim.
 
 ## Avatars
 

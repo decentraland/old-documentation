@@ -17,8 +17,6 @@ redirect_from:
 categories:
   - getting-started
 type: Document
-set: getting-started
-set_order: 3
 ---
 
 ## The development tools
@@ -160,7 +158,7 @@ const cube = new Entity()
 // Give the entity a transform component
 cube.addComponent(
   new Transform({
-    position: new Vector3(5, 1, 5)
+    position: new Vector3(5, 1, 5),
   })
 )
 

@@ -7,8 +7,7 @@ redirect_from:
 categories:
   - getting-started
 type: Document
-set: getting-started
-set_order: 5
+
 tag: introduction
 ---
 

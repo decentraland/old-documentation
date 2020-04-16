@@ -5,12 +5,9 @@ description: Upload a preview of your scene to a server and share it offchain.
 categories:
   - deploy
 type: Document
-set: deploy
-set_order: 7
 ---
 
 Previews of Decentraland scenes can run as standalone pages, just as you can run a preview locally in your machine. This is a fantastic way to share interactive previews of your content with others! It's also useful to test your scenes in other platforms, such as mobile.
-
 
 Decentraland scene previews are compatible with the following hosting platforms:
 
@@ -18,11 +15,9 @@ Decentraland scene previews are compatible with the following hosting platforms:
 - [GitHub pages](https://pages.github.com/) _(free)_
 - [Amazon S3](https://aws.amazon.com/s3/)
 
-
 Once uploaded to one of these platforms, the only thing that others have to do in order to explore your scene is open a link. They don’t need to install the CLI, Node, NPM, or any of the other tools that would be required to run the preview on their local machine.
 
 For example here are some scenes that are currently running in Zeit Now:
-
 
 - [Block Dog](https://blockdog-wtciaozdbo.now.sh)
 - [Humming birds](https://hummingbirds-ujovmbtmui.now.sh)
@@ -35,7 +30,7 @@ To upload a preview to a server, make sure you’re using the latest version of 
 
 Remember that the SDK version is specified in the scene and is determined when you first create it with the CLI. So, if you have a scene you created with an older version of the CLI, and then update the CLI, you will need to manually update the scene so it references the latest version of the SDK.
 
-Your scene must also be compiled, as what you'll be uploading are the files in the `/bin` folder instead of in the `/src` folder. 
+Your scene must also be compiled, as what you'll be uploading are the files in the `/bin` folder instead of in the `/src` folder.
 
 If you haven't compiled your scene with the latest changes, you can do it by running `npm install`. The scene is also compiled automatically every time you run a preview with `dcl start`.
 
@@ -44,7 +39,6 @@ If you haven't compiled your scene with the latest changes, you can do it by run
     - node_modules
     - dist
     - export
-
 
 ## Prepare a scene for deploying
 
@@ -66,9 +60,9 @@ To deploy a scene to now:
 
 1. Make sure you have the latest version of the _Zeit Now CLI_, and of the _Decentraland CLI_ installed.
 
-    ```
-    npm i -g decentraland now
-    ```
+   ```
+   npm i -g decentraland now
+   ```
 
 2. Run the following command form the scene's `export` folder (that you created with the `dcl export` command):
 
@@ -78,13 +72,13 @@ To deploy a scene to now:
 
    The console will show you the output of the server as it installs the necessary dependencies to run your scene. This takes a few minutes.
 
-2. When done, the URL to the server should automatically be added to your clipboard, ready to paste in a browser!
+3. When done, the URL to the server should automatically be added to your clipboard, ready to paste in a browser!
 
    You can otherwise get the link in the console's output, it will resemble something like `https://myscene-gnezxvoayw.now.sh`.
 
    > Tip: The URL will take the folder name as part of the path. You can rename the `export` folder to anything you want. That won't affect the scene, but it will change the URL.
 
-3. Share the link with anyone you want! _Now_ will keep hosting your scene at that link indeterminably.
+4. Share the link with anyone you want! _Now_ will keep hosting your scene at that link indeterminably.
 
 > Note: Keep in mind that the free version of Now enforces a maximum file size of 50 MB.
 
@@ -93,7 +87,6 @@ Optionally, you can alias your deployment with now.sh domain, or any domain you 
 ```
 now alias {deploymentId} decentraland.now.sh
 ```
-
 
 > Note: for scenes that were originally built with version 6.0 or older, you will have to make a couple of manual adjustments to your project. See [this blogpost](https://decentraland.org/blog/announcements/decentraland-on-now/) for more details.
 
@@ -112,7 +105,7 @@ If you created your scene based on one of the remote scene examples, then you ne
 For example, to deploy both server and the scene client to Zeit now, follow these steps:
 
 1. Change directory to the `/server` folder and run the following command to deploy just the server:
-   
+
    ```
    now
    ```
@@ -132,5 +125,3 @@ For example, to deploy both server and the scene client to Zeit now, follow thes
    ```
 
 5) Once the upload is completed, the URL to the scene preview should be in your clipboard, ready to share.
-
-

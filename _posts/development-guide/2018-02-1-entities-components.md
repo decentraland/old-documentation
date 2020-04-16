@@ -13,8 +13,6 @@ redirect_from:
   - /development-guide/scene-content/
   - /development-guide/entity-interfaces/
 type: Document
-set: development-guide
-set_order: 1
 ---
 
 Decentraland scenes are built around [_entities_, _components_ and _systems_](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system). This is a common pattern used the architecture of several game engines, that allows for easy composability and scalability.
@@ -38,7 +36,6 @@ Components like `Transform`, `Material` or any of the _shape_ components are clo
 Components are meant to store data about their parent entity. They only store this data, they shouldn't modify it themselves. All changes to the values in the components are carried out by [Systems]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}). Systems are completely decoupled from the components and entities themselves. Entities and components are agnostic to what _systems_ are acting upon them.
 
 See [Component Reference](https://github.com/decentraland/ecs-reference) for a reference of all the available constructors for predefined components.
-
 
 ## Syntax for entities and components
 
@@ -103,7 +100,7 @@ Entities that have been added to the engine can also be removed from it. When an
 engine.removeEntity(cube)
 ```
 
-Note: Removed entities are also removed from all [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}). 
+Note: Removed entities are also removed from all [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}).
 
 If your scene has a pointer referencing a removed entity, it will remain in memory, allowing you to still access and change its component's values and add it back.
 
@@ -114,7 +111,6 @@ If a removed entity has child entities, all children of that entity are removed 
 An entity can have other entities as children. Thanks to this, we can arrange entities into trees, just like the HTML of a webpage.
 
 <img src="/images/media/ecs-nested-entities.png" alt="nested entities" width="400"/>
-
 
 To set an entity as the parent of another, simply use `.setParent()`:
 
@@ -213,7 +209,6 @@ cube.getComponent(Material).albedoColor = Color3.Red()
 
 By using `.addComponentOrReplace()` instead of `.addComponent()` you overwrite any existing components of the same kind on a specific entity.
 
-
 ## Remove a component from an entity
 
 To remove a component from an entity, simply use the entity's `removeComponent()` method.
@@ -225,7 +220,6 @@ myEntity.removeComponent(Material)
 If you attempt to remove a component that doesn't exist in the entity, this action won't raise any errors.
 
 A removed component might still remain in memory even after removed. If your scene adds new components and removes them regularly, these removed components will add up and cause memory problems. It's advisable to instead use an [object pool](#pooling-entities-and-components) when possible to handle these components.
-
 
 ## Access a component from an entity
 
@@ -284,7 +278,7 @@ Tip: Custom components can be defined in your scene's `.ts` file, but for larger
 A component can store as many fields as you want.
 
 ```ts
-@Component('wheelSpin')
+@Component("wheelSpin")
 export class WheelSpin {
   spinning: boolean
   speed: number
@@ -312,13 +306,12 @@ wheel2.getComponent(WheelSpin).spinning = false
 
 Each entity that has the component added to it is instancing a new copy of it, holding specific data for that entity.
 
-
 #### Constructors
 
 Adding a constructor to a component allows you to configure its values in the same expression as you create an instance of it.
 
 ```ts
-@Component('wheelSpin')
+@Component("wheelSpin")
 export class WheelSpin {
   spinning: boolean
   speed: number
@@ -346,7 +339,7 @@ wheel.addComponent(new WheelSpin(true, 10))
 You can make the parameters optional by setting default values on each. If there are default values and you don't declare the parameters when instancing a component, it will use the default.
 
 ```ts
-@Component('wheelSpin')
+@Component("wheelSpin")
 export class WheelSpin {
   spinning: boolean
   speed: number
@@ -356,6 +349,7 @@ export class WheelSpin {
   }
 }
 ```
+
 ```ts
 // Create entity
 wheel = new Entity()
@@ -406,7 +400,7 @@ If you use `.addComponentOrReplace()` to assign a _Dog_ component to an entity t
 
 ## Components as flags
 
-You may want to add a component that simply flags an entity to differentiate it from others, without using it to store any data. 
+You may want to add a component that simply flags an entity to differentiate it from others, without using it to store any data.
 
 This is especially useful when using [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}). Since component groups list entities based on components they own, a simple flag component can tell entities apart from others.
 
@@ -456,7 +450,7 @@ const spawner = {
       return instance
     }
     return null
-  }
+  },
 }
 
 spawner.spawnEntity()

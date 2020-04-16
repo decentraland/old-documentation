@@ -7,9 +7,7 @@ categories:
   - 3d-modeling
 type: Document
 set: 3d-modeling
-set_order: 10
 ---
-
 
 3D models can be animated in a Decentraland scene using animations. All animations of a 3D model must be embedded inside its _glTF_ file, you can't reference animations in separate files.
 
@@ -19,7 +17,7 @@ As an alternative, _vertex animations_ animate a model without the need of a ske
 
 There's no specific rule about the names animations must have. You can verify the names of the animations in an exported model by opening the contents of a _.gltf_ file with a text editor. Typically, an animation name is comprised of its armature name, an underscore and its animation name. For example `myArmature_animation1`.
 
-You can include any number of animations in a _glTF model_. All animations in a _glTF_ model are disabled by default when loading the model into a Decentraland scene. 
+You can include any number of animations in a _glTF model_. All animations in a _glTF_ model are disabled by default when loading the model into a Decentraland scene.
 
 In a Decentraland scene, you can use `weight` to blend several animations or to make an animation more subtle.
 

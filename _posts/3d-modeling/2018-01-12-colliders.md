@@ -7,7 +7,6 @@ categories:
   - 3d-modeling
 type: Document
 set: 3d-modeling
-set_order: 10
 ---
 
 To enable collisions between a 3D model and users of your scene, you must create a new object to serve as a collider. Without a collider, users are able to walk through models as if they weren't there. For performance reasons, colliders usually have a much simpler geometry than the model itself.
@@ -26,7 +25,6 @@ In this case, we can name the box "Box*Tree_collider" and export both the tree a
 
 Whenever a player views the tree model in your scene, they will see the complex model for your tree. However, when they walk into your tree, they will collide with the box, not the tree.
 
-
 ## Player spatial constraints
 
 When you design models that are meant for players to walk around in, you need to keep in mind the following reference measurements:
@@ -35,7 +33,6 @@ When you design models that are meant for players to walk around in, you need to
 - Players can walk up slopes of an angle of up to 45 degrees without jumping
 - Players can jump up to 1,8 meters in height
 - Avatars measure around 1.9 meters in height, but consider that they might have hats or other wearables on their head.
-
 
 ## Add a collider to a staircase
 

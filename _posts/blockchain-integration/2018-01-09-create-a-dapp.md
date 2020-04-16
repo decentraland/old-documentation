@@ -7,8 +7,6 @@ categories:
 type: Document
 redirect_from:
   - /blockchain-interactions/create-a-dapp
-set: blockchain-integration
-set_order: 20
 ---
 
 You can create your own decentralized apps (dApps) to interface with Decentraland's smart contracts and expose their functionality in more elaborate and friendlier ways.

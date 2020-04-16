@@ -7,8 +7,6 @@ redirect_from:
 categories:
   - getting-started
 type: Document
-set: getting-started
-set_order: 2
 ---
 
 To build scenes for Decentraland you will need to install the Command Line Interface (CLI).
@@ -34,7 +32,6 @@ npm install -g decentraland
 ```
 
 Once the installation is complete, the `dcl` command will be globally available.
-
 
 ## Update the CLI on any platform
 

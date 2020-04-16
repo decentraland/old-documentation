@@ -7,8 +7,6 @@ categories:
 type: Document
 redirect_from:
   - /blockchain-interactions/ethereum-essentials
-set: blockchain-integration
-set_order: 2
 ---
 
 All blockchains are in essence decentralized databases that are distributed among the machines of a network. Transactions are grouped into “blocks” and processed sequentially to form a _chain_ of events.

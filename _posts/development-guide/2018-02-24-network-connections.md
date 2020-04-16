@@ -5,8 +5,6 @@ description: How to communicate your scene with external servers and APIs.
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 29
 ---
 
 Your scene can leverage external services that expose APIs, you can use this to obtain updated price data, weather data or any other kind of information exposed by an API.
@@ -39,7 +37,7 @@ executeTask(async () => {
     let response = await fetch(callUrl, {
       headers: { "Content-Type": "application/json" },
       method: "POST",
-      body: JSON.stringify(myBody)
+      body: JSON.stringify(myBody),
     })
     let json = await response.json()
     log(json)
@@ -73,7 +71,7 @@ You can also send and obtain data from a WebSocket server, as long as this serve
 ```ts
 var socket = new WebSocket("url")
 
-socket.onmessage = function(event) {
+socket.onmessage = function (event) {
   log("WebSocket message received:", event)
 }
 ```

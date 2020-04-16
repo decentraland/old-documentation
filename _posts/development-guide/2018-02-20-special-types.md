@@ -5,8 +5,6 @@ description: Learn what special types exist, including Vector, Quaternions, and 
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 20
 ---
 
 ## Vectors
@@ -52,7 +50,6 @@ The following shortcuts exist for defining generic vectors:
 A scalar is nothing more than a number. For that reason, it doesn't make much sense to instantiate a `Scalar` object to store data. The functions in the `Scalar` class however exposes several handy functions (similar to those in _Vector_ classes), that can be used on numbers.
 
 ```ts
-
 // Call functions from the Scalar class
 let random = Scalar.RandomRange(1, 100)
 
@@ -80,8 +77,3 @@ let quaternionFromEuler = Quaternion.FromEulerAnglesRef(90, 0, 0)
 
 let midPoint = Quaternion.Slerp(myQuaternion1, myQuaternion2, 0.5)
 ```
-
-
-
-
-

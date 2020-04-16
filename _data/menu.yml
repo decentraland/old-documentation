@@ -1,0 +1,148 @@
+## Menu Items
+# This file define each item in the navigation menu
+#
+# Attributes:
+# title: "Title overwrite"
+#   Custom title for the menu item.
+#   By default each menu item use the title of the `post`/`page` but
+#   you can overwrite it using this attribute also if you define a
+#   remote item using the `url` attribute you have its title
+#
+# image: "path/to/icon.svg"
+#   A relative path from `_includes` directory.
+#   By default each menu item use an icon to show when they have
+#   children elements but you can use a custom one with this attribute.
+#
+# >>>
+# >>> NOTE: In order to generate a useful item you have to define
+# >>> `post`, `page` or `url` attributes, use more than one wont break
+# >>> the site but could generate unexpected behaviors
+# >>>
+#
+# post: "path/to/post.md"
+#   A relative path from `_posts` directory.
+#   It MUST be a [jekyll post](https://jekyllrb.com/docs/posts/)
+#
+# page: "page.html"
+#   A relative path from `./` directory.
+#   It MUST be a [jekyll page](https://jekyllrb.com/docs/pages/)
+#
+# url: "https://remote.target.com/"
+#   A URL to and external site, it will be open in other tab.
+#
+# children: []
+#   Array of item for a sub menu.
+#   Each item can have more items as children, and these can have
+#   children too. There is no limit in the depth of the menu but
+#   a too complex menu could look ugly and generate a bad user
+#   experience, please be careful :)
+
+- title: Home
+  image: sets/home.svg
+  page: index.html
+
+- title: What is Decentraland?
+  image: sets/general.svg
+  children:
+    - post: "general/2018-01-01-introduction.md"
+    - post: "general/2018-01-03-glossary.md"
+    - post: "general/2018-01-04-whitepaper.md"
+    - post: "general/2017-01-15-getting-started-marketplace-video.md"
+    - title: FAQ
+      children:
+        - title: Decentraland
+          post: "general/2018-01-02-faq.md"
+        - title: Builder
+          post: "general/2019-03-19-builder-faq.md"
+
+- title: Getting started
+  image: sets/getting-started.svg
+  children:
+    - post: "getting-started/2018-01-01-installation-guide.md"
+    - post: "getting-started/2018-01-02-coding-scenes.md"
+    - post: "getting-started/2018-02-01-game-jam.md"
+    - post: "getting-started/2018-01-04-preview-scene.md"
+
+- title: 3D modeling
+  image: sets/3d-modeling.svg
+  children:
+    - post: "3d-modeling/2018-01-09-3d-models.md"
+    - post: "3d-modeling/2018-01-13-animations.md"
+    - post: "3d-modeling/2018-01-12-colliders.md"
+    - post: "3d-modeling/2018-01-11-meshes.md"
+    - post: "3d-modeling/2018-01-10-materials.md"
+
+- title: Design experiences
+  image: sets/getting-started.svg
+  children:
+    - post: "design-experience/2018-06-26-mvp-guidelines.md"
+    - post: "design-experience/2018-02-01-ux-ui-guide.md"
+    - post: "design-experience/2018-01-08-design-games.md"
+
+- title: Development guide
+  image: sets/development-guide.svg
+  children:
+    - post: "development-guide/2018-02-1-entities-components.md"
+    - post: "development-guide/2018-02-2-component-groups.md"
+    - post: "development-guide/2018-02-3-systems.md"
+    - post: "development-guide/2018-01-11-scene-files.md"
+    - post: "development-guide/2018-01-12-entity-positioning.md"
+    - post: "development-guide/2018-02-6-shape-components.md"
+    - post: "development-guide/2018-01-06-scene-limitations.md"
+    - post: "development-guide/2018-02-7-materials.md"
+    - post: "development-guide/2018-02-10-sounds.md"
+    - post: "development-guide/2018-02-11-text.md"
+    - post: "development-guide/2018-02-12-move-entities.md"
+    - post: "development-guide/2018-02-13-3d-model-animations.md"
+    - post: "development-guide/2018-01-13-xml-static-scenes.md"
+    - post: "development-guide/2018-02-14-click-events.md"
+    - post: "development-guide/2018-02-15-onscreen-ui.md"
+    - post: "development-guide/2018-02-16-custom-events.md"
+    - post: "development-guide/2018-02-20-special-types.md"
+    - post: "development-guide/2018-02-22-user-data.md"
+    - post: "development-guide/2018-02-27-raycasting.md"
+    - post: "development-guide/2018-02-28-game-objects.md"
+    - post: "development-guide/2020-02-20-smart-items.md"
+    - post: "development-guide/2018-02-24-network-connections.md"
+    - post: "development-guide/2018-02-26-scene-metadata.md"
+    - post: "development-guide/2018-02-25-async-functions.md"
+    - post: "development-guide/2018-01-10-remote-scene-considerations.md"
+
+- title: Blockchain integration
+  image: sets/blockchain-integration.svg
+  children:
+    - post: "blockchain-integration/2018-01-01-marketplace.md"
+    - post: "blockchain-integration/2018-01-01-ethereum-essentials.md"
+    - post: "blockchain-integration/2018-01-03-info-from-land.md"
+    - post: "blockchain-integration/2018-02-01-display-a-certified-nft.md"
+    - post: "blockchain-integration/2018-01-07-scene-blockchain-operations.md"
+    - post: "blockchain-integration/2018-02-02-second-layer.md"
+    - post: "blockchain-integration/2018-01-01-api.md"
+    - post: "blockchain-integration/2018-01-09-create-a-dapp.md"
+
+- title: Deploy scenes
+  image: sets/deploy.svg
+  children:
+    - post: "deploy/2018-01-07-publishing.md"
+    - post: "deploy/2018-01-01-deploy-to-now.md"
+
+- title: Tutorials
+  image: sets/tutorials.svg
+  children:
+    - post: "tutorials/2018-01-03-tutorials.md"
+    - post: "tutorials/2018-01-04-video-tutorials.md"
+    - post: "tutorials/2020-02-17-get-a-wallet.md"
+
+- title: Scene examples
+  image: sets/examples.svg
+  post: "examples/2018-01-08-sample-scenes.md"
+
+- title: Release notes
+  image: sets/releases.svg
+  children:
+    - post: "releases/sdk/2019-04-25-6.0.md"
+    - post: "releases/sdk/2019-01-09-5.0.md"
+    - post: "releases/sdk/2018-02-15-sdk-roadmap.md"
+    - post: "releases/sdk/2018-01-02-4.1.0.md"
+    - post: "releases/sdk/2018-01-01-4.0.0.md"
+    - post: "releases/sdk/2018-02-01-cli.md"

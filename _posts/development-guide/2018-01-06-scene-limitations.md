@@ -7,8 +7,6 @@ redirect_from:
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 6
 ---
 
 In order to improve performance in the metaverse, we have established a set of limits that every scene must follow. If a
@@ -35,7 +33,7 @@ Below are the maximum number of elements allowed allowed in a scene:
 
 - **File size:** `15 MB per parcel` Total size of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages.
 
-- **File count:** ` 200 files per parcel`  Total count of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages.
+- **File count:** `200 files per parcel` Total count of the files uploaded to the content server. Includes 3D models and audio. Doesn't include files that aren't uploaded, such as node.js packages.
 
 <!--
 
@@ -147,7 +145,6 @@ executeTask(async () => {
 For example, if your scene is only rendering one box entity at the time, logging `limits.entities` should print `1`.
 
 -->
-
 
 ## Scene boundaries
 

@@ -5,10 +5,7 @@ description: Blogposts walking you through how to create scenes in Decentraland.
 categories:
   - examples
 type: Document
-set: tutorials
-set_order: 2
 ---
-
 
 ## Add functionality to a Builder scene
 
@@ -18,8 +15,6 @@ Read the [blog post](https://decentraland.org/blog/tutorials/adding-functionalit
 
 ![](/images/media/tutorial-builder.jpg)
 
-
-
 ## Introduction to the ECS (Entity Component System)
 
 This blogpost walks you through creating a first scene with basic interactions. It explains some of the basic concepts of the Entity Component System architecture (ECS).
@@ -27,7 +22,6 @@ This blogpost walks you through creating a first scene with basic interactions. 
 Read the [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5/)
 
 ![](/images/media/example-hypno-wheel.png)
-
 
 ## Motion and animations in ECS
 
@@ -40,14 +34,11 @@ Read the blog post:
 
 ![](/images/media/example-gnark.png)
 
-
 ## Using UIs
 
 This guest blog post by Surz shows how to add a custom UI to your scene.
 
 Read the [blog post](https://decentraland.org/blog/tutorials/adding-a-ui/)
-
-
 
 ![](/images/media/tutorial-ui.png)
 
@@ -57,25 +48,21 @@ This guest blog post by Interweaver shows how players can pick up an object and 
 
 Read the [blog post](https://decentraland.org/blog/announcements/building-blocks/)
 
-
 ![](/images/media/tutorial-blocks.png)
 
 ## Making a sprite animation
 
-This guest blog post by Brent shows how to add a gif-like animation using a sprite sheet. 
+This guest blog post by Brent shows how to add a gif-like animation using a sprite sheet.
 
 Read the [blog post](https://decentraland.org/blog/tutorials/creating-a-sprite-fire/)
 
-
 ![](/images/media/tutorial-sprites.png)
-
 
 ## Migrate scenes from the old SDK to the latest
 
 This blogpost is a reference for migrating content that was written for earlier versions of the Decentraland SDK to version 5.0.
 
 Read the [blog post](https://decentraland.org/blog/tutorials/sdk-migration/)
-
 
 ## Using the blockchain
 
@@ -85,8 +72,6 @@ This series of tutorials by Miles show how to build a scene, starting from the b
 - [Part 2](https://www.decentral.games/tutorial-2-using-custom-models-and-introduction-to-scripting)
 - [Part 3](https://www.decentral.games/decentral-games-tutorial-3-advanced-scripting-with-systems)
 - [Part 4](https://www.decentral.games/tutorial-4-using-the-ethereum-blockchain-in-your-scene)
-
-
 
 <!--
 ## Simple interactive scene
