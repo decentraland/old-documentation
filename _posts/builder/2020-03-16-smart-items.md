@@ -13,7 +13,7 @@ They often have fields that can be configured, like a text field in a sign post.
 
 Smart items can be easily told apart in the item catalogue because their preview image has a purple background and a star logo on them.
 
-![](/images/media/builder-smart-items.png)
+<img src="/images/media/builder-smart-items.png" alt="Smart items" width="250"/>
 
 ## Configure an item
 
@@ -21,7 +21,7 @@ To configure a smart item select it in your scene and a contextual menu opens on
 
 Different smart items have different fields that can be configured, depending on what makes sense for each.
 
-![](/images/media/builder-smart-items-menu.png)
+<img src="/images/media/builder-smart-items-menu.png" alt="Smart item menu" width="250"/>
 
 ## Call an action on another item
 
@@ -29,7 +29,7 @@ Many smart items can trigger actions on other smart items.
 
 For example, a button smart item has a _When Clicked_ field. In this field you can add an action from another item, for example the _Open_ action of a door.
 
-![](/images/media/builder-actions.png)
+<img src="/images/media/builder-actions.png" alt="Smart item menu" width="250"/>
 
 Trigger multiple actions in a single field. By clicking the plus sign you can add multiple actions to be triggered together.
 

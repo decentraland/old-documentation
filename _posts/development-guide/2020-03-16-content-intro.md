@@ -45,7 +45,7 @@ Then go to the [SDK 101]({{ site.baseurl }}{% post_url /development-guide/2020-0
 ## Shortcuts
 
 <div class="shortcuts">
-  <a href="{{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}">
+  <a href="{{ site.baseurl }}{% post_url /development-guide/2018-01-02-coding-scenes %}">
     <div>
       <div class="image"><img src="/images/home/1.png"/></div>
       <div class="title">Coding scenes</div>

@@ -14,8 +14,9 @@ redirect_from:
   - /development-guide/typescript-tips/
   - /decentraland/SDK-Overview/
   - /sdk-reference/SDK-Overview/
+  - /getting-started/coding-scenes/
 categories:
-  - getting-started
+  - development-guide
 type: Document
 ---
 
@@ -35,7 +36,7 @@ Our SDK includes the following components:
 - **The Decentraland Editor**: Use it to create and preview Decentraland scenes. You don't need to download any software to your machine, the editor runs entirely on your browser.
 -->
 
-- **The Decentraland CLI** (Command Line Interface): Use it to [generate]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) new Decentraland scenes locally on your own machine, preview them and upload them to the content server.
+- **The Decentraland CLI** (Command Line Interface): Use it to [generate]({{ site.baseurl }}{% post_url /development-guide/2018-01-02-coding-scenes %}) new Decentraland scenes locally on your own machine, preview them and upload them to the content server.
 - **The Decentraland API**: A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between players or other applications. ( [latest API reference](https://github.com/decentraland/ecs-reference/blob/master/docs-latest/decentraland-ecs.md))
 
 - **Scene examples**: Take inspiration and coding best practices from the [scene examples]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
@@ -48,7 +49,7 @@ You must have the following:
 
 - **npm** (Node package manager): Used in the terminal to handle scene dependencies, required to install the Decentraland CLI. [Download link](nodejs.org)
 
-- **The Decentraland CLI**: Used to build, preview and upload scenes. See [Installation guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %})
+- **The Decentraland CLI**: Used to build, preview and upload scenes. See [Installation guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-01-installation-guide %})
 
 - **A source code editor**: Helps you create scenes a lot faster and with less errors. A source code editor marks syntax errors, autocompletes while you write and even shows you smart suggestions that depend on the context that you're in. You can also click on an object in the code to see the full definition of its class and what attributes it supports. We recommend [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io/).
 

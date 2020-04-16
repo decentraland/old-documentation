@@ -160,7 +160,7 @@ Once the server is running, either remotely or locally, you can run `dcl start` 
 
 Once the scene preview is running, you can open multiple browser tabs pointing at the same local address. Each tab will instantiate a separate player in the same scene, these players will share the same scene state as the scene changes.
 
-See [preview a scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %}) for more details.
+See [preview a scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-preview-scene %}) for more details.
 
 #### Separate realms
 

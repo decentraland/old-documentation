@@ -13,7 +13,7 @@ You're also free to add any fields that you wish. In the future, custom fields c
 
 ## Scene parcels
 
-When [deploying](({{ site.baseurl }}{% post_url /deploy/2018-01-07-publishing %})) a scene, the `scene.json` file must include information about what parcels will be occupied by this scene in the Decentraland map. The CLI reads this information from off this field and deploys to those parcels directly.
+When [deploying](({{ site.baseurl }}{% post_url /development-guide/2018-01-07-publishing %})) a scene, the `scene.json` file must include information about what parcels will be occupied by this scene in the Decentraland map. The CLI reads this information from off this field and deploys to those parcels directly.
 
 ```json
  "scene": {

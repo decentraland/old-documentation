@@ -4,8 +4,9 @@ title: CLI Installation Guide
 description: Step-by-step guide to installing the SDK
 redirect_from:
   - /documentation/installation-guide/
+  - /getting-started/installation-guide/
 categories:
-  - getting-started
+  - development-guide
 type: Document
 ---
 

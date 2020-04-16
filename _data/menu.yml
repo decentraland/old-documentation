@@ -50,13 +50,6 @@
     - post: "general/2017-01-15-getting-started-marketplace-video.md"
     - post: "general/2018-01-02-faq.md"
 
-- title: Getting started
-  image: sets/getting-started.svg
-  children:
-    - post: "getting-started/2018-01-01-installation-guide.md"
-    - post: "getting-started/2018-01-02-coding-scenes.md"
-    - post: "getting-started/2018-01-04-preview-scene.md"
-
 - title: 3D modeling
   image: sets/3d-modeling.svg
   children:
@@ -70,38 +63,75 @@
   image: sets/getting-started.svg
   children:
     - post: "design-experience/2018-06-26-mvp-guidelines.md"
-    - post: "design-experience/2018-02-01-ux-ui-guide.md"
-    - post: "design-experience/2018-01-08-design-games.md"
+    - title: UX and UI Guide
+      post: "design-experience/2018-02-01-ux-ui-guide.md"
+    - title: Design constraints
+      post: "design-experience/2018-01-08-design-games.md"
 
 - title: Development guide
   image: sets/development-guide.svg
   children:
-    - post: "development-guide/2020-03-16-content-intro.md"
-    - post: "/Users/Nico/Documents/github/documentation/_posts/development-guide/2020-03-16-SDK-101.md"
-    - post: "development-guide/2018-02-1-entities-components.md"
-    - post: "development-guide/2018-02-2-component-groups.md"
-    - post: "development-guide/2018-02-3-systems.md"
-    - post: "development-guide/2018-01-11-scene-files.md"
+    - title: Getting started
+      children:
+        - title: SDK 101
+          post: "development-guide/2020-03-16-SDK-101.md"
+        - title: Installation guide
+          post: "getting-started/2018-01-01-installation-guide.md"
+        - title: Coding scenes
+          post: "getting-started/2018-01-02-coding-scenes.md"
+        - title: Preview scene
+          post: "getting-started/2018-01-04-preview-scene.md"
+    - title: Architecture overview
+      children:
+        - title: Entities & Components
+          post: "development-guide/2018-02-1-entities-components.md"
+        - title: Systems
+          post: "development-guide/2018-02-3-systems.md"
+        - title: Component groups
+          post: "development-guide/2018-02-2-component-groups.md"
+        - title: Scene Files
+          post: "development-guide/2018-01-11-scene-files.md"
     - post: "development-guide/2018-01-12-entity-positioning.md"
     - post: "development-guide/2018-02-6-shape-components.md"
-    - post: "development-guide/2018-01-06-scene-limitations.md"
     - post: "development-guide/2018-02-7-materials.md"
     - post: "development-guide/2018-02-10-sounds.md"
-    - post: "development-guide/2018-02-11-text.md"
     - post: "development-guide/2018-02-12-move-entities.md"
     - post: "development-guide/2018-02-13-3d-model-animations.md"
     - post: "development-guide/2018-02-14-click-events.md"
+    - post: "development-guide/2018-02-11-text.md"
     - post: "development-guide/2018-02-15-onscreen-ui.md"
-    - post: "development-guide/2018-02-16-custom-events.md"
-    - post: "development-guide/2018-02-20-special-types.md"
     - post: "development-guide/2018-02-22-user-data.md"
     - post: "development-guide/2018-02-27-raycasting.md"
-    - post: "development-guide/2018-02-28-game-objects.md"
-    - post: "development-guide/2020-02-20-smart-items.md"
-    - post: "development-guide/2018-02-24-network-connections.md"
     - post: "development-guide/2018-02-26-scene-metadata.md"
-    - post: "development-guide/2018-02-25-async-functions.md"
-    - post: "development-guide/2018-01-10-remote-scene-considerations.md"
+    - post: "development-guide/2018-01-06-scene-limitations.md"
+    - title: Blockchain integration
+      children:
+        - title: Display an NFT
+          post: "development-guide/2018-02-01-display-a-certified-nft.md"
+        - title: Blockchain operations
+          post: "development-guide/2018-01-07-scene-blockchain-operations.md"
+        - title: Second layer
+          post: "development-guide/2018-02-02-second-layer.md"
+    - title: Advanced
+      children:
+        - title: Game objects
+          post: "development-guide/2018-02-28-game-objects.md"
+        - title: Custom events
+          post: "development-guide/2018-02-16-custom-events.md"
+        - title: Multiplayer sync
+          post: "development-guide/2018-01-10-remote-scene-considerations.md"
+        - title: Special types
+          post: "development-guide/2018-02-20-special-types.md"
+        - title: Network connections
+          post: "development-guide/2018-02-24-network-connections.md"
+        - title: Async functions
+          post: "development-guide/2018-02-25-async-functions.md"
+    - title: Publishing
+      children:
+        - title: Deploy a scene
+          post: "development-guide/2018-01-07-publishing.md"
+        - title: Share a preview
+          post: "development-guide/2018-01-01-deploy-to-now.md"
     - post: "development-guide/2020-02-20-smart-items.md"
 
 - title: Builder
@@ -110,23 +140,14 @@
     - post: "builder/2020-03-16-builder-101.md"
     - post: "builder/2020-03-16-smart-items.md"
     - post: "builder/2020-03-16-manage-scenes.md"
-    - post: "builder/2018-01-06-scene-limitations.md"
+    - post: "builder/2020-03-16-scene-limitations.md"
     - post: "builder/2020-03-16-import-items.md"
     - post: "general/2019-03-19-builder-faq.md"
-
-- title: Deploy scenes
-  image: sets/deploy.svg
-  children:
-    - post: "deploy/2018-01-07-publishing.md"
-    - post: "deploy/2018-01-01-deploy-to-now.md"
 
 - title: Blockchain integration
   image: sets/blockchain-integration.svg
   children:
     - post: "blockchain-integration/2018-01-01-ethereum-essentials.md"
-    - post: "blockchain-integration/2018-02-01-display-a-certified-nft.md"
-    - post: "blockchain-integration/2018-01-07-scene-blockchain-operations.md"
-    - post: "blockchain-integration/2018-02-02-second-layer.md"
     - post: "blockchain-integration/2018-01-09-create-a-dapp.md"
 
 - title: Market

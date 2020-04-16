@@ -5,8 +5,9 @@ description: Learn what the SDK offers for performing operations with the Ethere
 redirect_from:
   - /sdk-reference/blockchain-operations/
   - /blockchain-interactions/scene-blockchain-operations
+  - /blockchain-integration/scene-blockchain-operations
 categories:
-  - blockchain-integration
+  - development-guide
 type: Document
 ---
 

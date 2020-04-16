@@ -3,8 +3,10 @@ date: 2018-02-07
 title: Second Layer Blockchain
 description: Use the Matic sidechain in your scene to enable much faster and cheaper blockchain transactions.
 categories:
-  - blockchain-integration
+  - development-guide
 type: Document
+redirect_from:
+  - /blockchain-integration/second-layer
 ---
 
 Any transaction that affects the blockchain takes time to complete, and costs gas. Both these things are obstacles to making blockchain gaming popular, because players usually don't have the patience to wait that long for their actions to take effect, and aren't willing to spend money on many transactions as they play.

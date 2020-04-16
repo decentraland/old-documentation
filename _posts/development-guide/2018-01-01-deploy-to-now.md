@@ -2,8 +2,10 @@
 date: 2018-01-01
 title: Upload a preview
 description: Upload a preview of your scene to a server and share it offchain.
+redirect_from:
+  - /deploy/deploy-to-now/
 categories:
-  - deploy
+  - development-guide
 type: Document
 ---
 

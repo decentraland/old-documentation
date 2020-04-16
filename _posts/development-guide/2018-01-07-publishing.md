@@ -1,12 +1,13 @@
 ---
 date: 2018-01-06
-title: Publishing the scene
+title: Publishing a scene
 description: How to publish my project?
 redirect_from:
   - /documentation/publishing/
   - /getting-started/publishing/
+  - /deploy/publishing/
 categories:
-  - deploy
+  - development-guide
 type: Document
 ---
 
@@ -18,13 +19,9 @@ Make sure of the following:
 
 - You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it.
 
-- You own the necessary amount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market]({{ site.baseurl }}{% post_url /blockchain-integration/2018-01-01-marketplace %}).
+- You own the necessary amount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market]({{ site.baseurl }}{% post_url /market/2018-01-01-marketplace %}).
 
 > Note: Multi-parcel scenes can only be deployed to adjacent parcels.
-
-<!--
-- If you're deploying a single scene to multiple adjacent parcels, you must first merge them together into an _Estate_ before you can deploy to them. See [Marketplace]({{ site.baseurl }}{% post_url /blockchain-integration/2018-01-01-marketplace %}) for instructions on how to create an estate.
--->
 
 ## Check scene data
 

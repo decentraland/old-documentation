@@ -1,4 +1,3 @@
-
 # Let’s build the metaverse together
 
 ### The Decentraland SDK provides everything you need to build interactive 3D content for Decentraland.
@@ -6,7 +5,7 @@
 ## Shortcuts
 
 <div class="shortcuts">
-  <a href="{{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}">
+  <a href="{{ site.baseurl }}{% post_url /development-guide/2018-01-02-coding-scenes %}">
     <div>
       <div class="image"><img src="/images/home/1.png"/></div>
       <div class="title">Coding scenes</div>
@@ -45,11 +44,11 @@ To install the CLI, run the following command in your command line tool of choic
 npm install -g decentraland
 ```
 
-Read [Installation guide]({{ site.baseurl }}{% post_url /getting-started/2018-01-01-installation-guide %}) for more details about installing the CLI.
+Read [Installation guide]({{ site.baseurl }}{% post_url /development-guide/2018-01-01-installation-guide %}) for more details about installing the CLI.
 
 ## Create your first scene
 
-Create a new scene by going to an *empty folder* and running the following command line command:
+Create a new scene by going to an _empty folder_ and running the following command line command:
 
 ```bash
 dcl init
@@ -61,7 +60,7 @@ Preview the 3D scene in your browser by running the following command in that sa
 dcl start
 ```
 
-Read more about the scene preview in [preview a scene]({{ site.baseurl }}{% post_url /getting-started/2018-01-04-preview-scene %})
+Read more about the scene preview in [preview a scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-04-preview-scene %})
 
 ## Edit the scene
 
@@ -83,7 +82,7 @@ class RotatorSystem {
       const transform = entity.getComponent(Transform)
 
       // mutate the rotation
-      transform.rotate(Vector3.Up(), dt * 10) 
+      transform.rotate(Vector3.Up(), dt * 10)
     }
   }
 }
@@ -123,7 +122,6 @@ cube.addComponent(
 )
 ```
 
-
 Change anything you want from this code, for example change the _x_ position of the first `cube` entity that's spawned. If you kept the preview running in a browser tab, you should now see the changes show in the preview.
 
 Download this 3D model of an avocado from [Google Poly](https://poly.google.com) in _glTF_ format. [link](https://poly.google.com/view/cgLBGFfm5FU)
@@ -134,14 +132,15 @@ Create a new folder under your scene’s directory named `/models`. Extract the 
 
 At the end of your scene’s code, add the following lines:
 
-
 ```ts
 let avocado = new Entity()
 avocado.addComponent(new GLTFShape("models/avocado.gltf"))
-avocado.addComponent(new Transform({ 
-    position: new Vector3(3, 1, 3), 
-    scale: new Vector3(10, 10, 10)
-    }))
+avocado.addComponent(
+  new Transform({
+    position: new Vector3(3, 1, 3),
+    scale: new Vector3(10, 10, 10),
+  })
+)
 engine.addEntity(avocado)
 ```
 
@@ -151,15 +150,15 @@ Check your scene preview once again to see that the 3D model is now there too.
 
 The lines you just added create a new [entity]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}), give it a [shape]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}) based on the 3D model you downloaded, and [set its position and scale]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}).
 
-Note that the avocado you added rotates, just like all other entities in the scene. That's because the `RotatorSystem` [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) that was defined in the default code of this scene is iterating over every entity in the scene and rotating it. 
+Note that the avocado you added rotates, just like all other entities in the scene. That's because the `RotatorSystem` [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) that was defined in the default code of this scene is iterating over every entity in the scene and rotating it.
 
-Read [coding-scenes]({{ site.baseurl }}{% post_url /getting-started/2018-01-02-coding-scenes %}) for a high-level understanding of how Decentraland scenes function.
+Read [coding-scenes]({{ site.baseurl }}{% post_url /development-guide/2018-01-02-coding-scenes %}) for a high-level understanding of how Decentraland scenes function.
 
 See the **Development guide** section for more instructions about adding content to your scene.
 
 ## Publish your scene
 
-Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /deploy/2018-01-07-publishing %}).
+Once you're done creating the scene and want to upload it to your LAND, see [publishing]({{ site.baseurl }}{% post_url /development-guide/2018-01-07-publishing %}).
 
 ## Scene examples
 

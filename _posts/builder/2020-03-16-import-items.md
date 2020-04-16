@@ -1,7 +1,7 @@
 ---
 date: 2018-02-11
-title: Builder 101
-description: Getting started with the Builder
+title: Import custom items
+description: Import your own 3D models and smart items to use in your scenes.
 categories:
   - builder
 type: Document
@@ -29,7 +29,7 @@ Once created, a custom asset pack is be available in every scene you edit as lon
 
 All 3d models need to be in _.glTF_ or _.glb_ format. You can convert other formats into these formats with various different editors and tools, see [3D modeling]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %}) for recommendations and tips.
 
-All materials in the models need to be either _basic material_ or _PBR_, and all textures need to be in sizes that are powers of two (ex: 256, 512). See [Scene limitations]({{ site.baseurl }}{% post_url /builder/2018-01-06-scene-limitations %}) for details.
+All materials in the models need to be either _basic material_ or _PBR_, and all textures need to be in sizes that are powers of two (ex: 256, 512). See [Scene limitations]({{ site.baseurl }}{% post_url /builder/2020-03-16-scene-limitations %}) for details.
 
 If a 3D model relies on external files besides the _.gltf_ file (like _.bin_ or _.png_ files) compress all the relevant files for the 3d model into a _.zip_ file. Then import only this _.zip_ file into the Builder.
 

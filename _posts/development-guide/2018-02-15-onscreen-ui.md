@@ -1,6 +1,6 @@
 ---
 date: 2018-02-15
-title: Onscreen UI
+title: 2D UI
 description: Learn how to create a UI for players in your scene. This is useful, for example, to display game-related information.
 categories:
   - development-guide
