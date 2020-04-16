@@ -6,8 +6,6 @@ description: Learn how to add colliders to 3D models imported to Decentraland.
 categories:
   - 3d-modeling
 type: Document
-set: 3d-modeling
-set_order: 10
 ---
 
 To enable collisions between a 3D model and users of your scene, you must create a new object to serve as a collider. Without a collider, players are able to walk through models as if they weren't there. For performance reasons, colliders usually have a much simpler geometry than the model itself.

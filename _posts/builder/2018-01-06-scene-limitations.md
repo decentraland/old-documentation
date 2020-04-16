@@ -7,8 +7,6 @@ redirect_from:
 categories:
   - builder
 type: Document
-set: builder
-set_order: 10
 ---
 
 In order to improve performance in the metaverse, we have established a set of limits that every scene must follow. If a

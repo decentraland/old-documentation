@@ -5,8 +5,6 @@ description: Learn when and how to run asynchronous functions in your scene's co
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 30
 ---
 
 ## Overview
@@ -66,7 +64,7 @@ You can add an `OnCLick` component to any entity to trigger an asynchronous lamb
 
 ```ts
 myEntity.addComponent(
-  new OnClick(e => {
+  new OnClick((e) => {
     log("clicked on the entity", e)
   })
 )
@@ -81,7 +79,7 @@ Another way to run asynchronous code is to instance an event listener. Event lis
 const input = Input.instance
 
 // Subscribe to an event
-input.subscribe("BUTTON_DOWN", e => {
+input.subscribe("BUTTON_DOWN", (e) => {
   log("pointerUp works", e)
 })
 ```

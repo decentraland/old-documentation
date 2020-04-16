@@ -13,8 +13,6 @@ redirect_from:
   - /development-guide/scene-content/
   - /development-guide/entity-interfaces/
 type: Document
-set: development-guide
-set_order: 1
 ---
 
 Decentraland scenes are built around [_entities_, _components_ and _systems_](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system). This is a common pattern used the architecture of several game engines, that allows for easy composability and scalability.

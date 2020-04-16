@@ -5,8 +5,6 @@ description: Upload a preview of your scene to a server and share it offchain.
 categories:
   - deploy
 type: Document
-set: deploy
-set_order: 7
 ---
 
 Previews of Decentraland scenes can run as standalone pages, just as you can run a preview locally in your machine. This is a fantastic way to share interactive previews of your content with others! It's also useful to test your scenes in other platforms, such as mobile.

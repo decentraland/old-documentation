@@ -7,8 +7,6 @@ redirect_from:
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 30
 ---
 
 Decentraland runs scenes locally in a player's browser. By default, players are able to see each other and interact directly, but each one interacts with the environment independently. Changes in the environment aren't shared between players by default. You need to implement this manually.

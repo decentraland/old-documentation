@@ -5,8 +5,6 @@ description: Getting started with the Builder
 categories:
   - builder
 type: Document
-set: builder
-set_order: 2
 ---
 
 ## Export a scene

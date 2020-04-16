@@ -8,8 +8,6 @@ redirect_from:
 categories:
   - market
 type: Document
-set: market
-set_order: 3
 ---
 
 You can use the Decentraland CLI to query info directly from LAND tokens in the blockchain and from the scene files uploaded to the content server.

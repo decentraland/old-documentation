@@ -3,10 +3,8 @@ date: 2018-01-01
 title: LAND Mortgages
 description: Apply for a LAND mortgage
 categories:
-  - blockchain-integration
+  - market
 type: Document
-set: blockchain-integration
-set_order: 9
 ---
 
 Before you can request a LAND mortgage, you will have to approve the Ripio Credit Network’s smart contracts to conduct transactions on your behalf using your MANA and RCN tokens. Open your **Account Settings** in the upper right corner, and check the two **LAND by Mortgage** boxes. (You only need MANA to request a mortgage, RCN will convert the MANA you use to the RCN token for you.)

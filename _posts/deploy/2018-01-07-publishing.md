@@ -8,8 +8,6 @@ redirect_from:
 categories:
   - deploy
 type: Document
-set: deploy
-set_order: 7
 ---
 
 ## Before you begin

@@ -5,8 +5,6 @@ description: How to move and animate entities in your scene
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 13
 ---
 
 3D models in _.glTF_ and _.glb_ format can include as many animations as you want in them. Animations tell the mesh how to move, by specifying a series of _keyframes_ that are laid out over time, the mesh then blends from one pose to the other to simulate continuous movement.

@@ -5,8 +5,6 @@ description: Use the Matic sidechain in your scene to enable much faster and che
 categories:
   - blockchain-integration
 type: Document
-set: blockchain-integration
-set_order: 8
 ---
 
 Any transaction that affects the blockchain takes time to complete, and costs gas. Both these things are obstacles to making blockchain gaming popular, because players usually don't have the patience to wait that long for their actions to take effect, and aren't willing to spend money on many transactions as they play.

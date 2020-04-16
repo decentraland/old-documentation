@@ -5,8 +5,6 @@ description: Emit custom events and add listeners for them
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 16
 ---
 
 Sometimes it's useful to decouple the different parts of your scene's code and make them interact with each other via sending events.

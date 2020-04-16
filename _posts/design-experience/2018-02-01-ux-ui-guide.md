@@ -5,8 +5,6 @@ description: Tips and practices to build scenes where players will want to stay 
 categories:
   - design-experience
 type: Document
-set: design-experience
-set_order: 9
 ---
 
 It’s of vital importance to us that Decentraland content creators are free to make use of their creativity to its full extent. This is essential for Decentraland to become a rewarding place to explore. However, it’s also important to keep in mind that the scenes in Decentraland will be visited by a wide variety of users and we want to make the scenes accessible to all of them. Because of this, we can’t ignore the need to establish a unified design criteria, a guide that can guarantee that players will find themselves with a homogeneously intuitive and enjoyable experience, no matter what scene they’re on.

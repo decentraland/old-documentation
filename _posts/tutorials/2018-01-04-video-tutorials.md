@@ -5,8 +5,6 @@ description: Videos walking you through how to create scenes in Decentraland.
 categories:
   - examples
 type: Document
-set: tutorials
-set_order: 3
 ---
 
 ## Escape room tutorial series

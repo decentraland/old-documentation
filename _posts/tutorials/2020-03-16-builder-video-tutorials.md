@@ -5,8 +5,6 @@ description: Videos walking you through how to use the Decentraland Builder to c
 categories:
   - examples
 type: Document
-set: tutorials
-set_order: 2
 ---
 
 ## Builder 101

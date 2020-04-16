@@ -7,8 +7,6 @@ categories:
 type: Document
 redirect_from:
   - /blockchain-interactions/display-a-certified-nft
-set: blockchain-integration
-set_order: 4
 ---
 
 You can display a 2D NFT (Non-Fungible Token) that you own in your Decentraland scenes. A glowing picture frame will appear around the NFT to certify that you indeed own it.

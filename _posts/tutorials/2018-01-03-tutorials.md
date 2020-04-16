@@ -5,8 +5,6 @@ description: Blogposts walking you through how to create scenes in Decentraland.
 categories:
   - examples
 type: Document
-set: tutorials
-set_order: 2
 ---
 
 ## Add SDK functionality to a Builder scene

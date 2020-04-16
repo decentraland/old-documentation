@@ -5,8 +5,6 @@ description: Getting started with the Builder
 categories:
   - builder
 type: Document
-set: builder
-set_order: 2
 ---
 
 You can import your own 3d models into the Builder. This allows you to pick models from a wide selection of free sources in the internet, or to create your own custom models.

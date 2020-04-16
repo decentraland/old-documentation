@@ -7,8 +7,6 @@ redirect_from:
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 6
 ---
 
 In order to improve performance in the metaverse, we have established a set of limits that every scene must follow. If a

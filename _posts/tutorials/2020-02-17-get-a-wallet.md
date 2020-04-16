@@ -8,8 +8,6 @@ redirect_from:
 categories:
   - examples
 type: Document
-set: tutorials
-set_order: 4
 ---
 
 ## What is a wallet?

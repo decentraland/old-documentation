@@ -5,8 +5,6 @@ description: What you need to keep in mind when designing a game for Decentralan
 categories:
   - design-experience
 type: Document
-set: design-experience
-set_order: 8
 ---
 
 This document covers some key points to consider when designing a game for Decentraland. Considerations such as the adjacency of other scenes and the distributed ownership of the LAND make Decentraland a unique place that requires you to reconsider assumptions you may have from previous games.

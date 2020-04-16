@@ -8,8 +8,6 @@ categories:
   - getting-started
 type: Document
 set: getting-started
-set_order: 5
-tag: introduction
 ---
 
 Once you have [built a new scene](https://docs.decentraland.org/#create-your-first-scene) or downloaded a [scene example]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) you can preview it locally.

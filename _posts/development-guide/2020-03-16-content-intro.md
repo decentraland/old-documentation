@@ -7,8 +7,6 @@ categories:
 redirect_from:
   - /documentation/scene-files/
 type: Document
-set: development-guide
-set_order: 1
 ---
 
 # Let’s build the metaverse together

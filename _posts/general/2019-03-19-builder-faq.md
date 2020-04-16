@@ -6,8 +6,6 @@ description: Frequently Asked Questions for the Decentraland Builder
 categories:
   - Decentraland
 type: Document
-set: general
-set_order: 2
 ---
 
 _How do scene limits work? What are triangles? How about materials? What’s going on?_

@@ -5,8 +5,6 @@ description: Learn about the different components that give entities their 3D sh
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 6
 ---
 
 Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an _entity_, and each entity can include _components_ that shape its characteristics and functionality.

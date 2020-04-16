@@ -5,8 +5,6 @@ description: Make your scenes interactive. Items with built-in behaviors.
 categories:
   - builder
 type: Document
-set: builder
-set_order: 3
 ---
 
 Smart items are Builder items that come with their own built-in interactive behavior.

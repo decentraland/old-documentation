@@ -5,8 +5,6 @@ description: Learn how to create a UI for players in your scene. This is useful,
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 15
 ---
 
 There are several special component types that are meant for using in a 2D screen space as part of the UI, instead of in the 3D world space. These components are displayed fixed on the player's screen.
