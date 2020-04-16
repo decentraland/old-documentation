@@ -42,15 +42,14 @@
   page: index.html
 
 - title: World
-  image: sets/getting-started.svg
+  image: sets/general.svg
   children:
     - post: "general/2018-01-01-introduction.md"
-    - post: "general/2018-01-03-glossary.md"
     - post: "general/2018-01-04-whitepaper.md"
     - post: "general/2018-01-02-faq.md"
 
 - title: Market
-  image: sets/general.svg
+  image: sets/getting-started.svg
   children:
     - post: "market/2018-01-01-marketplace.md"
     - post: "market/2020-02-16-land-manager.md"
@@ -61,7 +60,7 @@
 - title: Create
   image: sets/design-experience.svg
   children:
-    - post: "development-guide/2020-03-16-content-intro.md"
+    - page: "content-intro.html"
     - title: Design experiences
       children:
         - post: "design-experience/2018-06-26-mvp-guidelines.md"
@@ -169,7 +168,9 @@
 - title: Ethereum essentials
   image: sets/blockchain-integration.svg
   children:
-    - title: Get a wallet > beginners guide
+    - title: Get a wallet for beginners
       post: "tutorials/2020-02-17-get-a-wallet.md"
-    - post: "blockchain-integration/2018-01-01-ethereum-essentials.md"
+    - post: "general/2018-01-03-glossary.md"
+    - title: Inside the blockchain
+      post: "blockchain-integration/2018-01-01-ethereum-essentials.md"
     - post: "blockchain-integration/2018-01-09-create-a-dapp.md"
