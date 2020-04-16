@@ -6,7 +6,6 @@ description: Learn what material properties and textures are supported on 3D mod
 categories:
   - 3d-modeling
 type: Document
-set: 3d-modeling
 ---
 
 Materials are embedded into a _.gltf_ or _.glb_ file.

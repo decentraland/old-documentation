@@ -6,7 +6,6 @@ description: Learn how to create animations that can be embedded on 3D models im
 categories:
   - 3d-modeling
 type: Document
-set: 3d-modeling
 ---
 
 3D models can be animated in a Decentraland scene using animations. All animations of a 3D model must be embedded inside its _glTF_ file, you can't reference animations in separate files.
