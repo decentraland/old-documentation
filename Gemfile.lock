@@ -67,6 +67,9 @@ GEM
       jekyll (~> 3.3)
     jekyll-sitemap (1.2.0)
       jekyll (~> 3.3)
+    jekyll-target-blank (1.1.1)
+      jekyll (~> 3.0)
+      nokogiri (~> 1.8.2)
     jekyll-watch (2.1.1)
       listen (~> 3.0)
     kramdown (1.17.0)
@@ -130,8 +133,9 @@ DEPENDENCIES
   jekyll-redirect-from (= 0.13.0)
   jekyll-seo-tag (= 2.4.0)
   jekyll-sitemap (= 1.2.0)
+  jekyll-target-blank (~> 1.1)
   percy-cli (~> 1.4)
   tzinfo-data
 
 BUNDLED WITH
-   1.16.6
+   1.17.2

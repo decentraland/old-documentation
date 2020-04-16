@@ -66,6 +66,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-feed
   - jekyll-redirect-from
+  - jekyll-target-blank
 
 whitelist:
   - jekyll-redirect-from
