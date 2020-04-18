@@ -51,13 +51,15 @@ In brief terms, this is how a transaction is validated:
 3. The block is shared with other machines of the network. Each machine verifies that each transaction in a block is valid and checks the block’s hash to ensure it’s legitimate, then it adds it to its own version of the chain.
 4. The new block is propagated throughout the whole network. There’s a universally shared understanding that this transaction has taken place.
 
-#### Decentraland’s sidechain
+#### Sidechains
 
-Decentraland is working on creating a _sidechain_ (a special kind of blockchain) that will be able to handle transactions faster and cheaper than the main Ethereum network. This sidechain will be ideal for in-game transactions, as changes can occur closer to real time and at a very low cost. For transactions that involve valuable items, we’ll still recommend the main Ethereum chain, as it will be more secure.
+Decentraland is partnering with [Matic](https://matic.network/) to create a _sidechain_ (a special kind of blockchain) that will be able to handle transactions faster and cheaper than the main Ethereum network. This sidechain will be ideal for in-game transactions, as changes can occur closer to real time and at a very low cost. For transactions that involve valuable items, we’ll still recommend the main Ethereum chain, as it will be more secure.
 
 Each developer working on a scene will be able to choose whether to use the mainchain, the sidechain or a combination of both for different transactions.
 
 The sidechain will be kept interoperable with the Ethereum’s mainchain. You’ll be able to load tokens from the main chain into the side chain and vice versa. Transactions that take place in the sidechain are eventually reflected in the mainchain when the tokens “exit” back into the mainchain.
+
+Read more about this in [Second layer]({{ site.baseurl }}{% post_url /development-guide/2018-02-02-second-layer %}).
 
 #### Trigger transactions from a scene
 

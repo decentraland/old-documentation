@@ -45,8 +45,8 @@
   image: sets/general.svg
   children:
     - post: "general/2018-01-01-introduction.md"
-    - post: "general/2018-01-04-whitepaper.md"
     - post: "general/2018-01-02-faq.md"
+    - post: "general/2018-01-04-whitepaper.md"
 
 - title: Market
   image: sets/getting-started.svg
@@ -76,7 +76,7 @@
         - post: "builder/2020-03-16-scene-limitations.md"
         - post: "builder/2020-03-16-import-items.md"
         - post: "general/2019-03-19-builder-faq.md"
-    - title: Development guide
+    - title: SDK
       children:
         - title: Getting started
           children:
@@ -155,7 +155,9 @@
         - post: "tutorials/2018-01-04-video-tutorials.md"
         - post: "tutorials/2020-03-16-builder-video-tutorials.md"
     - title: Scene examples
-      post: "examples/2018-01-08-sample-scenes.md"
+      children:
+        - title: SDK examples
+          post: "examples/2018-01-08-sample-scenes.md"
     - title: Release notes
       children:
         - post: "releases/sdk/2019-04-25-6.0.md"
@@ -171,6 +173,6 @@
     - title: Get a wallet for beginners
       post: "tutorials/2020-02-17-get-a-wallet.md"
     - post: "general/2018-01-03-glossary.md"
-    - title: Inside the blockchain
+    - title: About the blockchain
       post: "blockchain-integration/2018-01-01-ethereum-essentials.md"
     - post: "blockchain-integration/2018-01-09-create-a-dapp.md"
