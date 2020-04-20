@@ -15,25 +15,16 @@
 
   > ul > li > div > span,
   > ul > li > div > a {
-    font-size: 17px;
+    font-size: 16px;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.45;
     letter-spacing: normal;
     color: #0a0f1f;
     display: flex;
-    padding: 10px 0;
+    padding: 8px 0;
     align-items: center;
-    width: 100%;
     text-transform: capitalize;
-
-    .active {
-      font-weight: 500;
-
-      _:-ms-lang(x) {
-        font-weight: 600;
-      }
-    }
 
     @media #{$tablet-landscape} {
       margin-left: 4px;
@@ -163,7 +154,6 @@
     }
 
     > li {
-      margin-bottom: 8px;
       width: 90%;
       max-width: 300px;
 
@@ -194,6 +184,11 @@
     margin: 0;
     user-select: none;
     cursor: pointer;
+
+    &:hover > div > span,
+    &:hover > div > a {
+      background: rgba(0, 0, 0, 0.03);
+    }
 
     &.open > div svg.rotate {
       transform: rotate(90deg);
@@ -241,7 +236,7 @@
 
       a,
       span {
-        padding: 10px 0;
+        padding: 8px 0;
       }
     }
   }
@@ -250,12 +245,15 @@
   a {
     display: block;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 24px;
     letter-spacing: -0.3px;
     text-transform: capitalize;
     color: #5c5c6e;
     outline: none;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
 
     &.active {
       color: #000;
@@ -269,6 +267,19 @@
 
     &:hover {
       color: #000;
+      background: rgba(0, 0, 0, 0.03);
     }
+  }
+
+  > li > div > a,
+  > li > div > span,
+  > li li > div > a,
+  > li li > div > span {
+    font-size: 16px;
+  }
+
+  > li li li > div > a,
+  > li li li > div > span {
+    font-size: 15px;
   }
 }
