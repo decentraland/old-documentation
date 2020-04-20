@@ -6,7 +6,7 @@
   }
 
   > ul > li > div svg {
-    margin: 0 8px;
+    margin: 0 8px 0 0;
   }
 
   > ul > li li > div svg .main {
@@ -22,7 +22,7 @@
     letter-spacing: normal;
     color: #0a0f1f;
     display: flex;
-    padding: 8px 0;
+    padding: 4px;
     align-items: center;
     text-transform: capitalize;
 
@@ -211,10 +211,10 @@
       svg {
         flex-shrink: 0;
         transition: transform 0.3s ease;
-        vertical-align: bottom;
+        vertical-align: middle;
 
         @media #{$tablet-landscape} {
-          margin-left: 0;
+          margin-left: 4px;
         }
 
         .main {
@@ -236,7 +236,7 @@
 
       a,
       span {
-        padding: 8px 0;
+        padding: 8px;
       }
     }
   }
@@ -269,6 +269,11 @@
       color: #000;
       background: rgba(0, 0, 0, 0.03);
     }
+  }
+
+  svg.rotate,
+  > ul > li > div svg.rotate {
+    margin: 0 0 0 8px;
   }
 
   > li > div > a,

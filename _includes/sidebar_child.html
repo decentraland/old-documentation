@@ -50,15 +50,11 @@
           {% include {{ child.image }} %}
         {% endif %}
 
-        {% if child.image == black and child.children != black %}
-          {% include sets/menu.svg %}
-        {% endif %}
-
-        {% if child.image == black and child.children == black %}
-          {% include sets/space.svg %}
-        {% endif %}
-
         {{ current_title }}
+
+        {% if child.children != black %}
+          {% include sets/SubMenu.svg %}
+        {% endif %}
       </{{current_tag}}>
     </div>
 
