@@ -185,8 +185,8 @@
     user-select: none;
     cursor: pointer;
 
-    &:hover > div > span,
-    &:hover > div > a {
+    > div:hover > span,
+    > div:hover > a {
       background: rgba(0, 0, 0, 0.03);
     }
 
@@ -196,6 +196,19 @@
 
     &.open > ul {
       height: auto;
+    }
+
+    &.active {
+      > div a,
+      > div span {
+        color: #000;
+        font-weight: 500;
+
+        _:-ms-lang(x),
+        & {
+          font-weight: 600;
+        }
+      }
     }
 
     > ul {
@@ -255,19 +268,15 @@
     border-radius: 8px;
     margin-bottom: 8px;
 
-    &.active {
+    &:hover {
       color: #000;
+      background: rgba(0, 0, 0, 0.03);
       font-weight: 500;
 
       _:-ms-lang(x),
       & {
         font-weight: 600;
       }
-    }
-
-    &:hover {
-      color: #000;
-      background: rgba(0, 0, 0, 0.03);
     }
   }
 
