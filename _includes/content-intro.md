@@ -16,9 +16,9 @@ The Builder uses the Decentraland SDK under the hood, generating the required co
 
 # The Builder
 
-Open the [Builder](builder.decentraland.org) and try it out!
+[Try the Builder](builder.decentraland.org)!
 
-Take a look at our [video tutorials]({{ site.baseurl }}{% post_url /tutorials/2020-03-16-builder-video-tutorials %})
+See our [video tutorials]({{ site.baseurl }}{% post_url /tutorials/2020-03-16-builder-video-tutorials %})
 
 Or read the [documentation]({{ site.baseurl }}{% post_url /builder/2020-03-16-builder-101 %})
 
@@ -30,7 +30,7 @@ Take a look at the [escape room video tutorial series]({{ site.baseurl }}{% post
 
 Or read the [documentation]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %})
 
-## Shortcuts
+### SDK Shortcuts
 
 <div class="shortcuts">
   <a href="{{ site.baseurl }}{% post_url /development-guide/2018-01-02-coding-scenes %}">
@@ -62,7 +62,7 @@ Several libraries are built upon the Decentraland SDK to help you build faster:
 
 - [Decentral API](https://www.decentral.io/docs/dcl/overview/): Simplifies making fast and cheap blockchain transactions triggered by the scene, using the Matic network.
 
-## SDK Scene examples
+### SDK Scene examples
 
 <div class="examples">
   <a target="_blank" href="https://github.com/decentraland-scenes/Hypno-wheels">
@@ -89,8 +89,12 @@ See [scene examples]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-s
 
 Also see [tutorials]({{ site.baseurl }}{% post_url /tutorials/2018-01-03-tutorials %}) for detailed instructions for building scenes like these.
 
-## Other useful information
+# 3d Modeling
 
-- [Design constraints for games]({{ site.baseurl }}{% post_url /design-experience/2018-01-08-design-games %})
-- [3D modeling]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %})
-- [Scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %})
+If you have experience with 3D modeling, you can use any 3rd party modeling tool to create 3D models that can be used in Decentraland scenes. It's easy to [import them into the Builder]({{ site.baseurl }}{% post_url /builder/2020-03-16-import-items %}).
+
+See [3D modeling]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %}) for tips and tricks, and information about supported features and formats for 3D models.
+
+# Design your experience
+
+No matter which tools you'll use, it's always recommended that you think carefully about what you want to build before you start building it. Read the [Design experiences]({{ site.baseurl }}{% post_url /design-experience/2018-06-26-mvp-guidelines %}) section to better understand the context, limitations and possibilities that you'll have as your design space when creating a scene for Decentraland.
