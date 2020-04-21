@@ -237,14 +237,10 @@
     }
 
     ul {
-      padding-left: 18px;
+      padding-left: 28px;
 
-      @media #{$tablet-landscape} {
-        padding-left: 14px;
-      }
-
-      @media #{$desktop} {
-        padding-left: 22px;
+      ul {
+        padding-left: 16px;
       }
 
       a,
