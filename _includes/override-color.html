@@ -5,9 +5,10 @@ a { color: {{ include.accent_color }} }
 .tutorial-content ul li:before { color: {{ include.accent_color }} }
 .copy-code .codeblock-btn { color: {{ include.accent_color }} }
 .copy-code .codeblock-btn svg g path.main { fill: {{ include.accent_color }} }
-.sidebar li > div:hover > a { color: {{ include.accent_color }} }
-.sidebar li > div:hover > span { color: {{ include.accent_color }} }
-.sidebar li > div:hover svg .main { fill: {{ include.accent_color }} }
+.sidebar li > div > a.current ,
+.sidebar li > div > span.current { color: {{ include.accent_color }} }
+.sidebar li > div > a.current svg .main ,
+.sidebar li > div > span.current svg .main { fill: {{ include.accent_color }} }
 .sidebar .dropdown svg .main { fill: {{ include.accent_color }} }
 .feedback .buttons button.yes:hover { background-color: {{ include.accent_color }} }
 .feedback .textarea { border-bottom-color: {{ include.accent_color }} }

@@ -6,7 +6,7 @@
   }
 
   > ul > li > div svg {
-    margin: 0 8px 0 0;
+    margin: 0 8px 2px 0;
   }
 
   > ul > li li > div svg .main {
@@ -22,7 +22,7 @@
     letter-spacing: normal;
     color: #0a0f1f;
     display: flex;
-    padding: 4px;
+    padding: 6px 12px 8px;
     align-items: center;
     text-transform: capitalize;
 
@@ -249,7 +249,7 @@
 
       a,
       span {
-        padding: 8px;
+        padding: 6px 12px 8px;
       }
     }
   }
@@ -266,7 +266,8 @@
     border-radius: 8px;
     margin-bottom: 8px;
 
-    &:hover {
+    &:hover,
+    &.current {
       color: #000;
       background: rgba(0, 0, 0, 0.03);
       font-weight: 500;
