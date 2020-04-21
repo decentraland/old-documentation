@@ -38,7 +38,7 @@
 #   experience, please be careful :)
 
 - title: Home
-  image: sets/home.svg
+  image: sets/HomeIcon.svg
   page: index.html
 
 - title: World
