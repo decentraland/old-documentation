@@ -258,11 +258,9 @@
   a {
     display: block;
     text-decoration: none;
-    font-size: 14px;
     line-height: 24px;
     letter-spacing: -0.3px;
     text-transform: capitalize;
-    color: #5c5c6e;
     outline: none;
     width: 100%;
     border-radius: 8px;
@@ -285,15 +283,23 @@
     margin: 0 0 0 8px;
   }
 
-  > li > div > a,
-  > li > div > span,
-  > li li > div > a,
-  > li li > div > span {
+  ul > li > div > a,
+  ul > li > div > span,
+  ul > li li > div > a,
+  ul > li li > div > span {
     font-size: 16px;
+    color: #000;
   }
 
-  > li li li > div > a,
-  > li li li > div > span {
+  ul > li li li > div > a,
+  ul > li li li > div > span {
     font-size: 15px;
+    color: #444444;
+  }
+
+  ul > li li li li div > a,
+  ul > li li li li div > span {
+    font-size: 14px;
+    color: #6d6d6d;
   }
 }
