@@ -13,7 +13,7 @@ type: Document
 
 **Decentraland is a decentralized virtual reality platform powered by the Ethereum blockchain. Within the Decentraland platform, users can create, experience, and monetize their content and applications.**
 
-[Enter and explore decentraland](play.decentraland.org)
+[Enter and explore decentraland](https://play.decentraland.org)
 
 The finite, traversable, 3D virtual space within Decentraland is called **LAND**, a non-fungible digital asset maintained in an Ethereum smart contract. Land is divided into **parcels** that are identified by cartesian coordinates (x,y). These parcels are permanently owned by members of the community and are purchased using MANA, Decentraland’s cryptocurrency token. This gives users full control over the environments and applications that they create, which can range from anything like static 3D scenes to more interactive applications or games.
 
