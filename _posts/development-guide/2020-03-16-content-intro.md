@@ -4,8 +4,6 @@ title: Overview
 description: How you can create content for Decentraland
 categories:
   - development-guide
-redirect_from:
-  - /documentation/scene-files/
 type: Document
 ---
 
