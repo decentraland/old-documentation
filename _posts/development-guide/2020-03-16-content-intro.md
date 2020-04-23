@@ -23,7 +23,7 @@ The Builder uses the Decentraland SDK under the hood, generating the required co
 
 # The Builder
 
-Open the [Builder](builder.decentraland.org) and try it out!
+Open the [Builder](https://builder.decentraland.org) and try it out!
 
 Take a look at our [video tutorials]({{ site.baseurl }}{% post_url /tutorials/2020-03-16-builder-video-tutorials %})
 
