@@ -2,35 +2,32 @@
   min-height: 56px;
 
   @media #{$tablet-landscape} {
-    padding: 36px 64px 0 0;
+    padding: 36px 36px 0 0;
   }
 
-  .sidebar-h3 {
-    font-size: 17px;
+  > ul > li > div svg {
+    margin: 0 8px 2px 0;
+  }
+
+  > ul > li li > div svg .main {
+    fill: #5c5c6e;
+  }
+
+  > ul > li > div > span,
+  > ul > li > div > a {
+    font-size: 16px;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.45;
     letter-spacing: normal;
     color: #0a0f1f;
     display: flex;
-    padding: 10px 0;
+    padding: 6px 12px 8px;
     align-items: center;
-    width: 100%;
     text-transform: capitalize;
 
     @media #{$tablet-landscape} {
       margin-left: 4px;
-    }
-  }
-
-  .active {
-    .sidebar-h3 {
-      font-weight: 500;
-
-      _:-ms-lang(x),
-      & {
-        font-weight: 600;
-      }
     }
   }
 
@@ -121,7 +118,7 @@
     list-style: none;
   }
 
-  ul.parent {
+  > ul {
     padding: 8px 16px 8px 8px;
     position: fixed;
     transition: transform $default-transition, opacity $default-transition;
@@ -157,7 +154,6 @@
     }
 
     > li {
-      margin-bottom: 8px;
       width: 90%;
       max-width: 300px;
 
@@ -187,21 +183,51 @@
   li {
     margin: 0;
     user-select: none;
+    cursor: pointer;
+
+    > div:hover > span,
+    > div:hover > a {
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    &.open > div svg.rotate {
+      transform: rotate(90deg);
+    }
+
+    &.open > ul {
+      height: auto;
+    }
+
+    &.active {
+      > div a,
+      > div span {
+        color: #000;
+        font-weight: 500;
+
+        _:-ms-lang(x),
+        & {
+          font-weight: 600;
+        }
+      }
+    }
+
+    > ul {
+      transition: height 0.3s ease;
+      overflow: hidden;
+      height: 0;
+    }
 
     > div {
       display: flex;
       align-items: center;
 
       svg {
-        margin: 8px;
         flex-shrink: 0;
+        transition: transform 0.3s ease;
+        vertical-align: middle;
 
         @media #{$tablet-landscape} {
-          margin-left: 0;
-        }
-
-        @media #{$desktop} {
-          margin-left: 8px;
+          margin-left: 4px;
         }
 
         .main {
@@ -210,35 +236,36 @@
       }
     }
 
-    > ul {
-      padding-left: 42px;
+    ul {
+      padding-left: 28px;
 
-      @media #{$tablet-landscape} {
-        padding-left: 38px;
+      ul {
+        padding-left: 16px;
       }
 
-      @media #{$desktop} {
-        padding-left: 46px;
-      }
-
-      li > a {
-        padding: 10px 0;
+      a,
+      span {
+        padding: 6px 12px 8px;
       }
     }
   }
 
+  span,
   a {
     display: block;
     text-decoration: none;
-    font-size: 15px;
     line-height: 24px;
     letter-spacing: -0.3px;
     text-transform: capitalize;
-    color: #5c5c6e;
     outline: none;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
 
-    &.active {
+    &:hover,
+    &.current {
       color: #000;
+      background: rgba(0, 0, 0, 0.03);
       font-weight: 500;
 
       _:-ms-lang(x),
@@ -246,9 +273,30 @@
         font-weight: 600;
       }
     }
+  }
 
-    &:hover {
-      color: #000;
-    }
+  svg.rotate,
+  > ul > li > div svg.rotate {
+    margin: 0 0 0 8px;
+  }
+
+  ul > li > div > a,
+  ul > li > div > span,
+  ul > li li > div > a,
+  ul > li li > div > span {
+    font-size: 16px;
+    color: #000;
+  }
+
+  ul > li li li > div > a,
+  ul > li li li > div > span {
+    font-size: 15px;
+    color: #444444;
+  }
+
+  ul > li li li li div > a,
+  ul > li li li li div > span {
+    font-size: 14px;
+    color: #6d6d6d;
   }
 }

@@ -5,8 +5,6 @@ description: Use raycasting to trace a line in space and query for collisions wi
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 27
 ---
 
 Raycasting is a fundamental tool in game development. With raycasting, you can trace an imaginary line in space, and query if any entities are intersected by the line. This is useful for calculating lines of sight, trajectories of bullets, pathfinding algorithms and many other applications.
@@ -16,7 +14,6 @@ When a player clicks or pushes the primary or secondary button, a ray is traced 
 ## PhysicsCast
 
 The `PhysicsCast` object is a static class that serves as the main raycasting interface. You can refer to it in your scene as `PhysicsCast.instance`. You'll see it has several methods that are all specific to raycasting.
-
 
 ```typescript
 let physicsCast = PhysicsCast.instance
@@ -30,16 +27,15 @@ A ray object describes the invisible ray that will be used to query for entities
 - `direction`: _Vector3_ describing the direction (as if the ray started from _0,0,0_).
 - `distance`: _number_ to set the length with which this ray will be traced.
 
-
 ```typescript
 let originPos = new Vector3(2, 1, 4)
 let direction = new Vector3(0, 1, 1)
 
 let ray: Ray = {
-      origin: originPos,
-      direction: direction,
-      distance: 10
-    }
+  origin: originPos,
+  direction: direction,
+  distance: 10,
+}
 ```
 
 As an alternative, you can also generate a ray from providing two points in space. Both the direction and distance will be implicit in this information. To do this, use the `getRayFromPositions()` method of the `PhysicsCast` object.
@@ -66,7 +62,7 @@ let rayFromCamera = physicsCast.getRayFromCamera(1000)
 Raycast queries are run by the `PhysicsCast` class. there are two methods available for doing this:
 
 - `hitFirst()`: this method only returns the first hit entity, starting from the origin point.
-- `hitAll()`: this method returns all hit entities, from the origin through to the length of the ray. 
+- `hitAll()`: this method returns all hit entities, from the origin through to the length of the ray.
 
 Both these methods need to be passed the following:
 
@@ -89,15 +85,17 @@ let originPos = new Vector3(2, 1, 4)
 let direction = new Vector3(0, 1, 1)
 
 let ray: Ray = {
-      origin: originPos,
-      direction: direction,
-      distance: 10
-	}
+  origin: originPos,
+  direction: direction,
+  distance: 10,
+}
 
-physicsCast.hitFirst(ray, (e) => {
-	log(e.entity.entityId)
-	},
-	0
+physicsCast.hitFirst(
+  ray,
+  (e) => {
+    log(e.entity.entityId)
+  },
+  0
 )
 ```
 
@@ -110,17 +108,19 @@ let originPos = new Vector3(2, 1, 4)
 let direction = new Vector3(0, 1, 1)
 
 let ray: Ray = {
-      origin: originPos,
-      direction: direction,
-      distance: 10
-	}
+  origin: originPos,
+  direction: direction,
+  distance: 10,
+}
 
-physicsCast.hitAll(ray, (e) => {
-		for (let entityHit of e.entities) {
-			log(entityHit.entity.entityId)
-		}
-	},
-	0
+physicsCast.hitAll(
+  ray,
+  (e) => {
+    for (let entityHit of e.entities) {
+      log(entityHit.entity.entityId)
+    }
+  },
+  0
 )
 ```
 
@@ -150,24 +150,25 @@ let originPos = new Vector3(2, 1, 4)
 let direction = new Vector3(0, 1, 1)
 
 let ray: Ray = {
-      origin: originPos,
-      direction: direction,
-      distance: 10
-	}
+  origin: originPos,
+  direction: direction,
+  distance: 10,
+}
 
-physicsCast.hitFirst(ray, (e) => {
-		if (e.didHit) {
-			engine.entities[e.entity.entityId].addComponentOrReplace(hitMaterial)
-		}
-	},
-	0
+physicsCast.hitFirst(
+  ray,
+  (e) => {
+    if (e.didHit) {
+      engine.entities[e.entity.entityId].addComponentOrReplace(hitMaterial)
+    }
+  },
+  0
 )
 ```
 
-> Tip: To reference an entity based on its ID, use the engine's `entities` array, like this: `engine.entities[e.entity.entityId]`. 
+> Tip: To reference an entity based on its ID, use the engine's `entities` array, like this: `engine.entities[e.entity.entityId]`.
 
 The example below does the same, but dealing with an array of entities returned from the `hitAll()` function:
-
 
 ```typescript
 let physicsCast = PhysicsCast.instance
@@ -176,22 +177,25 @@ let originPos = new Vector3(2, 1, 4)
 let direction = new Vector3(0, 1, 1)
 
 let ray: Ray = {
-      origin: originPos,
-      direction: direction,
-      distance: 10
-	}
+  origin: originPos,
+  direction: direction,
+  distance: 10,
+}
 
-physicsCast.hitAll(ray, (e) => {
-		if (e.didHit) {
-			for (let entityHit of e.entities) {
-				engine.entities[entityHit.entity.entityId].addComponentOrReplace(hitMaterial)
-			}	
-		}
-	},
-	0
+physicsCast.hitAll(
+  ray,
+  (e) => {
+    if (e.didHit) {
+      for (let entityHit of e.entities) {
+        engine.entities[entityHit.entity.entityId].addComponentOrReplace(
+          hitMaterial
+        )
+      }
+    }
+  },
+  0
 )
 ```
-
 
 ## Recurrent raycasting
 
@@ -202,39 +206,35 @@ Both the `hitAll` and `hitFirst` methods have a third argument that takes a _ray
 In some cases you may want to have several separate raycast queries running at the same time, for example you might have a character that sends multiple rays in different directions to check for walls as it walks around. In these cases you should make sure that each raycast query has a separate id. Otherwise, if these different queries share a same id, the results of each might overwrite one another and valuable information will be lost on every frame.
 
 ```typescript
-
-const Ray1 = {origin:Vector3.zero, direction:Vector3.Left()}
-const Ray2 = {origin:Vector3.zero, direction:Vector3.Right()}
+const Ray1 = { origin: Vector3.zero, direction: Vector3.Left() }
+const Ray2 = { origin: Vector3.zero, direction: Vector3.Right() }
 let id1: number = 0
 let id2: number = 1
 
 class RaycastSystem implements ISystem {
-  
   update(dt: number) {
     PhysicsCast.instance().hitFirst(
-		Ray1, 
-    	(e)=> {
-         	// Do stuff
-    	},
-    	id1
-	)
+      Ray1,
+      (e) => {
+        // Do stuff
+      },
+      id1
+    )
 
     PhysicsCast.instance().hitFirst(
-    	Ray2, 
-    	(e)=> {
-         	// Do stuff
-    	},
-    	id2
-	)
+      Ray2,
+      (e) => {
+        // Do stuff
+      },
+      id2
+    )
   }
 }
 
 engine.addSystem(RaycastSystem)
 ```
 
-This example runs two raycast queries on every frame of the scene.  Since they each have a different id, the requests from the first query and from the second query are handled on different queues that are independent from the other.
-
-
+This example runs two raycast queries on every frame of the scene. Since they each have a different id, the requests from the first query and from the second query are handled on different queues that are independent from the other.
 
 <!--
 
@@ -250,11 +250,11 @@ would the entity's colliders bother?
 ## Hit avatars
 
 
-PhysicsCast.hitFirstAvatar( query:RaycastQuery, 
+PhysicsCast.hitFirstAvatar( query:RaycastQuery,
 			    hitCallback:(e:RaycastHitAvatar) => {} )
 
-PhysicsCast.hitAllAvatars( query:RaycastQuery, 
-			  hitCallback:(e:RaycastHitAvatars) => {} )		
+PhysicsCast.hitAllAvatars( query:RaycastQuery,
+			  hitCallback:(e:RaycastHitAvatars) => {} )
 
 
 ## Cast a sphere

@@ -1,0 +1,66 @@
+<ul>
+{% for child in include.children %}
+  {% assign current = nil %}
+  {% assign current_path = nil %}
+
+  {% if child.post != black %}
+    {% assign current_path = '_posts/' | append: child.post %}
+  {% endif %}
+  {% if child.page != black %}
+    {% assign current_path = child.page %}
+  {% endif %}
+
+  {% if child.post != black %}
+    {% assign current = site.posts | where: "path", current_path | first %}
+  {% endif %}
+  {% if child.page != black %}
+    {% assign current = site.pages | where: "path", current_path | first %}
+  {% endif %}
+
+  {% if child.children != black%}<li class="toggle">{% else %}<li>{% endif %}
+    <div>
+      {% assign current_title = "??????" %}
+      {% assign current_tag = "span" %}
+      {% assign current_class = "" %}
+      {% assign current_attrs = "" %}
+
+      {% if current != black %}
+        {% assign current_title = current.title %}
+        {% assign current_attrs = 'href="' | append: site.baseurl | append: current.url | append: '"' %}
+      {% endif %}
+
+      {% if child.title != black %}  
+        {% assign current_title = child.title %}   
+      {% endif %}
+
+      {% if child.url != black %}
+        {% assign current_attrs = 'href="' | append: child.url | append: '" target="_blank" rel="noopener noreferer"' %}
+      {% endif %}
+
+      {% if current.path == page.path %}
+        {% assign current_class = "active current" %}
+      {% endif %}
+
+      {% if current_attrs != empty %}
+        {% assign current_tag = "a" %}
+      {% endif %}
+
+      <{{current_tag}} class="{{current_class}}" {{current_attrs}}>
+        {% if child.image != black %}
+          {% include {{ child.image }} %}
+        {% endif %}
+
+        {{ current_title }}
+
+        {% if child.children != black %}
+          {% include sets/SubMenu.svg %}
+        {% endif %}
+      </{{current_tag}}>
+    </div>
+
+    {% if child.children != black%}
+    {% include sidebar_child.html children=child.children %}
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>

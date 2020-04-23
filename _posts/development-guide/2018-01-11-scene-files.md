@@ -7,8 +7,6 @@ categories:
 redirect_from:
   - /documentation/scene-files/
 type: Document
-set: development-guide
-set_order: 4
 ---
 
 After [creating a new scene](https://docs.decentraland.org/#create-your-first-scene) using the CLI, the scene folder will have a series of files with default content.
@@ -54,9 +52,11 @@ const cube = new Entity()
 cube.addComponent(new BoxShape())
 
 // Add a transform component to the entity
-cube.addComponent(new Transform({
-  position: new Vector3(5, 0, 5)
-}))
+cube.addComponent(
+  new Transform({
+    position: new Vector3(5, 0, 5),
+  })
+)
 
 // Add the entity to the engine
 engine.addEntity(cube)
@@ -97,7 +97,7 @@ Directories containing a _tsconfig.json_ file are root directories for TypeScrip
 
 Keep in mind that when you deploy your scene to Decentraland, any assets or external libraries that are needed to use your scene must be either packaged inside the scene folder or available via a remote server.
 
-Anything that is meant to run in the user's client must located inside the scene folder. You shouldn't reference files or libraries that are installed elsewhere in your local machine, because they won't be available to the deployed scene.
+Anything that is meant to run in the player's client must located inside the scene folder. You shouldn't reference files or libraries that are installed elsewhere in your local machine, because they won't be available to the deployed scene.
 
 We suggest using these folder names consistently for storing the different types of assets that your scene might need:
 
@@ -118,9 +118,9 @@ All scenes include a _.dclignore_ file, this file specifies what files in the sc
 
 For example, you might like to keep the Blender files for the 3D models in your scene inside the scene folder, but you want to prevent those files from being deployed to Decentraland. In that case, you could add `*.blend` to _.dclignore_ to ignore all files with that extension.
 
-| What to ignore | Example      | Description                                                                             |
-| -------------- | ------------ | --------------------------------------------------------------------------------------- |
+| What to ignore | Example     | Description                                                                             |
+| -------------- | ----------- | --------------------------------------------------------------------------------------- |
 | Specific files | `BACKUP.ts` | Ignores a specific file                                                                 |
-| Folders        | `drafts/`    | Ignores entire contents of a folder and its subfolders                                  |
-| Extensions     | `*.blend`    | Ignores all files with a given extension                                                |
-| Name sections  | `test*`      | Ignores all files with names that match the query. In this case, that start with _test_ |
+| Folders        | `drafts/`   | Ignores entire contents of a folder and its subfolders                                  |
+| Extensions     | `*.blend`   | Ignores all files with a given extension                                                |
+| Name sections  | `test*`     | Ignores all files with names that match the query. In this case, that start with _test_ |

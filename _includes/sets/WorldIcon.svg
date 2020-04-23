@@ -1,0 +1,12 @@
+<svg width="16" height="16" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.5 16C12.6421 16 16 12.6421 16 8.5C16 4.35786 12.6421 1 8.5 1C4.35786 1 1 4.35786 1 8.5C1 12.6421 4.35786 16 8.5 16Z" stroke="currentColor" stroke-width="0.46875"/>
+<path d="M10.6924 11.529H6.5481V6.5254L10.6924 11.529Z" stroke="currentColor" stroke-width="0.46875"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1.62622 11.5H6.31372V5.875L1.62622 11.5Z" fill="currentColor"/>
+<path d="M14.0178 13.0175H11.2956V9.55271L14.0178 13.0175Z" stroke="currentColor" stroke-width="0.46875"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.62622 13H11.0612V8.87502L7.62622 13Z" fill="currentColor"/>
+<line x1="1.57251" y1="11.529" x2="10.01" y2="11.529" stroke="currentColor" stroke-width="0.46875"/>
+<line x1="2.37402" y1="13.0175" x2="14.5114" y2="13.0175" stroke="currentColor" stroke-width="0.46875"/>
+<line x1="3.97711" y1="14.5061" x2="12.9084" y2="14.5061" stroke="currentColor" stroke-width="0.46875"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.0612 7.75C12.0968 7.75 12.9362 6.91053 12.9362 5.875C12.9362 4.83947 12.0968 4 11.0612 4C10.0257 4 9.18625 4.83947 9.18625 5.875C9.18625 6.91053 10.0257 7.75 11.0612 7.75Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6.31372 4.75C6.83149 4.75 7.25122 4.33027 7.25122 3.8125C7.25122 3.29473 6.83149 2.875 6.31372 2.875C5.79595 2.875 5.37622 3.29473 5.37622 3.8125C5.37622 4.33027 5.79595 4.75 6.31372 4.75Z" fill="currentColor"/>
+</svg>

@@ -7,14 +7,11 @@ categories:
 redirect_from:
   - /documentation/entity-positioning/
 type: Document
-set: development-guide
-set_order: 5
 ---
 
 You can set the _position_, _rotation_ and _scale_ of an entity by using the `Transform` component. This can be used on any entity, which can also a primitive shape component (cube, sphere, plane, etc) or a 3D model component (glTF, Obj).
 
 <img src="/images/media/ecs-simple-components.png" alt="nested entities" width="400"/>
-
 
 ```ts
 // Create a new entity
@@ -29,11 +26,13 @@ ball.getComponent(Transform).scale.set(2, 2, 2)
 For brevity, you can also create a `Transform` entity and give it initial values in a single statement, passing it an object that can optionally include _position_, _rotation_ and _scale_ properties.
 
 ```ts
-myEntity.addComponent(new Transform({ 
-    position: new Vector3(5, 1, 5), 
+myEntity.addComponent(
+  new Transform({
+    position: new Vector3(5, 1, 5),
     rotation: new Quaternion(0, 0, 0, 0),
-    scale: new Vector3(2, 2, 2)
-    }))
+    scale: new Vector3(2, 2, 2),
+  })
+)
 ```
 
 To move, rotate or resize an entity in your scene, change the values on this component incrementally, frame by frame. See [Move entities]({{ site.baseurl }}{% post_url /development-guide/2018-02-12-move-entities %}) for more details and best practices. You can also use the helper functions in the [utils library](https://www.npmjs.com/package/decentraland-ecs-utils) to achieve this more easily.
@@ -44,7 +43,7 @@ To move, rotate or resize an entity in your scene, change the values on this com
 
 ```ts
 // Create transform with a predefined position
-let myTransform = new Transform({position: new Vector3(1, 0, 1)})
+let myTransform = new Transform({ position: new Vector3(1, 0, 1) })
 
 // Set each axis individually
 myTransform.position.x = 3
@@ -61,7 +60,6 @@ myTransform.position = new Vector3(5, 1, 5)
 > Note: When setting the value of the position with an object, you can either use a `Vector3` object, or any other object with _x_, _y_ and _z_ fields.
 
 When setting a position, keep the following considerations in mind:
-
 
 - The numbers in a position vector represent _meters_ (unless the entity is a child of a scaled entity).
 
@@ -89,7 +87,7 @@ When setting a position, keep the following considerations in mind:
 
 ```ts
 // Create transform with a predefined rotation in Quaternions
-let myTransform = new Transform({rotation: new Quaternion(0, 0, 0, 1)})
+let myTransform = new Transform({ rotation: new Quaternion(0, 0, 0, 1) })
 
 // Set rotation with four numbers (x, y, z, w)
 myTransform.rotation.set(0, 0, 1, 0)
@@ -102,7 +100,7 @@ You can also set the rotation field with [_Euler_ angles](https://en.wikipedia.o
 
 ```ts
 // Create transform with a predefined rotation in Euler angles
-let myTransform = new Transform({rotation: Quaternion.Euler(0, 90, 0)})
+let myTransform = new Transform({ rotation: Quaternion.Euler(0, 90, 0) })
 
 // Use the .setEuler() function
 myTransform.rotation.setEuler(0, 90, 180)
@@ -127,18 +125,19 @@ Add a _Billboard_ component to an entity so that it always rotates to face the p
 
 Billboards were a common technique used in 3D games of the 90s, where most entities were 2D planes that always faced the player. The same idea can also be used to rotate a 3D model.
 
-
 ```ts
 let box = new Entity()
 box.addComponent(new BoxShape())
-box.addComponent(new Transform({
-  position: new Vector3(5, 1, 5)
-}))
+box.addComponent(
+  new Transform({
+    position: new Vector3(5, 1, 5),
+  })
+)
 box.addComponent(new Billboard())
 engine.addEntity(box)
 ```
 
-You can choose which axis to rotate as a billboard. For example, if the Billboard of a cube only rotates in the Y axis, it will follow the player when moving at ground level, but the user will be able to look at it from above or from below.
+You can choose which axis to rotate as a billboard. For example, if the Billboard of a cube only rotates in the Y axis, it will follow the player when moving at ground level, but the player will be able to look at it from above or from below.
 
 The three optional parameters when creating a `Billboard` component are booleans that refer to the _x_, _y_, and _z_ axis. They are all `true` by default.
 
@@ -156,11 +155,11 @@ let YBillboard = new Billboard(false, true ,false)
 let ZBillboard = new Billboard(false, false ,true)
 ```
 
-Tip: To rotate an entity so that it follows the user around while at ground level, give it _Y_ axis rotation.
+Tip: To rotate an entity so that it follows the player around while at ground level, give it _Y_ axis rotation.
 
 Billboards are also very handy to add to _text_ entities, since it makes them always legible.
 
-The `rotation` value of the entity's `Transform` component doesn't change as the billboard follows users around.
+The `rotation` value of the entity's `Transform` component doesn't change as the billboard follows players around.
 
 If an entity has both a `Billboard` component and `Transform` component with `rotation` values, players will see the entity rotating as a billboard. If the billboard doesn't affect all axis, the remaining axis will be rotated according to the `Transform` component.
 
@@ -194,7 +193,7 @@ You can either set each dimension individually, or use the `set` operation to se
 
 ```ts
 // Create a transform with a predefined scale
-let myTransform = new Transform({scale: new Vector3(2, 2, 2)})
+let myTransform = new Transform({ scale: new Vector3(2, 2, 2) })
 
 // Set each dimension individually
 myTransform.scale.x = 1
@@ -230,14 +229,14 @@ childEntity.setParent(parentEntity)
 // Create a transform for the parent
 let parentTransform = new Transform({
   position: new Vector3(3, 1, 1),
-  scale: new Vecot3(0.5, 0.5, 0.5)
+  scale: new Vecot3(0.5, 0.5, 0.5),
 })
 
 parentEntity.addComponent(parentTransform)
 
 // Create a transform for the child
 let childTransform = new Transform({
-  position: new Vector3(0, 1, 0)
+  position: new Vector3(0, 1, 0),
 })
 
 childEntity.addComponent(childTransform)
@@ -245,28 +244,24 @@ childEntity.addComponent(childTransform)
 // Add entities to the engine
 engine.addEntity(childEntity)
 engine.addEntity(parentEntity)
-
 ```
 
 You can use an invisible entity with no shape component to wrap a set of other entities. This entity won't be visible in the rendered scene, but can be used to group its children and apply a transform to all of them.
 
-
 ## Scene boundaries
 
-All entities in your scene must fit within the scene boundaries, as what's outside those boundaries is parcels of land that are owned by other users.
+All entities in your scene must fit within the scene boundaries, as what's outside those boundaries is parcels of land that are owned by other players.
 
 When running a preview of your scene, any entities outside the scene's parcels are colored red and their colliders are removed. When deployed to Decentraland, any entities outside the parcels will not be rendered at all by the engine.
 
 The position of entities in your scene is constantly being checked as they move, if an entity leaves the scene and then returns it will be removed and then rendered normally again.
 
-A grid on the scene's ground shows the limits of the scene, which by default rage from 0 to 16 on the _x_ and _z_ axis, and up to 20 on the _y_ axis. You're free to place entities underground, below 0 on the _y_ axis. 
+A grid on the scene's ground shows the limits of the scene, which by default rage from 0 to 16 on the _x_ and _z_ axis, and up to 20 on the _y_ axis. You're free to place entities underground, below 0 on the _y_ axis.
 
 > Tip: If your scene needs more parcels, you can add them in the project's `scene.json` file. See [Scene metadata]({{ site.baseurl }}{% post_url /development-guide/2018-02-26-scene-metadata %}) for instructions. Once added, you should see the grid extend to cover the additional parcels.
 
-It's important to note that the *entire* 3D model must be within the scene's bounds. This includes the model's *bounding box*. Some 3D models may have bounding boxes that unnecessarily extend beyond the meshes themselves, and it can sometimes be tricky to tell when this happens. When an entity extends beyond the scene's boundaries, in the preview you'll see a cube that marks these bounding boxes. The entire cube must fit within your scene.
+It's important to note that the _entire_ 3D model must be within the scene's bounds. This includes the model's _bounding box_. Some 3D models may have bounding boxes that unnecessarily extend beyond the meshes themselves, and it can sometimes be tricky to tell when this happens. When an entity extends beyond the scene's boundaries, in the preview you'll see a cube that marks these bounding boxes. The entire cube must fit within your scene.
 
 ![](/images/media/bounding-box.png)
 
 If an entity's cube extends beyond the shape of its meshes, you might need to edit the 3D model in an external editor to reduce these margins, or to _bake_ the rotation and scale of the meshes in the model.
-
-

@@ -7,8 +7,6 @@ categories:
 type: Document
 redirect_from:
   - /blockchain-interactions/ethereum-essentials
-set: blockchain-integration
-set_order: 2
 ---
 
 All blockchains are in essence decentralized databases that are distributed among the machines of a network. Transactions are grouped into “blocks” and processed sequentially to form a _chain_ of events.
@@ -17,7 +15,7 @@ Ethereum is one of the most popular blockchains. What sets it apart from others,
 
 Decentraland uses the Ethereum blockchain to record the ownership of the digital assets, and other tradable items that can be read and reacted to by a 3D scene.
 
-The blockchain isn’t used to store the scene state, user position or anything that needs to change in real time as a user interacts with a scene, all of that is either stored locally on each user’s machine, or on a private server owned by the scene owner. The developers of each scene must choose what information is worth storing on the blockchain, and what to store in a private server.
+The blockchain isn’t used to store the scene state, player position or anything that needs to change in real time as a player interacts with a scene, all of that is either stored locally on each player's machine, or on a private server owned by the scene owner. The developers of each scene must choose what information is worth storing on the blockchain, and what to store in a private server.
 
 ## Wallets
 
@@ -28,9 +26,9 @@ There are many wallet providers where you can hold Decentraland tokens. To use t
 - [Metamask](https://metamask.io/)
 - [Trezor](https://trezor.io/)/[Ledger](https://www.ledger.com/) hardware wallets
 
-Every wallet has a public and a private key. The hash of your public key is your wallet’s unique address, used to route transactions and identify a user. Your private key is used by your wallet to sign each transaction that you send to the network and certify that it was truly sent by you. Your private key is also used to restore your wallet in case you forget your password, so keep it in a safe place and don’t share it with anyone.
+Every wallet has a public and a private key. The hash of your public key is your wallet’s unique address, used to route transactions and identify a player. Your private key is used by your wallet to sign each transaction that you send to the network and certify that it was truly sent by you. Your private key is also used to restore your wallet in case you forget your password, so keep it in a safe place and don’t share it with anyone.
 
-In Decentraland, user identities are built around wallets. Since wallet public keys are unique, your scene can use them to identify a Decentraland user in a persistent way. Wallets can also hold different tokens that can give a user a unique avatar, a wearable item, permissions to enter scenes that choose to restrict access, a special weapon to use in a game, etc.
+In Decentraland, player identities are built around wallets. Since wallet public keys are unique, your scene can use them to identify a Decentraland user in a persistent way. Wallets can also hold different tokens that can give a player a unique avatar, a wearable item, permissions to enter scenes that choose to restrict access, a special weapon to use in a game, etc.
 
 ## Transactions
 
@@ -53,13 +51,15 @@ In brief terms, this is how a transaction is validated:
 3. The block is shared with other machines of the network. Each machine verifies that each transaction in a block is valid and checks the block’s hash to ensure it’s legitimate, then it adds it to its own version of the chain.
 4. The new block is propagated throughout the whole network. There’s a universally shared understanding that this transaction has taken place.
 
-#### Decentraland’s sidechain
+#### Sidechains
 
-Decentraland is working on creating a _sidechain_ (a special kind of blockchain) that will be able to handle transactions faster and cheaper than the main Ethereum network. This sidechain will be ideal for in-game transactions, as changes can occur closer to real time and at a very low cost. For transactions that involve valuable items, we’ll still recommend the main Ethereum chain, as it will be more secure.
+Decentraland is partnering with [Matic](https://matic.network/) to create a _sidechain_ (a special kind of blockchain) that will be able to handle transactions faster and cheaper than the main Ethereum network. This sidechain will be ideal for in-game transactions, as changes can occur closer to real time and at a very low cost. For transactions that involve valuable items, we’ll still recommend the main Ethereum chain, as it will be more secure.
 
 Each developer working on a scene will be able to choose whether to use the mainchain, the sidechain or a combination of both for different transactions.
 
 The sidechain will be kept interoperable with the Ethereum’s mainchain. You’ll be able to load tokens from the main chain into the side chain and vice versa. Transactions that take place in the sidechain are eventually reflected in the mainchain when the tokens “exit” back into the mainchain.
+
+Read more about this in [Second layer]({{ site.baseurl }}{% post_url /development-guide/2018-02-02-second-layer %}).
 
 #### Trigger transactions from a scene
 
@@ -71,7 +71,7 @@ Read [game design doc] for more ideas about how to integrate a scene to the bloc
 
 Different types of tokens can be handled in the Ethereum network. A few standards have emerged that group tokens that share the same characteristics.
 
-In Decentraland, you can use tokens to represent items that relate to your game or experience, such as a weapon or a trophy. As tokens are held in a user’s wallet, they accompany a user from scene to scene, so each scene can choose if and how they want to react to every existing kind of token.
+In Decentraland, you can use tokens to represent items that relate to your game or experience, such as a weapon or a trophy. As tokens are held in a player’s wallet, they accompany a player from scene to scene, so each scene can choose if and how they want to react to every existing kind of token.
 
 Read [What are NFTs](https://decentraland.org/blog/technology/what-are-nfts/) on our blog for a more in-depth look at the emergence and evolution of non-fungible tokens.
 
@@ -81,7 +81,7 @@ If an item is fungible, then it can be substituted or exchanged for any similar 
 
 Cryptocurrency tokens like Bitcoin, Ethereum, and MANA are all fungible because one token unit can be exchanged for any other token unit.
 
-You could also create custom fungible tokens to use in Decentraland scenes and use them to depict items that are all equal and have no distinctive or customizable properties between them. You could, for example, create a game that revolves around collecting a large quantity of identical items, and represent these through a fungible token . You could also use a fungible token to represent a golden ticket that gives users who hold it access to a specific region or service.
+You could also create custom fungible tokens to use in Decentraland scenes and use them to depict items that are all equal and have no distinctive or customizable properties between them. You could, for example, create a game that revolves around collecting a large quantity of identical items, and represent these through a fungible token . You could also use a fungible token to represent a golden ticket that gives players who hold it access to a specific region or service.
 
 _ERC20_ is the most accepted standard for fungible tokens in the Ethereum Network. MANA is built upon this standard.
 
@@ -95,7 +95,7 @@ NFTs can be used to provide provably scarce digital goods. Because of the legiti
 
 Game items will have a history that’s stored in the blockchain. This history could deem an item more valuable, for example if it was used to accomplish great achievements or used by someone who’s admired.
 
-Depending on the contract describing the token, each NFT could either be immutable, or you could allow users to customize and change certain characteristics about them if they choose to.
+Depending on the contract describing the token, each NFT could either be immutable, or you could allow players to customize and change certain characteristics about them if they choose to.
 
 _ERC721_ is the most accepted standard for non-fungible tokens in the Ethereum Network. LAND tokens follow the ERC721 standard.
 
@@ -106,7 +106,7 @@ A contract consists of a both code (its methods) and data (its state) that resid
 The methods in a contract are always called via a transaction that has the _to_ field set to the contract’s address. The code that’s executed by the contract’s method can include calls to other contracts, these trigger more transactions that have the _from_ field set to the contract’s address.
 
 A contract can’t trigger any actions on its own or based on a time event. All actions performed by a smart contract always arise from a transaction that calls one of the contract’s functions.
-You can use smart contracts to condition transactions based on custom conditions. For example, users could stake a bet on the outcome of a game, and the corresponding payments would occur as soon as the outcome of the game is informed to the contract.
+You can use smart contracts to condition transactions based on custom conditions. For example, players could stake a bet on the outcome of a game, and the corresponding payments would occur as soon as the outcome of the game is informed to the contract.
 The entire code for a smart contract is public to whoever wants to read it. This allows developers to create publicly verifiable rules.
 All Tokens are defined by a smart contract that specifies its characteristics and what can be done with it. Decentraland has written and maintains a number of smart contracts. LAND and MANA tokens themselves are defined by the _LANDregistry_ and _MANAtoken_ contracts respectively.
 

@@ -5,11 +5,9 @@ description: How to move, rotate and scale an entity gradually over time, with i
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 12
 ---
 
-To move, rotate or resize an entity in your scene, change the  _position_, _rotation_ and _scale_ values stored in an entity's `Transform` component incrementally, frame by frame. This can be used on primitive shapes (cubes, spheres, planes, etc) as well as on 3D models (glTF).
+To move, rotate or resize an entity in your scene, change the _position_, _rotation_ and _scale_ values stored in an entity's `Transform` component incrementally, frame by frame. This can be used on primitive shapes (cubes, spheres, planes, etc) as well as on 3D models (glTF).
 
 You can easily perform these incremental changes by moving entities a small amount each time the `update()` function of a [system]({{ site.baseurl }}{% post_url /development-guide/2018-02-3-systems %}) is called.
 
@@ -37,7 +35,7 @@ myEntity.addComponent(new BoxShape())
 engine.addEntity(myEntity)
 ```
 
-In this example we're moving an entity by 0.1 meters per frame. 
+In this example we're moving an entity by 0.1 meters per frame.
 
 `Vector3.Forward()` returns a vector that faces forward and measures 1 meter in length. In this example we're then scaling this vector down to 1/10 of its length with `scale()`. If our scene has 30 frames per second, the entity is moving at 3 meters per second in speed.
 
@@ -69,8 +67,7 @@ myEntity.addComponent(new BoxShape())
 engine.addEntity(myEntity)
 ```
 
-> Tip: To make an entity always rotate to face the user, you can add a [`Billboard` component]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}#face-the-user).
-
+> Tip: To make an entity always rotate to face the player, you can add a [`Billboard` component]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}#face-the-user).
 
  <img src="/images/media/gifs/rotate.gif" alt="Move entity" width="300"/>
 
@@ -81,7 +78,6 @@ When rotating an entity, the rotation is always in reference to the entity's cen
 When rotating the parent entity, its children will be all rotated using the parent's position as a pivot point. Note that the `position` of the child entity is in reference to that of the parent entity.
 
 ```ts
-
 // Create entity you wish to rotate
 const myEntity = new Entity()
 myEntity.addComponent(new BoxShape())
@@ -90,9 +86,11 @@ myEntity.addComponent(new BoxShape())
 const pivot = new Entity()
 
 // Position the pivot entity on the pivot point of the rotation
-pivot.addComponent(new Transform({
-  position: new Vector3(3, 2, 3)
-}))
+pivot.addComponent(
+  new Transform({
+    position: new Vector3(3, 2, 3),
+  })
+)
 
 // add pivot entity
 engine.addEntity(pivot)
@@ -101,19 +99,20 @@ engine.addEntity(pivot)
 myEntity.setParent(pivot)
 
 // Position child in reference to parent
-myEntity.addComponent(new Transform({
-  position: new Vector3(0, 0.5, 0.5)
-}))
+myEntity.addComponent(
+  new Transform({
+    position: new Vector3(0, 0.5, 0.5),
+  })
+)
 
 // Add child entity to the engine
 engine.addEntity(myEntity)
-
 
 // Define a system that updates the rotation on every frame
 export class PivotRotate implements ISystem {
   update() {
     let transform = pivot.getComponent(Transform)
-    transform.rotate(Vector3.Left(), 3 )
+    transform.rotate(Vector3.Left(), 3)
   }
 }
 
@@ -127,7 +126,7 @@ Note that in this example, the system is rotating the `pivot` entity, that's a p
 
 ## Adjust movement to delay time
 
-Suppose that the user running your scene is struggling to keep up with the pace of the frame rate. That could result in the movement appearing jumpy, as not all frames are evenly timed but each moves the entity in the same amount.
+Suppose that the player visiting your scene is struggling to keep up with the pace of the frame rate. That could result in the movement appearing jumpy, as not all frames are evenly timed but each moves the entity in the same amount.
 
 You can compensate for this uneven timing by using the `dt` parameter to adjust the scale the movement.
 
@@ -187,11 +186,7 @@ export class LerpMove {
     let transform = myEntity.getComponent(Transform)
     let lerp = myEntity.getComponent(LerpData)
     if (lerp.fraction < 1) {
-      transform.position = Vector3.Lerp(
-        lerp.origin,
-        lerp.target,
-        lerp.fraction
-      )
+      transform.position = Vector3.Lerp(lerp.origin, lerp.target, lerp.fraction)
       lerp.fraction += dt / 6
     }
   }
@@ -225,7 +220,6 @@ The `slerp()` function takes three parameters:
 
 > Tip: You can pass rotation values in [euler](https://en.wikipedia.org/wiki/Euler_angles) degrees (from 0 to 360) by using `Quaternion.Euler()`.
 
-
 ```ts
 const originRotation = Quaternion.Euler(0, 90, 0)
 const targetRotation = Quaternion.Euler(0, 0, 0)
@@ -235,9 +229,8 @@ let newRotation = Scalar.Lerp(originRotation, targetRotation, 0.6)
 
 To implement this in your scene, we recommend storing the data that goes into the `Slerp()` function in a custom component. You also need to define a system that implements the gradual rotation in each frame.
 
-
 ```ts
-@Component('slerpData')
+@Component("slerpData")
 export class SlerpData implements ISystem {
   originRot: Quaternion = Quaternion.Euler(0, 90, 0)
   targetRot: Quaternion = Quaternion.Euler(0, 0, 0)
@@ -246,15 +239,18 @@ export class SlerpData implements ISystem {
 
 // a system to carry out the rotation
 export class SlerpRotate implements ISystem {
- 
   update(dt: number) {
-      let slerp = myEntity.getComponent(SlerpData)
-      let transform = myEntity.getComponent(Transform)
-      if (slerp.fraction < 1) {
-        let rot = Quaternion.Slerp(slerp.originRot, slerp.targetRot, slerp.fraction)
-        transform.rotation = rot  
-        slerp.fraction += dt/5 
-      }
+    let slerp = myEntity.getComponent(SlerpData)
+    let transform = myEntity.getComponent(Transform)
+    if (slerp.fraction < 1) {
+      let rot = Quaternion.Slerp(
+        slerp.originRot,
+        slerp.targetRot,
+        slerp.fraction
+      )
+      transform.rotation = rot
+      slerp.fraction += dt / 5
+    }
   }
 }
 
@@ -278,7 +274,7 @@ engine.addEntity(myEntity)
 
 ## Change scale between two sizes
 
-If you want an entity to change size smoothly and without changing its proportions, use the _lerp_ (linear interpolation) algorithm of the `Scalar` object. 
+If you want an entity to change size smoothly and without changing its proportions, use the _lerp_ (linear interpolation) algorithm of the `Scalar` object.
 
 Otherwise, if you want to change the axis in different proportions, use `Vector3` to represent the origin scale and the target scale, and then use the _lerp_ function of the `Vector3`.
 
@@ -294,6 +290,7 @@ const targetScale = 10
 
 let newScale = Scalar.Lerp(originScale, targetScale, 0.6)
 ```
+
 To implement this lerp in your scene, we recommend creating a custom component to store the necessary information. You also need to define a system that implements the gradual scaling in each frame.
 
 ```ts
@@ -310,11 +307,7 @@ export class LerpSize implements ISystem {
     let transform = myEntity.getComponent(Transform)
     let lerp = myEntity.getComponent(LerpSizeData)
     if (lerp.fraction < 1) {
-      let newScale = Scalar.Lerp(
-        lerp.origin,
-        lerp.target,
-        lerp.fraction
-      )
+      let newScale = Scalar.Lerp(lerp.origin, lerp.target, lerp.fraction)
       transform.scale.setAll(newScale)
       lerp.fraction += dt / 6
     }
@@ -323,7 +316,6 @@ export class LerpSize implements ISystem {
 
 // Add system to engine
 engine.addSystem(new LerpSize())
-
 
 const myEntity = new Entity()
 myEntity.addComponent(new Transform())
@@ -356,12 +348,8 @@ export class LerpMove implements ISystem {
   update(dt: number) {
     let transform = myEntity.getComponent(Transform)
     let lerp = myEntity.getComponent(LerpData)
-    lerp.fraction += (dt + lerp.fraction)/10
-    transform.position = Vector3.Lerp(
-      lerp.origin,
-      lerp.target,
-      lerp.fraction
-    )
+    lerp.fraction += (dt + lerp.fraction) / 10
+    transform.position = Vector3.Lerp(lerp.origin, lerp.target, lerp.fraction)
   }
 }
 
@@ -398,11 +386,7 @@ export class PatrolPath implements ISystem {
     let transform = myEntity.getComponent(Transform)
     let path = myEntity.getComponent(PathData)
     if (path.fraction < 1) {
-      transform.position = Vector3.Lerp(
-        path.origin,
-        path.target,
-        path.fraction
-      )
+      transform.position = Vector3.Lerp(path.origin, path.target, path.fraction)
       path.fraction += dt / 6
     } else {
       path.nextPathIndex += 1

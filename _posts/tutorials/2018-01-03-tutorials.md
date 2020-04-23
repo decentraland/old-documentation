@@ -1,16 +1,13 @@
 ---
 date: 2018-01-06
-title: Tutorials
+title: SDK Tutorials
 description: Blogposts walking you through how to create scenes in Decentraland.
 categories:
   - examples
 type: Document
-set: tutorials
-set_order: 2
 ---
 
-
-## Add functionality to a Builder scene
+## Add SDK functionality to a Builder scene
 
 This guest blog post by Tak shows how to export a Builder scene and add functionality via the SDK.
 
@@ -18,9 +15,7 @@ Read the [blog post](https://decentraland.org/blog/tutorials/adding-functionalit
 
 ![](/images/media/tutorial-builder.jpg)
 
-
-
-## Introduction to the ECS (Entity Component System)
+## Introduction to the SDK and the Entity Component System
 
 This blogpost walks you through creating a first scene with basic interactions. It explains some of the basic concepts of the Entity Component System architecture (ECS).
 
@@ -28,8 +23,7 @@ Read the [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5/)
 
 ![](/images/media/example-hypno-wheel.png)
 
-
-## Motion and animations in ECS
+## Motion and animations in the SDK
 
 This blogpost shows different ways to move an entity, as well as how to apply animations to a 3D model.
 
@@ -40,14 +34,11 @@ Read the blog post:
 
 ![](/images/media/example-gnark.png)
 
-
 ## Using UIs
 
 This guest blog post by Surz shows how to add a custom UI to your scene.
 
 Read the [blog post](https://decentraland.org/blog/tutorials/adding-a-ui/)
-
-
 
 ![](/images/media/tutorial-ui.png)
 
@@ -57,36 +48,24 @@ This guest blog post by Interweaver shows how players can pick up an object and 
 
 Read the [blog post](https://decentraland.org/blog/announcements/building-blocks/)
 
-
 ![](/images/media/tutorial-blocks.png)
 
 ## Making a sprite animation
 
-This guest blog post by Brent shows how to add a gif-like animation using a sprite sheet. 
+This guest blog post by Brent shows how to add a gif-like animation using a sprite sheet.
 
 Read the [blog post](https://decentraland.org/blog/tutorials/creating-a-sprite-fire/)
 
-
 ![](/images/media/tutorial-sprites.png)
-
-
-## Migrate scenes from the old SDK to the latest
-
-This blogpost is a reference for migrating content that was written for earlier versions of the Decentraland SDK to version 5.0.
-
-Read the [blog post](https://decentraland.org/blog/tutorials/sdk-migration/)
-
 
 ## Using the blockchain
 
 This series of tutorials by Miles show how to build a scene, starting from the basics to using blockchain transactions in the Ethereum network to monetize.
 
-- [Part 1](https://www.decentral.games/tutorial-1-setting-up-the-decentraland-environment-and-building-your-first-scene)
-- [Part 2](https://www.decentral.games/tutorial-2-using-custom-models-and-introduction-to-scripting)
-- [Part 3](https://www.decentral.games/decentral-games-tutorial-3-advanced-scripting-with-systems)
-- [Part 4](https://www.decentral.games/tutorial-4-using-the-ethereum-blockchain-in-your-scene)
-
-
+- [Part 1](https://www.decentral.games/blog/tutorial-1-setting-up-the-decentraland-environment-and-building-your-first-scene)
+- [Part 2](https://www.decentral.games/blog/tutorial-2-using-custom-models-and-introduction-to-scripting)
+- [Part 3](https://www.decentral.games/blog/decentral-games-tutorial-3-advanced-scripting-with-systems)
+- [Part 4](https://www.decentral.games/blog/tutorial-4-using-the-ethereum-blockchain-in-your-scene)
 
 <!--
 ## Simple interactive scene

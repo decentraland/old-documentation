@@ -5,8 +5,6 @@ description: Learn about the different components that give entities their 3D sh
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 6
 ---
 
 Three dimensional scenes in Decentraland are based on the [Entity-Component](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) model, where everything in a scene is an _entity_, and each entity can include _components_ that shape its characteristics and functionality.
@@ -89,9 +87,9 @@ Note that in several of these sites, you can choose what format to download the 
 
 ## Collisions
 
-Entities that have collisions enabled occupy space and block a user's path, entities without collisions can be walked through by a user`s avatar.
+Entities that have collisions enabled occupy space and block a player's path, entities without collisions can be walked through by a player`s avatar.
 
-Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the user's avatar.
+Collision settings currently don't affect how other entities interact with each other, entities can always overlap. Collision settings only affect how the entity interacts with the player's avatar.
 
 Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 

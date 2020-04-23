@@ -1,12 +1,10 @@
 ---
 date: 2018-01-06
-title: Scene examples
+title: SDK Scene examples
 description: Code and scene examples using our SDK
 categories:
   - examples
 type: Document
-set: examples
-set_order: 1
 ---
 
 To get you up and running, and to illustrate what kind of experiences you can build using the SDK, we’ve put together some code and scene examples.
@@ -19,12 +17,11 @@ Instead of creating a new scene from scratch, you can clone one of the existing 
 
 To do so:
 
-1. Find an example you like from the ones listed below. 
+1. Find an example you like from the ones listed below.
 2. Open the **Code** link to visit its GitHub repo.
 3. From there you can either:
    1. _Fork the repo_ to work on your own version of it, that will exist in a cloned GitHub repo that belongs to you.
    2. Click **Clone or Download** and select to download it as a _.zip_ file, to work on the files locally, without GitHub being involved.
-
 
 # Essentials
 
@@ -57,16 +54,15 @@ This simple scene shows how to use the [utils library](https://www.npmjs.com/pac
 
 [Explore the scene](https://puffer.decentraland1.now.sh/?position=-132,-40)
 
-
 ## Hypno wheels
 
-This simple scene features a couple of wheels that you can spin by clicking them. 
+This simple scene features a couple of wheels that you can spin by clicking them.
 
 - rotate an entity
 - glTF models
 - click events
 - textures
-- custom components 
+- custom components
 - component groups
 
 ![](/images/media/example-hypno-wheel.png)
@@ -77,7 +73,6 @@ This simple scene features a couple of wheels that you can spin by clicking them
 
 Read a tutorial [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5/) about this scene.
 
-
 ## Open the door
 
 A simple interactive scene with a door that can be opened and closed.
@@ -86,7 +81,7 @@ A simple interactive scene with a door that can be opened and closed.
 - click events
 - materials
 - parent entities
-- custom components 
+- custom components
 - component groups
 
 ![](/images/media/example-door.png)
@@ -103,7 +98,7 @@ A simple interactive scene with a two-sided door that can be opened by clicking.
 - click events
 - materials
 - parent entities
-- custom components 
+- custom components
 - component groups
 
 ![](/images/media/example-sliding-doors.png)
@@ -122,13 +117,12 @@ A scene where you can play different songs by pressing buttons on a jukebox.
 - click events
 - materials
 - parent entities
-- custom components 
+- custom components
 - component groups
 
 ![](/images/media/example-jukebox.png)
 
 [Code](https://github.com/decentraland-scenes/Jukebox)
-
 
 [Explore the scene](https://jukebox-ilgtrpcfvb.now.sh)
 
@@ -151,22 +145,21 @@ A scene with a simple example of each way in which players can interact. Each sh
 -->
 
 ## Dance floor
+
 A scene with animations, sound, and tiles on the floor that randomly change color to the beat.
 
 - audio
 - glTF models
 - animations
 - materials
-- custom components 
+- custom components
 - component groups
 
 ![](/images/media/example-dance-floor.png)
 
 [Code](https://github.com/decentraland-scenes/Dance-floor)
 
-
 [Explore the scene](https://dancefloor-rsylsclrna.now.sh)
-
 
 ## Smoke
 
@@ -178,7 +171,6 @@ This scene shows how to handle a particle system to create smoke. Each smoke puf
 
 [Explore the scene](https://smoke-sjjygzpfug.now.sh)
 
-
 ## Memory game
 
 A Simon Says game, with click interactions and sequenced actions. The game generates a random sequence of colors and you must click buttons to match those.
@@ -186,17 +178,14 @@ A Simon Says game, with click interactions and sequenced actions. The game gener
 - glTF models
 - materials
 - click events
-- custom components 
+- custom components
 - component groups
 
 ![](/images/media/example-memory-game.png)
 
-
 [Code](https://github.com/decentraland-scenes/Memory-game)
 
-
 [Explore the scene](https://memory-game-vkysoawcea.now.sh)
-
 
 # Movement
 
@@ -237,7 +226,6 @@ The speed of the shark and the intensity with which it swims depends on the stee
 
 [Explore the scene](https://swimming-shark-fnbuyslcqi.now.sh)
 
-
 # Network connections
 
 ## Weather simulation
@@ -255,7 +243,7 @@ Use real weather data from different locations by changing the coordinates, or c
 
 ## Remote door
 
-A scene that uses a server and a REST API to sync a scene state amongst multiple users. It’s built around the basic “open the door” example.
+A scene that uses a server and a REST API to sync a scene state amongst multiple players. It’s built around the basic “open the door” example.
 
 - Create a REST server
 - Call REST API
@@ -270,13 +258,12 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 
 ## Remote mural
 
-A scene that uses a server and a REST API to sync a scene state amongst multiple users. You can paint pixels in a mural that other users can see. The colors of each pixel are stored in a remote server.
+A scene that uses a server and a REST API to sync a scene state amongst multiple players. You can paint pixels in a mural that other players can see. The colors of each pixel are stored in a remote server.
 
 - Create a REST server
 - Call REST API
 
 ![](/images/media/example-remote-mural.png)
-
 
 [Code](https://github.com/decentraland-scenes/Remote-mural)
 
@@ -286,7 +273,7 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 
 ## Picture frame
 
-A scene that displays a crypto collectible NFT in a picture frame. See [display a certified NFT]({{ site.baseurl }}{% post_url /blockchain-integration/2018-02-01-display-a-certified-nft %}) for more details.
+A scene that displays a crypto collectible NFT in a picture frame. See [display a certified NFT]({{ site.baseurl }}{% post_url /development-guide/2018-02-01-display-a-certified-nft %}) for more details.
 
 ![](/images/media/example-kitty.png)
 
@@ -302,12 +289,11 @@ A simple scene that shows how to build a custom UI that can be interacted with b
 
 [Explore the scene](https://mining-rocks-pjyyjqdfdt.now.sh)
 
-
 # Blockchain transactions
 
 ## MANA Transfer
 
-A simple scene that uses the MANA smart contract and the EthConnect library to send the user MANA on the Ropsten test network.
+A simple scene that uses the MANA smart contract and the EthConnect library to send the player MANA on the Ropsten test network.
 
 [Code](https://github.com/decentraland-scenes/MANA-Transaction)
 
@@ -339,16 +325,13 @@ A scene with a simple AI character. It randomly chooses what action to take: fol
 
 ## Escape room
 
-A full escape room game, where each room is a puzzle to be interacted with in different ways. 
+A full escape room game, where each room is a puzzle to be interacted with in different ways.
 
 This scene is showcased by a [video tutorial series](https://www.youtube.com/watch?v=j7XbiTZ9GN0&list=PLAcRraQmr_GOhimaVZSlJrkzCvo8crIBQ) that walks you through all the mechanics, starting from the basic concepts.
-
 
 ![](/images/media/example-escaperoom.png)
 
 [Code](https://github.com/decentraland-scenes/dcl-escape-room-tutorial)
-
-
 
 ## Tower defense game (WIP)
 

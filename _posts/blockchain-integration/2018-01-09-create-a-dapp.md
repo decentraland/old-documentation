@@ -7,8 +7,6 @@ categories:
 type: Document
 redirect_from:
   - /blockchain-interactions/create-a-dapp
-set: blockchain-integration
-set_order: 20
 ---
 
 You can create your own decentralized apps (dApps) to interface with Decentraland's smart contracts and expose their functionality in more elaborate and friendlier ways.
@@ -54,7 +52,7 @@ Below are links to the full code of several dApps that we built around Decentral
 
 - [Canilla](https://github.com/decentraland/canilla): This basic dApp provides free Ropsten MANA.
 
-- [Gate](https://github.com/decentraland/gate): This basic dApp creates an invitation NFT to whitelist users using the Decentraland private alpha version.
+- [Gate](https://github.com/decentraland/gate): This basic dApp creates an invitation NFT that was used when Decentraland was in a closed beta stage. In the early days, whitelisted players that held this NFT were the only ones able to enter the metaverse.
 
 - [Marketplace](https://github.com/decentraland/marketplace): This is the full application that runs the Decentraland [Marketplace](https://market.decentraland.org/). To make it run fast, it requires a database and a backend server connected to the Ethereum network to create indexes with information about LAND.
 

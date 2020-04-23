@@ -5,16 +5,13 @@ description: Emit custom events and add listeners for them
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 16
 ---
 
 Sometimes it's useful to decouple the different parts of your scene's code and make them interact with each other via sending events.
 
 Decentraland scenes handle some [default events](({{ site.baseurl }}{% post_url /development-guide/2018-02-14-click-events %})) like `click` events and `buttonDown` or `buttonUp` events, but you can create your own to handle things that are specific to your scene.
 
-For example, you could have a `pickedCoin` event that's emitted every time the user picks up a coin in your scene. You could then have a score board that listens for these events and updates the score accordingly. Thanks to this, the part of your code that handles the picking of coins doesn't need to have any reference to the part of the code that updates the scoreboard. 
-
+For example, you could have a `pickedCoin` event that's emitted every time the player picks up a coin in your scene. You could then have a score board that listens for these events and updates the score accordingly. Thanks to this, the part of your code that handles the picking of coins doesn't need to have any reference to the part of the code that updates the scoreboard.
 
 ## Initiate the event manager
 
@@ -23,7 +20,6 @@ Before you can emit or listen for events, you need to initiate the event manager
 ```ts
 const events = new EventManager()
 ```
-
 
 ## Define event types
 
@@ -45,7 +41,6 @@ events.fireEvent(new MyEvent(field1, field2))
 ```
 
 Note that in this example, the event being sent contains an object of a custom event type.
-
 
 ## Listen for events
 
@@ -81,7 +76,6 @@ export class RotatorSystem implements ISystem {
 
   update(dt: number) {
     for (let entity of this.group.entities) {
-
       // Emit custom event
       events.fireEvent(new UpdateEvent(entity, dt))
     }

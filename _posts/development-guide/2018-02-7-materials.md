@@ -5,8 +5,6 @@ description: Learn how to add materials and textures to entities with primitive 
 categories:
   - development-guide
 type: Document
-set: development-guide
-set_order: 7
 ---
 
 ## Materials
@@ -54,7 +52,7 @@ const myMaterial = new BasicMaterial()
 
 Give a material a plain color. In a `BasicMaterial` component, you set the `color` field. In a `Material` component, you set the `albedoColor` field. Albedo colors respond to light and can include shades on them.
 
-All color fields are either of type `Color3` or `Color4`.  `Color3` holds three values, for _Red_, _Green_ and _Blue_. Each of these numbers is between _0_ and _1_. `Color4` holds those same three values and a fourth value for _Alpha_, also between _0_ and _1_, where _0_ is completely transparent and _1_ is completely opaque. 
+All color fields are either of type `Color3` or `Color4`. `Color3` holds three values, for _Red_, _Green_ and _Blue_. Each of these numbers is between _0_ and _1_. `Color4` holds those same three values and a fourth value for _Alpha_, also between _0_ and _1_, where _0_ is completely transparent and _1_ is completely opaque.
 
 ```ts
 myMaterial.albedoColor = new Color3(0.5, 0, 0.5)
@@ -143,7 +141,7 @@ The example above changes the color of a material from red to yellow, incrementa
 
 Reference an image file as a texture by creating a `Texture` component. You can then reference this texture component in the fields of both `Material` and `BasicMaterial` components.
 
-In a `Material` component, you can set the `albedoTexture` field to a texture image. Albedo textures respond to light and can include shades on them. 
+In a `Material` component, you can set the `albedoTexture` field to a texture image. Albedo textures respond to light and can include shades on them.
 
 ```ts
 //Create entity and assign shape
@@ -168,12 +166,15 @@ While creating a texture, you can also pass additional parameters:
 - `wrap`: Determines how a texture is tiled onto an object (CLAMP, WRAP, or MIRROR)
 
 ```ts
-let smokeTexture = new Texture('textures/smoke-puff3.png',{hasAlpha: true, wrap:CLAMP})
+let smokeTexture = new Texture("textures/smoke-puff3.png", {
+  hasAlpha: true,
+  wrap: CLAMP,
+})
 ```
 
 #### Textures on basic textures
 
-In a `BasicMaterial` component, you can set the `texture` field to an image texture. This will render a texture that isn't affected by lighting. 
+In a `BasicMaterial` component, you can set the `texture` field to an image texture. This will render a texture that isn't affected by lighting.
 
 ```ts
 //Create entity and assign shape
@@ -206,7 +207,6 @@ const myTexture = new Texture("materials/wood.png")
 //Create second texture
 const myBumpTexture = new Texture("materials/woodBump.png")
 
-
 //Create material and configure its fields
 const myMaterial = new Material()
 myMaterial.albedoTexture = myTexture
@@ -222,11 +222,9 @@ In the example above, the image for the material is located in a `materials` fol
 
 > Tip: A material can have multiple layers of texture, you can see what these are on a source code editor by clicking `.` and letting the autocomplete menu show you the list.
 
-
 #### Texture wrapping
 
 If you want the texture to be mapped to specific scale or alignment on your entities, then you need to configure _uv_ properties on the [shape components]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}).
-
 
 The `Texture` component lets you configure the wrapping mode by setting the `wrap` field. The wrapping mode can be `CLAMP`, `WRAP` or `MIRROR`.
 
@@ -239,7 +237,6 @@ The example above sets the wrapping mode to `MIRROR`.
 - `CLAMP`: The texture is only displayed once in the specified size. The rest of the surface of the mesh will be left transparent.
 - `WRAP`: The texture will be repeated as many times as it fits in the mesh, using the specified size.
 - `MIRROR`: As in wrap, the texture is repeated as many times as it fits, but the orientation of these repetitions will be mirrored.
-
 
 To handle texture mapping manually, you set _u_ and _v_ coordinates on the 2D image of the texture to correspond to the vertices of the shape. The more vertices the entity has, the more _uv_ coordinates need to be defined on the texture, a plane for example needs to have 8 _uv_ points defined, 4 for each of its two faces.
 
@@ -267,7 +264,7 @@ plane.uvs = [
   0.25,
   1,
   0,
-  1
+  1,
 ]
 
 //Create entity and assign shape and material
@@ -275,7 +272,6 @@ const myEntity = new Entity()
 myEntity.addComponent(plane)
 myEntity.addComponent(myMaterial)
 ```
-
 
 <!--
 Use the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) library to map textures easily. Read documentation on how to use this library in the provided link.
@@ -295,7 +291,6 @@ myTexture.samplingMode = 1
 
 The example above uses a nearest neighbor algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
 
-
 ## Transparent materials
 
 To make a material with a plain color transparent, simply define the color as a `Color4`, and set the 4th value to something between _0_ and _1_. The closer to _1_, the more opaque it will be.
@@ -308,17 +303,11 @@ To make a material with texture transparent:
 
 - Set an image in `alphaTexture`.
 
-	> Note: This image can be the same as the texture, or a different image that determines that certain parts of the texture as transparent and others aren't.
+      	> Note: This image can be the same as the texture, or a different image that determines that certain parts of the texture as transparent and others aren't.
 
-- Optionally set the `transparencyMode` to:
-	- `OPAQUE`:  No transparency at all
-	- `ALPHATEST`: Each pixel is either completely opaque or completely transparent, based on a threshold.
-	- `ALPHABLEND`: Intermediate values are possible based on the value of each pixel.
+- Optionally set the `transparencyMode` to: - `OPAQUE`: No transparency at all - `ALPHATEST`: Each pixel is either completely opaque or completely transparent, based on a threshold. - `ALPHABLEND`: Intermediate values are possible based on the value of each pixel.
 
-
-- If you set the `transparencyMode` to `ALPHATEST`, you can fine tune the threshold used to determine if each pixel is transparent or not. Set the `alphaTest` property between _0_ and _1_. By default its value is _0.5_.
-
-
+* If you set the `transparencyMode` to `ALPHATEST`, you can fine tune the threshold used to determine if each pixel is transparent or not. Set the `alphaTest` property between _0_ and _1_. By default its value is _0.5_.
 
 ```ts
 const myTexture = new Texture("materials/alpha.png")
@@ -332,10 +321,9 @@ myMaterial.alphaTexture = myTexture
 const myMaterial2 = new Material()
 myMaterial2.albedoTexture = myTexture
 myMaterial2.alphaTexture = myTexture
-myMaterial.transparencyMode = 1   // ALPHATEST
+myMaterial.transparencyMode = 1 // ALPHATEST
 myMaterial.alphaTest = 0.3
 ```
-
 
 ## Reuse materials
 
