@@ -16,11 +16,11 @@ The Builder uses the Decentraland SDK under the hood, generating the required co
 
 # The Builder
 
-[Try the Builder](builder.decentraland.org)!
+[Try the Builder](https://builder.decentraland.org)! It's a fun tool to explore on your own.
 
-See our [video tutorials]({{ site.baseurl }}{% post_url /tutorials/2020-03-16-builder-video-tutorials %})
+See our [video tutorials]({{ site.baseurl }}{% post_url /tutorials/2020-03-16-builder-video-tutorials %}).
 
-Or read the [documentation]({{ site.baseurl }}{% post_url /builder/2020-03-16-builder-101 %})
+Or read the [documentation]({{ site.baseurl }}{% post_url /builder/2020-03-16-builder-101 %}).
 
 # The SDK
 
@@ -28,32 +28,33 @@ Follow the [SDK 101]({{ site.baseurl }}{% post_url /development-guide/2020-03-16
 
 Take a look at the [escape room video tutorial series]({{ site.baseurl }}{% post_url /tutorials/2018-01-04-video-tutorials %}).
 
-Or read the [documentation]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %})
+Or read the [documentation]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}) to grasp some of the fundamental concepts.
 
-### SDK Shortcuts
+#### SDK Shortcuts
 
 <div class="shortcuts">
   <a href="{{ site.baseurl }}{% post_url /development-guide/2018-01-02-coding-scenes %}">
     <div>
       <div class="image"><img src="/images/home/1.png"/></div>
       <div class="title">Coding scenes</div>
-      <div class="description">An overview of the tools and the essential concepts surrounding the SDK.</div>
+      <div class="description">Overview of the tools and essential concepts.</div>
+    </div>
+  </a>
+    <a href="{{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}">
+    <div>
+      <div class="image"><img src="/images/home/3.png"/></div>
+      <div class="title">Examples</div>
+      <div class="description">Get inspired.</div>
     </div>
   </a>
   <a href="https://github.com/decentraland/ecs-reference">
     <div>
       <div class="image"><img src="/images/home/2.png"/></div>
-      <div class="title">Component and object reference</div>
-      <div class="description">A complete reference of the default components and other available objects, with their functions.</div>
+      <div class="title">Reference</div>
+      <div class="description">The available components, objects, and functions.</div>
     </div>
   </a>
-  <a href="{{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}">
-    <div>
-      <div class="image"><img src="/images/home/3.png"/></div>
-      <div class="title">Scene examples</div>
-      <div class="description">Several code examples to get you started, and inspire your creations.</div>
-    </div>
-  </a>
+
 </div>
 
 Several libraries are built upon the Decentraland SDK to help you build faster:
@@ -62,7 +63,7 @@ Several libraries are built upon the Decentraland SDK to help you build faster:
 
 - [Decentral API](https://www.decentral.io/docs/dcl/overview/): Simplifies making fast and cheap blockchain transactions triggered by the scene, using the Matic network.
 
-### SDK Scene examples
+#### SDK Scene examples
 
 <div class="examples">
   <a target="_blank" href="https://github.com/decentraland-scenes/Hypno-wheels">
@@ -85,7 +86,7 @@ Several libraries are built upon the Decentraland SDK to help you build faster:
   </a>
 </div>
 
-See [scene examples]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) for more scene examples.
+See more [scene examples]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
 
 Also see [tutorials]({{ site.baseurl }}{% post_url /tutorials/2018-01-03-tutorials %}) for detailed instructions for building scenes like these.
 

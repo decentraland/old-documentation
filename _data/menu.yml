@@ -172,7 +172,7 @@
   image: sets/EthereumIcon.svg
   children:
     - title: Get a wallet for beginners
-      post: "tutorials/2020-02-17-get-a-wallet.md"
+      post: "blockchain-integration/2020-02-17-get-a-wallet.md"
     - post: "general/2018-01-03-glossary.md"
     - title: About the blockchain
       post: "blockchain-integration/2018-01-01-ethereum-essentials.md"
