@@ -27,7 +27,7 @@
   <a href="{{ site.baseurl }}{% post_url /blockchain-integration/2020-02-17-get-a-wallet %}">
     <div>
       <div class="image"><img src="/images/BackEth.png" width="380" height="380"/></div>
-      <div class="title">Ethereum Essencials</div>
+      <div class="title">Ethereum Essentials</div>
       <div class="description">Learn how we use the blockchain.</div>
     </div>
   </a>
