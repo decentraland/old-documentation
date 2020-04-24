@@ -186,5 +186,6 @@ To swap the material:
 
 - Use the Decentraland [default textures](https://github.com/decentraland/builder-assets/tree/master/textures), which are pre-loaded by players, making your assets render a lot faster.
 - Read [this article](https://www.khronos.org/blog/art-pipeline-for-gltf) for a detailed overview of a full art pipeline that uses PBR textures in glTF models.
+- You can find a detailed reference about how to create glTF compatible materials with Blender in [Blender's documentation](https://docs.blender.org/manual/en/latest/addons/import_export/scene_gltf2.html).
 - Find free, high quality PBR textures in [cgbookcase](https://cgbookcase.com/).
 - When setting transparency of a material, try to always use _Alpha clip_ rather than _Alpha blend_, unless you specifically need to have a material that's partially transparent (like glass). This will avoid problems where the engine renders the wrong model in front of the other.
