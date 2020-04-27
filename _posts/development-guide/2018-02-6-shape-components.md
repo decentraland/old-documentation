@@ -146,6 +146,8 @@ myEntity.addComponent(new BoxShape())
 myEntity.getComponent(BoxShape).visible = false
 ```
 
+If an entity is invisible, its collider can block a player's path, but it can't be clicked. To make an entity that's both invisible and clickable, keep the `visible` property set to _true_, and instead give it a [material]({{ site.baseurl }}{% post_url /development-guide/2018-02-7-materials %}#pooling-entities-and-components) with 100% transparency.
+
 ## Optimize 3D models
 
 To ensure that 3D models in your scene load faster and take up less memory, follow these best practices:
