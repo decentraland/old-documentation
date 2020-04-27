@@ -77,6 +77,7 @@
         - post: "builder/2020-03-16-scene-limitations.md"
         - post: "builder/2020-03-16-import-items.md"
         - post: "general/2019-03-19-builder-faq.md"
+        - post: "builder/2020-03-16-export.md"
     - title: SDK
       children:
         - title: Getting started
