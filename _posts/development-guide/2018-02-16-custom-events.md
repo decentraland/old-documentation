@@ -28,7 +28,12 @@ If you want events in your scene to contain custom data fields, you need to defi
 ```ts
 @EventConstructor()
 class MyEvent {
-  constructor(public field1: string, public field2: number) {}
+  field1: string
+  field2: number
+  constructor(public field1: string, public field2: number) {
+    this.field1 = field1
+    this.field2 = field2
+  }
 }
 ```
 
@@ -67,7 +72,12 @@ const events = new EventManager()
 // Define an event type
 @EventConstructor()
 class UpdateEvent {
-  constructor(public entity: Entity, public dt: number) {}
+  entity: Entity
+  dt: number
+  constructor(public entity: Entity, public dt: number) {
+    this.entity = entity
+    this.dt = dt
+  }
 }
 
 // Define a system
