@@ -248,6 +248,73 @@ engine.addEntity(parentEntity)
 
 You can use an invisible entity with no shape component to wrap a set of other entities. This entity won't be visible in the rendered scene, but can be used to group its children and apply a transform to all of them.
 
+## Position an entity relative to the player
+
+Use the `Camera.instance` object to obtain the position of the player. If the player is using 3d person view, `Camera.instance` returns the position of the avatar. This example positions an entity right where the player is standing:
+
+```ts
+let playerPos: Vector3 = Camera.instance.position
+  .clone()
+  .add(Vector3.Forward().rotate(Camera.instance.rotation))
+
+let myEntity = new Entity()
+myEntity.addComponent(playerPos)
+engine.addEntity(myEntity)
+```
+
+This example positions an entity 2 meters in front of the player:
+
+```ts
+let playerPos: Vector3 = Camera.instance.position
+  .clone()
+  .add(new Vector3(0, 0, 2).rotate(Camera.instance.rotation))
+
+let myEntity = new Entity()
+myEntity.addComponent(playerPos)
+engine.addEntity(myEntity)
+```
+
+The position and rotation of `Camera.instance` is updated less frequently than the frame rate of the scene, so using a system to attempt to move an object together with the player results in an unpleasant jittery effect.
+
+This jittery effect can be significantly reduced (but not removed entirely) by implementing a system that performs a series of lerps. As a downside, the object will lag a little behind if the player moves or turns suddenly.
+
+```ts
+let cube = new Entity()
+cube.addComponent(new BoxShape())
+cube.addComponent(new Transform())
+engine.addEntity(cube)
+
+export class ObjectMoverSystem implements ISystem {
+  transform: Transform
+  targetPosition: Vector3
+  targetRotation: Quaternion
+  lerpingSpeed: number
+  constructor(movingObject: IEntity, lerpingSpeed: number) {
+    this.transform = movingObject.getComponent(Transform)
+    this.lerpingSpeed = lerpingSpeed
+  }
+
+  update(deltaTime: number) {
+    this.targetPosition = Camera.instance.position
+    this.targetRotation = Camera.instance.rotation
+
+    this.transform.position = Vector3.Lerp(
+      this.transform.position,
+      this.targetPosition,
+      deltaTime * this.lerpingSpeed
+    )
+
+    this.transform.rotation = Quaternion.Slerp(
+      this.transform.rotation,
+      this.targetRotation,
+      deltaTime * this.lerpingSpeed
+    )
+  }
+}
+
+engine.addSystem(new ObjectMoverSystem(cube, 15))
+```
+
 ## Scene boundaries
 
 All entities in your scene must fit within the scene boundaries, as what's outside those boundaries is parcels of land that are owned by other players.
