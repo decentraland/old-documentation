@@ -172,7 +172,22 @@ let smokeTexture = new Texture("textures/smoke-puff3.png", {
 })
 ```
 
-#### Textures on basic textures
+#### Textures from an external URL
+
+You can point the texture of your material to an external URL instead of an internal path in the scene project.
+
+```ts
+const myTexture = new Texture(
+  "https://wearable-api.decentraland.org/v2/collections/community_contest/wearables/cw_tuxedo_tshirt_upper_body/thumbnail"
+)
+
+const myMaterial = new Material()
+myMaterial.albedoTexture = myTexture
+```
+
+The URL must start with `https`, `http` URLs aren't supported. The site where the image is hosted should also have [CORS policies (Cross Origin Resource Sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) that permit externally accessing it.
+
+#### Textures on basic materials
 
 In a `BasicMaterial` component, you can set the `texture` field to an image texture. This will render a texture that isn't affected by lighting.
 
