@@ -241,19 +241,7 @@ In the example above, the image for the material is located in a `materials` fol
 
 If you want the texture to be mapped to specific scale or alignment on your entities, then you need to configure _uv_ properties on the [shape components]({{ site.baseurl }}{% post_url /development-guide/2018-02-6-shape-components %}).
 
-The `Texture` component lets you configure the wrapping mode by setting the `wrap` field. The wrapping mode can be `CLAMP`, `WRAP` or `MIRROR`.
-
-```ts
-myTexture.wrap = 3
-```
-
-The example above sets the wrapping mode to `MIRROR`.
-
-- `CLAMP`: The texture is only displayed once in the specified size. The rest of the surface of the mesh will be left transparent.
-- `WRAP`: The texture will be repeated as many times as it fits in the mesh, using the specified size.
-- `MIRROR`: As in wrap, the texture is repeated as many times as it fits, but the orientation of these repetitions will be mirrored.
-
-To handle texture mapping manually, you set _u_ and _v_ coordinates on the 2D image of the texture to correspond to the vertices of the shape. The more vertices the entity has, the more _uv_ coordinates need to be defined on the texture, a plane for example needs to have 8 _uv_ points defined, 4 for each of its two faces.
+You set _u_ and _v_ coordinates on the 2D image of the texture to correspond to the vertices of the shape. The more vertices the entity has, the more _uv_ coordinates need to be defined on the texture, a plane for example needs to have 8 _uv_ points defined, 4 for each of its two faces.
 
 ```ts
 //Create material and configure fields
@@ -263,6 +251,8 @@ myMaterial.samplingMode = 0
 
 //Create shape component
 const plane = new PlaneShape()
+
+// map the texture to each of the four corners of the plane
 plane.uvs = [
   0,
   0.75,
@@ -288,12 +278,54 @@ myEntity.addComponent(plane)
 myEntity.addComponent(myMaterial)
 ```
 
-<!--
-Use the [Decentraland sprite helpers](https://github.com/decentraland/dcl-sprites) library to map textures easily. Read documentation on how to use this library in the provided link.
+The following example includes a function that simplifies the setting of uvs. The `setUVs` function defined here receives a number of rows and columns as parameters, and sets the uvs so that the texture image is repeated a specific number of times.
 
-To create an animated sprite, use texture mapping to change the selected regions of a same texture that holds all the frames.
+```ts
+const myMaterial = new BasicMaterial()
+myMaterial.texture = "materials/atlas.png"
+myMaterial.samplingMode = 0
 
--->
+const myPlane = new Entity()
+const plane = new PlaneShape()
+myPlane.addComponent(plane)
+
+engine.addEntity(myPlane)
+myPlane.addComponent(myMaterial)
+plane.uvs = setUVs(3, 3)
+
+function setUVs(rows: number, cols: number) {
+  return [
+    0,
+    cols,
+    rows,
+    cols,
+    rows,
+    0,
+    0,
+    0,
+    0,
+    cols,
+    rows,
+    cols,
+    rows,
+    0,
+    0,
+    0,
+  ]
+}
+```
+
+You can also define how the texture is tiled if the mapping spans more than the dimensions of the texture image. The `Texture` component lets you configure the wrapping mode by setting the `wrap` field. The wrapping mode can be `CLAMP`, `WRAP` or `MIRROR`.
+
+- `CLAMP`: The texture is only displayed once in the specified size. The rest of the surface of the mesh is left transparent.
+- `WRAP`: The texture is repeated as many times as it fits in the mesh, using the specified size.
+- `MIRROR`: As in wrap, the texture is repeated as many times as it fits, but the orientation of these repetitions is mirrored.
+
+```ts
+myTexture.wrap = 3
+```
+
+The example above sets the wrapping mode to `MIRROR`.
 
 #### Texture scaling
 
