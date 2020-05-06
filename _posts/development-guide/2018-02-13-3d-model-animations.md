@@ -57,6 +57,9 @@ const clipSwim = new AnimationState("swim")
 
 // Add animation clip to Animator component
 animator.addClip(clipSwim)
+
+// Add entinty to engine
+engine.addEntity(shark)
 ```
 
 You can also achieve the same with less statements:
@@ -185,11 +188,38 @@ clipSwim.reset()
     - apply an animation with a `weight` property of 0 and gradually increase the `weight`
     - create an animation clip that describes a movement from the posture you want to transition from to the default posture you want.
 
-## Models with multiple animations
+## Handle multiple animations
+
+If a 3D model has multiple animations packed into it, a single `Animator` component can deal with all of them. Create a separate `AnimationState` for each animation, and then assign these to the animator.
+
+```ts
+let shark = new Entity()
+shark.addComponent(new GLTFShape("models/shark.gltf"))
+
+// Create animator component
+let animator = new Animator()
+
+// Add animator component to the entity
+shark.addComponent(animator)
+
+// Crete animation state objects
+const biteClip = new AnimationState("bite")
+const clipSwim = new AnimationState("swim")
+
+// Add animation state objects to the Animator component
+shark.getComponent(Animator).addClip(biteClip)
+shark.getComponent(Animator).addClip(clipSwim)
+
+clipSwim.play()
+
+engine.addEntity(shark)
+```
 
 Each bone in an animation can only be affected by one animation at a time, unless these animations have a `weight` that adds up to a value of 1 or less.
 
 If one animation only affects a character's legs, and another only affects a character's head, then they can be played at the same time without any issue. But if they both affect the character's legs, then you must either only play one at a time, or play them with lower `weight` values.
+
+If in the above example, the `bite` animation only affects the shark's mouth, and the `swim` animation only affects the bones of the shark's spine, then they can both be played at the same time.
 
 > Note: After a non-looping animation has finished playing, it will continue to be in a state of `playing = true`, even though the 3D model remains still. This can bring you problems if you then try to play other animations. Before playing an animation, make sure you've stopped all others, including non-looping animations that are finished.
 
