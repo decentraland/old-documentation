@@ -119,6 +119,23 @@ When you retrieve the rotation of an entity, it returns a quaternion by default.
 myEntity.getComponent(Transform).rotation.eulerAngles
 ```
 
+#### Add Rotations
+
+Another option is to perform a `rotate` operation on an existing transform, which adds to its current rotation. The `rotate` operation takes a vector that indicates a direction, and a number of degrees to rotate. In the following example, we're tilting an entity 15 degrees along the X axis, which adds to whatever rotation it initially had:
+
+```ts
+myTransform.rotate(new Vector3(1, 0, 0), 15)
+```
+
+The `rotate` operation is useful when dealing with an entity that's rotated in multiple axis, for example both X and Y. The following example sets an original rotation in the Y axis, and then rotates the Transform along the X axis:
+
+```ts
+myTransform.rotation.setEuler(0, 90, 0)
+myTransform.rotate(new Vector3(1, 0, 0), 15)
+```
+
+Note that this produces a different result than if you simply set the initial rotation to `(15, 90, 0)`. In the example, the rotation along the X axis doesn't occur along the original X axis of the Transform, but instead it occurs along the _tilted_ X axis that results from the initial rotation.
+
 ## Face the player
 
 Add a _Billboard_ component to an entity so that it always rotates to face the player.
