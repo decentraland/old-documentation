@@ -49,6 +49,6 @@ screen.addComponent(
 engine.addEntity(screen)
 ```
 
-Keep in mind that streaming video demands a significant effort from the player's machine. We recommend not having more than one video stream displayed at a time per scene. We also recommend activating the stream only once the player performs an action or approaches the screen, to avoid affecting neighbouring scenes.
+Keep in mind that streaming video demands a significant effort from the player's machine. We recommend not having more than one video stream displayed at a time per scene. Also avoid streaming videos that are in very high resolution, don't use anything above _HD_. We also recommend activating the stream only once the player performs an action or approaches the screen, to avoid affecting neighbouring scenes.
 
 Since the streamed video is a texture that's added to a material, you can also experiment with [other properties of materials]({{ site.baseurl }}{% post_url /development-guide/2018-02-7-materials %}), like tinting it with a color, of adding other texture layers. for example to produce a dirty screen effect.
