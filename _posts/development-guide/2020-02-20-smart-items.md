@@ -376,7 +376,7 @@ Then simply run `dcl start` on the item's folder, as you would for a normal scen
 
 Try providing different values to the item's properties, to make sure it functions as expected.
 
-## Packing your item
+## Importing into the Builder
 
 When you're ready to export the item, run `dcl pack` on the item's folder. This will generate an `item.zip` file. Then import this file into a custom asset pack in the Builder.
 
