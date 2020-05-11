@@ -162,22 +162,42 @@ The `UIText` component lets you add text. It has properties that are similar to 
 - `value`: the string to display
 - `color`: `Color4` for the text color
 - `fontSize`: font size
-- `fontWeight`: 'normal', 'bold' or 'italic'
+- `font`: font to use
 - `lineSpacing` : space between lines of text
 - `lineCount`: how many max lines of text
 - `textWrapping`: if text automatically occupies more lines
 - `outlineWidth`, `outlineColor`: add an outline to the text
 - `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`, `shadowColor`: Add a shadow to the text
 
+Fonts are set as a _Font object_. Font objects are initiated with a value from the _Fonts_ enum, which contains all supported fonts. By default, all text components use _LiberationSans_ font.
+
 ```ts
 const canvas = new UICanvas()
 
 const myText = new UIText(canvas)
 myText.value = "Hello"
+myText.font = new Font(Fonts.SanFrancisco)
 myText.fontSize = 20
 myText.positionX = "15px"
 myText.color = Color4.Blue()
 ```
+
+> TIP: If using VS studio or some other IDE, type `Font.` and you should see a list of suggestions with all of the available fonts.
+
+You can share a same instanced `Font` object accross multiple `UIText` components.
+
+````ts
+const sfFont = new Font(Fonts.SanFrancisco)
+
+const myText = new UIText(canvas)
+myText.value = "Hello"
+myText.font = sfFont
+
+const myText2 = new UIText(canvas)
+myText2.value = "World"
+myText2.font = sfFont
+```	```
+
 
 ## Images from an image atlas
 
@@ -225,7 +245,7 @@ expandButton.sourceLeft = 496
 expandButton.sourceTop = 128
 expandButton.sourceWidth = 128
 expandButton.sourceHeight = 128
-```
+````
 
 You can change the texture being used by an existing `UIImage` component, set the `data` field.
 
