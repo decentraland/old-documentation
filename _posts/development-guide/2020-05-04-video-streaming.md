@@ -43,7 +43,7 @@ screen.addComponent(
 screen.addComponent(myMaterial)
 screen.addComponent(
   new OnPointerDown(() => {
-    v.playing = !v.playing
+    myVideoTexture.playing = !myVideoTexture.playing
   })
 )
 engine.addEntity(screen)
