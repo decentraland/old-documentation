@@ -24,7 +24,7 @@ The Marketplace allows you to:
 - **Transfer** your parcels and Estates to another user.
 - **Explore** the world through a map to see who owns what, what wearables exist and what names are claimed.
 
-> Note: Use [land.decentraland.org](land.decentralnad.org) to:
+> Note: Use [land.decentraland.org](https://land.decentraland.org) to:
 
 - **Name** your parcels and Estates and give them a public description.
 - **Grant permissions** to other users to edit the parcels you own.
