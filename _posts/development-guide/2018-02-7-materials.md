@@ -293,22 +293,31 @@ plane.uvs = setUVs(3, 3)
 
 function setUVs(rows: number, cols: number) {
   return [
-    0,
-    cols,
-    rows,
-    cols,
-    rows,
-    0,
-    0,
-    0,
-    0,
-    cols,
-    rows,
-    cols,
-    rows,
-    0,
-    0,
-    0,
+      // North side of unrortated plane
+      0, //lower-left corner
+      0,
+
+      xColumns, //lower-right corner
+      0,
+
+      xColumns, //upper-right corner
+      yRows,
+
+      0, //upper left-corner
+      yRows,
+
+      // South side of unrortated plane
+      xColumns, // lower-right corner
+      0,
+
+      0, // lower-left corner
+      0,
+
+      0, // upper-left corner
+      yRows,
+
+      xColumns, // upper-right corner
+      yRows,
   ]
 }
 ```
