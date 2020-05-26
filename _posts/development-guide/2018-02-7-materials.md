@@ -162,11 +162,11 @@ myEntity.addComponent(myMaterial)
 While creating a texture, you can also pass additional parameters:
 
 - `samplingMode`: Determines how pixels in the texture are stretched or compressed when rendered
-- `wrap`: Determines how a texture is tiled onto an object (CLAMP, WRAP, or MIRROR)
+- `wrap`: Determines how a texture is tiled onto an object (see [Texture Wrapping](#texture-wrapping)
 
 ```ts
 let smokeTexture = new Texture("textures/smoke-puff3.png", {
-  wrap: CLAMP,
+  wrap: 0,
 })
 ```
 
@@ -329,7 +329,7 @@ You can also define how the texture is tiled if the mapping spans more than the 
 - `MIRROR`: As in wrap, the texture is repeated as many times as it fits, but the orientation of these repetitions is mirrored.
 
 ```ts
-myTexture.wrap = 3
+myTexture.wrap = 2
 ```
 
 The example above sets the wrapping mode to `MIRROR`.
