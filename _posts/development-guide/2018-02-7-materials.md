@@ -280,7 +280,7 @@ The following example includes a function that simplifies the setting of uvs. Th
 
 ```ts
 const myMaterial = new BasicMaterial()
-myMaterial.texture = "materials/atlas.png"
+myMaterial.texture = new Texture("materials/atlas.png")
 myMaterial.samplingMode = 0
 
 const myPlane = new Entity()
