@@ -297,27 +297,27 @@ function setUVs(rows: number, cols: number) {
       0, //lower-left corner
       0,
 
-      xColumns, //lower-right corner
+      cols, //lower-right corner
       0,
 
-      xColumns, //upper-right corner
-      yRows,
+      cols, //upper-right corner
+      rows,
 
       0, //upper left-corner
-      yRows,
+      rows,
 
       // South side of unrortated plane
-      xColumns, // lower-right corner
+      cols, // lower-right corner
       0,
 
       0, // lower-left corner
       0,
 
       0, // upper-left corner
-      yRows,
+      rows,
 
-      xColumns, // upper-right corner
-      yRows,
+      cols, // upper-right corner
+      rows,
   ]
 }
 ```
