@@ -394,8 +394,8 @@ mySecondEntity.addComponent(myMaterial)
 myThirdEntity.addComponent(myMaterial)
 ```
 
-## Video streaming
+## Video playing
 
-To stream video from a URL into a material, see [video streaming]({{ site.baseurl }}{% post_url /development-guide/2020-05-04-video-streaming %}).
+To stream video from a URL into a material, or play a video from a file stored in the scene, see [video playing]({{ site.baseurl }}{% post_url /development-guide/2020-05-04-video-playing %}).
 
-The streamed video is used as a texture on a material, you can set any of the other properties of materials to alter how the video screen looks.
+The video is used as a texture on a material, you can set any of the other properties of materials to alter how the video screen looks.
