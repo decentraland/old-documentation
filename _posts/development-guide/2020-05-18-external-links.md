@@ -1,11 +1,29 @@
 ---
 date: 2020-04-16
-title: External links
-description: Link out to an external site
+title: Outbound links
+description: Link to other scenes or external sites
 categories:
   - development-guide
 type: Document
 ---
+
+You can add links from your scene out to other content, either to other scenes or to external websites.
+
+## Teleports
+
+To teleport a player to another scene, call the following function, indicating the coordinates that you want players to teleport to.
+
+```ts
+teleportTo(‘-51,1’)
+```
+
+Players are presented a confirmation screen before they are teleported, this screen displays information from the destination scene’s `scene.json file`, including the scene `name`, `description` and `navmapThumbnail`. See [scene metadata]({{ site.baseurl }}{% post_url /development-guide/2018-02-26-scene-metadata %}) for details on how to set this data.
+
+You can also teleport players to the most crowded place in Genesis City by doing `teleportTo(‘crowd’)`, which is equivalent to typing `/goto crowd` in the chat. Similarly you can teleport players to a random location from the curated list that you reach with `/goto magic` by doing ``teleportTo(‘magic’)`.
+
+Bare in mind that teleports take you to a scene in the indicated coordinates, but not necessarily to that same coordinates. This means that when travelling to a scene that has multiple parcels, players may not be landing on the same coordinates as specified, but rather into one of the spawn points designated by the creator of the scene.
+
+## External links
 
 To add a link to an external website, use the `openExternalURL()` command.
 
