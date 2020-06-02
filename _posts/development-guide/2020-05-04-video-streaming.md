@@ -23,7 +23,7 @@ To stream a video:
 
 ```ts
 // #1
-const myVideoClip = new VideoClip("http://134.122.31.53/hls/test.m3u8")
+const myVideoClip = new VideoClip("https://theuniverse.club/live/consensys/index.m3u8")
 
 // #2
 const myVideoTexture = new VideoTexture(myVideoClip)
@@ -43,7 +43,7 @@ screen.addComponent(
 screen.addComponent(myMaterial)
 screen.addComponent(
   new OnPointerDown(() => {
-    v.playing = !v.playing
+    myVideoTexture.playing = !myVideoTexture.playing
   })
 )
 engine.addEntity(screen)

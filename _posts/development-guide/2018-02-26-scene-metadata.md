@@ -13,7 +13,7 @@ You're also free to add any fields that you wish. In the future, custom fields c
 
 ## Scene parcels
 
-When [deploying](({{ site.baseurl }}{% post_url /development-guide/2018-01-07-publishing %})) a scene, the `scene.json` file must include information about what parcels will be occupied by this scene in the Decentraland map. The CLI reads this information from off this field and deploys to those parcels directly.
+When [deploying]({{ site.baseurl }}{% post_url /development-guide/2018-01-07-publishing %}) a scene, the `scene.json` file must include information about what parcels will be occupied by this scene in the Decentraland map. The CLI reads this information from off this field and deploys to those parcels directly.
 
 ```json
  "scene": {
@@ -93,7 +93,7 @@ Your scene might have objects that can block players from moving if they happen 
   ],
 ```
 
-The position is comprised of coordinates inside the scene. These numbers refer to a position within the parcel, similar to what you'd use in the scene's code in a Transform component to [position an entity](({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %})).
+The position is comprised of coordinates inside the scene. These numbers refer to a position within the parcel, similar to what you'd use in the scene's code in a Transform component to [position an entity]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}).
 
 > Note: All spawn points must be within the parcels that make up the scene. You can't spawn a player outside the space of these parcels.
 
