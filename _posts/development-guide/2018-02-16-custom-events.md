@@ -9,7 +9,7 @@ type: Document
 
 Sometimes it's useful to decouple the different parts of your scene's code and make them interact with each other via sending events.
 
-Decentraland scenes handle some [default events](({{ site.baseurl }}{% post_url /development-guide/2018-02-14-click-events %})) like `click` events and `buttonDown` or `buttonUp` events, but you can create your own to handle things that are specific to your scene.
+Decentraland scenes handle some [default events]({{ site.baseurl }}{% post_url /development-guide/2018-02-14-click-events %}) like `click` events and `buttonDown` or `buttonUp` events, but you can create your own to handle things that are specific to your scene.
 
 For example, you could have a `pickedCoin` event that's emitted every time the player picks up a coin in your scene. You could then have a score board that listens for these events and updates the score accordingly. Thanks to this, the part of your code that handles the picking of coins doesn't need to have any reference to the part of the code that updates the scoreboard.
 
@@ -28,7 +28,12 @@ If you want events in your scene to contain custom data fields, you need to defi
 ```ts
 @EventConstructor()
 class MyEvent {
-  constructor(public field1: string, public field2: number) {}
+  field1: string
+  field2: number
+  constructor(public field1: string, public field2: number) {
+    this.field1 = field1
+    this.field2 = field2
+  }
 }
 ```
 
@@ -67,7 +72,12 @@ const events = new EventManager()
 // Define an event type
 @EventConstructor()
 class UpdateEvent {
-  constructor(public entity: Entity, public dt: number) {}
+  entity: Entity
+  dt: number
+  constructor(public entity: Entity, public dt: number) {
+    this.entity = entity
+    this.dt = dt
+  }
 }
 
 // Define a system

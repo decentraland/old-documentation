@@ -77,6 +77,7 @@
         - post: "builder/2020-03-16-scene-limitations.md"
         - post: "builder/2020-03-16-import-items.md"
         - post: "general/2019-03-19-builder-faq.md"
+        - post: "builder/2020-03-16-export.md"
     - title: SDK
       children:
         - title: Getting started
@@ -112,6 +113,7 @@
         - post: "development-guide/2018-02-15-onscreen-ui.md"
         - post: "development-guide/2018-02-22-user-data.md"
         - post: "development-guide/2018-02-27-raycasting.md"
+        - post: "development-guide/2020-05-04-video-playing.md"
         - post: "development-guide/2018-02-26-scene-metadata.md"
         - post: "development-guide/2018-01-06-scene-limitations.md"
         - title: Blockchain integration

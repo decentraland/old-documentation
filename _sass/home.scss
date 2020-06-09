@@ -235,11 +235,24 @@
 
       > div {
         color: $white-color;
-        padding: 125px 19px 25px;
+        // padding: 125px 19px 25px;
+        padding: 10px 30px 10px 140px;
         display: flex;
         flex-direction: column;
         width: 100%;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+        min-height: 140px;
+        justify-content: center;
+
+        @media #{$tablet} {
+          padding: 125px 19px 25px;
+          // grid-template-columns: 1fr 1fr;
+        }
+
+        @media #{$mid-point} {
+          padding: 125px 19px 25px;
+          // grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
       }
 
       &:hover > div {
@@ -251,7 +264,11 @@
       margin: 0 auto;
       text-align: center;
       position: absolute;
-      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      overflow: hidden;
+      width: 140px;
 
       top: 0;
       left: 0;
@@ -260,11 +277,40 @@
       @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
         display: block;
       }
+      @media #{$tablet} {
+        width: 100%;
+      }
+
+      @media #{$mid-point} {
+        width: 100%;
+      }
 
       img {
         display: block;
-        width: 100%;
         height: auto;
+        max-width: initial;
+        width: 180px;
+        height: auto;
+        top: 5px;
+        position: relative;
+        max-width: initial;
+        left: -20px;
+
+        @media #{$tablet} {
+          width: 100%;
+          top: 0;
+          left: 0;
+          max-width: 220px;
+          margin: 0 auto;
+        }
+
+        @media #{$mid-point} {
+          width: 100%;
+          top: 0;
+          left: 0;
+          max-width: 220px;
+          margin: 0 auto;
+        }
         // height: 128px;
         // width: 128px;
       }

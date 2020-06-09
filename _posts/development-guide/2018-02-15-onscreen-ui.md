@@ -199,6 +199,33 @@ myText2.font = sfFont
 ```	```
 
 
+#### Multiline text
+
+`UIText` components by default adapt their width to the length of the provided string. To make a text span multiple lines, set the `textWrapping` property to _true_ and `adaptWidth` to _false_, and also specify the desired width.
+
+```ts
+const canvas = new UICanvas()
+
+const myText = new UIText(canvas)
+myText.value =
+  "Hello World, this message is quite long and won't fit in a single line. I hope that's not a problem."
+myText.fontSize = 20
+myText.text.adaptWidth = false
+myText.text.textWrapping = true
+myText.text.width = 100
+```
+
+Alternatively, you can add line breaks into the string, using `\n`.
+
+```ts
+const canvas = new UICanvas()
+
+const myText = new UIText(canvas)
+myText.value =
+  "Hello World,\nthis message is quite long and won't fit in a single line.\nI hope that's not a problem."
+myText.fontSize = 20
+```
+
 ## Images from an image atlas
 
 You can use an image atlas to store multiple images and icons in a single image file. You then display rectangular parts of this image file in your UI based on pixel positions, pixel width, and pixel height inside the source image.
@@ -331,14 +358,6 @@ textInput.onChanged = new OnChanged((data: { value: string }) => {
 })
 ```
 
-<!--
-In some cases, it's best to add a _submit_ button next to the input box. In this case instead of reacting when the string is changed, or to the `OnTextSubmit` event, you only react when the button is clicked.
-
-
-```ts
-
-```
--->
 
 ## Open the UI
 
@@ -396,13 +415,3 @@ close.onClick = new OnClick(() => {
   canvas.isPointerBlocker = false
 })
 ```
-
-<!--
-
-## Worldspace UI
-
-Instead of adding UI elements to a the player's screenspace, you can add the same UI elements to a fixed location of the world space. These would be seen as an in-world screen.
-
-UIWorldSpace
-
--->
