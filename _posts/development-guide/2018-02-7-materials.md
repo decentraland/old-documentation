@@ -162,11 +162,11 @@ myEntity.addComponent(myMaterial)
 While creating a texture, you can also pass additional parameters:
 
 - `samplingMode`: Determines how pixels in the texture are stretched or compressed when rendered
-- `wrap`: Determines how a texture is tiled onto an object (CLAMP, WRAP, or MIRROR)
+- `wrap`: Determines how a texture is tiled onto an object (see [Texture Wrapping](#texture-wrapping)
 
 ```ts
 let smokeTexture = new Texture("textures/smoke-puff3.png", {
-  wrap: CLAMP,
+  wrap: 0,
 })
 ```
 
@@ -280,7 +280,7 @@ The following example includes a function that simplifies the setting of uvs. Th
 
 ```ts
 const myMaterial = new BasicMaterial()
-myMaterial.texture = "materials/atlas.png"
+myMaterial.texture = new Texture("materials/atlas.png")
 myMaterial.samplingMode = 0
 
 const myPlane = new Entity()
@@ -293,22 +293,31 @@ plane.uvs = setUVs(3, 3)
 
 function setUVs(rows: number, cols: number) {
   return [
-    0,
-    cols,
-    rows,
-    cols,
-    rows,
-    0,
-    0,
-    0,
-    0,
-    cols,
-    rows,
-    cols,
-    rows,
-    0,
-    0,
-    0,
+      // North side of unrortated plane
+      0, //lower-left corner
+      0,
+
+      cols, //lower-right corner
+      0,
+
+      cols, //upper-right corner
+      rows,
+
+      0, //upper left-corner
+      rows,
+
+      // South side of unrortated plane
+      cols, // lower-right corner
+      0,
+
+      0, // lower-left corner
+      0,
+
+      0, // upper-left corner
+      rows,
+
+      cols, // upper-right corner
+      rows,
   ]
 }
 ```
@@ -320,7 +329,7 @@ You can also define how the texture is tiled if the mapping spans more than the 
 - `MIRROR`: As in wrap, the texture is repeated as many times as it fits, but the orientation of these repetitions is mirrored.
 
 ```ts
-myTexture.wrap = 3
+myTexture.wrap = 2
 ```
 
 The example above sets the wrapping mode to `MIRROR`.
