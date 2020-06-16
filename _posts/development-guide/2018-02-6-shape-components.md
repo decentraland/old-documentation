@@ -38,7 +38,7 @@ myEntity.addComponent(new SphereShape())
 Or you can first create the component instance and then assign it to the entity.
 
 ```ts
-let shpere = new SphereShape()
+let sphere = new SphereShape()
 myEntity.addComponent(sphere)
 ```
 
