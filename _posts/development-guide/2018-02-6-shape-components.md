@@ -80,10 +80,11 @@ To get you started, below is a list of libraries that have free or relatively in
 - [SketchUp 3D Warehouse](https://3dwarehouse.sketchup.com/)
 - [Thingiverse](https://www.thingiverse.com/) (3D models made primarily for 3D printing, but adaptable to Virtual Worlds)
 - [ShareCG](https://www.sharecg.com/)
+- [CGTrader](https://www.cgtrader.com/)
 
-> Note: Pay attention to the licence restrictions that the content you download has.
+> Note: Pay attention to the license restrictions that the content you download has.
 
-Note that in several of these sites, you can choose what format to download the model in. Always choose _.glTF_ format if available. If not available, you must convert them to _glTF_ before you can use them in a scene. For that, we recommend importing them into Blender and exporting them with one of the available _glTF_ export add-ons.
+Note that in several of these sites, you can choose what format to download the model in. Always choose _.glTF_ format if available. If not available, you must convert them to _glTF_ before you can use them in a scene. For that, we recommend importing them into Blender.
 
 ## Collisions
 
