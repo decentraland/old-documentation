@@ -9,6 +9,7 @@ type: Document
 
 You can add links from your scene out to other content, either to other scenes or to external websites.
 
+<!--
 ## Teleports
 
 To teleport a player to another scene, call the following function, indicating the coordinates that you want players to teleport to.
@@ -22,6 +23,8 @@ Players are presented a confirmation screen before they are teleported, this scr
 You can also teleport players to the most crowded place in Genesis City by doing `teleportTo(‘crowd’)`, which is equivalent to typing `/goto crowd` in the chat. Similarly you can teleport players to a random location from the curated list that you reach with `/goto magic` by doing ``teleportTo(‘magic’)`.
 
 Bare in mind that teleports take you to a scene in the indicated coordinates, but not necessarily to that same coordinates. This means that when travelling to a scene that has multiple parcels, players may not be landing on the same coordinates as specified, but rather into one of the spawn points designated by the creator of the scene.
+
+-->
 
 ## External links
 
