@@ -108,3 +108,16 @@ myPictureFrame.addComponent(
   })
 )
 ```
+
+The UI will include the description that's available on the NFT, you can also include additional custom text to the UI. To add custom text, simply include the text as a second argument on the `openNFTDialog()` function.
+
+```ts
+myPictureFrame.addComponent(
+  new OnPointerDown((e) => {
+    openNFTDialog(
+      "ethereum://0x06012c8cf97BEaD5deAe237070F9587f8E7A266d/558536",
+      "This NFT is mine and I'm really proud of owning it."
+    )
+  })
+)
+```
