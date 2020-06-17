@@ -1,6 +1,6 @@
 ---
 date: 2020-05-04
-title: Video Streaming
+title: Play Videos
 description: Stream video into a scene
 categories:
   - development-guide
