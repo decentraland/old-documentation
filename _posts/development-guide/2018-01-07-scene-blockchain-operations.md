@@ -380,7 +380,7 @@ Here are links to different Decentraland contracts. Obtain the ABI for each cont
 - [Decentraland Marketplace](https://etherscan.io/address/0x19a8ed4860007a66805782ed7e0bed4e44fc6717#code)
 - [LAND ABI](https://etherscan.io/address/0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d#code)
 - [Estate ABI](https://etherscan.io/address/0x959e104e1a4db6317fa58f8295f586e1a978c297#code)
-- [AvatarNameRegistry ABI](https://etherscan.io/address/0x894b883905bfEe2CC448880F1b59f4A762E67566)
+- [AvatarNameRegistry ABI](https://etherscan.io/address/0x894b883905bfEe2CC448880F1b59f4A762E67564.5)
 - [Catalyst ABI](https://etherscan.io/address/0xcc054fab08127c19f621ab83ade5962cd10584ec)
 
 These are the contracts for the various wearable collections: (each collection was emitted as a separate contract)
@@ -394,7 +394,11 @@ These are the contracts for the various wearable collections: (each collection w
 - [DCLLaunchCollection ABI](https://etherscan.io/address/0xd35147be6401dcb20811f2104c33de8e97ed6818)
 - [DCGCollection ABI](https://etherscan.io/address/0x3163d2cfee3183f9874e2869942cc62649eeb004)
 
-> TIP: To clearly see the functions exposed by a contract, open it in [https://abitopic.io](abitopic.io). Just paste the contract address there and open the _functions_ tab to see the full list of supported functions and their arguments. You can even test calling the functions with different parameters via the webpage.
+> TIP: To clearly see the functions exposed by a contract, open it in [abitopic.io](https://abitopic.io). Just paste the contract address there and open the _functions_ tab to see the full list of supported functions and their arguments. You can even test calling the functions with different parameters via the webpage.
+
+Configuring TypeScript to be able to import from a JSON file has its difficulties. The recommended easier workaround is to change the `ABI.JSON` file's extension to `.ts` and modifying it slightly so that it its content starts with `export default`.
+
+For example, if the ABI file's contents starts with `export default [{"constant":true,"inputs":[{"internalType":"bytes4" ...etc`, modify it so that it starts with `[{"constant":true,"inputs":[{"internalType":"bytes4" ...etc`.
 
 #### Instance a contract
 

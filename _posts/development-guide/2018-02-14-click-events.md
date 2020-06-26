@@ -39,7 +39,11 @@ myEntity.addComponent(
 
 > Tip: To keep your code easier to read, the function in the `OnPointerDown` can consist of just a call to a separate function that contains all of the logic.
 
-The `OnPointerDown` component has a second optional parameter, this parameter is an object that can include multiple properties about the event. These properties are explained in the next few sub-sections.
+The `OnPointerDown` component has a second optional parameter, this parameter is an object that can include multiple properties about the event. These properties are explained in greater detail in the next few sub-sections.
+
+- `button`: Which key to listen for: the left mouse click, _E_, or _F_.
+- `hoverText`: Hint text to display on the UI when pointing at the entity.
+- `distance`: Maximum click distance.
 
 #### OnPointerUp
 
