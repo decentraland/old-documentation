@@ -33,7 +33,7 @@ For example, a button smart item has a _When Clicked_ field. In this field you c
 
 Trigger multiple actions in a single field. By clicking the plus sign you can add multiple actions to be triggered together.
 
-Remove actions by clicking the three dots next to an action an select _Delete_ to remove it.
+Remove actions by clicking the three dots next to an action and selecting _Delete_ to remove it.
 
 In these fields you can also call actions on the same smart item that's doing the triggering.
 
@@ -47,11 +47,11 @@ Some smart items have unique characteristics that make them very handy for commo
 
 - _Click area_: An invisible cube that can be clicked by players to trigger actions on any other smart items. This item can be enabled or disabled by any other smart item, when disabled it won't be clickable. You can also set the text that players see when pointing their cursor at it.
 
-- _Ambient sound_: A sound source that plays a series of pre-defined ambient sounds. It can be set to always play or to only do so when activated by other smart items. It can also be set to play once or loop.
+- _Ambient sound_: A sound source that plays a series of predefined ambient sounds. It can be set to always play or to only do so when activated by other smart items. It can also be set to play once or loop.
 
 - _Arrow_: Show a hint arrow, pointing at something that the player should interact with. This item can be enabled or disabled by other smart items, when disabled the arrow is invisible.
 
-- _Message_: An 3d sign that starts minimized and can be expanded by players to be read.
+- _Message_: A 3d sign that starts minimized and can be expanded by players to be read.
 
 The _Tools_ smart item is a super versatile collection of tools that can act upon other items. Drag one of these into a scene, then call its actions from any other smart item. You only need one instance of this item, use it as many times as you want or even use it to call its own actions recursively.
 
@@ -63,7 +63,7 @@ The _Tools_ smart item is a super versatile collection of tools that can act upo
 
 - _Scale Item_: Smoothly transition an item from one scale to another. You can also scale it in different proportions for each axis. It can act on any item in the scene, smart or not.
 
-- _Delay_: Wait a given amount of seconds before triggering an action in a smart item
+- _Delay_: Wait a given amount of seconds before triggering an action in a smart item.
 
 - _Interval_: Trigger an action in a smart item regularly, every given amount of seconds.
 
@@ -81,11 +81,11 @@ However, if there are no players near the scene, then the scene is restored to i
 
 Make sure you design your scene so that the actions of one player don't sabotage the scene for others that come later. For example, if the scene is a puzzle game, you can use a _delay_ action on a _tools_ smart item to make all the items in the scene reset to their initial state a few seconds after the puzzle is solved.
 
-If there's a key in your scene that's essential for progressing, it's possible for a player to pick it up and run off, blocking other players from advancing. On possible way to prevent this scenario is to have a _trigger area_ on the scene's exit door that calls the _drop_ action on the key, so that it returns to its place of origin.
+If there's a key in your scene that's essential for progressing, it's possible for a player to pick it up and run off, blocking other players from advancing. One possible way to prevent this scenario is to have a _trigger area_ on the scene's exit door that calls the _drop_ action on the key, so that it returns to its place of origin.
 
 ## Troubleshooting
 
-- _An item in my scene should be clickable, but can't be clicked_
+- _An item in my scene should be clickable, but can't be clicked_.
 
 Make sure that it's not being obstructed by something else. You can't click through other items. Some items have a _collider mesh_ that has a simplified geometry that may be obstructing your item, even though its visible shape doesn't seem to be doing it. Try moving the item to see what happens.
 
