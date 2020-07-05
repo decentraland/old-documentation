@@ -23,17 +23,17 @@ In the scene selector screen, press _Import scene_, then drag one or several _.z
 
 If a scene is too large to import, try this:
 
-1. Decompress the scene _.zip_ file
+1. Decompress the scene _.zip_ file.
 2. Look for the `builder.json` inside the uncompressed folder. Compress that single file into a new _.zip_ file.
 3. Import this new _.zip_ file.
 
-> NOTE: You can only import scenes that have been built with the Builder. You can't import a scene that was built with the SDK or modified with it.
+> Note: You can only import scenes that have been built with the Builder. You can't import a scene that was built with the SDK or modified with it.
 
 ## Delete a scene
 
 In the scene selector screen, press the _three dots_ icon and select _Delete scene_.
 
-## Scenes storage
+## Scene storage
 
 If your Builder account is accessed via an in-browser wallet, like Metamask or Dapper, all of your existing scenes are saved and updated to a cloud storage that you can access from any other device where you're logged in.
 
