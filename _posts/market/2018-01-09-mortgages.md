@@ -9,7 +9,7 @@ type: Document
 
 Before you can request a LAND mortgage, you will have to approve the Ripio Credit Network’s smart contracts to conduct transactions on your behalf using your MANA and RCN tokens. Open your **Account Settings** in the upper right corner, and check the two **LAND by Mortgage** boxes. (You only need MANA to request a mortgage, RCN will convert the MANA you use to the RCN token for you.)
 
-Next, navigate to the parcel that you wish to request a mortgage for. Click **Request Mortgage**, directly next to the Buy button.
+Next, navigate to the parcel that you wish to request a mortgage for. Click **Request Mortgage**, directly next to the **Buy** button.
 
 Next, you will have to submit a brief application form including the following details and a deposit of at least 10% of the price of the parcel you wish to buy.
 
@@ -26,9 +26,9 @@ Any lender on RCN can supply the funds and fulfill the loan (as long as the parc
 
 As a borrower, you can then repay the loan by making periodic payments through the Decentraland Marketplace.
 
-If you fail to fully repay the loan, you have up to 7 days after the expiration date to repay your loan. After this period, then your lender may request the mortgage back through the RCN dApp. If your lender requests the mortgage back, you will see a “Defaulted” notice on the parcel page. You will lose the MANA you’ve paid, along with your ability to claim that parcel.
+If you fail to fully repay the loan, you have up to 7 days after the expiration date to repay your loan. After this period, your lender may request the mortgage back through the RCN dApp. If your lender requests the mortgage back, you will see a “Defaulted” notice on the parcel page. You will lose the MANA you’ve paid, along with your ability to claim that parcel.
 
-You can see a list of your open mortgages by clicking **My Land** in the Decentraland Marketplace, and selecting the **Mortgages** tab.
+You can see a list of your open mortgages by clicking **My LAND** in the Decentraland Marketplace, and selecting the **Mortgages** tab.
 
 To make a payment, click **Pay** in the mortgage's details page, enter the amount of MANA you want to include in your payment, and click **Submit**.
 
