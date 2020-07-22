@@ -9,12 +9,13 @@ type: Document
 
 The Land Manager allows you to manage your LAND and Estate assets.
 
-Access the Land manager at [https://land.decentraland.org](https://land.decentraland.org)
+
+Access the Land manager at [https://land.decentraland.org](https://land.decentraland.org).
 
 The Land Manager allows you to:
 
 - **Name** your parcels and Estates and give them a public description.
-- **Merge** LAND parecels into an Estate.
+- **Merge** LAND parcels into an Estate.
 - **Dissolve** an Estate into separate LAND parcels.
 - **Transfer** your parcels and Estates to another user.
 - **Grant permissions** to other users to edit the parcels you own.
@@ -53,7 +54,7 @@ If you’d rather see a list of all the LAND currently offered on the market, yo
 
 ## Manage Your LAND
 
-To view your LAND tokens, click **My Land**. Here you’ll find a list of all of your parcels and Estates, including any that you’ve contributed to community districts and any parcels that you have listed for sale.
+To view your LAND tokens, click **My LAND**. Here you’ll find a list of all of your parcels and Estates, including any that you’ve contributed to community districts and any parcels that you have listed for sale.
 
 By clicking on one of the parcels or Estates listed under My Land, you can edit its name, description, put it up for sale, or transfer it directly to another wallet address.
 
@@ -63,14 +64,14 @@ By clicking on one of the parcels or Estates listed under My Land, you can edit 
 
 To buy MANA in exchange for Ether, follow these steps:
 
-1. Open your user _Settings page_
+1. Open your user _Settings page_.
 2. Check the box next to _Assets using MANA_.
 
    ![](/images/media/marketplace_authorizations.png)
 
    > Note: Enabling this setting triggers a transaction on the blockchain. You must confirm this transaction in your Ethereum client, pay a gas fee in Ether and wait for its confirmation before it takes effect.
 
-3. Click **Buy Mana**
+3. Click **Buy Mana**.
 4. Set an amount of MANA you'd like to receive and click **Submit**.
 5. Confirm this transaction on your Ethereum client and wait for the network to verify it.
 
@@ -96,7 +97,7 @@ To create your first Estate, you need to own two or more adjacent LAND parcels.
 
 Once you’ve created your first Estate, you will see a new tab titled Estates. From this page you can view and manage all of your Estates.
 
-When you create a new Estate, you are effectively transferring your parcels to a new token. These Estates are represented by ERC721 tokens (like any other NFT). You will no longer see the individual parcels under _My Land_, and they will not appear in MetaMask, Mist, Trezor, or Ledger wallets, nor on Etherscan under your address.
+When you create a new Estate, you are effectively transferring your parcels to a new token. These Estates are represented by ERC721 tokens (like any other NFT). You will no longer see the individual parcels under _My LAND_, and they will not appear in MetaMask, Mist, Trezor, or Ledger wallets, nor on Etherscan under your address.
 
 ## Edit parcels or Estates
 
@@ -108,22 +109,22 @@ To edit a parcel or Estate:
 
    ![](/images/media/marketplace_edit_parcel.png)
 
-2. Click **Submit**
+2. Click **Submit**.
 3. Confirm this transaction on your Ethereum client and wait for the network to verify it.
 
 ## Give permissions
 
-You can give another user permissions to edit the content in a parcel or estate. This enables that user to deploy code to the scene, whilst not having the ability to sell the token.
+You can give another user permissions to edit the content in a parcel or Estate. This enables that user to deploy code to the scene, whilst not having the ability to sell the token.
 
 The user given permission can also change the name or description in the Marketplace.
 
 To grant permissions over your LAND:
 
-1. Navigate to the details page of the parcel or estate and click **Permissions**.
+1. Navigate to the details page of the parcel or Estate and click **Permissions**.
 
    ![](/images/media/marketplace_give_permissions.png)
 
-2. Click **Submit**
+2. Click **Submit**.
 3. Confirm this transaction on your Ethereum client and wait for the network to verify it.
 
 ## See your activity history
@@ -140,8 +141,8 @@ Click a transaction to see more details about it on Etherscan.
 
 To transfer MANA to another account:
 
-1. Open your user _Settings page_
-2. Click **Transfer**
+1. Open your user _Settings page_.
+2. Click **Transfer**.
 3. Enter the public address of the Ethereum wallet of the recipient.
 
    ![](/images/media/9ff24a6-transfer_LAND_screenshot.png)
@@ -155,7 +156,7 @@ To transfer MANA to another account:
 
 To transfer a LAND parcel or Estate to another user:
 
-1. Navigate to the details page of the parcel or the Estate you'd like to transfer and click **Transfer**
+1. Navigate to the details page of the parcel or the Estate you'd like to transfer and click **Transfer**.
 
    ![](/images/media/marketplace_transfer_land.png)
 
