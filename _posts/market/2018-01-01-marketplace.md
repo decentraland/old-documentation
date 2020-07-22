@@ -15,7 +15,7 @@ type: Document
 
 The Marketplace is the go-to place to trade and manage all your Decentraland on-chain assets.
 
-Access the Marketplace at [market.decentraland.org](https://market.decentraland.org/)
+Access the Marketplace at [market.decentraland.org](https://market.decentraland.org/).
 
 The Marketplace allows you to:
 
@@ -55,7 +55,7 @@ Click on a parcel to view it’s status, its coordinates, and its owner’s publ
 
 Select the **Browse** tab to see all the items that are for sale.
 
-- Select the **category** to view only a specific type of item .
+- Select the **Category** to view only a specific type of item .
 - **Order** them by different criteria like most recent, cheapest, etc.
 - Toggle **On sale** off to view items that aren't for sale.
 - **Filter** items by name to find something specific.
@@ -66,8 +66,8 @@ Select the **Browse** tab to see all the items that are for sale.
 
 To buy MANA in exchange for Ether:
 
-1. Open your user _Settings page_
-2. Click **Buy More** next to your MANA balance
+1. Open your user _Settings page_.
+2. Click **Buy More** next to your MANA balance.
 3. This takes you to [Kyber Swap](https://kyberswap.com/swap/eth-mana), where you can easily exchange Ether to MANA.
 4. Set an amount of MANA you'd like to receive or the amount of Ether you'd like to convert, then click **Swap Now**.
 5. Confirm this transaction on your Ethereum client and wait for the network to verify it.
@@ -94,9 +94,9 @@ If an item isn't listed on sale, you can still place a _bid_ on it and offer to 
 
 > Note: If this is your first time placing a bid on the Marketplace, you will also be asked to confirm a one-time transaction to allow the Marketplace to handle bids.
 
-To view a list of your open and pending bids, select _MY Bids_ on the top navbar.
+To view a list of your open and pending bids, select _My Bids_ on the top navbar.
 
-From this screen you can also change the price of your bid by clicking _Update_. This screen also shows bids done by other users on items you own.
+From this screen you can also change the price of your bid by clicking _Update_. This screen also shows bids made by other users on items you own.
 
 ## Sell a parcel or Estate
 
@@ -109,7 +109,7 @@ To sell one of your items:
 
 > Note: If this is your first time selling an item of this asset type on the Marketplace, you will also be asked to confirm a one-time transaction to allow the Marketplace to accept MANA.
 
-You can change the price of a sale that you already put on offer without having to cancel and re-create the sale. Just click **Update price** in the parcel or estate's details page.
+You can change the price of a sale that you already put on offer without having to cancel and re-create the sale. Just click **Update price** in the parcel or Estate's details page.
 
 ## See your activity history
 
@@ -127,7 +127,7 @@ Click a transaction to see more details about it on Etherscan.
 
 To transfer a LAND parcel or Estate to another user:
 
-1. Open **My Asssets** and open the details page of the parcel or the Estate you'd like to transfer and click **Transfer**
+1. Open **My Asssets** and open the details page of the parcel or the Estate you'd like to transfer and click **Transfer**.
 
 2. Enter the public address of the Ethereum wallet of the recipient.
 
