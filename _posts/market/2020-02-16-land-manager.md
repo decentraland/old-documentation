@@ -9,7 +9,8 @@ type: Document
 
 The Land Manager allows you to manage your LAND and Estate assets.
 
-Access the Land manager at [https://land.decentraland.org](land.decentraland.org).
+
+Access the Land manager at [https://land.decentraland.org](https://land.decentraland.org).
 
 The Land Manager allows you to:
 

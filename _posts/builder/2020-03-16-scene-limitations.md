@@ -10,13 +10,11 @@ type: Document
 In order to improve performance in the metaverse, we have established a set of limits that every scene must follow. If a
 scene exceeds these limitations, then the parcel won't be loaded and the preview will display an error message.
 
-For a straight-forward reference of what limitations you'll have for a specific number of parcels, check the following table:
-
-[Reference table](https://docs.google.com/spreadsheets/d/1BTm0C20PqdQDAN7vOQ6FpnkVncPecJt-EwTSNHzrsmg/edit#gid=0)
+For a straight-forward reference of what limitations you'll have for a specific number of parcels, check the following [reference table](https://docs.google.com/spreadsheets/d/1BTm0C20PqdQDAN7vOQ6FpnkVncPecJt-EwTSNHzrsmg/edit#gid=0).
 
 ## Scene limitation rules
 
-Below are the maximum number of elements allowed allowed in a scene:
+Below are the maximum number of elements allowed in a scene:
 
 > _n_ represents the number of parcels that a scene occupies.
 
@@ -148,13 +146,13 @@ For example, if your scene is only rendering one box entity at the time, logging
 
 When running a preview, any content that is located outside the parcel boundaries is highlighted in red when rendered. If any content is outside these boundaries, you won't be allowed to deploy this scene to Decentraland.
 
-If the tip of a large object leaves the boundaries, this object is considered out of bounds too.
+If part of a large object leaves the scene boundaries, this object is considered out of bounds too.
 
 A single parcel scene measures 16 meters x 16 meters. If the scene has multiple parcels, the dimensions vary depending on the arrangement of the parcels.
 
 ## Shader limitations
 
-3D models used in decentraland must use supported shaders and materials. See [3D model materials]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-10-materials %}) for a list of supported shaders.
+3D models used in Decentraland must use supported shaders and materials. See [3D model materials]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-10-materials %}) for a list of supported shaders.
 
 ## Lighting
 
