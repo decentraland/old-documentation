@@ -394,7 +394,11 @@ These are the contracts for the various wearable collections: (each collection w
 - [DCLLaunchCollection ABI](https://etherscan.io/address/0xd35147be6401dcb20811f2104c33de8e97ed6818)
 - [DCGCollection ABI](https://etherscan.io/address/0x3163d2cfee3183f9874e2869942cc62649eeb004)
 
-> TIP: To clearly see the functions exposed by a contract, open it in [https://abitopic.io](abitopic.io). Just paste the contract address there and open the _functions_ tab to see the full list of supported functions and their arguments. You can even test calling the functions with different parameters via the webpage.
+> TIP: To clearly see the functions exposed by a contract, open it in [abitopic.io](https://abitopic.io). Just paste the contract address there and open the _functions_ tab to see the full list of supported functions and their arguments. You can even test calling the functions with different parameters via the webpage.
+
+Configuring TypeScript to be able to import from a JSON file has its difficulties. The recommended easier workaround is to change the `ABI.JSON` file's extension to `.ts` and modifying it slightly so that it its content starts with `export default`.
+
+For example, if the ABI file's contents starts with `export default [{"constant":true,"inputs":[{"internalType":"bytes4" ...etc`, modify it so that it starts with `[{"constant":true,"inputs":[{"internalType":"bytes4" ...etc`.
 
 #### Instance a contract
 
