@@ -224,7 +224,7 @@ The `slerp()` function takes three parameters:
 const originRotation = Quaternion.Euler(0, 90, 0)
 const targetRotation = Quaternion.Euler(0, 0, 0)
 
-let newRotation = Scalar.Lerp(originRotation, targetRotation, 0.6)
+let newRotation = Quaternion.Slerp(originRotation, targetRotation, 0.6)
 ```
 
 To implement this in your scene, we recommend storing the data that goes into the `Slerp()` function in a custom component. You also need to define a system that implements the gradual rotation in each frame.
