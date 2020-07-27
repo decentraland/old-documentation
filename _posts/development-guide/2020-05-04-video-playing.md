@@ -80,6 +80,13 @@ Keep in mind that streaming video demands a significant effort from the player's
 
 ## About Video Files
 
+The following file formats are supported:
+
+- _.mp4_
+- _.mov_
+- _.ogg_
+- _.webm_
+
 Keep in mind that a video file adds to the total size of the scene, which makes the scene take longer to download for players walking into your scene. The video size might also make you go over the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}), as you have a maximum of 15 MB per parcel to use. We recommend compressing the video as much as possible, so that it's less of a problem.
 
 We also recommend starting to play the video when the player is near or performs an action to do that. Starting to play a video when your scene is loaded far in the horizon will unnecessarily affect performance while players visit neighboring scenes.
