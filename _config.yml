@@ -3,22 +3,22 @@
 
 title: Decentraland
 url: "https://docs.decentraland.org"
-? baseurl
+baseurl:
 #google_analytics_key: UA-63691338-8
-? disqus_shortname
-? newsletter_action
+disqus_shortname:
+newsletter_action:
 segment_write_key: ZHLrnVct1IQCx7yLeOzxSic7G1Duy0HH
 
 twitter_url: "https://twitter.com/decentraland"
-discord_url: "https://discordapp.com/invite/9EcuFgC"
+discord_url: "https://dcl.gg/discord"
 github_url: "https://github.com/decentraland"
 sdk_url: "https://docs.decentraland.org/"
 reddit_url: "https://reddit.com/r/decentraland"
 fb_url: "https://www.facebook.com/decentraland/"
 faq_url: "https://decentraland.org/#faqs"
 telegram_url: "https://t.me/decentralandTG"
-legal_url:  'https://decentraland.org/legal'
-press_url: 'https://decentraland.org/press'
+legal_url: "https://decentraland.org/legal"
+press_url: "https://decentraland.org/press"
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /images/favicon.png
@@ -79,7 +79,7 @@ exclude:
   - vendor
 
 collections:
-  ? sets
+  sets:
 
 defaults:
   - scope:
@@ -117,4 +117,4 @@ types:
   - Document
   - Video
 
-? _comments
+_comments:
