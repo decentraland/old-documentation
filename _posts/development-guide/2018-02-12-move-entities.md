@@ -174,14 +174,14 @@ To implement this `lerp()` in your scene, we recommend creating a custom compone
 
 ```ts
 @Component("lerpData")
-export class LerpData implements ISystem {
+export class LerpData {
   origin: Vector3 = Vector3.Zero()
   target: Vector3 = Vector3.Zero()
   fraction: number = 0
 }
 
 // a system to carry out the movement
-export class LerpMove {
+export class LerpMove implements ISystem {
   update(dt: number) {
     let transform = myEntity.getComponent(Transform)
     let lerp = myEntity.getComponent(LerpData)
@@ -231,7 +231,7 @@ To implement this in your scene, we recommend storing the data that goes into th
 
 ```ts
 @Component("slerpData")
-export class SlerpData implements ISystem {
+export class SlerpData {
   originRot: Quaternion = Quaternion.Euler(0, 90, 0)
   targetRot: Quaternion = Quaternion.Euler(0, 0, 0)
   fraction: number = 0
