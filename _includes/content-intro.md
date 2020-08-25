@@ -33,28 +33,34 @@ Or read the [documentation]({{ site.baseurl }}{% post_url /development-guide/201
 #### SDK Shortcuts
 
 <div class="shortcuts">
-  <a href="{{ site.baseurl }}{% post_url /development-guide/2018-01-02-coding-scenes %}">
+  <a href="{{ site.baseurl }}{% post_url /general/2018-01-01-introduction %}">
     <div>
-      <div class="image"><img src="/images/home/1.png"/></div>
-      <div class="title">Coding scenes</div>
-      <div class="description">Overview of the tools and essential concepts.</div>
+      <div class="image"><img src="/images/BackWorld.png" width="380" height="380"/></div>
+      <div class="title">World</div>
+      <div class="description">General info for players.</div>
     </div>
   </a>
-    <a href="{{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}">
+  <a href="{{ site.baseurl }}{% post_url /market/2018-01-01-marketplace %}">
     <div>
-      <div class="image"><img src="/images/home/3.png"/></div>
-      <div class="title">Examples</div>
-      <div class="description">Get inspired.</div>
+      <div class="image"><img src="/images/BackMarket.png" width="380" height="380"/></div>
+      <div class="title">Market</div>
+      <div class="description">Learn how to trade exclusive tokens.</div>
     </div>
   </a>
-  <a href="https://github.com/decentraland/ecs-reference">
+  <a href="{{ site.baseurl }}{% link content-intro.html %}">
     <div>
-      <div class="image"><img src="/images/home/2.png"/></div>
-      <div class="title">Reference</div>
-      <div class="description">The available components, objects, and functions.</div>
+      <div class="image"><img src="/images/BackCreate.png" width="380" height="380"/></div>
+      <div class="title">Create</div>
+      <div class="description">Learn to build and share your creations.</div>
     </div>
   </a>
-
+  <a href="{{ site.baseurl }}{% post_url /blockchain-integration/2020-02-17-get-a-wallet %}">
+    <div>
+      <div class="image"><img src="/images/BackEth.png" width="380" height="380"/></div>
+      <div class="title">Ethereum Essentials</div>
+      <div class="description">Learn how we use the blockchain.</div>
+    </div>
+  </a>
 </div>
 
 Several libraries are built upon the Decentraland SDK to help you build faster:
