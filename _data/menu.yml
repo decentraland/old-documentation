@@ -85,11 +85,11 @@
             - title: SDK 101
               post: "development-guide/2020-03-16-SDK-101.md"
             - title: Installation guide
-              post: "getting-started/2018-01-01-installation-guide.md"
+              post: "development-guide/2018-01-01-installation-guide.md"
             - title: Coding scenes
-              post: "getting-started/2018-01-02-coding-scenes.md"
+              post: "development-guide/2018-01-02-coding-scenes.md"
             - title: Preview scene
-              post: "getting-started/2018-01-04-preview-scene.md"
+              post: "development-guide/2018-01-04-preview-scene.md"
         - title: Architecture overview
           children:
             - title: Entities & Components
