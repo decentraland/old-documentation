@@ -244,8 +244,10 @@ You set _u_ and _v_ coordinates on the 2D image of the texture to correspond to 
 ```ts
 //Create material and configure fields
 const myMaterial = new BasicMaterial()
-myMaterial.texture = "materials/atlas.png"
-myMaterial.samplingMode = 0
+let myTexture = new Texture("materials/atlas.png")
+myTexture.samplingMode = 0
+myMaterial.texture = myTexture
+
 
 //Create shape component
 const plane = new PlaneShape()
@@ -280,8 +282,9 @@ The following example includes a function that simplifies the setting of uvs. Th
 
 ```ts
 const myMaterial = new BasicMaterial()
-myMaterial.texture = new Texture("materials/atlas.png")
-myMaterial.samplingMode = 0
+let myTexture = new Texture("materials/atlas.png")
+myTexture.samplingMode = 0
+myMaterial.texture = myTexture
 
 const myPlane = new Entity()
 const plane = new PlaneShape()
@@ -336,7 +339,7 @@ The example above sets the wrapping mode to `MIRROR`.
 
 #### Texture scaling
 
-When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. In a 3D environment, the effects of perspective cause this naturally. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The `Texture` and the `BasicMaterial` components use the _bilinear_ algorithm by default, but let you configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode`.
+When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. In a 3D environment, the effects of perspective cause this naturally. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The `Texture` object uses the _bilinear_ algorithm by default, but it lets you configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode` property.
 
 ```ts
 const myTexture = new Texture("materials/myTexture.png")
