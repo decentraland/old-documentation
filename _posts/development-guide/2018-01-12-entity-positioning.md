@@ -265,72 +265,57 @@ engine.addEntity(parentEntity)
 
 You can use an invisible entity with no shape component to wrap a set of other entities. This entity won't be visible in the rendered scene, but can be used to group its children and apply a transform to all of them.
 
-## Position an entity relative to the player
+## Attach an entity to the player
 
-Use the `Camera.instance` object to obtain the position of the player. If the player is using 3d person view, `Camera.instance` returns the position of the avatar. This example positions an entity right where the player is standing:
-
-```ts
-let playerPos: Vector3 = Camera.instance.position
-  .clone()
-  .add(Vector3.Forward().rotate(Camera.instance.rotation))
-
-let myEntity = new Entity()
-myEntity.addComponent(playerPos)
-engine.addEntity(myEntity)
-```
-
-This example positions an entity 2 meters in front of the player:
+Set an entity as a child of the `Attachable.PLAYER` object to fix the entity to the player and follow the player's movements.
 
 ```ts
-let playerPos: Vector3 = Camera.instance.position
-  .clone()
-  .add(new Vector3(0, 0, 2).rotate(Camera.instance.rotation))
-
-let myEntity = new Entity()
-myEntity.addComponent(playerPos)
-engine.addEntity(myEntity)
+const followTheCamera = new Entity()
+followTheCamera.addComponent(new BoxShape())
+followTheCamera.addComponent(
+  new Transform({
+    position: new Vector3(0, 0.5, 3),
+  })
+)
+engine.addEntity(followTheCamera)
+followTheCamera.setParent(Attachable.PLAYER)
 ```
 
-The position and rotation of `Camera.instance` is updated less frequently than the frame rate of the scene, so using a system to attempt to move an object together with the player results in an unpleasant jittery effect.
+If the attached entity has a Transform component, it will be positioned relative to the player's position, and keep that relative position as the player moves or rotates.
 
-This jittery effect can be significantly reduced (but not removed entirely) by implementing a system that performs a series of lerps. As a downside, the object will lag a little behind if the player moves or turns suddenly.
+To fix an entity's rotation only in the _x_ axis to the player, set an entity as a child of the `Attachable.AVATAR_POSITION` object. The entity will then rotate with the player when looking around at ground level, but it won't accompany the player's rotation when looking up or down.
 
 ```ts
-let cube = new Entity()
-cube.addComponent(new BoxShape())
-cube.addComponent(new Transform())
-engine.addEntity(cube)
-
-export class ObjectMoverSystem implements ISystem {
-  transform: Transform
-  targetPosition: Vector3
-  targetRotation: Quaternion
-  lerpingSpeed: number
-  constructor(movingObject: IEntity, lerpingSpeed: number) {
-    this.transform = movingObject.getComponent(Transform)
-    this.lerpingSpeed = lerpingSpeed
-  }
-
-  update(deltaTime: number) {
-    this.targetPosition = Camera.instance.position
-    this.targetRotation = Camera.instance.rotation
-
-    this.transform.position = Vector3.Lerp(
-      this.transform.position,
-      this.targetPosition,
-      deltaTime * this.lerpingSpeed
-    )
-
-    this.transform.rotation = Quaternion.Slerp(
-      this.transform.rotation,
-      this.targetRotation,
-      deltaTime * this.lerpingSpeed
-    )
-  }
-}
-
-engine.addSystem(new ObjectMoverSystem(cube, 15))
+const followAvatar = new Entity()
+followAvatar.addComponent(new BoxShape())
+followAvatar.addComponent(
+  new Transform({
+    position: new Vector3(0, 0.5, 3),
+  })
+)
+engine.addEntity(followAvatar)
+followAvatar.setParent(Attachable.AVATAR_POSITION)
 ```
+
+Both `Attachable.PLAYER` and `Attachable.AVATAR_POSITION` behave the same for moving the position of the entity, but they have a subtle difference for rotating the entity with the camera:
+
+With `Attachable.PLAYER`:
+
+- 1st person: Entity rotates on all axis with the camera
+- 3rd person: Entity rotates on only the _x_ axis with the camera
+
+With `Attachable.AVATAR_POSITION`:
+
+- 1st person: Entity rotates on only the _x_ axis with the camera
+- 3rd person: Entity rotates on only the _x_ axis with the camera
+
+This gif illustrates the difference in 1st person. The pink entity uses `Attachable.AVATAR_POSITION`, the white object uses `Attachable.PLAYER`.
+
+<img src="/images/media/gifs/attach-to-player.gif" alt="attach entity to player" width="400"/>
+
+If several players are in the same scene, they will each experience the entity as attached to themselves. They will not see the entity attached to other players.
+
+For example, in a multiplayer scene where players can pick up boxes and move them around, the recommended approach is to make boxes that are being carried by other players invisible. So that only players that are currently carrying a box see them attached to themselves.
 
 ## Scene boundaries
 
