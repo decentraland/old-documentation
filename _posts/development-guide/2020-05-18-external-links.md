@@ -9,7 +9,6 @@ type: Document
 
 You can add links from your scene out to other content, either to other scenes or to external websites.
 
-
 ## Teleports
 
 To teleport a player to another scene, call the following function, indicating the coordinates that you want players to teleport to.
@@ -24,7 +23,7 @@ You can also teleport players to the most crowded place in Genesis City by doing
 
 Bare in mind that teleports take you to a scene in the indicated coordinates, but not necessarily to that same coordinates. This means that when travelling to a scene that has multiple parcels, players may not be landing on the same coordinates as specified, but rather into one of the spawn points designated by the creator of the scene.
 
-
+To move a player to another set of coordinates inside the current scene, use the `movePlayerTo()` function instead. See [Move a Player]({{ site.baseurl }}{% post_url /development-guide/2020-08-28-move-player %}).
 
 ## External links
 

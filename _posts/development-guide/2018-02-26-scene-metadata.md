@@ -175,6 +175,26 @@ Simply add a `cameraTarget` field to the spawn point data. The value of `cameraT
 
 This example spawns a player on _5, 1, 4_ looking East at _10, 1, 4_. If the spawn position is a range, then the player's rotation will always match the indicated target. If there are multiple spawn points, each can have its own separate target.
 
+## Required Permissions
+
+The `requiredPermissions` property manages various controlled features that could be used in an abusive way and damage a player's experience.
+
+The corresponding features are blocked from being used by the scene, unless the permission is requested in the `scene.json` file.
+
+```json
+"requiredPermissions": [
+    "ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE"
+  ],
+```
+
+Currently, only the following permission is handled:
+
+- `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player]({{ site.baseurl }}{% post_url /development-guide/2020-08-28-move-player %})
+
+If a `requiredPermissions` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
+
+> Note: In future releases, when a player enters a scene that has items listed in the `requiredPermissions` property, the scene will prompt the player to grant these permissions. The player will be able to decline these permissions for that scene.
+
 ## Custom metadata
 
 You can extend the fields in the "policy" section to whatever you think is relevant. These fields might be taken into consideration by alternative community clients used to navigate the metaverse and be used to filter content or restrict players from doing certain actions like flying or battling.
