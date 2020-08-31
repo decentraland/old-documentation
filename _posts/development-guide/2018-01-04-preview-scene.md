@@ -94,6 +94,8 @@ Output messages to console (using `log()`). You can then view these messages as 
 
 You can also add `debugger` commands or use the `sources` tab in the developer tools menu to add breakpoints and pause execution while you interact with the scene in real time.
 
+Once you deploy the scene, you won't be able to see the messages printed to console when you visit the scene in-world. If you need to check these messages on the deployed scene, you can turn the scene's console messages back on adding the following parameter to the URL: `DEBUG_SCENE_LOG`.
+
 #### View scene stats
 
 The lower-left corner of the preview informs you of the _FPS_ (Frames Per Second) with which your scene is running. Your scene should be able to run above 25 FPS most of the time.
