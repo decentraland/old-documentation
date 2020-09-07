@@ -302,12 +302,12 @@ Both `Attachable.PLAYER` and `Attachable.AVATAR_POSITION` behave the same for mo
 With `Attachable.PLAYER`:
 
 - 1st person: Entity rotates on all axis with the camera
-- 3rd person: Entity rotates on only the _x_ axis with the camera
+- 3rd person: Entity rotates on only the _y_ axis with the camera
 
 With `Attachable.AVATAR_POSITION`:
 
-- 1st person: Entity rotates on only the _x_ axis with the camera
-- 3rd person: Entity rotates on only the _x_ axis with the camera
+- 1st person: Entity rotates on only the _y_ axis with the camera
+- 3rd person: Entity rotates on only the _y_ axis with the camera
 
 This gif illustrates the difference in 1st person. The pink entity uses `Attachable.AVATAR_POSITION`, the white object uses `Attachable.PLAYER`.
 
