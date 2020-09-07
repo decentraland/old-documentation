@@ -297,6 +297,9 @@ engine.addEntity(followAvatar)
 followAvatar.setParent(Attachable.AVATAR_POSITION)
 ```
 
+> Note: To set an entity as a child of `Attachable.PLAYER` or `Attachable.AVATAR_POSITION`, you need to first add the entity to the engine. If you attempt to set the entity as child of the player *before* adding it to the engine, it will raise an error.
+
+
 Both `Attachable.PLAYER` and `Attachable.AVATAR_POSITION` behave the same for moving the position of the entity, but they have a subtle difference for rotating the entity with the camera:
 
 With `Attachable.PLAYER`:
