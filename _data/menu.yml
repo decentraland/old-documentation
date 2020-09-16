@@ -46,6 +46,7 @@
   children:
     - post: "general/2018-01-01-introduction.md"
     - post: "general/2018-01-02-faq.md"
+    - post: "general/2020-09-16-community-voting.md"
     - post: "general/2018-01-04-whitepaper.md"
 
 - title: Market
