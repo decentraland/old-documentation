@@ -97,30 +97,28 @@ A newly created proposal goes through the following stages of revision:
 1. **Inbox filtering**: The community has seven days to view it. This phase serves as an initial filter to find proposals that the community has an interest in.
    _>1 % Minimum Approval and >25% Support needed_
 
+   _After 7 days and if approved, the proposal can be **Enacted** to move to the next stage._
+
 2. **Security Advisory Board revision**: The Security Advisory Board has 24 hours to review the proposal. This phase serves to protect the DAO from proposals that are badly intended or that could harm the ecosystem. At this stage, the Security Advisory Board can choose to reject or delay the proposal. This delay also serves to give community members enough time to register to vote or to wrap MANA before the vote.
+
+   _After 24 hours and if not rejected or delayed, the proposal can be **Executed** to move to the next stage._
 
 3. **Community vote**: Once someone executes the vote for the proposal, the community has another seven days to vote for the proposal. This phase determines if the proposal should be acted upon or not.
    _20 % Minimum Approval and 66 % Support needed_
 
-After stage (2) the voting for the proposal is ready to be _executed_. Executing the proposal means making it enter the final stage, the _Community_ stage.
+   _After 7 days and if approved, the proposal can be **Enacted** so that its changes are made on-chain._
 
-To **execute** a proposal:
-
-- Open the proposal's details.
-- Click the _Execute_ button. If the proposal is not ready, the button will be grayed out.
-- Your browser wallet will require that you approve a transaction
-
-Once the proposal has been approved in the _Community_ stage, then if the proposal has on-chain consequences, these are ready to be _enacted_. This means that the change that the proposal was pushing for gets implemented on the blockchain.
-
-To **enact** a proposal:
+To **enact** or **execute** a proposal:
 
 - Open the proposal's details.
-- Click the _Enact_ button. If the proposal is not ready, the button will be grayed out.
+- Click the _Enact_ or _Execute_ button. If the proposal is not ready, the button will be grayed out.
 - Your browser wallet will require that you approve a transaction
 
-Miscellaneous proposals without on-chain consequences are forwarded to the Decentraland Foundation to be enacted upon by them.
+> Note: Any user with or without voting power can execute or enact proposals. Both these transactions require that you pay a gas fee to the Ethereum network.
 
-> Note: Any user with or without voting power can execute and enact proposals. These transactions require that you pay a gas fee to the Ethereum network.
+If a proposal gathers enough positive votes so that it's assured to succeed, even if all of the remaining voting power were to vote against it, then it's not necessary to wait the full duration of the stage. The same transaction for the vote that makes the proposal reach this level of approval also enacts the proposal.
+
+Miscellaneous proposals without on-chain consequences don't need to be enacted after the final stage, they are forwarded to the Decentraland Foundation to be enacted upon by them.
 
 ### Create a Proposal
 
