@@ -58,19 +58,14 @@ jobs:
 
   deploy-master:
     docker:
-      - image: circleci/node:8-browsers
+      - image: decentraland/circleci-aws-cli:latest
     working_directory: /tmp/client
     steps:
       - restore_cache:
           keys:
           - build-{{ .Revision }}
       - run:
-          name: install aws
-          command: |
-            sudo apt-get install python-dev python-pip
-            sudo pip install awscli
-      - run:
-          name: Deploy to S3 if tests pass and branch is Master
+          name: Deploy to S3 if tests pass and branch is master
           command: aws s3 sync _site s3://docs.decentraland.org/ --acl public-read
       - run:
           name: Invalidate cloudfront cache
