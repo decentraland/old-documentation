@@ -360,24 +360,25 @@ To make a material with texture transparent:
 
 - Set an image in `alphaTexture`.
 
-      	> Note: This image can be the same as the texture, or a different image that determines that certain parts of the texture as transparent and others aren't.
+> Note: This must be a single-channel image. In this image use the color red to determine what parts of the real texture should be transparent.
 
 - Optionally set the `transparencyMode` to: - `OPAQUE`: No transparency at all - `ALPHATEST`: Each pixel is either completely opaque or completely transparent, based on a threshold. - `ALPHABLEND`: Intermediate values are possible based on the value of each pixel.
 
 * If you set the `transparencyMode` to `ALPHATEST`, you can fine tune the threshold used to determine if each pixel is transparent or not. Set the `alphaTest` property between _0_ and _1_. By default its value is _0.5_.
 
 ```ts
-const myTexture = new Texture("materials/alpha.png")
+const myTexture = new Texture("materials/texture.png")
+const alphaTexture = new Texture("materials/alpha.png")
 
 // Material with ALPHABLEND
 const myMaterial = new Material()
 myMaterial.albedoTexture = myTexture
-myMaterial.alphaTexture = myTexture
+myMaterial.alphaTexture = alphaTexture
 
 // Material with ALPHATEST
 const myMaterial2 = new Material()
 myMaterial2.albedoTexture = myTexture
-myMaterial2.alphaTexture = myTexture
+myMaterial2.alphaTexture = alphaTexture
 myMaterial.transparencyMode = 1 // ALPHATEST
 myMaterial.alphaTest = 0.3
 ```
