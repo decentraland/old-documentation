@@ -10,7 +10,7 @@ type: Document
 To change the player's position in the scene, use the `movePlayerTo()` function. This function takes two arguments:
 
 - `position`: Where to move the player, expressed as an object with _x_, _y_, and _z_ properties.
-- `cameraTarget`: (optional) What direction to make the player face, expressed as an object with _x_, _y_, and _z_ properties that represent the coordinates of a point in space to stare at. If no value is provided, the player will spawn facing North.
+- `cameraTarget`: (optional) What direction to make the player face, expressed as an object with _x_, _y_, and _z_ properties that represent the coordinates of a point in space to stare at. If no value is provided, the player will maintain the same rotation as before moving.
 
 ```ts
 const respawner = new Entity()

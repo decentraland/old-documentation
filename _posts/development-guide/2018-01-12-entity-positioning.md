@@ -267,7 +267,7 @@ You can use an invisible entity with no shape component to wrap a set of other e
 
 ## Attach an entity to the player
 
-Set an entity as a child of the `Attachable.PLAYER` object to fix the entity to the player and follow the player's movements.
+Set an entity as a child of the `Attachable.FIRST_PERSON_CAMERA` object to fix the entity to the player and follow the player's movements.
 
 ```ts
 const followTheCamera = new Entity()
@@ -278,12 +278,12 @@ followTheCamera.addComponent(
   })
 )
 engine.addEntity(followTheCamera)
-followTheCamera.setParent(Attachable.PLAYER)
+followTheCamera.setParent(Attachable.FIRST_PERSON_CAMERA)
 ```
 
 If the attached entity has a Transform component, it will be positioned relative to the player's position, and keep that relative position as the player moves or rotates.
 
-To fix an entity's rotation only in the _x_ axis to the player, set an entity as a child of the `Attachable.AVATAR_POSITION` object. The entity will then rotate with the player when looking around at ground level, but it won't accompany the player's rotation when looking up or down.
+To fix an entity's rotation only in the _x_ axis to the player, set an entity as a child of the `Attachable.AVATAR` object. The entity will then rotate with the player when looking around at ground level, but it won't accompany the player's rotation when looking up or down.
 
 ```ts
 const followAvatar = new Entity()
@@ -294,25 +294,26 @@ followAvatar.addComponent(
   })
 )
 engine.addEntity(followAvatar)
-followAvatar.setParent(Attachable.AVATAR_POSITION)
+followAvatar.setParent(Attachable.AVATAR)
 ```
 
-> Note: To set an entity as a child of `Attachable.PLAYER` or `Attachable.AVATAR_POSITION`, you need to first add the entity to the engine. If you attempt to set the entity as child of the player *before* adding it to the engine, it will raise an error.
+> Note: To set an entity as a child of `Attachable.FIRST_PERSON_CAMERA` or `Attachable.AVATAR`, you need to first add the entity to the engine. If you attempt to set the entity as child of the player _before_ adding it to the engine, it will raise an error.
 
+Both `Attachable.FIRST_PERSON_CAMERA` and `Attachable.AVATAR` behave similarly, but have subtle differences:
 
-Both `Attachable.PLAYER` and `Attachable.AVATAR_POSITION` behave the same for moving the position of the entity, but they have a subtle difference for rotating the entity with the camera:
+With `Attachable.FIRST_PERSON_CAMERA`:
 
-With `Attachable.PLAYER`:
+- The entity is at eye-level of the player
+- In 1st person: Entity rotates on all axis, staying in a fixed position on the camera.
+- In 3rd person: Entity rotates on only the _y_ axis with the camera
 
-- 1st person: Entity rotates on all axis with the camera
-- 3rd person: Entity rotates on only the _y_ axis with the camera
+With `Attachable.AVATAR`:
 
-With `Attachable.AVATAR_POSITION`:
-
+- The entity is arm or waist level of the player
 - 1st person: Entity rotates on only the _y_ axis with the camera
 - 3rd person: Entity rotates on only the _y_ axis with the camera
 
-This gif illustrates the difference in 1st person. The pink entity uses `Attachable.AVATAR_POSITION`, the white object uses `Attachable.PLAYER`.
+This gif illustrates the difference in 1st person. The pink entity uses `Attachable.AVATAR`, the white object uses `Attachable.FIRST_PERSON_CAMERA`.
 
 <img src="/images/media/gifs/attach-to-player.gif" alt="attach entity to player" width="400"/>
 
