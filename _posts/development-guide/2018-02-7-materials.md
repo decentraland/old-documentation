@@ -382,6 +382,16 @@ myMaterial.transparencyMode = 1 // ALPHATEST
 myMaterial.alphaTest = 0.3
 ```
 
+## Casting no shadows
+
+To prevent a material from casting shadows over other objects, both `Material` and `BasicMaterial` have a `castShadows` property that you can set to _false_. This property is always _true_ by default.
+
+```ts
+let noShadowMaterial = new Material()
+noShadowMaterial.albedoColor = Color4.White()
+noShadowMaterial.castShadows = false
+```
+
 ## Reuse materials
 
 If multiple entities in your scene use a same material, there's no need to create an instance of the material component for each. All entities can share one same instance, this keeps your scene lighter to load and prevents you from exceeding the maximum amount of materials per scene.
