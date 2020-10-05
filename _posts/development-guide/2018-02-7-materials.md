@@ -331,8 +331,10 @@ You can also define how the texture is tiled if the mapping spans more than the 
 - `WRAP`: The texture is repeated as many times as it fits in the mesh, using the specified size.
 - `MIRROR`: As in wrap, the texture is repeated as many times as it fits, but the orientation of these repetitions is mirrored.
 
+> Note: The `wrap` property must be set when instancing the texture, after that it's a read-only property.
+
 ```ts
-myTexture.wrap = 2
+let myTexture = new Texture("materials/atlas.png", {wrap: 2})
 ```
 
 The example above sets the wrapping mode to `MIRROR`.
