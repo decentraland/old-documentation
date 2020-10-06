@@ -212,3 +212,48 @@ As clear use cases start to emerge, we plan to define more conventions over the 
     "teleportPosition": ""
   }
 ```
+
+
+## Fetch metadata from scene code
+
+You may need a scene's code to access the fields from the metadata, like the parcels that the scene is deployed to, or the spawn point positions. This is especially useful for scenes that are meant to be replicated, or for code that is meant to be reused in other scenes. It's also very useful for smart items, where the smart item's code might for example need to know where the scene limits are.
+
+To access this data, first import the `ParcelIdentity` library to your scene:
+
+```ts
+import { getParcel } from '@decentraland/ParcelIdentity'
+```
+
+Then you can call the `getParcel()` function from this library, which returns a json object that includes much of the contents of the scene.json file. 
+
+The example bleow shows the path to obtain several of the more common fields you might need from this function's response:
+
+```ts
+import { getParcel } from '@decentraland/ParcelIdentity'
+
+executeTask(async () => {
+  const parcel = await getParcel()
+
+  // parcels
+  log('parcels: ', parcel.land.sceneJsonData.scene.parcels)
+  log('base parcel: ', parcel.land.sceneJsonData.scene.base)
+
+  // spawn points
+  log('spawnpoints: ', parcel.land.sceneJsonData.spawnPoints)
+
+  // general scene data
+  log('title: ', parcel.land.sceneJsonData.display.title)
+  log('author: ', parcel.land.sceneJsonData.contact.name)
+  log('email: ', parcel.land.sceneJsonData.scene.contact.email)
+
+  // other info
+  log('all policy fields: ', parcel.land.sceneJsonData.policy)
+  log('rating: ', parcel.land.scene.sceneJsonData.contentRating)
+  log('blacklist: ', parcel.land.scene.sceneJsonData.blacklist)
+  log('tags: ', parcel.land.sceneJsonData.tags)
+})
+```
+
+> Note: `getParcel()` needs to be run as an [async function]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %}), since the response may delay a fraction of a second or more in returning data.
+
+
