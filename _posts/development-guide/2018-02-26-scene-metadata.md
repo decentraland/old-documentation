@@ -244,12 +244,9 @@ executeTask(async () => {
   // general scene data
   log('title: ', parcel.land.sceneJsonData.display.title)
   log('author: ', parcel.land.sceneJsonData.contact.name)
-  log('email: ', parcel.land.sceneJsonData.scene.contact.email)
+  log('email: ', parcel.land.sceneJsonData.contact.email)
 
   // other info
-  log('all policy fields: ', parcel.land.sceneJsonData.policy)
-  log('rating: ', parcel.land.scene.sceneJsonData.contentRating)
-  log('blacklist: ', parcel.land.scene.sceneJsonData.blacklist)
   log('tags: ', parcel.land.sceneJsonData.tags)
 })
 ```
