@@ -119,6 +119,30 @@ The other numbers in the panel refer to the usage of resources, in relation to t
 
 > Note: Keeping this panel open can negatively impact the frame rate and performance of your scene, so we recommend closing it while not in use.
 
+#### Run code only in preview
+
+You can detect if a scene is running as a preview or is already deployed in production, so that the same code behaves differently depending on the case. You can use this to add debugging logic to your code without the risk of forgetting to remove it and having it show in production.
+
+To use this function, import the `@decentraland/EnvironmentAPI` library.
+
+
+```ts
+import { isPreviewMode } from '@decentraland/EnvironmentAPI'
+
+executeTask(async () => {
+  const preview = await isPreviewMode()
+  
+  if (preview == true){
+    log("Running in preview")
+  }
+}
+```
+
+
+> Note: `isPreviewMode()` needs to be run as an [async function]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %}), since the response may delay in returning data.
+
+
+
 <!--
 ## View collision meshes
 
