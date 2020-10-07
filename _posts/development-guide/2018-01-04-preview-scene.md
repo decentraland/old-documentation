@@ -130,9 +130,9 @@ To use this function, import the `@decentraland/EnvironmentAPI` library.
 import { isPreviewMode } from '@decentraland/EnvironmentAPI'
 
 executeTask(async () => {
-  const preview = await isPreviewMode()
+  const preview: boolean = await isPreviewMode()
   
-  if (preview == true){
+  if (preview){
     log("Running in preview")
   }
 }
