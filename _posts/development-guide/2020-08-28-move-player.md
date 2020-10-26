@@ -13,6 +13,7 @@ To change the player's position in the scene, use the `movePlayerTo()` function.
 - `cameraTarget`: (optional) What direction to make the player face, expressed as an object with _x_, _y_, and _z_ properties that represent the coordinates of a point in space to stare at. If no value is provided, the player will maintain the same rotation as before moving.
 
 ```ts
+import { movePlayerTo } from '@decentraland/RestrictedActions'
 const respawner = new Entity()
 respawner.addComponent(new BoxShape())
 respawner.addComponent(new Transform({ position: new Vector3(8, 0, 8) }))
