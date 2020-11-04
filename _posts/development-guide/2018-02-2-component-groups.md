@@ -66,6 +66,8 @@ In the example above, `PhysicsSystem` iterates over the entities in `myGroup` as
 
 - If your scene also has other entities like a _hoop_ and a _scoreBoard_ that only have a `Physics` component, then they won't be in `myGroup` and won't be affected by `PhysicsSystem`.
 
+> Note: The `engine.getComponentGroup()` is an expensive function to process, it should never be used insdie the `update` of a system, as that would create a new group on every frame. When regularly checking the entities in a group, refer to an already created group, as in the example above. Once created, compnent groups are updated as entities and components are added and removed from the engine, so there's no need to redeclare or update these groups.
+
 ## All entities
 
 You can access the full list of entities that have been added to the engine, regardless of what components they have, through `engine.entities`.
