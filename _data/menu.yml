@@ -48,6 +48,7 @@
     - post: "general/2018-01-02-faq.md"
     - post: "general/2020-09-16-community-voting.md"
     - post: "general/2018-01-04-whitepaper.md"
+    - post: "general/2020-11-14-hardware-acceleration.md"
 
 - title: Market
   image: sets/MarketplaceIcon.svg
