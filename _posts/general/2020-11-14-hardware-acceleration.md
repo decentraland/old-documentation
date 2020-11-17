@@ -1,8 +1,8 @@
-Since Decentraland runs in the browser, you might need to configure your browser and/or machine to be able to access all of your machine's potential to run Decentraland as smoothly as possible.
+Since Decentraland runs in a web browser, you might need to configure your browser and/or operating system to have access to all of your machine's potential to run Decentraland as smoothly as possible.
 
 [image]
 
-If you see this warning, it means that you are using a sub-optimal set up for rendering 3d graphics. Your experience playing Decentraland might be laggy and unresponsive because of this.
+If you see this warning, it means that you are using a sub-optimal set up for rendering 3d graphics. Your experience when playing Decentraland might be laggy and unresponsive because of this.
 
 > Note: Some lower end machines, or machines that are not designed for gaming, may not have a _dedicated_ graphics card at all. If that's your case, then ignore this warning. You might still be able to improve how you experience Decentraland by opening the Settings panel and lowering the graphics quality.
 
@@ -36,28 +36,13 @@ _On other browsers, the steps may vary slightly, but should be essentially the s
 To set up hardware acceleration:
 
 - Open _System Preferences_
-- Open _Battery_
+- Open **Battery**
 - Uncheck the box for _Automatic graphics switching_. This will keep the _dedicated_ graphics card always in use when applicable.
 
 ### Windows
 
-In Windows there are three options you can always choose:
-
-- Let each software choose what graphics card to use
-- Always force the use of the _dedicated_ graphics card
-- Always force the use of the _integrated_ graphics card
-
-You need to make sure you're not using the third of these options.
-
-On an NVIDIA card:
-
-- Open the _NVIDIA Control Panel_
-- Select _Manage 3D Settings_ and the _Program Settings_ tab
-- Choose _Chrome_ or your browser of choice, and set the preferred graphics card to be _dedicated graphics_.
-- Save your changes
-
-<figure>
-    <img src="/images/media/nvidia.png" alt="NVIDIA software settings" width="400"/>
-</figure>
-
-_With other hardware providers, the steps may vary slightly, but should be essentially the same._
+- Left click anywhere on the desktop and select _Display Options_
+- Scroll down to find the **Graphics Settings** link
+- Under _Choose an app to set preference_ select Chrome or your browser of choice
+- Click on the app and click **Options**
+- Under _Set graphics preference_, choose **High Performance** and click **Save**
