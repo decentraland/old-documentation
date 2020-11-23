@@ -13,13 +13,13 @@ Previews of Decentraland scenes can run as standalone pages, just as you can run
 
 Decentraland scene previews are compatible with the following hosting platforms:
 
-- [Zeit Now](https://zeit.co/now) _(free)_
+- [Vercel Now](https://vercel.com/) _(free)_
 - [GitHub pages](https://pages.github.com/) _(free)_
 - [Amazon S3](https://aws.amazon.com/s3/)
 
 Once uploaded to one of these platforms, the only thing that others have to do in order to explore your scene is open a link. They don’t need to install the CLI, Node, NPM, or any of the other tools that would be required to run the preview on their local machine.
 
-For example here are some scenes that are currently running in Zeit Now:
+For example here are some scenes that are currently running in Vercel Now:
 
 - [Block Dog](https://blockdog-wtciaozdbo.now.sh)
 - [Humming birds](https://hummingbirds-ujovmbtmui.now.sh)
@@ -44,7 +44,7 @@ If you haven't compiled your scene with the latest changes, you can do it by run
 
 ## Prepare a scene for deploying
 
-To deploy your scene to a hosting service like Zeit Now, GitHub pages, or Amazon S3, you must first export your scene's code to the format of a static webpage. To do this, run the following command:
+To deploy your scene to a hosting service like Vercel Now, GitHub pages, or Amazon S3, you must first export your scene's code to the format of a static webpage. To do this, run the following command:
 
 ```
 dcl export
@@ -56,11 +56,11 @@ Upload only the contents of the `export` folder to the hosting service.
 
 > Note: The `/export` folder is built based on the contents of the `/bin` folder. Make sure that the latest version of your scene's source code has been compiled before running the `dcl export` command. You can compile your scene by running `npm install` or `dcl start`.
 
-## Deploy to Zeit Now
+## Deploy to Vercel Now
 
 To deploy a scene to now:
 
-1. Make sure you have the latest version of the _Zeit Now CLI_, and of the _Decentraland CLI_ installed.
+1. Make sure you have the latest version of the _Vercel Now CLI_, and of the _Decentraland CLI_ installed.
 
    ```
    npm i -g decentraland now
@@ -104,7 +104,7 @@ To synchronize the scene's state amongst players, there are two approaches (see 
 
 If you created your scene based on one of the remote scene examples, then you need to make two separate deployments, one for the server and another for the scene client.
 
-For example, to deploy both server and the scene client to Zeit now, follow these steps:
+For example, to deploy both server and the scene client to Vercel now, follow these steps:
 
 1. Change directory to the `/server` folder and run the following command to deploy just the server:
 
