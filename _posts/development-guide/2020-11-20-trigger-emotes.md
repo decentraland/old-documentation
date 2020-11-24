@@ -39,13 +39,13 @@ Only the emotes in the `PredefinedEmote` enum are currently supported. This list
 - 'MONEY'
 - 'KISS'
 
-The emote animation is seen both by the player (in 3rd person view) and any other players around.
+The emote animation is seen both by the player (in 3rd person view) and any other players around and will start looping.
 
-If the player walks or interrupts the animation
+If the player walks, runs or jumps, they will interrupt the animation and return to playing the corresponding animations for these actions.
 
 > Note: Players can only be animated if they already are standing inside the scene's bounds, not if they are on a neighboring scene.
 
-You must first add the `ALLOW_TO_TRIGGER_AVATAR_EMOTE` permission to the `scene.json` file before you can use this feature. If not yet present, create a `requiredPermissions` property at root level in the JSON file to assign it this permission.
+Before you can use this feature, you must add the `ALLOW_TO_TRIGGER_AVATAR_EMOTE` permission to the `scene.json` file. If not yet present, create a `requiredPermissions` property at root level in the JSON file to assign it this permission.
 
 ```json
 "requiredPermissions": [
