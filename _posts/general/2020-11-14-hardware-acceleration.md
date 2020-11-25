@@ -1,6 +1,16 @@
+---
+date: 2020-11-24
+title: Hardware acceleration
+redirect_from:
+description: Troubleshoot problems related to graphics processing performance
+categories:
+  - Decentraland
+type: Document
+---
+
 Since Decentraland runs in a web browser, you might need to configure your browser and/or operating system to have access to all of your machine's potential to run Decentraland as smoothly as possible.
 
-[image]
+![](/images/media/gpu.png)
 
 If you see this warning, it means that you are using a sub-optimal set up for rendering 3d graphics. Your experience when playing Decentraland might be laggy and unresponsive because of this.
 
