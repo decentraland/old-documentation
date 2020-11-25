@@ -18,7 +18,7 @@ If you see this warning, it means that you are using a sub-optimal set up for re
 
 ## Context
 
-Many machines have a _dedicated graphics card_, a piece of hardware that is specifically optimized for graphics processing (also called a GPU). This graphics card is not always in use, this may be done to save battery or because certain programs (like the web browser) are not expected to require heavy use of 3d graphics processing. If the _dedicated graphics card_ is off, the _integrated graphics card_ takes its place. This other graphics card is a lot less powerful. Unlike the _dedicated_ graphics card, the _integrated_ graphics card is not a separate piece of hardware, it's integrated into the machine's CPU.
+Many machines have a _dedicated graphics card_, a piece of hardware that is specifically optimized for graphics processing (also called a GPU). This graphics card is not always in use, this may be done to save battery or because certain programs (like the web browser) are not expected to require heavy use of 3d graphics processing. If the _dedicated graphics card_ is off, the _integrated graphics card_ takes its place. This other graphics card is a lot less powerful. Unlike the _dedicated_ graphics card, the _integrated_ graphics card is not a separate piece of hardware, it's integrated into the machine's mother board.
 
 The browser exposes settings to enable or disable the use of the _dedicated_ graphics card, but you may also need to change settings on your operating system to make this option truly available to the browser.
 
