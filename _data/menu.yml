@@ -117,6 +117,7 @@
         - post: "development-guide/2018-02-22-user-data.md"
         - post: "development-guide/2020-08-28-move-player.md"
         - post: "development-guide/2020-09-24-avatar-modifiers.md"
+        - post: "development-guide/2020-11-20-trigger-emotes.md"
         - post: "development-guide/2018-02-27-raycasting.md"
         - post: "development-guide/2020-05-04-video-playing.md"
         - post: "development-guide/2020-05-18-external-links.md"

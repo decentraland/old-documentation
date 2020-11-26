@@ -190,6 +190,7 @@ The corresponding features are blocked from being used by the scene, unless the 
 Currently, only the following permission is handled:
 
 - `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player]({{ site.baseurl }}{% post_url /development-guide/2020-08-28-move-player %})
+- `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar]({{ site.baseurl }}{% post_url /development-guide/2020-11-20-trigger-emotes %})
 
 If a `requiredPermissions` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
 
@@ -213,7 +214,6 @@ As clear use cases start to emerge, we plan to define more conventions over the 
   }
 ```
 
-
 ## Fetch metadata from scene code
 
 You may need a scene's code to access the fields from the metadata, like the parcels that the scene is deployed to, or the spawn point positions. This is especially useful for scenes that are meant to be replicated, or for code that is meant to be reused in other scenes. It's also very useful for smart items, where the smart item's code might for example need to know where the scene limits are.
@@ -221,36 +221,34 @@ You may need a scene's code to access the fields from the metadata, like the par
 To access this data, first import the `ParcelIdentity` library to your scene:
 
 ```ts
-import { getParcel } from '@decentraland/ParcelIdentity'
+import { getParcel } from "@decentraland/ParcelIdentity"
 ```
 
-Then you can call the `getParcel()` function from this library, which returns a json object that includes much of the contents of the scene.json file. 
+Then you can call the `getParcel()` function from this library, which returns a json object that includes much of the contents of the scene.json file.
 
 The example bleow shows the path to obtain several of the more common fields you might need from this function's response:
 
 ```ts
-import { getParcel } from '@decentraland/ParcelIdentity'
+import { getParcel } from "@decentraland/ParcelIdentity"
 
 executeTask(async () => {
   const parcel = await getParcel()
 
   // parcels
-  log('parcels: ', parcel.land.sceneJsonData.scene.parcels)
-  log('base parcel: ', parcel.land.sceneJsonData.scene.base)
+  log("parcels: ", parcel.land.sceneJsonData.scene.parcels)
+  log("base parcel: ", parcel.land.sceneJsonData.scene.base)
 
   // spawn points
-  log('spawnpoints: ', parcel.land.sceneJsonData.spawnPoints)
+  log("spawnpoints: ", parcel.land.sceneJsonData.spawnPoints)
 
   // general scene data
-  log('title: ', parcel.land.sceneJsonData.display.title)
-  log('author: ', parcel.land.sceneJsonData.contact.name)
-  log('email: ', parcel.land.sceneJsonData.contact.email)
+  log("title: ", parcel.land.sceneJsonData.display.title)
+  log("author: ", parcel.land.sceneJsonData.contact.name)
+  log("email: ", parcel.land.sceneJsonData.contact.email)
 
   // other info
-  log('tags: ', parcel.land.sceneJsonData.tags)
+  log("tags: ", parcel.land.sceneJsonData.tags)
 })
 ```
 
 > Note: `getParcel()` needs to be run as an [async function]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %}), since the response may delay a fraction of a second or more in returning data.
-
-
