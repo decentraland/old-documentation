@@ -23,7 +23,7 @@ Decentraland scenes are built around [_entities_, _components_ and _systems_](ht
 
 _Entities_ are the basic unit for building everything in Decentraland scenes. All visible and invisible 3D objects and audio players in your scene will each be an entity. An entity is nothing more than a container that holds components. The entity itself has no properties or methods of its own, it simply groups several components together.
 
-_Components_ define the traits of an entity. For example, a `transform` component stores the entity's coordinates, rotation and scale. A `BoxShape` component gives the entity a cube shape when rendered in the scene, a `Material` component gives the entity a color or texture. You could also create a custom `health` component to store an entity's remaining health value, and add it to entities that represent non-player enemies in a game.
+_Components_ define the traits of an entity. For example, a `transform` component stores the entity's coordinates, rotation and scale. A `BoxShape` component gives the entity a box shape when rendered in the scene, a `Material` component gives the entity a color or texture. You could also create a custom `health` component to store an entity's remaining health value, and add it to entities that represent non-player enemies in a game.
 
 If you're familiar with web development, think of entities as the equivalent of _Elements_ in a _DOM_ tree, and of components as _attributes_ of those elements.
 
@@ -43,19 +43,19 @@ Entities and components are declared as TypeScript objects. The example below sh
 
 ```ts
 // Create an entity
-const cube = new Entity()
+const box = new Entity()
 
 // Create and add a `Transform` component to that entity
-cube.addComponent(new Transform())
+box.addComponent(new Transform())
 
 // Set the fields in the component
-cube.getComponent(Transform).position.set(3, 1, 3)
+box.getComponent(Transform).position.set(3, 1, 3)
 
-// Create and apply a `CubeShape` component to give the entity a visible form
-cube.addComponent(new CubeShape())
+// Create and apply a `BoxShape` component to give the entity a visible form
+box.addComponent(new BoxShape())
 
 // Add the entity to the engine
-engine.addEntity(cube)
+engine.addEntity(box)
 ```
 
 ## Add entities to the engine
@@ -66,13 +66,13 @@ The engine is the part of the scene that sits in the middle and manages all of t
 
 ```ts
 // Create an entity
-const cube = new Entity()
+const box = new Entity()
 
 // Give the entity a shape
-cube.addComponent(new CubeShape())
+box.addComponent(new BoxShape())
 
 // Add the entity to the engine
-engine.addEntity(cube)
+engine.addEntity(box)
 ```
 
 In the example above, the newly created entity isn't viewable by players on your scene until it's added to the engine.
@@ -97,7 +97,7 @@ Entities that have been added to the engine can also be removed from it. When an
 
 ```ts
 // Remove an entity from the engine
-engine.removeEntity(cube)
+engine.removeEntity(box)
 ```
 
 Note: Removed entities are also removed from all [Component groups]({{ site.baseurl }}{% post_url /development-guide/2018-02-2-component-groups %}).
@@ -116,12 +116,16 @@ To set an entity as the parent of another, simply use `.setParent()`:
 
 ```ts
 // Create entities
-childEntity = new Entity()
-parentEntity = new Entity()
+const parentEntity = new Entity()
+engine.addEntity(parentEntity)
+
+const childEntity = new Entity()
 
 // Set parent
 childEntity.setParent(parentEntity)
 ```
+
+> Note: It's not necessary no need to add an entity to the engine if it's set as a child of another entity that's already added to the engine.
 
 Once a parent is assigned, it can be read off the child entity with `.getParent()`.
 
@@ -178,7 +182,8 @@ One way of doing this is to first create the component instance, and then add it
 
 ```ts
 // Create entity
-cube = new Entity()
+const box = new Entity()
+engine.addEntity(box)
 
 // Create component
 const myMaterial = new Material()
@@ -187,20 +192,21 @@ const myMaterial = new Material()
 myMaterial.albedoColor = Color3.Red()
 
 // Add component
-cube.addComponent(myMaterial)
+box.addComponent(myMaterial)
 ```
 
 You can otherwise use a single expression to both create a new instance of a component and add it to an entity:
 
 ```ts
 // Create entity
-cube = new Entity()
+const box = new Entity()
+engine.addEntity(box)
 
 // Create and add component
-cube.addComponent(new Material())
+box.addComponent(new Material())
 
 // Configure component
-cube.getComponent(Material).albedoColor = Color3.Red()
+box.getComponent(Material).albedoColor = Color3.Red()
 ```
 
 > Note: In the example above, as you never define a pointer to the entity's material component, you need to refer to it through its parent entity using `.getComponent()`.
@@ -227,13 +233,13 @@ You can reach components through their parent entity by using the entity's `.get
 
 ```ts
 // Create entity and component
-cube = new Entity()
+const box = new Entity()
 
 // Create and add component
-cube.addComponent(new Transform())
+box.addComponent(new Transform())
 
 // Using get
-let transform = cube.getComponent(Transform)
+let transform = box.getComponent(Transform)
 
 // Edit values in the component
 transform.position = new Vector3(5, 0, 5)
@@ -242,7 +248,7 @@ transform.position = new Vector3(5, 0, 5)
 The `getComponent()` function fetches a reference to the component object. If you change the values of what's returned by this function, you're changing the component itself. For example, in the example above, we're setting the `position` stored in the component to _(5, 0, 5)_.
 
 ```ts
-cube.getComponent(Transform).scale.x = Math.random() * 10
+box.getComponent(Transform).scale.x = Math.random() * 10
 ```
 
 The example above directly modifies the value of the _x_ scale on the Transform component.
@@ -251,10 +257,10 @@ If you're not entirely sure if the entity does have the component you're trying 
 
 ```ts
 //  getComponentOrNull
-scale = cube.getComponentOrNull(Transform)
+let scale = box.getComponentOrNull(Transform)
 
 // getComponentOrCreate
-scale = cube.getComponentOrCreate(Transform)
+let scale = box.getComponentOrCreate(Transform)
 ```
 
 If the component you're trying to retrieve doesn't exist in the entity:
