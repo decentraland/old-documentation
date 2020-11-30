@@ -29,8 +29,8 @@ Once defined, you can use the component in the entities of your scene:
 
 ```ts
 // Create entities
-wheel = new Entity()
-wheel2 = new Entity()
+const wheel = new Entity()
+const wheel2 = new Entity()
 
 // Create instances of the component
 wheel.addComponent(new WheelSpin())
@@ -64,7 +64,7 @@ If the component includes a constructor, you can use the following syntax:
 
 ```ts
 // Create entity
-wheel = new Entity()
+const wheel = new Entity()
 
 // Create instance of component and set its values
 wheel.addComponent(new WheelSpin(true, 10))
@@ -90,7 +90,7 @@ export class WheelSpin {
 
 ```ts
 // Create entity
-wheel = new Entity()
+const wheel = new Entity()
 
 // Create instance of component with default values
 wheel.addComponent(new WheelSpin())
