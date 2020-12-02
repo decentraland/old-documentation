@@ -34,7 +34,7 @@ Since all transactions in the Ethereum network have a gas fee that needs to be p
 
 The Atlas view gives you a bird’s-eye perspective of every color coded parcel, Estate, road, district, and plaza in Decentraland.
 
-![](/images/media/c120655-atlas_view_screenshot.png)
+![]({{ site.baseurl }}/images/media/c120655-atlas_view_screenshot.png)
 
 You can click and drag the map to move around, zoom in and out, or hover your cursor over a parcel to see its x,y location and owner.
 
@@ -42,7 +42,7 @@ Any parcel that is currently for sale in the Marketplace will be highlighted.
 
 Hover your cursor over a parcel to view it’s status, its coordinates, and its owner’s public address (if it has an owner). Click on a parcel to view more details.
 
-![](/images/media/e7ff473-hover_screenshot.png)
+![]({{ site.baseurl }}/images/media/e7ff473-hover_screenshot.png)
 
 Click _Color Key_ in the footer to see what each tile color represents.
 
@@ -50,7 +50,7 @@ Click _Color Key_ in the footer to see what each tile color represents.
 
 If you’d rather see a list of all the LAND currently offered on the market, you can use the Marketplace View. Select the tabs at the top to switch between individual parcels and multi-parcel Estates. You can sort offers by “Newest”, “Cheapest”, “Most expensive”, and “Closest to expire”. Click a tile to learn more about it.
 
-![](/images/media/c867650-marketplace_view_screenshot.png)
+![]({{ site.baseurl }}/images/media/c867650-marketplace_view_screenshot.png)
 
 ## Manage Your LAND
 
@@ -58,7 +58,7 @@ To view your LAND tokens, click **My LAND**. Here you’ll find a list of all of
 
 By clicking on one of the parcels or Estates listed under My Land, you can edit its name, description, put it up for sale, or transfer it directly to another wallet address.
 
-![](/images/media/marketplace_myland.png)
+![]({{ site.baseurl }}/images/media/marketplace_myland.png)
 
 ## Buy MANA
 
@@ -67,7 +67,7 @@ To buy MANA in exchange for Ether, follow these steps:
 1. Open your user _Settings page_.
 2. Check the box next to _Assets using MANA_.
 
-   ![](/images/media/marketplace_authorizations.png)
+   ![]({{ site.baseurl }}/images/media/marketplace_authorizations.png)
 
    > Note: Enabling this setting triggers a transaction on the blockchain. You must confirm this transaction in your Ethereum client, pay a gas fee in Ether and wait for its confirmation before it takes effect.
 
@@ -86,12 +86,12 @@ To create your first Estate, you need to own two or more adjacent LAND parcels.
 1. Open **My LAND** and select one of the parcels you'd like to add to the Estate.
 2. In the parcel's details page, click **Create Estate**.
 3. You will be shown a view of the Atlas centered on the parcel you selected, with the remaining adjacent parcels you own highlighted. Select the different parcels you want to include in your Estate.
-   ![](/images/media/market_estates1.png)
+   ![]({{ site.baseurl }}/images/media/market_estates1.png)
 
 4. Click **Continue**.
 5. Enter a name and description for your Estate. These details will be publicly displayed in the Atlas, just like the name and description for any individual parcel.
 
-   ![](/images/media/market_estates2.png)
+   ![]({{ site.baseurl }}/images/media/market_estates2.png)
 
 6. Confirm this transaction on your Ethereum client and wait for the network to verify it.
 
@@ -107,7 +107,7 @@ To edit a parcel or Estate:
 
 1. Navigate to the details page of the parcel or the Estate you'd like to edit and click **Edit**.
 
-   ![](/images/media/marketplace_edit_parcel.png)
+   ![]({{ site.baseurl }}/images/media/marketplace_edit_parcel.png)
 
 2. Click **Submit**.
 3. Confirm this transaction on your Ethereum client and wait for the network to verify it.
@@ -122,7 +122,7 @@ To grant permissions over your LAND:
 
 1. Navigate to the details page of the parcel or Estate and click **Permissions**.
 
-   ![](/images/media/marketplace_give_permissions.png)
+   ![]({{ site.baseurl }}/images/media/marketplace_give_permissions.png)
 
 2. Click **Submit**.
 3. Confirm this transaction on your Ethereum client and wait for the network to verify it.
@@ -131,7 +131,7 @@ To grant permissions over your LAND:
 
 Open the notifications page by clicking the bell icon at the top of the screen.
 
-![](/images/media/marketplace_notifications.png)
+![]({{ site.baseurl }}/images/media/marketplace_notifications.png)
 
 The notifications page displays a list of all the recent transactions that you have carried out, together with their status.
 
@@ -145,7 +145,7 @@ To transfer MANA to another account:
 2. Click **Transfer**.
 3. Enter the public address of the Ethereum wallet of the recipient.
 
-   ![](/images/media/9ff24a6-transfer_LAND_screenshot.png)
+   ![]({{ site.baseurl }}/images/media/9ff24a6-transfer_LAND_screenshot.png)
 
 > Note: Please double check this address, since you cannot cancel the operation.
 
@@ -158,7 +158,7 @@ To transfer a LAND parcel or Estate to another user:
 
 1. Navigate to the details page of the parcel or the Estate you'd like to transfer and click **Transfer**.
 
-   ![](/images/media/marketplace_transfer_land.png)
+   ![]({{ site.baseurl }}/images/media/marketplace_transfer_land.png)
 
 2. Enter the public address of the Ethereum wallet of the recipient.
 

@@ -49,13 +49,13 @@ Players will see these when they select the parcels of your scene on the map, th
 
 When players navigate the world and enter your scene, they are able to read the scene title from under the minimap.
 
-<img src="/images/media/scene-name.png" alt="Scene name" width="200"/>
+<img src="{{ site.baseurl }}/images/media/scene-name.png" alt="Scene name" width="200"/>
 
 ```json
   "display": {
     "title": "My Cool Scene",
 	"description": "You won't believe how cool this scene is",
-	"navmapThumbnail": "https://github.com/decentraland/blog/blob/master/images/posts/2020-04-07/decentraland-events.png",
+	"navmapThumbnail": "https://github.com/decentraland/blog/blob/master{{ site.baseurl }}/images/posts/2020-04-07/decentraland-events.png",
     "favicon": "favicon_asset"
    }
 ```

@@ -60,7 +60,7 @@ const shapeComponent = new NFTShape(
 )
 ```
 
-<img src="/images/media/nft-frames.png" alt="Move entity" width="600"/>
+<img src="{{ site.baseurl }}/images/media/nft-frames.png" alt="Move entity" width="600"/>
 
 Here's the full list of supported frame styles:
 
@@ -93,7 +93,7 @@ Here's the full list of supported frame styles:
 
 Open a prebuilt UI that displays the name, owner, and description of an NFT. It also includes the NFT's current price and price of last sale if applicable, and a button that links to the NFT's page on OpenSea, where more information is available and it can be purchased.
 
-<img src="/images/media/nft-ui.png" alt="Move entity" width="500"/>
+<img src="{{ site.baseurl }}/images/media/nft-ui.png" alt="Move entity" width="500"/>
 
 Open this UI by calling the function `openNFTDialog(), passing it the NFT's contract and id, just like with the NFT shape. The UI must be opened as a result of a button event, to prevent abusive spamming. The button event doesn't necessarily need to be on the same picture frame or on an NFTShape.
 

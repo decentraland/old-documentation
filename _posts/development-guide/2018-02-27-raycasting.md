@@ -71,7 +71,7 @@ Both these methods need to be passed the following:
 - an optional raycast id, to handle separate lossy queues
 
 <!--
-![](/images/media/raycast.png)
+![]({{ site.baseurl }}/images/media/raycast.png)
 -->
 
 Note that the callback function is always executed, even if no entities were hit by the ray.

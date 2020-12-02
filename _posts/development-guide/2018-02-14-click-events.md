@@ -246,7 +246,7 @@ Often, _.glTF_ 3D models are made up of multiple meshes, that each have an indiv
 
 To see how the meshes inside the model are named, you must open the 3D model with an editing tool, like [Blender](https://www.blender.org/) for example.
 
-<img src="/images/media/mesh-names.png" alt="Mesh internal names in an editor" width="250"/>
+<img src="{{ site.baseurl }}/images/media/mesh-names.png" alt="Mesh internal names in an editor" width="250"/>
 
 > Tip: You can also learn the name of the clicked mesh by logging it and reading it off console.
 

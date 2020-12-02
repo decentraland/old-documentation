@@ -42,21 +42,21 @@ Or read the [documentation]({{ site.baseurl }}{% post_url /development-guide/201
 <div class="shortcuts">
   <a href="{{ site.baseurl }}{% post_url /development-guide/2018-01-02-coding-scenes %}">
     <div>
-      <div class="image"><img src="/images/home/1.png"/></div>
+      <div class="image"><img src="{{ site.baseurl }}/images/home/1.png"/></div>
       <div class="title">Coding scenes</div>
       <div class="description">An overview of the tools and the essential concepts surrounding the SDK.</div>
     </div>
   </a>
   <a href="https://github.com/decentraland/ecs-reference">
     <div>
-      <div class="image"><img src="/images/home/2.png"/></div>
+      <div class="image"><img src="{{ site.baseurl }}/images/home/2.png"/></div>
       <div class="title">Component and object reference</div>
       <div class="description">A complete reference of the default components and other available objects, with their functions.</div>
     </div>
   </a>
   <a href="{{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}">
     <div>
-      <div class="image"><img src="/images/home/3.png"/></div>
+      <div class="image"><img src="{{ site.baseurl }}/images/home/3.png"/></div>
       <div class="title">Scene examples</div>
       <div class="description">Several code examples to get you started, and inspire your creations.</div>
     </div>
@@ -74,19 +74,19 @@ Several libraries are built upon the Decentraland SDK to help you build faster:
 <div class="examples">
   <a target="_blank" href="https://github.com/decentraland-scenes/Hypno-wheels">
     <div>
-      <img src="/images/home/example-hypno-wheel.png"/>
+      <img src="{{ site.baseurl }}/images/home/example-hypno-wheel.png"/>
       <span>Hypno wheels</span>
     </div>
   </a>
   <a target="_blank" href="https://github.com/decentraland-scenes/Hummingbirds">
     <div>
-      <img src="/images/home/hummingbirds.png"/>
+      <img src="{{ site.baseurl }}/images/home/hummingbirds.png"/>
       <span>Hummingbirds</span>
     </div>
   </a>
   <a target="_blank" href="https://github.com/decentraland-scenes/Gnark-patrol">
     <div>
-      <img src="/images/home/example-gnark.png"/>
+      <img src="{{ site.baseurl }}/images/home/example-gnark.png"/>
       <span>Gnark patrolling</span>
     </div>
   </a>

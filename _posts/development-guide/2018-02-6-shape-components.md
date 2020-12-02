@@ -11,7 +11,7 @@ Three dimensional scenes in Decentraland are based on the [Entity-Component](htt
 
 The rendered shape of an entity is determined by what component it uses. Each entity can have only one shape component assigned to it.
 
-<img src="/images/media/ecs-simple-components.png" alt="nested entities" width="400"/>
+<img src="{{ site.baseurl }}/images/media/ecs-simple-components.png" alt="nested entities" width="400"/>
 
 ## Primitive shapes
 

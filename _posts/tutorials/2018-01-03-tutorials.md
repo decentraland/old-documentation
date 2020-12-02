@@ -13,7 +13,7 @@ This guest blog post by Tak shows how to export a Builder scene and add function
 
 Read the [blog post](https://decentraland.org/blog/tutorials/adding-functionality-builder-scene/)
 
-![](/images/media/tutorial-builder.jpg)
+![]({{ site.baseurl }}/images/media/tutorial-builder.jpg)
 
 ## Introduction to the SDK and the Entity Component System
 
@@ -21,7 +21,7 @@ This blogpost walks you through creating a first scene with basic interactions. 
 
 Read the [blog post](https://decentraland.org/blog/tutorials/intro-to-sdk-v5/)
 
-![](/images/media/example-hypno-wheel.png)
+![]({{ site.baseurl }}/images/media/example-hypno-wheel.png)
 
 ## Motion and animations in the SDK
 
@@ -32,7 +32,7 @@ Read the blog post:
 - [Part 1](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5/)
 - [Part 2](https://decentraland.org/blog/tutorials/motion-animations-in-SDK-5-part-2/)
 
-![](/images/media/example-gnark.png)
+![]({{ site.baseurl }}/images/media/example-gnark.png)
 
 ## Using UIs
 
@@ -40,7 +40,7 @@ This guest blog post by Surz shows how to add a custom UI to your scene.
 
 Read the [blog post](https://decentraland.org/blog/tutorials/adding-a-ui/)
 
-![](/images/media/tutorial-ui.png)
+![]({{ site.baseurl }}/images/media/tutorial-ui.png)
 
 ## Picking and dragging objects in-world
 
@@ -48,7 +48,7 @@ This guest blog post by Interweaver shows how players can pick up an object and 
 
 Read the [blog post](https://decentraland.org/blog/announcements/building-blocks/)
 
-![](/images/media/tutorial-blocks.png)
+![]({{ site.baseurl }}/images/media/tutorial-blocks.png)
 
 ## Making a sprite animation
 
@@ -56,7 +56,7 @@ This guest blog post by Brent shows how to add a gif-like animation using a spri
 
 Read the [blog post](https://decentraland.org/blog/tutorials/creating-a-sprite-fire/)
 
-![](/images/media/tutorial-sprites.png)
+![]({{ site.baseurl }}/images/media/tutorial-sprites.png)
 
 ## Using the blockchain
 

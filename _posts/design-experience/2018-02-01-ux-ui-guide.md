@@ -36,14 +36,14 @@ It’s important to be well aware of this objective through every step of the de
 For scenes that follow a linear flow, where each step depends on the previous, we recommend walling the scene and establishing one or multiple fixed entry points, to avoid players stumbling onto things in the wrong order. By the way, entry points are an excellent place to display a message to welcome the player and explain what their objective in the scene should be.
 
 <figure>
-    <img src="/images/media/ux-instructions.png" alt="In-world banner" width="300"/>
+    <img src="{{ site.baseurl }}/images/media/ux-instructions.png" alt="In-world banner" width="300"/>
     <figcaption>In-world instructions</figcaption>
 </figure>
 
 If the player’s experience in your scene isn’t meant to be linear, but you still need to provide some basic instructions to ensure they enjoy it fully, you can show instructions on a pop-up. It’s possible to display a popup on the player’s screen as soon as they enter, regardless of what direction they come from, and in that way make sure that players will always know the essentials.
 
 <figure>
-	<img src="/images/media/ux-banner.png" alt="Pop-up banner" width="300"/>
+	<img src="{{ site.baseurl }}/images/media/ux-banner.png" alt="Pop-up banner" width="300"/>
     <figcaption>Pop-up instructions</figcaption>
 </figure>
 
@@ -86,7 +86,7 @@ Always keep a grid in mind and use it as your main criteria when spatially organ
 Be careful about placing your UI in screen regions that overlap with the default Decentraland UI elements. Below you can see the regions of the screen that you should avoid:
 
 <figure>
-	<img src="/images/media/ux-screen-space.png" alt="Screen regions used by UI" width="300"/>
+	<img src="{{ site.baseurl }}/images/media/ux-screen-space.png" alt="Screen regions used by UI" width="300"/>
 </figure>
 
 1. _**12 px** margins you should avoid_
@@ -100,12 +100,12 @@ It’s important to choose a color palette, as this gives your scene an identity
 When putting together a color palette, start out by selecting a main color, and optionally a secondary one. Then you should decide if you want the palette to be analogous, complementary, or triadic, etc, in relation to that main color.
 
 <figure>
-    <img src="/images/media/ux-color-wheel2.png" alt="Chromatic color palette" width="300"/>
+    <img src="{{ site.baseurl }}/images/media/ux-color-wheel2.png" alt="Chromatic color palette" width="300"/>
     <figcaption>Chromatic color palette</figcaption>
 </figure>
 
 <figure>
-    <img src="/images/media/ux-color-wheel.png" alt="Strategies for combining colors properly" width="300" />
+    <img src="{{ site.baseurl }}/images/media/ux-color-wheel.png" alt="Strategies for combining colors properly" width="300" />
     <figcaption>Strategies for combining colors properly</figcaption>
 </figure>
 
@@ -116,7 +116,7 @@ The main color should be the most frequently used across your UI components. If 
 Remember that each color has its own unique expressive qualities, take advantage of that to communicate messages through them. For example, red is often associated with negative connotations whilst green is associated with positive connotations.
 
 <figure>
-    <img src="/images/media/ux-switches.png" alt="Colored switches" width="300"/>
+    <img src="{{ site.baseurl }}/images/media/ux-switches.png" alt="Colored switches" width="300"/>
     <figcaption>Using color the wrong way can be confusing</figcaption>
 </figure>
 
@@ -125,14 +125,14 @@ You can also use colors strategically to indicate state changes, for example cha
 > Note: States communicate the status of UI elements. The states of an element should maintain a certain continuity, but they must have clear affordances and be easily distinguishable from other states and the surrounding layout.
 
 <figure>
-    <img src="/images/media/ux-active-button.png" alt="Active inactive button" width="300"/>
+    <img src="{{ site.baseurl }}/images/media/ux-active-button.png" alt="Active inactive button" width="300"/>
     <figcaption>Using color for button states</figcaption>
 </figure>
 
 Warning! When selecting colors that will be shown in superposition, take special care of making sure that they are legible when used together. Here’s a fundamental rule: the colors of elements that are shown together should always have plenty of contrast between them. Be mindful that some players might be looking at their screens under suboptimal lighting conditions, which makes reading harder.
 
 <figure>
-    <img src="/images/media/ux-icons.png" alt="Icon contrast" width="300"/>
+    <img src="{{ site.baseurl }}/images/media/ux-icons.png" alt="Icon contrast" width="300"/>
     <figcaption>Both icons can be distinguished, but the first one has better contrast. It becomes easier to read and requires less effort to understand.</figcaption>
 </figure>
 
@@ -143,7 +143,7 @@ Try to define at least a 3-type scale for Titles, Subtitles, and Body. Be carefu
 If you are going to place text that is displayed over imagery (or over the world), you will surely need to experiment with its legibility. In those cases, we suggest that you add a colored solid region, in a layer between the text and images, that way you can ensure that the text remains legible.
 
 <figure>
-    <img src="/images/media/ux-text-over-images.png" alt="Text over images" width="300"/>
+    <img src="{{ site.baseurl }}/images/media/ux-text-over-images.png" alt="Text over images" width="300"/>
     <figcaption>Prioritize legibility</figcaption>
 </figure>
 
@@ -152,7 +152,7 @@ If you are going to place text that is displayed over imagery (or over the world
 Icons synthesise information, helping you identify actions through images. They are an amazingly powerful tool for providing input that can be interpreted fast, as opposed to using text to label things, which demands more of the player’s attention and time. It’s also useful to show icons in combination with text, as this helps disambiguate their meanings.
 
 <figure>
-    <img src="/images/media/ux-icons2.png" alt="Icon examples" width="300"/>
+    <img src="{{ site.baseurl }}/images/media/ux-icons2.png" alt="Icon examples" width="300"/>
     <figcaption>Use icons as a universal language</figcaption>
 </figure>
 
@@ -161,7 +161,7 @@ Icons synthesise information, helping you identify actions through images. They 
 Use motion to provide feedback and lead the way when needed. Motion helps players focus their attention and helps maintain continuity as the UI changes.
 
 <figure>
-    <img src="/images/media/ux-glow.png" alt="Adding glow" width="300"/>
+    <img src="{{ site.baseurl }}/images/media/ux-glow.png" alt="Adding glow" width="300"/>
     <figcaption>Use particles, scale, or fading margins to make things stand out</figcaption>
 </figure>
 

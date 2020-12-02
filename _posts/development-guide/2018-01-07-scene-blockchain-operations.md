@@ -259,7 +259,7 @@ engine.addEntity(button)
 
 The example above listens for clicks on a _button_ entity. When clicked, the player is prompted to make a payment in ETH to a specific wallet for a given amount. Once the player accepts this payment, the rest of the function can be executed. If the player doesn't accept the payment, the rest of the function won't be executed.
 
-![](/images/media/metamask_confirm.png)
+![]({{ site.baseurl }}/images/media/metamask_confirm.png)
 
 > Tip: We recommend defining the wallet address and the amount to pay as global constants at the start of the _.ts_ file. These are values you might need to change in the future, setting them as constants makes it easier to update the code.
 

@@ -131,7 +131,7 @@ import { isPreviewMode } from '@decentraland/EnvironmentAPI'
 
 executeTask(async () => {
   const preview: boolean = await isPreviewMode()
-  
+
   if (preview){
     log("Running in preview")
   }
@@ -148,7 +148,7 @@ executeTask(async () => {
 
 While viewing the preview, you can press `c` to view any collision meshes loaded in the glTF models of the scene. These are usually invisible, but determine where an avatar can move through, and where it can't.
 
-![](/images/media/collision-meshes.png)
+![]({{ site.baseurl }}/images/media/collision-meshes.png)
 
 Collision meshes can be added to any model in an external 3D modeling tool like Blender. Large models like houses often include these, they are usually a lot simpler geometrically than the original shape, as this implies much less computational requirements. Stairs typically use a simplified collision mesh like a ramp to make it easier to climb. See [colliders]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-12-colliders %}) for more details.
 

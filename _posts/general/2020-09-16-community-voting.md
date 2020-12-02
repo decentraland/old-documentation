@@ -92,7 +92,7 @@ Voting against a proposal affects the _Support_ metric of the proposal, but has 
 
 A newly created proposal goes through the following stages of revision:
 
-![](/images/media/voting-cycle.png)
+![]({{ site.baseurl }}/images/media/voting-cycle.png)
 
 1. **Inbox filtering**: The community has seven days to view it. This phase serves as an initial filter to find proposals that the community has an interest in.
    _>1 % Minimum Approval and >25% Support needed_
