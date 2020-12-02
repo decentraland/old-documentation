@@ -25,7 +25,7 @@ build-preview:
     paths:
       - _site
     when: on_success
-    expire_in: 30 days
+    expire_in: 7 days
   script:
     - gem install bundler
     - bundle config set path 'vendor/bundle'
@@ -64,7 +64,7 @@ build:
     paths:
       - _site
     when: on_success
-    expire_in: 30 days
+    expire_in: 7 days
   script:
     - gem install bundler
     - bundle config set path 'vendor/bundle'
