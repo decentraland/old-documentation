@@ -1,5 +1,6 @@
 .vendor
 vendor
+node_modules
 .sass-cache/**
 _site
 .jekyll-metadata
