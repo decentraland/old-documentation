@@ -55,12 +55,16 @@ When players navigate the world and enter your scene, they are able to read the 
   "display": {
     "title": "My Cool Scene",
 	"description": "You won't believe how cool this scene is",
-	"navmapThumbnail": "https://github.com/decentraland/blog/blob/master/images/posts/2020-04-07/decentraland-events.png",
+	"navmapThumbnail": "images/scene-thumbnail.png",
     "favicon": "favicon_asset"
    }
 ```
 
-> Note: The image on `navmapThumbnail` must be a URL link to an image, not a path to a file inside the project folder.
+The thumbnail should be a _.png_ or _.jpg_ image of a minimum size of _196x143_ pixels.
+
+The image on `navmapThumbnail` should be a path to an image file in the project folder. It can also be a URL link to an image hosted elsewhere.
+
+> Note: If you host an image elsewhere, make sure this is in a site that has permissive CORS policies for displaying content on other sites.
 
 ## Contact information
 
