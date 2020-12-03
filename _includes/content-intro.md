@@ -35,28 +35,28 @@ Or read the [documentation]({{ site.baseurl }}{% post_url /development-guide/201
 <div class="shortcuts">
   <a href="{{ site.baseurl }}{% post_url /general/2018-01-01-introduction %}">
     <div>
-      <div class="image"><img src="/images/BackWorld.png" width="380" height="380"/></div>
+      <div class="image"><img src="{{ site.baseurl }}/images/BackWorld.png" width="380" height="380"/></div>
       <div class="title">World</div>
       <div class="description">General info for players.</div>
     </div>
   </a>
   <a href="{{ site.baseurl }}{% post_url /market/2018-01-01-marketplace %}">
     <div>
-      <div class="image"><img src="/images/BackMarket.png" width="380" height="380"/></div>
+      <div class="image"><img src="{{ site.baseurl }}/images/BackMarket.png" width="380" height="380"/></div>
       <div class="title">Market</div>
       <div class="description">Learn how to trade exclusive tokens.</div>
     </div>
   </a>
   <a href="{{ site.baseurl }}{% link content-intro.html %}">
     <div>
-      <div class="image"><img src="/images/BackCreate.png" width="380" height="380"/></div>
+      <div class="image"><img src="{{ site.baseurl }}/images/BackCreate.png" width="380" height="380"/></div>
       <div class="title">Create</div>
       <div class="description">Learn to build and share your creations.</div>
     </div>
   </a>
   <a href="{{ site.baseurl }}{% post_url /blockchain-integration/2020-02-17-get-a-wallet %}">
     <div>
-      <div class="image"><img src="/images/BackEth.png" width="380" height="380"/></div>
+      <div class="image"><img src="{{ site.baseurl }}/images/BackEth.png" width="380" height="380"/></div>
       <div class="title">Ethereum Essentials</div>
       <div class="description">Learn how we use the blockchain.</div>
     </div>
@@ -74,19 +74,19 @@ Several libraries are built upon the Decentraland SDK to help you build faster:
 <div class="examples">
   <a target="_blank" href="https://github.com/decentraland-scenes/Hypno-wheels">
     <div>
-      <img src="/images/home/example-hypno-wheel.png"/>
+      <img src="{{ site.baseurl }}/images/home/example-hypno-wheel.png"/>
       <span>Hypno wheels</span>
     </div>
   </a>
   <a target="_blank" href="https://github.com/decentraland-scenes/Hummingbirds">
     <div>
-      <img src="/images/home/hummingbirds.png"/>
+      <img src="{{ site.baseurl }}/images/home/hummingbirds.png"/>
       <span>Hummingbirds</span>
     </div>
   </a>
   <a target="_blank" href="https://github.com/decentraland-scenes/Gnark-patrol">
     <div>
-      <img src="/images/home/example-gnark.png"/>
+      <img src="{{ site.baseurl }}/images/home/example-gnark.png"/>
       <span>Gnark patrolling</span>
     </div>
   </a>

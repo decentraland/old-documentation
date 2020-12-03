@@ -17,7 +17,7 @@ type: Document
 
 Decentraland scenes are built around [_entities_, _components_ and _systems_](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system). This is a common pattern used in the architecture of several game engines, that allows for easy composability and scalability.
 
-![](/images/media/ecs-big-picture.png)
+![]({{ site.baseurl }}/images/media/ecs-big-picture.png)
 
 ## Overview
 
@@ -29,7 +29,7 @@ If you're familiar with web development, think of entities as the equivalent of 
 
 > Note: In previous versions of the SDK, the _scene state_ was stored in an object that was separate from the entities themselves. As of version 5.0, the _scene state_ is directly embodied by the components that are used by the entities in the scene.
 
-<img src="/images/media/ecs-components.png" alt="Armature" width="400"/>
+<img src="{{ site.baseurl }}/images/media/ecs-components.png" alt="Armature" width="400"/>
 
 Components like `Transform`, `Material` or any of the _shape_ components are closely tied in with the rendering of the scene. If the values in these components change, that alone is enough to change how the scene is rendered in the next frame.
 
@@ -110,7 +110,7 @@ If a removed entity has child entities, all children of that entity are removed 
 
 An entity can have other entities as children. Thanks to this, we can arrange entities into trees, just like the HTML of a webpage.
 
-<img src="/images/media/ecs-nested-entities.png" alt="nested entities" width="400"/>
+<img src="{{ site.baseurl }}/images/media/ecs-nested-entities.png" alt="nested entities" width="400"/>
 
 To set an entity as the parent of another, simply use `.setParent()`:
 

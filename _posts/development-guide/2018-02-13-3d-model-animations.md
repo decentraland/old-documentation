@@ -37,7 +37,7 @@ To avoid this behavior, add an `Animator` component to the entity that has the m
 
 An `Animator` component is used to access all the animations of the entity and can be used to explicitly tell the entity to play or stop an animation. Each animation is handled by an `AnimationState` object.
 
-![](/images/media/ecs-animations.png)
+![]({{ site.baseurl }}/images/media/ecs-animations.png)
 
 ```ts
 // Create entity

@@ -11,7 +11,7 @@ type: Document
 
 You can set the _position_, _rotation_ and _scale_ of an entity by using the `Transform` component. This can be used on any entity, which can also a primitive shape component (cube, sphere, plane, etc) or a 3D model component (glTF, Obj).
 
-<img src="/images/media/ecs-simple-components.png" alt="nested entities" width="400"/>
+<img src="{{ site.baseurl }}/images/media/ecs-simple-components.png" alt="nested entities" width="400"/>
 
 ```ts
 // Create a new entity
@@ -315,7 +315,7 @@ With `Attachable.AVATAR`:
 
 This gif illustrates the difference in 1st person. The pink entity uses `Attachable.AVATAR`, the white object uses `Attachable.FIRST_PERSON_CAMERA`.
 
-<img src="/images/media/gifs/attach-to-player.gif" alt="attach entity to player" width="400"/>
+<img src="{{ site.baseurl }}/images/media/gifs/attach-to-player.gif" alt="attach entity to player" width="400"/>
 
 If several players are in the same scene, they will each experience the entity as attached to themselves. They will not see the entity attached to other players.
 
@@ -335,6 +335,6 @@ A grid on the scene's ground shows the limits of the scene, which by default rag
 
 It's important to note that the _entire_ 3D model must be within the scene's bounds. This includes the model's _bounding box_. Some 3D models may have bounding boxes that unnecessarily extend beyond the meshes themselves, and it can sometimes be tricky to tell when this happens. When an entity extends beyond the scene's boundaries, in the preview you'll see a cube that marks these bounding boxes. The entire cube must fit within your scene.
 
-![](/images/media/bounding-box.png)
+![]({{ site.baseurl }}/images/media/bounding-box.png)
 
 If an entity's cube extends beyond the shape of its meshes, you might need to edit the 3D model in an external editor to reduce these margins, or to _bake_ the rotation and scale of the meshes in the model.

@@ -43,7 +43,7 @@ Since all transactions in the Ethereum network have a gas fee that needs to be p
 
 The Atlas view gives you a bird’s-eye perspective of every color coded parcel, Estate, road, district, and plaza in Decentraland.
 
-![](/images/media/market-atlas.png)
+![]({{ site.baseurl }}/images/media/market-atlas.png)
 
 You can click and drag the map to move around, zoom in and out, or hover your cursor over a parcel to see its x,y location and owner.
 
@@ -60,7 +60,7 @@ Select the **Browse** tab to see all the items that are for sale.
 - Toggle **On sale** off to view items that aren't for sale.
 - **Filter** items by name to find something specific.
 
-![](/images/media/market-browse.png)
+![]({{ site.baseurl }}/images/media/market-browse.png)
 
 ## Buy MANA
 
@@ -115,7 +115,7 @@ You can change the price of a sale that you already put on offer without having 
 
 Open the notifications page by clicking the bell icon at the top of the screen.
 
-![](/images/media/marketplace_notifications.png)
+![]({{ site.baseurl }}/images/media/marketplace_notifications.png)
 
 The notifications page displays a list of all the recent transactions that you have carried out, together with their status.
 
