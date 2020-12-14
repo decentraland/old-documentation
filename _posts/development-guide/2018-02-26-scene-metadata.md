@@ -49,7 +49,7 @@ Players will see these when they select the parcels of your scene on the map, th
 
 When players navigate the world and enter your scene, they are able to read the scene title from under the minimap.
 
-<img src="/images/media/scene-name.png" alt="Scene name" width="200"/>
+<img src="{{ site.baseurl }}/images/media/scene-name.png" alt="Scene name" width="200"/>
 
 ```json
   "display": {

@@ -16,11 +16,11 @@ For an object to be recognized by a Decentraland scene as a collider, all it nee
 
 For example, to create a collider for a tree, you can create a simple box object surrounding its trunk. Players in the scene won't see this box, but it will block their path.
 
-<img src="/images/media/collision-tree.png" alt="Entity tree" width="500"/>
+<img src="{{ site.baseurl }}/images/media/collision-tree.png" alt="Entity tree" width="500"/>
 
 In this case, we can name the box "Box*Tree_collider" and export both the tree and the box as a single \_gltf* model. The \_collider tag alerts the Decentraland world engine that the box object belongs to the collection of colliders, making the \_collider mesh invisible.
 
-<img src="/images/media/collision-hierarchy.png" alt="Entity tree" width="350"/>
+<img src="{{ site.baseurl }}/images/media/collision-hierarchy.png" alt="Entity tree" width="350"/>
 
 Whenever a player views the tree model in your scene, they will see the complex model for your tree. However, when they walk into your tree, they will collide with the box, not the tree.
 
@@ -43,17 +43,17 @@ Using a ramp object also avoids creating unnecessary geometry, saving room for o
 
 1.  Create a new object in the shape of a ramp that resembles the size and proportions of the original stairs.
 
-    <img src="/images/media/collision-stairs-both.png" alt="Staircase mesh and collider side by side" width="300"/>
+    <img src="{{ site.baseurl }}/images/media/collision-stairs-both.png" alt="Staircase mesh and collider side by side" width="300"/>
 
 2.  Name the ramp object something similar to _stairs_collider_. It must end in \__collider_.
 
 3.  Overlay the ramp object to the stairs so that they occupy the same space.
 
-     <img src="/images/media/collision-stairs-collider.png" alt="Overlaid mesh and collider" width="300"/>
+     <img src="{{ site.baseurl }}/images/media/collision-stairs-collider.png" alt="Overlaid mesh and collider" width="300"/>
 
 4.  Export both objects together as a single _glTF_ model.
 
-    <img src="/images/media/collision-stairs.png" alt="Exported 3D model with invisible collider" width="300"/>
+    <img src="{{ site.baseurl }}/images/media/collision-stairs.png" alt="Exported 3D model with invisible collider" width="300"/>
 
 Now when players view the stairs in your scene, they’ll see the more elaborate model of the stairs, but when they climb them, they’ll collide with the ramp.
 

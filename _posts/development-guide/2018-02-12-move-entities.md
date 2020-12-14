@@ -39,7 +39,7 @@ In this example we're moving an entity by 0.1 meters per frame.
 
 `Vector3.Forward()` returns a vector that faces forward and measures 1 meter in length. In this example we're then scaling this vector down to 1/10 of its length with `scale()`. If our scene has 30 frames per second, the entity is moving at 3 meters per second in speed.
 
- <img src="/images/media/gifs/move.gif" alt="Move entity" width="300"/>
+ <img src="{{ site.baseurl }}/images/media/gifs/move.gif" alt="Move entity" width="300"/>
 
 ## Rotate
 
@@ -69,7 +69,7 @@ engine.addEntity(myEntity)
 
 > Tip: To make an entity always rotate to face the player, you can add a [`Billboard` component]({{ site.baseurl }}{% post_url /development-guide/2018-01-12-entity-positioning %}#face-the-user).
 
- <img src="/images/media/gifs/rotate.gif" alt="Move entity" width="300"/>
+ <img src="{{ site.baseurl }}/images/media/gifs/rotate.gif" alt="Move entity" width="300"/>
 
 ## Rotate over a pivot point
 
@@ -122,7 +122,7 @@ engine.addSystem(new PivotRotate())
 
 Note that in this example, the system is rotating the `pivot` entity, that's a parent of the `door` entity.
 
- <img src="/images/media/gifs/pivot-rotate.gif" alt="Move entity" width="300"/>
+ <img src="{{ site.baseurl }}/images/media/gifs/pivot-rotate.gif" alt="Move entity" width="300"/>
 
 ## Adjust movement to delay time
 
@@ -206,7 +206,7 @@ myEntity.getComponent(LerpData).target = new Vector3(8, 1, 3)
 engine.addEntity(myEntity)
 ```
 
- <img src="/images/media/gifs/lerp-move.gif" alt="Move entity" width="300"/>
+ <img src="{{ site.baseurl }}/images/media/gifs/lerp-move.gif" alt="Move entity" width="300"/>
 
 ## Rotate between two angles
 
@@ -270,7 +270,7 @@ engine.addEntity(myEntity)
 
 > Note: You could instead represent the rotation with `Vector3` values and use a `Lerp()` function, but that would imply a conversion from `Vector3` to `Quaternion` on each frame. Rotation values are internally stored as quaternions in the `Transform` component, so it's more efficient to work with quaternions.
 
- <img src="/images/media/gifs/lerp-rotate.gif" alt="Move entity" width="300"/>
+ <img src="{{ site.baseurl }}/images/media/gifs/lerp-rotate.gif" alt="Move entity" width="300"/>
 
 ## Change scale between two sizes
 
@@ -328,7 +328,7 @@ myEntity.getComponent(LerpSizeData).target = 2
 engine.addEntity(myEntity)
 ```
 
- <img src="/images/media/gifs/lerp-scale.gif" alt="Move entity" width="300"/>
+ <img src="{{ site.baseurl }}/images/media/gifs/lerp-scale.gif" alt="Move entity" width="300"/>
 
 ## Move at irregular speeds between two points
 
@@ -359,7 +359,7 @@ engine.addSystem(new LerpMove())
 
 The example above is just like the linear lerp example we've shown before, but the `fraction` field is increased in a non-linear way, resulting in a curve moves the entity by greater increments on each frame.
 
- <img src="/images/media/gifs/lerp-speed-up.gif" alt="Move entity" width="300"/>
+ <img src="{{ site.baseurl }}/images/media/gifs/lerp-speed-up.gif" alt="Move entity" width="300"/>
 
 ## Follow a path
 
@@ -414,7 +414,7 @@ The example above defines a 3D path that's made up of four 3D vectors. We also d
 
 The system is very similar to the system in the _lerp_ example, but when a lerp action is completed, it sets the `target` and `origin` fields to new values. If we reach the end of the path, we return to the first value in the path.
 
- <img src="/images/media/gifs/lerp-path.gif" alt="Move entity" width="300"/>
+ <img src="{{ site.baseurl }}/images/media/gifs/lerp-path.gif" alt="Move entity" width="300"/>
 
 <!--
 

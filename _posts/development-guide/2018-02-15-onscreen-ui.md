@@ -22,7 +22,7 @@ The default Decentraland explorer UI includes a chat widget, a map, and other el
 To add a screenspace UI to your scene, you must create a `UICanvas` component, this component doesn't need to belong to any Entities to work. All the visible UI elements that you want the player to see are added as additional objects that are children of this parent component.
 
 <!--
-![](/images/media/UI-basic.png)
+![]({{ site.baseurl }}/images/media/UI-basic.png)
 -->
 
 ```ts
@@ -89,7 +89,7 @@ To determine the z position of UI elements, the UI uses the parenting hierarchy 
 Certain UI elements are there to help you organize how you place other elements.
 
 <!--
-![](/images/media/UI-rectangle.png)
+![]({{ site.baseurl }}/images/media/UI-rectangle.png)
 -->
 
 For this, you can use the `UIContainerStack` and the `UIContainerRect`.
@@ -232,7 +232,7 @@ You can use an image atlas to store multiple images and icons in a single image 
 
 Below is an example of an image atlas with multiple icons arranged into a single file.
 
-![](/images/media/UI-atlas.png)
+![]({{ site.baseurl }}/images/media/UI-atlas.png)
 
 The `UIImage` component has the following fields to crop a sub-section of the original image:
 
@@ -302,7 +302,7 @@ clickableImage.onClick = new OnClick(() => {
 ```
 
 <!--
-![](/images/media/UI-clicks.png)
+![]({{ site.baseurl }}/images/media/UI-clicks.png)
 -->
 
 > Note: If desktop players want to click on a UI component, they must first unlock the cursor from the view control, to move the cursor over the UI component. They do this by clicking `Esc`.

@@ -33,7 +33,7 @@ This simple scene shows how to add animations to a `GLTFComponent` and handle cl
 - animations
 - click events
 
-![](/images/media/example-shark-animation.png)
+![]({{ site.baseurl }}/images/media/example-shark-animation.png)
 
 [Code](https://github.com/decentraland-scenes/Shark-animation)
 
@@ -48,7 +48,7 @@ This simple scene shows how to use the [utils library](https://www.npmjs.com/pac
 - delaying a function
 - adding a sound clip
 
-![](/images/media/example-puffer.png)
+![]({{ site.baseurl }}/images/media/example-puffer.png)
 
 [Code](https://github.com/decentraland-scenes/Puffer)
 
@@ -65,7 +65,7 @@ This simple scene features a couple of wheels that you can spin by clicking them
 - custom components
 - component groups
 
-![](/images/media/example-hypno-wheel.png)
+![]({{ site.baseurl }}/images/media/example-hypno-wheel.png)
 
 [Code](https://github.com/decentraland-scenes/Hypno-wheels)
 
@@ -84,7 +84,7 @@ A simple interactive scene with a door that can be opened and closed.
 - custom components
 - component groups
 
-![](/images/media/example-door.png)
+![]({{ site.baseurl }}/images/media/example-door.png)
 
 [Code](https://github.com/decentraland-scenes/Open-door)
 
@@ -101,7 +101,7 @@ A simple interactive scene with a two-sided door that can be opened by clicking.
 - custom components
 - component groups
 
-![](/images/media/example-sliding-doors.png)
+![]({{ site.baseurl }}/images/media/example-sliding-doors.png)
 
 [Code](https://github.com/decentraland-scenes/Sliding-door)
 
@@ -120,7 +120,7 @@ A scene where you can play different songs by pressing buttons on a jukebox.
 - custom components
 - component groups
 
-![](/images/media/example-jukebox.png)
+![]({{ site.baseurl }}/images/media/example-jukebox.png)
 
 [Code](https://github.com/decentraland-scenes/Jukebox)
 
@@ -136,7 +136,7 @@ A scene with a simple example of each way in which players can interact. Each sh
 - Global pointer events
 - Animations
 
-![](/images/media/example-basic-interactions.png)
+![]({{ site.baseurl }}/images/media/example-basic-interactions.png)
 
 [Code](https://github.com/decentraland-scenes/Basic-Interactions)
 
@@ -155,7 +155,7 @@ A scene with animations, sound, and tiles on the floor that randomly change colo
 - custom components
 - component groups
 
-![](/images/media/example-dance-floor.png)
+![]({{ site.baseurl }}/images/media/example-dance-floor.png)
 
 [Code](https://github.com/decentraland-scenes/Dance-floor)
 
@@ -165,7 +165,7 @@ A scene with animations, sound, and tiles on the floor that randomly change colo
 
 This scene shows how to handle a particle system to create smoke. Each smoke puff is an entity that moves in a specific direction. These entities are reused from an object pool instead of creating a new entity for each. When an entity floats away from the fire, it's removed from the scene and waits in the object pool to be reused.
 
-![](/images/media/example-smoke.png)
+![]({{ site.baseurl }}/images/media/example-smoke.png)
 
 [Code](https://github.com/decentraland-scenes/Smoke)
 
@@ -181,7 +181,7 @@ A Simon Says game, with click interactions and sequenced actions. The game gener
 - custom components
 - component groups
 
-![](/images/media/example-memory-game.png)
+![]({{ site.baseurl }}/images/media/example-memory-game.png)
 
 [Code](https://github.com/decentraland-scenes/Memory-game)
 
@@ -193,7 +193,7 @@ A Simon Says game, with click interactions and sequenced actions. The game gener
 
 A scene where hummingbirds spawn when you click a tree. Each bird moves on its own to random positions.
 
-![](/images/media/example-hummingbirds.png)
+![]({{ site.baseurl }}/images/media/example-hummingbirds.png)
 
 [Code](https://github.com/decentraland-scenes/Hummingbirds)
 
@@ -203,7 +203,7 @@ A scene where hummingbirds spawn when you click a tree. Each bird moves on its o
 
 A scene that shows a character walking along a fixed path, using lerp over each segment of the path. If you approach it, it will switch to yelling at you.
 
-![](/images/media/example-gnark.png)
+![]({{ site.baseurl }}/images/media/example-gnark.png)
 
 [Code](https://github.com/decentraland-scenes/Gnark-patrol)
 
@@ -220,7 +220,7 @@ This scene shows a shark moving around in circles along a curved circular path, 
 
 The speed of the shark and the intensity with which it swims depends on the steepness of the segment.
 
-![](/images/media/example-shark-animation.png)
+![]({{ site.baseurl }}/images/media/example-shark-animation.png)
 
 [Code](https://github.com/decentraland-scenes/Swimming-shark)
 
@@ -235,7 +235,7 @@ Use real weather data from different locations by changing the coordinates, or c
 
 - Call external REST API
 
-![](/images/media/example-weather.png)
+![]({{ site.baseurl }}/images/media/example-weather.png)
 
 [Code](https://github.com/decentraland-scenes/Weather-simulation)
 
@@ -248,7 +248,7 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 - Create a REST server
 - Call REST API
 
-![](/images/media/example-door.png)
+![]({{ site.baseurl }}/images/media/example-door.png)
 
 [Code](https://github.com/decentraland-scenes/Remote-door)
 
@@ -263,7 +263,7 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 - Create a REST server
 - Call REST API
 
-![](/images/media/example-remote-mural.png)
+![]({{ site.baseurl }}/images/media/example-remote-mural.png)
 
 [Code](https://github.com/decentraland-scenes/Remote-mural)
 
@@ -275,7 +275,7 @@ A scene that uses a server and a REST API to sync a scene state amongst multiple
 
 A scene that displays a crypto collectible NFT in a picture frame. See [display a certified NFT]({{ site.baseurl }}{% post_url /development-guide/2018-02-01-display-a-certified-nft %}) for more details.
 
-![](/images/media/example-kitty.png)
+![]({{ site.baseurl }}/images/media/example-kitty.png)
 
 [Code](https://github.com/decentraland-scenes/Certified-criptokitty)
 
@@ -305,7 +305,7 @@ Fees collected by the Marketplace are stored in a wallet. This scene interacts w
 
 The flame is created as a particle system, handling various entities that spiral around as they change colors.
 
-![](/images/media/example-mana-altar.png)
+![]({{ site.baseurl }}/images/media/example-mana-altar.png)
 
 [Code](https://github.com/decentraland-scenes/MANA-Burning-Altar)
 
@@ -317,7 +317,7 @@ The flame is created as a particle system, handling various entities that spiral
 
 A scene with a simple AI character. It randomly chooses what action to take: follow you, sit or remain idle. You can also tell it to sit or stand up by clicking it, or tell it to drink water by clicking its bowl.
 
-![](/images/media/example-blockdog.png)
+![]({{ site.baseurl }}/images/media/example-blockdog.png)
 
 [Code](https://github.com/decentraland-scenes/Block-dog)
 
@@ -329,7 +329,7 @@ A full escape room game, where each room is a puzzle to be interacted with in di
 
 This scene is showcased by a [video tutorial series](https://www.youtube.com/watch?v=j7XbiTZ9GN0&list=PLAcRraQmr_GOhimaVZSlJrkzCvo8crIBQ) that walks you through all the mechanics, starting from the basic concepts.
 
-![](/images/media/example-escaperoom.png)
+![]({{ site.baseurl }}/images/media/example-escaperoom.png)
 
 [Code](https://github.com/decentraland-scenes/dcl-escape-room-tutorial)
 
@@ -337,7 +337,7 @@ This scene is showcased by a [video tutorial series](https://www.youtube.com/wat
 
 A fully-fledged game where a random 2d path is generated along which enemies walk, and where traps are randomly placed. You need to activate the traps as the enemies advance along the path to kill them. It’s all about timing.
 
-![](/images/media/example-tower-defense.png)
+![]({{ site.baseurl }}/images/media/example-tower-defense.png)
 
 [Code](https://github.com/decentraland-scenes/Tower-defense)
 
@@ -349,7 +349,7 @@ A fully-fledged game where a random 2d path is generated along which enemies wal
 
 A fully fledged game, based on the popular game 2048, where the values are represented by a series of gems of increasing values. Click and drag to displace the gems on the board and merge them into greater values till you reach 2048.
 
-![](/images/media/example-2048.png)
+![]({{ site.baseurl }}/images/media/example-2048.png)
 
 [Code](https://github.com/decentraland-scenes/Castaway-2048)
 

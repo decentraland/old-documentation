@@ -11,7 +11,7 @@ type: Document
 
 While editing a scene, press the _Download scene_ icon to download the contents of the scene as a _.zip_ file. In the scene selector screen, you can also press the _three dots_ icon and select _Download scene_.
 
-![](/images/media/builder-export.png)
+![]({{ site.baseurl }}/images/media/builder-export.png)
 
 You can then share this scene with another Builder user, or edit the scene with more freedom by using the Decentraland SDK.
 

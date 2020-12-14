@@ -1,0 +1,93 @@
+stages:
+  - build
+  # - test
+  - deploy
+
+services:
+  - docker:dind
+
+# Cache modules in between jobs
+cache:
+  # key: ${CI_COMMIT_REF_SLUG}
+  key: ${CI_COMMIT_REF_NAME}
+  paths:
+    - vendor/
+    - _site/
+    - .jekyll-cache
+    - .jekyll-metadata
+
+build-preview:
+  stage: build
+  image: jekyll/jekyll:3
+  except:
+    - master
+  artifacts:
+    paths:
+      - _site
+    when: on_success
+    expire_in: 7 days
+  script:
+    - 'echo "" > _data/environment.yml'
+    - 'echo "CI_COMMIT_TAG: \"$CI_COMMIT_TAG\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_SHA: \"$CI_COMMIT_SHA\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_SHORT_SHA: \"$CI_COMMIT_SHORT_SHAG\"" >> _data/environment.yml'
+    - gem install bundler
+    - bundle config set path 'vendor/bundle'
+    - bundle install --jobs=4 --retry=3
+    - SOURCE_PATH="$CI_COMMIT_REF_NAME"
+    - JEKYLL_ENV=production bundle exec jekyll build --incremental --destination "_site/branch/$SOURCE_PATH" --baseurl "/branch/$SOURCE_PATH"
+
+deploy-preview:
+  stage: deploy
+  image: decentraland/ci-node:latest
+  dependencies:
+    - build-preview
+  except:
+    - master
+  script:
+    - SOURCE_PATH="$CI_COMMIT_REF_NAME"
+    - CI_COMMIT_REF_NAME=master
+    - source dcl-env
+    - dcl-lock-sync
+    - cd .ci && npm install && dcl-up websites-documentation
+    - dcl-sync-release
+    - PATH="$PATH:$HOME/.pulumi/bin"
+    - SOURCE="_site/branch/$SOURCE_PATH"
+    - TARGET="s3://$(pulumi stack output bucketName)/branch/$SOURCE_PATH"
+    - EXPIRES="$(date --date='7 day' '+%Y-%m-%dT00:00:00Z')"
+    - echo "aws s3 sync $SOURCE $TARGET --expires $EXPIRES"
+    - cd .. && aws s3 sync $SOURCE $TARGET --expires $EXPIRES --acl public-read
+    - cd .ci && dcl-cache-invalidation
+
+build:
+  stage: build
+  image: jekyll/jekyll:3
+  only:
+    - master
+  artifacts:
+    paths:
+      - _site
+    when: on_success
+    expire_in: 7 days
+  script:
+    - gem install bundler
+    - bundle config set path 'vendor/bundle'
+    - bundle install --jobs=4 --retry=3
+    - JEKYLL_ENV=production bundle exec jekyll build --incremental --destination _site
+
+deploy:
+  stage: deploy
+  image: decentraland/ci-node:latest
+  dependencies:
+    - build
+  only:
+    - master
+  variables:
+    CI_COMMIT_REF_NAME: release
+  script:
+    - source dcl-env
+    - dcl-lock-sync
+    - cd .ci && npm install && dcl-up websites-documentation
+    - dcl-sync-release && cd ..
+    - dcl-upload _site
+    - cd .ci && dcl-cache-invalidation

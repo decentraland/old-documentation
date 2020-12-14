@@ -78,11 +78,11 @@ We are developing the web client that will allow players to explore Decentraland
 
 Three dimensional scenes in Decentraland are based on an [Entity-Component-System](https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system) architecture, where everything in a scene is an _entity_, and each entity can include _components_ that determine its characteristics.
 
-<img src="/images/media/ecs-components.png" alt="nested entities" width="400"/>
+<img src="{{ site.baseurl }}/images/media/ecs-components.png" alt="nested entities" width="400"/>
 
 Entities are nested inside other entities to form a tree structure. If you're familiar with web development, you might find it useful to think of entities as elements in a DOM tree and of components as the attributes of each of these elements.
 
-<img src="/images/media/ecs-nested-entities.png" alt="nested entities" width="400"/>
+<img src="{{ site.baseurl }}/images/media/ecs-nested-entities.png" alt="nested entities" width="400"/>
 
 See [Entities and components]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}) for an in-depth look of both these concepts and how they're used by Decentraland scenes.
 
@@ -128,7 +128,7 @@ Component groups can be referenced by the functions in a [system]({{ site.baseur
 
 The _engine_ is what sits in between _entities_, _components_ and _component groups_ on one hand and _systems_ on the other. It calls system's functions, updates groups when entities are added, etc.
 
-![](/images/media/ecs-big-picture.png)
+![]({{ site.baseurl }}/images/media/ecs-big-picture.png)
 
 All of the values stored in the components in the scene represent the scene's state at that point in time. With every frame of the game loop, the engine runs the `update()` function of each of the systems to update the values stored in the components.
 
