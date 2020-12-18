@@ -33,8 +33,8 @@ const options = yargs(process.argv.slice(2))
   .argv
 
 Promise.resolve(updateCommitStatus({
-  context: options.name ? `decentraland/ci: ${options.name}`
-    : process.env['CI_JOB_NAME'] ? `decentralan/ci: ${process.env['CI_JOB_NAME']}`
+  context: options.name ? `muna/ci: ${options.name}`
+    : process.env['CI_JOB_NAME'] ? `muna/ci: ${process.env['CI_JOB_NAME']}`
     : `decentralan/ci`,
   state: options.state as any,
   target_url: options['target-url'],
