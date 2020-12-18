@@ -66,7 +66,7 @@ deploy-preview:
     - CI_COMMIT_REF_NAME=master
     - source dcl-env
     - dcl-lock-sync
-    - cd .ci && npm ci && dcl-up websites-blog
+    - cd .ci && npm ci && dcl-up websites-documentation
     - dcl-sync-release
     - PATH="$PATH:$HOME/.pulumi/bin"
     - SOURCE="_site/branch/$SOURCE_PATH"
