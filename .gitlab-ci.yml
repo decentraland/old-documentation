@@ -18,7 +18,7 @@ cache:
 
 deploy-preview:
   stage: deploy
-  image: decentraland/ci-jekyll:4
+  image: decentraland/ci-jekyll:3
   variables:
     SOURCE_PATH: "$CI_COMMIT_REF_NAME"
     SITE_TARGET_URL: "https://docs.decentraland.io/branch/$CI_COMMIT_REF_NAME"
@@ -84,7 +84,7 @@ deploy-preview:
 
 deploy:
   stage: deploy
-  image: decentraland/ci-jekyll:4
+  image: decentraland/ci-jekyll:3
   variables:
     GITHUB_REPOSITORY: decentraland/documentation
     GITHUB_SHA: $CI_COMMIT_SHA
