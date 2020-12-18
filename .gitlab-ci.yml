@@ -52,10 +52,7 @@ deploy-preview:
     - gem install bundler
     - bundle config set path 'vendor/bundle'
     - bundle install --jobs=4 --retry=3
-    - 'echo "" > _data/environment.yml'
-    - 'echo "CI_COMMIT_TAG: \"$CI_COMMIT_TAG\"" >> _data/environment.yml'
-    - 'echo "CI_COMMIT_SHA: \"$CI_COMMIT_SHA\"" >> _data/environment.yml'
-    - 'echo "CI_COMMIT_SHORT_SHA: \"$CI_COMMIT_SHORT_SHAG\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_SHA: \"$CI_COMMIT_SHA\"" > _data/environment.yml'
     - >
       JEKYLL_ENV=production bundle exec jekyll build \
         --incremental \
@@ -116,10 +113,7 @@ deploy:
     - gem install bundler
     - bundle config set path 'vendor/bundle'
     - bundle install --jobs=4 --retry=3
-    - 'echo "" > _data/environment.yml'
-    - 'echo "CI_COMMIT_TAG: \"$CI_COMMIT_TAG\"" >> _data/environment.yml'
-    - 'echo "CI_COMMIT_SHA: \"$CI_COMMIT_SHA\"" >> _data/environment.yml'
-    - 'echo "CI_COMMIT_SHORT_SHA: \"$CI_COMMIT_SHORT_SHAG\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_SHA: \"$CI_COMMIT_SHA\"" > _data/environment.yml'
     - JEKYLL_ENV=production bundle exec jekyll build --incremental --destination _site
 
     # DEPLOY (.org)
