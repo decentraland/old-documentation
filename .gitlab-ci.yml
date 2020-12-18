@@ -16,40 +16,57 @@ cache:
     - .jekyll-cache
     - .jekyll-metadata
 
-build-preview:
-  stage: build
-  image: jekyll/jekyll:3
+deploy-preview:
+  stage: deploy
+  image: decentraland/ci-jekyll:3
+  variables:
+    SOURCE_PATH: "$CI_COMMIT_REF_NAME"
+    SITE_TARGET_URL: "https://docs.decentraland.io/branch/$CI_COMMIT_REF_NAME"
+    GITHUB_REPOSITORY: decentraland/documentation
+    GITHUB_SHA: $CI_COMMIT_SHA
   except:
     - master
-  artifacts:
-    paths:
-      - _site
-    when: on_success
-    expire_in: 7 days
+  before_script:
+    - cd .ci && npm ci
+    - >
+      npm run status -- \
+        --state pending \
+        --description "Deploying..." \
+        --target-url "$CI_JOB_URL"
+    - cd ..
+  after_script:
+    - cd .ci && npm ci
+    - >
+      if [ "$CI_JOB_STATUS" == "success" ]; then
+        npm run status -- \
+          --state success \
+          --description "Deployed!!!" \
+          --target-url "$CI_JOB_URL"
+      else
+        npm run status -- \
+          --state failure \
+          --target-url "$CI_JOB_URL"
+      fi
   script:
+    # BUILD
+    - gem install bundler
+    - bundle config set path 'vendor/bundle'
+    - bundle install --jobs=4 --retry=3
     - 'echo "" > _data/environment.yml'
     - 'echo "CI_COMMIT_TAG: \"$CI_COMMIT_TAG\"" >> _data/environment.yml'
     - 'echo "CI_COMMIT_SHA: \"$CI_COMMIT_SHA\"" >> _data/environment.yml'
     - 'echo "CI_COMMIT_SHORT_SHA: \"$CI_COMMIT_SHORT_SHAG\"" >> _data/environment.yml'
-    - gem install bundler
-    - bundle config set path 'vendor/bundle'
-    - bundle install --jobs=4 --retry=3
-    - SOURCE_PATH="$CI_COMMIT_REF_NAME"
-    - JEKYLL_ENV=production bundle exec jekyll build --incremental --destination "_site/branch/$SOURCE_PATH" --baseurl "/branch/$SOURCE_PATH"
+    - >
+      JEKYLL_ENV=production bundle exec jekyll build \
+        --incremental \
+        --destination "_site/branch/$SOURCE_PATH" \
+        --baseurl "/branch/$SOURCE_PATH"
 
-deploy-preview:
-  stage: deploy
-  image: decentraland/ci-node:latest
-  dependencies:
-    - build-preview
-  except:
-    - master
-  script:
-    - SOURCE_PATH="$CI_COMMIT_REF_NAME"
+    # DEPLOY (.io)
     - CI_COMMIT_REF_NAME=master
     - source dcl-env
     - dcl-lock-sync
-    - cd .ci && npm install && dcl-up websites-documentation
+    - cd .ci && npm ci && dcl-up websites-documentation
     - dcl-sync-release
     - PATH="$PATH:$HOME/.pulumi/bin"
     - SOURCE="_site/branch/$SOURCE_PATH"
@@ -58,36 +75,64 @@ deploy-preview:
     - echo "aws s3 sync $SOURCE $TARGET --expires $EXPIRES"
     - cd .. && aws s3 sync $SOURCE $TARGET --expires $EXPIRES --acl public-read
     - cd .ci && dcl-cache-invalidation
-
-build:
-  stage: build
-  image: jekyll/jekyll:3
-  only:
-    - master
-  artifacts:
-    paths:
-      - _site
-    when: on_success
-    expire_in: 7 days
-  script:
-    - gem install bundler
-    - bundle config set path 'vendor/bundle'
-    - bundle install --jobs=4 --retry=3
-    - JEKYLL_ENV=production bundle exec jekyll build --incremental --destination _site
+    - >
+      npm run status -- \
+        --state success \
+        --name "live" \
+        --description "Site is live!" \
+        --target-url "$SITE_TARGET_URL"
 
 deploy:
   stage: deploy
-  image: decentraland/ci-node:latest
-  dependencies:
-    - build
+  image: decentraland/ci-jekyll:3
+  variables:
+    GITHUB_REPOSITORY: decentraland/documentation
+    GITHUB_SHA: $CI_COMMIT_SHA
   only:
     - master
-  variables:
-    CI_COMMIT_REF_NAME: release
+  before_script:
+    - cd .ci && npm ci
+    - >
+      npm run status -- \
+        --state pending \
+        --description "Deploying..." \
+        --target-url "$CI_JOB_URL"
+    - cd ..
+  after_script:
+    - cd .ci && npm ci
+    - >
+      if [ "$CI_JOB_STATUS" == "success" ]; then
+        npm run status -- \
+          --state success \
+          --description "Deployed!!!" \
+          --target-url "$CI_JOB_URL"
+      else
+        npm run status -- \
+          --state failure \
+          --target-url "$CI_JOB_URL"
+      fi
   script:
+    # BUILD
+    - gem install bundler
+    - bundle config set path 'vendor/bundle'
+    - bundle install --jobs=4 --retry=3
+    - 'echo "" > _data/environment.yml'
+    - 'echo "CI_COMMIT_TAG: \"$CI_COMMIT_TAG\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_SHA: \"$CI_COMMIT_SHA\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_SHORT_SHA: \"$CI_COMMIT_SHORT_SHAG\"" >> _data/environment.yml'
+    - JEKYLL_ENV=production bundle exec jekyll build --incremental --destination _site
+
+    # DEPLOY (.org)
+    - CI_COMMIT_REF_NAME=release
     - source dcl-env
     - dcl-lock-sync
     - cd .ci && npm install && dcl-up websites-documentation
     - dcl-sync-release && cd ..
     - dcl-upload _site
     - cd .ci && dcl-cache-invalidation
+    - >
+      npm run status -- \
+        --state success \
+        --name "live" \
+        --description "Site is live!" \
+        --target-url "https://docs.decentraland.org/"
