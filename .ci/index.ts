@@ -4,7 +4,7 @@ import { buildStatic } from "dcl-ops-lib/buildStatic";
 async function main() {
 
   const page = buildStatic({
-    domain: `docs.decentraland.${envTLD}`,
+    domain: `docs.decentraland.${envTLD === 'co' ? 'org' : envTLD}`,
     defaultPath: '404-error/index.html',
     path: '/',
   });
