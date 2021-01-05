@@ -31,11 +31,11 @@ In order to use Matic, players must set up their Metamask account to use Matic n
 
 ## Add Matic support to a scene
 
-To easily make use of the Matic side-chain in your scene, you can leverage the free `decentral-api`, created by [Decentral.io](https://decentral.io).
+To easily make use of MANA on the Matic side-chain in your scene, use the [l2-utils library](https://github.com/decentraland/decentraland-l2-utils). This function includes simple functions to allow players in your scene to make transactions with MANA on Matic, check the player's current balance of MANA on Matic, and transfer MANA between mainchain and the Matic chain.
 
-You can read all about how to implement it in your scene in [their documentation page](https://www.decentral.io/docs/dcl/overview/).
+> Note: Another alternative is to leverage the `decentral-api`, created by [decentral.games](https://decentral.games/). Read how to implement it in your scene in [their documentation page](https://docs.decentral.games/).
 
-## Test Matic in a scene
+## Try the Matic Testnet
 
 In order to use the Matic Testnet, you should first have:
 
@@ -50,5 +50,3 @@ To do this:
 1. Switch networks on Metamask by clicking on the name of the current network and selecting _Custom RPC_ at the bottom of the dropdown.
 2. Fill in 'Matic Testnet' as _Network name_ and _https://testnet2.matic.network_ as _New RPC URL_.
 3. Click 'Save' to add this new network to Metamask.
-
-Decentral.io has a great step by step wizard to help you configure this. You can find it by going [here](https://decentral.games/) and clicking on _Play Now_.
