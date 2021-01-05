@@ -25,7 +25,7 @@ The Builder uses the Decentraland SDK under the hood, generating the required co
 
 Open the [Builder](https://builder.decentraland.org) and try it out!
 
-Take a look at our [video tutorials]({{ site.baseurl }}{% post_url /tutorials/2020-03-16-builder-video-tutorials %})
+Take a look at our [video tutorials](https://www.youtube.com/playlist?list=PLAcRraQmr_GPi-8qgv17ewdGl50OHuOhH)
 
 Or read the [documentation]({{ site.baseurl }}{% post_url /builder/2020-03-16-builder-101 %})
 
@@ -33,7 +33,7 @@ Or read the [documentation]({{ site.baseurl }}{% post_url /builder/2020-03-16-bu
 
 Follow the [SDK 101]({{ site.baseurl }}{% post_url /development-guide/2020-03-16-SDK-101 %}) tutorial for a quick crash course.
 
-Take a look at the [escape room video tutorial series]({{ site.baseurl }}{% post_url /tutorials/2018-01-04-video-tutorials %}).
+Take a look at the [escape room video tutorial series](https://hardlydifficult.github.io/dcl-escape-room-tutorial/).
 
 Or read the [documentation]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %})
 
@@ -54,7 +54,7 @@ Or read the [documentation]({{ site.baseurl }}{% post_url /development-guide/201
       <div class="description">A complete reference of the default components and other available objects, with their functions.</div>
     </div>
   </a>
-  <a href="{{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}">
+  <a href="https://github.com/decentraland-scenes/Awesome-Repository#Examples">
     <div>
       <div class="image"><img src="{{ site.baseurl }}/images/home/3.png"/></div>
       <div class="title">Scene examples</div>
@@ -63,11 +63,7 @@ Or read the [documentation]({{ site.baseurl }}{% post_url /development-guide/201
   </a>
 </div>
 
-Several libraries are built upon the Decentraland SDK to help you build faster:
-
-- [Utils library](https://www.npmjs.com/package/decentraland-ecs-utils): Simplifies a lot of common tasks like moving or rotating an entity, or triggering a function when the player walks into a cube.
-
-- [Decentral API](https://www.decentral.io/docs/dcl/overview/): Simplifies making fast and cheap blockchain transactions triggered by the scene, using the Matic network.
+Several libraries are built upon the Decentraland SDK to help you build faster, see the full list in the [Awesome Repository](https://github.com/decentraland-scenes/Awesome-Repository#libraries)
 
 ## SDK Scene examples
 
@@ -92,9 +88,9 @@ Several libraries are built upon the Decentraland SDK to help you build faster:
   </a>
 </div>
 
-See [scene examples]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) for more scene examples.
+See [scene examples](https://github.com/decentraland-scenes/Awesome-Repository#Examples) for more scene examples.
 
-Also see [tutorials]({{ site.baseurl }}{% post_url /tutorials/2018-01-03-tutorials %}) for detailed instructions for building scenes like these.
+Also see [tutorials](https://github.com/decentraland-scenes/Awesome-Repository#Tutorials) for detailed instructions for building scenes like these.
 
 ## Other useful information
 
