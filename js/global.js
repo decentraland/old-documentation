@@ -299,12 +299,7 @@ $(function() {
   })
 
   window.addEventListener('scroll', function () {
-    const $languageSelector = $('.select-language.visible')
-    const offset = $header.height() + $header.offset().top
-    const threshold = ($languageSelector.length > 0)
-      ? offset + $languageSelector.height()
-      : offset
-
+    const threshold = $header.height() + $header.offset().top
     $sidebarDropdown.toggleClass('sticky', window.scrollY > threshold)
   }, { passive: true })
 
@@ -327,37 +322,6 @@ $(function() {
       $('html,body').animate({ scrollTop: $el.offset().top - 30 }, 500)
     }
   })
-
-  // LANGUAGE ==>
-
-  function dismissLanguageBar() {
-    Cookies.set('language', true, { expires: 365 })
-    $('.select-language').removeClass('visible')
-  }
-
-  $('select#lang').on('change', function() {
-    const value = $(this).val()
-    dismissLanguageBar()
-    $('select#lang').val(value)
-    $('.lang-flag')
-      .removeClass('english chinese')
-      .addClass(value)
-
-    const sites = {
-      english: 'https://docs.decentraland.org',
-      chinese: 'https://cn.docs.decentraland.org'
-    }
-
-    document.location.href = sites[value] + document.location.pathname
-  })
-
-  $('.select-language .dismiss').click(function() {
-    dismissLanguageBar()
-  })
-
-  if (!Cookies.get('language')) {
-    $('.select-language').addClass('visible')
-  }
 
   // FEEDBACK ==>
 
@@ -517,7 +481,7 @@ $(function() {
 
         return
       }
-  
+
       current = current.parentElement;
     }
   })
