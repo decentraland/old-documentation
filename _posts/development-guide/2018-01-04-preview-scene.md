@@ -11,7 +11,7 @@ type: Document
 set: getting-started
 ---
 
-Once you have [built a new scene](https://docs.decentraland.org/#create-your-first-scene) or downloaded a [scene example]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}) you can preview it locally.
+Once you have [built a new scene](https://docs.decentraland.org/#create-your-first-scene) or downloaded a [scene example](https://github.com/decentraland-scenes/Awesome-Repository#examples) you can preview it locally.
 
 ## Before you begin
 
@@ -125,7 +125,6 @@ You can detect if a scene is running as a preview or is already deployed in prod
 
 To use this function, import the `@decentraland/EnvironmentAPI` library.
 
-
 ```ts
 import { isPreviewMode } from '@decentraland/EnvironmentAPI'
 
@@ -138,10 +137,7 @@ executeTask(async () => {
 }
 ```
 
-
 > Note: `isPreviewMode()` needs to be run as an [async function]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %}), since the response may delay in returning data.
-
-
 
 <!--
 ## View collision meshes

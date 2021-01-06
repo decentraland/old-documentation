@@ -26,7 +26,7 @@ Or read the [documentation]({{ site.baseurl }}{% post_url /builder/2020-03-16-bu
 
 Follow the [SDK 101]({{ site.baseurl }}{% post_url /development-guide/2020-03-16-SDK-101 %}) tutorial for a quick crash course.
 
-Take a look at the [escape room video tutorial series]({{ site.baseurl }}{% post_url /tutorials/2018-01-04-video-tutorials %}).
+Take a look at the [escape room video tutorial series](https://hardlydifficult.github.io/dcl-escape-room-tutorial/).
 
 Or read the [documentation]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}) to grasp some of the fundamental concepts.
 
@@ -92,9 +92,9 @@ Several libraries are built upon the Decentraland SDK to help you build faster:
   </a>
 </div>
 
-See more [scene examples]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}).
+See more [scene examples](https://github.com/decentraland-scenes/Awesome-Repository#examples).
 
-Also see [tutorials]({{ site.baseurl }}{% post_url /tutorials/2018-01-03-tutorials %}) for detailed instructions for building scenes like these.
+Also see [tutorials](https://github.com/decentraland-scenes/Awesome-Repository#Tutorials) for detailed instructions for building scenes like these.
 
 # 3d Modeling
 

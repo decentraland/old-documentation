@@ -132,6 +132,10 @@ sceneMessageBus.on("spawn", (info: NewBoxPosition) => {
 })
 ```
 
+#### More examples
+
+Find some more examples in the [Awesome Repository](https://github.com/decentraland-scenes/Awesome-Repository#use-message-bus)
+
 #### Test a P2P scene locally
 
 If you launch a scene preview and open it in two (or more) different browser windows, each open window will be interpreted as a separate player, and a mock communications server will keep these players in sync.
@@ -142,13 +146,19 @@ Interact with the scene on one window, then switch to the other to see that the 
 
 ## Use an authoritative server
 
+An authoritative server may have different levels of involvement with the scene:
+
+- API + DB: This is useful for scenes where changes don't happen constantly and where it's acceptable to have minor delays in syncing. When a player changes something, it sends an HTTP request to a REST API that stores the new scene state in a data base. Changes remained stored for any new player that visits the scene at a later date. The main limitation is that new changes from other players aren't notified to players who are already there, messages can't be pushed from the server to players. Players must regularly send requests the server to get the latest state.
+
+> TIP: It's also possible to opt for a hybrid approach where changes are notified between players via P2P Messagebus messages, but the final state is also stored via an API for future visitors.
+
+- Websockets: This alternative is more robust, as it establishes a two-way communications channel between player and server. Updates can be sent from the server, you could even have game logic run on or validated on the server. This enables real time interaction and makes more fast paced games possible. It's also more secure, as each message between player and server is part of a session that is opened, no need to validate each message.
+
 #### Example scenes with authoritative server
 
-To copy one of the scene examples that implements an authoritative server, follow the steps in [copy a scene example]({{ site.baseurl }}{% post_url /examples/2018-01-08-sample-scenes %}#clone-an-example-scene).
+- [API + DB](https://github.com/decentraland-scenes/Awesome-Repository#use-an-api-as-db)
 
-[Door scene](https://github.com/decentraland-scenes/Remote-door)
-
-[Mural scene](https://github.com/decentraland-scenes/Remote-mural)
+- [Websockets](https://github.com/decentraland-scenes/Awesome-Repository#websockets)
 
 #### Preview scenes with authoritative servers
 

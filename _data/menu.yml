@@ -109,7 +109,6 @@
         - post: "development-guide/2018-02-7-materials.md"
         - post: "development-guide/2018-02-10-sounds.md"
         - post: "development-guide/2018-02-12-move-entities.md"
-        - post: "development-guide/2020-08-04-utils.md"
         - post: "development-guide/2018-02-13-3d-model-animations.md"
         - post: "development-guide/2018-02-14-click-events.md"
         - post: "development-guide/2018-02-11-text.md"
@@ -123,6 +122,11 @@
         - post: "development-guide/2020-05-18-external-links.md"
         - post: "development-guide/2018-02-26-scene-metadata.md"
         - post: "development-guide/2018-01-06-scene-limitations.md"
+        - title: SDK Libraries
+          children:
+            - post: "development-guide/2020-08-04-utils.md"
+            - title: "Other libraries"
+              url: "https://github.com/decentraland-scenes/Awesome-Repository#Libraries"
         - title: Blockchain integration
           children:
             - title: Display an NFT
@@ -161,13 +165,22 @@
         - post: "3d-modeling/2018-01-10-materials.md"
     - title: Tutorials
       children:
-        - post: "tutorials/2018-01-03-tutorials.md"
-        - post: "tutorials/2018-01-04-video-tutorials.md"
-        - post: "tutorials/2020-03-16-builder-video-tutorials.md"
+        - title: Written
+          url: "https://github.com/decentraland-scenes/Awesome-Repository#Tutorials"
+        - title: Video
+          url: "https://www.youtube.com/playlist?list=PLAcRraQmr_GPi-8qgv17ewdGl50OHuOhH"
     - title: Scene examples
       children:
-        - title: SDK examples
-          post: "examples/2018-01-08-sample-scenes.md"
+        - title: Essentials
+          url: "https://github.com/decentraland-scenes/Awesome-Repository#examples"
+        - title: Game Mechanics
+          url: "https://github.com/decentraland-scenes/Awesome-Repository#game-mechanics"
+        - title: Physics
+          url: "https://github.com/decentraland-scenes/Awesome-Repository#physics"
+        - title: Blockchain Monetization
+          url: "https://github.com/decentraland-scenes/Awesome-Repository#monetization--blockchain"
+        - title: Multiplayer & APIs
+          url: "https://github.com/decentraland-scenes/Awesome-Repository#multiplayer--apis"
     - title: Release notes
       children:
         - post: "releases/sdk/2019-04-25-6.0.md"
@@ -176,7 +189,6 @@
         - post: "releases/sdk/2018-01-02-4.1.0.md"
         - post: "releases/sdk/2018-01-01-4.0.0.md"
         - post: "releases/sdk/2018-02-01-cli.md"
-
 - title: Ethereum essentials
   image: sets/EthereumIcon.svg
   children:
