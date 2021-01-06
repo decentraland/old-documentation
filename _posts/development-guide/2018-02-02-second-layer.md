@@ -31,9 +31,9 @@ In order to use Matic, players must set up their Metamask account to use Matic n
 
 ## Add Matic support to a scene
 
-To easily make use of MANA on the Matic side-chain in your scene, use the [l2-utils library](https://github.com/decentraland/decentraland-l2-utils). This function includes simple functions to allow players in your scene to make transactions with MANA on Matic, check the player's current balance of MANA on Matic, and transfer MANA between mainchain and the Matic chain.
+To easily make use of MANA on the Matic side-chain in your scene, use the [l2-utils library](https://github.com/decentraland/decentraland-l2-utils). This library includes simple functions to allow players in your scene to make transactions with MANA on Matic, check the player's current balance of MANA on Matic, and transfer MANA between mainchain and the Matic chain.
 
-> Note: Another alternative is to leverage the `decentral-api`, created by [decentral.games](https://decentral.games/). Read how to implement it in your scene in [their documentation page](https://docs.decentral.games/).
+> Note: Another alternative is to leverage the API created by [decentral.games](https://decentral.games/). Read how to implement it in your scene in [their documentation page](https://docs.decentral.games/).
 
 ## Try the Matic Testnet
 
