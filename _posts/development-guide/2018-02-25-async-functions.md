@@ -27,44 +27,45 @@ For example:
 - When retrieving data from a REST API
 - When performing a transaction on the blockchain
 
-<!--
-- When parsing a JSON file (??)
--->
+> Note: Keep in mind that several frames of your scene might be rendered before the task finishes executing. Make sure your scene's code is flexible enough to handle the in-between scenarios while the asynchronous task is being completed.
 
-<!--
-[ ASYNC DIAGRAMS]
--->
+
+## Run an async function
+
+Mark any function as `async` so that it runs on a separate thread from the scene's main thread every time that it's called.
+
+```ts
+// declare function
+async function myAsyncTask(){
+  // run async steps
+}
+
+// call function
+myAsyncTask()
+
+// rest of the code keeps being executed
+```
+
 
 ## The executeTask function
 
 The `executeTask` function executes a lambda function asynchronously, in a separate thread from the scene's main thread.
 
 ```ts
-// Start an asynchronous task
 executeTask(async () => {
-  try {
-    let response = await fetch(callUrl)
-    let json = await response.json()
-    log(json)
-  } catch {
-    log("failed to reach the URL")
-  }
+  // run async steps
 })
 
-// Rest of the code keeps being executed
+// rest of the code keeps being executed
 ```
 
-The example above executes a function that includes a `fetch()` operation to retrieve data from an external API. The rest of the code in the scene will keep being executed while this asynchronous process takes place.
+## OnPointerDown functions
 
-> Note: Keep in mind that several frames of your scene might be rendered before the task finishes executing. Make sure your scene's code is flexible enough to handle the in-between scenarios while the asynchronous task is being completed.
-
-## OnClick functions
-
-You can add an `OnCLick` component to any entity to trigger an asynchronous lambda function every time that entity is clicked.
+You can add an `OnPointerDown` component to any entity to trigger an asynchronous lambda function every time that entity is clicked.
 
 ```ts
 myEntity.addComponent(
-  new OnClick((e) => {
+  new OnPointerDown((e) => {
     log("clicked on the entity", e)
   })
 )
@@ -75,15 +76,33 @@ myEntity.addComponent(
 Another way to run asynchronous code is to instance an event listener. Event listeners trigger the running of an asynchronous lambda function every time that a given event occurs.
 
 ```ts
-//Instance the Input object
-const input = Input.instance
-
-// Subscribe to an event
-input.subscribe("BUTTON_DOWN", (e) => {
+Input.instance.subscribe("BUTTON_DOWN", (e) => {
   log("pointerUp works", e)
 })
 ```
 
 The example above runs a function every time that the button _A_ is pressed down.
 
-<!-- If multiple events in rapid succession, do we get multiple independent threads? -->
+## The await statement
+
+An `await` statement forces the execution to wait for a response before moving over to the next line of code. `await` statements can only be used inside an async block of code. 
+
+```ts
+// declare function
+async function myAsyncTask(){
+  try {
+    let response = await fetch(callUrl)
+    let json = await response.json()
+    log(json)
+  } catch {
+    log("failed to reach the URL")
+  }
+}
+
+// call function
+myAsyncTask()
+
+// Rest of the code keeps being executed
+```
+
+The example above executes a function that includes a `fetch()` operation to retrieve data from an external API. The `fetch()` operation is asynchronous, as we can't predict how long the server will take to respond. However, the next line needs the output of this operation to be ready before we can parse it as a json. The `await` statement here ensures that the next line will only run once that operation has returned a value. Similarly, the `response.json()` function is also asynchronous, but the next line needs the json to be parsed before it can log it. The second `await` statement forces the next line to only be called once the parsing of the json is finished, however long it takes.
