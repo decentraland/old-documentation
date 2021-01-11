@@ -192,7 +192,7 @@ executeTask(async () => {
 To verify that the message that the player signed is in fact the one that you want to send, you can use the `toHex()` function from `eth-connect` library, to convert it and easily compare it. See further below for instructions on how to import the `eth-connect` library.
 
 ```ts
-import * as EthConnect from "../node_modules/eth-connect/esm"
+import { toHex } from "eth-connect"
 import * as EthereumController from "@decentraland/EthereumController"
 
 const messageToSign = `# DCL Signed message
@@ -208,8 +208,8 @@ function signMessage(msg: string) {
     const { message, signature } = await eth.signMessage(convertedMessage)
     log({ message, signature })
 
-    const originalMessageHex = await EthConnect.toHex(msg)
-    const sentMessageHex = await EthConnect.toHex(message)
+    const originalMessageHex = await toHex(msg)
+    const sentMessageHex = await toHex(message)
     const isEqual = sentMessageHex === originalMessageHex
     log("Is the message correct?", isEqual)
   })
@@ -329,17 +329,17 @@ It's main use is to call functions in a contract, it also offers a number of hel
 To use eth-connect library, you must manually install the package via `npm` in your scene's folder. To do so, run the following command in the scene folder:
 
 ```
-npm install eth-connect
+npm install eth-connect -B
 ```
 
 > Note: Decentraland scenes don't support older versions than 4.0 of the eth-connect library.
 
 > Note: Currently, we don't allow installing other dependencies via npm that are not created by Decentraland. This is to keep scenes well sandboxed and prevent malicious code.
 
-Once installed, you must import `eth-connect` to the scene's code:
+Once installed, you can import whatever you need from `eth-connect` to the scene's code:
 
 ```ts
-import * as EthConnect from "../node_modules/eth-connect/esm"
+import { toHex } from "eth-connect"
 ```
 
 #### Import a contract ABI
@@ -407,7 +407,7 @@ After importing the `eth-connect` library and a contract's _abi_, you must insta
 You must also import the web3 provider. This is because Metamask in the player's browser uses web3, so we need a way to interact with that.
 
 ```ts
-import * as EthConnect from "../node_modules/eth-connect/esm"
+import { RequestManager, ContractFactory } from "eth-connect"
 import { abi } from "../contracts/mana"
 import { getProvider } from "@decentraland/web3-provider"
 
@@ -415,9 +415,9 @@ executeTask(async () => {
   // create an instance of the web3 provider to interface with Metamask
   const provider = await getProvider()
   // Create the object that will handle the sending and receiving of RPC messages
-  const requestManager = new EthConnect.RequestManager(provider)
+  const requestManager = new RequestManager(provider)
   // Create a factory object based on the abi
-  const factory = new EthConnect.ContractFactory(requestManager, abi)
+  const factory = new ContractFactory(requestManager, abi)
   // Use the factory object to instance a `contract` object, referencing a specific contract
   const contract = (await factory.at(
     "0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb"
@@ -436,15 +436,15 @@ Once you've created a `contract` object, you can easily call the functions that 
 ```ts
 import { getProvider } from "@decentraland/web3-provider"
 import { getUserAccount } from "@decentraland/EthereumController"
-import * as EthConnect from "../node_modules/eth-connect/esm"
+import { RequestManager, ContractFactory } "eth-connect"
 import { abi } from "../contracts/mana"
 
 executeTask(async () => {
   try {
     // Setup steps explained in the section above
     const provider = await getProvider()
-    const requestManager = new EthConnect.RequestManager(provider)
-    const factory = new EthConnect.ContractFactory(requestManager, abi)
+    const requestManager = new RequestManager(provider)
+    const factory = new ContractFactory(requestManager, abi)
     const contract = (await factory.at(
       "0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb"
     )) as any
