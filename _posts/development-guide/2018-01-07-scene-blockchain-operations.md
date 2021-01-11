@@ -608,7 +608,7 @@ While testing your scene, to avoid transferring real MANA currency, you can use 
 
 To use the test network you must set your Metamask Chrome extension to use the _Ropsten test network_ instead of _Main network_.
 
-You must also own MANA in the Ropsten blockchain. To obtain free Ropsten mana in the test network, go to our [MANA faucet](https://faucet.decentraland.today/).
+You must also own MANA in the Ropsten blockchain. To obtain free Ropsten mana in the test network, go to our [MANA faucet](https://faucet.decentraland.io/).
 
 > Tip: To run the transaction of transferring Ropsten MANA to your wallet, you will need to pay a gas fee in Ropsten Ether. If you don't have Ropsten Ether, you can obtain it for free from various external faucets like [this one](https://faucet.ropsten.be/).
 
