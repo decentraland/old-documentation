@@ -436,7 +436,7 @@ Once you've created a `contract` object, you can easily call the functions that 
 ```ts
 import { getProvider } from "@decentraland/web3-provider"
 import { getUserAccount } from "@decentraland/EthereumController"
-import { RequestManager, ContractFactory } "eth-connect"
+import { RequestManager, ContractFactory } from "eth-connect"
 import { abi } from "../contracts/mana"
 
 executeTask(async () => {
