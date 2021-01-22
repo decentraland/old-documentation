@@ -58,6 +58,7 @@
     - post: "market/2018-01-09-mortgages.md"
     - post: "market/2018-01-03-info-from-land.md"
     - post: "market/2018-01-01-api.md"
+    - post: "market/2021-01-19-api-migration-guide.md"    
 
 - title: Create
   image: sets/CreateIcon.svg
