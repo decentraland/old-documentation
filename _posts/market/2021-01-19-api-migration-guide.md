@@ -105,7 +105,7 @@ The v1 map endpoint remains unchanged and supported.
 
 | V1 Endpoint | Description | V2 Endpoint | Description |
 | --- | --- | --- | --- |
-| `GET /map` | Returns all parcels and estates in a given area. |  |  |
+| `GET /map` | Returns all parcels and estates in a given area. This endpoint is **depcrecated** and is replaced by `GET /v1/map.png`|  |  |
 | `GET /map.png` | Returns a PNG image of a section of the map. | `GET /v1/map.png` | Returns a PNG image of a section of the map. This endpoint is still supported and functional! There is no v2 version of this endpoint, keep calling the v1 endpoint to get the same data. |
 | `GET /parcels/:x/:y/map.png` | Returns a PNG image of a piece of the map centered on the given parcel. | `GET /v1/parcels/:x/:y/map.png` | Returns a PNG image of a map centered on a highlighted parcel with the given coordinates. |
 | `GET /estates/:id/map.png` | Returns a PNG image of a piece of the map centered on an estate specified by the estate’s ID. | `GET /v1/estates/:id/map.png` | Returns a PNG image of a map centered on a highlighted estate with the given ID. |
