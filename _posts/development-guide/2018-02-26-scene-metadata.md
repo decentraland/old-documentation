@@ -200,6 +200,25 @@ If a `requiredPermissions` property doesn't exist in your `scene.json` file, cre
 
 > Note: In future releases, when a player enters a scene that has items listed in the `requiredPermissions` property, the scene will prompt the player to grant these permissions. The player will be able to decline these permissions for that scene.
 
+## Feature Toggles
+
+There are certain features that can be dissabled in specific scenes so that players can't use these abusively. The `featureToggles` property manages these permissions.
+
+The corresponding features are enabled by default, unless specified as _dissabled_ in the `scene.json` file.
+
+```json
+featureToggles: {
+    voiceChat: 'disabled',
+}
+```
+
+Currently, only the following feature is handled like this:
+
+- `voiceChat`: Refers to players using their microphones to have conversations over voice chat with other nearby players.
+
+If a `featureToggles` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
+
+
 ## Custom metadata
 
 You can extend the fields in the "policy" section to whatever you think is relevant. These fields might be taken into consideration by alternative community clients used to navigate the metaverse and be used to filter content or restrict players from doing certain actions like flying or battling.
