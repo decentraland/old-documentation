@@ -214,7 +214,7 @@ featureToggles: {
 
 Currently, only the following feature is handled like this:
 
-- `voiceChat`: Refers to players using their microphones to do voice chat with other nearby players.
+- `voiceChat`: Refers to players using their microphones to have conversations over voice chat with other nearby players.
 
 If a `featureToggles` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
 
