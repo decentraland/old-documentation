@@ -48,5 +48,7 @@ Then you must configure your Metamask account to include the Matic Testnet.
 To do this:
 
 1. Switch networks on Metamask by clicking on the name of the current network and selecting _Custom RPC_ at the bottom of the dropdown.
-2. Fill in 'Matic Testnet' as _Network name_ and _https://testnet2.matic.network_ as _New RPC URL_.
+2. Fill in 'Matic Testnet' as _Network name_ and **https://rpc-mumbai.matic.today** as _New RPC URL_ and the same value as _Block Explorer URL_. For _Symbol_ set **MATIC**
 3. Click 'Save' to add this new network to Metamask.
+
+> Note: Learn more about how to set up Matic on their [Documentation page](https://docs.matic.network/docs/develop/getting-started)
