@@ -93,6 +93,8 @@ Be careful about placing your UI in screen regions that overlap with the default
 2. _**14 px** margins you should avoid_
 3. _**12 px** margins that we suggest you avoid. This area is covered when the chat window is maximized, so have in account that sometimes UI placed there wouldn’t be seen._
 
+The semi-transparent bar at the bottom of the scene is 56 px tall. When aligning a UI element to the bottom of the screen, it considers the bottom to be just above the navbar. You can display something behind this semi-transparent bar, although your UI won't be clickable and will be occluded by the icons on the bar. It's useful for example in a shooter scene where a 2d image of an arm holding a weapon should continue to the bottom of the screen. To add a UI element in this region, align the element to the bottom of the screen and offset the y value to -56 or more. 
+
 #### Color
 
 It’s important to choose a color palette, as this gives your scene an identity and also signals relationships and hierarchy between elements.
