@@ -86,8 +86,10 @@ Here's the full list of supported frame styles:
 - Wood_Wide
 - Wood_Twigs
 - Canvas
+- None
 
-> Tip: Using Visual Studio Code (or another IDE), see the whole list by typing `PictureFrameStyle.` and waiting for the smart suggestions display the list of options.
+
+> Tip: Using Visual Studio Code (or another IDE), see the whole list by typing `PictureFrameStyle.` and waiting for the smart suggestions display the list of options. Use `PictureFrameStyle.None`to display the plain NFT as is, with no frame or background color.
 
 ## Open an NFT UI
 
