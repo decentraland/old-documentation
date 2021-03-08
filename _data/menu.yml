@@ -58,7 +58,7 @@
     - post: "market/2018-01-09-mortgages.md"
     - post: "market/2018-01-03-info-from-land.md"
     - post: "market/2018-01-01-api.md"
-    - post: "market/2021-01-19-api-migration-guide.md"    
+    - post: "market/2021-01-19-api-migration-guide.md"
 
 - title: Create
   image: sets/CreateIcon.svg
@@ -76,6 +76,7 @@
       children:
         - post: "builder/2020-03-16-builder-101.md"
         - post: "builder/2020-03-16-smart-items.md"
+        - post: "builder/2021-03-8-nfts.md"
         - post: "builder/2020-03-16-manage-scenes.md"
         - post: "builder/2020-03-16-scene-limitations.md"
         - post: "builder/2020-03-16-import-items.md"
