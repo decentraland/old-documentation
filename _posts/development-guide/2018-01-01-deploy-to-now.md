@@ -9,7 +9,7 @@ categories:
 type: Document
 ---
 
-Previews of Decentraland scenes can run as standalone pages, just as you can run a preview locally in your machine. This is a fantastic way to share interactive previews of your content with others! It's also useful to test your scenes in other platforms, such as mobile.
+Previews of Decentraland scenes can run as standalone pages, just as you can run a preview locally in your machine. This is a fantastic way to share interactive previews of your content with others!
 
 Decentraland scene previews are compatible with the following hosting platforms:
 
@@ -21,8 +21,8 @@ Once uploaded to one of these platforms, the only thing that others have to do i
 
 For example here are some scenes that are currently running in Vercel Now:
 
-- [Block Dog](https://blockdog-wtciaozdbo.now.sh)
-- [Humming birds](https://hummingbirds-ujovmbtmui.now.sh)
+- [Block Dog](https://blockdog-navy.vercel.app)
+- [Humming birds](https://hummingbirds.vercel.app)
 
 Note that it's not necessary to own LAND to upload a scene preview to a server. The uploaded content isn't linked to the blockchain in any way. When running the preview, other adjacent parcels appear as empty.
 
@@ -34,13 +34,7 @@ Remember that the SDK version is specified in the scene and is determined when y
 
 Your scene must also be compiled, as what you'll be uploading are the files in the `/bin` folder instead of in the `/src` folder.
 
-If you haven't compiled your scene with the latest changes, you can do it by running `npm install`. The scene is also compiled automatically every time you run a preview with `dcl start`.
-
-> Note: If the scene you want to deploy was built with an older version of the CLI (2.2.6 or older), update the `dclignore` file in your project to include the following entries:
-
-    - node_modules
-    - dist
-    - export
+If you haven't compiled your scene with the latest changes, you can do it by running `npm install`. The scene is also compiled automatically every time you run a preview with `dcl start`, or run `dcl build` to compile without running.
 
 ## Prepare a scene for deploying
 
@@ -94,7 +88,7 @@ now alias {deploymentId} decentraland.now.sh
 
 ## Multiplayer considerations
 
-Note that scenes deployed to a server behave as single player experiences, even though you're able to see other players moving around.
+Note that scenes deployed to a server behave as single player experiences.
 
 Player positions are shared, but each player runs the scene locally in their browser. If the scene can be modified by a player's interaction, each player will see the scene in a different state.
 
@@ -102,7 +96,7 @@ To synchronize the scene's state amongst players, there are two approaches (see 
 
 #### Upload multiplayer scenes
 
-If you created your scene based on one of the remote scene examples, then you need to make two separate deployments, one for the server and another for the scene client.
+If you created your scene with a multiplayer server, then you need to make two separate deployments, one for the server and another for the scene client.
 
 For example, to deploy both server and the scene client to Vercel now, follow these steps:
 
