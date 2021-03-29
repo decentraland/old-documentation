@@ -91,7 +91,7 @@ Keep in mind that a video file adds to the total size of the scene, which makes 
 
 We also recommend starting to play the video when the player is near or performs an action to do that. Starting to play a video when your scene is loaded far in the horizon will unnecessarily affect performance while players visit neighboring scenes.
 
-## Handle a vide file
+## Handle a video file
 
 When playing a video from a file, you can perform the following actions:
 
