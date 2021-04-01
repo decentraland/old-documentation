@@ -1,13 +1,15 @@
 ---
 date: 2018-02-07
 title: Second Layer Blockchain
-description: Use the Matic sidechain in your scene to enable much faster and cheaper blockchain transactions.
+description: Use Polygon's sidechain in your scene to enable much faster and cheaper blockchain transactions.
 categories:
   - development-guide
 type: Document
 redirect_from:
   - /blockchain-integration/second-layer
 ---
+
+## About second layer solutions
 
 Any transaction that affects the blockchain takes time to complete, and costs gas. Both these things are obstacles to making blockchain gaming popular, because players usually don't have the patience to wait that long for their actions to take effect, and aren't willing to spend money on many transactions as they play.
 
@@ -25,19 +27,19 @@ The side-chain is also able to lower individual transaction costs significantly 
 
 Also, when syncing with the main chain, several redundant transactions can be avoided entirely, further reducing transaction costs. For example, if Alice transfers 1 ETH to Bob, and then Bob transfers 1 ETH to Carol, then those two transactions can be simplified into one, by registering that Alice transfers directly to Carol.
 
-Decentraland has a partnership with [Matic](https://matic.network/), who provide their own side-chain on Ethereum. Their side-chain can be used by scenes to support fast and very cheap transactions.
+Decentraland has a partnership with [Polygon](https://polygon.technology/), who provide their own side-chain on Ethereum. Their side-chain can be used by scenes to support fast and very cheap transactions.
 
-In order to use Matic, players must set up their Metamask account to use Matic network. This adds some friction to the process, but the usability of this experience should improve over time.
+## Add Polygon support to a scene
 
-## Add Matic support to a scene
+To easily make use of MANA on Polygon's side-chain in your scene, use the [l2-utils library](https://github.com/decentraland/decentraland-l2-utils). This library includes simple functions to allow players in your scene to make transactions with MANA on Polygon's network, check the player's current balance of MANA on Polygon, and transfer MANA between mainchain and Polygon.
 
-To easily make use of MANA on the Matic side-chain in your scene, use the [l2-utils library](https://github.com/decentraland/decentraland-l2-utils). This library includes simple functions to allow players in your scene to make transactions with MANA on Matic, check the player's current balance of MANA on Matic, and transfer MANA between mainchain and the Matic chain.
+Players don't need to switch networks on their browser wallets to operate on Polygon's network, since these are handled via metatransactions.
 
 > Note: Another alternative is to leverage the API created by [decentral.games](https://decentral.games/). Read how to implement it in your scene in [their documentation page](https://docs.decentral.games/).
 
-## Try the Matic Testnet
+## Try the Polygon Testnet
 
-In order to use the Matic Testnet, you should first have:
+In order to use Polygon's Matic Testnet, you should first have:
 
 - Ether in Ropsten network. You can obtain it for free from various external faucets like [this one](https://faucet.ropsten.be/).
 
