@@ -48,7 +48,7 @@ ___THIS ONLY HELPS PEOPLE USING A CHROMIUM-BASED BROWSER AND NVIDIA GPU WITH DRI
 To set up hardware acceleration:
 
 - Open up a terminal and run `sudo prime-select on-demand` then logout of your seesion and log back in.
-- Open `chrome://flags` in your browser and search for these flags and enable them:
+- Open [chrome://flags](chrome://flags) in your browser and search for these flags and enable them:
 ```
 #enable-gpu-rasterization
 #enable-accelerated-video-decode
