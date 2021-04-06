@@ -41,27 +41,6 @@ _On other browsers, the steps may vary slightly, but should be essentially the s
 
 ## Operating System configuration
 
-### GNU/Linux
-
-___THIS ONLY HELPS PEOPLE USING A CHROMIUM-BASED BROWSER AND NVIDIA GPU WITH DRIVERS INSTALLED___
-
-To set up hardware acceleration:
-
-- Open up a terminal and run `sudo prime-select on-demand` then logout of your seesion and log back in.
-- Open [chrome://flags](chrome://flags) in your browser and search for these flags and enable them:
-```
-#enable-gpu-rasterization
-#enable-accelerated-video-decode
-#enable-zero-copy
-#enable-vulkan
-```
-- Hit Relaunch and close your browser again.
-- To force your browser to use NVIDIA gpu; run it using terminal using these commands:
-```__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia brave-browser```
-or
-```__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia google-chrome-stable```
-- Have Fun!
-
 ### Mac
 
 To set up hardware acceleration:
@@ -81,3 +60,27 @@ To set up hardware acceleration:
 - Under _Choose an app to set preference_ select _Chrome_ or your browser of choice
 - Click on the app and click **Options**
 - Under _Set graphics preference_, choose **High Performance** and click **Save**
+
+
+### GNU/Linux
+
+Note: Thes following instructions are meant for using with a Chromium-based browser and an NVIDIA GPU with drivers installed.
+
+To set up hardware acceleration:
+
+- Open up a terminal and run `sudo prime-select on-demand` then logout of your seesion and log back in.
+- Open [chrome://flags](chrome://flags) in your browser and search for these flags and enable them:
+
+```
+#enable-gpu-rasterization
+#enable-accelerated-video-decode
+#enable-zero-copy
+#enable-vulkan
+```
+
+- Hit Relaunch and close your browser again.
+- To force your browser to use NVIDIA gpu; run it using terminal using these commands:
+```__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia brave-browser```
+or
+```__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia google-chrome-stable```
+
