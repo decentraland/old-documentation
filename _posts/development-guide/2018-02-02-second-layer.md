@@ -35,7 +35,6 @@ To easily make use of MANA on Polygon's side-chain in your scene, use the [l2-ut
 
 Players don't need to switch networks on their browser wallets to operate on Polygon's network, since these are handled via metatransactions.
 
-> Note: Another alternative is to leverage the API created by [decentral.games](https://decentral.games/). Read how to implement it in your scene in [their documentation page](https://docs.decentral.games/).
 
 ## Try the Polygon Testnet
 
