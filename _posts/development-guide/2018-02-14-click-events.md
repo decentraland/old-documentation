@@ -60,7 +60,7 @@ myEntity.addComponent(new BoxShape())
 myEntity.addComponent(
   new OnPointerUp((e) => {
     log("pointer up", e)
-  }, ActionButton.POINTER)
+  })
 )
 ```
 
