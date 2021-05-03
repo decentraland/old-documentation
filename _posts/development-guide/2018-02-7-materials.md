@@ -248,7 +248,6 @@ let myTexture = new Texture("materials/atlas.png")
 myTexture.samplingMode = 0
 myMaterial.texture = myTexture
 
-
 //Create shape component
 const plane = new PlaneShape()
 
@@ -296,34 +295,36 @@ plane.uvs = setUVs(3, 3)
 
 function setUVs(rows: number, cols: number) {
   return [
-      // North side of unrortated plane
-      0, //lower-left corner
-      0,
+    // North side of unrortated plane
+    0, //lower-left corner
+    0,
 
-      cols, //lower-right corner
-      0,
+    cols, //lower-right corner
+    0,
 
-      cols, //upper-right corner
-      rows,
+    cols, //upper-right corner
+    rows,
 
-      0, //upper left-corner
-      rows,
+    0, //upper left-corner
+    rows,
 
-      // South side of unrortated plane
-      cols, // lower-right corner
-      0,
+    // South side of unrortated plane
+    cols, // lower-right corner
+    0,
 
-      0, // lower-left corner
-      0,
+    0, // lower-left corner
+    0,
 
-      0, // upper-left corner
-      rows,
+    0, // upper-left corner
+    rows,
 
-      cols, // upper-right corner
-      rows,
+    cols, // upper-right corner
+    rows,
   ]
 }
 ```
+
+For setting the UVs for a `BoxShape` component, the same structure applies. Each of the 6 faces of the cube takes 4 values, one for each corner. All of these 24 values are listed as a single array.
 
 You can also define how the texture is tiled if the mapping spans more than the dimensions of the texture image. The `Texture` component lets you configure the wrapping mode by setting the `wrap` field. The wrapping mode can be `CLAMP`, `WRAP` or `MIRROR`.
 
@@ -334,10 +335,12 @@ You can also define how the texture is tiled if the mapping spans more than the 
 > Note: The `wrap` property must be set when instancing the texture, after that it's a read-only property.
 
 ```ts
-let myTexture = new Texture("materials/atlas.png", {wrap: 2})
+let myTexture = new Texture("materials/atlas.png", { wrap: 2 })
 ```
 
 The example above sets the wrapping mode to `MIRROR`.
+
+> Note: Uv properties are currently only available on `PlaneShape` and on `BoxShape` components.
 
 #### Texture scaling
 
