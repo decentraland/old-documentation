@@ -1,11 +1,14 @@
 ---
 date: 2018-01-01
-title: LAND Mortgages
+title: LAND Mortgages (Deprecated)
 description: Apply for a LAND mortgage
 categories:
   - market
 type: Document
 ---
+
+> **IMPORTANT: LAND mortgages from the Ripio Credit Network have been deprecated!**
+> You can no longer request LAND mortgages through the Decentraland Marketplace. 
 
 Before you can request a LAND mortgage, you will have to approve the Ripio Credit Network’s smart contracts to conduct transactions on your behalf using your MANA and RCN tokens. Open your **Account Settings** in the upper right corner, and check the two **LAND by Mortgage** boxes. (You only need MANA to request a mortgage, RCN will convert the MANA you use to the RCN token for you.)
 
