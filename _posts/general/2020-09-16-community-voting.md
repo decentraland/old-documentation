@@ -10,7 +10,7 @@ type: Document
 
 The **Decentraland DAO** is a fully functional _Decentralized Autonomous Organization_, where token holders can vote over decisions that impact on the content and future operation of the platform.
 
-By visiting [governance.decentraland.io](https://governance.decentraland.io), you can see what’s currently being decided upon, cast your votes, and even post your own proposals to be voted on by others.
+By visiting [governance.decentraland.org](https://governance.decentraland.org), you can see what’s currently being decided upon, cast your votes, and even post your own proposals to be voted on by others.
 
 When you vote, you use your Ethereum wallet as a unique identifier.
 
