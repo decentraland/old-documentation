@@ -94,6 +94,8 @@
               post: "development-guide/2018-01-02-coding-scenes.md"
             - title: Preview scene
               post: "development-guide/2018-01-04-preview-scene.md"
+            - title: Development Workflow
+              post: "development-guide/2021-05-17-dev-workflow.md"
         - title: Architecture overview
           children:
             - title: Entities & Components
