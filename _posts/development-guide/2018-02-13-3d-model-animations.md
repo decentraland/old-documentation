@@ -120,21 +120,19 @@ clipSwim.pause()
 
 The `play()` function on an `AnimationState` object has one optional parameter:
 
-- `reset`: If true, it always plays the animation from the start.
-
-If the animation is currently paused, the `play()` function by default resumes the animation from the last frame that was played before. If the animation is still currently playing, the default `play()` function will have no effect. To instead play the animation starting from the beginning, set the `reset` property to _true_.
+- `reset`: If true, it always plays the animation from the start. Default: _false_.
 
 ```ts
 clipSwim.play(true)
 ```
 
-The `AnimationState` object has a `playing` boolean parameter that indicates if the animation is currently playing. For non-looping animations, this value reverts to _false_ when the animation finished playing.
+The following table summarizes how `play()` behaves, using different values for the `reset` property:
 
-```ts
-if (!clipSwim.playing) {
-  clipSwim.play()
-}
-```
+|                            | `reset` = _false_ (default)     | `reset` = _true_      |
+| -------------------------- | ------------------------------- | --------------------- |
+| **Currently playing**      | Has no effect.                  | Plays from the start. |
+| **Paused**                 | Resumes from last frame played. | Plays from the start. |
+| **Finished (Non-looping)** | Plays from the start.           | Plays from the start. |
 
 You can also play an animation from the `Animator` component of an entity.
 
@@ -145,7 +143,7 @@ shark.getComponent(Animator).play(clipSwim)
 When calling the `play()` function on the Animator component, there are two parameters to set:
 
 - `clip`: An AnimationState object to play
-- `reset`:_(optional)_ If true, it always plays the animation plays from the start.
+- `reset`:_(optional)_ If true, it always plays the animation plays from the start. Default: _false_.
 
 ## Looping animations
 

@@ -103,11 +103,11 @@ onCameraModeChangedObservable.add(({ cameraMode }) => {
 
 ## Player plays animation
 
-Whenever a player plays an emote (dance, clap, wave, etc), you can detect this event.
+Whenever the player plays an emote (dance, clap, wave, etc), you can detect this event.
 
 ```ts
 onPlayerExpressionObservable.add(({ expressionId }) => {
-  shape.value = "Expression: " + expressionId
+  log("Expression: ", expressionId)
 })
 ```
 
@@ -115,7 +115,7 @@ The event includes the following information:
 
 - expressionId: Name of the emote performed (ie: _wave_, _clap_, _kiss_)
 
-Note: This event is triggered by any player making an emote in the proximities of the player.
+Note: This event is triggered any time the player makes an emote and the scene is loaded. The player could be standing in a nearby scene when this happens.
 
 ## Player goes idle
 
