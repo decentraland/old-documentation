@@ -46,6 +46,10 @@ Players aren't directed to this server, so it's a safe place to test out the ful
 
 > Note: The catalyst test server works like any other node in the catalyst network. This server only receives updates from the rest of the network, it doesn't push any changes. All scenes available in the production environment are in this server, but scenes deployed to this server don't get propagated to other servers.
 
+Content deployed to the test server is not private. It could potentially be visited by anyone who intentionally enters this server.
+
+> Tip: If you want to hide your content from any possible leaks, you might want to consider launching your own Catalyst server, and not submit it to the DAO for adding to the network. That way this server behaves just like the test server, but its address isn't known to others. See the [Catalyst repo readme](https://github.com/decentraland/catalyst-owner/) for instructions on how to do this.
+
 ## Latest SDK changes
 
 When developing a new scene, you use the `@latest` stable SDK release by default.
@@ -56,7 +60,7 @@ To do so, run the following on your scene:
 
 `npm i decentraland-ecs@next`
 
-> Note: Keep in mind that the @next version might suffer issues from time to time. The syntax of new features might change before it's released in a stable version.
+> Note: Keep in mind that the @next version might suffer issues from time to time. The syntax and name of new features might change before it's released in a stable version.
 
 You can also access your scene in the test environment with the features from `@next` by accessing the `.zone` client.
 
