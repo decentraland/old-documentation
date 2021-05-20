@@ -31,6 +31,7 @@ These events are especially useful in a multiplayer scene, to connect and discon
 
 > Note: The `onLeaveSceneObservable` is only triggered if the player leaves gracefully. If the player closes the browser abruptly, the events won't be picked up. Keep this in mind for multiplayer scenes.
 
+<!--
 ## Player moves
 
 Whenever a player moves, this also generates events that can be listened to.
@@ -76,6 +77,7 @@ onRotationChangedObservable.add((eventData) => {
 The example above uses the player's rotation to set that of a cube in the scene.
 
 > Note: The `onRotationChangedObservable`, `onPositionChangedObservable` data is updated at a throttled rate of 10 times per second. Due to this, positions may lag slightly in relation to the scene that runs at 30 FPS under ideal conditions.
+-->
 
 ## Player changes camera mode
 
