@@ -38,7 +38,7 @@ Whenever a player moves, this also generates events that can be listened to.
 ```ts
 onPositionChangedObservable.add((eventData) => {
   log("position:", eventData.position)
-  log("world position:", eventData.worldPosition)
+  log("world position:", eventData.cameraPosition)
 })
 onRotationChangedObservable.add((eventData) => {
   log("rotation: ", eventData.rotation)
@@ -59,7 +59,7 @@ The event detected by `onRotationChangedObservable` includes the following data:
 
 > Note: The rotation refers to that of the camera, not to that of the avatar. So if the player is in 3rd person, the avatar may be facing a different direction than the camera.
 
-Using these events is a lot more efficient than fetching the `Camera.instance.position` and `Camera.instance.rotation` on every frame, as there are no updates when the player stays still. This is especially useful when communicating position data to a multiplayer server.
+Using these events is a lot more efficient than fetching the `Camera.instance.position` and `Camera.instance.rotation` on every frame, as there are no updates when the player stays still. Since this position & rotation data updates 10 times a second, it also means that checking these values on every frame (30 times a second) will result in many repeat readings. This gain in efficiency is especially noticeable when communicating position data to a multiplayer server.
 
 ```ts
 const cube = new Entity()
