@@ -46,7 +46,17 @@
   children:
     - post: "general/2018-01-01-introduction.md"
     - post: "general/2018-01-02-faq.md"
-    - post: "general/2020-09-16-community-voting.md"
+    - title: DAO
+      children:
+        - title: Overview
+          children:
+            - post: "general/DAO/Overview/2021-05-21-what-is-the-dao.md"
+            - post: "general/DAO/Overview/2021-05-21-what-can-you-do-with-the-dao.md"
+            - post: "general/DAO/Overview/2021-05-21-how-does-the-dao-work.md"
+            - post: "general/DAO/Overview/2021-05-21-what-smart-contracts-does-the-dao-control.md"
+            - post: "general/DAO/Overview/2021-05-21-the-dao-fund.md"
+            - post: "general/DAO/Overview/2021-05-21-the-daos-limitations.md"
+            - post: "general/DAO/Overview/2021-05-21-what-do-you-need-to-participate.md"
     - post: "general/2018-01-04-whitepaper.md"
     - post: "general/2020-11-14-hardware-acceleration.md"
 
