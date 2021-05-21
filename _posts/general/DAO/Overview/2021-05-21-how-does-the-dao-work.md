@@ -1,6 +1,6 @@
 ---
 date: 2021-05-21
-title: How does the DAO work?
+title: How the DAO works
 redirect_from:
 description: Overview of the different platforms and entities that make up the Decentraland DAO.
 categories:
