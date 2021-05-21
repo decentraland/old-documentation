@@ -1,6 +1,6 @@
 ---
 date: 2021-05-21
-title: What do you need to participate in the DAO?
+title: Participation Requirements
 redirect_from:
 description: An explanation of what you need in order to create and vote in proposals in the DAO.
 categories:

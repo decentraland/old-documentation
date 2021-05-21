@@ -1,6 +1,6 @@
 ---
 date: 2021-05-21
-title: What are the limitations of the DAO?
+title: DAO Limitations
 redirect_from:
 description: The DAO is a specific governance tool with a finite amount of power.
 categories:

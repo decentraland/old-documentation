@@ -10,7 +10,9 @@ type: Document
 
 One of the most common questions received about the DAO is _"how much MANA does the DAO have, and what is it for?"_
 
-The DAO possesses **222 million** MANA by means of a 10 year vesting contract. Of that 222 million MANA, roughly **14.1 million** MANA has been released (withdrawn) from the vesting contract. In addition to that 14.1 million MANA, an additional **13.5 million** MANA may be released as of the time of this writing. This makes for a total of **27.6** million MANA currently available to the DAO.
+The DAO possesses **222 million** MANA by means of a 10 year vesting contract.
+
+At the time of this writing (May 21 2021), of that 222 million MANA, roughly **14.1 million** MANA has been released (withdrawn) from the vesting contract. In addition to that 14.1 million MANA, an additional **13.5 million** MANA may be released as of the time of this writing. This makes for a total of **27.6** million MANA currently available to the DAO.
 
 The MANA in this contract vests every second, thus gradually increasing the size of the DAO’s fund.
 

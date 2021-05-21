@@ -1,6 +1,6 @@
 ---
 date: 2021-05-21
-title: What can you do with the DAO?
+title: DAO Uses
 redirect_from:
 description: The DAO allows users to create and vote on proposals that shape the metaverse.
 categories:
