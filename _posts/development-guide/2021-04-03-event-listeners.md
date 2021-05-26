@@ -11,6 +11,7 @@ There are several events that the scene can subscribe to, to know the actions of
 
 For button and click events performed by the player, see [Button events]({{ site.baseurl }}{% post_url /development-guide/2018-02-14-click-events %}).
 
+<!--
 ## Player enters or leaves the scene
 
 Whenever the player steps inside or out of the parcels of land that make up your scene, or teleports in or out, this creates an event you can listen to.
@@ -31,6 +32,7 @@ These events are especially useful in a multiplayer scene, to connect and discon
 
 > Note: The `onLeaveSceneObservable` is only triggered if the player leaves gracefully. If the player closes the browser abruptly, the events won't be picked up. Keep this in mind for multiplayer scenes.
 
+-->
 <!--
 ## Player moves
 
