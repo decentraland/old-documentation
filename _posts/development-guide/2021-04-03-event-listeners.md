@@ -139,9 +139,11 @@ This event is especially useful for multiplayer scenes, when you might want to d
 
 ## Scene finished loading
 
+When the scene finishes loading, the `onSceneReadyObservable` gets called. This works both if the player loads straight into the scene, or if the player walks up to the scene from somewhere else. When all of the content in the scene has finished its initial load, including heavy models, etc, this event is called.
+
 ```ts
 onSceneReadyObservable.add(() => {
-  log("onSceneReadyObservable")
+  log("SCENE LOADED")
 })
 ```
 
