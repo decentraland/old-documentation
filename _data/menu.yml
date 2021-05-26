@@ -126,6 +126,7 @@
         - post: "development-guide/2018-02-12-move-entities.md"
         - post: "development-guide/2018-02-13-3d-model-animations.md"
         - post: "development-guide/2018-02-14-click-events.md"
+        - post: "development-guide/2021-04-03-event-listeners.md"
         - post: "development-guide/2018-02-11-text.md"
         - post: "development-guide/2018-02-15-onscreen-ui.md"
         - post: "development-guide/2018-02-22-user-data.md"

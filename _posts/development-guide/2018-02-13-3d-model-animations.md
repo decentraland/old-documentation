@@ -118,17 +118,32 @@ clipSwim.play()
 clipSwim.pause()
 ```
 
-The `AnimationState` object also has a `playing` boolean parameter. You can start or stop the animation by changing the value of this parameter.
+The `play()` function on an `AnimationState` object has one optional parameter:
+
+- `reset`: If true, it always plays the animation from the start. Default: _false_.
 
 ```ts
-clipSwim.playing = true
+clipSwim.play(true)
 ```
 
-If the animation is currently paused, the `play()` function resumes the animation from the last frame that was played before. If you want to instead play an animation starting from the beginning, use the `reset()` function.
+The following table summarizes how `play()` behaves, using different values for the `reset` property:
+
+|                            | `reset` = _false_ (default)     | `reset` = _true_      |
+| -------------------------- | ------------------------------- | --------------------- |
+| **Currently playing**      | Has no effect.                  | Plays from the start. |
+| **Paused**                 | Resumes from last frame played. | Plays from the start. |
+| **Finished (Non-looping)** | Plays from the start.           | Plays from the start. |
+
+You can also play an animation from the `Animator` component of an entity.
 
 ```ts
-clipSwim.reset()
+shark.getComponent(Animator).play(clipSwim)
 ```
+
+When calling the `play()` function on the Animator component, there are two parameters to set:
+
+- `clip`: An AnimationState object to play
+- `reset`:_(optional)_ If true, it always plays the animation plays from the start. Default: _false_.
 
 ## Looping animations
 
@@ -149,24 +164,6 @@ biteClip.play()
 
 If `looping` is set to _false_, the animation plays just once and then stops.
 
-> Note: After a non-looping animation has finished playing, it will continue to be in a state of `playing = true`, even though the 3D model remains still. This can bring you problems if you then try to play other animations. Before playing an animation, make sure you've stopped all others, including non-looping animations that are finished.
-
-```ts
-
-  const biteClip = new AnimationState("bite")
-  biteClip.looping = false
-
-  shark.getComponent(Animator).addClip(biteClip)
-
-  shark.addComponent(
-    new OnClick((): void => {
-		// stop previous animation
-		biteClip.stop()
-		// play bite animation
-		biteClip.play()
-	}
-```
-
 ## Reset an animation
 
 When an animation finishes playing or is paused, the 3D model remains in the last posture it had.
@@ -177,10 +174,10 @@ To stop an animation and set the posture back to the first frame in the animatio
 clipSwim.stop()
 ```
 
-To play an animation from the start, regardless of what frame the animation is currently in, use the `reset()` function of the `AnimationState` object.
+To play an animation from the start, regardless of what frame the animation is currently in, set the `reset` property on the `play()` function to _true_.
 
 ```ts
-clipSwim.reset()
+clipSwim.play(true)
 ```
 
 > Note: Resetting the posture is an abrupt change. If you want to make the model transition smoothly tinto another posture, you can either:
@@ -190,7 +187,9 @@ clipSwim.reset()
 
 ## Handle multiple animations
 
-If a 3D model has multiple animations packed into it, a single `Animator` component can deal with all of them. Create a separate `AnimationState` for each animation, and then assign these to the animator.
+If a 3D model has multiple animations packed into it, a single `Animator` component can deal with all of them.
+
+Animations exist in _layers_ in an `Animator` component. If two animations are in the same layer, only one of them can play at a time. Starting one will stop the other. If two animations exist on separate layers, they can play at the same time, given that their _weight_ values add up, or if they each control different bones or vertexes from the model.
 
 ```ts
 let shark = new Entity()
@@ -203,25 +202,28 @@ let animator = new Animator()
 shark.addComponent(animator)
 
 // Crete animation state objects
-const biteClip = new AnimationState("bite")
-const clipSwim = new AnimationState("swim")
+const clipSwim = new AnimationState("swim", { layer: 0 })
+const biteClip = new AnimationState("bite", { layer: 1 })
 
 // Add animation state objects to the Animator component
-shark.getComponent(Animator).addClip(biteClip)
 shark.getComponent(Animator).addClip(clipSwim)
+shark.getComponent(Animator).addClip(biteClip)
 
 clipSwim.play()
+biteClip.play()
 
 engine.addEntity(shark)
 ```
+
+In the example above, two animations are handled by separate `AnimationState` objects, and they are then both assigned to the same `Animator` component.
+
+> Note: If the layer of an animation isn't specified, it's assigned to layer 0.
 
 Each bone in an animation can only be affected by one animation at a time, unless these animations have a `weight` that adds up to a value of 1 or less.
 
 If one animation only affects a character's legs, and another only affects a character's head, then they can be played at the same time without any issue. But if they both affect the character's legs, then you must either only play one at a time, or play them with lower `weight` values.
 
-If in the above example, the `bite` animation only affects the shark's mouth, and the `swim` animation only affects the bones of the shark's spine, then they can both be played at the same time.
-
-> Note: After a non-looping animation has finished playing, it will continue to be in a state of `playing = true`, even though the 3D model remains still. This can bring you problems if you then try to play other animations. Before playing an animation, make sure you've stopped all others, including non-looping animations that are finished.
+If in the above example, the `bite` animation only affects the shark's mouth, and the `swim` animation only affects the bones of the shark's spine, then they can both be played at the same time if they're on separate layers.
 
 ## Animation speed
 
@@ -240,13 +242,11 @@ clipSwim.play()
 
 Set the speed lower than 1 to play it slower, for example to 0.5 to play it at half the speed. Set it higher than 1 to play it faster, for example to 2 to play it at double the speed.
 
-<!--
 ## Animation weight
 
-The `weight` property allows a single model to carry out multiple animations at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance that animation will be given in the average.
+The `weight` property allows a single model to carry out multiple animations on different layers at once, calculating a weighted average of all the movements involved in the animation. The value of `weight` determines how much importance that animation will be given in the average.
 
 By default, `weight` is equal to _1_, it can't be any higher than _1_.
-
 
 ```ts
 // Create animation clip
@@ -270,15 +270,13 @@ animator.addClip(clipSwim)
 clipSwim.play()
 ```
 
-For example, in the code example above, we're playing the _swim_ animation, that only has a `weight` of _0.2_. This swimming movement will be quite subtle: only 20% of what the animation defines. The remaining 80% of the calculation takes values from the default posture of the armature.
+For example, in the code example above, we're playing the _swim_ animation, that only has a `weight` of _0.2_. This swimming movement will be quite subtle: only 20% of the intensity that the animation defines. The remaining 80% of the calculation takes values from the default posture of the armature.
 
 The `weight` property can be used in interesting ways, for example the `weight` property of _swim_ could be set in proportion to how fast the shark is swimming, so you don't need to create multiple animations for fast and slow swimming.
 
 You could also change the `weight` value gradually when starting and stopping an animation to give it a more natural transition and to avoid jumps from the default pose to the first pose in the animation.
 
->Note: The added `weight` value of all animations that are acting on a 3D model's bone can't be more than 1. If more than one animation is affecting the same bones at the same time, they need to have their weight set to values that add to less than 1.
-
--->
+> Note: The added `weight` value of all animations that are acting on a 3D model's bone can't be more than 1. If more than one animation is affecting the same bones at the same time, they need to have their weight set to values that add to less than 1.
 
 ## Set clip parameters in bulk
 
@@ -289,12 +287,19 @@ You can configure the following parameters:
 - `playing`: Boolean to determine if the animation is currently being played.
 - `looping`: Boolean to determine if the animation is played in a continuous loop.
 - `speed`: A number that determines how fast the animation is played.
+- `layer`: The layer of the animation. To play multiple animations at once, they must be on separate layers in the `Animator` component. By default, animations are added to layer 0.
 - `weight`: Used to blend animations using weighted average.
 
 ```ts
 const clipSwim = new AnimationState("swim")
 
-clipSwim.setParams({ playing: true, looping: true, speed: 2, weight: 0.5 })
+clipSwim.setParams({
+  playing: true,
+  looping: true,
+  speed: 2,
+  layer: 1,
+  weight: 0.5,
+})
 ```
 
 ## Animations on shared shapes
