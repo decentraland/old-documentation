@@ -83,7 +83,7 @@ The example above uses the player's rotation to set that of a cube in the scene.
 
 ## Player changes camera mode
 
-When the player changes the camera mode between 1st and 3rd person in or near your sene, this creates an event you can listen to.
+When the player changes the camera mode between 1st and 3rd person in or near your scene, this creates an event you can listen to.
 
 ```ts
 onCameraModeChangedObservable.add(({ cameraMode }) => {
