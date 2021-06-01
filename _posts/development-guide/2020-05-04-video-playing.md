@@ -83,7 +83,6 @@ Keep in mind that streaming video demands a significant effort from the player's
 The following file formats are supported:
 
 - _.mp4_
-- _.mov_
 - _.ogg_
 - _.webm_
 
