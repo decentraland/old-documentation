@@ -128,22 +128,14 @@ You can also click **Make it Free**, to set the price to 0 MANA and the benefici
 After setting the price and beneficiary address, click **Submit**.
 
 ### Publishing items
+
+> The DAO is currently voting on the addition of publication fees for wearables. Until the addition of a fee is decied on, and the size of that fee is deteremined, users will not be able to publish their wearables. For more information, and to participate in the discussion, visit [governance.decentraland.org](https://governance.decentraland.org).
+
 After you’ve added all of the relevant metadata to the wearables in your collection, and you’ve set the price and beneficiary address (or made your items free!) you can begin the publication process.
 
 First, navigate to the [Builder](https://builder.decentraland.org) and select the **Collections** tab. Select the collection you’d like to publish and click **Publish**.
 
 You might have to authorize the MANA contract to operate MANA on your behalf. By granting this authorization, you are permitting the MANA smart contract to withdraw MANA from your balance to pay the publication fee and to deposit MANA into your account from future sales of your items. Simply check MANA and click **Proceed**. You will have to sign a message from your wallet, but there is no gas fee.
-
-#### Publication fees 
-There is a required fee for publishing items. This fee exists to deter users from publishing an excessive number of wearables in an attempt to “spam” the wearables market.
-
-**The fee is a flat rate of 100 MANA per item (not NFT!) in your collection.**
-
-For example, if you publish a collection with two items, you will have to pay a fee of 200 MANA (100 MANA for each item) regardless of the rarity (or how many NFTs can be minted) of those items.
-
-These fees are transferred to the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
-
-After reviewing your total fee, click **Next**.
 
 > **Warning!**
 > You will not be able to add or remove items in your collection after beginning the publication process. You will be able to see your items within the Decentraland Marketplace, but they will not be able to be bought, sold, or transferred until they have been approved.
