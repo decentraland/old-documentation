@@ -28,13 +28,15 @@ If you haven’t uploaded any items yet, click **New Item** or **New Collection*
 
 When creating a collection, first enter the name you would like to give your collection and click **Create**. After creating your collection, you can begin adding items.
 
-**You can add as many items as you want until you publish your collection.** Always remember, you cannot make additions or changes to published collections.
+**You can add as many items as you want until you publish your collection.** Always remember, you cannot add, remove, or change the rarity of items in published collections.
 
 To add an item to your new collection, select the collection, click **New Item**, and select your wearable files.
 
 #### Uploading an item
 
 When uploading an item you can either browse your computer to find the file you want, or you can click and drag your file right into the editor. For an overview of the 3D file types supported in Decentraland, see [3D Model Essentials](https://docs.decentraland.org/3d-modeling/3d-models/).
+
+> **Wearable items cannot currently exceed 2MB.**
 
 After uploading your file, you will be prompted to enter some descriptive information:
 
@@ -94,7 +96,7 @@ This is the basic metadata you entered when you first uploaded your item. You ca
 * **Name -** the name of your item, this will be displayed when distributing your wearable on the marketplace
 * **Description -** a brief statement describing your item, this is displayed when distributing your wearable on the marketplace
 * **Category -** the component of an avatar’s body that your wearable modifies
-* **Rarity -** the rarity determines the maximum number of NFTs you will be able to mint of your wearable after publication
+* **Rarity -** the rarity determines the maximum number of NFTs you will be able to mint of your wearable after publication. _This is the only property that cannot be modified after publishing a collection._
 
 #### Overrides
 Overrides determine what other wearable categories your item will either replace, or hide. When setting overrides, you simply select a wearable category from the dropdown menu to add it to the override. You can add multiple categories to each override.
@@ -109,7 +111,7 @@ Any items within the categories added to this override will only be hidden (they
 Tags are simply descriptive words that users can use when searching or filtering for items. These could be relevant to competitions or events!
 
 ### Setting the price for items
-An item must be part of a collection before you can set its price.
+Items that are included in a collection can include prices that you set for their primary sale.
 
 To set the price of a wearable, navigate to the [Builder](https://builder.decentraland.org) and select the **Collections** tab. Then click on the collection containing your items you want to price.
 
