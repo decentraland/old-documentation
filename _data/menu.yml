@@ -93,6 +93,13 @@
         - post: "builder/2020-03-16-import-items.md"
         - post: "general/2019-03-19-builder-faq.md"
         - post: "builder/2020-03-16-export.md"
+    - title: Wearables
+      children:
+        - post: "wearables/2021-05-31-wearables-overview.md"
+        - post: "wearables/2021-05-31-creating-wearables.md"
+        - post: "wearables/2021-05-31-publishing-wearables.md"
+        - post: "wearables/2021-05-31-curation-committee.md"
+        - post: "wearables/2021-05-31-wearables-editor-user-guide.md"
     - title: SDK
       children:
         - title: Getting started
