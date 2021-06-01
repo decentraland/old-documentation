@@ -156,14 +156,15 @@ Here are some example png textures:
 *Eyes*
 
 ![]({{ site.baseurl }}/images/media/creating-wearables-images/creating-wearables-14.png)
+*Eyebrows*
 
 ![]({{ site.baseurl }}/images/media/creating-wearables-images/creating-wearables-15.jpg)
 *Eyebrows*
 
 ![]({{ site.baseurl }}/images/media/creating-wearables-images/creating-wearables-16.png)
+*Mouth*
 
 ![]({{ site.baseurl }}/images/media/creating-wearables-images/creating-wearables-17.jpg)
-
 *Mouth*
 
 **Nodes:**  
