@@ -129,7 +129,7 @@ After setting the price and beneficiary address, click **Submit**.
 
 ### Publishing items
 
-> The DAO is currently voting on the addition of publication fees for wearables. Until the addition of a fee is decied on, and the size of that fee is deteremined, users will not be able to publish their wearables. For more information, and to participate in the discussion, visit [governance.decentraland.org](https://governance.decentraland.org).
+> The DAO is currently voting on the addition of publication fees for wearables. Until the addition of a fee is decied on, and the size of that fee is determined, users will not be able to publish their wearables. For more information, and to participate in the discussion, visit [governance.decentraland.org](https://governance.decentraland.org).
 
 After you’ve added all of the relevant metadata to the wearables in your collection, and you’ve set the price and beneficiary address (or made your items free!) you can begin the publication process.
 
