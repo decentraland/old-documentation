@@ -34,7 +34,7 @@ By default, Decentraland Wearables are minted on the Polygon/Matic sidechain so 
 * Top-head (e.g. a halo, or other effect applied to the head)
 * Item (items are held in avatars’ hands)
 
-For a detailed description of each category, and how items within each category interact or replace one another, see [Creating Wearables](https://docs.decentraland.org/wearables/creating-wearables).
+For a detailed description of each category, and how items within each category interact or replace one another, see [Creating Wearables](https://docs.decentraland.org/decentraland/creating-wearables).
 
 ### Collections & Items
 
@@ -56,9 +56,9 @@ The following documentation only covers the **Wearables Editor**: the tool used 
 
 For documentation covering other aspects of wearables, see the following resources:
 
-* [Creating Wearables](https://docs.decentraland.org/wearables/creating-wearables)
-* [Publishing Wearables](https://docs.decentraland.org/wearables/publishing-wearables)
-* [Curation Committee](https://docs.decentraland.org/wearables/curation-committee)
-* [Editor User Guide](https://docs.decentraland.org/wearables/wearables-editor-user-guide)
+* [Creating Wearables](https://docs.decentraland.org/decentraland/creating-wearables)
+* [Publishing Wearables](https://docs.decentraland.org/decentraland/publishing-wearables)
+* [Curation Committee](https://docs.decentraland.org/decentraland/curation-committee)
+* [Editor User Guide](https://docs.decentraland.org/decentraland/wearables-editor-user-guide)
 
 
