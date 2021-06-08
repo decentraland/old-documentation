@@ -14,27 +14,27 @@ By default, Decentraland Wearables are minted on the Polygon/Matic sidechain so 
 
 **Wearables are organized into different categories, depending on what part of an avatar they modify:**
 
-* Body shape (the shape of the entire avatar)
-* Suit (customizes the upper body, lower body, and feet together)
-* Hat
-* Helmet
-* Hair
-* Facial hair
-* Head
-* Upper body (e.g. jacket or shirt)
-* Lower body (e.g. pants or shorts)
-* Feet
+- Body shape (the shape of the entire avatar)
+- Suit (customizes the upper body, lower body, and feet together)
+- Hat
+- Helmet
+- Hair
+- Facial hair
+- Head
+- Upper body (e.g. jacket or shirt)
+- Lower body (e.g. pants or shorts)
+- Feet
 
 **Wearables can also include accessories that are applied to different parts of an avatar’s body:**
 
-* Mask
-* Eye wear
-* Earring
-* Tiara (a crown, or other accessory that sits on top of the head)
-* Top-head (e.g. a halo, or other effect applied to the head)
-* Item (items are held in avatars’ hands)
+- Mask
+- Eye wear
+- Earring
+- Tiara (a crown, or other accessory that sits on top of the head)
+- Top-head (e.g. a halo, or other effect applied to the head)
+- Item (items are held in avatars’ hands)
 
-For a detailed description of each category, and how items within each category interact or replace one another, see [Creating Wearables](https://docs.decentraland.org/wearables/creating-wearables).
+For a detailed description of each category, and how items within each category interact or replace one another, see [Creating Wearables]({{ site.baseurl }}{% post_url /wearables/2021-05-31-creating-wearables %}).
 
 ### Collections & Items
 
@@ -56,9 +56,11 @@ The following documentation only covers the **Wearables Editor**: the tool used 
 
 For documentation covering other aspects of wearables, see the following resources:
 
-* [Creating Wearables](https://docs.decentraland.org/wearables/creating-wearables)
-* [Publishing Wearables](https://docs.decentraland.org/wearables/publishing-wearables)
-* [Curation Committee](https://docs.decentraland.org/wearables/curation-committee)
-* [Editor User Guide](https://docs.decentraland.org/wearables/wearables-editor-user-guide)
+- [Creating Wearables]({{ site.baseurl }}{% post_url /wearables/2021-05-31-creating-wearables %})
+- [Publishing Wearables]({{ site.baseurl }}{% post_url /wearables/2021-05-31-publishing-wearables %})
+- [Curation Committee]({{ site.baseurl }}{% post_url /wearables/2021-05-31-curation-committee %})
+- [Editor User Guide]({{ site.baseurl }}{% post_url /wearables/2021-05-31-editor-user-guide %})
 
+The following shared folder contains example wearables, base models, textures and other resources you can use:
 
+- [Wearables Reference Models](https://drive.google.com/drive/u/1/folders/12hOVgZsLriBuutoqGkIYEByJF8bA-rAU)
