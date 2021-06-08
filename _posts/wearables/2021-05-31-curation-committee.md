@@ -8,15 +8,15 @@ categories:
 type: Document
 ---
 
-The Wearables Curation Committee is a group of individuals elected by the DAO who are responsible for reviewing and approving wearables submitted by the Decentraland community. The current Curation Committee includes three members, but it can be expanded to include more. Each member holds a key in a multisig wallet that is used to vote on the approval or rejection of each item submitted via the Wearables Editor. 
+The Wearables Curation Committee is a group of individuals elected by the DAO who are responsible for reviewing and approving wearables submitted by the Decentraland community. The current Curation Committee includes three members, but it can be expanded to include more. Each member holds a key in a multisig wallet that is used to vote on the approval or rejection of each item submitted via the Wearables Editor.
 
-The approval criteria used by the committee when reviewing wearables is outlined in [Publishing Wearables](https://docs.decentraland.org/wearables/publishing-wearables).
+The approval criteria used by the committee when reviewing wearables is outlined in [Publishing Wearables]({{ site.baseurl }}{% post_url /wearables/2021-05-31-publishing-wearables %}).
 
 The current members of this committee are:
 
-* Martin Shibuya, Art Director, Decentraland Foundation
-* KJ Walker, 3D Community Developer
-* Juan Pablo Colasso, 3D Visual Artist
+- Martin Shibuya, Art Director, Decentraland Foundation
+- KJ Walker, 3D Community Developer
+- Juan Pablo Colasso, 3D Visual Artist
 
 ## Why does Decentraland need a Curation Committee?
 
