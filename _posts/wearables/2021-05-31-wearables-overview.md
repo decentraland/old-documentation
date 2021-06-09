@@ -59,7 +59,7 @@ For documentation covering other aspects of wearables, see the following resourc
 - [Creating Wearables]({{ site.baseurl }}{% post_url /wearables/2021-05-31-creating-wearables %})
 - [Publishing Wearables]({{ site.baseurl }}{% post_url /wearables/2021-05-31-publishing-wearables %})
 - [Curation Committee]({{ site.baseurl }}{% post_url /wearables/2021-05-31-curation-committee %})
-- [Editor User Guide]({{ site.baseurl }}{% post_url /wearables/2021-05-31-editor-user-guide %})
+- [Editor User Guide]({{ site.baseurl }}{% post_url /wearables/2021-05-31-wearables-editor-user-guide %})
 
 The following shared folder contains example wearables, base models, textures and other resources you can use:
 
