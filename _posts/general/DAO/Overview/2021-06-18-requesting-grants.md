@@ -8,7 +8,8 @@ categories:
 type: Document
 ---
 
-To request a grant from the Decentraland DAO, begin by navigating to **[governance.decentraland.org](https://governance.decentraland.org)** and signing in with your wallet.
+To [request a grant]({{ site.baseurl }}{% post_url /general/DAO/Overview/2021-06-18-community-grants %}) from the Decentraland DAO, begin by navigating to **[governance.decentraland.org](https://governance.decentraland.org)** and signing in with your wallet.
+
 
 Click **Submit a proposal** and choose **Grant request** from the list of proposal categories. You will be presented with a form that you must complete before submitting your request.
 
@@ -41,7 +42,7 @@ Tier 3 is paid via a vesting contract with a one month cliff.
 
 #### Title
 
-Provide a title that is concise and descriptive for your grant request. This title will appear as the header of your proposal’s detail page on governance.decentraland.org, the proposal in Snapshot, and the Forum thread generated for your proposal.
+Provide a title that is concise and descriptive for your grant request. This title will appear as the header of your proposal’s detail page on [governance.decentraland.org](governance.decentraland.org), the proposal in Snapshot, and the Forum thread generated for your proposal.
 
 #### Abstract
 
