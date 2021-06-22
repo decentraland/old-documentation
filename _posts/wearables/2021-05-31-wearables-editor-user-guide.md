@@ -59,8 +59,6 @@ The rarity of your wearable determines the total number of NFTs that may be mint
 | Uncommon  | 10000  |
 | Common    | 100000 |
 
-&nbsp;
-
 **Category**  
 Wearables are organized into different categories, depending on what part of an avatar they modify. Select the appropriate category for your item:
 
@@ -146,18 +144,6 @@ First, navigate to the [Builder](https://builder.decentraland.org) and select th
 
 You might have to authorize the MANA contract to operate MANA on your behalf. By granting this authorization, you are permitting the MANA smart contract to withdraw MANA from your balance to pay the publication fee and to deposit MANA into your account from future sales of your items. Simply check MANA and click **Proceed**. You will have to sign a message from your wallet, but there is no gas fee.
 
-#### Publication fees
-
-There is a required fee for publishing items. This fee exists to deter users from publishing an excessive number of wearables in an attempt to “spam” the wearables market.
-
-**The fee is a flat rate of 500 MANA per item (not NFT!) in your collection.**
-
-For example, if you publish a collection with two items, you will have to pay a fee of 1000 MANA (500 MANA for each item) regardless of the rarity (or how many NFTs can be minted) of those items.
-
-These fees are transferred to the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
-
-After reviewing your total fee, click **Next**.
-
 > **Warning!**
 > You will not be able to add or remove items in your collection after beginning the publication process. You will be able to see your items within the Decentraland Marketplace, but they will not be able to be bought, sold, or transferred until they have been approved.
 
@@ -173,75 +159,15 @@ First, navigate to the [Builder](https://builder.decentraland.org) and select th
 
 To add collaborators, simply enter their Ethereum address, and click **Add**. You can add as many collaborators as you want. To remove a collaborator, simply click **Remove** next to the collaborator’s address.
 
-### Selling items
-
-After your items are published in a collection and approved by the Curation Committee, they can be sold to other users in the metaverse.
-
-Items can be sold in **primary sales** and **secondary sales**.
-
-* **Primary sales** are performed by the Decentraland Store’s smart contract. During a primary sale, the **item is minted automatically**, and it is sold for the price set by you in the Wearable Editor.  
-
-* **Secondary sales** are performed by the Decentraland Marketplace’s smart contract. These occur anytime a user sells an item in the Marketplace **after it has been minted** or **purchased in a primary sale**. Items can be sold for any price in a secondary sale.
-
-To view items available to purchase in a primary sale, head to the [Decentraland store!](https://play.decentraland.org/?position=-70%2C0)
-
-To view items available for secondary sales, visit the [Decentraland Marketplace.](https://market.decentraland.org)
-
-### Primary sales
-
-Primary sales occur when one of your items is purchased for the first time. These sales are only performed by the Decentraland Store’s smart contract.
-
-When a user makes a primary purchase of one of your items, the store **mints the item automatically**, transfers the item to the purchaser, and sends the MANA proceeds to the beneficiary address.
-
-> Remember! You do not need to mint your items in order to sell them in primary sales!
-
-To sell your items via primary sales, begin by navigating to the [Builder](https://builder.decentraland.org) and selecting the **Collections** tab.
-
-#### Set the price and beneficiary address
-Select the collection you would like to sell, and set the price and beneficiary for each item. The beneficiary address is the address that will receive the MANA resulting from a primary sale. 
-
-If the price you set for a primary sale is **“Free”**, users will be able to purchase your items at no cost in the store, but they can resell the item in a secondary sale at any price later on.
-
-You can change the price and beneficiary address for any item in your collection at any time.
-
-#### Enable primary sales 
-Finally, click the On Sale switch and click Turn On in the confirmation window that appears. When this switch is enabled, your collection will be available to purchase within the Decentraland store.
-
-![]({{ site.baseurl }}/images/media/wearable-user-guide-images/selling-items-1.png)
-
-As long as this switch is turned on, the Decentraland store will automatically mint one of your items whenever a user makes a primary purchase.
-
-This means that it is possible to mint and sell all of your available items until the maximum supply is reached. If you want to save one or more of your items before listing them for sale, you need to manually mint an item to one of your own wallet addresses.
-
-Anyone who purchases one of your items is able to resell it at any time, and at any price, in a secondary sale in Decentraland’s [Marketplace](https://market.decentraland.org).
-
-**All primary sales within the Decentraland in-world store are subject to a 2.5% fee. This fee is transferred to the DAO.**
-
-**If I sell an item via a primary sale, will I receive my MANA on Polygon?**  
-Yes, the proceeds of any items sold on Polygon will reside on the sidechain. You will have to pay a transaction fee if you want to transfer your MANA from the Polygon sidechain to the main Ethereum chain. You can do so from the [Accounts](https://account.decentraland.org) page.
-
-If you want to transfer MANA that you’ve earned from a wearable sale on the Polygon to the Ethereum main network, you will have to pay a gas fee at the bridge. For more information on the Polygon sidechain, [please see this blog post](https://decentraland.org/blog/announcements/polygon-mana/).
-
-#### Disabling primary sales
-To unlist your items, click the **On Sale** switch to toggle it off. This will only apply to primary sales for your items.
-
-### Secondary sales
-Items can be sold in secondary sales at any time, and for any price, in the Decentraland Marketplace only after:
-
-* They have been **minted**, or
-* they have been **purchased in a primary sale**
-
-In other words, anybody who owns an NFT for a wearable can sell it in the Decentraland Marketplace. There are no royalties for wearables sold in secondary sales in Decentraland.
-
 ### Minting wearables
+
 Minting is the process of creating the actual non-fungible tokens (NFTs) based on the items you’ve uploaded to the Wearables Editor.
 
-As with selling items in primary sales, you will not be able to mint any items within a collection until the review process is complete. If your collection is still under review, you will see the tag **“Under Review”** appended to your collection. After it has been reviewed and approved, the tag will change to **“Published”**, and you can begin minting your items manually.
+#### Rarity
 
-#### Item rarities
-When you publish a collection, each item in that collection has a **rarity**. This rarity is set by you when you upload an item, and is recorded in a smart contract. Rarities limit the total supply, or **stock**, that you can mint of any particular item. 
+When you publish a collection, each item in that collection has a set **rarity** that you specified. This rarity is recorded in a smart contract, and limits the total supply, or **stock**, that you can mint of any particular item.
 
-The available rarities, and the maximum supply provided by each, are:
+The available rarities, and the maximum stock provided by each, are:
 
 | Rarity    | Limit  |
 | --------- | ------ |
@@ -251,33 +177,34 @@ The available rarities, and the maximum supply provided by each, are:
 | Epic      | 1000   |
 | Rare      | 5000   |
 | Uncommon  | 10000  |
-| Common    | 100000 |  
-
-&nbsp;
+| Common    | 100000 |
 
 For example, if you have a collection with one Epic item, then you can only mint up to 1000 NFTs of that item.
 
-#### The Polygon sidechain
-All wearables in Decentraland are minted on the Polygon sidechain. This allows users to mint and transfer items without paying any gas fees (so long as these transactions are conducted solely on the Polygon sidechain).
+#### The Matic/Polygon Sidechain
 
-### How to manually mint your items
-To mint published items, open the collection containing the items you’d like to mint, and click **Mint Items**.
+All wearables in Decentraland are minted on the Matic/Polygon sidechain. This allows users to mint and transfer items without paying any gas fees (so long as these transactions are conducted solely on the Matic/Polygon sidechain).
 
-![]({{ site.baseurl }}/images/media/wearable-user-guide-images/minting-items-1.png)
+If you want to transfer an item that was minted or purchased on Matic/Polygon to the Ethereum main network, you will have to pay a gas fee at the bridge. For more information on the Matic/Polygon sidechain, [please see this blog post](https://decentraland.org/blog/announcements/polygon-mana/).
 
-You will be shown a modal window containing a list of the items available along with the supply available for each. Remember, the supply is the total number of items you can mint. For example, if your supply reads 0/10, then you have used 0 out of your total supply of 10.
+#### Minting
 
-![]({{ site.baseurl }}/images/media/wearable-user-guide-images/minting-items-2.png)
+You will not be able to mint any items within a collection until the [review process]({{ site.baseurl }}{% post_url /wearables/2021-05-31-publishing-wearables %}) is complete. If your collection is still under review, you will see the tag **“Under Review”** appended to your collection. After it has been reviewed and approved, the tag will change to **“Published”**.
 
-When minting, you must set the address that will receive the minted items and you must set the number of items you want to mint to that address. You cannot mint more items than are available in the supply available.
+To mint published items, open the collection containing the items you’d like to mint, and click **Mint Items**. You will be shown a modal window containing a list of the items available along with the stock available for each.
 
-If you enter your own address, then the items that are minted will be transferred to your account.
+When minting, you must set the address that will receive the minted items and you must set the number of items you want to mint. You cannot mint more items than are available in the stock listed.
 
-You can “gift” items to anyone you like by entering their address instead of your own under Address. 
-
-Remember, these items are minted and transferred to the address entered for free. The price you set for items is only collected in primary sales.
-
-> Note: You can currently only mint 50 items per transaction.
+For example, if you have a Legendary item, but have already minted 25 of them, then you can only mint up to 75 more.
 
 **Are there any fees associated with minting items?**  
-No, items are minted on the Matic sidechain, thus removing any fees traditionally associated with minting NFTs on the main Ethereum blockchain.
+No, items are minted on the Polygon/Matic sidechain, thus removing any fees traditionally associated with minting NFTs on the main Ethereum blockchain.
+
+**If my items are minted on Polygon/Matic, will I receive the proceeds of sales on Polygon/Matic?**  
+Yes, the proceeds of any items sold on Polygon/Matic will reside on the sidechain. You will have to pay a transaction fee if you want to transfer your MANA from the Polygon/Matic sidechain to the main Ethereum chain. You can do so from your **Account page**.
+
+### Selling items
+
+To sell your items, you must first publish them, have them approved, and then mint the items that you want to sell. Once these steps are completed, you may place your items for sale on the Marketplace.
+
+Begin by navigating to the [Builder](https://builder.decentraland.org) and select the **Collections** tab. Select the collection you want to sell and toggle the **On Sale** switch. You will be shown a dialogue box asking you to confirm that you want to put your items up for sale on the Marketplace.

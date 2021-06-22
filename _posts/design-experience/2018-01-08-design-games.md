@@ -109,6 +109,8 @@ In future releases, players will also be able to navigate the world rapidly usin
 
 When a player steps outside the scene, all UI elements are removed to not intervene with other scenes. Players also have a button available in their screen to toggle all UI elements in the scene off, this is mainly useful to prevent abusive behavior by scenes that may want to cover all of the player's field of view.
 
+The top 10% of the screen is reserved only for the default Decentraland UI. This measure is to prevent scene UIs to pose as official Decentraland UIs or even Browser wallets like Metamask, ensuring a safer experience for players.
+
 ## Physics
 
 Keep in mind that the SDK doesn't provide its own physics engine. If you want to use physics in your scene, you can import a library or code the behavior yourself.

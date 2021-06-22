@@ -58,7 +58,7 @@ const clipSwim = new AnimationState("swim")
 // Add animation clip to Animator component
 animator.addClip(clipSwim)
 
-// Add entity to engine
+// Add entinty to engine
 engine.addEntity(shark)
 ```
 
