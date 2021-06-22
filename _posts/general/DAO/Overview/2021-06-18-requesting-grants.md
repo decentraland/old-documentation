@@ -8,7 +8,7 @@ categories:
 type: Document
 ---
 
-To request a grant from the Decentraland DAO, begin by navigating to **[governance.decentraland.org](https://governance.decentraland.org)** and signing in with your wallet.
+To [request a grant]({{ site.baseurl }}{% post_url /general/DAO/Overview/2021-06-18-community-grants %}) from the Decentraland DAO, begin by navigating to **[governance.decentraland.org](https://governance.decentraland.org)** and signing in with your wallet.
 
 Click **Submit a proposal** and choose **Grant request** from the list of proposal categories. You will be presented with a form that you must complete before submitting your request.
 
@@ -22,18 +22,18 @@ Following is an overview of the proposal form:
 
 Select the category that best describes your project. Currency, DAO grants will fund projects within four categories:
 
-*   Community
-*   Content Creator
-*   Platform Contributor
-*   Gaming
+- Community
+- Content Creator
+- Platform Contributor
+- Gaming
 
 #### Tier
 
 Select the most appropriate tier for your grant request. Tiers enable the Decentraland Community to limit the size and scope of the grants that are funded by the DAO. The initial possible tiers are:
 
-*   **Tier 1:** $500 - $1500 USD in MANA
-*   **Tier 2:** $1500 - $3000 USD in MANA
-*   **Tier 3:** $3000 - $5000 USD in MANA
+- **Tier 1:** $500 - $1500 USD in MANA
+- **Tier 2:** $1500 - $3000 USD in MANA
+- **Tier 3:** $3000 - $5000 USD in MANA
 
 Tiers 1 and 2 are paid via a direct transfer to the beneficiary address provided within 7 days of a grant receiving approval from the DAO.
 
@@ -41,7 +41,7 @@ Tier 3 is paid via a vesting contract with a one month cliff.
 
 #### Title
 
-Provide a title that is concise and descriptive for your grant request. This title will appear as the header of your proposal’s detail page on governance.decentraland.org, the proposal in Snapshot, and the Forum thread generated for your proposal.
+Provide a title that is concise and descriptive for your grant request. This title will appear as the header of your proposal’s detail page on [governance.decentraland.org](governance.decentraland.org), the proposal in Snapshot, and the Forum thread generated for your proposal.
 
 #### Abstract
 

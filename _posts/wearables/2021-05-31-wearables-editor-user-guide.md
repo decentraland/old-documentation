@@ -34,7 +34,7 @@ To add an item to your new collection, select the collection, click **New Item**
 
 #### Uploading an item
 
-When uploading an item you can either browse your computer to find the file you want, or you can click and drag your file right into the editor. For an overview of the 3D file types supported in Decentraland, see [3D Model Essentials]({{ site.baseurl }}{% post_url /3d-models/2018-01-09-3d-models %}).
+When uploading an item you can either browse your computer to find the file you want, or you can click and drag your file right into the editor. For an overview of the 3D file types supported in Decentraland, see [3D Model Essentials]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %}).
 
 > **Wearable items cannot currently exceed 2MB.**
 
@@ -179,9 +179,9 @@ After your items are published in a collection and approved by the Curation Comm
 
 Items can be sold in **primary sales** and **secondary sales**.
 
-* **Primary sales** are performed by the Decentraland Store’s smart contract. During a primary sale, the **item is minted automatically**, and it is sold for the price set by you in the Wearable Editor.  
+- **Primary sales** are performed by the Decentraland Store’s smart contract. During a primary sale, the **item is minted automatically**, and it is sold for the price set by you in the Wearable Editor.
 
-* **Secondary sales** are performed by the Decentraland Marketplace’s smart contract. These occur anytime a user sells an item in the Marketplace **after it has been minted** or **purchased in a primary sale**. Items can be sold for any price in a secondary sale.
+- **Secondary sales** are performed by the Decentraland Marketplace’s smart contract. These occur anytime a user sells an item in the Marketplace **after it has been minted** or **purchased in a primary sale**. Items can be sold for any price in a secondary sale.
 
 To view items available to purchase in a primary sale, head to the [Decentraland store!](https://play.decentraland.org/?position=-70%2C0)
 
@@ -198,13 +198,15 @@ When a user makes a primary purchase of one of your items, the store **mints the
 To sell your items via primary sales, begin by navigating to the [Builder](https://builder.decentraland.org) and selecting the **Collections** tab.
 
 #### Set the price and beneficiary address
-Select the collection you would like to sell, and set the price and beneficiary for each item. The beneficiary address is the address that will receive the MANA resulting from a primary sale. 
+
+Select the collection you would like to sell, and set the price and beneficiary for each item. The beneficiary address is the address that will receive the MANA resulting from a primary sale.
 
 If the price you set for a primary sale is **“Free”**, users will be able to purchase your items at no cost in the store, but they can resell the item in a secondary sale at any price later on.
 
 You can change the price and beneficiary address for any item in your collection at any time.
 
-#### Enable primary sales 
+#### Enable primary sales
+
 Finally, click the On Sale switch and click Turn On in the confirmation window that appears. When this switch is enabled, your collection will be available to purchase within the Decentraland store.
 
 ![]({{ site.baseurl }}/images/media/wearable-user-guide-images/selling-items-1.png)
@@ -223,23 +225,27 @@ Yes, the proceeds of any items sold on Polygon will reside on the sidechain. You
 If you want to transfer MANA that you’ve earned from a wearable sale on the Polygon to the Ethereum main network, you will have to pay a gas fee at the bridge. For more information on the Polygon sidechain, [please see this blog post](https://decentraland.org/blog/announcements/polygon-mana/).
 
 #### Disabling primary sales
+
 To unlist your items, click the **On Sale** switch to toggle it off. This will only apply to primary sales for your items.
 
 ### Secondary sales
+
 Items can be sold in secondary sales at any time, and for any price, in the Decentraland Marketplace only after:
 
-* They have been **minted**, or
-* they have been **purchased in a primary sale**
+- They have been **minted**, or
+- they have been **purchased in a primary sale**
 
 In other words, anybody who owns an NFT for a wearable can sell it in the Decentraland Marketplace. There are no royalties for wearables sold in secondary sales in Decentraland.
 
 ### Minting wearables
+
 Minting is the process of creating the actual non-fungible tokens (NFTs) based on the items you’ve uploaded to the Wearables Editor.
 
 As with selling items in primary sales, you will not be able to mint any items within a collection until the review process is complete. If your collection is still under review, you will see the tag **“Under Review”** appended to your collection. After it has been reviewed and approved, the tag will change to **“Published”**, and you can begin minting your items manually.
 
 #### Item rarities
-When you publish a collection, each item in that collection has a **rarity**. This rarity is set by you when you upload an item, and is recorded in a smart contract. Rarities limit the total supply, or **stock**, that you can mint of any particular item. 
+
+When you publish a collection, each item in that collection has a **rarity**. This rarity is set by you when you upload an item, and is recorded in a smart contract. Rarities limit the total supply, or **stock**, that you can mint of any particular item.
 
 The available rarities, and the maximum supply provided by each, are:
 
@@ -251,16 +257,18 @@ The available rarities, and the maximum supply provided by each, are:
 | Epic      | 1000   |
 | Rare      | 5000   |
 | Uncommon  | 10000  |
-| Common    | 100000 |  
+| Common    | 100000 |
 
 &nbsp;
 
 For example, if you have a collection with one Epic item, then you can only mint up to 1000 NFTs of that item.
 
 #### The Polygon sidechain
+
 All wearables in Decentraland are minted on the Polygon sidechain. This allows users to mint and transfer items without paying any gas fees (so long as these transactions are conducted solely on the Polygon sidechain).
 
 ### How to manually mint your items
+
 To mint published items, open the collection containing the items you’d like to mint, and click **Mint Items**.
 
 ![]({{ site.baseurl }}/images/media/wearable-user-guide-images/minting-items-1.png)
@@ -273,7 +281,7 @@ When minting, you must set the address that will receive the minted items and yo
 
 If you enter your own address, then the items that are minted will be transferred to your account.
 
-You can “gift” items to anyone you like by entering their address instead of your own under Address. 
+You can “gift” items to anyone you like by entering their address instead of your own under Address.
 
 Remember, these items are minted and transferred to the address entered for free. The price you set for items is only collected in primary sales.
 
