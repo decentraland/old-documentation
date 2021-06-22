@@ -8,7 +8,9 @@ categories:
 type: Document
 ---
 
+
 If your [grant request]({{ site.baseurl }}{% post_url /general/DAO/Overview/2021-06-18-community-grants %}) was approved by the DAO, congratulations! Following is an overview of what happens when your grant is approved, the actions you need to take to receive your funding, and how you are expected to report your work to the community.
+
 
 ## Receiving your MANA
 
@@ -36,7 +38,7 @@ After the cliff has been reached, the beneficiary may withdraw their vested fund
 
 ## Reporting your progress
 
-You are expected to provide public reports on your progress on a schedule matching the milestones and roadmap detailed in your original grant proposal.
+You are expected to provide public reports on your progress on a schedule matching the milestones and roadmap detailed in your original grant proposal. 
 
 These updates are to be shared on the Forum thread generated for your grant request. These progress reports should be clear and concise, while still giving the community an accurate sense of how your project is progressing. Sharing screenshots or demos of your work goes a long way toward maintaining the trust of the community.
 
@@ -44,9 +46,9 @@ These updates are to be shared on the Forum thread generated for your grant requ
 
 Currently, only grants with vesting contracts may be revoked. Conditions or behaviors that might lead to a grant being revoked include:
 
-- Failure to provide progress reports according to the roadmap and milestones listed in your grant proposal
-- Providing progress reports showing work that does not meet the expectations set by your original grant proposal
-- Providing work that violates either the [Content Policy](https://decentraland.org/content), [Terms of Use](https://decentraland.org/terms), or [Code of Ethics](https://decentraland.org/ethics)
+*   Failure to provide progress reports according to the roadmap and milestones listed in your grant proposal
+*   Providing progress reports showing work that does not meet the expectations set by your original grant proposal
+*   Providing work that violates either the [Content Policy](https://decentraland.org/content), [Terms of Use](https://decentraland.org/terms), or [Code of Ethics](https://decentraland.org/ethics)
 
 ## What happens if your grant is revoked?
 
