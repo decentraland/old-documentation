@@ -16,7 +16,7 @@ These proposals, the votes submitted, and final results are all stored in IPFS v
 
 The remainder of this document explains in greater detail what the DAO is, how it works, and what it can be used for.
 
-For a detailed tutorial on how to use the Decentraland DAO, visit the User Guide.
+For a detailed tutorial on how to use the Decentraland DAO, visit the [User Guide](https://github.com/decentraland/documentation/edit/master/_posts/general/DAO/Overview/2021-05-21-what-is-the-dao.md).
 
 ## The DAO is powered by smart contracts
 
