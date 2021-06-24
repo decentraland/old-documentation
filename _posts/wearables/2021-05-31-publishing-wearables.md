@@ -22,7 +22,7 @@ For detailed instructions on how to submit your wearable collection for approval
 
 ### Publication fees 
 
-There is a required fee for publishing items. This fee exists to deter users from publishing an excessive number of wearables in an attempt to “spam” the wearables market.
+There is a required fee for publishing items. This fee was [voted in place by the Decentraland DAO](https://governance.decentraland.org/en/proposal/?id=50092c00-c315-11eb-ac84-1705d1ae4a66) This fee exists to deter users from publishing an excessive number of wearables in an attempt to “spam” the wearables market.
 
 **The fee is a flat rate of 500 MANA per item (not NFT!) in your collection.**
 
@@ -30,7 +30,7 @@ For example, if you publish a collection with two items, you will have to pay a 
 
 These fees are transferred to the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
 
-> **Note:** Currently, due to the time and resources required to review each collection submitted, **the 500 MANA publication fee is non-refundable**. If your collection is rejected and cannot be published, you will not receive your 500 MANA back.
+> **Note:** Currently, due to the time and resources required to review each collection submitted, **the 500 MANA publication fee is non-refundable**. If your collection is rejected, you will not receive your 500 MANA back. If your collection is not immediatly approved, the Curation Committee will provide you with suggestions and feedback on how to improve it, but the final acceptance of your collection cannot be guaranteed.
 
 ### Acceptance criteria
 

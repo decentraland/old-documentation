@@ -28,6 +28,8 @@ If you haven’t uploaded any items yet, click **New Item** or **New Collection*
 
 When creating a collection, first enter the name you would like to give your collection and click **Create**. After creating your collection, you can begin adding items.
 
+> The name of your collection cannot be changed after publication!
+
 **You can add as many items as you want until you publish your collection.** Always remember, you cannot add, remove, or change the rarity of items in published collections.
 
 To add an item to your new collection, select the collection, click **New Item**, and select your wearable files.
@@ -165,7 +167,7 @@ For example, if you publish a collection with two items, you will have to pay a 
 
 These fees are transferred to the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
 
-_Currently, due to the time and resources required to review each collection submitted, the 500 MANA publication fee is non-refundable. If your collection is rejected and cannot be published, you will not receive your 500 MANA back._
+_Currently, due to the time and resources required to review each collection submitted, the 500 MANA publication fee is non-refundable. If your collection is rejected, you will not receive your 500 MANA back._
 
 After reviewing your total fee, click **Next**.
 
