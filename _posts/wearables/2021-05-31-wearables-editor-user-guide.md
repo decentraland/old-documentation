@@ -46,6 +46,8 @@ You can select which body shape your wearable is modeled for. The shape can be e
 **Name**  
 The name you would like to give your wearable.
 
+> The name of your collection cannot be changed after publication!
+
 **Rarity**  
 The rarity of your wearable determines the total number of NFTs that may be minted based on your item. The rarities and the maximum number of NFTs that you may mint for each are:
 
@@ -116,6 +118,13 @@ Any items within the categories added to this override will only be hidden (they
 
 Tags are simply descriptive words that users can use when searching or filtering for items. These could be relevant to competitions or events!
 
+### Custom thumbnails
+
+You can upload your own custom thumbnails for wearables in your collections. To upload a custom thumbnail image, navigate to the Wearables Editor and open the item you want to add a thumbnail for. Click **Edit** and then click on the thumbnail image under details to upload an image from your computer (a camera icon will appear when you hover over the thumbnail).
+
+> Thumbnails must be 256px by 256px with transparent backgrounds. Collections containing thumbnails without transparent backgrounds will not be accepted by the Curation Committee.
+
+
 ### Setting the price for items
 
 Items that are included in a collection can include prices that you set for their primary sale.
@@ -155,6 +164,8 @@ There is a required fee for publishing items. This fee exists to deter users fro
 For example, if you publish a collection with two items, you will have to pay a fee of 1000 MANA (500 MANA for each item) regardless of the rarity (or how many NFTs can be minted) of those items.
 
 These fees are transferred to the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
+
+_Currently, due to the time and resources required to review each collection submitted, the 500 MANA publication fee is non-refundable. If your collection is rejected and cannot be published, you will not receive your 500 MANA back._
 
 After reviewing your total fee, click **Next**.
 

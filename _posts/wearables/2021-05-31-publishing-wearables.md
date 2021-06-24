@@ -20,6 +20,18 @@ For detailed instructions on how to submit your wearable collection for approval
 6. Once your collection has final approval, you will be notified in the Forum. You will also see a visual indicator in the Wearable Editor next to the approved collection.
 7. With a successful approval, you can begin minting items in your collection!
 
+### Publication fees 
+
+There is a required fee for publishing items. This fee exists to deter users from publishing an excessive number of wearables in an attempt to “spam” the wearables market.
+
+**The fee is a flat rate of 500 MANA per item (not NFT!) in your collection.**
+
+For example, if you publish a collection with two items, you will have to pay a fee of 1000 MANA (500 MANA for each item) regardless of the rarity (or how many NFTs can be minted) of those items.
+
+These fees are transferred to the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
+
+> **Note:** Currently, due to the time and resources required to review each collection submitted, **the 500 MANA publication fee is non-refundable**. If your collection is rejected and cannot be published, you will not receive your 500 MANA back.
+
 ### Acceptance criteria
 
 Following is an overview of the criteria used by the Curation Committee when determining a collection’s eligibility. Much of this criteria is based on Section 2 of Decentraland’s [Content Policy](https://decentraland.org/content/).
