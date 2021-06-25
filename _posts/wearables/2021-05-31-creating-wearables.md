@@ -81,7 +81,6 @@ Each wearable has a specific category that determines which body part in the ava
 The different categories are:
 
 - **Body_shape:** Replaces the entire avatar’s body.
-- **Suit:** Replace the avatar’s upper body, lower body, and feet.
 - **Hat:** Replaces the avatar’s hair. For hats that leave some hair exposed, it must be attached to the hair in the mesh to prevent the avatar from going bald whenever they put on their hat.
 - **Helmet:** Overrides the avatar’s entire head, replacing both hair and facial_hair.
 - **Hair:** Replaces an avatar’s hat.
@@ -101,7 +100,6 @@ There are also accessories that can be applied to different areas of an avatar. 
 - **Earring:** Replaces helmet.
 - **Tiara:** Replaces mask and helmet.
 - **Top_head:** This is rendered on the top of an avatar’s hard. For example, an angel’s halo.
-- **Item:** these are rendered within the avatar’s hand.
 
 ### Building 3D models for wearables
 
