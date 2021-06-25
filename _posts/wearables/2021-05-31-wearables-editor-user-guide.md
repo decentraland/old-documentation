@@ -78,7 +78,7 @@ Wearables are organized into different categories, depending on what part of an 
 - Lower Body
 - Mask
 - Upper Body
-- Tiara
+- Tiaras
 - Top Head _(Top Head wearables can be either an item of effect that is applied to the top of the head, like an angel’s halo.)_
 
 When you’re finished entering your descriptive metadata, click **Create**.
