@@ -8,6 +8,7 @@ baseurl: ""
 disqus_shortname:
 newsletter_action:
 segment_write_key: ZHLrnVct1IQCx7yLeOzxSic7G1Duy0HH
+rollbar_access_token: 28d1884e488447e3a7e7adfd2c4c9375
 
 twitter_url: "https://twitter.com/decentraland"
 discord_url: "https://dcl.gg/discord"
