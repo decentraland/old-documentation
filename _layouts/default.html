@@ -51,7 +51,7 @@
   {% if jekyll.environment == 'production' and site.rollbar_access_token != '' %}
     <script>
     var _rollbarConfig = {
-        accessToken: "{{ site.segment_write_key }}",
+        accessToken: "{{ site.rollbar_access_token }}",
         captureUncaught: true,
         captureUnhandledRejections: true,
         rollbarJsUrl: "https://decentraland.org/js/libs/rollbar.js/2.22.0/rollbar.min.js",
