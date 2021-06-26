@@ -25,27 +25,6 @@
         analytics.page();
       }}();
     </script>
-    <script>
-      var exp_delay = 500;
-      var retries = 0;
-
-      var identify_retry = function () {
-        if(typeof window.web3 !== 'undefined'){
-          window.web3.eth.getAccounts(function(err,data){
-            if(data && data.length>0) analytics.identify(data[0]);
-          })
-        }else{
-          if(retries<2) {
-            retries += 1;
-            exp_delay = 2 * exp_delay;
-            setTimeout(identify_retry,exp_delay);
-          }
-        }
-      };
-
-      setTimeout(identify_retry,exp_delay);
-
-    </script>
   {% endif %}
 
   {% if jekyll.environment == 'production' and site.rollbar_access_token != '' %}
