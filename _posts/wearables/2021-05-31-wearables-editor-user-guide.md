@@ -63,6 +63,8 @@ The rarity of your wearable determines the total number of NFTs that may be mint
 | Uncommon  | 10000  |
 | Common    | 100000 |
 
+&nbsp;
+
 **Category**  
 Wearables are organized into different categories, depending on what part of an avatar they modify. Select the appropriate category for your item:
 
@@ -252,11 +254,13 @@ In other words, anybody who owns an NFT for a wearable can sell it in the Decent
 
 Minting is the process of creating the actual non-fungible tokens (NFTs) based on the items you’ve uploaded to the Wearables Editor.
 
+As with selling items in primary sales, you will not be able to mint any items within a collection until the review process is complete. If your collection is still under review, you will see the tag **“Under Review”** appended to your collection. After it has been reviewed and approved, the tag will change to **“Published”**, and you can begin minting your items manually.
+
 #### Item rarities
 
 When you publish a collection, each item in that collection has a **rarity**. This rarity is set by you when you upload an item, and is recorded in a smart contract. Rarities limit the total supply, or **stock**, that you can mint of any particular item.
 
-The available rarities, and the maximum stock provided by each, are:
+The available rarities, and the maximum supply provided by each, are:
 
 | Rarity    | Limit  |
 | --------- | ------ |
@@ -280,26 +284,21 @@ All wearables in Decentraland are minted on the Polygon sidechain. This allows u
 
 To mint published items, open the collection containing the items you’d like to mint, and click **Mint Items**.
 
-If you want to transfer an item that was minted or purchased on Matic/Polygon to the Ethereum main network, you will have to pay a gas fee at the bridge. For more information on the Matic/Polygon sidechain, [please see this blog post](https://decentraland.org/blog/announcements/polygon-mana/).
+![]({{ site.baseurl }}/images/media/wearable-user-guide-images/minting-items-1.png)
 
-#### Minting
+You will be shown a modal window containing a list of the items available along with the supply available for each. Remember, the supply is the total number of items you can mint. For example, if your supply reads 0/10, then you have used 0 out of your total supply of 10.
 
-You will not be able to mint any items within a collection until the [review process]({{ site.baseurl }}{% post_url /wearables/2021-05-31-publishing-wearables %}) is complete. If your collection is still under review, you will see the tag **“Under Review”** appended to your collection. After it has been reviewed and approved, the tag will change to **“Published”**.
+![]({{ site.baseurl }}/images/media/wearable-user-guide-images/minting-items-2.png)
 
-To mint published items, open the collection containing the items you’d like to mint, and click **Mint Items**. You will be shown a modal window containing a list of the items available along with the stock available for each.
+When minting, you must set the address that will receive the minted items and you must set the number of items you want to mint to that address. You cannot mint more items than are available in the supply available.
 
-When minting, you must set the address that will receive the minted items and you must set the number of items you want to mint. You cannot mint more items than are available in the stock listed.
+If you enter your own address, then the items that are minted will be transferred to your account.
 
 You can “gift” items to anyone you like by entering their address instead of your own under Address.
 
+Remember, these items are minted and transferred to the address entered for free. The price you set for items is only collected in primary sales.
+
+> Note: You can currently only mint 50 items per transaction.
+
 **Are there any fees associated with minting items?**  
-No, items are minted on the Polygon/Matic sidechain, thus removing any fees traditionally associated with minting NFTs on the main Ethereum blockchain.
-
-**If my items are minted on Polygon/Matic, will I receive the proceeds of sales on Polygon/Matic?**  
-Yes, the proceeds of any items sold on Polygon/Matic will reside on the sidechain. You will have to pay a transaction fee if you want to transfer your MANA from the Polygon/Matic sidechain to the main Ethereum chain. You can do so from your **Account page**.
-
-### Selling items
-
-To sell your items, you must first publish them, have them approved, and then mint the items that you want to sell. Once these steps are completed, you may place your items for sale on the Marketplace.
-
-Begin by navigating to the [Builder](https://builder.decentraland.org) and select the **Collections** tab. Select the collection you want to sell and toggle the **On Sale** switch. You will be shown a dialogue box asking you to confirm that you want to put your items up for sale on the Marketplace.
+No, items are minted on the Matic sidechain, thus removing any fees traditionally associated with minting NFTs on the main Ethereum blockchain.
