@@ -22,6 +22,8 @@ Run `jekyll` commands through Bundler to ensure you're using the right versions:
 $ bundle exec jekyll serve --incremental
 ```
 
+While jekyll is running, you can open the locally hosted version of the docs site on a browser, using [http://127.0.0.1:4000/](http://127.0.0.1:4000/). As you make changes to the source material, the generated site should be updated when reloading.
+
 ## Develop (Docker)
 
 if you have [Docker](https://www.docker.com/) you also can run your development environment with the follow command

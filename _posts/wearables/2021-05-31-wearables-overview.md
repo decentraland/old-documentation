@@ -15,7 +15,6 @@ By default, Decentraland Wearables are minted on the Polygon/Matic sidechain so 
 **Wearables are organized into different categories, depending on what part of an avatar they modify:**
 
 - Body shape (the shape of the entire avatar)
-- Suit (customizes the upper body, lower body, and feet together)
 - Hat
 - Helmet
 - Hair
@@ -32,7 +31,6 @@ By default, Decentraland Wearables are minted on the Polygon/Matic sidechain so 
 - Earring
 - Tiara (a crown, or other accessory that sits on top of the head)
 - Top-head (e.g. a halo, or other effect applied to the head)
-- Item (items are held in avatars’ hands)
 
 For a detailed description of each category, and how items within each category interact or replace one another, see [Creating Wearables]({{ site.baseurl }}{% post_url /wearables/2021-05-31-creating-wearables %}).
 

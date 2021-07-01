@@ -8,11 +8,12 @@ categories:
 type: Document
 ---
 
-The Decentraland DAO possesses a [MANA fund](https://docs.decentraland.org/decentraland/the-dao-fund/) that has been set aside to help sponsor and facilitate the continual growth of the Decentraland platform. One avenue used by the DAO to achieve these goals is a grants program that was [voted in place by the DAO](https://governance.decentraland.org/en/proposal/?id=b265e3e0-bcb0-11eb-a871-a927ffd81f49).
+
+The Decentraland DAO possesses a [MANA fund]({{ site.baseurl }}{% post_url /general/DAO/Overview/2021-05-21-the-dao-fund %}) that has been set aside to help sponsor and facilitate the continual growth of the Decentraland platform. One avenue used by the DAO to achieve these goals is a grants program that was [voted in place by the DAO](https://governance.decentraland.org/en/proposal/?id=b265e3e0-bcb0-11eb-a871-a927ffd81f49).
 
 This grants program allows any member of the community to request funding to help reimburse their efforts in community building and education, creating 3D content for the world, or implementing new features and improvements to the platform.
 
-Grants can be requested by completing a proposal form within the [DAO](https://governance.decentraland.org). If approved by the community, then the [DAO Committee](https://docs.decentraland.org/decentraland/how-does-the-dao-work/#dao-committee) will execute the transfer of funds to the grant beneficiary by means of a one-time transfer, or a vesting contract.
+Grants can be requested by [completing a proposal]({{ site.baseurl }}{% post_url /general/DAO/Overview/2021-06-18-requesting-grants %}) form within the [DAO](https://governance.decentraland.org). If approved by the community, then the [DAO Committee]({{ site.baseurl }}{% post_url /general/DAO/Overview/2021-05-21-how-does-the-dao-work %}#dao-committee) will execute the [transfer of funds]({{ site.baseurl }}{% post_url /general/DAO/Overview/2021-06-18-receiving-grants %}) to the grant beneficiary by means of a one-time transfer, or a vesting contract.
 
 ## Grant categories
 
@@ -84,4 +85,3 @@ Funds for grants in Tier 3 are made available to the beneficiary address via ves
 *   Failure to provide the pre-established outcomes, as well as to provide clear reports on the advances and milestones will result in the removal of the grant funding.
 *   Grants with one-time payments are to be transferred upon the DAO’s approval of the grant.
 *   Grants with vesting contracts have a one month cliff beginning 7 days after the grant’s approval in the DAO.
-

@@ -52,7 +52,15 @@ deploy-preview:
     - gem install bundler
     - bundle config set path 'vendor/bundle'
     - bundle install --jobs=4 --retry=3
-    - 'echo "CI_COMMIT_SHA: \"$CI_COMMIT_SHA\"" > _data/environment.yml'
+    - CI_COMMIT_REF_NAME=master
+    - source dcl-env
+    - 'echo "" > _data/environment.yml'
+    - 'echo "ENVIRONMENT: \"$ENVIRONMENT\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_SHA: \"$CI_COMMIT_SHA\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_SHORT_SHA: \"$CI_COMMIT_SHORT_SHA\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_REF_NAME: \"$CI_COMMIT_REF_NAME\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_BRANCH: \"$CI_COMMIT_BRANCH\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_TAG: \"$CI_COMMIT_TAG\"" >> _data/environment.yml'
     - >
       JEKYLL_ENV=production bundle exec jekyll build \
         --incremental \
@@ -60,8 +68,6 @@ deploy-preview:
         --baseurl "/branch/$SOURCE_PATH"
 
     # DEPLOY (.io)
-    - CI_COMMIT_REF_NAME=master
-    - source dcl-env
     - dcl-lock-sync
     - cd .ci && npm ci && dcl-up websites-documentation
     - dcl-sync-release
@@ -113,12 +119,18 @@ deploy:
     - gem install bundler
     - bundle config set path 'vendor/bundle'
     - bundle install --jobs=4 --retry=3
-    - 'echo "CI_COMMIT_SHA: \"$CI_COMMIT_SHA\"" > _data/environment.yml'
+    - CI_COMMIT_REF_NAME=release
+    - source dcl-env
+    - 'echo "" > _data/environment.yml'
+    - 'echo "ENVIRONMENT: \"$ENVIRONMENT\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_SHA: \"$CI_COMMIT_SHA\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_SHORT_SHA: \"$CI_COMMIT_SHORT_SHA\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_REF_NAME: \"$CI_COMMIT_REF_NAME\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_BRANCH: \"$CI_COMMIT_BRANCH\"" >> _data/environment.yml'
+    - 'echo "CI_COMMIT_TAG: \"$CI_COMMIT_TAG\"" >> _data/environment.yml'
     - JEKYLL_ENV=production bundle exec jekyll build --incremental --destination _site
 
     # DEPLOY (.org)
-    - CI_COMMIT_REF_NAME=release
-    - source dcl-env
     - dcl-lock-sync
     - cd .ci && npm install && dcl-up websites-documentation
     - dcl-sync-release && cd ..

@@ -28,13 +28,15 @@ If you haven’t uploaded any items yet, click **New Item** or **New Collection*
 
 When creating a collection, first enter the name you would like to give your collection and click **Create**. After creating your collection, you can begin adding items.
 
+> The name of your collection cannot be changed after publication!
+
 **You can add as many items as you want until you publish your collection.** Always remember, you cannot add, remove, or change the rarity of items in published collections.
 
 To add an item to your new collection, select the collection, click **New Item**, and select your wearable files.
 
 #### Uploading an item
 
-When uploading an item you can either browse your computer to find the file you want, or you can click and drag your file right into the editor. For an overview of the 3D file types supported in Decentraland, see [3D Model Essentials]({{ site.baseurl }}{% post_url /3d-models/2018-01-09-3d-models %}).
+When uploading an item you can either browse your computer to find the file you want, or you can click and drag your file right into the editor. For an overview of the 3D file types supported in Decentraland, see [3D Model Essentials]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %}).
 
 > **Wearable items cannot currently exceed 2MB.**
 
@@ -45,6 +47,8 @@ You can select which body shape your wearable is modeled for. The shape can be e
 
 **Name**  
 The name you would like to give your wearable.
+
+> The name of your collection cannot be changed after publication!
 
 **Rarity**  
 The rarity of your wearable determines the total number of NFTs that may be minted based on your item. The rarities and the maximum number of NFTs that you may mint for each are:
@@ -72,7 +76,7 @@ Wearables are organized into different categories, depending on what part of an 
 - Lower Body
 - Mask
 - Upper Body
-- Tiara
+- Tiaras
 - Top Head _(Top Head wearables can be either an item of effect that is applied to the top of the head, like an angel’s halo.)_
 
 When you’re finished entering your descriptive metadata, click **Create**.
@@ -114,6 +118,13 @@ Any items within the categories added to this override will only be hidden (they
 
 Tags are simply descriptive words that users can use when searching or filtering for items. These could be relevant to competitions or events!
 
+### Custom thumbnails
+
+You can upload your own custom thumbnails for wearables in your collections. To upload a custom thumbnail image, navigate to the Wearables Editor and open the item you want to add a thumbnail for. Click **Edit** and then click on the thumbnail image under details to upload an image from your computer (a camera icon will appear when you hover over the thumbnail).
+
+> Thumbnails must be 256px by 256px with transparent backgrounds. Collections containing thumbnails without transparent backgrounds will not be accepted by the Curation Committee.
+
+
 ### Setting the price for items
 
 Items that are included in a collection can include prices that you set for their primary sale.
@@ -144,6 +155,20 @@ First, navigate to the [Builder](https://builder.decentraland.org) and select th
 
 You might have to authorize the MANA contract to operate MANA on your behalf. By granting this authorization, you are permitting the MANA smart contract to withdraw MANA from your balance to pay the publication fee and to deposit MANA into your account from future sales of your items. Simply check MANA and click **Proceed**. You will have to sign a message from your wallet, but there is no gas fee.
 
+#### Publication fees
+
+There is a required fee for publishing items. This fee exists to deter users from publishing an excessive number of wearables in an attempt to “spam” the wearables market.
+
+**The fee is a flat rate of 500 MANA per item (not NFT!) in your collection.**
+
+For example, if you publish a collection with two items, you will have to pay a fee of 1000 MANA (500 MANA for each item) regardless of the rarity (or how many NFTs can be minted) of those items.
+
+These fees are transferred to the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
+
+_Currently, due to the time and resources required to review each collection submitted, the 500 MANA publication fee is non-refundable. If your collection is rejected, you will not receive your 500 MANA back._
+
+After reviewing your total fee, click **Next**.
+
 > **Warning!**
 > You will not be able to add or remove items in your collection after beginning the publication process. You will be able to see your items within the Decentraland Marketplace, but they will not be able to be bought, sold, or transferred until they have been approved.
 
@@ -159,13 +184,77 @@ First, navigate to the [Builder](https://builder.decentraland.org) and select th
 
 To add collaborators, simply enter their Ethereum address, and click **Add**. You can add as many collaborators as you want. To remove a collaborator, simply click **Remove** next to the collaborator’s address.
 
+### Selling items
+
+After your items are published in a collection and approved by the Curation Committee, they can be sold to other users in the metaverse.
+
+Items can be sold in **primary sales** and **secondary sales**.
+
+- **Primary sales** are performed by the Decentraland Store’s smart contract. During a primary sale, the **item is minted automatically**, and it is sold for the price set by you in the Wearable Editor.
+
+- **Secondary sales** are performed by the Decentraland Marketplace’s smart contract. These occur anytime a user sells an item in the Marketplace **after it has been minted** or **purchased in a primary sale**. Items can be sold for any price in a secondary sale.
+
+To view items available to purchase in a primary sale, head to the [Decentraland store!](https://play.decentraland.org/?position=-70%2C0)
+
+To view items available for secondary sales, visit the [Decentraland Marketplace.](https://market.decentraland.org)
+
+### Primary sales
+
+Primary sales occur when one of your items is purchased for the first time. These sales are only performed by the Decentraland Store’s smart contract.
+
+When a user makes a primary purchase of one of your items, the store **mints the item automatically**, transfers the item to the purchaser, and sends the MANA proceeds to the beneficiary address.
+
+> Remember! You do not need to mint your items in order to sell them in primary sales!
+
+To sell your items via primary sales, begin by navigating to the [Builder](https://builder.decentraland.org) and selecting the **Collections** tab.
+
+#### Set the price and beneficiary address
+
+Select the collection you would like to sell, and set the price and beneficiary for each item. The beneficiary address is the address that will receive the MANA resulting from a primary sale.
+
+If the price you set for a primary sale is **“Free”**, users will be able to purchase your items at no cost in the store, but they can resell the item in a secondary sale at any price later on.
+
+You can change the price and beneficiary address for any item in your collection at any time.
+
+#### Enable primary sales
+
+Finally, click the On Sale switch and click Turn On in the confirmation window that appears. When this switch is enabled, your collection will be available to purchase within the Decentraland store.
+
+![]({{ site.baseurl }}/images/media/wearable-user-guide-images/selling-items-1.png)
+
+As long as this switch is turned on, the Decentraland store will automatically mint one of your items whenever a user makes a primary purchase.
+
+This means that it is possible to mint and sell all of your available items until the maximum supply is reached. If you want to save one or more of your items before listing them for sale, you need to manually mint an item to one of your own wallet addresses.
+
+Anyone who purchases one of your items is able to resell it at any time, and at any price, in a secondary sale in Decentraland’s [Marketplace](https://market.decentraland.org).
+
+**All primary sales within the Decentraland in-world store are subject to a 2.5% fee. This fee is transferred to the DAO.**
+
+**If I sell an item via a primary sale, will I receive my MANA on Polygon?**  
+Yes, the proceeds of any items sold on Polygon will reside on the sidechain. You will have to pay a transaction fee if you want to transfer your MANA from the Polygon sidechain to the main Ethereum chain. You can do so from the [Accounts](https://account.decentraland.org) page.
+
+If you want to transfer MANA that you’ve earned from a wearable sale on the Polygon to the Ethereum main network, you will have to pay a gas fee at the bridge. For more information on the Polygon sidechain, [please see this blog post](https://decentraland.org/blog/announcements/polygon-mana/).
+
+#### Disabling primary sales
+
+To unlist your items, click the **On Sale** switch to toggle it off. This will only apply to primary sales for your items.
+
+### Secondary sales
+
+Items can be sold in secondary sales at any time, and for any price, in the Decentraland Marketplace only after:
+
+- They have been **minted**, or
+- they have been **purchased in a primary sale**
+
+In other words, anybody who owns an NFT for a wearable can sell it in the Decentraland Marketplace. There are no royalties for wearables sold in secondary sales in Decentraland.
+
 ### Minting wearables
 
 Minting is the process of creating the actual non-fungible tokens (NFTs) based on the items you’ve uploaded to the Wearables Editor.
 
-#### Rarity
+#### Item rarities
 
-When you publish a collection, each item in that collection has a set **rarity** that you specified. This rarity is recorded in a smart contract, and limits the total supply, or **stock**, that you can mint of any particular item.
+When you publish a collection, each item in that collection has a **rarity**. This rarity is set by you when you upload an item, and is recorded in a smart contract. Rarities limit the total supply, or **stock**, that you can mint of any particular item.
 
 The available rarities, and the maximum stock provided by each, are:
 
@@ -179,11 +268,17 @@ The available rarities, and the maximum stock provided by each, are:
 | Uncommon  | 10000  |
 | Common    | 100000 |
 
+&nbsp;
+
 For example, if you have a collection with one Epic item, then you can only mint up to 1000 NFTs of that item.
 
-#### The Matic/Polygon Sidechain
+#### The Polygon sidechain
 
-All wearables in Decentraland are minted on the Matic/Polygon sidechain. This allows users to mint and transfer items without paying any gas fees (so long as these transactions are conducted solely on the Matic/Polygon sidechain).
+All wearables in Decentraland are minted on the Polygon sidechain. This allows users to mint and transfer items without paying any gas fees (so long as these transactions are conducted solely on the Polygon sidechain).
+
+### How to manually mint your items
+
+To mint published items, open the collection containing the items you’d like to mint, and click **Mint Items**.
 
 If you want to transfer an item that was minted or purchased on Matic/Polygon to the Ethereum main network, you will have to pay a gas fee at the bridge. For more information on the Matic/Polygon sidechain, [please see this blog post](https://decentraland.org/blog/announcements/polygon-mana/).
 
@@ -195,7 +290,7 @@ To mint published items, open the collection containing the items you’d like t
 
 When minting, you must set the address that will receive the minted items and you must set the number of items you want to mint. You cannot mint more items than are available in the stock listed.
 
-For example, if you have a Legendary item, but have already minted 25 of them, then you can only mint up to 75 more.
+You can “gift” items to anyone you like by entering their address instead of your own under Address.
 
 **Are there any fees associated with minting items?**  
 No, items are minted on the Polygon/Matic sidechain, thus removing any fees traditionally associated with minting NFTs on the main Ethereum blockchain.
