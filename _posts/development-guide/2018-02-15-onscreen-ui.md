@@ -78,7 +78,7 @@ message.vAlign = "bottom"
 message.positionX = -80
 ```
 
-> Note: UIs are intentionally limited so that they can't cover the top 10% of the screen. Because of this, a vertically "centered" UI is centered in relation to the available 90% of the screen, not to the entire screen space.
+To determine the z position of UI elements, the UI uses the parenting hierarchy of the components. So, if a component is a child of another, it will appear in front of the other.
 
 ## Use parent elements for organizing
 
