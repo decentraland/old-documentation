@@ -94,8 +94,6 @@ Collision settings currently don't affect how other entities interact with each 
 
 Decentraland currently doesn't have a physics engine, so if you want entities to fall, crash or bounce, you must code this behavior into the scene.
 
-> Tip: To view the limits of all collider meshes in the scene, launch your scene preview with `dcl start` and then click `c`. This draws blue lines that delimit all colliders in place.
-
 Entities don't use collisions by default. Depending on the type of the shape component it has, collisions are enabled as follows:
 
 - For _primitive_ shapes (boxes, spheres, planes etc), you enable collisions by setting the `withCollisions` field of the shape component to _true_.
