@@ -67,8 +67,6 @@ Now when players view the stairs in your scene, they’ll see the more elaborate
 
 - When duplicating collider objects, pay attention to their names. Some programs append a \__1_ to the end of the filename to avoid duplicates, for example _tree_collider_1_. Objects that are named like this will be interpreted by the Decentraland World Engine as normal objects, not colliders.
 
-- To view the limits of all collider meshes in a Decentraland scene, launch your scene preview with `dcl start` and then click `c`. This draws blue lines that delimit all colliders in place.
-
 - You can avoid adding a collider mesh if you add an invisible primitive shape that overlaps to your 3D model in your scene. Primitive shapes have collisions on by default. For example, an entity with a BoxShape() component, and its `visible` property set to false can do the trick.
 
 - If you're creating a 3D model with many mesh shapes that each need their collider, there are some handy add-ons that can help. For Blender you can use [Simple Renaming Panel](https://github.com/Weisl/simple_renaming_panel) to automatically add a `_collider` suffix to all mesh names in a group.
