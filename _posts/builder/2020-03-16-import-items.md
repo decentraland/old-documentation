@@ -41,7 +41,6 @@ Instead of building your own 3D models, you can also download them from several 
 
 To get you started, below is a list of libraries that have free or relatively inexpensive content:
 
-- [Google Poly](https://poly.google.com)
 - [SketchFab](https://sketchfab.com/)
 - [Clara.io](https://clara.io/)
 - [Archive3D](https://archive3d.net/)
