@@ -48,6 +48,8 @@ Any time a modification is to be made to the LAND or Estate contracts, the updat
 
 The SAB has the ability to pause, resume, or cancel any action taken by the DAO Committee.
 
+Initiating the addition or removal of a member of the SAB can be done by opening a proposal on [governance.decentraland.org](https://governance.decentraland.org).
+
 ## The Forum
 
 The [Decentraland Forum](https://forum.decentraland.org) is the communication hub for the DAO. Everytime a new proposal is created, an accompanying thread is opened automatically on the Forum under the [Governance section](https://forum.decentraland.org/c/governance/). These proposal topics can be found either by browsing the Forum, or by clicking the “Discuss in the Forum'' button on any proposal’s detail page in the Governance UI. These threads are a space where voters can discuss the various impacts and issues that might result from a proposal.
