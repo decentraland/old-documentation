@@ -9,7 +9,7 @@ redirect_from:
 type: Document
 ---
 
-You can set the _position_, _rotation_ and _scale_ of an entity by using the `Transform` component. This can be used on any entity, which can also a primitive shape component (cube, sphere, plane, etc) or a 3D model component (glTF, Obj).
+You can set the _position_, _rotation_ and _scale_ of an entity by using the `Transform` component. This can be used on any entity, which can also a primitive shape component (cube, sphere, plane, etc) or a 3D model component (`GLTFShape`).
 
 <img src="{{ site.baseurl }}/images/media/ecs-simple-components.png" alt="nested entities" width="400"/>
 
