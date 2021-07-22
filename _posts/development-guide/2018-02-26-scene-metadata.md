@@ -60,7 +60,7 @@ When players navigate the world and enter your scene, they are able to read the 
    }
 ```
 
-The thumbnail should be a _.png_ or _.jpg_ image of a minimum size of _196x143_ pixels.
+The thumbnail should be a _.png_ or _.jpg_ image of a recommended size of _228x160_ pixels. The minimum supported size is _196x143_ pixels. The image may be stretched if the width-to-height proportions don't match _228x160_.
 
 The image on `navmapThumbnail` should be a path to an image file in the project folder. It can also be a URL link to an image hosted elsewhere.
 
