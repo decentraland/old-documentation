@@ -27,13 +27,21 @@ Make sure of the following:
 
 When deploying, the CLI reads information from the _scene.json_ to know where to deploy your scene to.
 
-Open your scene's _scene.json_ file and verify the following:
+Open your scene's _scene.json_ file and complete the following data:
 
-- **Owner**: Needs to match your Ethereum wallet address. This same address needs to hold the LAND tokens, or have been granted permissions by the owner.
+- **title**: The title is displayed on the UI under the mini-map, whenever players enter your scene. It also shows on the teleport popup.
+
+- **description**: A description of what players will find in your scene. This is displayed on the teleport popup.
+
+- **navmapThumbnail**: An image that represents your scene. This is displayed on the teleport popup. The image should be a _.png_ or _.jpg_ image of a recommended size of _228x160_ pixels.
+
 
 - **Parcels**: The coordinates of the parcels that will be occupied by your scene
 
 - **Base**: The coordinates of the parcel that will be considered the [0,0] coordinate of the scene. If your scene has multiple parcels, it should be the bottom-left (South-West) parcel.
+
+- **spawnPoints**: A set of coordinates inside the scene (relative to the scene's base parcel) where players spawn into. By default players spawn onto the _0,0,0_ location of the scene (bottom-left corner). Use this to start out in a specific location, set a region to prevent players from overlapping with each other when they first appear.
+
 
 > Note: See [scene metadata]({{ site.baseurl }}{% post_url /development-guide/2018-02-26-scene-metadata %}) for more details on how to set these parameters.
 
