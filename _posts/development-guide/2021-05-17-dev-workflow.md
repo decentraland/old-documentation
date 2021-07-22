@@ -76,6 +76,8 @@ Once you're happy with your scene, it's time to publish it to the production env
 dcl deploy
 ```
 
-See [publishing]({{ site.baseurl }}{% post_url /development-guide/2018-01-07-publishing %}) ) for more details.
+Check that your scene has all the necessary metadata: name, description, a preview image, spawn points. See [scene metadata]({{ site.baseurl }}{% post_url /development-guide/2018-02-26-scene-metadata %}) for details.
+
+See [publishing]({{ site.baseurl }}{% post_url /development-guide/2018-01-07-publishing %}) for more details.
 
 > Tip: To give your new scene more visibility, consider creating an inaugural event in the [events page](https://events.decentraland.org/en/).
