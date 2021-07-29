@@ -207,9 +207,9 @@ There are certain features that can be dissabled in specific scenes so that play
 The corresponding features are enabled by default, unless specified as _dissabled_ in the `scene.json` file.
 
 ```json
-featureToggles: {
-    voiceChat: 'disabled',
-}
+"featureToggles": {
+    "voiceChat": "disabled"
+},
 ```
 
 Currently, only the following feature is handled like this:
