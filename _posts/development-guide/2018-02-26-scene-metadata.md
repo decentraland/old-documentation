@@ -143,7 +143,7 @@ You can set a whole region in the scene to act as a spawn point. By specifying a
       "default": true,
       "position": {
         "x": [1,5],
-        "y": 1,
+        "y": [1,1],
         "z": [2,4]
       }
     }
@@ -217,25 +217,6 @@ Currently, only the following feature is handled like this:
 - `voiceChat`: Refers to players using their microphones to have conversations over voice chat with other nearby players.
 
 If a `featureToggles` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
-
-
-## Custom metadata
-
-You can extend the fields in the "policy" section to whatever you think is relevant. These fields might be taken into consideration by alternative community clients used to navigate the metaverse and be used to filter content or restrict players from doing certain actions like flying or battling.
-
-This metadata might also be used by scripts of interactive inventory items, for example a light sabre inventory item might only be possible to use on scenes that allow for battles to take place.
-
-As clear use cases start to emerge, we plan to define more conventions over the metadata that can be added to this file.
-
-```json
-  "policy": {
-    "contentRating": "E",
-    "fly": true,
-    "voiceEnabled": true,
-    "blacklist": [],
-    "teleportPosition": ""
-  }
-```
 
 ## Fetch metadata from scene code
 
