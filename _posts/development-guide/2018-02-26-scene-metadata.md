@@ -208,7 +208,7 @@ The corresponding features are enabled by default, unless specified as _dissable
 
 ```json
 "featureToggles": {
-    "voiceChat": "disabled",
+    "voiceChat": "disabled"
 },
 ```
 
