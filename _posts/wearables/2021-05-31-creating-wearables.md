@@ -111,7 +111,7 @@ The same goes for textures. It’s critical that we use as few textures as possi
 
 There are limits for the number of triangles and textures that can be used for each wearable or accessory:
 
-- No more than 1K triangles per wearable
+- No more than 1.5K triangles per wearable
 - No more than 500 triangles per accessories
 - No more than 2 textures (at a resolution of 512x512px or lower) per wearable. All textures must be square.
 
