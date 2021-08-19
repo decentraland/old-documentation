@@ -84,6 +84,6 @@ Grant requests remain open on the DAO for 7 days, during which the community can
 
 ## Minimum acceptance thresholds
 
-As has been [voted in place by the DAO](https://governance.decentraland.org/en/proposal/?id=95141550-c3f4-11eb-b2bc-870b0f8c50b5, grant requests cannot be approved by the DAO unless 1 million VP or more votes in **For** the request and the **For** votes have the majority.
+As has been [voted in place by the DAO](https://governance.decentraland.org/en/proposal/?id=95141550-c3f4-11eb-b2bc-870b0f8c50b5), grant requests cannot be approved by the DAO unless 1 million VP or more votes in **For** the request and the **For** votes have the majority.
 
 Failure to reach at least 1 million VP, even if the **For** votes are in the majority, results in the rejection of the proposal. Grant requests may be resubmitted, so if you fail to obtain approval, you may revise and resubmit your proposal at a later date.
