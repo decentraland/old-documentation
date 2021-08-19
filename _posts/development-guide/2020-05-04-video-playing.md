@@ -41,8 +41,12 @@ const myVideoClip = new VideoClip(
 const myVideoTexture = new VideoTexture(myVideoClip)
 
 // #3
-const myMaterial = new BasicMaterial()
-myMaterial.texture = myVideoTexture
+const myMaterial = new Material()
+myMaterial.albedoTexture = myVideoTexture
+myMaterial.roughness = 1
+myMaterial.specularIntensity = 0
+myMaterial.metallic = 0
+
 
 // #4
 const screen = new Entity()
@@ -61,7 +65,7 @@ screen.addComponent(
 engine.addEntity(screen)
 
 // #5
-myVideoTexture.playing = true
+myVideoTexture.play()
 ```
 
 To use a video file, just change the first step to reference the path to the file:
@@ -69,6 +73,35 @@ To use a video file, just change the first step to reference the path to the fil
 ```ts
 const myVideoClip = new VideoClip("videos/myVideo.mp3")
 ```
+
+## Video Materials
+
+To many, the default properties of a material make the video look quite opaque for a screen, but you can enhance that by altering other properties of the material.
+
+
+```ts
+const myMaterial = new Material()
+myMaterial.albedoTexture = videoTexture
+myMaterial.roughness = 1
+myMaterial.specularIntensity = 0
+myMaterial.metallic = 0
+```
+
+If you want the screen to glow a little, you can even set the `emissiveTexture` of the material to the same `VideoTexture` as the `albedoTexture`.
+
+
+```ts
+const myMaterial = new Material()
+myMaterial.albedoTexture = videoTexture
+myMaterial.roughness = 1.0
+myMaterial.specularIntensity = 0
+myMaterial.metallic = 0
+myMaterial.emissiveTexture = videoTexture
+myMaterial.emissiveColor = Color3.White()
+myMaterial.emissiveIntensity = 0.6
+```
+
+See [materials]({{ site.baseurl }}{% post_url /development-guide/2018-02-7-materials %}) for more details.
 
 ## About Streaming
 
