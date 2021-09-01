@@ -35,29 +35,23 @@ Open your scene's _scene.json_ file and complete the following data:
 
 - **navmapThumbnail**: An image that represents your scene. This is displayed on the teleport popup. The image should be a _.png_ or _.jpg_ image of a recommended size of _228x160_ pixels.
 
-
 - **Parcels**: The coordinates of the parcels that will be occupied by your scene
 
 - **Base**: The coordinates of the parcel that will be considered the [0,0] coordinate of the scene. If your scene has multiple parcels, it should be the bottom-left (South-West) parcel.
 
 - **spawnPoints**: A set of coordinates inside the scene (relative to the scene's base parcel) where players spawn into. By default players spawn onto the _0,0,0_ location of the scene (bottom-left corner). Use this to start out in a specific location, set a region to prevent players from overlapping with each other when they first appear.
 
-
 > Note: See [scene metadata]({{ site.baseurl }}{% post_url /development-guide/2018-02-26-scene-metadata %}) for more details on how to set these parameters.
 
 ## To publish the scene
 
-1.  To make sure the scene has been locally built with your latest changes, run `dcl start`.
-2.  Log into your Metamask account with the same public address associated with your parcels in Decentraland.
-3.  Run `dcl deploy` from the scene's folder.
-4.  The command line lists the files it will upload. Confirm with _Y_.
+1.  Log into your Metamask account with the same public address associated with your parcels in Decentraland.
+2.  Run `dcl deploy` from the scene's folder.
+    > Tip: If there are files in your project folder that you don't want to deploy, list them in the _.dclignore_ file before deploying.
+3.  A browser tab will open, showing what parcels you're deploying to. Click **Sign and Deploy**.
+4.  Metamask opens, notifying you that your signature is requested. Click **Sign** to confirm this action.
 
-    > Tip: If there are files in your project folder that you don't want to deploy, list them in the _.dclignore_ file.
-
-5.  A browser tab will open, showing what parcels you're deploying to. Click **Sign and Deploy**.
-6.  Metamask opens, notifying you that your signature is requested. Click **Sign** to confirm this action.
-
-> Tip: If you're implementing a continuous integration flow, where changes to your scene are deployed automatically, then you can use the `--y` flag to skip the manual confirmations when running the deploy command.
+> Tip: If you're implementing a continuous integration flow, where changes to your scene are deployed automatically, then you can set the `export DCL_PRIVATE_KEY` environment variable to the private key of an account that has deploy permissions.
 
 ## Publish from a physical Ledger device
 
@@ -65,19 +59,16 @@ Instead of storing your LAND tokens in a Metamask account, you may find it more 
 
 If you're using one of these, the process of uploading content to your LAND is slightly different.
 
-1.  To make sure the scene has been locally built with your latest changes, run `dcl start`.
-2.  Plug your Ledger device in. Your parcels in Decentraland should be associated with that same wallet.
-3.  Run `dcl deploy --https` from the scene's folder. 4. The command line lists the files it will upload. Confirm with _Y_.
+1.  Plug your Ledger device in. Your parcels in Decentraland should be associated with that same wallet.
+2.  Run `dcl deploy --https` from the scene's folder.
 
     > Tip: If there are files in your project folder that you don't want to deploy, list them in the _.dclignore_ file.
 
-4.  A browser tab will open, showing what parcels you're deploying to. Click **Sign and Deploy**.
+3.  A browser tab will open, showing what parcels you're deploying to. Click **Sign and Deploy**.
 
     > Note: Currently, the certificate is self-signed, so your browser might give you a warning before launching the page. The warning is displayed only because the certificate is self-signed by your machine, please ignore it and carry on.
 
-5.  The Ledger device will then ask you for a confirmation, which you must give by pushing the device's buttons.
-
-> Tip: If you're implementing a continuous integration flow, where changes to your scene are deployed automatically, then you can use the `--y` flag to skip the manual confirmations when running the deploy command.
+4.  The Ledger device will then ask you for a confirmation, which you must give by pushing the device's buttons.
 
 ## Scene overwriting
 

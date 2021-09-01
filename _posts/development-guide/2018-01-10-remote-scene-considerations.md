@@ -174,7 +174,7 @@ See [preview a scene]({{ site.baseurl }}{% post_url /development-guide/2018-01-0
 
 #### Separate realms
 
-Players in decentraland exist in many separate _realms_. Players in different realms cant see each other, interact or chat with each other, even if they're standing on the same parcels. Dividing players like this allows Decentraland to handle an unlimited ammount of players without running into any limitations. It also pairs players that are in close regions, to ensure that ping times between players that interact are acceptable.
+Players in decentraland exist in many separate _realms_. Players in different realms cant see each other, interact or chat with each other, even if they're standing on the same parcels. Dividing players like this allows Decentraland to handle an unlimited amount of players without running into any limitations. It also pairs players that are in close regions, to ensure that ping times between players that interact are acceptable.
 
 If your scene sends data to a 3rd party server to sync changes between players in real time, then it's important that changes are only synced between players that are on the same realm. You should handle all changes that belong to one realm as separate from those on a different realm. Otherwise, players will see things change in a spooky way, without anyone making the change.
 

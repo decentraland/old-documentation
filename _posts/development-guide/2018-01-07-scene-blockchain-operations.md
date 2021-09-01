@@ -26,10 +26,10 @@ Note that all transactions triggered by a scene will require a player to approve
 
 All blockchain operations also need to be carried out as [asynchronous functions]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %}), since the timing depends on external events.
 
-When running a preview of a scene that uses one of the ethereum libraries, you must have Metamask or Dapper open and you must add the following string to the end of the URL:
+When running a preview of a scene that uses one of the ethereum libraries, you must have Metamask open in your browser and you must run the preview with:
 
 ```
-&ENABLE_WEB3
+dcl start --web3
 ```
 
 <!--

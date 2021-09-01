@@ -37,7 +37,7 @@ Our SDK includes the following components:
 -->
 
 - **The Decentraland CLI** (Command Line Interface): Use it to [generate]({{ site.baseurl }}{% post_url /development-guide/2018-01-02-coding-scenes %}) new Decentraland scenes locally on your own machine, preview them and upload them to the content server.
-- **The Decentraland API**: A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between players or other applications. ( [latest API reference](https://github.com/decentraland/ecs-reference/blob/master/docs-latest/decentraland-ecs.md))
+- **The Decentraland ECS**: A TypeScript package containing the library of helper methods that allows you to create interactive experiences. Use it to create and manipulate objects in the scene and also to facilitate in-world transactions between players or other applications. ( [latest ECS reference](https://github.com/decentraland/ecs-reference/blob/master/docs-latest/decentraland-ecs.md))
 
 - **Scene examples**: Take inspiration and coding best practices from the [scene examples](https://github.com/decentraland-scenes/Awesome-Repository#examples).
 
