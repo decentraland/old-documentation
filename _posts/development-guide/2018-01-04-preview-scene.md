@@ -45,11 +45,13 @@ Once you're happy with your scene, you can upload it and publish it to Decentral
 
 You can add the following flags to the `dcl start` command to change its behavior:
 
-- `--no-browser` to prevent the preview from opening a new browser tab.
 - `--port` to assign a specific port to run the scene. Otherwise it will use whatever port is available.
 - `--no-debug` Disable the debug panel, that shows scene and performance stats
+- `--no-browser` to prevent the preview from opening a new browser tab.
 - `--w` or `--no-watch` to not open watch for filesystem changes and avoid hot-reload
 - `--c` or `--ci` To run the parcel previewer on a remote unix server
+- `--web3` Connects preview to browser wallet to use the associated avatar and account
+- `--skip-version-checks` Avoids checking if the scene's ECS library version matches your CLI version, and launches the preview anyway.
 
 > Note: To preview old scenes that were built for older versions of the SDK, you must set the corresponding version of `decentraland-ecs` in your project's `package.json` file.
 
@@ -155,22 +157,40 @@ Collision meshes can be added to any model in an external 3D modeling tool like 
 While viewing the preview, you can press `b` to view any bounding boxes. Bounding boxes show the space occupied by an entity, it's especially useful to see these when dealing with entities that are invisible, buried inside others, or underground.
 -->
 
+## Avatars and accounts
+
+When you run a preview, you're assigned a random avatar each time you reload.
+
+To use a consist avatar across your sessions, you can store an avatar profile by adding a `PLAYER` parameter to the URL with any string as its value. When using this, the preview will store your avatar’s settings locally on your browser, to retrieve them whenever you use the same string on the `PLAYER` parameter. For example, every time you open the preview with the URL `http://127.0.0.1:8000/?PLAYER=ringo`, you’ll have the same avatar.
+
+To use the avatar that's linked to your active Metamask account, with access to all of your owned wearables, start the preview with:
+
+```
+dcl start --web3
+```
+
 ## Connecting to Ethereum network
 
-If your scene makes use of transactions over the Ethereum network, for example if it prompts you to pay a sum in MANA to open a door, you must manually add an additional parameter to the preview URL: `&ENABLE_WEB3`
+If your scene makes use of transactions over the Ethereum network, for example if it prompts you to pay a sum in MANA to open a door, you must add an additional parameter to the command when launching the preview:
 
-So for example if your scene opens in the following URL:
-`http://127.0.0.1:8000/?SCENE_DEBUG_PANEL&position=0%2C0`
+```
+dcl start --web3
+```
 
-Add the parameter at the end, like this:
-`http://127.0.0.1:8000/?SCENE_DEBUG_PANEL&position=0%2C0&ENABLE_WEB3`
+Alternatively, you can manually add the URL parameter `&ENABLE_WEB3` to the URL in the browser window.
 
 #### Using the Ethereum test network
 
 You can avoid using real currency while previewing the scene. For this, you must use the _Ethereum Ropsten test network_ and transfer fake MANA instead. To use the test network you must set your Metamask Chrome extension to use the _Ropsten test network_ instead of _Main network_. You must also own MANA in the Ropsten blockchain, which you can acquire for free from Decentraland.
 
-<!--
-To preview your scene using the test network, add the `DEBUG` property to the URL you're using to access the scene preview on your browser. For example, if you're accessing the scene via `http://127.0.0.1:8000/?position=0%2C-1`, you should set the URL to `http://127.0.0.1:8000/?DEBUG&position=0%2C-1`.
--->
-
 Any transactions that you accept while viewing the scene in this mode will only occur in the test network and not affect the MANA balance in your real wallet.
+
+## Multiplayer testing
+
+If you open a second preview window on your machine, you will enter the scene with a different avatar. The avatars on both tabs will be able to see each other and interact, although currently they might have inconsistent names and wearables on.
+
+> Note: You can't open multiple tabs using the same account. So if your URL has a hardcoded `PLAYER` parameter with the same string on multiple tabs, or you're connecting to Metamask on more than one tab, it won't be possible to load them all. Each simultaneous tab should load a different account.
+
+If the scene uses the MessageBus to send messages between players, these will work between the different tabs.
+
+If the scene connects to a third party server via websockets, these connections should also work independently on each tab, as separate players.

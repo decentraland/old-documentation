@@ -63,22 +63,6 @@ You can confirm that it worked by checking the `package.json` file for the scene
 <!--
 
 
-To update the version of the Decentraland SDK used by a project:
-
-1.  Open the file `package.json` in the project folder.
-2.  In this file, look for the field `decentraland-ecs`:
-
-    * If the value is `latest`, keep it.
-    * If the version points to a number or a build that isn't the latest version of the SDK, change it to `latest`.
-    * If you can't find the field `decentraland-ecs`, but do find the field `decentraland-api`, then your project is written with a deprecated version that's older than `5.0`. Create a new project with the CLI and [migrate the content manually](https://decentraland.org/blog/tutorials/sdk-migration/) to it.
-
-3. Delete the file `package-lock.json` and the folder `node-modules` from the project.
-4. Run the scene preview with `dcl start`. All the dependencies should be automatically reinstalled, according to the versions listed in `package.json`.
-
-
-
-
-
 #### Optional: Install Git
 
 Mac OS and linux-based machines should have git installed by default, these steps should only be relevant to Windows based machines.
