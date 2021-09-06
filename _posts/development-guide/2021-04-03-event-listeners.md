@@ -161,7 +161,7 @@ tutorialEnableObservable.add((tutorialEnabled) => {
 	log("Player started tutorial")
     backgroundMusicSource.playing = false
   } else {
-    log("Player finished tutorial)
+    log("Player finished tutorial")
     backgroundMusicSource.playing = true
   }
 })
