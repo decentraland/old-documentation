@@ -158,7 +158,7 @@ The `decentraland-ecs` library has in turn a couple of internal dependencies tha
 
 For example, you can run your preview with the following URL:
 
-> http://127.0.0.1:8000/?position=0%2C0&SCENE_DEBUG_PANEL&renderer-version1.0.12119-20210830195045.commit-a8be53a
+> http://127.0.0.1:8000/?position=0%2C0&SCENE_DEBUG_PANEL&renderer-version=1.0.12119-20210830195045.commit-a8be53a
 
 To find out what versions are available to choose from on each dependency, check the version history on the NPM pages for the [Renderer](https://www.npmjs.com/package/@dcl/unity-renderer) and for the [Kernel](https://www.npmjs.com/package/decentraland-kernel). To know what versions of these dependencies are in use by default by a specific `decentraland-ecs` version, you can run the following command, indicating the `decentraland-ecs` version you're curious about:
 
