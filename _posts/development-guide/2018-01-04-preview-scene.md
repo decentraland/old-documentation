@@ -143,6 +143,29 @@ executeTask(async () => {
 
 > Note: `isPreviewMode()` needs to be run as an [async function]({{ site.baseurl }}{% post_url /development-guide/2018-02-25-async-functions %}), since the response may delay in returning data.
 
+#### Dependency versions
+
+Running a Decentraland scene locally depends on two main libraries: `decentraland` (the CLI, which is installed globally on your machine) and `decentraland-ecs`, which is installed on each project folder. Make sure both of those are up to date, as any issues you're experiencing might already be fixed in newer versions. There may also be compatibility problems when attempting to run with one of these two outdated and the other up to date. You can run the following commands to update both these libraries to the latest stable version:
+
+```
+npm i -g decentraland@latest
+npm i decentralnad-ecs@latest
+```
+
+If you're using any of the [utils libraries](https://github.com/decentraland-scenes/Awesome-Repository#Libraries) make sure those are also up to date, as older versions of these libraries may not be compatible with newer versions of `decentraland-ecs`.
+
+The `decentraland-ecs` library has in turn a couple of internal dependencies that are installed with it: the `renderer` and the `kernel`. Each `decentraland-ecs` version is paired with its corresponding versions of both. In occasions, it may be useful to try switching versions of these dependencies independently, to better pinpoint where an issue has originated. You can force your preview to use a different version of the `renderer` or of the `kernel` by simply providing the url parameters `renderer-version` and `kernel-version`, pointing at a specific commit.
+
+For example, you can run your preview with the following URL:
+
+> http://127.0.0.1:8000/?position=0%2C0&SCENE_DEBUG_PANEL&renderer-version1.0.12119-20210830195045.commit-a8be53a
+
+To find out what versions are available to choose from on each dependency, check the version history on the NPM pages for the [Renderer](https://www.npmjs.com/package/@dcl/unity-renderer) and for the [Kernel](https://www.npmjs.com/package/decentraland-kernel). To know what versions of these dependencies are in use by default by a specific `decentraland-ecs` version, you can run the following command, indicating the `decentraland-ecs` version you're curious about:
+
+```
+npm info decentraland-ecs@6.6.7
+```
+
 <!--
 ## View collision meshes
 
