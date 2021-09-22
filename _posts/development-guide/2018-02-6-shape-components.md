@@ -64,8 +64,6 @@ glTF models can include their own embedded textures, materials, colliders and an
 
 Keep in mind that all models, their shaders and their textures must be within the parameters of the [scene limitations]({{ site.baseurl }}{% post_url /development-guide/2018-01-06-scene-limitations %}).
 
-> Note: 3D models in _.obj_ format are also supported, but less encouraged. To add one, create an `OBJShape` component instead. Note that _.obj_ models don't support animations and other features.
-
 #### Free libraries for 3D models
 
 Instead of building your own 3d models, you can also download them from several free or paid libraries.
