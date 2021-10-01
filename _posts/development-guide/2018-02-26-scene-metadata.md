@@ -24,7 +24,7 @@ When [deploying]({{ site.baseurl }}{% post_url /development-guide/2018-01-07-pub
   }
 ```
 
-This information is not necessary while developing a scene offline, unless you're building a scene that occupies more than one parcel.
+The default scene has its coordinates set to _0,0_, this information is not necessary to change while developing a scene offline, unless you need to occupy multiple parcels. You will need to change this before deploying, to coordinates where you do have deploy permissions.
 
 The `base` field defines which parcel to consider the base parcel. If your scene has a single parcel, the base should be that parcel. If your scene has multiple parcels, the base should be the bottom-left (South-West) parcel. All entity positions will be measured in reference to the South-West corner of this parcel.
 
@@ -38,6 +38,48 @@ To display multiple parcels in the scene preview, list as many parcels as you in
     "base": "54,-14"
   }
 ```
+
+### Set parcels via the command line
+
+You can set the parcels in your scene by running the `dcl coords` command in your scene folder. This is especially useful for large scenes, as you don't need to list every parcel involved.
+
+**Single parcel**
+
+Pass a single argument with the scene coords. This coordinate is also set as the base parcel.
+
+`dcl coords <parcel>`
+
+For example:
+
+`dcl coords 15,-26`
+
+**Muliple parcels**
+
+Pass two arguments: the South-West and the North-East parcels. The South-West parcel is also set as the base parcel.
+
+`dcl coords <parcel> <parcel>`
+
+> Tip: The South-West parcel is always the one with the lowest numbers on both the _X_ and _Y_ coordinates.
+
+For example:
+
+`dcl coords 15,-26 17,-24`
+
+This command generates a 3x3 scene, with its base parcel in `15,-26`.
+
+**Customize Base Parcel**
+
+Pass three arguments: the South-West and the North-East parcels, and the parcel to use as a base parcel.
+
+`dcl coords <parcel> <parcel> <parcel>`
+
+> Note: The base parcel must be one of the parcels in the scene.
+
+**Non-square scenes**
+
+The above commands all generate rectangular-shaped scenes. Decentraland scenes can have L shapes or other configurations. You can generate a larger square with `dcl coords` and then manually remove excess parcels from the `scene.json` file.
+
+> Note: The base parcel must be one of the parcels in the scene.
 
 ## Scene title, description, and image
 
