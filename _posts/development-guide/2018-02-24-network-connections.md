@@ -64,6 +64,40 @@ The fetch command returns a `response` object with the following data:
 
 > Note: `json()` and `text()` are mutually exclusive. If you obtain the body of the response in one of the two formats, you can no longer obtain the other from the `response` object.
 
+### Signed requests
+
+You can employ an extra security measure to certify that a request is originating from a player session inside Decentraland. You can send your requests with an additional signature, that is signed using an ephemeral key that the Decentraland session generates for each player based on the player's address. The server receiving the request can then verify that the signed message indeed matches an address that is currently active in-world.
+
+These kinds of security measures are especially valuable when there may be an incentive for a player to abuse the system, to farm tokens or points in a game.
+
+To send a signed request, all you need to do is use the `signedFetch()` function, in exactly the same way as you would use the `fetch()` function. All the same parameters are valid.
+
+```ts
+executeTask(async () => {
+  try {
+    let response = await signedFetch(callUrl, {
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify(myBody),
+    })
+    let json = await response.json()
+    log(json)
+  } catch {
+    log("failed to reach URL")
+  }
+})
+```
+
+The request will include an additional series of headers, containing a signed message and a set of metadata to interpret that. The signed message consists of all the contents of the request encrypted using the player's ephemeral key.
+
+#### Validating a signed request
+
+To make make use of signed requests, the server receiving these should to validate that the signatures match the rest of the request, and that the timestamp that's encoded within the signed message is current.
+
+You can find a simple example of a server performing this task in the following example scene:
+
+[Validate player authenticity](https://github.com/decentraland-scenes/validate-player-authenticity)
+
 ## Use WebSockets
 
 You can also send and obtain data from a WebSocket server, as long as this server uses a secured connection with _wss_.
@@ -78,4 +112,4 @@ socket.onmessage = function (event) {
 
 The syntax to use WebSockets is no different from that implemented natively by JavaScript. See the documentation from [Mozilla Web API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) for details on how to catch and send messages over WebSockets.
 
-> Note: The Decentraland SDK doesn't support importing external libraries, so you can't use WebSocket libraries.
+> TIP: One library that simplifies the use of websocket connections and has been proven to work very well with Decentraland is [Colyseus](https://colyseus.io/). It builds a layer of abstraction on top of the websocket connections that makes reacting to changes and storing a consistent game state remotely in the server super easy. You can see it in action in [these examples](https://github.com/decentraland-scenes/Awesome-Repository#colyseus). Several other websocket libraries aren't compatible with the Decentraland SDK.
