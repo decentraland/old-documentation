@@ -112,4 +112,4 @@ socket.onmessage = function (event) {
 
 The syntax to use WebSockets is no different from that implemented natively by JavaScript. See the documentation from [Mozilla Web API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) for details on how to catch and send messages over WebSockets.
 
-> TIP: One library that simplifies websocket connections and has been proven to work very well with Decentraland is [Colyseus](https://colyseus.io/). You can see it in action in [these examples](https://github.com/decentraland-scenes/Awesome-Repository#colyseus). Several other websocket libraries aren't compatible with the Decentraland SDK.
+> TIP: One library that simplifies the use of websocket connections and has been proven to work very well with Decentraland is [Colyseus](https://colyseus.io/). It builds a layer of abstraction on top of the websocket connections that makes reacting to changes and storing a consistent game state remotely in the server super easy. You can see it in action in [these examples](https://github.com/decentraland-scenes/Awesome-Repository#colyseus). Several other websocket libraries aren't compatible with the Decentraland SDK.
