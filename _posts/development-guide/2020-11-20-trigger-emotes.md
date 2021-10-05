@@ -38,6 +38,15 @@ Only the emotes in the `PredefinedEmote` enum are currently supported. This list
 - 'CLAP'
 - 'MONEY'
 - 'KISS'
+- 'TIK'
+- 'HAMMER',
+- 'TEKTONIK'
+- 'DONT_SEE'
+- 'HANDS_AIR'
+- 'SHRUG'
+- 'DISCO'
+- 'DAB'
+- 'HEAD_EXPLODDE'
 
 The emote animation is seen both by the player (in 3rd person view) and any other players around. If the player walks, runs or jumps, they will interrupt the animation and return to playing the corresponding animations for these actions.
 
