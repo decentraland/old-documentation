@@ -80,8 +80,15 @@ executeTask(async () => {
       method: "POST",
       body: JSON.stringify(myBody),
     })
-    let json = await response.json()
-    log(json)
+    
+    if (!response.text) {
+      throw new Error('Invalid response')
+    }
+
+    let json = await JSON.parse(response.text)
+    
+    log('Response received: ', json)
+    
   } catch {
     log("failed to reach URL")
   }
@@ -89,6 +96,8 @@ executeTask(async () => {
 ```
 
 The request will include an additional series of headers, containing a signed message and a set of metadata to interpret that. The signed message consists of all the contents of the request encrypted using the player's ephemeral key.
+
+> Note: The `signedFetch()` also differs from the `fetch()` function in that the response is a full http message. To access the body of the response, parse the `.text` property of the response as in the example above.
 
 #### Validating a signed request
 
