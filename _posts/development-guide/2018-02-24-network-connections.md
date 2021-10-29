@@ -97,7 +97,7 @@ executeTask(async () => {
 
 The request will include an additional series of headers, containing a signed message and a set of metadata to interpret that. The signed message consists of all the contents of the request encrypted using the player's ephemeral key.
 
-> Note: The `signedFetch()` also differs from the `fetch()` function in that the response is a full http message. To access the body of the response, parse the `.text` property of the response as in the example above.
+> Note: The `signedFetch()` differs from the `fetch()` function in that the response is a promise of a full http message, expressed as a `FlatFetchInit` object. This includes the properties `text`, `ok`, `status`, `headers`, among others. To access the **body** of the response, parse the `text` property of the response as in the example above.
 
 #### Validating a signed request
 
