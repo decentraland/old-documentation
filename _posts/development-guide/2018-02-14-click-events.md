@@ -41,7 +41,14 @@ myEntity.addComponent(
 
 The `OnPointerDown` component has a second optional parameter, this parameter is an object that can include multiple properties about the event. These properties are explained in greater detail in the next few sub-sections.
 
-- `button`: Which key to listen for: the left mouse click, _E_, or _F_.
+- `button`: Which key to listen for, from the `ActionButton` enum:
+  - `ActionButton.POINTER` (left mouse click on PC)
+  - `ActionButton.PRIMARY` (_E_ on PC)
+  - `ActionButton.SECONDARY`(_F_ on PC)
+  - `ActionButton.ACTION_1`(_1_ on PC)
+  - `ActionButton.ACTION_2`(_2_ on PC)
+  - `ActionButton.ACTION_3`(_3_ on PC)
+  - `ActionButton.ACTION_4`(_4_ on PC)
 - `hoverText`: Hint text to display on the UI when pointing at the entity.
 - `distance`: Maximum click distance.
 
@@ -66,16 +73,19 @@ myEntity.addComponent(
 
 #### Specific button events
 
-The `OnPointerDown` and `OnPointerUp` components can respond to three different buttons: `POINTER`, `PRIMARY`, or `SECONDARY`. On a PC, these map to the left mouse click, _E_ and _F_.
+The `OnPointerDown` and `OnPointerUp` components can respond to the following different buttons:
 
-You can configure the components by setting the `button` field in the second argument of the component initializer. The following values are supported:
+- `POINTER` (left mouse click on PC)
+- `PRIMARY` (_E_ on PC)
+- `SECONDARY`(_F_ on PC)
+- `ACTION_1`(_1_ on PC)
+- `ACTION_2`(_2_ on PC)
+- `ACTION_3`(_3_ on PC)
+- `ACTION_4`(_4_ on PC)
 
-- `ActionButton.POINTER`
-- `ActionButton.PRIMARY`
-- `ActionButton.SECONDARY`
-- `ActionButton.ANY` _(default)_
+You can configure the components by setting the `button` field in the second argument of the component initializer.
 
-`ActionButton.ANY` detects events from all three buttons. If none of them is specified, then `ANY` is used.
+If no button is specified, `ActionButton.ANY` is used as the default. This detects events from any of the available buttons on these components.
 
 ```ts
 const myEntity = new Entity()
@@ -188,14 +198,11 @@ myEntity.addComponent(
 )
 ```
 
-<!--
 #### Multiple buttons on an entity
 
-You may want to make an entity respond to different buttons in different ways. Each entity can only have _one_ `OnPointerDown` component, and _one_ `OnPointerUp` component, but these components can be configured to support multiple button events.
+You may want to make an entity respond to different buttons in different ways. Each entity can only have _one_ `OnPointerDown` component, and _one_ `OnPointerUp` component, but you can use `ActionButton.ANY` and then tell them apart within the function.
 
-To do so, simply pass an array of actionbuttons and a hint string for each.
-
-To differentiate between buttons in the function, you can then detect which button was pressed, by checking the `buttonId` field from the event data. The value of this field will either return a _0_, _1_ or _2_, which map to the `POINTER`, `PRIMARY`, and `SECONDARY` buttons respectively.
+Check the `buttonId` field from the event data. The value of this field returns a number, which maps to the values in the `ActionButton` array, for example by `POINTER` maps to _0_, `PRIMARY` to _1_, `SECONDARY` to _2_, etc.
 
 ```ts
 const myEntity = new Entity()
@@ -203,12 +210,7 @@ myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
   new OnPointerDown(
-    [
-      { button: ActionButton.POINTER, actionName: "Do A" },
-      { button: ActionButton.PRIMARY, actionName: "Do B" },
-      { button: ActionButton.SECONDARY, actionName: "Do C" }
-    ],
-    e => {
+    (e) => {
       if (e.pointerId == 0) {
         log("Clicked pointer")
       } else if (e.pointerId == 1) {
@@ -216,14 +218,13 @@ myEntity.addComponent(
       } else if (e.pointerId == 2) {
         log("Pressed secondary button")
       }
-    }
+    },
+    { button: ActionButton.ANY }
   )
 )
 ```
 
-Players will see the multiple different actions that are available stacked up over each other. If an entity has also an `OnPointerUp` component,
-
--->
+Players will see a single label when hovering over the entity, so make sure it's clear that there are multiple ways to interact with it.
 
 ## Properties of button events
 
@@ -275,18 +276,36 @@ houseEntity.addComponent(
 
 The _BUTTON_DOWN_ and _BUTTON_UP_ events are fired whenever the player presses or releases an input controller button.
 
-> Tip: On a computer, that refers to the _left mouse button_ (or trackpad), the _E_, and the _F_ keys.
-
 These events are triggered every time that the buttons are pressed or released, regardless of where the player's pointer is pointing at, as long as the player is standing inside the scene's boundaries.
+
+It also tracks keys used for basic avatar movement whilst in the scene.
 
 Instance an `Input` object and use its `subscribe()` method to initiate a listener that's subscribed to one of the button events. Whenever the event is caught, it executes a provided function.
 
 The `subscribe()` method takes four arguments:
 
 - `eventName`: The type of action, this can be either `"BUTTON_DOWN"` or `"BUTTON_UP"`
-- `buttonId`: Which button to listen for. This can either be `ActionButton.POINTER`, `ActionButton.PRIMARY`, or `ActionButton.SECONDARY`. It can also take numbers 0, 1 or 2 that map to these values.
-- `useRaycast`: Boolean to define if raycasting will be used. If `false`, the button event will not contain information about any `hit` objects that align with the pointer at the time of the event.
-- `fn`: The function to execute when the event occurs.
+- `buttonId`: Which button to listen for.
+  The following buttons can be tracked for both BUTTON_DOWN and BUTTON_UP events:
+
+      - `POINTER` (left mouse click on PC)
+      - `PRIMARY` (_E_ on PC)
+      - `SECONDARY`(_F_ on PC)
+      - `JUMP`(_space bar_ on PC)
+      - `FORWARD`(_W_ on PC)
+      - `LEFT`(_A_ on PC)
+      - `RIGHT`(_D_ on PC)
+      - `BACK`(_S_ on PC)
+      - `WALK`(_Shift_ on PC)
+      - `ACTION_1`(_1_ on PC)
+      - `ACTION_2`(_2_ on PC)
+      - `ACTION_3`(_3_ on PC)
+      - `ACTION_4`(_4_ on PC)
+
+- `useRaycast`: Boolean to define if raycasting will be used. If `false`, the button event will not contain information about any `hit` objects that align with the pointer at the time of the event. Avoid setting this field to `true` when information about hit objects is not required, as it involves extra calculations.
+- `fn`: The function to execute each time the event occurs.
+
+> Note: Other keys on the PC keyboard aren't tracked for future cross-platform compatibility, as this limited set of keys can be mapped to a joystick. For detecting key-strokes when writing text, check the [UIInputBox]({{ site.baseurl }}{% post_url /development-guide/2018-02-15-onscreen-ui %}).
 
 ```ts
 // Instance the input object
@@ -307,11 +326,21 @@ The example above logs messages and the contents of the event object every time 
 
 The event objects of both the `BUTTON_DOWN` and the `BUTTON_UP` contain various useful properties. See [Properties of button events](#properties-of-button-events) for more details.
 
-> Note: This code only needs to be executed once, the `subscribe()` method keeps polling for the event. Don't add this into a system's `update()` function, as that would register a new listener on every frame.
+> Note: The code for subscribing an input event only needs to be executed once, the `subscribe()` method keeps polling for the event. Don't add this into a system's `update()` function, as that would register a new listener on every frame.
 
 #### Detect hit entities
 
 If the third argument of the `subscribe()` function (`useRaycast`)is true, and the player is pointing at an entity that has a collider, the event object includes a nested `hit` object. The `hit` object includes information about the collision and the entity that was hit.
+
+Raycasting is not available when detecting basic movement keys. It's only available when tracking the following buttons:
+
+- `POINTER`
+- `PRIMARY`
+- `SECONDARY`
+- `ACTION_1`
+- `ACTION_2`
+- `ACTION_3`
+- `ACTION_4`
 
 The ray of a global button event only detects entities that have a collider mesh. Primitive shapes have a collider mesh on by default, 3D models need to have one built into them.
 
@@ -331,6 +360,12 @@ The example above checks if any entities were hit, and if so it fetches the enti
 The event data returns a string for the `entityId`. If you want to reference the actual entity by that ID to affect it in some way, use `engine.entities[e.hit.entityId]`.
 
 > Note: We recommend that when possible you use the approach of adding an `OnPointerDown` component to each entity you want to make interactive, instead of using a global button event. The scene's code isn't able to hint to a player that an entity is interactive when hovering on it unless the entity has an `OnPointerDown`, `OnPointerUp`, or `OnClick` component.
+
+#### Tracking player movements
+
+In real-time multiplayer games where the timing of player movements is critical, you may want to keep track of each player's position using a 3rd party server as the source of truth. You can improve response time by listening to the button in advance and predict their effects in your server before the avatar has shifted position.
+
+This approach helps compensate for network delays, but is sure to result in discrepancies, so you should also regularly poll the player's current position to make corrections. Balancing these predictions and corrections may require plenty of fine-tuning.
 
 ## Ray Obstacles
 
