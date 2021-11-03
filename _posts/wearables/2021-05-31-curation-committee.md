@@ -14,9 +14,14 @@ The approval criteria used by the committee when reviewing wearables is outlined
 
 The current members of this committee are:
 
-- Martin Shibuya, Art Director, Decentraland Foundation
-- KJ Walker, 3D Community Developer
+- HirotoKai. Community Creator
 - Juan Pablo Colasso, 3D Visual Artist
+- KJ Walker, 3D Community Developer
+- Laura Uson Dolsac, Lead Artist, Polygonal Mind
+- Malloy, 3D Artist
+- Martin Shibuya, Art Director, Decentraland Foundation
+- Sebastian Valla, Art Lead, WonderZone
+
 
 ## Why does Decentraland need a Curation Committee?
 
