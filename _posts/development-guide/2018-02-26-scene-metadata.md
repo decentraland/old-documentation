@@ -275,25 +275,25 @@ Then you can call the `getParcel()` function from this library, which returns a 
 The example bleow shows the path to obtain several of the more common fields you might need from this function's response:
 
 ```ts
-import { getParcel } from "@decentraland/ParcelIdentity"
+import { getParcel } from '@decentraland/ParcelIdentity'
 
 executeTask(async () => {
   const parcel = await getParcel()
 
   // parcels
-  log("parcels: ", parcel.land.sceneJsonData.scene.parcels)
-  log("base parcel: ", parcel.land.sceneJsonData.scene.base)
+  log('parcels: ', parcel.land.sceneJsonData.scene.parcels)
+  log('base parcel: ', parcel.land.sceneJsonData.scene.base)
 
   // spawn points
-  log("spawnpoints: ", parcel.land.sceneJsonData.spawnPoints)
+  log('spawnpoints: ', parcel.land.sceneJsonData.spawnPoints)
 
   // general scene data
-  log("title: ", parcel.land.sceneJsonData.display.title)
-  log("author: ", parcel.land.sceneJsonData.contact.name)
-  log("email: ", parcel.land.sceneJsonData.contact.email)
+  log('title: ', parcel.land.sceneJsonData.display?.title)
+  log('author: ', parcel.land.sceneJsonData.contact?.name)
+  log('email: ', parcel.land.sceneJsonData.contact?.email)
 
   // other info
-  log("tags: ", parcel.land.sceneJsonData.tags)
+  log('tags: ', parcel.land.sceneJsonData.tags)
 })
 ```
 
