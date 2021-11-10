@@ -149,6 +149,9 @@ onOwnProfileDataChange.add((profileData) => {
 
 Event data includes only the ID of the player and a version number for that avatar's profile, according to the catalyst server. Every time a change is propagated, the version number increases by 1.
 
+When this event is triggered, you can then use the [getUserData()]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}#get-player-data) to fetch the latest version of this information, including the list of wearables that the player has on.
+
+
 > Note: This event is only triggered by changes to the current player, not to changes on the profiles of other nearby players.
 
 You can obtain the details of the new player's profile from the catalyst server where the player is at.
