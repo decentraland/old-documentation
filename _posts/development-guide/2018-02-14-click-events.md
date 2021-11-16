@@ -45,10 +45,6 @@ The `OnPointerDown` component has a second optional parameter, this parameter is
   - `ActionButton.POINTER` (left mouse click on PC)
   - `ActionButton.PRIMARY` (_E_ on PC)
   - `ActionButton.SECONDARY`(_F_ on PC)
-  - `ActionButton.ACTION_1`(_1_ on PC)
-  - `ActionButton.ACTION_2`(_2_ on PC)
-  - `ActionButton.ACTION_3`(_3_ on PC)
-  - `ActionButton.ACTION_4`(_4_ on PC)
 - `hoverText`: Hint text to display on the UI when pointing at the entity.
 - `distance`: Maximum click distance.
 
@@ -78,10 +74,6 @@ The `OnPointerDown` and `OnPointerUp` components can respond to the following di
 - `POINTER` (left mouse click on PC)
 - `PRIMARY` (_E_ on PC)
 - `SECONDARY`(_F_ on PC)
-- `ACTION_1`(_1_ on PC)
-- `ACTION_2`(_2_ on PC)
-- `ACTION_3`(_3_ on PC)
-- `ACTION_4`(_4_ on PC)
 
 You can configure the components by setting the `button` field in the second argument of the component initializer.
 
@@ -297,10 +289,10 @@ The `subscribe()` method takes four arguments:
       - `RIGHT`(_D_ on PC)
       - `BACK`(_S_ on PC)
       - `WALK`(_Shift_ on PC)
-      - `ACTION_1`(_1_ on PC)
-      - `ACTION_2`(_2_ on PC)
-      - `ACTION_3`(_3_ on PC)
-      - `ACTION_4`(_4_ on PC)
+      - `ACTION_3`(_1_ on PC)
+      - `ACTION_4`(_2_ on PC)
+      - `ACTION_5`(_3_ on PC)
+      - `ACTION_6`(_4_ on PC)
 
 - `useRaycast`: Boolean to define if raycasting will be used. If `false`, the button event will not contain information about any `hit` objects that align with the pointer at the time of the event. Avoid setting this field to `true` when information about hit objects is not required, as it involves extra calculations.
 - `fn`: The function to execute each time the event occurs.
@@ -337,10 +329,10 @@ Raycasting is not available when detecting basic movement keys. It's only availa
 - `POINTER`
 - `PRIMARY`
 - `SECONDARY`
-- `ACTION_1`
-- `ACTION_2`
 - `ACTION_3`
 - `ACTION_4`
+- `ACTION_5`
+- `ACTION_6`
 
 The ray of a global button event only detects entities that have a collider mesh. Primitive shapes have a collider mesh on by default, 3D models need to have one built into them.
 
@@ -442,7 +434,7 @@ You can implement this in a system's `update()` function to check the button sta
 // Instance the input object
 const input = Input.instance
 
-class ButtonChecker {
+class ButtonChecker implements ISystem {
   update() {
     if (input.isButtonPressed(ActionButton.POINTER)) {
       log("pointer button down")
