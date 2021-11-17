@@ -11,7 +11,24 @@ There are several events that the scene can subscribe to, to know the actions of
 
 For button and click events performed by the player, see [Button events]({{ site.baseurl }}{% post_url /development-guide/2018-02-14-click-events %}).
 
-<!--
+## Player connects/disconnects
+
+Whenever another player starts or stops being rendered by the local engine, this creates an event you can listen to. Players may or may not be standing on the same scene as you, but must be within visual range. This event triggers both when a player newly connects or disconnects from their session, and also when a player comes close enough to be in visual range or walks far away to no longer be in visual range.
+
+// TODO example listening to events
+
+```ts
+
+```
+
+Keep in mind that if other players are already being rendered in the surroundings before the player has loaded your scene, this event won't notify the newly loaded scene of the already existing players. If you need to keep track of all present players, you can query for existing players upon scene loading, and then listen for this event for updates.
+
+// TODO example with query values first, then listen to events
+
+```ts
+
+```
+
 ## Player enters or leaves the scene
 
 Whenever the player steps inside or out of the parcels of land that make up your scene, or teleports in or out, this creates an event you can listen to.
@@ -28,11 +45,13 @@ onLeaveSceneObservable.add(() => {
 
 These events are especially useful in a multiplayer scene, to connect and disconnect players from servers only when they are standing on the scene's parcels.
 
-> Note: The event is only fired when the current player that is running the browser in their machine enters or leaves. Other players entering on leaving will only trigger the events in their running instances.
+// TODO: your player only vs all players
 
 > Note: The `onLeaveSceneObservable` is only triggered if the player leaves gracefully. If the player closes the browser abruptly, the events won't be picked up. Keep this in mind for multiplayer scenes.
+> // TODO : does this also apply to other players?
 
--->
+> Note: This event only responds to players that are currently being rendered. In large scenes where the scene size exceeds the visual range, players entering in the opposite corner may not be registered. If the number of players in the region exceeds the capabilities of an island on Decentraland servers, players that are not visible are not tracked by these events either.
+
 <!--
 ## Player moves
 
@@ -154,11 +173,11 @@ When a new player first enters Decentraland for the fist time, they go through a
 This tutorial includes some music, that could clash with the music of the scene that the player is currently on, so it's recommended to stop any background music in case the player is going through the tutorial.
 
 ```ts
-import { tutorialEnableObservable } from 'src/modules/tutorialHandler'
+import { tutorialEnableObservable } from "src/modules/tutorialHandler"
 
 tutorialEnableObservable.add((tutorialEnabled) => {
   if (tutorialEnabled) {
-	log("Player started tutorial")
+    log("Player started tutorial")
     backgroundMusicSource.playing = false
   } else {
     log("Player finished tutorial")
