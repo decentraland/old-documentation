@@ -163,6 +163,25 @@ This event is especially useful for multiplayer scenes, when you might want to d
 
 > Note: The idle state is inferred based on the player not using the keyboard or mouse for a full minute. This can of course produce false positives, for example a player might be watching other players interact or watching a video stream, standing still but fully engaged. Be mindful of these corner cases and what the experience is like for a player who stands still for a while.
 
+## Player changes profile
+
+Whenever the player makes a change to their profile, the `onOwnProfileDataChange` event is called. These changes may include putting on different wearables, changing name, description, activating portable experiences, etc.
+
+```ts
+onOwnProfileDataChange.add((profileData) => {
+  log("Own profile data is ", profileData)
+})
+```
+
+Event data includes only the ID of the player and a version number for that avatar's profile, according to the catalyst server. Every time a change is propagated, the version number increases by 1.
+
+> Tip: When this event is triggered, you can then use the [getUserData()]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}#get-player-data) function to fetch the latest version of this information, including the list of wearables that the player has on. You may need to add a slight delay before you call `getUserData()` to ensure that the version this function returns is up to date.
+
+When testing in preview, run the scene with `dcl start --web3` so that you connect with your wallet. Otherwise, you will be using a random avatar.
+
+> Note: This event is only triggered by changes to the current player, not by changes on the profiles of other nearby players.
+
+
 ## Scene finished loading
 
 When the scene finishes loading, the `onSceneReadyObservable` gets called. This works both if the player loads straight into the scene, or if the player walks up to the scene from somewhere else. When all of the content in the scene has finished its initial load, including heavy models, etc, this event is called.
