@@ -29,14 +29,13 @@ For example:
 
 > Note: Keep in mind that several frames of your scene might be rendered before the task finishes executing. Make sure your scene's code is flexible enough to handle the in-between scenarios while the asynchronous task is being completed.
 
-
 ## Run an async function
 
 Mark any function as `async` so that it runs on a separate thread from the scene's main thread every time that it's called.
 
 ```ts
 // declare function
-async function myAsyncTask(){
+async function myAsyncTask() {
   // run async steps
 }
 
@@ -45,7 +44,6 @@ myAsyncTask()
 
 // rest of the code keeps being executed
 ```
-
 
 ## The executeTask function
 
@@ -57,6 +55,16 @@ executeTask(async () => {
 })
 
 // rest of the code keeps being executed
+```
+
+## The then function
+
+The `then` function takes in a lambda function as an argument, that only gets executed once the prior statement is finished. This lambda function can optionally have inputs that are mapped from whatever the prior statement returns.
+
+```ts
+myAsyncTask().then((data) => {
+  log(data)
+})
 ```
 
 ## OnPointerDown functions
@@ -85,11 +93,11 @@ The example above runs a function every time that the button _A_ is pressed down
 
 ## The await statement
 
-An `await` statement forces the execution to wait for a response before moving over to the next line of code. `await` statements can only be used inside an async block of code. 
+An `await` statement forces the execution to wait for a response before moving over to the next line of code. `await` statements can only be used inside an async block of code.
 
 ```ts
 // declare function
-async function myAsyncTask(){
+async function myAsyncTask() {
   try {
     let response = await fetch(callUrl)
     let json = await response.json()
