@@ -121,6 +121,32 @@ The event includes the following information:
 
 Note: This event is triggered any time the player makes an emote and the scene is loaded. The player could be standing in a nearby scene when this happens.
 
+## Player locks/unlocks cursor
+
+Players can switch between two cursor modes: _locked cursor_ mode to control the camera or _unlocked cursor_ mode for moving the cursor freely over the UI.
+
+With a keyboard, players unlock the cursor by pressing the _Esc_ key, and lock the cursor back by clicking anywhere in the screen.
+
+This `onPointerLockedStateChange` event is activated each time a player switches between these two modes, while near the scene.
+
+```ts
+onPointerLockedStateChange.add(({ locked }) => {
+  if (locked) {
+    log("Pointer has been locked")
+  } else {
+    log("Pointer has been unlocked")
+  }
+})
+```
+
+> Note: This event is triggered even if the player is not standing directly inside the scene.
+
+The `locked` property from this event is a boolean value that is _true_ when the player locks the cursor and _false_ when the player unlocks the cursor.
+
+This event is useful if the player needs to change cursor modes and may need a hint for how to lock/unlock the cursor.
+
+This can also be used in scenes where the player is expected to react fast, but the action can take a break while the player has the cursor unlocked.
+
 ## Player goes idle
 
 Whenever the player is inactive for a full minute, without interacting with any input being picked up by the Decentraland explorer, we can consider the player to be idle. Whenever this happens, it creates an event that you can listen to.
@@ -154,11 +180,11 @@ When a new player first enters Decentraland for the fist time, they go through a
 This tutorial includes some music, that could clash with the music of the scene that the player is currently on, so it's recommended to stop any background music in case the player is going through the tutorial.
 
 ```ts
-import { tutorialEnableObservable } from 'src/modules/tutorialHandler'
+import { tutorialEnableObservable } from "src/modules/tutorialHandler"
 
 tutorialEnableObservable.add((tutorialEnabled) => {
   if (tutorialEnabled) {
-	log("Player started tutorial")
+    log("Player started tutorial")
     backgroundMusicSource.playing = false
   } else {
     log("Player finished tutorial")
