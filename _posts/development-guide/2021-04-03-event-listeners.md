@@ -13,12 +13,18 @@ For button and click events performed by the player, see [Button events]({{ site
 
 ## Player connects/disconnects
 
-Whenever another player starts or stops being rendered by the local engine, this creates an event you can listen to. Players may or may not be standing on the same scene as you, but must be within visual range. This event triggers both when a player newly connects or disconnects from their session, and also when a player comes close enough to be in visual range or walks far away to no longer be in visual range.
+Whenever another player starts or stops being rendered by the local engine, this creates an event you can listen to. Players may or may not be standing on the same scene as you, but must be within visual range (not necessarily in sight). This event triggers both when a player newly connects or disconnects from their session, and also when a player comes close enough to be in visual range or walks far away to no longer be in visual range.
 
 // TODO example listening to events
 
 ```ts
+onPlayerConnectedObservable.add((player) => {
+  log("player entered: ", player.userId)
+})
 
+onPlayerDisconnectedObservable.add((player) => {
+  log("player left: ", player.userId)
+})
 ```
 
 Keep in mind that if other players are already being rendered in the surroundings before the player has loaded your scene, this event won't notify the newly loaded scene of the already existing players. If you need to keep track of all present players, you can query for existing players upon scene loading, and then listen for this event for updates.
