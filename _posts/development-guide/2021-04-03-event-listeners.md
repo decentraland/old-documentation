@@ -29,10 +29,12 @@ onPlayerDisconnectedObservable.add((player) => {
 
 Keep in mind that if other players are already being rendered in the surroundings before the player has loaded your scene, this event won't notify the newly loaded scene of the already existing players. If you need to keep track of all present players, you can query for existing players upon scene loading, and then listen for this event for updates.
 
-// TODO example with query values first, then listen to events
-
 ```ts
-
+getConnectedPlayers().then((players) => {
+  players.forEach((player) => {
+    log("player was already here: ", player.userId)
+  })
+})
 ```
 
 ## Player enters or leaves the scene
