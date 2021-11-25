@@ -147,6 +147,33 @@ onSceneReadyObservable.add(() => {
 })
 ```
 
+## Video playing
+
+When a `VideoTexture` changes its playing status, the `onVideoEvent` observable receives an event.
+
+```ts
+onVideoEvent.add((data) => {
+  log("New Video Event ", data)
+})
+```
+
+The input of a video event contains the following properties:
+
+- `videoClipId` ( _string_): The ID for the `VideoTexture` component that changed status.
+- `componentId` (_string_): The ID of the `VideoTexture` component that changed status.
+- `currentOffset` (_number_): The current value of the `seek` property on the video. This value shows seconds after the video's original beginning. _-1_ by default.
+- `totalVideoLength` (_number_ ): The length in seconds of the entire video. _-1_ if length is unknown.
+- `videoStatus`: The value for the new video status of the `VideoTexture`, expressed as a value from the `VideoStatus` enum. This enum can hold the following possible values:
+
+- `VideoStatus.NONE` = 0,
+- `VideoStatus.ERROR` = 1,
+- `VideoStatus.LOADING` = 2,
+- `VideoStatus.READY` = 3,
+- `VideoStatus.PLAYING` = 4,
+- `VideoStatus.BUFFERING` = 5
+
+Learn more about playing videos in Decentraland in [Video Playing]({{ site.baseurl }}{% post_url /development-guide/2020-05-04-video-playing %}).
+
 ## Player starts/ends the tutorial
 
 When a new player first enters Decentraland for the fist time, they go through a brief tutorial that shows the basic movements and UI elements. Typically players will experience this on Genesis Plaza, but a new player that enters a specific scene from an event as their first time in Decentraland will experience a shortened version of that tutorial wherever they are.
@@ -154,11 +181,11 @@ When a new player first enters Decentraland for the fist time, they go through a
 This tutorial includes some music, that could clash with the music of the scene that the player is currently on, so it's recommended to stop any background music in case the player is going through the tutorial.
 
 ```ts
-import { tutorialEnableObservable } from 'src/modules/tutorialHandler'
+import { tutorialEnableObservable } from "src/modules/tutorialHandler"
 
 tutorialEnableObservable.add((tutorialEnabled) => {
   if (tutorialEnabled) {
-	log("Player started tutorial")
+    log("Player started tutorial")
     backgroundMusicSource.playing = false
   } else {
     log("Player finished tutorial")
