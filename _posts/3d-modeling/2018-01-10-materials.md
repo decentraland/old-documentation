@@ -151,6 +151,19 @@ Examples of other valid sizes:
 
 > Although textures of arbitrary sizes work in the alpha release, the engine displays an alert in the console. We will enforce this restriction in coming releases and invalid texture sizes will cease to work.
 
+## Normal maps
+
+You can add an additional normal map to a texture to control how reflections bounce off different regions of a same model. This can be used to achieve very interesting and realistic effects. It also allows you to keep the textures themselves lighter, as some detail can be provided on the normal map layer instead.
+
+The colors on the normal map are not to be taken literally, but instead map to what direction light bounces off to. Darker parts of the texture will reflect less light.
+
+<img src="{{ site.baseurl }}/images/media/normal-map.png" alt="Model without valid material" width="250"/>
+
+For example in this brick wall can be overlayed on a texture that matches the same brick positions. The different color mapping implies that the blue bricks will bounce light forward. The green margins on the top bounce light upwards. The cracks between the bricks reflect a lot less light. This is a great way to get the lighting on the wall behave more realistically, without having to spend geometry on each individual brick.
+
+> NOTE: Never use the same texture file for both the texture of an object and its normal map. Create a separate file and name it differently. Models in deployed scenes are compressed by the content servers, and normal maps are compressed differently to other textures. The compressed model might end up looking very different if the server compresses a texture as a normal map or viceversa.
+
+
 ## How to swap a material
 
 Suppose you've imported a 3D model that uses a material that's not supported by Decentraland. You can easily change this material while still keeping the same texture and its mapping.
