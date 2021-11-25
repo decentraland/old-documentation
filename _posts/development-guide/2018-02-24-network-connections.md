@@ -31,6 +31,14 @@ executeTask(async () => {
 
 The fetch command can also include a second optional argument that bundles headers, HTTP method and HTTP body into a single object.
 
+- **url**: Address to send the request
+- **init**: A `FlatFetchInit` object that may contain:
+  - **method** : HTTP method to use (GET, POST, DELETE, etc)
+  - **body**: Contents of the request body
+  - **headers**: Additional headers to include in the request. Headers related to the signature are added automatically.
+  - **redirect**: Redirect strategy ('follow' | 'error' | 'manual')
+  - **responseBodyType**: Specify if the body of the response is 'text' or 'json'
+
 ```ts
 executeTask(async () => {
   try {
@@ -70,7 +78,8 @@ You can employ an extra security measure to certify that a request is originatin
 
 These kinds of security measures are especially valuable when there may be an incentive for a player to abuse the system, to farm tokens or points in a game.
 
-To send a signed request, all you need to do is use the `signedFetch()` function, in exactly the same way as you would use the `fetch()` function. All the same parameters are valid.
+To send a signed request, all you need to do is use the `signedFetch()` function, in exactly the same way as you would use the `fetch()` function.
+
 
 ```ts
 executeTask(async () => {
@@ -80,8 +89,15 @@ executeTask(async () => {
       method: "POST",
       body: JSON.stringify(myBody),
     })
-    let json = await response.json()
-    log(json)
+    
+    if (!response.text) {
+      throw new Error('Invalid response')
+    }
+
+    let json = await JSON.parse(response.text)
+    
+    log('Response received: ', json)
+    
   } catch {
     log("failed to reach URL")
   }
@@ -89,6 +105,8 @@ executeTask(async () => {
 ```
 
 The request will include an additional series of headers, containing a signed message and a set of metadata to interpret that. The signed message consists of all the contents of the request encrypted using the player's ephemeral key.
+
+The `signedFetch()` differs from the `fetch()` function in that the response is a promise of a full http message, expressed as a `FlatFetchInit` object. This includes the properties `text`, `ok`, `status`, `headers`, among others. By default, the To access the **body** of the response, parse the `text` property of the response as in the example above. If the response body is in json format, you can specify that in the `responseBodyType` and then access that from the `json` property in the response.
 
 #### Validating a signed request
 
