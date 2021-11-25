@@ -147,6 +147,29 @@ onSceneReadyObservable.add(() => {
 })
 ```
 
+## Player changes realm or island
+
+Players in decentraland exist in separate _realms_, and in separate _islands_ within each realm. Players in different realms or islands cant see each other, interact or chat with each other, even if they're standing on the same parcels.
+
+Each time the player changes realms or island, the `onRealmChangedObservable` event gets called.
+
+```ts
+onRealmChangedObservable.add((realmChange) => {
+  log("PLAYER CHANGED ISLAND TO ", realmChange.room)
+})
+```
+
+This event includes the following fields:
+
+- **serverName**: _string_; The catalyst server name.
+- **room**: _string_; The island name.
+- **displayName**: _string_; The catalyst server name followed by a _-_ and the island name. For example `unicorn-x011`.
+- **domain**: _string_; The url to the catalyst server being used.
+
+As players move through the map, they may switch islands to be grouped with those players who are now closest to them. Islands also shift their borders dynamically to fit a manageable group of people in each. So even if a player stands still they could be changed island as others enter and leave surrounding scenes.
+
+If your scene relies on a [3rd party server]({{ site.baseurl }}{% post_url /development-guide/2018-01-10-remote-scene-considerations %}) to sync changes between players in real time, then you may want to only share data between players that are grouped in a same realm+island, so it's a good practice to change rooms in the 3rd party server whenever players change island.
+
 ## Player starts/ends the tutorial
 
 When a new player first enters Decentraland for the fist time, they go through a brief tutorial that shows the basic movements and UI elements. Typically players will experience this on Genesis Plaza, but a new player that enters a specific scene from an event as their first time in Decentraland will experience a shortened version of that tutorial wherever they are.
@@ -154,11 +177,11 @@ When a new player first enters Decentraland for the fist time, they go through a
 This tutorial includes some music, that could clash with the music of the scene that the player is currently on, so it's recommended to stop any background music in case the player is going through the tutorial.
 
 ```ts
-import { tutorialEnableObservable } from 'src/modules/tutorialHandler'
+import { tutorialEnableObservable } from "src/modules/tutorialHandler"
 
 tutorialEnableObservable.add((tutorialEnabled) => {
   if (tutorialEnabled) {
-	log("Player started tutorial")
+    log("Player started tutorial")
     backgroundMusicSource.playing = false
   } else {
     log("Player finished tutorial")
