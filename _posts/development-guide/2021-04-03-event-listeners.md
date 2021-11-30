@@ -13,9 +13,7 @@ For button and click events performed by the player, see [Button events]({{ site
 
 ## Player connects/disconnects
 
-Whenever another player starts or stops being rendered by the local engine, this creates an event you can listen to. Players may or may not be standing on the same scene as you, but must be within visual range (not necessarily in sight). This event triggers both when a player newly connects or disconnects from their session, and also when a player comes close enough to be in visual range or walks far away to no longer be in visual range.
-
-// TODO example listening to events
+Whenever another player starts or stops being rendered by the local engine, this creates an event you can listen to. Players may or may not be standing on the same scene as you, but must be within visual range (not necessarily in sight). The `onPlayerConnectedObservable` detects both when a player newly connects nearby or comes close enough to be in visual range, likewise the `onPlayerDisconnectedObservable` detects when a player ends their session or or walks far away.
 
 ```ts
 onPlayerConnectedObservable.add((player) => {
@@ -58,7 +56,17 @@ These events are especially useful in a multiplayer scene, to connect and discon
 > Note: The `onLeaveSceneObservable` is only triggered if the player leaves gracefully. If the player closes the browser abruptly, the events won't be picked up. Keep this in mind for multiplayer scenes.
 > // TODO : does this also apply to other players?
 
-> Note: This event only responds to players that are currently being rendered. In large scenes where the scene size exceeds the visual range, players entering in the opposite corner may not be registered. If the number of players in the region exceeds the capabilities of an island on Decentraland servers, players that are not visible are not tracked by these events either.
+> Note: This event only responds to players that are currently being rendered. In large scenes where the scene size exceeds the visual range, players entering in the opposite corner may not be registered. If the number of players in the region exceeds the capabilities of an island on Decentraland servers, players that are not sharing a same island aren't visible and are not tracked by these events either.
+
+You can get the full list of players who are currently on your scene and being rendered by calling `getPlayersInScene()`.
+
+```ts
+getPlayersInScene().then((players) => {
+  players.forEach((player) => {
+    log("player was already here: ", player.userId)
+  })
+})
+```
 
 <!--
 ## Player moves
