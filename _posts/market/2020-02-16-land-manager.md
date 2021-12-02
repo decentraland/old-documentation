@@ -10,7 +10,7 @@ type: Document
 The Land Manager allows you to manage your LAND and Estate assets.
 
 
-Access the Land manager at [https://land.decentraland.org](https://land.decentraland.org).
+Access the Land manager at [https://builder.decentraland.org/land](https://builder.decentraland.org/land).
 
 The Land Manager allows you to:
 
@@ -20,60 +20,13 @@ The Land Manager allows you to:
 - **Transfer** your parcels and Estates to another user.
 - **Grant permissions** to other users to edit the parcels you own.
 
-## Your Wallet
-
-Before using [market.decentraland.org](https://market.decentraland.org), connect and log into an Ethereum client account that can interact with the web browser. We recommend using [MetaMask](https://metamask.io/) or [Mist](https://github.com/ethereum/mist). We also support the use of a [Ledger](https://www.ledgerwallet.com/) hardware wallet.
-
-> Note: If you would like to use your Ledger hardware wallet in the Marketplace, first enable browser support on your device. Next, plug your device into your computer, and select the address you used during the auction. Finally, unlock your wallet and load up the Marketplace.
-
-When navigating the Marketplace, your wallet address is treated as your account, you don't need any additional log in.
-
-Since all transactions in the Ethereum network have a gas fee that needs to be paid in Ether, your account needs to have at least some Ether in it to perform any actions in the Marketplace.
-
-## The Atlas View
-
-The Atlas view gives you a bird’s-eye perspective of every color coded parcel, Estate, road, district, and plaza in Decentraland.
-
-![]({{ site.baseurl }}/images/media/c120655-atlas_view_screenshot.png)
-
-You can click and drag the map to move around, zoom in and out, or hover your cursor over a parcel to see its x,y location and owner.
-
-Any parcel that is currently for sale in the Marketplace will be highlighted.
-
-Hover your cursor over a parcel to view it’s status, its coordinates, and its owner’s public address (if it has an owner). Click on a parcel to view more details.
-
-![]({{ site.baseurl }}/images/media/e7ff473-hover_screenshot.png)
-
-Click _Color Key_ in the footer to see what each tile color represents.
-
-## The Marketplace View
-
-If you’d rather see a list of all the LAND currently offered on the market, you can use the Marketplace View. Select the tabs at the top to switch between individual parcels and multi-parcel Estates. You can sort offers by “Newest”, “Cheapest”, “Most expensive”, and “Closest to expire”. Click a tile to learn more about it.
-
-![]({{ site.baseurl }}/images/media/c867650-marketplace_view_screenshot.png)
-
 ## Manage Your LAND
 
-To view your LAND tokens, click **My LAND**. Here you’ll find a list of all of your parcels and Estates, including any that you’ve contributed to community districts and any parcels that you have listed for sale.
+To view your LAND tokens, click **My LAND**. Here you’ll find a list of all of your parcels and Estates, including any parcels that you have listed for sale.
 
 By clicking on one of the parcels or Estates listed under My Land, you can edit its name, description, put it up for sale, or transfer it directly to another wallet address.
 
 ![]({{ site.baseurl }}/images/media/marketplace_myland.png)
-
-## Buy MANA
-
-To buy MANA in exchange for Ether, follow these steps:
-
-1. Open your user _Settings page_.
-2. Check the box next to _Assets using MANA_.
-
-   ![]({{ site.baseurl }}/images/media/marketplace_authorizations.png)
-
-   > Note: Enabling this setting triggers a transaction on the blockchain. You must confirm this transaction in your Ethereum client, pay a gas fee in Ether and wait for its confirmation before it takes effect.
-
-3. Click **Buy Mana**.
-4. Set an amount of MANA you'd like to receive and click **Submit**.
-5. Confirm this transaction on your Ethereum client and wait for the network to verify it.
 
 ## Create an Estate
 
@@ -136,21 +89,6 @@ Open the notifications page by clicking the bell icon at the top of the screen.
 The notifications page displays a list of all the recent transactions that you have carried out, together with their status.
 
 Click a transaction to see more details about it on Etherscan.
-
-## Transfer MANA
-
-To transfer MANA to another account:
-
-1. Open your user _Settings page_.
-2. Click **Transfer**.
-3. Enter the public address of the Ethereum wallet of the recipient.
-
-   ![]({{ site.baseurl }}/images/media/9ff24a6-transfer_LAND_screenshot.png)
-
-> Note: Please double check this address, since you cannot cancel the operation.
-
-4. Click **Submit**.
-5. Confirm this transaction on your Ethereum client and wait for the network to verify it.
 
 ## Transfer LAND
 

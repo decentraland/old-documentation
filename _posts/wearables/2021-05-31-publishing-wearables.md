@@ -8,7 +8,7 @@ categories:
 type: Document
 ---
 
-For detailed instructions on how to submit your wearable collection for approval before publication, see the User Guide. This document explains how the approval process works when publishing wearables, and what criteria is used by the Curation Committee when reviewing wearables. For detailed information on the Curation Committee, [start here]({{ site.baseurl }}{% post_url /wearables/2021-05-31-curation-committee %}).
+For detailed instructions on how to submit your wearable collection for approval before publication, see the [User Guide](https://docs.decentraland.org/decentraland/wearables-editor-user-guide/). This document explains how the approval process works when publishing wearables, and what criteria is used by the Curation Committee when reviewing wearables. For detailed information on the Curation Committee, [start here]({{ site.baseurl }}{% post_url /wearables/2021-05-31-curation-committee %}).
 
 ### The publication process
 
@@ -24,7 +24,11 @@ For detailed instructions on how to submit your wearable collection for approval
 
 There is a required fee for publishing items. This fee was [voted in place by the Decentraland DAO](https://governance.decentraland.org/en/proposal/?id=50092c00-c315-11eb-ac84-1705d1ae4a66) This fee exists to deter users from publishing an excessive number of wearables in an attempt to “spam” the wearables market.
 
-**The fee is a flat rate of 500 MANA per item (not NFT!) in your collection.**
+**The fee is a flat rate of $500 value (paid in MANA) per item (not NFT!) in your collection.**
+
+> Note: Previously it was 500 MANA, with MANA's value increase, it was lowered to equal $500 in a recent [DAO vote](https://decentraland.org/blog/project-updates/dao-committee-report-11/).
+
+The calculation examples below use 500 MANA as fee. The actual fee of MANA will be set weekly by the DAO, in order to try and always align with $500 in valuation.
 
 For example, if you publish a collection with two items, you will have to pay a fee of 1000 MANA (500 MANA for each item) regardless of the rarity (or how many NFTs can be minted) of those items.
 

@@ -259,11 +259,12 @@ let childTransform = new Transform({
 childEntity.addComponent(childTransform)
 
 // Add entities to the engine
-engine.addEntity(childEntity)
 engine.addEntity(parentEntity)
 ```
 
 You can use an invisible entity with no shape component to wrap a set of other entities. This entity won't be visible in the rendered scene, but can be used to group its children and apply a transform to all of them.
+
+> Tip: Child entities don't need to be explicitly added to the engine if their parent is also added.
 
 ## Attach an entity to the player
 

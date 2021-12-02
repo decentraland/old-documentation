@@ -21,23 +21,24 @@ The Marketplace allows you to:
 
 - **Sell** parcels and Estates of LAND, wearables, and unique names. Set your own price in MANA and an expiration date for the offer.
 - **Buy** parcels and Estates, wearables, and unique names that are for sale.
-- **Transfer** your parcels and Estates to another user.
-- **Explore** the world through a map to see who owns what, what wearables exist and what names are claimed.
+- **Transfer** your Decentraland assets to another user.
+- **Explore** the world through a map to see who owns what, existing wearables or claimed avatar names.
 
-> Note: Use [land.decentraland.org](https://land.decentraland.org) to:
+> Note: Use [builder.decentraland.org/land](https://builder.decentraland.org/land) to:
 
 - **Name** your parcels and Estates and give them a public description.
-- **Grant permissions** to other users to edit the parcels you own.
+- **Grant permissions** to other users, allowing them to deploy on your LAND.
+- **Manage** to create or dissolve estates.
 
 ## Your Wallet
 
-Before using [market.decentraland.org](https://market.decentraland.org), connect and log into an Ethereum client account that can interact with the web browser. We recommend using [MetaMask](https://metamask.io/) or [Mist](https://github.com/ethereum/mist). We also support the use of a [Ledger](https://www.ledgerwallet.com/) hardware wallet.
+Before using [market.decentraland.org](https://market.decentraland.org), connect and log into an Ethereum client account that can interact with the web browser. We recommend using [MetaMask](https://metamask.io/). We also support the use of a [Ledger](https://www.ledgerwallet.com/) hardware wallet.
 
-> Note: If you would like to use your Ledger hardware wallet in the Marketplace, first enable browser support on your device. Next, plug your device into your computer, and select the address you used during the auction. Finally, unlock your wallet and load up the Marketplace.
+> Note: If you would like to use your Ledger hardware wallet in the Marketplace, it will require you to connect it towards MetaMask. Please ensure you follow all the [given steps](https://metamask.zendesk.com/hc/en-us/articles/360020394612-How-to-connect-a-Trezor-or-Ledger-Hardware-Wallet) and updates to allow a seamless Ledger usage.
 
 When navigating the Marketplace, your wallet address is treated as your account, you don't need any additional log in.
 
-Since all transactions in the Ethereum network have a gas fee that needs to be paid in Ether, your account needs to have at least some Ether in it to perform any actions in the Marketplace.
+The Marketplace currently hosts LAND and names solely on Ethereums network. Wearables differ between Ethereum and Polygons network. Ethereum based transactions require a GAS fee, paid in Ethereum. Wheras Polygon based transactions only require a small amount of MATIC, to perform actions in the Marketplace.
 
 ## The Atlas View
 
