@@ -11,7 +11,7 @@ There are several events that the scene can subscribe to, to know the actions of
 
 For button and click events performed by the player, see [Button events]({{ site.baseurl }}{% post_url /development-guide/2018-02-14-click-events %}).
 
-## Player connects/disconnects
+## Player connects or disconnects
 
 Whenever another player starts or stops being rendered by the local engine, this creates an event you can listen to. Players may or may not be standing on the same scene as you, but must be within visual range (not necessarily in sight). The `onPlayerConnectedObservable` detects both when a player newly connects nearby or comes close enough to be in visual range, likewise the `onPlayerDisconnectedObservable` detects when a player ends their session or or walks far away.
 
@@ -25,7 +25,7 @@ onPlayerDisconnectedObservable.add((player) => {
 })
 ```
 
-Keep in mind that if other players are already being rendered in the surroundings before the player has loaded your scene, this event won't notify the newly loaded scene of the already existing players. If you need to keep track of all present players, you can query for existing players upon scene loading, and then listen for this event for updates.
+Keep in mind that if other players are already being rendered in the surroundings before the player has loaded your scene, this event won't notify the newly loaded scene of the already existing players. If you need to keep track of all current players, you can query for existing players upon scene loading, and then listen to this event for updates.
 
 ```ts
 getConnectedPlayers().then((players) => {
@@ -35,30 +35,49 @@ getConnectedPlayers().then((players) => {
 })
 ```
 
-## Player enters or leaves the scene
+## Player enters or leaves scene
 
-Whenever the player steps inside or out of the parcels of land that make up your scene, or teleports in or out, this creates an event you can listen to.
+Whenever an avatar steps inside or out of the parcels of land that make up your scene, or teleports in or out, this creates an event you can listen to. This event is triggered by all avatars, including the player's.
 
 ```ts
-onEnterSceneObservable.add(() => {
-  log("onEnterSceneObservable")
+onEnterSceneObservable.add((player) => {
+  log("player entered scene: ", player.userId)
 })
 
-onLeaveSceneObservable.add(() => {
-  log("onLeaveSceneObservable")
+onLeaveSceneObservable.add((player) => {
+  log("player left scene: ", player.userId)
 })
 ```
 
-These events are especially useful in a multiplayer scene, to connect and disconnect players from servers only when they are standing on the scene's parcels.
+> Note: This event only responds to players that are currently being rendered locally. In large scenes where the scene size exceeds the visual range, players entering in the opposite corner may not be registered. If the number of players in the region exceeds the capabilities of an island on Decentraland servers, players that are not sharing a same island aren't visible and are not tracked by these events either.
 
-// TODO: your player only vs all players
+### Only current player
 
-> Note: The `onLeaveSceneObservable` is only triggered if the player leaves gracefully. If the player closes the browser abruptly, the events won't be picked up. Keep this in mind for multiplayer scenes.
-> // TODO : does this also apply to other players?
+You can filter out the triggered events to only react to the player's avatar, rather than other avatars that may be around.
 
-> Note: This event only responds to players that are currently being rendered. In large scenes where the scene size exceeds the visual range, players entering in the opposite corner may not be registered. If the number of players in the region exceeds the capabilities of an island on Decentraland servers, players that are not sharing a same island aren't visible and are not tracked by these events either.
+```ts
+getUserData().then((myPlayer) => {
+  onEnterSceneObservable.add((player) => {
+    log("player entered scene: ", player.userId)
+    if (player.userId === myPlayer?.userId) {
+      log("I entered the scene!")
+    }
+  })
 
-You can get the full list of players who are currently on your scene and being rendered by calling `getPlayersInScene()`.
+  onLeaveSceneObservable.add((player) => {
+    log("player left scene: ", player.userId)
+    if (player.userId === myPlayer?.userId) {
+      log("I left the scene!")
+    }
+  })
+})
+```
+
+This example first obtains the player's id, then subscribes to the events and compares the `userId` returned by the event to that of the player.
+
+### Query all players in scene
+
+You can also get the full list of players who are currently on your scene and being rendered by calling `getPlayersInScene()`.
 
 ```ts
 getPlayersInScene().then((players) => {
