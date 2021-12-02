@@ -51,7 +51,7 @@ onLeaveSceneObservable.add((player) => {
 
 > Note: This event only responds to players that are currently being rendered locally. In large scenes where the scene size exceeds the visual range, players entering in the opposite corner may not be registered. If the number of players in the region exceeds the capabilities of an island on Decentraland servers, players that are not sharing a same island aren't visible and are not tracked by these events either.
 
-### Only current player
+#### Only current player
 
 You can filter out the triggered events to only react to the player's avatar, rather than other avatars that may be around.
 
@@ -75,7 +75,7 @@ getUserData().then((myPlayer) => {
 
 This example first obtains the player's id, then subscribes to the events and compares the `userId` returned by the event to that of the player.
 
-### Query all players in scene
+#### Query all players in scene
 
 You can also get the full list of players who are currently on your scene and being rendered by calling `getPlayersInScene()`.
 
