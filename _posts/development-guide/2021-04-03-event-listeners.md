@@ -181,7 +181,6 @@ When testing in preview, run the scene with `dcl start --web3` so that you conne
 
 > Note: This event is only triggered by changes to the current player, not by changes on the profiles of other nearby players.
 
-
 ## Scene finished loading
 
 When the scene finishes loading, the `onSceneReadyObservable` gets called. This works both if the player loads straight into the scene, or if the player walks up to the scene from somewhere else. When all of the content in the scene has finished its initial load, including heavy models, etc, this event is called.
@@ -218,6 +217,29 @@ The input of a video event contains the following properties:
 - `VideoStatus.BUFFERING` = 5
 
 Learn more about playing videos in Decentraland in [Video Playing]({{ site.baseurl }}{% post_url /development-guide/2020-05-04-video-playing %}).
+
+## Player changes realm or island
+
+Players in decentraland exist in separate _realms_, and in separate _islands_ within each realm. Players in different realms or islands cant see each other, interact or chat with each other, even if they're standing on the same parcels.
+
+Each time the player changes realms or island, the `onRealmChangedObservable` event gets called.
+
+```ts
+onRealmChangedObservable.add((realmChange) => {
+  log("PLAYER CHANGED ISLAND TO ", realmChange.room)
+})
+```
+
+This event includes the following fields:
+
+- **serverName**: _string_; The catalyst server name.
+- **room**: _string_; The island name.
+- **displayName**: _string_; The catalyst server name followed by a _-_ and the island name. For example `unicorn-x011`.
+- **domain**: _string_; The url to the catalyst server being used.
+
+As players move through the map, they may switch islands to be grouped with those players who are now closest to them. Islands also shift their borders dynamically to fit a manageable group of people in each. So even if a player stands still they could be changed island as others enter and leave surrounding scenes.
+
+If your scene relies on a [3rd party server]({{ site.baseurl }}{% post_url /development-guide/2018-01-10-remote-scene-considerations %}) to sync changes between players in real time, then you may want to only share data between players that are grouped in a same realm+island, so it's a good practice to change rooms in the 3rd party server whenever players change island.
 
 ## Player starts/ends the tutorial
 
