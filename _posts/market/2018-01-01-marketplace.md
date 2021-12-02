@@ -22,7 +22,7 @@ The Marketplace allows you to:
 - **Sell** parcels and Estates of LAND, wearables, and unique names. Set your own price in MANA and an expiration date for the offer.
 - **Buy** parcels and Estates, wearables, and unique names that are for sale.
 - **Transfer** your Decentraland assets to another user.
-- **Explore** the world through a map to see who owns what, existing wearables claimed avatar names.
+- **Explore** the world through a map to see who owns what, existing wearables or claimed avatar names.
 
 > Note: Use [builder.decentraland.org/land](https://builder.decentraland.org/land) to:
 
