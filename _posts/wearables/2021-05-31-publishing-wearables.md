@@ -26,7 +26,7 @@ There is a required fee for publishing items. This fee was [voted in place by th
 
 **The fee is a flat rate of $500 value (paid in MANA) per item (not NFT!) in your collection.**
 
-Previously it was 500 MANA, with MANAs value increase, it was lowered to equal $500 in a recent [DAO vote](https://decentraland.org/blog/project-updates/dao-committee-report-11/).
+> Note: Previously it was 500 MANA, with MANA's value increase, it was lowered to equal $500 in a recent [DAO vote](https://decentraland.org/blog/project-updates/dao-committee-report-11/).
 
 The calculation examples below use 500 MANA as fee. The actual fee of MANA will be set weekly by the DAO, in order to try and always align with $500 in valuation.
 
