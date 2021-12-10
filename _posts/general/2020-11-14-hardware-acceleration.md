@@ -55,7 +55,7 @@ To set up hardware acceleration:
 
 To set up hardware acceleration:
 
-- Left click anywhere on the desktop and select _Display Options_
+- Right click anywhere on the desktop and select **Display Options**
 - Scroll down to find the **Graphics Settings** link
 - Under _Choose an app to set preference_ select _Chrome_ or your browser of choice
 - Click on the app and click **Options**
