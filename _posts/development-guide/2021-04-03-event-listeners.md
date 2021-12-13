@@ -28,6 +28,8 @@ onPlayerDisconnectedObservable.add((player) => {
 Keep in mind that if other players are already being rendered in the surroundings before the player has loaded your scene, this event won't notify the newly loaded scene of the already existing players. If you need to keep track of all current players, you can query for existing players upon scene loading, and then listen to this event for updates.
 
 ```ts
+import { getConnectedPlayers } from "@decentraland/Players"
+
 getConnectedPlayers().then((players) => {
   players.forEach((player) => {
     log("player was already here: ", player.userId)
@@ -56,6 +58,8 @@ onLeaveSceneObservable.add((player) => {
 You can filter out the triggered events to only react to the player's avatar, rather than other avatars that may be around.
 
 ```ts
+import { getUserData } from "@decentraland/Identity"
+
 getUserData().then((myPlayer) => {
   onEnterSceneObservable.add((player) => {
     log("player entered scene: ", player.userId)
@@ -80,6 +84,8 @@ This example first obtains the player's id, then subscribes to the events and co
 You can also get the full list of players who are currently on your scene and being rendered by calling `getPlayersInScene()`.
 
 ```ts
+import { getPlayersInScene } from "@decentraland/Players"
+
 getPlayersInScene().then((players) => {
   players.forEach((player) => {
     log("player was already here: ", player.userId)
