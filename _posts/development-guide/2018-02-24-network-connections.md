@@ -72,7 +72,7 @@ The fetch command returns a `response` object with the following data:
 
 > Note: `json()` and `text()` are mutually exclusive. If you obtain the body of the response in one of the two formats, you can no longer obtain the other from the `response` object.
 
-### Signed requests
+## Signed requests
 
 You can employ an extra security measure to certify that a request is originating from a player session inside Decentraland. You can send your requests with an additional signature, that is signed using an ephemeral key that the Decentraland session generates for each player based on the player's address. The server receiving the request can then verify that the signed message indeed matches an address that is currently active in-world.
 
