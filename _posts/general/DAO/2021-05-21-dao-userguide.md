@@ -148,7 +148,7 @@ You don’t need to own MANA or LAND to participate in these discussions! Everyo
 
 ## Creating a proposal
 
-To create a new proposal in the Decentraland DAO, start by logging in at [governance.decentraland.org](htpps://governance.decentraland.org) and connecting a wallet that contains LAND or MANA.
+To create a new proposal in the Decentraland DAO, start by logging in at [governance.decentraland.org](https://governance.decentraland.org) and connecting a wallet that contains LAND or MANA.
 
 After logging in and connecting your wallet, click **Submit a proposal** and select the proposal category you want to use. Each category will provide a form allowing you to provide the relevant information for your proposal.
 
