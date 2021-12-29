@@ -41,11 +41,11 @@ In future releases, players will have an inventory they carry everywhere which w
 
 #### Portable experiences
 
-In future releases, we plan to add the ability to develop what we call _portable experiences_ with our SDK. These will be parts of the gameplay that players take with them when they leave your scene and move through the rest of the metaverse. For example, a player could take a snowball from your scene, walk away to another scene, and throw the snowball to another player who’s also playing the same game.
+Portable experiences are parts of the gameplay that players take with them as they move through the metaverse. For example, a player could take a snowball from your scene, walk away to another scene, and throw the snowball to another player who’s also playing the same game.
 
-Players will have a way to turn these portable experiences on or off as they please.
+Smart wearables are portable experiences that are turned on when the player puts on the item of clothing. Smart wearables can grant players new abilities, like a jetpack that lets them fly, or add a new layer of content on top of the rest of the world, like randomly placing coins to be collected throughout the whole of genesis city.
 
-Keep in mind that players might be using someone else’s portable experience while on your scene, this adds an element of unpredictability to how they might interact.
+Keep in mind that players might be using someone else’s portable experience while on your scene. See [User Data]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}#get-portable-experiences) to learn how to check what portable experiences a player currently has activated.
 
 ## Game Persistence
 
