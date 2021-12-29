@@ -185,7 +185,7 @@ Note: This event is triggered any time the player makes an emote and the scene i
 
 Players can switch between two cursor modes: _locked cursor_ mode to control the camera or _unlocked cursor_ mode for moving the cursor freely over the UI.
 
-With a keyboard, players unlock the cursor by pressing the _Esc_ key, and lock the cursor back by clicking anywhere in the screen.
+Players unlock the cursor by clicking the _Right mouse button_ or pressing the _Esc_ key, and lock the cursor back by clicking anywhere in the screen.
 
 This `onPointerLockedStateChange` event is activated each time a player switches between these two modes, while near the scene.
 

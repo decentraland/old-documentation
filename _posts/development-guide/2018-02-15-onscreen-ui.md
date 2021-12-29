@@ -301,7 +301,7 @@ clickableImage.onClick = new OnClick(() => {
 ![]({{ site.baseurl }}/images/media/UI-clicks.png)
 -->
 
-> Note: If desktop players want to click on a UI component, they must first unlock the cursor from the view control, to move the cursor over the UI component. They do this by clicking `Esc`.
+> Note: To click on a UI component, players must first unlock the cursor from the view control. They do this by clicking the _right mouse button_ or hitting `Esc`.
 
 > Tip: If you want to add text over a button, keep in mind that the text needs to have the `isPointerBlocker` property set to `false`, otherwise players might be clicking the text instead of the button.
 
@@ -411,3 +411,4 @@ close.onClick = new OnClick(() => {
   canvas.isPointerBlocker = false
 })
 ```
+````
