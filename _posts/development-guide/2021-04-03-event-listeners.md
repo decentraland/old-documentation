@@ -225,10 +225,10 @@ This event is especially useful for multiplayer scenes, when you might want to d
 
 ## Player changes profile
 
-Whenever the player makes a change to their profile, the `onOwnProfileDataChange` event is called. These changes may include putting on different wearables, changing name, description, activating portable experiences, etc.
+Whenever the player makes a change to their profile, the `onProfileChanged` event is called. These changes may include putting on different wearables, changing name, description, activating portable experiences, etc.
 
 ```ts
-onOwnProfileDataChange.add((profileData) => {
+onProfileChanged.add((profileData) => {
   log("Own profile data is ", profileData)
 })
 ```
