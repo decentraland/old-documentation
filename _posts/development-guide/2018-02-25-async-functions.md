@@ -51,7 +51,8 @@ The `executeTask` function executes a lambda function asynchronously, in a separ
 
 ```ts
 executeTask(async () => {
-  // run async steps
+  let data = await myAsyncTask()
+  log(data)
 })
 
 // rest of the code keeps being executed
@@ -66,6 +67,8 @@ myAsyncTask().then((data) => {
   log(data)
 })
 ```
+
+> Note: It's generally better to use the `executeTask` approach rather than the `then` function. In this example, the scene won't be considered fully loaded by the explorer till the `myAsyncTask()` function is completed, which may affect load times. Also, if relying too much on the `then` function at multiple nested levels, you can end up with what's known as "callback hell", where the code can become very hard to read and maintain.
 
 ## OnPointerDown functions
 
