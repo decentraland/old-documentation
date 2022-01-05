@@ -30,7 +30,8 @@ Keep in mind that if other players are already being rendered in the surrounding
 ```ts
 import { getConnectedPlayers } from "@decentraland/Players"
 
-getConnectedPlayers().then((players) => {
+executeTask(async () => {
+  let players = await getConnectedPlayers()
   players.forEach((player) => {
     log("player was already here: ", player.userId)
   })
@@ -60,7 +61,9 @@ You can filter out the triggered events to only react to the player's avatar, ra
 ```ts
 import { getUserData } from "@decentraland/Identity"
 
-getUserData().then((myPlayer) => {
+executeTask(async () => {
+  let myPlayer = await getUserData()
+
   onEnterSceneObservable.add((player) => {
     log("player entered scene: ", player.userId)
     if (player.userId === myPlayer?.userId) {
@@ -86,7 +89,8 @@ You can also get the full list of players who are currently on your scene and be
 ```ts
 import { getPlayersInScene } from "@decentraland/Players"
 
-getPlayersInScene().then((players) => {
+executeTask(async () => {
+  let players = await getPlayersInScene()
   players.forEach((player) => {
     log("player was already here: ", player.userId)
   })
