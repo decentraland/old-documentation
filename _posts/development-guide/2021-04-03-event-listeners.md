@@ -185,6 +185,28 @@ The event includes the following information:
 
 Note: This event is triggered any time the player makes an emote and the scene is loaded. The player could be standing in a nearby scene when this happens.
 
+## Player clicks on another player
+
+Whenever the player clicks on another player, you can detect an event.
+
+```ts
+onPlayerClickedObservable.add((clickEvent) => {
+  log("Clicked ", clickEvent.userId, " details: ", clickEvent.ray)
+})
+```
+
+Note: Both the player performing the click and the player being clicked must be standing within the parcels of the scene. This listener only detects events of the current player clicking on other players, not those of clicks performed by other players.
+
+The event includes the following data:
+
+- `userId`: The id of the clicked player
+- `ray`: Data about the ray traced by the click
+  - `direction`: _Vector3_ A normalized Vector3 that represents the direction from the point of origin of the click to the hit point of the click.
+  - `distance`: _number_ The distance in meters from the point of origin to the hit point.
+  - `origin`: _Vector3_ The point of origin of the click, the position of the player who did the click, relative to the scene.
+
+Tip: The default behavior of clicking on another player is opening the player passport, where you can see additional information about that player, add them as a friend, etc. You can disable the opening of this UI so that it doesn't get in the way of the experience you want to build by adding an [Avatar Modifier Area]({{ site.baseurl }}{% post_url /development-guide/2020-09-24-avatar-modifiers %}).
+
 ## Player locks/unlocks cursor
 
 Players can switch between two cursor modes: _locked cursor_ mode to control the camera or _unlocked cursor_ mode for moving the cursor freely over the UI.
