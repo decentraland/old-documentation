@@ -268,7 +268,7 @@ You can use an invisible entity with no shape component to wrap a set of other e
 
 ## Attach an entity to an avatar
 
-To fix an entity's position to an avatar, use the `AttachToAvatar` component. You can pick different anchor points on the avatar, most of these points are linked to the player's armature and follow the player's animations. For example using the `RightHand` anchor point, the attached entity will move when the avatar waves or swings their arms while running, just as if the player was holding the entity in their hand.
+To fix an entity's position to an avatar, add an `AttachToAvatar` component to the entity. You can pick different anchor points on the avatar, most of these points are linked to the player's armature and follow the player's animations. For example, when using the `RightHand` anchor point the attached entity will move when the avatar waves or swings their arms while running, just as if the player was holding the entity in their hand.
 
 ```ts
 this.addComponentOrReplace(
@@ -281,20 +281,24 @@ this.addComponentOrReplace(
 
 The following anchor points are available on the player:
 
-- `NameTag`: Floats right above the player's name tag - `RightHand`:
-- `LeftHand`:
+- `NameTag`: Floats right above the player's name tag, isn't affected by the player's animations.
+
+> Note: The name tag height is dynamically adjusted based on the height of the wearables a player has on. So a player wearing a tall hat will have their name tag a little bit higher than others.
+
+- `RightHand`: Is fixed on the player's right hand
+- `LeftHand`: Is fixed on the player's left hand
 
 ...etc
 
 Attach an entity to any player in the scene by passing their address in the `avatarId` field of the `AttachToAvatar` component.
 
-Entity rendering is locally determined on each instance of the scene, even for those entities attached to avatars.
+> Note: Entities attached to an avatar must stay within scene bounds to be rendered. If a player walks out of your scene, any attached entities stop being rendered until the player walks back in. Smart wearables don't have this limitation.
 
-> Note: Entities attached to an avatar must stay within scene bounds to be rendered. If a player walks out of your scene, any attached entities stop being rendered until the player walks back in.
+Entity rendering is locally determined on each instance of the scene. Attaching an entity on one player doesn't make it visible to everyone seeing that player.
 
 The `AttachToAvatar` component overwrites the `Transform` component, a single entity can't have both an `AttachToAvatar` and a `Transform` component at the same time.
 
-If you need to position an entity with an offset from the anchor point, or a different rotation or scale, assign a parent entity to the anchor point, and set the visible model on a child entity.
+If you need to position an entity with an offset from the anchor point on the avatar, or a different rotation or scale, attach a parent entity to the anchor point. You can then set the visible model on a child entity to that parent, and give this child its own Transform component to describe its shifts from the anchor point.
 
 ```ts
 let parent = new Entity()
@@ -321,7 +325,7 @@ child.setParent(parent)
 
 #### Obtain the avatarId
 
-To attach an entity to an avatar, you must first learn the player's userId. There are [various ways]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}#get-player-data) to obtain this data.
+To attach an entity to an avatar, you must be able to reference the player's userId. There are [various ways]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}#get-player-data) to obtain this data.
 
 - Fetch the current player's Id using `getUserData()`.
 
@@ -347,34 +351,7 @@ executeTask(async () => {
 })
 ```
 
-- Fetch the IDs of all other players standing in the scene with `getPlayersInScene()`
-
-```ts
-import { getPlayersInScene } from "@decentraland/Players"
-
-executeTask(async () => {
-  let players = await getPlayersInScene()
-  players.forEach((player) => {
-    log("player is nearby: ", player.userId)
-  })
-})
-```
-
-- Listen for when new players connect with `onPlayerConnectedObservable`
-
-```ts
-onPlayerConnectedObservable.add((player) => {
-  log("player entered: ", player.userId)
-})
-```
-
-- Listen for when new players step into the scene with `onEnterSceneObservable`
-
-```ts
-onEnterSceneObservable.add((player) => {
-  log("player entered scene: ", player.userId)
-})
-```
+See other ways to fetch other player's IDs in [Get Player Data]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}get-player-data).
 
 #### Attach to player using Attachable (deprecated)
 
