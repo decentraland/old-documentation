@@ -268,7 +268,9 @@ You can use an invisible entity with no shape component to wrap a set of other e
 
 ## Attach an entity to an avatar
 
-To fix an entity's position to an avatar, add an `AttachToAvatar` component to the entity. You can pick different anchor points on the avatar, most of these points are linked to the player's armature and follow the player's animations. For example, when using the `RightHand` anchor point the attached entity will move when the avatar waves or swings their arms while running, just as if the player was holding the entity in their hand.
+To fix an entity's position to an avatar, add an `AttachToAvatar` component to the entity.
+
+<!-- You can pick different anchor points on the avatar, most of these points are linked to the player's armature and follow the player's animations. For example, when using the `RightHand` anchor point the attached entity will move when the avatar waves or swings their arms while running, just as if the player was holding the entity in their hand. -->
 
 ```ts
 this.addComponentOrReplace(
@@ -279,20 +281,28 @@ this.addComponentOrReplace(
 )
 ```
 
+Attach an entity to any player in the scene by passing their address in the `avatarId` field of the `AttachToAvatar` component.
+
+> Note: Entities attached to an avatar must stay within scene bounds to be rendered. If a player walks out of your scene, any attached entities stop being rendered until the player walks back in. Smart wearables don't have this limitation.
+
 The following anchor points are available on the player:
 
 - `NameTag`: Floats right above the player's name tag, isn't affected by the player's animations.
 
-> Note: The name tag height is dynamically adjusted based on the height of the wearables a player has on. So a player wearing a tall hat will have their name tag a little bit higher than others.
+  > Note: The name tag height is dynamically adjusted based on the height of the wearables a player has on. So a player wearing a tall hat will have their name tag a little bit higher than others.
 
+- `Position`: The player's overall position.
+
+  > Note: The height of this anchor point currently may vary between the local player's avatar and other players, this is subject to change in future versions. The NameTag anchor point should be more reliable.
+
+<!--
 - `RightHand`: Is fixed on the player's right hand
 - `LeftHand`: Is fixed on the player's left hand
 
 ...etc
+-->
 
-Attach an entity to any player in the scene by passing their address in the `avatarId` field of the `AttachToAvatar` component.
-
-> Note: Entities attached to an avatar must stay within scene bounds to be rendered. If a player walks out of your scene, any attached entities stop being rendered until the player walks back in. Smart wearables don't have this limitation.
+> Note: Future SDK versions will include alternative anchor points on the avatar that will accompany the avatar animations.
 
 Entity rendering is locally determined on each instance of the scene. Attaching an entity on one player doesn't make it visible to everyone seeing that player.
 
@@ -325,9 +335,9 @@ child.setParent(parent)
 
 #### Obtain the avatarId
 
-To attach an entity to an avatar, you must be able to reference the player's userId. There are [various ways]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}#get-player-data) to obtain this data.
+To attach an entity to an avatar, you must be able to reference that player's userId. There are [various ways]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}#get-player-data) to obtain this data.
 
-- Fetch the current player's Id using `getUserData()`.
+- Fetch the local player's Id using `getUserData()`.
 
 ```ts
 import { getPlayerData } from "@decentraland/Players"
