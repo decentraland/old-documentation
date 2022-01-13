@@ -155,19 +155,16 @@ onCameraModeChangedObservable.add(({ cameraMode }) => {
 })
 ```
 
-The value of the returned property can either be `CameraMode.FirstPerson` or `CameraMode.ThirdPerson`.
+The values of the returned property can be:
 
-This event informs changes to the camera mode once the player is already in or near your scene. To know the initial camera mode of the player when first arriving to your scene, check the value of `Camera.instance.cameraMode`. See [User Data]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}#check-the-players-camera-mode).
+- `CameraMode.FirstPerson`
+- `CameraMode.ThirdPerson`
 
-```ts
-// intitial camera mode
-log("Camera mode: ", Camera.instance.cameraMode)
+This event is fired once when the scene first obtains information about the player's current camera mode, and then any time the player changes camera mode while in or around your scene.
 
-// check for changes
-onCameraModeChangedObservable.add(({ cameraMode }) => {
-  log("Camera mode changed:", cameraMode)
-})
-```
+> Tip: To encourage players to use a particular camera mode in your scene, display a UI message advising them to switch modes whenever they use the wrong one.
+
+Knowing the camera mode can be very useful to fine-tune the mechanics of your scene to better adjust to what's more comfortable using this mode. For example, small targets are harder to click when on 3rd person.
 
 ## Player plays animation
 
