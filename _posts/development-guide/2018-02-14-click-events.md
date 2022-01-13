@@ -376,6 +376,43 @@ myEntity.addComponent(box)
 engine.addEntity(myEntity)
 ```
 
+## OnHover Component
+
+Add `OnPointerHoverEnter` and `OnPointerHoverExit` components to an entity to run a callback function every time that the player's cursor starts or stops pointing at the entity.
+
+You can use this to hint that something is interactable in some custom way, like showing a glowing highlight around the entity, playing a subtle sound, etc. It could also be used for specific gameplay mechanics.
+
+```ts
+myEntity.addComponent(
+  new OnPointerHoverEnter((e) => {
+    log("Started Pointing at entity")
+  })
+)
+
+myEntity.addComponent(
+  new pointerHoverExit((e) => {
+    log("Stopped Pointing at entity")
+  })
+)
+```
+
+On the `OnPointerHoverEnter` component, you can set a maximum distance, to only trigger the callback when the player is near the entity.
+
+```ts
+myEntity.addComponent(
+  new OnPointerHoverEnter(
+    (e) => {
+      log("Started Pointing at entity")
+    },
+    {
+      distance: 8,
+    }
+  )
+)
+```
+
+> TIP: Note that all entities with an `OnPointerDown` component by default show a UI hint when hovered over. You can disable this UI hint by setting the `showFeeback` property on the `OnPointerDown` component to false.
+
 ## OnClick Component - DEPRECATED
 
 As an alternative to `OnPointerDown`, you can use the `OnClick` component. This component only tracks button events from the `POINTER`, not from the primary or secondary buttons.
