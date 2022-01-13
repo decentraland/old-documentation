@@ -125,7 +125,7 @@ const childEntity = new Entity()
 childEntity.setParent(parentEntity)
 ```
 
-> Note: It's not necessary no need to add an entity to the engine if it's set as a child of another entity that's already added to the engine.
+> Note: Child entities should not be explicitly added to the engine, as they are already added via their parent entity.
 
 Once a parent is assigned, it can be read off the child entity with `.getParent()`.
 

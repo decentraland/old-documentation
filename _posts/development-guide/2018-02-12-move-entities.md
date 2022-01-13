@@ -105,9 +105,6 @@ myEntity.addComponent(
   })
 )
 
-// Add child entity to the engine
-engine.addEntity(myEntity)
-
 // Define a system that updates the rotation on every frame
 export class PivotRotate implements ISystem {
   update() {
@@ -123,6 +120,8 @@ engine.addSystem(new PivotRotate())
 Note that in this example, the system is rotating the `pivot` entity, that's a parent of the `door` entity.
 
  <img src="{{ site.baseurl }}/images/media/gifs/pivot-rotate.gif" alt="Move entity" width="300"/>
+
+> Note: Child entities should not be explicitly added to the engine, as they are already added via their parent entity.
 
 ## Adjust movement to delay time
 
