@@ -224,7 +224,7 @@ The events from `OnPointerDown` and `OnPointerUp` components, as well as all the
 
 - `origin`: Origin point of the ray, as a _Vector3_
 - `direction`: Direction vector of the ray, as a normalized _Vector3_ that points in the same direction.
-- `pointerId`: ID of the pointer that triggered the event (_POINTER_, _PRIMARY_ or _SECONDARY_)
+- `buttonId`: ID of the button that triggered the event (_POINTER_, _PRIMARY_ or _SECONDARY_)
 - `hit`: _(Optional)_ Object describing the entity that was clicked on. If the click didn't hit any specific entity, this field isn't present. The `hit` object contains the following parameters:
 
   - `length`: Length of the ray in meters, as a _number_
@@ -399,7 +399,7 @@ The `OnClick` component passes less event information than the `OnPointerDown` c
 
 It only contains the following parameter, which can be accessed by your function:
 
-- `pointerId`: ID of the pointer that triggered the event (_PRIMARY_ or _SECONDARY_)
+- `buttonId`: ID of the button that triggered the event (_PRIMARY_ or _SECONDARY_)
 
 ```ts
 const myEntity = new Entity()
@@ -407,7 +407,7 @@ myEntity.addComponent(new BoxShape())
 
 myEntity.addComponent(
   new OnClick(e => {
-    log("pointer Id" + e.pointerId)
+    log("pointer Id" + e.buttonId)
   })
 )
 ```
