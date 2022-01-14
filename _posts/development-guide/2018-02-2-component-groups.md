@@ -30,7 +30,16 @@ const myGroup = engine.getComponentGroup(Transform)
 
 You can access the entities in a component group in the following way: if the group name is `myGroup`, calling `myGroup.entities` returns an array containing all the entities in it.
 
+```ts
+const myGroup = engine.getComponentGroup(Transform)
+
+for (let entity of myGroup.entities) {
+  log(entity.uuid)
+}
+```
+
 > Note: Keep in mind that component groups take up space in the local memory of the player's machine. Usually, the benefit in speed you get from having a group is a tradeoff that is well worth it. However, for cases where you'd have a large group that you don't access all that often, it might be better to not have one.
+
 
 ## Required components
 
@@ -40,7 +49,7 @@ When creating a component group, specify what components need to be present in e
 const myGroup = engine.getComponentGroup(Transform, Physics, NextPosition)
 ```
 
-> Tip: If your scene includes several entities that have the same components, but you only want some of those in your component group, create a custom component to act as a [flag]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}#components-as-flags). This component doesn't need to have any properties in it. Add this component to the entities that you want the component group to handle.
+> Tip: If your scene includes entities that have all the required components but that don't need to be in your component group, create a custom component to act as a [flag]({{ site.baseurl }}{% post_url /development-guide/2018-02-1-entities-components %}#components-as-flags). This component doesn't need to have any properties in it. Add this component to the entities that you want the component group to handle.
 
 ## Use component groups in a system
 
@@ -67,6 +76,30 @@ In the example above, `PhysicsSystem` iterates over the entities in `myGroup` as
 - If your scene also has other entities like a _hoop_ and a _scoreBoard_ that only have a `Physics` component, then they won't be in `myGroup` and won't be affected by `PhysicsSystem`.
 
 > Note: The `engine.getComponentGroup()` is an expensive function to process, it should never be used inside the `update` of a system, as that would create a new group on every frame. When regularly checking the entities in a group, refer to an already created group, as in the example above. Once created, compnent groups are updated as entities and components are added and removed from the engine, so there's no need to redeclare or update these groups.
+
+## Dealing with the entities
+
+The `entities` array of a component group contains elements of type `IEntity`, which is identical to `Entity`, but not recogized by Typescript as the same type. If a function expects an input of type `Entity`, you can simply force the argument's type with `as Entity`.
+
+```ts
+const myGroup = engine.getComponentGroup(Billboard)
+
+for (let entity of myGroup.entities) {
+  addLabel(entity as Entity)
+}
+
+function addLabel(entity: Entity) {
+  let label = new Entity()
+  label.setParent(entity)
+  label.addComponent(
+    new Transform({
+      position: new Vector3(0, 1, 0),
+      scale: new Vector3(0.5, 0.5, 0.5),
+    })
+  )
+  label.addComponent(new TextShape(entity.uuid))
+}
+```
 
 ## All entities
 
