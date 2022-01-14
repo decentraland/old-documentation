@@ -7,7 +7,7 @@ categories:
 type: Document
 ---
 
-There are a number of aspects you can optimize in your scene to ensure the best possible experience for players visiting. This document will cover some best practices that can make a big difference in how fast your scene loads and how smoothly it runs for players that are on it and on neighboring scenes.
+There are a number of aspects you can optimize in your scene to ensure the best possible experience for players visiting. This document covers some best practices that can make a big difference in how fast your scene loads and how smoothly it runs for players that are on it and on neighboring scenes.
 
 Keep in mind that many players may be visiting Decentraland using hardware that is not built for gaming, and via the browser, which limits how much of the hardware's processing power is available to use. The experience of visiting your scene should be smooth for everyone.
 
@@ -47,15 +47,25 @@ Any processes that rely on responses from asynchronous services, such as getPlay
 
 Note that the scene will be considered fully loaded when everything that isn't async is done. Async processes might still be running when the player enters the scene. Avoid situations where entities that are loaded as a result of async processes could potentially get the player stuck inside their geometry.
 
+#### Rely on Events
+
+Try to make the scene's logic rely on listening to [events]() as much as possible, instead of running checks every frame.
+
+The update() function in a [system]() runs on every frame, that's 30 times per second ideally. Avoid doing recurring checks if you can instead subscribe to an existing event.
+
+For example, instead of constantly checking the player's wearables, you can subscribe to the `onProfileChanged` event, and check the player's wearables only when they've changed.
+
+If you must use a system, avoid doing checks or adjustments on every single frame. You can include a timer as part of the update function and only run the check once every full second, for example.
+
 ## Optimize 3d models
 
 There are several ways in which your 3d models can be optimized to be lighter.
 
-- When possible, share textures across 3d models. A good practice is to use a single texture map shared across all models in the scene.
+- When possible, share textures across 3d models. A good practice is to use a single texture as an atlas map, shared across all models in the scene. It's better to have 1 large shared texture of 1025x1025 pixels instead of several small ones.
+
+  > Note: Avoid using the same image file for both the albedo texture and the normal map or the emissive map of a material. Use separate files, even if identical. Assigning a same image file to different types of texture properties may introduce unwanted visual artifacts when compressed to asset bundles.
 
 - _.glb_ is a compressed format, it will always weigh less than a _.gltf_. On the other hand, with _.gltf_ it's easy to share texture images by exporting textures as a separate file. You can have the best of two worlds by using the [following pipeline](), that allows you to have _.glb_ models with external texture files.
-
-- Try to keep the texture sizes low, they shouldn't go above 512x512 pixels.
 
 > TIP: Read more about 3d model best practices in the [3d Modeling Section]()
 
@@ -73,11 +83,13 @@ If your scene connects to any 3rd party servers or uses the messagebus to send m
 
 - Your scene should only have one active WebSockets connection at a time.
 - HTTP calls are funneled by the engine so that only one is handled at a time. Any additional requests are queued internally and must wait till other requests are completed. This optimization is implemented on all scenes, you don't need to do anything.
-- When using the messagebus to send messages between players, be mindful that all messages are sent to all other players in the server island. Avoid situations where an incoming message directly leads to sending another message, as that can quickly grow exponentially when there's a crowd in the scene.
+- When using the messagebus to send messages between players, be mindful that all messages are sent to all other players in the server island. Avoid situations where an incoming message directly leads to sending another message, as the number of messages can quickly grow exponentially when there's a crowd in the scene.
 
 ## Scene UI
 
 Scene UIs can become costly to render when there are many individual elements in them. Keep in mind that each UI element requires a separate drawcall on the engine.
+
+Avoid making adjustments to the UI on every frame, those are especially costly and can end up getting queued. For example, if there's a health bar in your UI that should shrink over period of time, players would probably not notice a difference between if it updates at 10 FPS instead of at 30 FPS (on every frame). The system that updates this bar can use a brief timer of 1/10th of a second, and only affect the UI when that timer reaches 0.
 
 TIP: Try to merge multiple elements into one single image. For example if you have a menu with multiple text elements, it's ideal to have the text from the tiles and any additional images baked into the background image.
 
