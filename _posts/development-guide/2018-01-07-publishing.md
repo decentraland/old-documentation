@@ -53,6 +53,8 @@ Open your scene's _scene.json_ file and complete the following data:
 
 > Tip: If you're implementing a continuous integration flow, where changes to your scene are deployed automatically, then you can set the `export DCL_PRIVATE_KEY` environment variable to the private key of an account that has deploy permissions.
 
+> Tip: `dcl deploy` runs a `dcl build`, which checks the scene for type errors more strictly than running `dcl start`. If these errors can't be avoided (eg: they happen in an external library) and they don't impact the scene, you can use `dcl deploy  --skip-build`  to skip the `dcl build` step and deploy the scene as it is.
+
 ## Publish from a physical Ledger device
 
 Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a [Ledger](https://www.ledger.com/) device that's physically plugged in to your computer.
@@ -90,3 +92,22 @@ We use the content servers to host and distribute all scene content in a similar
 2.  The `dcl deploy` command links these assets to the LAND parcel specified in your **scene.json** file. Whenever you redeploy your scene, the CLI will update your LAND smart contract, if needed, to point to the most recent content available on the content servers.
 
 The information on each copy of the server is verifiable, as each scene is signed by the LAND owner's hash. This means that someone hosting a copy of the server won't be able to tamper with the content to display something illegitimate. The community can also vote to approve or remove any of these servers using the DAO.
+
+## The test server
+
+You can deploy content to the test catalyst server to run full tests with multiple users, the sourrounding scenes, and an environment that is identical to production. The test server is identical to all other catalyst servers, the difference is that the content that is deployed to this server isn't propagated to the others. Content deployed to other servers on the other hand does get propagated to this server, so surrounding scenes should look as they will in production.
+
+To deploy to the test server, run:
+
+`dcl deploy --target peer-testing.decentraland.org`
+
+> Note: The same permissions apply as in production. You must be owner or have permissions on the parcels that you're deployng to.
+
+Players are never directed to this server, the only way to access it is to explicitly provide a URL parameter to connect to it. 
+
+To enter the content server, add `&CATALYST=peer-testing.decentraland.org` to the Decentraland URL
+
+play.decentraland.org/&CATALYST=peer-testing.decentraland.org
+
+
+If you're working in a confidential project that you don't want to unveil until launch, note that the test server is relatively hidden from players, but anyone explicitly using the test server's URL could potentially run into it.
