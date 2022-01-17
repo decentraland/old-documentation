@@ -390,7 +390,7 @@ myEntity.addComponent(
 )
 
 myEntity.addComponent(
-  new pointerHoverExit((e) => {
+  new OnPointerHoverExit((e) => {
     log("Stopped Pointing at entity")
   })
 )
