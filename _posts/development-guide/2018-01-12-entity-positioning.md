@@ -275,7 +275,7 @@ To fix an entity's position to an avatar, add an `AttachToAvatar` component to t
 ```ts
 this.addComponentOrReplace(
   new AttachToAvatar({
-    avatarId: playerId,
+    avatarId: '0xAAAAAAAAAAAAAAAAA',
     anchorPointId: AttachToAvatarAnchorPointId.NameTag,
   })
 )
@@ -315,7 +315,7 @@ let parent = new Entity()
 
 parent.addComponentOrReplace(
   new AttachToAvatar({
-    avatarId: playerId,
+    avatarId: '0xAAAAAAAAAAAAAAAAA',
     anchorPointId: AttachToAvatarAnchorPointId.NameTag,
   })
 )
