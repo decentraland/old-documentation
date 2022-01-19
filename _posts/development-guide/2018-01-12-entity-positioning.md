@@ -281,9 +281,11 @@ this.addComponentOrReplace(
 )
 ```
 
-Attach an entity to any player in the scene by passing their address in the `avatarId` field of the `AttachToAvatar` component.
+When creating an `AttachToAvatar` component, you must pass an object with the following data:
 
-> Note: Entities attached to an avatar must stay within scene bounds to be rendered. If a player walks out of your scene, any attached entities stop being rendered until the player walks back in. Smart wearables don't have this limitation.
+- `avatarId`: The ID of the player to attach to. This is the same as the player's Ethereum address, for those players connected with an Ethereum wallet.
+- `anchorPointId`: What anchor point on the avatar to attach the entity.
+
 
 The following anchor points are available on the player:
 
@@ -305,6 +307,9 @@ The following anchor points are available on the player:
 > Note: Future SDK versions will include alternative anchor points on the avatar that will accompany the avatar animations.
 
 Entity rendering is locally determined on each instance of the scene. Attaching an entity on one player doesn't make it visible to everyone seeing that player.
+
+> Note: Entities attached to an avatar must stay within scene bounds to be rendered. If a player walks out of your scene, any attached entities stop being rendered until the player walks back in. Smart wearables don't have this limitation.
+
 
 The `AttachToAvatar` component overwrites the `Transform` component, a single entity can't have both an `AttachToAvatar` and a `Transform` component at the same time.
 
@@ -335,9 +340,11 @@ child.setParent(parent)
 
 #### Obtain the avatarId
 
-To attach an entity to an avatar, you must be able to reference that player's userId. There are [various ways]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}#get-player-data) to obtain this data.
+To attach an entity to an avatar, you must provide the user's ID in the field `avatarId`. There are [various ways]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}#get-player-data) to obtain this data.
 
-- Fetch the local player's Id using `getUserData()`.
+> Note: For those players connected with an Ethereum wallet, their `userId` is the same as their Ethereum address.
+
+- Fetch the local player's `userId` via `getUserData()`.
 
 ```ts
 import { getPlayerData } from "@decentraland/Players"
@@ -348,7 +355,7 @@ executeTask(async () => {
 })
 ```
 
-- Fetch the IDs of all other nearby players with `getConnectedPlayers()`
+- Fetch the `userId` for all other nearby players via `getConnectedPlayers()`
 
 ```ts
 import { getConnectedPlayers } from "@decentraland/Players"
@@ -361,7 +368,7 @@ executeTask(async () => {
 })
 ```
 
-See other ways to fetch other player's IDs in [Get Player Data]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}get-player-data).
+See other ways to fetch other user's IDs in [Get Player Data]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}get-player-data).
 
 #### Attach to player using Attachable (deprecated)
 
