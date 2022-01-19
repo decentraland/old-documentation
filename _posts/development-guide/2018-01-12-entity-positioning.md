@@ -266,7 +266,113 @@ You can use an invisible entity with no shape component to wrap a set of other e
 
 > Note: Child entities should not be explicitly added to the engine, as they are already added via their parent entity.
 
-## Attach an entity to the player
+## Attach an entity to an avatar
+
+To fix an entity's position to an avatar, add an `AttachToAvatar` component to the entity.
+
+<!-- You can pick different anchor points on the avatar, most of these points are linked to the player's armature and follow the player's animations. For example, when using the `RightHand` anchor point the attached entity will move when the avatar waves or swings their arms while running, just as if the player was holding the entity in their hand. -->
+
+```ts
+this.addComponentOrReplace(
+  new AttachToAvatar({
+    avatarId: '0xAAAAAAAAAAAAAAAAA',
+    anchorPointId: AttachToAvatarAnchorPointId.NameTag,
+  })
+)
+```
+
+When creating an `AttachToAvatar` component, you must pass an object with the following data:
+
+- `avatarId`: The ID of the player to attach to. This is the same as the player's Ethereum address, for those players connected with an Ethereum wallet.
+- `anchorPointId`: What anchor point on the avatar to attach the entity.
+
+
+The following anchor points are available on the player:
+
+- `NameTag`: Floats right above the player's name tag, isn't affected by the player's animations.
+
+  > Note: The name tag height is dynamically adjusted based on the height of the wearables a player has on. So a player wearing a tall hat will have their name tag a little bit higher than others.
+
+- `Position`: The player's overall position.
+
+  > Note: The height of this anchor point currently may vary between the local player's avatar and other players, this is subject to change in future versions. The NameTag anchor point should be more reliable.
+
+<!--
+- `RightHand`: Is fixed on the player's right hand
+- `LeftHand`: Is fixed on the player's left hand
+
+...etc
+-->
+
+> Note: Future SDK versions will include alternative anchor points on the avatar that will accompany the avatar animations.
+
+Entity rendering is locally determined on each instance of the scene. Attaching an entity on one player doesn't make it visible to everyone seeing that player.
+
+> Note: Entities attached to an avatar must stay within scene bounds to be rendered. If a player walks out of your scene, any attached entities stop being rendered until the player walks back in. Smart wearables don't have this limitation.
+
+
+The `AttachToAvatar` component overwrites the `Transform` component, a single entity can't have both an `AttachToAvatar` and a `Transform` component at the same time.
+
+If you need to position an entity with an offset from the anchor point on the avatar, or a different rotation or scale, attach a parent entity to the anchor point. You can then set the visible model on a child entity to that parent, and give this child its own Transform component to describe its shifts from the anchor point.
+
+```ts
+let parent = new Entity()
+
+parent.addComponentOrReplace(
+  new AttachToAvatar({
+    avatarId: '0xAAAAAAAAAAAAAAAAA',
+    anchorPointId: AttachToAvatarAnchorPointId.NameTag,
+  })
+)
+engine.addEntity(parent)
+
+let child = new Entity()
+child.addComponent(new ConeShape())
+child.addComponent(
+  new Transform({
+    rotation: Quaternion.Euler(0, 0, 180),
+    scale: new Vector3(0.2, 0.2, 0.2),
+    position: new Vector3(0, 0.4, 0),
+  })
+)
+child.setParent(parent)
+```
+
+#### Obtain the avatarId
+
+To attach an entity to an avatar, you must provide the user's ID in the field `avatarId`. There are [various ways]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}#get-player-data) to obtain this data.
+
+> Note: For those players connected with an Ethereum wallet, their `userId` is the same as their Ethereum address.
+
+- Fetch the local player's `userId` via `getUserData()`.
+
+```ts
+import { getPlayerData } from "@decentraland/Players"
+
+executeTask(async () => {
+  let data = await getUserData()
+  log(data.userId)
+})
+```
+
+- Fetch the `userId` for all other nearby players via `getConnectedPlayers()`
+
+```ts
+import { getConnectedPlayers } from "@decentraland/Players"
+
+executeTask(async () => {
+  let players = await getConnectedPlayers()
+  players.forEach((player) => {
+    log("player is nearby: ", player.userId)
+  })
+})
+```
+
+See other ways to fetch other user's IDs in [Get Player Data]({{ site.baseurl }}{% post_url /development-guide/2018-02-22-user-data %}get-player-data).
+
+#### Attach to player using Attachable (deprecated)
+
+Note: This method for attaching entities to the player is deprecated. Use the `AttachToAvatar` component instead.
 
 Set an entity as a child of the `Attachable.FIRST_PERSON_CAMERA` object to fix the entity to the player and follow the player's movements.
 

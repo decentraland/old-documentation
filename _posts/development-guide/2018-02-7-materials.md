@@ -253,22 +253,21 @@ const plane = new PlaneShape()
 
 // map the texture to each of the four corners of the plane
 plane.uvs = [
-  0,
-  0.75,
-  0.25,
-  0.75,
-  0.25,
-  1,
-  0,
-  1,
-  0,
-  0.75,
-  0.25,
-  0.75,
-  0.25,
-  1,
-  0,
-  1,
+  0, 0.75,
+
+  0.25, 0.75,
+
+  0.25, 1,
+
+  0, 1,
+
+  0, 0.75,
+
+  0.25, 0.75,
+
+  0.25, 1,
+
+  0, 1,
 ]
 
 //Create entity and assign shape and material
@@ -352,6 +351,16 @@ myTexture.samplingMode = 1
 ```
 
 The example above uses a nearest neighbor algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
+
+## Avatar Portraits
+
+To display a thumbnail image of any player, create an `AvatarTexture`, passing the address of an existing player. This creates a texture from a 256x256 image of the player, showing head and shoulders. The player is displayed wearing the set of wearables that the current server last recorded.
+
+```ts
+let myTexture = new AvatarTexture("0xAAAAAAAAAAAAAAAAA")
+const myMaterial = new Material()
+myMaterial.albedoTexture = myTexture
+```
 
 ## Transparent materials
 
