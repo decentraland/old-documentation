@@ -24,9 +24,14 @@ By using the Polygon network, and thanks to Decentraland’s DAO, users can list
 
 Transactions on the Polygon network cost gas. The Decentraland DAO covers the cost up to a certain limit, so that users can enjoy many costless transactions in the Marketplace.
 
-## Transactions on the Polygon network cost gas. The Decentraland DAO covers the cost up to a certain limit, so that users can enjoy many costless transactions in the Marketplace.
+## Transactions on the Polygon network cost gas.
+
+The Decentraland DAO covers the cost up to a certain limit, so that users can enjoy many costless transactions in the Marketplace.
+
+## What happens if the free transaction limit is reached?
 
 The free transaction limit renews every day, so you can try again tomorrow. Alternatively, you can cover the cost of your transaction with MATIC while being connected to the Polygon network.
 
 The MATIC fee will be deducted automatically as part of the transaction. You only need to be connected to the Polygon network and have MATIC in your wallet.
+
 Gas fees are variable.
