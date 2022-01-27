@@ -34,7 +34,7 @@ The fetch command can also include a second optional argument that bundles heade
 - **url**: Address to send the request
 - **init**: A `FlatFetchInit` object that may contain:
   - **method** : HTTP method to use (GET, POST, DELETE, etc)
-  - **body**: Contents of the request body
+  - **body**: Contents of the request body. It must be sent as a stringified JSON object.
   - **headers**: Additional headers to include in the request. Headers related to the signature are added automatically.
   - **redirect**: Redirect strategy ('follow' | 'error' | 'manual')
   - **responseBodyType**: Specify if the body of the response is 'text' or 'json'
@@ -55,8 +55,6 @@ executeTask(async () => {
 })
 ```
 
-> Note: The body must be sent as a stringified JSON object.
-
 The fetch command returns a `response` object with the following data:
 
 - `headers`: A `ReadOnlyHeaders` object. Call the `get()` method to obtain a specific header, or the `has()` method to check if a header is present.
@@ -72,6 +70,8 @@ The fetch command returns a `response` object with the following data:
 
 > Note: `json()` and `text()` are mutually exclusive. If you obtain the body of the response in one of the two formats, you can no longer obtain the other from the `response` object.
 
+> Note: Each Decentraland scene is only permitted to perform one `fetch` command at a time. This has no effect on how the scene code must be structured, as requests are queued internally. If your scene requires sending multiple requests to different endpoints, keep in mind that each request is only sent when the previous one has been responded.
+
 ## Signed requests
 
 You can employ an extra security measure to certify that a request is originating from a player session inside Decentraland. You can send your requests with an additional signature, that is signed using an ephemeral key that the Decentraland session generates for each player based on the player's address. The server receiving the request can then verify that the signed message indeed matches an address that is currently active in-world.
@@ -79,7 +79,6 @@ You can employ an extra security measure to certify that a request is originatin
 These kinds of security measures are especially valuable when there may be an incentive for a player to abuse the system, to farm tokens or points in a game.
 
 To send a signed request, all you need to do is use the `signedFetch()` function, in exactly the same way as you would use the `fetch()` function.
-
 
 ```ts
 executeTask(async () => {
@@ -89,15 +88,14 @@ executeTask(async () => {
       method: "POST",
       body: JSON.stringify(myBody),
     })
-    
+
     if (!response.text) {
-      throw new Error('Invalid response')
+      throw new Error("Invalid response")
     }
 
     let json = await JSON.parse(response.text)
-    
-    log('Response received: ', json)
-    
+
+    log("Response received: ", json)
   } catch {
     log("failed to reach URL")
   }
