@@ -71,6 +71,10 @@ There are several ways in which your 3d models can be optimized to be lighter.
 
 - _.glb_ is a compressed format, it will always weigh less than a _.gltf_. On the other hand, with _.gltf_ it's easy to share texture images by exporting textures as a separate file. You can have the best of both worlds by using the [following pipeline](https://github.com/AnalyticalGraphicsInc/gltf-pipeline), that allows you to have _.glb_ models with external texture files.
 
+- Avoid using blended transparencies. Blended transparencies have to bypass quite a few of the rendering optimizations. If possible, favor opaque or alpha tested geometry.
+
+- Avoid skinned meshes. They can drag down the performance significantly.
+
 > TIP: Read more on 3d model best practices in the [3d Modeling Section]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-09-3d-models %}))
 
 #### Asset Bundle conversion
@@ -96,6 +100,8 @@ Scene UIs can become costly to render when they are made up ofe many individual 
 > TIP: Try to merge multiple elements into one single image. For example if you have a menu with multiple text elements, it's ideal to have the text from the tiles and any additional images baked into the background image. That saves the engine from doing one additional drawcall per frame for each text element.
 
 Avoid making adjustments to the UI on every frame, those are especially costly and can end up getting queued. For example, if there's a health bar in your UI that should shrink over period of time, players would probably not notice a difference between if it updates at 10 FPS instead of at 30 FPS (on every frame). The system that updates this bar can use a brief timer that counts 100 milliseconds, and only affect the UI when this timer reaches 0.
+
+Avoid having many hidden UI elements, these also have an effect on performance even if not being rendered. When possible, try to create UI components on demand.
 
 ## Monitor Performance
 
