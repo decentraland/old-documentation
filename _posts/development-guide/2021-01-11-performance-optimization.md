@@ -91,7 +91,7 @@ If your scene connects to any 3rd party servers or uses the [messagebus]({{ site
 
 ## Scene UI
 
-Scene UIs can become costly to render when they are made up ofe many individual elements. Keep in mind that each UI element requires a separate drawcall on the engine.
+Scene UIs can become costly to render when they are made up of many individual elements. Keep in mind that each UI element requires a separate drawcall on the engine.
 
 > TIP: Try to merge multiple elements into one single image. For example if you have a menu with multiple text elements, it's ideal to have the text from the tiles and any additional images baked into the background image. That saves the engine from doing one additional drawcall per frame for each text element.
 
