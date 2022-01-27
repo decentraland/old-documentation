@@ -65,7 +65,7 @@ If you must use a system, avoid doing checks or adjustments on every single fram
 
 There are several ways in which your 3d models can be optimized to be lighter.
 
-- When possible, share textures across 3d models. A good practice is to use a single texture as an atlas map, shared across all models in the scene. It's better to have 1 large shared texture of 1025x1025 pixels instead of several small ones.
+- When possible, share textures across 3d models. A good practice is to use a single texture as an atlas map, shared across all models in the scene. It's better to have 1 large shared texture of 1024x1024 pixels instead of several small ones.
 
   > Note: Avoid using the same image file for both the albedo texture and the normal map or the emissive map of a material. Use separate files, even if identical. Assigning a same image file to different types of texture properties may introduce unwanted visual artifacts when compressed to asset bundles.
 
