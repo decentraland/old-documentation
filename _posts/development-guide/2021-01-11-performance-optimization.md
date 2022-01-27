@@ -65,7 +65,7 @@ If you must use a system, avoid doing checks or adjustments on every single fram
 
 There are several ways in which your 3d models can be optimized to be lighter.
 
-- When possible, share textures across 3d models. A good practice is to use a single texture as an atlas map, shared across all models in the scene. It's better to have 1 large shared texture of 1025x1025 pixels instead of several small ones.
+- When possible, share textures across 3d models. A good practice is to use a single texture as an atlas map, shared across all models in the scene. It's better to have 1 large shared texture of 1024x1024 pixels instead of several small ones.
 
   > Note: Avoid using the same image file for both the albedo texture and the normal map or the emissive map of a material. Use separate files, even if identical. Assigning a same image file to different types of texture properties may introduce unwanted visual artifacts when compressed to asset bundles.
 
@@ -95,7 +95,7 @@ If your scene connects to any 3rd party servers or uses the [messagebus]({{ site
 
 ## Scene UI
 
-Scene UIs can become costly to render when they are made up ofe many individual elements. Keep in mind that each UI element requires a separate drawcall on the engine.
+Scene UIs can become costly to render when they are made up of many individual elements. Keep in mind that each UI element requires a separate drawcall on the engine.
 
 > TIP: Try to merge multiple elements into one single image. For example if you have a menu with multiple text elements, it's ideal to have the text from the tiles and any additional images baked into the background image. That saves the engine from doing one additional drawcall per frame for each text element.
 
