@@ -150,6 +150,7 @@
         - post: "development-guide/2020-05-18-external-links.md"
         - post: "development-guide/2018-02-26-scene-metadata.md"
         - post: "development-guide/2018-01-06-scene-limitations.md"
+        - post: "development-guide/2021-01-11-performance-optimization.md"
         - title: SDK Libraries
           children:
             - post: "development-guide/2020-08-04-utils.md"
