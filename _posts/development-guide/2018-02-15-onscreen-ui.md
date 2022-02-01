@@ -206,9 +206,9 @@ const myText = new UIText(canvas)
 myText.value =
   "Hello World, this message is quite long and won't fit in a single line. I hope that's not a problem."
 myText.fontSize = 20
-myText.text.adaptWidth = false
-myText.text.textWrapping = true
-myText.text.width = 100
+myText.adaptWidth = false
+myText.textWrapping = true
+myText.width = 100
 ```
 
 Alternatively, you can add line breaks into the string, using `\n`.
