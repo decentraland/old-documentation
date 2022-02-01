@@ -26,7 +26,11 @@
 						{{ link.name }}</a></li>
 				{% endfor %}
 			</ul>
-			<div class="copyright">&copy; {{ site.time | date: "%Y" }} {{ site.title }}</div>
+			<div class="copyright">
+				&copy; {{ site.time | date: "%Y" }} {{ site.title }}
+				<br/>
+				<a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="noopener noreferrer" target="_blank">CC BY-SA 3.0</a>
+			</div>
 		</div>
 	</div>
 </footer>
