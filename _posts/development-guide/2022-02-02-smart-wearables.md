@@ -62,12 +62,37 @@ The following fields are present in `asset.json`:
 - `description`: The description of the wearable that users will see in the marketplace. Make sure you indicate what the smart wearable can do, as users of the marketplace will have no way to preview its functinality before buying it.
 - `category`: What wearable category to use. Possible values are:
 
-  - eyewear
-  - upper_body
-  - lower_body
-  - top_head
-  - earring
-  - … etc
+  - 'eyebrows'
+
+  - 'eyes'
+
+  - 'facial_hair'
+
+  - 'hair'
+
+  - 'mouth'
+
+  - 'upper_body'
+
+  - 'lower_body'
+
+  - 'feet'
+
+  - 'earring'
+
+  - 'eyewear'
+
+  - 'hat'
+
+  - 'helmet'
+
+  - 'mask'
+
+  - 'tiara'
+
+  - 'top_head'
+
+  - 'skin'
 
 - `rarity`: The rarity supply of the token. Possible values are:
   - unique (1 copy)
