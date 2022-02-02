@@ -81,19 +81,17 @@ We can’t understate how valuable color, icons, motion and scale are for sendin
 
 #### Layout
 
-Always keep a grid in mind and use it as your main criteria when spatially organizing your UI. If you are working on a scene where a HUD is needed, you can start by putting all the consumables together (e.g. currency, food, life), and on the other side stockables such as tools or weapons. Try to be consistent about the grid metrics and padding. Make the feedback for every player action clear.
-
-Be careful about placing your UI in screen regions that overlap with the default Decentraland UI elements. Below you can see the regions of the screen that you should avoid:
+Be careful about placing your UI in screen regions that overlap with the default Decentraland UI elements. The default Decentraland UI, including minimap, chat, etc, is designed to only cover the left 25% of the screen. The rest of the screen real estate is a safe zone, free to use for content creators.
 
 <figure>
-	<img src="{{ site.baseurl }}/images/media/ux-screen-space.png" alt="Screen regions used by UI" width="300"/>
+	<img src="{{ site.baseurl }}/images/media/UI-Zones.png" alt="Screen regions used by UI" width="300"/>
 </figure>
 
-1. _**12 px** margins you should avoid_
-2. _**14 px** margins you should avoid_
-3. _**12 px** margins that we suggest you avoid. This area is covered when the chat window is maximized, so have in account that sometimes UI placed there wouldn’t be seen._
+There are no restrictions for placing UI elements in the left 25% of the screen, but keep in mind that the explorer is continually making changes and improvements to its design. Any space that is not occluded in that region today could be covered in future versions.
 
-The semi-transparent bar at the bottom of the scene is 56 px tall. When aligning a UI element to the bottom of the screen, it considers the bottom to be just above the navbar. You can display something behind this semi-transparent bar, although your UI won't be clickable and will be occluded by the icons on the bar. It's useful for example in a shooter scene where a 2d image of an arm holding a weapon should continue to the bottom of the screen. To add a UI element in this region, align the element to the bottom of the screen and offset the y value to -56 or more. 
+> Note: UI elements from scenes and smart wearables always appear on a layer behind the default Decentraland UI.
+
+Always keep a grid in mind and use it as your main criteria when spatially organizing your UI. If you are working on a scene where a HUD is needed, you can start by putting all the consumables together (e.g. currency, food, life), and on the other side stockables such as tools or weapons. Try to be consistent about the grid metrics and padding. Make the feedback for every player action clear.
 
 #### Color
 
