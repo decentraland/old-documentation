@@ -154,6 +154,8 @@ If the tip of a large object leaves the boundaries, this object is considered ou
 
 A single parcel scene measures 16 meters x 16 meters. If the scene has multiple parcels, the dimensions vary depending on the arrangement of the parcels.
 
+It's possible to position entities underground, to either hide them or to have only a portion of them emerge. A scene can't have tunnels that go below the default ground height, players can't travel below the `y = 0` height. 
+
 ## Shader limitations
 
 3D models used in decentraland must use supported shaders and materials. See [3D model materials]({{ site.baseurl }}{% post_url /3d-modeling/2018-01-10-materials %}) for a list of supported shaders.
