@@ -81,6 +81,7 @@ Each wearable has a specific category that determines which body part in the ava
 The different categories are:
 
 - **Body_shape:** Replaces the entire avatar’s body.
+- **Skin:** Replaces the entire avatar (head, upper body, lower body and feet except accesories)
 - **Hat:** Replaces the avatar’s hair. For hats that leave some hair exposed, it must be attached to the hair in the mesh to prevent the avatar from going bald whenever they put on their hat.
 - **Helmet:** Overrides the avatar’s entire head, replacing both hair and facial_hair.
 - **Hair:** Replaces an avatar’s hat.
@@ -114,6 +115,7 @@ There are limits for the number of triangles and textures that can be used for e
 - No more than 1.5K triangles per wearable
 - No more than 500 triangles per accessories
 - No more than 2 textures (at a resolution of 512x512px or lower) per wearable. All textures must be square.
+- In the case of skin wearable, the amount of tris allowed are 5k and 5 textures.
 
 Before you get started, download the example files for reference meshes and textures.
 
