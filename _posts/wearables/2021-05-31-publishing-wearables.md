@@ -58,9 +58,10 @@ Please refer to the full Content Policy [here](https://decentraland.org/content/
 - The dimensions of eyebrow, eye, and mouth textures should not exceed 256 by 256px, and these textures must include an alpha channel for transparency.
 - Wearables with a disproportionate number of triangles and textures may be rejected. Wearables with too many triangles and textures can result in poor performance and a bad experience for users, so creators should avoid exceeding the following guidelines when creating wearables:
   
-  - No more than 1.5K triangles per wearable
+  - No more than 1.5K triangles per wearable (except skin category)
   - No more than 500 triangles per accessories
   - No more than 2 textures (at a resolution of 512x512px or lower) per wearable. All textures must be square.
+  - No more than 5k triangles for skin category and 5 textures (at a resolution of 512x512px or lower). All textures must be square.
 
 - Wearables may not contain duplicate items within a collection. (Each item within a collection must be unique.)
 - Wearables may not mimic or copy other wearables that have already been published.
