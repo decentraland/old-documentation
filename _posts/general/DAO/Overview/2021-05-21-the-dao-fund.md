@@ -20,5 +20,5 @@ You can view the DAO’s vesting contract [here](https://vesting.decentraland.or
 
 The DAO also has several sources of income:
 
-* The 2% transaction fees within the Decentraland Marketplaces all go to the DAO
+* The 2.5% transaction fees within the Decentraland Marketplaces on primary market commissions go to the DAO
 * The OpenSea Marketplace also receives a 2.5% transaction fee for sales of LAND, Estates, Names, and wearables, [part of which is transferred to the DAO](https://etherscan.io/token/0x0f5d2fb29fb7d3cfee444a200298f468908cc942?a=0x9b814233894cd227f561b78cc65891aa55c62ad2).
