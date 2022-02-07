@@ -23,6 +23,7 @@ By default, Decentraland Wearables are minted on the Polygon/Matic sidechain so 
 - Upper body (e.g. jacket or shirt)
 - Lower body (e.g. pants or shorts)
 - Feet
+- Skin
 
 **Wearables can also include accessories that are applied to different parts of an avatar’s body:**
 
