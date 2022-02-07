@@ -80,6 +80,7 @@ Wearables are organized into different categories, depending on what part of an 
 - Upper Body
 - Tiaras
 - Top Head _(Top Head wearables can be either an item of effect that is applied to the top of the head, like an angel’s halo.)_
+- Skin
 
 When you’re finished entering your descriptive metadata, click **Create**.
 
@@ -91,9 +92,10 @@ To edit your items, navigate to the [Builder](https://builder.decentraland.org) 
 
 The item details list the number of triangles, materials, and textures that make up your wearable. It is recommended that you do not exceed the following limits when creating wearables:
 
-- 1500 triangles per wearable
+- 1500 triangles per wearable (except skin category)
 - 500 triangles per accessory
 - 2 square textures of 512x512px (or lower)
+- 5k triangles for skin category and 5 textures of 512x512px (or lower).
 
 If the number of triangles and textures exceeds these guidelines, you can click the pencil icon to upload a new model, or “representation” of your wearable with lower triangle/texture counts. You can also change the preview image by clicking the camera icon when hovering over the preview thumbnail.
 
