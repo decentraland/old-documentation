@@ -186,6 +186,7 @@
               post: "development-guide/2018-01-01-deploy-to-now.md"
         - post: "development-guide/2020-02-20-smart-items.md"
         - post: "development-guide/2022-02-02-smart-wearables.md"
+        - post: "development-guide/2022-02-08-workspaces.md"
     - title: 3D modeling
       children:
         - post: "3d-modeling/2018-01-09-3d-models.md"
