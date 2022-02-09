@@ -37,14 +37,11 @@ Running multiple projects in a workspace provides a much more complete testing a
        {
          "path": "example-scene2"
        }
-     ],
-     "settings": {}
+     ]
    }
    ```
 
    Modify the file to include the relative paths to each of the projects in the workspace.
-
-Settings????
 
 ## Run a workspace
 
