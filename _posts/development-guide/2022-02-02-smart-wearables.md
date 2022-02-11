@@ -193,8 +193,8 @@ If a wearable is “hidden” but not “removed” by other wearables being wor
 
 Xmas 2021:
 
-[Xmas airdrops](github.com/nearnshaw/xmas-airdrops)
+[Xmas airdrops](https://github.com/nearnshaw/xmas-airdrops)
 
-[Snowball fight](github.com/decentraland-scenes/snowball-fight)
+[Snowball fight](https://github.com/decentraland-scenes/snowball-fight)
 
-[Secret Santa](github.com/decentraland-scenes/xmas-secret-santa)
+[Secret Santa](https://github.com/decentraland-scenes/xmas-secret-santa)
