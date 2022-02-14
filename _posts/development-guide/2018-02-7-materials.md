@@ -162,7 +162,7 @@ myEntity.addComponent(myMaterial)
 While creating a texture, you can also pass additional parameters:
 
 - `samplingMode`: Determines how pixels in the texture are stretched or compressed when rendered
-- `wrap`: Determines how a texture is tiled onto an object (see [Texture Wrapping](#texture-wrapping)
+- `wrap`: Determines how a texture is tiled onto an object (see [Texture Wrapping](#texture-wrapping))
 
 ```ts
 let smokeTexture = new Texture("textures/smoke-puff3.png", {
@@ -244,8 +244,7 @@ You set _u_ and _v_ coordinates on the 2D image of the texture to correspond to 
 ```ts
 //Create material and configure fields
 const myMaterial = new BasicMaterial()
-let myTexture = new Texture("materials/atlas.png")
-myTexture.samplingMode = 0
+let myTexture = new Texture("materials/atlas.png", { wrap: 1, samplingMode: 0 })
 myMaterial.texture = myTexture
 
 //Create shape component
@@ -280,8 +279,7 @@ The following example includes a function that simplifies the setting of uvs. Th
 
 ```ts
 const myMaterial = new BasicMaterial()
-let myTexture = new Texture("materials/atlas.png")
-myTexture.samplingMode = 0
+let myTexture = new Texture("materials/atlas.png", { wrap: 1, samplingMode: 0})
 myMaterial.texture = myTexture
 
 const myPlane = new Entity()
@@ -346,8 +344,7 @@ The example above sets the wrapping mode to `MIRROR`.
 When textures are stretched or shrinked to a different size from the original texture image, this can sometimes create artifacts. In a 3D environment, the effects of perspective cause this naturally. There are various [texture filtering](https://en.wikipedia.org/wiki/Texture_filtering) algorithms that exist to compensate for this in different ways. The `Texture` object uses the _bilinear_ algorithm by default, but it lets you configure it to use the _nearest neighbor_ or _trilinear_ algorithms instead by setting the `samplingMode` property.
 
 ```ts
-const myTexture = new Texture("materials/myTexture.png")
-myTexture.samplingMode = 1
+const myTexture = new Texture("materials/myTexture.png", { samplingMode: 1 })
 ```
 
 The example above uses a nearest neighbor algorithm. This setting is ideal for pixel art style graphics, as the contours will remain sharply marked as the texture is seen larger on screen instead of being blurred.
