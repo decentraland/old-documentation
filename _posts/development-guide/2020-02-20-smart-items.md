@@ -29,15 +29,19 @@ Every smart item has an `asset.json` file. This is a manifest that exposes how t
 
 #### General item data
 
-`Name` Refers to the name that this model will have in the Builder UI.
+- `id`: A unique uuid for the smart item. The `dcl init` command generates a random value for this ID.
 
-> Note: Today, the item name that's visible in the UI is taken directly from the name of the 3d model file. Don't leave any spaces in the file name, use underscores to separate the words in it.
+	> Note: If you're copying a project from an existing smart item, make sure you generate a new UUID for your item. Otherwise the Builder will not recognize this as a distinct item. Use [uuidgenerator.net](https://www.uuidgenerator.net/) to generate a new random UUID.
 
-`Model` refers to the 3D model that is used as a placeholder when dragging the item into the scene in edit mode. This can be especially useful when the item is made up of several 3D models, as you'll want to display an alternative placeholder model that includes all the meshes together. Make sure this placeholder model has the same size and orientation as the item that will be seen in the scene. Also make sure that the item isn't displaced via code from its default location, unless the placeholder matches this.
+- `name`: Refers to the name that this model will have in the Builder UI.
 
-`Tags` let you make the item easier to find when using the search.
+	> Note: Today, the item name that's visible in the UI is taken directly from the name of the 3d model file. Don't leave any spaces in the file name, use underscores to separate the words in it.
 
-`Category` places the item into a subcategory inside the asset pack, for example "nature" or "decorations".
+- `model` refers to the 3D model that is used as a placeholder when dragging the item into the scene in edit mode. This can be especially useful when the item is made up of several 3D models, as you'll want to display an alternative placeholder model that includes all the meshes together. Make sure this placeholder model has the same size and orientation as the item that will be seen in the scene. Also make sure that the item isn't displaced via code from its default location, unless the placeholder matches this.
+
+- `tags` let you make the item easier to find when using the search.
+
+- `category` places the item into a subcategory inside the asset pack, for example "nature" or "decorations".
 
 #### Parameters
 
@@ -421,7 +425,7 @@ Since the state of the item is shared amongst peers, if all players leave the ar
 
 To keep the state of your smart item in sync between players, make sure that any relevant changes send out messages via the item's channel for other instances to follow it.
 
-When new players join the scene, the make sure that they obtain any relevant information from other players about the current state of the item. To do this, the door item sends out a `channel.request` when spawning, and if there are any other players with instances of that door they will reply with a boolean indicating if the door is currently open.
+When new players join the scene, make sure that they obtain any relevant information from other players about the current state of the item. For example, to do this, the door item sends out a `channel.request` when spawning, and if there are any other players with instances of that door there should be code that will reply with a boolean indicating if the door is currently open.
 
 ```ts
 // we send a request to all other players
