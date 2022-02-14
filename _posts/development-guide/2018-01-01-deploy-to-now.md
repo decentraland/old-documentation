@@ -9,6 +9,9 @@ categories:
 type: Document
 ---
 
+> Note: This functionality is no longer supported.
+
+<!--
 Previews of Decentraland scenes can run as standalone pages, just as you can run a preview locally in your machine. This is a fantastic way to share interactive previews of your content with others!
 
 Decentraland scene previews are compatible with the following hosting platforms:
@@ -119,3 +122,5 @@ For example, to deploy both server and the scene client to Vercel, follow these 
    ```
 
 5) Once the upload is completed, the URL to the scene preview should be in your clipboard, ready to share.
+
+-->
