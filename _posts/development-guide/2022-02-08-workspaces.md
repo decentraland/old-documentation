@@ -14,34 +14,30 @@ Running multiple projects in a workspace provides a much more complete testing a
 
 ## Create a workspace
 
-1. Create a top-level folder to hold the workspace. Create a node project in this folder.
+1. Create a top-level folder to hold the workspace.
 
-   `npm i --yes`
-
-2. In the root folder install the `decentraland-ecs` library. This installation is shared between all the projects of the workspace.
-
-   `npm i decentraland-ecs`
-
-3. Create new folders as children of this root folder, or drag in the folders of existing projects. Each of these projects can either be a Decentraland scene or a smart wearable. Add as many projects as you want.
+2. Inside this folder, add one folder at root level for each project you want to work with. These can be new folders, or you can drag in existing folders with scenes or smart wearables.
 
    > Note: Make sure that the parcels on each of the scenes don't overlap.
 
-4. Create a new file in the root folder named `dcl-workspace.json`. Paste the following into that file:
+3. Standing on the workspace folder, run the following, to create the necessary files:
 
-   ```json
-   {
-     "folders": [
-       {
-         "path": "example-scene"
-       },
-       {
-         "path": "example-scene2"
-       }
-     ]
-   }
-   ```
+   `dcl init --workspace`
 
-   Modify the file to include the relative paths to each of the projects in the workspace.
+To add or remove projects from the workspace, you must modify the `dcl-workspace.json` file. Modify the file to include the relative paths to each of the projects in the workspace in the `folders` array.
+
+```json
+{
+  "folders": [
+    {
+      "path": "example-scene"
+    },
+    {
+      "path": "example-scene2"
+    }
+  ]
+}
+```
 
 ## Run a workspace
 
