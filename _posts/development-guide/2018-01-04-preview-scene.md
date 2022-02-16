@@ -179,7 +179,9 @@ Collision meshes can be added to any model in an external 3D modeling tool like 
 
 ## View bounding boxes
 
-While running a scene preview, type `/toggleBoundingBox` into the chat input to view the bounding boxes of every 3d model in the scene. Bounding boxes are displayed as thin white boxes around each mesh. Bounding boxes show the limits of the space occupied by a 3d model. Every mesh in a 3d model has its own bounding box.
+While running a scene preview, open the debug menu (on the right of the minimap) and click **Bounding Boxes** to toggle the visualization of bounding boxes on and off.
+
+Bounding boxes are displayed as thin white boxes around each mesh. Bounding boxes show the limits of the space occupied by a 3d model. Every mesh in a 3d model has its own bounding box.
 
 When Decentraland's engine checks if an entity is within the scene limits, it looks at the positions of each corner of the bounding box. Checking the corners of the bounding boxes is an engine optimization, as checking the position of each vertex in the model would be a lot more work. Ideally the bounding box shouldn't extend beyond the visible vertexes of the model, but it may not be the case if the model wasn't carefully built with this in mind.
 
