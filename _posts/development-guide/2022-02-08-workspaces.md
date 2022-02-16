@@ -16,7 +16,7 @@ Running multiple projects in a workspace provides a much more complete testing a
 
 1. Create a top-level folder to hold the workspace.
 
-2. Inside this folder, add one folder at root level for each project you want to work with. These can be new folders, or you can drag in existing folders with scenes or smart wearables.
+2. Inside this folder, add one folder at root level for each project you want to work with. You can drag in existing folders with scenes or smart wearables. For new folders, run `dcl init` inside each, to create a Decentraland project.
 
    > Note: Make sure that the parcels on each of the scenes don't overlap.
 
