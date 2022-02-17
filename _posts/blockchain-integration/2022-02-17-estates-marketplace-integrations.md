@@ -1,7 +1,7 @@
 ---
 date: 2022-02-17
 title: Decentraland's Estate Marketplaces Integration
-description: Important things to have in mind if you want to integrate the Decentraland's Estate
+description: Important things to have in mind if you want to integrate the Decentraland's Estate in your marketplace
 categories:
   - blockchain-integration
 type: Document
@@ -42,4 +42,4 @@ For marketplaces, specially the ones without an scrow system, it is 100% recomen
 
 ### Estate Smart Contract Interface
 
-The Estate's smart contract is compliant with a [fingerprint interface](https://github.com/decentraland/land/blob/master/contracts/estate/EstateStorage.sol#L19). In order to check if an order/offer for an estate is still valid or not you can call the _nftRegistry.verifyFingerprint(uint256 estateId, bytes fingerprint)_ function implemented in the Estate smart contract. You can check a working production example [here](https://github.com/decentraland/marketplace-contracts/blob/master/contracts/marketplace/MarketplaceV2.sol#L382)
+The Estate's smart contract is compliant with a [fingerprint interface](https://github.com/decentraland/land/blob/master/contracts/estate/EstateStorage.sol#L19). In order to check if an order/offer for an estate is still valid or not you can call the _`verifyFingerprint(uint256 estateId, bytes fingerprint)`_ function implemented in the Estate smart contract. You can check a working production example [here](https://github.com/decentraland/marketplace-contracts/blob/master/contracts/marketplace/MarketplaceV2.sol#L382)
