@@ -5,7 +5,6 @@ description: Recommended procedure for developing and testing a scene
 categories:
   - development-guide
 type: Document
-set: getting-started
 ---
 
 This document outlines the recommended steps involved in developing a scene for Decentraland, going from testing in the local environment to deploying to production.
