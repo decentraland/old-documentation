@@ -22,7 +22,7 @@ Running multiple projects in a workspace provides a much more complete testing a
 
 3. Standing on the workspace folder, run the following, to create the necessary files:
 
-   `dcl init --workspace`
+   `dcl workspace init`
 
 To add or remove projects from the workspace, you must modify the `dcl-workspace.json` file. Modify the file to include the relative paths to each of the projects in the workspace in the `folders` array.
 
@@ -38,6 +38,8 @@ To add or remove projects from the workspace, you must modify the `dcl-workspace
   ]
 }
 ```
+ > Note: You can also manually add projects that are not inside the workspace folder, by referring to their absolute path in their "path" field.
+
 
 ## Run a workspace
 
