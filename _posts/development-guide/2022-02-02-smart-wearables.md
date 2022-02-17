@@ -5,7 +5,6 @@ description: Create wearables with interactive capabilities
 categories:
   - development-guide
 type: Document
-set: getting-started
 ---
 
 Smart wearables are a type of portable experience. Portable experiences are parts of the gameplay that players take with them as they move through the metaverse. For example, a player could take a snowball from your scene, walk away to another scene, and throw the snowball to another player who’s also playing the same game.
@@ -18,13 +17,13 @@ To create a new smart wearable
 
 1. Make sure you have the latest version of the CLI installed
 
-  `npm i -g decentraland@latest`
+`npm i -g decentraland@latest`
 
 2. Open a command line in a new folder and run
 
-  `dcl init`
+`dcl init`
 
-  When prompted by the command, select `smart wearable (beta)`
+When prompted by the command, select `smart wearable (beta)`
 
 This command creates the basic files and structure for a new smart wearable. This folder is very similar to that of a Decentraland scene, but you will notice the following differences:
 
