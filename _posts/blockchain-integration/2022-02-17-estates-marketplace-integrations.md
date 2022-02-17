@@ -18,7 +18,7 @@ For marketplaces, especially the ones without an escrow system, it is 100% recom
 
 ## Example
 
-### Not use the Estate fingerprint
+### Not using the Estate fingerprint
 
 - Bob has the Estate1 with LAND (1,1) and (1,2). Estate1 fingerprint: hash1
 - Bob adds the LAND (1,3) to Estate1. The Estate1 has the LANDs: (1,1), (1,2), and (1,3). Estate1 fingerprint: hash2 (Fingerprint changed)
@@ -29,7 +29,7 @@ For marketplaces, especially the ones without an escrow system, it is 100% recom
 - Bob's transactions is mined first. Estate1 has 0 LANDs. Estate1 fingerprint: hash4 (Fingerprint changed)
 - Alice's transaction is mined later. Alice bought the Estate1 with 0 LANDs on it. It means that Alice got front-runned (and stolen/scammed) by Bob.
 
-### Use the Estate fingerprint
+### Using the Estate fingerprint
 
 - Bob has the Estate1 with LAND (1,1) and (1,2). Estate1 fingerprint: hash1
 - Bob adds the LAND (1,3) to Estate1. The Estate1 has the LANDs: (1,1), (1,2), and (1,3). Estate1 fingerprint: hash2 (Fingerprint changed)
