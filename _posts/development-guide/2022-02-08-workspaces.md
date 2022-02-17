@@ -24,7 +24,23 @@ Running multiple projects in a workspace provides a much more complete testing a
 
    `dcl workspace init`
 
-To add or remove projects from the workspace, you must modify the `dcl-workspace.json` file. Modify the file to include the relative paths to each of the projects in the workspace in the `folders` array.
+You can confirm that the projects are part of the workspace by running `dcl workspace ls`.
+
+## Run a workspace
+
+Run `dcl start` on the root folder of the workspace. This runs all of the projects at the same time, viewable in a single preview window. This preview behaves just like when previewing a single scene.
+
+Any smart wearables in the workspace are available to try on by looking for them in the backpack.
+
+## Add projects
+
+Once a workspace is created, you can add additional projects `dcl workspace add`, including the relative address of the folder you want to add. For example `dcl workspace add my-other-example`.
+
+You can also add a project that is not inside the workspace folder, by using the absolute path.
+
+> Note: The folder must already contain a decentraland project initatied with `dcl init`. It can't be an empty folder.
+
+You can also edit the `dcl-workspace.json` file manually to add or remove projects. Modify the file to include the relative paths to each of the projects in the workspace in the `folders` array.
 
 ```json
 {
@@ -38,11 +54,4 @@ To add or remove projects from the workspace, you must modify the `dcl-workspace
   ]
 }
 ```
- > Note: You can also manually add projects that are not inside the workspace folder, by referring to their absolute path in their "path" field.
 
-
-## Run a workspace
-
-Run `dcl start` on the root folder of the workspace. This runs all of the projects at the same time, viewable in a single preview window. This preview behaves just like when previewing a single scene.
-
-Any smart wearables in the workspace are available to try on by looking for them in the backpack.
