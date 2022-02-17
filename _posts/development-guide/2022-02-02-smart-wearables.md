@@ -18,13 +18,13 @@ To create a new smart wearable
 
 1. Make sure you have the latest version of the CLI installed
 
-`npm i -g decentraland@latest`
+  `npm i -g decentraland@latest`
 
 2. Open a command line in a new folder and run
 
-`dcl init --project portable-experience`
+  `dcl init`
 
-> Note: In the future, smart wearables will be provided as one of the default options prompted when running `dcl init`, with no extra arguments needed.
+  When prompted by the command, select `smart wearable (beta)`
 
 This command creates the basic files and structure for a new smart wearable. This folder is very similar to that of a Decentraland scene, but you will notice the following differences:
 
