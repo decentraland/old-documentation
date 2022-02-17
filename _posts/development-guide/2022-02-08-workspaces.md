@@ -1,14 +1,13 @@
 ---
-date: 2022-02-02
+date: 2022-02-08
 title: Workspaces
 description: Run multiple DCL projects at a time
 categories:
   - development-guide
 type: Document
-set: getting-started
 ---
 
-Run multiple Decentraland projects in preview by grouping these into a workspace. Run multiple adjacent scenes to see how they fit, or also run multiple [smart wearables]({{ site.baseurl }}{% post_url /development-guide/2022-02-08-smart-wearables %}) together to see how they interact with each other and with different scenes.
+Run multiple Decentraland projects in preview by grouping these into a workspace. Run multiple adjacent scenes to see how they fit, or also run multiple [smart wearables]({{ site.baseurl }}{% post_url /development-guide/2022-02-02-smart-wearables %}) together to see how they interact with each other and with different scenes.
 
 Running multiple projects in a workspace provides a much more complete testing alternative, to ensure different content works well together.
 
@@ -54,4 +53,3 @@ You can also edit the `dcl-workspace.json` file manually to add or remove projec
   ]
 }
 ```
-
