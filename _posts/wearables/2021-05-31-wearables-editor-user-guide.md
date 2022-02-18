@@ -28,7 +28,7 @@ If you haven’t uploaded any items yet, click **New Item** or **New Collection*
 
 When creating a collection, first enter the name you would like to give your collection and click **Create**. After creating your collection, you can begin adding items.
 
-<img width="1135" alt="Screen Shot 2022-01-11 at 11 41 13" src="https://user-images.githubusercontent.com/25348765/148963649-e9e254cf-4415-4b0e-a939-d78407efb9f8.png">
+<img width="1135" alt="New Collection" src="{{ site.baseurl }}/images/media/new-collection.png">
 
 > The name of your collection cannot be changed after publication!
 
@@ -36,11 +36,10 @@ When creating a collection, first enter the name you would like to give your col
 
 To add an item to your new collection, select the collection, click **New Item**, and select your wearable files.
 
-<img width="1084" alt="add item" src="https://user-images.githubusercontent.com/25348765/148967564-80b26dd1-d5d1-4d7b-be2a-45814da8743e.png">
+<img width="1084" alt="add item" src="{{ site.baseurl }}/images/media/new-item-button.png">
 
-Also, you can create your items first and then drag and drop to your collection! 
-<img width="1198" alt="drag item to collection" src="https://user-images.githubusercontent.com/25348765/148964892-acd3467e-b6f0-425d-bfc5-c181ea2215f5.png">
-
+Also, you can create your items first and then drag and drop to your collection!
+<img width="1198" alt="drag item to collection" src="{{ site.baseurl }}/images/media/drag-into-collection.png">
 
 #### Uploading an item
 
@@ -54,20 +53,20 @@ After uploading your file, you will be prompted to enter some descriptive inform
 You can select which body shape your wearable is modeled for. The shape can be either A, B, or both. Wearables that are set to Shape A can only be worn by wearables with Body Shape A, while wearables set to Shape B can only be worn by avatars with Body Shape B. If you set the shape to Both, then avatars of both shapes can wear your wearable.
 
 To submit a wearable that has more than one representation first upload one of them, add rarity and category and hit create:
-<img width="734" alt="both representations" src="https://user-images.githubusercontent.com/25348765/148968738-f9723be7-87b2-4297-8e84-b9f726ef110b.png">
+<img width="734" alt="both representations" src="{{ site.baseurl }}/images/media/new-item.png">
 
 Then, in the editor tool, go to properties and add the other one.
-<img width="1792" alt="add representation" src="https://user-images.githubusercontent.com/25348765/148969188-edf00dca-44a3-49de-824b-4bafaa1de0af.png">
+<img width="1792" alt="Add female representation" src="{{ site.baseurl }}/images/media/add-female-rep.png">
 
-**Uploading Mouth, Eyes and Eyebrows** 
+**Uploading Mouth, Eyes and Eyebrows**
 
-The mouth, eyes and eyebrows category have a different behaviour in the tool, because these are just .pngs files. To upload these just drag and drop the png file as a transparent image (256px X 256PX). Mouth is going to be automatically tinted by skin color, same for the eyebrows tinted by the hair color. 
+The mouth, eyes and eyebrows category have a different behaviour in the tool, because these are just .pngs files. To upload these just drag and drop the png file as a transparent image (256px X 256PX). Mouth is going to be automatically tinted by skin color, same for the eyebrows tinted by the hair color.
 
-If you want the asset to be masked, so a part of the mouth or eyebrows is not affected by the tinting you would need to both zip files and then drag them to the tool. __Note: remember that png name of the mask should end with suffix "_mask" in order to work.__
+If you want the asset to be masked, so a part of the mouth or eyebrows is not affected by the tinting you would need to both zip files and then drag them to the tool. **Note: remember that png name of the mask should end with suffix "\_mask" in order to work.**
 
-<img width="239" alt="mask" src="https://user-images.githubusercontent.com/25348765/148973393-4364871b-93e0-412f-8035-59dab8a4c3de.png">
+<img width="239" alt="mask" src="{{ site.baseurl }}/images/media/mouth-wearable.png">
 
-<img width="755" alt="add zip" src="https://user-images.githubusercontent.com/25348765/148974139-f493b9d4-cddd-4f63-a631-1b835003c0d3.png">
+<img width="755" alt="add zip" src="{{ site.baseurl }}/images/media/upload-wearable.png">
 
 To upload eyes tinted by eye color feature follow the same process. More info here: https://docs.decentraland.org/decentraland/creating-wearables/
 
@@ -127,7 +126,7 @@ If the number of triangles and textures exceeds these guidelines, you can click 
 
 This is the basic metadata you entered when you first uploaded your item. You can edit this information at any time leading up to the moment you publish your item within a collection.
 
-<img width="352" alt="basics" src="https://user-images.githubusercontent.com/25348765/148976156-095e5dc0-3d95-423a-92ab-fb723500b3fc.png">
+<img width="352" alt="basics" src="{{ site.baseurl }}/images/media/wearable-settings.png">
 
 - **Name -** the name of your item, this will be displayed when distributing your wearable on the marketplace
 - **Description -** a brief statement describing your item, this is displayed when distributing your wearable on the marketplace
@@ -153,9 +152,8 @@ Tags are simply descriptive words that users can use when searching or filtering
 You can upload your own custom thumbnails for wearables in your collections. To upload a custom thumbnail image, navigate to the Wearables Editor and open the item you want to add a thumbnail for. Click **Edit** and then click on the thumbnail image under details to upload an image from your computer (a camera icon will appear when you hover over the thumbnail).
 
 > Thumbnails must be 256px by 256px with transparent backgrounds. Collections containing thumbnails without transparent backgrounds will not be accepted by the Curation Committee.
-> 
-<img width="1132" alt="custom thumbnail" src="https://user-images.githubusercontent.com/25348765/148975904-a076ff80-4558-43a7-a664-12c8e1579638.png">
-
+>
+> <img width="1132" alt="custom thumbnail" src="{{ site.baseurl }}/images/media/wearable-thumbnail.png">
 
 ### Setting the price for items
 
