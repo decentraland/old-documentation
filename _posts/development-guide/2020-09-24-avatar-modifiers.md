@@ -170,8 +170,8 @@ Modifier areas run locally on each player's instance, the list of excluded IDs c
 import { getUserData } from '@decentraland/Identity'
 
 executeTask(async () => {
-  let playerId = await getUserData()
-  if (!playerId) return
+  let userData = await getUserData()
+  if (!userData) return
 
   const modArea = new Entity()
   modArea.addComponent(
@@ -183,7 +183,7 @@ executeTask(async () => {
     new AvatarModifierArea({
       area: { box: new Vector3(16, 4, 16) },
       modifiers: [AvatarModifiers.HIDE_AVATARS],
-      excludeIds: [playerId.userId],
+      excludeIds: [userData.userId],
     })
   )
   engine.addEntity(modArea)
