@@ -53,6 +53,7 @@ After uploading your file, you will be prompted to enter some descriptive inform
 You can select which body shape your wearable is modeled for. The shape can be either A, B, or both. Wearables that are set to Shape A can only be worn by wearables with Body Shape A, while wearables set to Shape B can only be worn by avatars with Body Shape B. If you set the shape to Both, then avatars of both shapes can wear your wearable.
 
 To submit a wearable that has more than one representation first upload one of them, add rarity and category and hit create:
+
 <img width="734" alt="both representations" src="{{ site.baseurl }}/images/media/new-item.png">
 
 Then, in the editor tool, go to properties and add the other one.
