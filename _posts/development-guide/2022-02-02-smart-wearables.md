@@ -1,13 +1,14 @@
 ---
 date: 2022-02-02
-title: Smart Wearables
+title: Smart Wearables (Alpha)
 description: Create wearables with interactive capabilities
 categories:
   - development-guide
 type: Document
 ---
 
-> Warning: Smart wearables are still in Alpha. The Builder does not support the upload of smart wearables, and there isn't an approval process in place to allow community-built smart wearables to be published. The current development tools allow you to create and test smart wearables, but please don't attempt to publish any in the Builder, they will not be approved.
+
+> **WARNING:** Smart wearables are still in Alpha. The Builder does not support the upload of smart wearables, and there isn't an approval process in place to allow community-built smart wearables to be published. The current development tools allow you to create and test smart wearables, but please don't attempt to publish any in the Builder, they will not be approved.
 
 
 Smart wearables are a type of portable experience. Portable experiences are parts of the gameplay that players take with them as they move through the metaverse. For example, a player could take a snowball from your scene, walk away to another scene, and throw the snowball to another player who’s also playing the same game.
