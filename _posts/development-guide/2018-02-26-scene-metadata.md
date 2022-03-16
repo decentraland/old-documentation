@@ -233,10 +233,17 @@ The corresponding features are blocked from being used by the scene, unless the 
   ],
 ```
 
-Currently, only the following permission is handled:
+Currently, the following permissions are managed on all content:
 
 - `ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE`: Refers to [moving a Player]({{ site.baseurl }}{% post_url /development-guide/2020-08-28-move-player %})
 - `ALLOW_TO_TRIGGER_AVATAR_EMOTE`: Refers to [Playing emotes on the player avatar]({{ site.baseurl }}{% post_url /development-guide/2020-11-20-trigger-emotes %})
+
+Portable experiences and smart wearables are also affected by the following permissions:
+
+- `USE_WEB3_API`: Refers to interacting with the player's browser wallets, to make transactions or sign messages.
+- `USE_FETCH`: Refers to sending http requests to 3rd party servers, using `fetch` or `signedFetch`
+- `USE_WEBSOCKET`: Refers to opening websocket connections with 3rd party servers
+- `OPEN_EXTERNAL_LINK`: Refers to prompting the player to open links to external sites
 
 If a `requiredPermissions` property doesn't exist in your `scene.json` file, create it at root level in the json tree.
 
@@ -275,25 +282,25 @@ Then you can call the `getParcel()` function from this library, which returns a 
 The example bleow shows the path to obtain several of the more common fields you might need from this function's response:
 
 ```ts
-import { getParcel } from '@decentraland/ParcelIdentity'
+import { getParcel } from "@decentraland/ParcelIdentity"
 
 executeTask(async () => {
   const parcel = await getParcel()
 
   // parcels
-  log('parcels: ', parcel.land.sceneJsonData.scene.parcels)
-  log('base parcel: ', parcel.land.sceneJsonData.scene.base)
+  log("parcels: ", parcel.land.sceneJsonData.scene.parcels)
+  log("base parcel: ", parcel.land.sceneJsonData.scene.base)
 
   // spawn points
-  log('spawnpoints: ', parcel.land.sceneJsonData.spawnPoints)
+  log("spawnpoints: ", parcel.land.sceneJsonData.spawnPoints)
 
   // general scene data
-  log('title: ', parcel.land.sceneJsonData.display?.title)
-  log('author: ', parcel.land.sceneJsonData.contact?.name)
-  log('email: ', parcel.land.sceneJsonData.contact?.email)
+  log("title: ", parcel.land.sceneJsonData.display?.title)
+  log("author: ", parcel.land.sceneJsonData.contact?.name)
+  log("email: ", parcel.land.sceneJsonData.contact?.email)
 
   // other info
-  log('tags: ', parcel.land.sceneJsonData.tags)
+  log("tags: ", parcel.land.sceneJsonData.tags)
 })
 ```
 
