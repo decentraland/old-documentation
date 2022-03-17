@@ -413,6 +413,40 @@ myEntity.addComponent(
 
 > TIP: Note that all entities with an `OnPointerDown` component by default show a UI hint when hovered over. You can disable this UI hint by setting the `showFeeback` property on the `OnPointerDown` component to false.
 
+## Button state
+
+You can check for the button's current state (up or down) using the _Input_ object.
+
+```ts
+let buttonState = Input.instance.isButtonPressed(ActionButton.POINTER)
+
+if(buttonState.BUTTON_DOWN){
+  log("button is being held down")
+} else {
+  log("button is up
+}
+```
+
+You can use the `.isButtonPressed` function to check for the states of any of the globally tracked buttons. The function returns an object that contains a `BUTTON_DOWN` boolean field, with the current state of the button.
+
+As an example, you can implement this in a system's `update()` function to check a button's state regularly.
+
+```ts
+class ButtonChecker implements ISystem {
+  update() {
+    if (Input.instance.isButtonPressed(ActionButton.POINTER).FORWARD) {
+      log("player walking forward")
+    } else {
+      log("player not walking forward")
+    }
+  }
+}
+
+engine.addSystem(new ButtonChecker())
+```
+
+
+
 ## OnClick Component - DEPRECATED
 
 As an alternative to `OnPointerDown`, you can use the `OnClick` component. This component only tracks button events from the `POINTER`, not from the primary or secondary buttons.
@@ -453,33 +487,3 @@ myEntity.addComponent(
 
 > Note: Entities that don't have a shape component, or that have their shape's `visible` field set to _false_ can't be clicked.
 
-## Button state
-
-You can check for the button's current state (up or down) using the _Input_ object.
-
-```ts
-let buttonState = input.isButtonPressed(ActionButton.POINTER)
-```
-
-If the pointer button is currently being held down, the statement above returns the value _true_, otherwise it returns _false_.
-
-You can check for the states of the `PRIMARY` and `SECONDARY` buttons in the same way, providing `ActionButton.PRIMARY` or `ActionButton.SECONDARY` as arguments for the `isButtonPressed()` function.
-
-You can implement this in a system's `update()` function to check the button state regularly.
-
-```ts
-// Instance the input object
-const input = Input.instance
-
-class ButtonChecker implements ISystem {
-  update() {
-    if (input.isButtonPressed(ActionButton.POINTER)) {
-      log("pointer button down")
-    } else {
-      log("pointer button up")
-    }
-  }
-}
-
-engine.addSystem(new ButtonChecker())
-```
