@@ -116,7 +116,7 @@ These textures are composed of a palette of plain colors, that you can map to di
 
 <img src="{{ site.baseurl }}/images/media/MiniTown_TX.png" alt="Minitown texture" width="250"/>
 
-You can find the full collection of Decentrlanad default textures in [this repo](https://github.com/decentraland/builder-assets/tree/master/textures)
+You can find the full collection of Decentraland default textures in [this repo](https://github.com/decentraland/builder-assets/tree/master/textures)
 
 #### Lighting conditions
 
