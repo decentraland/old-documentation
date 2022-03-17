@@ -160,6 +160,8 @@
           children:
             - title: Display an NFT
               post: "development-guide/2018-02-01-display-a-certified-nft.md"
+            - title: Hand out POAP Tokens
+              post: "development-guide/2022-03-17-poap-tokens.md"
             - title: Blockchain operations
               post: "development-guide/2018-01-07-scene-blockchain-operations.md"
             - title: Second layer
