@@ -160,13 +160,11 @@ const POAPBooth = new Dispenser(
     position: new Vector3(8, 0, 8),
     rotation: Quaternion.Euler(0, 0, 0),
   },
-  "poap-api.decentraland.org",
-  "dcl_event_uuid",
-  "Event name"
+  "dcl_event_uuid"
 )
 ```
 
-You need to change the `dcl_event_uuid` to the event id you get from the Decentraland POAP server and change the `Event name` to the name of your event.
+You need to change the `dcl_event_uuid` to the event id you get from the Decentraland POAP server.
 
 If you wish to do something more custom, this scene is also a great starting point, as it already handles all of the interactions with the server and UI notifications.
 
