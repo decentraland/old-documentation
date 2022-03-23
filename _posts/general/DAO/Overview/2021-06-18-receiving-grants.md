@@ -12,7 +12,7 @@ type: Document
 If your [grant request]({{ site.baseurl }}{% post_url /general/DAO/Overview/2021-06-18-community-grants %}) was approved by the DAO, congratulations! Following is an overview of what happens when your grant is approved, the actions you need to take to receive your funding, and how you are expected to report your work to the community.
 
 
-## Receiving your MANA
+## Receiving your funds
 
 The process for receiving funds varies between the different grant tiers.
 
@@ -26,21 +26,21 @@ The funds are transferred in MANA equaling the USD amount specified in the grant
 
 The beneficiary address provided within the grant proposal **must be an Ethereum address** that can receive MANA. Failure to provide a valid address may result in the irretrievable loss of the grant funds.
 
-## Tier 3
+## Tier 3, 4, 5, and 6
 
-Funds for grants in Tier 3 are made available to the beneficiary address provided in the proposal form via a vesting contract. **It is the responsibility of the beneficiary to withdraw any vested funds from the contract.**
+Funds for these Tiers are made available to the beneficiary address provided in the proposal form via a vesting contract. **It is the responsibility of the beneficiary to withdraw any vested funds from the contract.**
 
-MANA in vesting contracts vests each second.
+Funds in vesting contracts vests each second.
 
-Vesting contracts have a one month cliff. MANA will still vest during this cliff, but it will not be available to the beneficiary until the end of the cliff.
+Vesting contracts have a one month cliff. Funds will still vest during this cliff, but they will not be available to the beneficiary until the end of the cliff period.
 
-After the cliff has been reached, the beneficiary may withdraw their vested funds as often as they wish, bearing in mind that they (the beneficiary) are responsible for paying the gas fee required for each withdrawal.
+After the cliff period has ended, the beneficiary may withdraw their vested funds as often as they wish, bearing in mind that they (the beneficiary) are responsible for paying the gas fee required for each withdrawal.
 
 ## Reporting your progress
 
 You are expected to provide public reports on your progress on a schedule matching the milestones and roadmap detailed in your original grant proposal. 
 
-These updates are to be shared on the Forum thread generated for your grant request. These progress reports should be clear and concise, while still giving the community an accurate sense of how your project is progressing. Sharing screenshots or demos of your work goes a long way toward maintaining the trust of the community.
+These updates are to be shared on the Forum thread or Discord channel generated for your grant request. These progress reports should be clear and concise, while still giving the community an accurate sense of how your project is progressing. Sharing screenshots or demos of your work goes a long way toward maintaining the trust of the community. It is also expected that members of the Grant team attendes to the monthly Town Halls to report progress. 
 
 ## Revoked grants
 
