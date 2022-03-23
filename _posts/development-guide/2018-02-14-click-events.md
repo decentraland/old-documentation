@@ -434,7 +434,7 @@ As an example, you can implement this in a system's `update()` function to check
 ```ts
 class ButtonChecker implements ISystem {
   update() {
-    if (Input.instance.isButtonPressed(ActionButton.POINTER).FORWARD) {
+    if (Input.instance.isButtonPressed(ActionButton.FORWARD).BUTTON_DOWN) {
       log("player walking forward")
     } else {
       log("player not walking forward")
