@@ -35,10 +35,13 @@ Select the most appropriate tier for your grant request. Tiers enable the Decent
 *   **Tier 1:** $500 - $1500 USD in MANA
 *   **Tier 2:** $1500 - $3000 USD in MANA
 *   **Tier 3:** $3000 - $5000 USD in MANA
+*   **Tier 4:** $5,000 - $60,000 USD
+*   **Tier 5:** $60,000 - $120,000 USD
+*   **Tier 6:** $120,000 - $240,000 USD
 
-Tiers 1 and 2 are paid via a direct transfer to the beneficiary address provided within 7 days of a grant receiving approval from the DAO.
+Tiers 1 and 2 Grants are paid via a direct transfer to the beneficiary address provided within 7 days of a grant receiving approval from the DAO.
 
-Tier 3 is paid via a vesting contract with a one month cliff.
+The rest of the Tiers Grants are paid via a vesting contract (3 or 6 months depending on the Tier) with a one month cliff in MANA or stablecoin.
 
 #### Title
 
@@ -72,7 +75,7 @@ If multiple people would contribute to your project, please share these details 
 
 #### Roadmap and milestones
 
-Please share a realistic and achievable timeline for your project with discrete milestones. It is important that you publicly share progress toward each milestone in the Forum thread generated for your grant. Milestones should include concrete deliverables and dates, to make it easy for the community to compare your actual progress with your initial proposal.
+Please share a realistic and achievable timeline for your project with discrete milestones. It is important that you publicly share progress toward each milestone in the Forum thread or Discord channel generated for your grant. Milestones should include concrete deliverables and dates, to make it easy for the community to compare your actual progress with your initial proposal.
 
 ## Submitting your proposal
 
@@ -82,8 +85,13 @@ After submitting your proposal, a Forum thread will be generated automatically w
 
 Grant requests remain open on the DAO for 7 days, during which the community can review and vote on your proposal.
 
-## Minimum acceptance thresholds
+## Minimum acceptance thresholds and voting period duration
 
-As has been [voted in place by the DAO](https://governance.decentraland.org/en/proposal/?id=95141550-c3f4-11eb-b2bc-870b0f8c50b5), grant requests cannot be approved by the DAO unless 1 million VP or more votes in **For** the request and the **For** votes have the majority.
+*   **Tier 1:** 1M VP - 7 days
+*   **Tier 2:** 1M VP - 7 days
+*   **Tier 3:** 1M VP - 7 days
+*   **Tier 4:** 2M VP - 14 days
+*   **Tier 5:** 4M VP - 14 days
+*   **Tier 6:** 8M VP - 14 days
 
-Failure to reach at least 1 million VP, even if the **For** votes are in the majority, results in the rejection of the proposal. Grant requests may be resubmitted, so if you fail to obtain approval, you may revise and resubmit your proposal at a later date.
+Failure to reach the minimum acceptance threshold defined for the Tier the Grant falls into, even if the **For** votes are in the majority, results in the rejection of the proposal. Grant requests may be resubmitted, so if you fail to obtain approval, you may revise and resubmit your proposal at a later date.
