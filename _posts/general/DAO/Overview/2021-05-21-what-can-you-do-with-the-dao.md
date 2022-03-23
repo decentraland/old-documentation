@@ -28,24 +28,24 @@ The voting process includes three steps: a Pre-Proposal Poll, a Draft Proposal, 
 
 ### Stage 1: Pre-Proposal Poll
 
-Submission Threshold: 100 VP
-Passage Threshold: 500K VP ( A poll that reaches at least 500K VP and does not garner a majority of participating voting power, may still advance to the Draft Proposal stage - ensuring all issues with enough support have an initial pathway toward passage into policy.)
-Voting Period: 5 Days
-Goal: Introduce a governance issue to the community, gauge community sentiment, and determine if there is enough support to move forward with drafting an initial proposal.
+* Submission Threshold: 100 VP
+* Passage Threshold: 500K VP ( A poll that reaches at least 500K VP and does not garner a majority of participating voting power, may still advance to the Draft Proposal stage - ensuring all issues with enough support have an initial pathway toward passage into policy.)
+* Voting Period: 5 Days
+* Goal: Introduce a governance issue to the community, gauge community sentiment, and determine if there is enough support to move forward with drafting an initial proposal.
 
 ### Stage 2: Draft Proposal
 
-Submission Threshold: 1,000 VP
-Passage Threshold: 1M VP and simple majority (51%) of participating voting power (A Draft Proposal that fails or does not reach this threshold can be amended and resubmitted one time.)
-Voting Period: 1 Week
-Goal: Present a potential policy to the community in a structured format and formalize discussion about the proposal’s potential impacts and implementation pathways.  A Draft Proposal that fails or does not reach this threshold can be amended and resubmitted one time.
+* Submission Threshold: 1,000 VP
+* Passage Threshold: 1M VP and simple majority (51%) of participating voting power (A Draft Proposal that fails or does not reach this threshold can be amended and resubmitted one time.)
+* Voting Period: 1 Week
+* Goal: Present a potential policy to the community in a structured format and formalize discussion about the proposal’s potential impacts and implementation pathways.  A Draft Proposal that fails or does not reach this threshold can be amended and resubmitted one time.
 
 ### Stage 3: Governance Proposal
 
-Submission Threshold: 2,500 VP
-Passage Threshold: 6M VP and simple majority of participating VP (or needed acceptance criteria for their category)
-Voting Period: 2 Weeks
-Goal: Formalize the passed version of a Draft Proposal into a binding Governance outcome.
+* Submission Threshold: 2,500 VP
+* Passage Threshold: 6M VP and simple majority of participating VP (or needed acceptance criteria for their category)
+* Voting Period: 2 Weeks
+* Goal: Formalize the passed version of a Draft Proposal into a binding Governance outcome.
 
 It is important to notice that anyone who meet the submission threshold can take a passed proposal (either a Poll or a Draft) and move it to the next stage, not only the proposal author.
 
