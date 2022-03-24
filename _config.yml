@@ -20,6 +20,7 @@ faq_url: "https://decentraland.org/#faqs"
 telegram_url: "https://t.me/decentralandTG"
 legal_url: "https://decentraland.org/legal"
 press_url: "https://decentraland.org/press"
+forum_url: "https://forum.decentraland.org/"
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /images/favicon.png
