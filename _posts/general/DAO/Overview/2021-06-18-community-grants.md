@@ -9,7 +9,7 @@ type: Document
 ---
 
 
-The Decentraland DAO possesses a [MANA fund]({{ site.baseurl }}{% post_url /general/DAO/Overview/2021-05-21-the-dao-fund %}) that has been set aside to help sponsor and facilitate the continual growth of the Decentraland platform. One avenue used by the DAO to achieve these goals is a grants program that was [voted in place by the DAO](https://governance.decentraland.org/en/proposal/?id=b265e3e0-bcb0-11eb-a871-a927ffd81f49).
+The Decentraland DAO possesses a [MANA fund]({{ site.baseurl }}{% post_url /general/DAO/Overview/2021-05-21-the-dao-fund %}) that has been set aside to help sponsor and facilitate the continual growth of the Decentraland platform. One avenue used by the DAO to achieve these goals is a grants program that was [voted in place by the community](https://governance.decentraland.org/en/proposal/?id=b265e3e0-bcb0-11eb-a871-a927ffd81f49).
 
 This grants program allows any member of the community to request funding to help reimburse their efforts in community building and education, creating 3D content for the world, or implementing new features and improvements to the platform.
 
@@ -53,18 +53,33 @@ The specific tiers, and their ranges, are:
 
 #### Tier 1
 
-*   $500 - $1500 USD in MANA
+*   Up to $1,500 USD in MANA
 *   One-time payment
 
 #### Tier 2
 
-*   $1500 - $3000 USD in MANA
+*   $1,500 - $3,000 USD in MANA
 *   One-time payment
 
 #### Tier 3
 
-*   $3000 - $5000 USD in MANA
-*   Up to a 3 month vesting contract with a one month cliff
+*   $3,000 - $5,000 USD in MANA
+*   3 months vesting contract (1 month cliff)
+
+#### Tier 4
+
+*   $5,000 - $60,000 USD
+*   6 months vesting contract (1 month cliff)
+
+#### Tier 5
+
+*   $60,000 - $120,000 USD
+*   6 months vesting contract (1 month cliff)
+
+#### Tier 6
+
+*   $120,000 - $240,000 USD
+*   6 months vesting contract (1 month cliff) 
 
 
 ## When are payments made for each tier?
@@ -73,15 +88,17 @@ The specific tiers, and their ranges, are:
 
 Funds for grants in Tiers 1 or 2 are transferred directly to the beneficiary address within a week of the grant’s approval from the DAO.
 
-#### Tier 3
+#### Tier 3, 4, 5, and 6
 
-Funds for grants in Tier 3 are made available to the beneficiary address via vesting contracts. These contracts vest every second, and have a one month cliff. After the cliff, the owner of the beneficiary address may withdraw the vested MANA. Past the cliff, the beneficiary may withdraw any newly vested MANA.
+Funds for grants in those Tiers are made available to the beneficiary address via vesting contracts. These contracts vest every second, and have a one month cliff. After the cliff, the owner of the beneficiary address may withdraw the vested funds. Past the cliff, the beneficiary may withdraw any newly vested funds.
+
 
 ## Grant requirements
 
+*   Every Grant must be approved by the DAO community through an open proposal on the [Governance dApp](https://governance.decentraland.org/) under the Grants category.
 *   Any work funded by the DAO must comply with the Decentraland [Content Policy](https://decentraland.org/content), [Terms of Use](https://decentraland.org/terms), and [Code of Ethics](https://decentraland.org/ethics).
 *   Regardless of category, each grant proposal must include clearly defined and measurable outcomes.
-*   Grant recipients must provide regular and thorough reports on their project’s progress for the community to review. These reports may be shared through the Decentraland Forum. Failure to provide these reports may result in the removal of grant funding.
+*   Grant recipients must provide regular and thorough reports on their project’s progress for the community to review. These reports may be shared through the Discord server, the Governance dApp or the Forum. Failure to provide these reports may result in the revocation of grant funding.
 *   Failure to provide the pre-established outcomes, as well as to provide clear reports on the advances and milestones will result in the removal of the grant funding.
 *   Grants with one-time payments are to be transferred upon the DAO’s approval of the grant.
 *   Grants with vesting contracts have a one month cliff beginning 7 days after the grant’s approval in the DAO.
