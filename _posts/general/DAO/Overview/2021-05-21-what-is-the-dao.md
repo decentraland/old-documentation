@@ -12,11 +12,11 @@ The Decentraland DAO is the decision-making tool for MANA, NAMES and LAND holder
 
 Issuing grants and making changes to the records and contracts owned by the DAO can only be done by using predefined proposals accessible in [governance.decentraland.org](https://governance.decentraland.org). 
 
-These proposals, the votes submitted, and final results are all stored in IPFS via Snapshot, a gas-less voting client. Approved proposals with binding actions are enacted on the Ethereum blockchain by a committee by means of a multi-sig wallet. This committee is overseen by the Security Advisory Board (SAB), another multisig with trusted key holders. This Committee was voted into place by the community in the previous release of the DAO. [The original proposal can be found here.](https://forum.decentraland.org/t/proposal-for-a-more-accessible-and-affordable-dao/450).
+These proposals, the votes submitted, and final results are all stored in IPFS via Snapshot, a gas-less voting client. Approved proposals with binding actions are enacted on the Ethereum blockchain by a committee by means of a multi-sig wallet. This committee is overseen by the Security Advisory Board (SAB), another multisig with trusted key holders. This Committee was voted into place by the community in the previous release of the DAO. [The original proposal can be found here](https://forum.decentraland.org/t/proposal-for-a-more-accessible-and-affordable-dao/450).
 
 The remainder of this document explains in greater detail what the DAO is, how it works, and what it can be used for.
 
-For a detailed tutorial on how to use the Decentraland DAO, visit the [DAO User Guide][DAO User Guide]({{ site.baseurl }}{% post_url /general/DAO/2021-05-21-dao-userguide %}).
+For a detailed tutorial on how to use the Decentraland DAO, visit the [DAO User Guide]({{ site.baseurl }}{% post_url /general/DAO/2021-05-21-dao-userguide %}).
 
 ## The DAO is powered by smart contracts
 
