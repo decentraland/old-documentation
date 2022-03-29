@@ -72,6 +72,14 @@ The fetch command returns a `response` object with the following data:
 
 > Note: Each Decentraland scene is only permitted to perform one `fetch` command at a time. This has no effect on how the scene code must be structured, as requests are queued internally. If your scene requires sending multiple requests to different endpoints, keep in mind that each request is only sent when the previous one has been responded.
 
+## Request timeout
+
+If an HTTP request takes too long to be responded, it fails so that other requests can be sent. The default timeout threshold is of 30 seconds, but you can assign a different value on each request by configuring the `timeout` property. The value of `timeout` is in milliseconds.
+
+```ts
+fetch('https://some-url.com', { timeout: 1000 }) 
+```
+
 ## Signed requests
 
 You can employ an extra security measure to certify that a request is originating from a player session inside Decentraland. You can send your requests with an additional signature, that is signed using an ephemeral key that the Decentraland session generates for each player based on the player's address. The server receiving the request can then verify that the signed message indeed matches an address that is currently active in-world.
@@ -113,6 +121,8 @@ To make make use of signed requests, the server receiving these should to valida
 You can find a simple example of a server performing this task in the following example scene:
 
 [Validate player authenticity](https://github.com/decentraland-scenes/validate-player-authenticity)
+
+
 
 ## Use WebSockets
 
