@@ -38,6 +38,7 @@ The fetch command can also include a second optional argument that bundles heade
   - **headers**: Additional headers to include in the request. Headers related to the signature are added automatically.
   - **redirect**: Redirect strategy ('follow' | 'error' | 'manual')
   - **responseBodyType**: Specify if the body of the response is 'text' or 'json'
+  - **timeout**: How long to wait for a response before the request fails. By default 30000 milliseconds (30 seconds).
 
 ```ts
 executeTask(async () => {
@@ -72,13 +73,6 @@ The fetch command returns a `response` object with the following data:
 
 > Note: Each Decentraland scene is only permitted to perform one `fetch` command at a time. This has no effect on how the scene code must be structured, as requests are queued internally. If your scene requires sending multiple requests to different endpoints, keep in mind that each request is only sent when the previous one has been responded.
 
-## Request timeout
-
-If an HTTP request takes too long to be responded, it fails so that other requests can be sent. The default timeout threshold is of 30 seconds, but you can assign a different value on each request by configuring the `timeout` property. The value of `timeout` is in milliseconds.
-
-```ts
-fetch('https://some-url.com', { timeout: 1000 }) 
-```
 
 ## Signed requests
 
@@ -122,6 +116,13 @@ You can find a simple example of a server performing this task in the following 
 
 [Validate player authenticity](https://github.com/decentraland-scenes/validate-player-authenticity)
 
+## Request timeout
+
+If an HTTP request takes too long to be responded, it fails so that other requests can be sent. For both `fetch()` and `signedFetch()`, the default timeout threshold is of 30 seconds, but you can assign a different value on each request by configuring the `timeout` property in any of the two functions. The value of `timeout` is expressed in milliseconds.
+
+```ts
+fetch('https://some-url.com', { timeout: 1000 }) 
+```
 
 
 ## Use WebSockets
