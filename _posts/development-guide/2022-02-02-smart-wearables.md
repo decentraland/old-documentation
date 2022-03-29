@@ -116,6 +116,8 @@ The following fields are present in `asset.json`:
 
 Running a preview of a portable experience is just like running that of a scene, simply run `dcl start`. If the `asset.json` file is properly configured and the project is recognized as a portable experience, you’ll notice that all the visible around you are the default empty parcels. In this preview mode, you are not restricted to any set of parcels, you can add 3d models or sounds anywhere in the world.
 
+To test how the smart wearable behaves in the context of a scene, you can also run a preview of your wearable at the same time as you run a preview of one or several scenes by using a [Workspace]({{ site.baseurl }}{% post_url /development-guide/2022-02-08-workspaces %}). For example, you can run your smart wearable together with the [Genesis Plaza](https://github.com/decentraland-scenes/Genesis-Plaza) scene to test how it behaves on a busy scene, while on an elevator, etc.
+
 ## Tips
 
 - When positioning an entity, note that positions are global, relative to the 0,0 coordinates of Genesis Plaza.
