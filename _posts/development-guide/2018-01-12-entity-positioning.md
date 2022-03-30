@@ -347,7 +347,7 @@ To attach an entity to an avatar, you must provide the user's ID in the field `a
 - Fetch the local player's `userId` via `getUserData()`.
 
 ```ts
-import { getPlayerData } from "@decentraland/Players"
+import { getUserData } from "@decentraland/Identity"
 
 executeTask(async () => {
   let data = await getUserData()
