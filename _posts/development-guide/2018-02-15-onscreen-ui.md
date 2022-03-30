@@ -155,15 +155,15 @@ Setting an element's opacity also affects all of its children. If you don't want
 
 The `UIText` component lets you add text. It has properties that are similar to the `TextShape` component. See [text]({{ site.baseurl }}{% post_url /development-guide/2018-02-11-text %}).
 
-- `value`: the string to display
-- `color`: `Color4` for the text color
-- `fontSize`: font size
-- `font`: font to use
-- `lineSpacing` : space between lines of text
-- `lineCount`: how many max lines of text
-- `textWrapping`: if text automatically occupies more lines
-- `outlineWidth`, `outlineColor`: add an outline to the text
-- `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`, `shadowColor`: Add a shadow to the text
+- `value`: The string to display.
+- `color`: `Color4` For the text color.
+- `fontSize`: Font size.
+- `font`: Font to use.
+- `lineSpacing` : Space between lines of text, expressed as a string. For example "30px".
+- `lineCount`: How many max lines of text.
+- `textWrapping`: If text automatically occupies more lines.
+- `outlineWidth`, `outlineColor`: Add an outline to the text.
+- `shadowBlur`, `shadowOffsetX`, `shadowOffsetY`, `shadowColor`: Add a shadow to the text.
 
 Fonts are set as a _Font object_. Font objects are initiated with a value from the _Fonts_ enum, which contains all supported fonts. By default, all text components use _LiberationSans_ font.
 
