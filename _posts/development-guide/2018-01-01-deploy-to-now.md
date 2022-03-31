@@ -35,7 +35,6 @@ Follow the steps below to upload your scenes to a free Heroku server:
 
    ```
    /node_modules
-   package-lock.json
    npm-debug.log
    .DS_Store
    /*.env
