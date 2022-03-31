@@ -137,6 +137,59 @@ The supported camera modes are:
 - `CameraMode.FirstPerson`
 - `CameraMode.ThirdPerson`
 
+## Exclude Avatars
+
+You can exclude a list of players from being affected by a modifier area by adding their player Ids to an array in the `excludeIds` property of the modifier area.
+
+This example hides all avatars in an area, except those of players with specific IDs. You could use this for a live event, to only show the event hosts on the stage, and hide any other players that jump onto the stage.
+
+```ts
+const modArea = new Entity()
+modArea.addComponent(
+  new AvatarModifierArea({
+    area: { box: new Vector3(16, 4, 16) },
+    modifiers: [AvatarModifiers.HIDE_AVATARS],
+    excludeIds: ['0xx1...', '0xx2...'],
+  })
+)
+modArea.addComponent(
+  new Transform({
+    position: new Vector3(8, 0, 8),
+  })
+)
+engine.addEntity(modArea)
+```
+
+> Note: Make sure the player IDs are all written with lower-case letters. Use `.toLowerCase()` if necessary.
+
+
+Modifier areas run locally on each player's instance, the list of excluded IDs can be different for each player. In the example below, each player excludes their own ID from a modifier that hides avatars, so that they each view their own avatar and no others.
+
+
+```ts
+import { getUserData } from '@decentraland/Identity'
+
+executeTask(async () => {
+  let userData = await getUserData()
+  if (!userData) return
+
+  const modArea = new Entity()
+  modArea.addComponent(
+    new Transform({
+      position: new Vector3(8, 0, 8),
+    })
+  )
+  modArea.addComponent(
+    new AvatarModifierArea({
+      area: { box: new Vector3(16, 4, 16) },
+      modifiers: [AvatarModifiers.HIDE_AVATARS],
+      excludeIds: [userData.userId],
+    })
+  )
+  engine.addEntity(modArea)
+})
+```
+
 ## Debug modifier areas
 
 It can be tough to know exactly what parts of the scene your modifier areas cover based on the code. Visual feedback helps a lot to confirm that they're well placed.
