@@ -153,9 +153,11 @@
         - post: "development-guide/2021-01-11-performance-optimization.md"
         - title: SDK Libraries
           children:
-            - post: "development-guide/2020-08-04-utils.md"
+            - title: "ECS Utils library"
+              url: "https://github.com/decentraland/decentraland-ecs-utils"
             - title: "Other libraries"
               url: "https://github.com/decentraland-scenes/Awesome-Repository#Libraries"
+            - post: "development-guide/2022-03-15-create-libraries.md"
         - title: Blockchain integration
           children:
             - title: Display an NFT
