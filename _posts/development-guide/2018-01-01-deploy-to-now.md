@@ -17,11 +17,13 @@ Note that it's not necessary to own LAND to upload a scene preview to a Heroku s
 
 Follow the steps below to upload your scenes to a free Heroku server:
 
-1. Create a free [Heroku](https://dashboard.heroku.com/) account, if you don't already have one.
+1. Make sure you have the latest Decentralnd CLI version installed on your machine `npm i -g decentraland@latest`.
 
-2. Install the Heroku CLI. Do this via `npm i -g heroku`, or see [their documentation](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) for alternatives.
+2. Create a free [Heroku](https://dashboard.heroku.com/) account, if you don't already have one.
 
-3. Create a git repository for your project.
+3. Install the Heroku CLI. Do this via `npm i -g heroku`, or see [their documentation](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) for alternatives.
+
+4. Create a git repository for your project.
 
    a) Create with `git init`
 
@@ -38,20 +40,21 @@ Follow the steps below to upload your scenes to a free Heroku server:
    /*.env
    bin
    ```
+   > Note: Make sure your Decentraland project uses the latest SDK version, do `npm i decentraland-ecs@latest`. Projects uploaded to Heroku or similar platformas and built with versions older than 6.10.0 will not be supported and will not be allowed to fech avatar data from content servers.
 
-4. Use the Heroku CLI to log into your Heroku account with `heroku login`. This opens a browser window to provide your user and password.
+5. Use the Heroku CLI to log into your Heroku account with `heroku login`. This opens a browser window to provide your user and password.
 
-5. Create a new Heroku application and give it a unique name. In the Heroku site do that via **New** > **Create new App**. Otherwise, in the Heroku CLI do it via `heroku create -a example-dcl-scene`
+6. Create a new Heroku application and give it a unique name. In the Heroku site do that via **New** > **Create new App**. Otherwise, in the Heroku CLI do it via `heroku create -a example-dcl-scene`
 
-6. Link your Decentraland project to your Heroku application. On the project folder run `heroku git:remote -a example-dcl-scene` (using the name you created you heroku application with)
+7. Link your Decentraland project to your Heroku application. On the project folder run `heroku git:remote -a example-dcl-scene` (using the name you created you heroku application with)
 
-7. Edit `package.json` in your scene to change the `start` script to `CI=true dcl start -p ${PORT:=8000}`
+8. Edit `package.json` in your scene to change the `start` script to `CI=true dcl start -p ${PORT:=8000}`
 
-8. Explicitly install the Decentraland CLI as a dependency of your project, running `npm i --save decentraland`
+9. Explicitly install the Decentraland CLI as a dependency of your project, running `npm i --save decentraland`
 
-9. Deploy your scene preview with `git push heroku main`
+10. Deploy your scene preview with `git push heroku main`
 
-10. To access the scene, copy the link shared by the Heroku deploy command. Then manually add the following parameters to the URL `?realm=localhost-stub&renderer-branch=master`.
+11. To access the scene, copy the link shared by the Heroku deploy command. Then manually add the following parameters to the URL `?realm=localhost-stub&renderer-branch=master`.
 
     For example if the link shared by Heroku is `https://example-dcl-scene.herokuapp.com`, the link you should enter is `https://example-dcl-scene.herokuapp.com/?realm=localhost-stub&renderer-branch=master`.
 
