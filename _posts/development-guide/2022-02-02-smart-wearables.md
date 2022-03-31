@@ -10,7 +10,6 @@ type: Document
 
 > **WARNING:** Smart wearables are still in Alpha. The Builder does not support the upload of smart wearables, and there isn't an approval process in place to allow community-built smart wearables to be published. The current development tools allow you to create and test smart wearables, but please don't attempt to publish any in the Builder, they will not be approved.
 
-
 Smart wearables are a type of portable experience. Portable experiences are parts of the gameplay that players take with them as they move through the metaverse. For example, a player could take a snowball from your scene, walk away to another scene, and throw the snowball to another player who’s also playing the same game.
 
 Smart wearables are portable experiences that are turned on when the player puts on a certain item of clothing. Smart wearables can grant players new abilities, like a jetpack that lets them fly, or add a new layer of content on top of the rest of the world, like randomly placing coins to be collected throughout the whole of genesis city.
@@ -157,17 +156,11 @@ To publish your smart wearable:
 
 > Note: There will be a `dcl deploy` command in the future, to enable you to do this process without navigating the Builder UI.
 
-<!--
 ## Restricted actions
 
-To prevent abuse, certain features aren't permitted on portable experiences, or require adding a permission flag.
+To prevent abuse, certain features aren't permitted on portable experiences by default, and require adding a permission flag.
 
-The following actions require special permissions
-
-- Send HTTP requests
-- Connect to a WebSockets server
-... etc
--->
+See [Required permissions]({{ site.baseurl }}{% post_url /development-guide/2018-02-26-scene-metadata %}#required-permissions) for more details.
 
 ## Limitations
 
