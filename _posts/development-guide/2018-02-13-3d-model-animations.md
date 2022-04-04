@@ -201,7 +201,7 @@ let animator = new Animator()
 // Add animator component to the entity
 shark.addComponent(animator)
 
-// Crete animation state objects
+// Create animation state objects
 const clipSwim = new AnimationState("swim", { layer: 0 })
 const biteClip = new AnimationState("bite", { layer: 1 })
 
