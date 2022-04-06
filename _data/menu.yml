@@ -105,6 +105,7 @@
         - post: "wearables/2021-05-31-publishing-wearables.md"
         - post: "wearables/2021-05-31-curation-committee.md"
         - post: "wearables/2021-05-31-wearables-editor-user-guide.md"
+        - post: "wearables/2022-04-05-linked-wearables.md"        
     - title: SDK
       children:
         - title: Getting started
