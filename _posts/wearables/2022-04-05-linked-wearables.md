@@ -12,7 +12,7 @@ type: Document
 
 In accordance with the [initial DAO proposal for Linked Wearables](https://governance.decentraland.org/proposal/?id=14e76cc0-2bc7-11ec-ac84-77607720a240) (previously called: Third Party Wearables) and the last approved [Draft Proposal with final definitions](https://governance.decentraland.org/proposal/?id=f69c4d40-aaaf-11ec-87a7-6d2a41508231), this document will serve as documentation to cover all the relevant details around the Linked Wearables feature. 
 
-This document is mostly oriented for representatives of Third Parties that want to give their communities the ability to don their NFTs as wearables when strolling through Decentraland.
+This document is mostly oriented for representatives of Third Parties that want to give their communities the ability to wear their NFTs as wearables when strolling through Decentraland.
 
 # What are Linked Wearables?
 
@@ -47,7 +47,7 @@ Once you are accepted as a Third Party and added to the Linked Wearables Registr
 
 	![]({{ site.baseurl }}/images/media/linkedw-collection.png)
 
-	*Only accepted Third Parties will see the “New Linked Wearables Collection” option in the Builder.*
+	*Only managers of accepted Third Parties will see the “New Linked Wearables Collection” option in the Builder.*
 
 2. Choose a name for the collection and an ID
     
@@ -57,7 +57,7 @@ Once you are accepted as a Third Party and added to the Linked Wearables Registr
 
 	![]({{ site.baseurl }}/images/media/linkedw-upload-models.png)
 
-4. Select the items to be published and wait for curation to be completed
+4. Select the items to be published and wait for the Curators Committee to approve them
 
 	![]({{ site.baseurl }}/images/media/linkedw-publish.png)
 
@@ -72,9 +72,9 @@ Third Parties need to provide an API with 2 endpoints:
 
 ## Curation
 
-As with regular wearables, your 3D models will need to get the Curators Committee’s approval. You are not excluded from this rule as Decentraland’s aesthetic and game play still needs to be safe guarded.  
+As with regular wearables, your 3D models will need to get the Curators Committee’s approval. You are not excluded from this rule as Decentraland’s aesthetic and gameplay still needs to be safe guarded.  
 
-### Hand crafted models
+### Handcrafted models
 
 For 3D models that were made individually without any automated process (the usual method for most regular wearables) the Curator will need to go through all items in the collection individually to make sure they are all compliant with the [Wearable Guidelines]({{ site.baseurl }}{% post_url /3d-modeling/2021-05-31-creating-wearables %}). 
 
