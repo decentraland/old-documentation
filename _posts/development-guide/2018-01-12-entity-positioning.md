@@ -246,7 +246,7 @@ childEntity.setParent(parentEntity)
 // Create a transform for the parent
 let parentTransform = new Transform({
   position: new Vector3(3, 1, 1),
-  scale: new Vecot3(0.5, 0.5, 0.5),
+  scale: new Vector3(0.5, 0.5, 0.5),
 })
 
 parentEntity.addComponent(parentTransform)
