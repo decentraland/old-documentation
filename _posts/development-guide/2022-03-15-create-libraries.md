@@ -23,11 +23,13 @@ To create your own library and share it via NPM, do the following:
 
    This will create all of the default files and dependencies for a Decentraland library.
 
-2. Set a unique `name` in `package.json`. This is the name that will be used when publishing to NPM, make sure there isn't some other existing project using that name on npm.
+2. Set a unique `name` in `package.json`. This is the name that will be used when publishing to NPM, make sure there isn't some other existing project using that name on npm. Also fill in the description and any tags to help others find your library.
 
 3. Create a new _public_ GitHub repository for your project.
 
    The project is configured to use github actions to publish a new version of the package on every push to `main`.
+
+   In the `package.json` file, make sure that in `repository` you point the `url` field to your repo's URL. That way it's easy to find for users navigating [npmjs.com](https://www.npmjs.com).
 
 4. Get an NPM token:
 
@@ -43,7 +45,7 @@ To create your own library and share it via NPM, do the following:
 
 6. Push a change (any change) to the main branch of your GitHub repo and the package will be published.
 
-   That's it, now the package can be installed by anyone using `npm i <package-name>`!
+   That's it, now the package can be installed by anyone using `npm i <package-name>`! You can now find your library if you search for it by name in [npmjs.com](https://www.npmjs.com).
 
 7. Flesh out the `/src` folder of your project with all the functionality you want to expose and push changes to GitHub.
 
@@ -68,6 +70,8 @@ If you need to continually make small adjustments to your library and test them,
 
 This will keep your scene synced to the version of the library that's directly in your local drive. For any changes to the library that you want to test, just run `npm run build` on the library folder, no need to publish changes to GitHub or NPM.
 
+> Tip: To verify that the linking was successful, check your scene's `package.json` file. On your library's it should show a local folder path instead of a version number.
+
 When you're finished testing, remember to unlink the library.
 
 1. On the scene folder run `npm unlink --no-save <library name>`
@@ -75,6 +79,32 @@ When you're finished testing, remember to unlink the library.
 2. Then in the library run`npm unlink`
 
 > Note: The order of these steps is important.
+
+## Versioning
+
+Versions of your library are published automatically to `npm` with a `@latest` and a `@next` flag.
+
+The `@next` flag always points to the last commit on the `main` branch. This version may be unstable as the last changes might not be tested. Users of your library can install it (at their own risk) by doing `npm i <library name>@next`.
+
+The `@latest` flag points to the last stable release of the library. This is what users of your library should be installing normally. It's the version that npm fetches when they do `npm i <library name>`. 
+
+To make the `@latest` flag point to your latest commits, you'll need to make a **release** of your library on GitHub.
+
+1. Open your project's GitHub page. Open the **Releases** link, on the right margin of the page.
+
+	![]({{ site.baseurl }}/images/media/release-versions.png)
+
+2. Click **Draft new release**. 
+3. On **Chose tag** write a name for your new version, for example "1.1.0". Also write a name on **Release Title**. This is often the same name, "1.1.0".
+
+	> Important: The tag number must be higher than the previous published releases.
+
+4. Describe your release, so that users know what's new. 
+
+	> Tip: Click the button **Auto generate release notes** to print out all the commits since the last release.
+
+5. Hit **Publish Release**. This action triggers a new automatic publication to npm with the `@latest` flag. Users of your library will now be downloading this version.
+
 
 ## Notes on usability
 
