@@ -284,7 +284,6 @@ Use the `setParams()` function of the `AnimationState` object to set multiple pa
 
 You can configure the following parameters:
 
-- `playing`: Boolean to determine if the animation is currently being played.
 - `looping`: Boolean to determine if the animation is played in a continuous loop.
 - `speed`: A number that determines how fast the animation is played.
 - `layer`: The layer of the animation. To play multiple animations at once, they must be on separate layers in the `Animator` component. By default, animations are added to layer 0.
@@ -294,7 +293,6 @@ You can configure the following parameters:
 const clipSwim = new AnimationState("swim")
 
 clipSwim.setParams({
-  playing: true,
   looping: true,
   speed: 2,
   layer: 1,
