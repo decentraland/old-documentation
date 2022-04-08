@@ -270,10 +270,10 @@ expandButton.sourceWidth = 128
 expandButton.sourceHeight = 128
 ```
 
-You can change the texture being used by an existing `UIImage` component, set the `data` field.
+You can change the texture being used by an existing `UIImage` component, set the `source` field.
 
 ```ts
-playButton.data = imageTexture2
+playButton.source = imageTexture2
 ```
 
 ## Clicking UI elements
