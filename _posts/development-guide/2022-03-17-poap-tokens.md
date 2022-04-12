@@ -31,7 +31,15 @@ There are two ways to do this:
 
 ### Via UI
 
-@Coming soon
+Go to https://poap.decentraland.org
+
+1. Insert the poap event id
+
+<img src="{{ site.baseurl }}/images/media/poap-guide/poap1.png" alt="POAP Decentraland UI Start" width="250"/>
+
+2. Add the coordinates and/or add the claim codes
+
+<img src="{{ site.baseurl }}/images/media/poap-guide/poap2.png" alt="POAP Decentraland UI Edit" width="250"/>
 
 ### Via API
 
