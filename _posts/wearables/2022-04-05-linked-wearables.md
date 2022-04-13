@@ -33,7 +33,7 @@ The **first step** to registering your NFTs as Linked Wearables is to be admitte
 
 Third Parties will need to share details about their project, collection, and define the managers that will later upload the 3D models of their NFTs in the [Builder](https://builder.decentraland.org/).
 
-The passage threshold to become approved is 4 million Voting Power and the Voting Period is 1 week. 
+The passage threshold to become approved is 4 million Voting Power and the Voting Period is 1 week. Resubmission is allowed. 
 
 ![]({{ site.baseurl }}/images/media/linkedw-proposal.png)
 
@@ -118,3 +118,7 @@ These are the steps that Third Parties need to follow, in summary:
 
 - The DAO is the authority that will approve the addition of new Third Parties on the Linked Wearables Registry.
 - The Curation Committee always has the power to reject specific items or all items within a collection.
+- Linked Wearables work with any NFT project running at any blockchain, if the API provided can match the user address with the 3D model to show as Linked Wearable.
+- This feature will be enacted after the [Governance Proposal](https://governance.decentraland.org/proposal/?id=5534b120-b786-11ec-903a-6546e8793cef) ends. Third Parties can still submit their Linked Wearables Registry proposals. 
+
+
