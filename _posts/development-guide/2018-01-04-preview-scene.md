@@ -52,6 +52,7 @@ You can add the following flags to the `dcl start` command to change its behavio
 - `--c` or `--ci` To run the parcel previewer on a remote unix server
 - `--web3` Connects preview to browser wallet to use the associated avatar and account
 - `--skip-version-checks` Avoids checking if the scene's ECS library version matches your CLI version, and launches the preview anyway.
+- `--desktop-client` Runs the preview in the Decentraland Desktop client
 
 > Note: To preview old scenes that were built for older versions of the SDK, you must set the corresponding version of `decentraland-ecs` in your project's `package.json` file.
 
@@ -75,6 +76,25 @@ If you're building a scene to be uploaded to several adjacent parcels, you can e
 
 > Tip: While running the preview, the parcel coordinates don't need to match those that your scene will really use, as long as they're adjacent and are arranged into the same shape. You will have to replace these with the actual coordinates later when you [deploy the scene](#upload-a-scene-to-decentraland).
 
+## Run preview in Desktop
+
+To run a preview scene in the Desktop native client, instead of in the web browser: 
+
+1) Make sure you have [installed the desktop client](https://decentraland.org/download/). 
+
+	>Note: The desktop client is currently only supported for Windows machines.
+2) Run the preview with:
+
+	`dcl start --desktop-client`
+3) You'll see the following screen. Click **Continue** to launch the preview.
+
+	<figure>
+		<img src="{{ site.baseurl }}/images/media/desktop-preview.png" alt="desktop preview" width="300"/>
+	</figure>
+	
+	If you need to manually add anything to the URL, to change the default way the scene runs, tick the box **Add custom URL parameters** and write those in the dialog below.
+
+ 
 ## Debug a scene
 
 Running a preview provides some useful debugging information and tools to help you understand how the scene is rendered. The preview mode provides indicators that show parcel boundaries and the orientation of the scene.
@@ -237,3 +257,4 @@ If you open a second preview window on your machine, you will enter the scene wi
 If the scene uses the MessageBus to send messages between players, these will work between the different tabs.
 
 If the scene connects to a third party server via websockets, these connections should also work independently on each tab, as separate players.
+
