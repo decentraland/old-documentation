@@ -97,7 +97,7 @@ To make the `@latest` flag point to your latest commits, you'll need to make a *
 2. Click **Draft new release**. 
 3. On **Chose tag** write a name for your new version, for example "1.1.0". Also write a name on **Release Title**. This is often the same name, "1.1.0".
 
-	> Important: The tag number must be higher than the previous published releases.
+	> Important: The tag must be a number, with no additional letters or symbols. The number must be higher than the previous published releases.
 
 4. Describe your release, so that users know what's new. 
 
