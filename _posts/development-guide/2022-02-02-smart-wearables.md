@@ -189,10 +189,4 @@ If a wearable is “hidden” but not “removed” by other wearables being wor
 
 [Scarvenger hunt](https://github.com/decentraland-scenes/Smart-wearable-Scarvenger-hunt)
 
-Xmas 2021:
-
-[Xmas airdrops](https://github.com/nearnshaw/xmas-airdrops)
-
 [Snowball fight](https://github.com/decentraland-scenes/snowball-fight)
-
-[Secret Santa](https://github.com/decentraland-scenes/xmas-secret-santa)
