@@ -55,22 +55,13 @@ Open your scene's _scene.json_ file and complete the following data:
 
 > Tip: `dcl deploy` runs a `dcl build`, which checks the scene for type errors more strictly than running `dcl start`. If these errors can't be avoided (eg: they happen in an external library) and they don't impact the scene, you can use `dcl deploy  --skip-build`  to skip the `dcl build` step and deploy the scene as it is.
 
-## Publish from a physical Ledger device
+## Publish from a hardware wallet
 
-Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a [Ledger](https://www.ledger.com/) device that's physically plugged in to your computer.
+Instead of storing your LAND tokens in a Metamask account, you may find it more secure to store them in a hardware wallet device, such as a [Ledger](https://www.ledger.com/) or a [Trezor](https://trezor.io/), that's physically plugged in to your computer.
 
-If you're using one of these, the process of uploading content to your LAND is slightly different.
+If you're using one of these devices, you can link the hardware wallet to Metamask to enable signing messages, while keeping the tokens more secure. See [this article from Metamask](https://metamask.zendesk.com/hc/en-us/articles/360020394612-How-to-connect-a-Trezor-or-Ledger-Hardware-Wallet) for instructions to connect your account.
 
-1.  Plug your Ledger device in. Your parcels in Decentraland should be associated with that same wallet.
-2.  Run `dcl deploy --https` from the scene's folder.
-
-    > Tip: If there are files in your project folder that you don't want to deploy, list them in the _.dclignore_ file.
-
-3.  A browser tab will open, showing what parcels you're deploying to. Click **Sign and Deploy**.
-
-    > Note: Currently, the certificate is self-signed, so your browser might give you a warning before launching the page. The warning is displayed only because the certificate is self-signed by your machine, please ignore it and carry on.
-
-4.  The Ledger device will then ask you for a confirmation, which you must give by pushing the device's buttons.
+Once your hardware wallet can be used via Metamask, you can deploy following the same steps as if your tokens were on a Metamask account.
 
 ## Scene overwriting
 
