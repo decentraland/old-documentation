@@ -31,7 +31,7 @@ There are two ways to do this:
 
 ### Via UI
 
-Go to https://poap.decentraland.org
+Go to [https://poap.decentraland.org](https://poap.decentraland.org)
 
 1. Create a reference to the event by passing the POAP event id.
 
