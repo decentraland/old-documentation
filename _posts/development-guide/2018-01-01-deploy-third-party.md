@@ -4,6 +4,7 @@ title: Upload a preview
 description: Upload a preview of your scene to a server and share it offchain.
 redirect_from:
   - /deploy/deploy-to-now/
+  - /development-guide/deploy-to-now/
 categories:
   - development-guide
 type: Document
