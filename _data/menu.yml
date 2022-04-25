@@ -188,7 +188,7 @@
             - title: Deploy a scene
               post: "development-guide/2018-01-07-publishing.md"
             - title: Share a preview
-              post: "development-guide/2018-01-01-deploy-to-now.md"
+              post: "development-guide/2018-01-01-deploy-third-party.md"
         - post: "development-guide/2020-02-20-smart-items.md"
         - post: "development-guide/2022-02-02-smart-wearables.md"
         - post: "development-guide/2022-02-08-workspaces.md"
