@@ -28,7 +28,7 @@ Follow the steps below to upload your scenes to a free Heroku server:
 
    a) Create with `git init`
 
-   b) Do `git add` and `git commit -m 'initial commit'
+   b) Do `git add .` and `git commit -m 'your commit text`
 
    c) Set the current branch to _main_ via `git branch -m master main`
 
@@ -58,6 +58,8 @@ Follow the steps below to upload your scenes to a free Heroku server:
 11. To access the scene, copy the link shared by the Heroku deploy command. Then manually add the following parameters to the URL `?realm=localhost-stub&renderer-branch=master`.
 
     For example if the link shared by Heroku is `https://example-dcl-scene.herokuapp.com`, the link you should enter is `https://example-dcl-scene.herokuapp.com/?realm=localhost-stub&renderer-branch=master`.
+
+	If your scene is not in coordinates `0,0`, you should also include these as part of the URL. For example: `https://example-dcl-scene.herokuapp.com/?realm=localhost-stub&renderer-branch=master&position=50,-10`
 
 Every time you make changes to your scene, make sure you:
 
