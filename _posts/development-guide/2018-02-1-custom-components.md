@@ -11,7 +11,7 @@ type: Document
 
 If you need to store information about an entity that isn't handled by the default components of the SDK (see [component reference](https://github.com/decentraland/ecs-reference) ), then you can create a custom type of component on your scene.
 
-Tip: Custom components can be defined in your scene's `.ts` file, but for larger projects we recommend defining them in a separate `ts` file and importing them.
+Tip: Custom components can be defined in your scene's `game.ts` file, but for larger projects we recommend defining them in a separate `.ts` file and importing them.
 
 A component can store as many fields as you want.
 
