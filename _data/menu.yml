@@ -82,6 +82,8 @@
   children:
     - title: Creating content
       page: "content-intro.html"
+    - title: Talent Hub
+      page: "talent-hub.html"
     - title: Design experiences
       children:
         - post: "design-experience/2018-06-26-mvp-guidelines.md"

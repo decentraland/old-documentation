@@ -1,0 +1,18 @@
+---
+---
+<div class="wrapper home">
+  {% include sidebar.html %}
+	<section>
+    <div class="home-content">
+      {% capture content %}{% include talent-hub.md %}{% endcapture %}
+      {{ content | markdownify }}
+    </div>
+
+    {% include newsletter.html %}
+
+    {%- comment -%} {% include override-color.html accent_color="#ff2d55" %} {%- endcomment -%}
+    {% include override-color.html accent_color="#f05" %}
+
+    {% include copy-code.html %}
+  </section>
+</div>
