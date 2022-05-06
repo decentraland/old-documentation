@@ -9,7 +9,7 @@ type: Document
 
 ## What is Polygon?
 
-As stated in the the official Polygon website, [“Polygon](https://polygon.technology/) is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. Aggregating scalable solutions on Ethereum supporting a multi-chain Ethereum ecosystem.”
+As stated in the the official Polygon website, [Polygon](https://polygon.technology/) is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. Aggregating scalable solutions on Ethereum supporting a multi-chain Ethereum ecosystem.”
 
 ## What is Matic?
 
@@ -35,3 +35,13 @@ The free transaction limit renews every day, so you can try again tomorrow. Alte
 The MATIC fee will be deducted automatically as part of the transaction. You only need to be connected to the Polygon network and have MATIC in your wallet.
 
 Gas fees are variable.
+
+## Were can I get MATIC to pay for transaction fees?
+
+One way to obtain MATIC is buying it through [the Account dapp](https://account.decentraland.org/).
+
+Simply click on the BUY button in the Polygon MANA section, and exchange the crypto you want to purchase from MANA to MATIC.
+
+Another way is through Decentralized or Centralized exchanges. You can check https://polygon.technology/matic-token/ to see which exchanges operate with MATIC. If you want to use a Centralized exchange, make sure that it allows withdrawals through the Polygon network.
+
+If you have MATIC in the Ethereum network, you can always use the [Polygon Bridge](https://wallet.polygon.technology/bridge/) to deposit that MATIC to the polygon network.
