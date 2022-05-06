@@ -38,7 +38,7 @@ Gas fees are variable.
 
 ## Were can I get MATIC to pay for transaction fees?
 
-One way to obtain MATIC is buying it through https://account.decentraland.org/.
+One way to obtain MATIC is buying it through [the Account dapp](https://account.decentraland.org/).
 
 Simply click on the BUY button in the Polygon MANA section, and exchange the crypto you want to purchase from MANA to MATIC.
 
