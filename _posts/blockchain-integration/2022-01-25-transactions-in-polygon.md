@@ -40,7 +40,7 @@ Gas fees are variable.
 
 One way to obtain MATIC is buying it through https://account.decentraland.org/.
 
-Simply click on the BUY button in the Polygon MANA section, and change the crypto you want to purchase from MANA to MATIC.
+Simply click on the BUY button in the Polygon MANA section, and exchange the crypto you want to purchase from MANA to MATIC.
 
 Another way is through Decentralized or Centralized exchanges. You can check https://polygon.technology/matic-token/ to see which exchanges operate with MATIC. If you want to use a Centralized exchange, make sure that it allows withdrawals through the Polygon network.
 
