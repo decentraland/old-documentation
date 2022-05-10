@@ -36,7 +36,7 @@ The MATIC fee will be deducted automatically as part of the transaction. You onl
 
 Gas fees are variable.
 
-## Were can I get MATIC to pay for transaction fees?
+## Where can I get MATIC to pay for transaction fees?
 
 One way to obtain MATIC is buying it through [the Account dapp](https://account.decentraland.org/).
 
