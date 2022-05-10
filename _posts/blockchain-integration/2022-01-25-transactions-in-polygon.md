@@ -13,7 +13,7 @@ As stated in the the official Polygon website, [Polygon](https://polygon.technol
 
 ## What is Matic?
 
-MATIC is Polygon’s native token. It is a cryptocurrency used to cover gas fees in the Polygon network, among other use cases. MATIC is to Polygon as Eth is to Ethereum.
+MATIC is Polygon’s native token. It is a cryptocurrency used to cover gas fees in the Polygon network, among other use cases. MATIC is to Polygon as ETH is to Ethereum.
 You can buy MATIC in most cryptocurrency exchanges.
 
 ## Polygon in Decentraland’s Marketplace
@@ -30,18 +30,18 @@ The Decentraland DAO covers the cost up to a certain limit, so that users can en
 
 ## What happens if the free transaction limit is reached?
 
-The free transaction limit renews every day, so you can try again tomorrow. Alternatively, you can cover the cost of your transaction with MATIC while being connected to the Polygon network.
+The free transaction limit renews every day, so you can try the day after. Alternatively, you can cover the cost of your transaction with MATIC while being connected to the Polygon network.
 
 The MATIC fee will be deducted automatically as part of the transaction. You only need to be connected to the Polygon network and have MATIC in your wallet.
 
 Gas fees are variable.
 
-## Were can I get MATIC to pay for transaction fees?
+## Where can I get MATIC to pay for transaction fees?
 
 One way to obtain MATIC is buying it through [the Account dapp](https://account.decentraland.org/).
 
 Simply click on the BUY button in the Polygon MANA section, and exchange the crypto you want to purchase from MANA to MATIC.
 
-Another way is through Decentralized or Centralized exchanges. You can check https://polygon.technology/matic-token/ to see which exchanges operate with MATIC. If you want to use a Centralized exchange, make sure that it allows withdrawals through the Polygon network.
+Another way is through Decentralized or Centralized exchanges. You can check [https://polygon.technology/matic-token/](https://polygon.technology/matic-token/) to see which exchanges operate with MATIC. If you want to use a Centralized exchange, make sure that it allows withdrawals through the Polygon network.
 
-If you have MATIC in the Ethereum network, you can always use the [Polygon Bridge](https://wallet.polygon.technology/bridge/) to deposit that MATIC to the polygon network.
+If you have MATIC in the Ethereum network, you can always use the [Polygon Bridge](https://wallet.polygon.technology/bridge/) to deposit that MATIC to the Polygon network.
