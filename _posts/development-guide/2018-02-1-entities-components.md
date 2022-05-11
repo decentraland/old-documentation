@@ -279,7 +279,7 @@ let entityShape = myEntity.getComponent(shape)
 
 If you plan to spawn and despawn similar entities from your scene, it's often a good practice to keep a fixed set of entities in memory. Instead of creating new entities and deleting them, you could add and remove existing entities from the engine. This is an efficient way to deal with the player's memory.
 
-Entities that are not added to the engine aren't rendered as part of the scene, but they are kept in memory, making them quick to load if needed. Their geometry doesn't add up to the maximum triangle count four your scene while they aren't being rendered.
+Entities that are not added to the engine aren't rendered as part of the scene, but they are kept in memory, making them quick to load if needed. Their geometry doesn't add up to the maximum triangle count for your scene while they aren't being rendered.
 
 ```ts
 // Define spawner singleton object
