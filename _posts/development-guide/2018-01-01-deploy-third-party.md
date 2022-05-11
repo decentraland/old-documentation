@@ -24,9 +24,9 @@ Follow the steps below to upload your scenes to a free Heroku server:
 
 3. Install the Heroku CLI. Do this via `npm i -g heroku`, or see [their documentation](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) for alternatives.
 
-4. Create a git repository for your project.
+4. Create a git repository for your project. Use any tool you prefer for this, like [GitHub desktop](https://desktop.github.com/). To use git from the command line:
 
-   a) Create with `git init`
+   a) Create a new repository by running `git init` in the project folder at root level
 
    b) Do `git add .` and `git commit -m 'your commit text`
 
