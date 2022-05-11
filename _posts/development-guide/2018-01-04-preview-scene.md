@@ -86,7 +86,12 @@ To run a preview scene in the Desktop native client, instead of in the web brows
 2) Run the preview with:
 
 	`dcl start --desktop-client`
-3) You'll see the following screen. Click **Continue** to launch the preview.
+
+3) Copy the URL provided by the console output under **Desktop Client** and paste in your browser.
+
+	> Note: The Browser might ask you for permission to open an external executable: Decentraland. Select **Open**.
+
+4) You'll see the following screen. Check that the URL is correct, then click **Continue** to launch the preview.
 
 	<figure>
 		<img src="{{ site.baseurl }}/images/media/desktop-preview.png" alt="desktop preview" width="300"/>
