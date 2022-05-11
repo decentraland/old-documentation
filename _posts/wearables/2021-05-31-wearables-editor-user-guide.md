@@ -154,7 +154,7 @@ Tags are simply descriptive words that users can use when searching or filtering
 
 You can upload your own custom thumbnails for wearables in your collections. To upload a custom thumbnail image, navigate to the Wearables Editor and open the item you want to add a thumbnail for. Click **Edit** and then click on the thumbnail image under details to upload an image from your computer (a camera icon will appear when you hover over the thumbnail).
 
-> Thumbnails must be 256px by 256px with transparent backgrounds. Collections containing thumbnails without transparent backgrounds will not be accepted by the Curation Committee.
+> Thumbnails must be 1024px by 1024px with transparent backgrounds. Collections containing thumbnails without transparent backgrounds will not be accepted by the Curation Committee.
 >
 > <img width="1132" alt="custom thumbnail" src="{{ site.baseurl }}/images/media/wearable-thumbnail.png">
 

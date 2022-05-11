@@ -7,7 +7,6 @@ categories:
 type: Document
 ---
 
-
 > **WARNING:** Smart wearables are still in Alpha. The Builder does not support the upload of smart wearables, and there isn't an approval process in place to allow community-built smart wearables to be published. The current development tools allow you to create and test smart wearables, but please don't attempt to publish any in the Builder, they will not be approved.
 
 Smart wearables are a type of portable experience. Portable experiences are parts of the gameplay that players take with them as they move through the metaverse. For example, a player could take a snowball from your scene, walk away to another scene, and throw the snowball to another player who’s also playing the same game.
@@ -103,7 +102,7 @@ The following fields are present in `asset.json`:
   - epic (1000 copies)
   - uncommon (10.000 copies)
   - common (100.000 copies)
-- `thumbnail`: Image to use as thumbnail for the wearable, both in the backpack and the marketplace. This image should be at root level in your folder. The recommended image size is 256x256.
+- `thumbnail`: Image to use as thumbnail for the wearable, both in the backpack and the marketplace. This image should be at root level in your folder. The recommended required image size is 1024x1024.
 - `menuBarIcon`: Image to use on the “experiences” menu, to represent this portable experience, to represent the portable experience. This image should be at root level in your folder. The recommended image size is 256x256.
 - `model`: The 3d model to use for the wearable. This file should be at root level in your folder.
 - `bodyShape`: The avatar body type that this wearable is compatible with. Possible values:
