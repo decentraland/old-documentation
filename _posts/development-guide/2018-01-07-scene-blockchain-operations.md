@@ -143,7 +143,7 @@ executeTask(async () => {
 
 ## Sign messages
 
-A player can sign a message using their Ethereum public key. This signature is a secure way to give consent or to register an accomplishment or action that is registered with the block chain.
+A player can sign a message using their Ethereum private key. This signature is a secure way to give consent or to register an accomplishment or action that is registered with the block chain. The message can be verified with the player's public key.
 
 The signing of a message isn't a transaction, so it doesn't imply paying any gas fees on the Ethereum network, it does however open a pop-up to ask the player for consent.
 

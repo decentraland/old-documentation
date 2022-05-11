@@ -104,7 +104,7 @@ Once you deploy the scene, you won't be able to see the messages printed to cons
 
 The lower-left corner of the preview informs you of the _FPS_ (Frames Per Second) with which your scene is running. Your scene should be able to run above 25 FPS most of the time.
 
-Click the _P_ key to open the Panel. This panel displays the following information about the scene, and is updated in real time as things change:
+Click the _Y_ key to open the Panel. This panel displays the following information about the scene, and is updated in real time as things change:
 
 - Processed Messages
 - Pending on Queue
