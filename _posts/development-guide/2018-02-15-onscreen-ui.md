@@ -48,7 +48,9 @@ There are several different types of UI elements you can add to the screenspace:
 
 - Text input box: Add a `UIInputText` to have an input box where players can type in text with their keyboards or their mobile devices.
 
+<!--
 - Scrollable rectangle: Add a `UIScrollRect` to have an area that can be filled with content. The rectangle can optionally have a slider if the content exceeds the rectangle area. Players can drag this slider to explore the contents of the rectangle.
+-->
 
 ## Positioning
 
@@ -112,6 +114,7 @@ Container components also have following properties:
 
 - `stackOrientation`: The `UIContainerStack` component has this property to set if the stack will expand vertically or horizontally.
 
+<!--
 #### Scrollable rectangles
 
 You can also add UI elements into a `UIScrollRect`. If these rectangles have more content in them that what fits in their width or height, a slider will appear on the margins, that players can interact with to explore this content.
@@ -134,6 +137,7 @@ scrollableContainer.onChanged = new OnChanged(() => {
 Scrolling values are always normalized from 0 to 1. You can set the scrolling value manually via the `valueX` and `valueY` properties.
 
 The `onChanged` property lets you run a function whenever the value of the scrollbar changes.
+-->
 
 ## Set transparency
 
