@@ -34,16 +34,16 @@ There are two ways to do this:
 Go to [https://poap.decentraland.org](https://poap.decentraland.org)
 
 1. Create a reference to the event by passing the POAP event id.
-
-<img src="{{ site.baseurl }}/images/media/poap-guide/poap1.png" alt="POAP Decentraland UI Start" width="250"/>
+  
+  <img src="{{ site.baseurl }}/images/media/poap-guide/poap1.png" alt="POAP Decentraland UI Start" width="250"/>
 
 2. Pass the POAP event Edit ID (that you can find in the email sent by POAP) and the Decentraland coordinates where the POAP can be claimed.
 
-<img src="{{ site.baseurl }}/images/media/poap-guide/poap2.png" alt="POAP Decentraland UI Edit" width="250"/>
+  <img src="{{ site.baseurl }}/images/media/poap-guide/poap2.png" alt="POAP Decentraland UI Edit" width="250"/>
 
-> Note: A player **MUST** be in Decentraland standing on one of the provided coordinates to be allowed to claim your POAP.
+  > Note: A player **MUST** be in Decentraland standing on one of the provided coordinates to be allowed to claim your POAP.
 
-> Note: You don't need to send the actual list of claim codes that POAP sent you via email. The Decentraland POAP server fetches these claim codes on its own when you fill this form.
+  > Note: You don't need to send the actual list of claim codes that POAP sent you via email. The Decentraland POAP server fetches these claim codes on its own when you fill this form.
 
 If you need to change the coordinates of your scene, or load more claim codes to the event, you can repeat these same steps to update the information.
 
