@@ -83,6 +83,7 @@ To run a preview scene in the Desktop native client, instead of in the web brows
 1) Make sure you have [installed the desktop client](https://decentraland.org/download/). 
 
 	>Note: The desktop client is currently only supported for Windows machines.
+
 2) Run the preview with:
 
 	`dcl start --desktop-client`
