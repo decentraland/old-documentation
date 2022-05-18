@@ -49,7 +49,7 @@ When uploading an item you can either browse your computer to find the file you 
 
 After uploading your file, you will be prompted to enter some descriptive information:
 
-**Body shape**  
+**Body shape**
 You can select which body shape your wearable is modeled for. The shape can be either A, B, or both. Wearables that are set to Shape A can only be worn by wearables with Body Shape A, while wearables set to Shape B can only be worn by avatars with Body Shape B. If you set the shape to Both, then avatars of both shapes can wear your wearable.
 
 To submit a wearable that has more than one representation first upload one of them, add rarity and category and hit create:
@@ -71,12 +71,12 @@ If you want the asset to be masked, so a part of the mouth or eyebrows is not af
 
 To upload eyes tinted by eye color feature follow the same process. More info here: https://docs.decentraland.org/decentraland/creating-wearables/
 
-**Name**  
+**Name**
 The name you would like to give your wearable.
 
 > The name of your collection cannot be changed after publication!
 
-**Rarity**  
+**Rarity**
 The rarity of your wearable determines the total number of NFTs that may be minted based on your item. The rarities and the maximum number of NFTs that you may mint for each are:
 
 | Rarity    | Limit  |
@@ -91,7 +91,7 @@ The rarity of your wearable determines the total number of NFTs that may be mint
 
 &nbsp;
 
-**Category**  
+**Category**
 Wearables are organized into different categories, depending on what part of an avatar they modify. Select the appropriate category for your item:
 
 - Earring
@@ -140,10 +140,10 @@ This is the basic metadata you entered when you first uploaded your item. You ca
 
 Overrides determine what other wearable categories your item will either replace, or hide. When setting overrides, you simply select a wearable category from the dropdown menu to add it to the override. You can add multiple categories to each override.
 
-**Replaces**  
+**Replaces**
 Any items within the categories added to this override will be unequipped from a users’ avatar when they equip your item. A user would have to re-equip any “replaced” items after unequipping your item. This does not delete items, it only unequips them.
 
-**Hides**  
+**Hides**
 Any items within the categories added to this override will only be hidden (they won’t be rendered) when a user equips your item. When a user unequips your item, the hidden items will be rendered again automatically.
 
 #### Tags
@@ -154,7 +154,7 @@ Tags are simply descriptive words that users can use when searching or filtering
 
 You can upload your own custom thumbnails for wearables in your collections. To upload a custom thumbnail image, navigate to the Wearables Editor and open the item you want to add a thumbnail for. Click **Edit** and then click on the thumbnail image under details to upload an image from your computer (a camera icon will appear when you hover over the thumbnail).
 
-> Thumbnails must be 1024px by 1024px with transparent backgrounds. Collections containing thumbnails without transparent backgrounds will not be accepted by the Curation Committee.
+> Thumbnails must be a `.png` file and 1024px by 1024px with transparent backgrounds. Collections containing thumbnails without transparent backgrounds will not be accepted by the Curation Committee.
 >
 > <img width="1132" alt="custom thumbnail" src="{{ site.baseurl }}/images/media/wearable-thumbnail.png">
 
@@ -263,7 +263,7 @@ Anyone who purchases one of your items is able to resell it at any time, and at 
 
 **All primary sales within the Decentraland in-world store are subject to a 2.5% fee. This fee is transferred to the DAO.**
 
-**If I sell an item via a primary sale, will I receive my MANA on Polygon?**  
+**If I sell an item via a primary sale, will I receive my MANA on Polygon?**
 Yes, the proceeds of any items sold on Polygon will reside on the sidechain. You will have to pay a transaction fee if you want to transfer your MANA from the Polygon sidechain to the main Ethereum chain. You can do so from the [Accounts](https://account.decentraland.org) page.
 
 If you want to transfer MANA that you’ve earned from a wearable sale on the Polygon to the Ethereum main network, you will have to pay a gas fee at the bridge. For more information on the Polygon sidechain, [please see this blog post](https://decentraland.org/blog/announcements/polygon-mana/).
@@ -331,5 +331,5 @@ Remember, these items are minted and transferred to the address entered for free
 
 > Note: You can currently only mint 50 items per transaction.
 
-**Are there any fees associated with minting items?**  
+**Are there any fees associated with minting items?**
 No, items are minted on the Matic sidechain, thus removing any fees traditionally associated with minting NFTs on the main Ethereum blockchain.
