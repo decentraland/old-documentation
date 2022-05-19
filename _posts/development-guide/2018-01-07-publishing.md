@@ -102,3 +102,17 @@ play.decentraland.org/&CATALYST=peer-testing.decentraland.org
 
 
 If you're working in a confidential project that you don't want to unveil until launch, note that the test server is relatively hidden from players, but anyone explicitly using the test server's URL could potentially run into it.
+
+## Verify deployment success
+
+Once you deployed your scene, these changes will take a few minutes to be propagated throughout the various content servers in the network. If you enter Decentraland right after deploying, you might still see the previous version of your content, depending of what realm you enter.
+
+To confirm that the new version of your content has been propagated throughout all of the servers in the network, run the following command:
+
+`npx @dcl/opscli pointer-consistency --pointer '0,0'`
+
+> Note: Use the coordinates of your scene instead of `0,0`. If your scene has multiple parcels, any one of its parcels will produce the same output.
+
+The output of this command lists each of the servers that make up Decentraland's content network. For each server, it specifies the timestamp of the last uploaded change on that parcel. Each one of these servers refers to a different realm, you can reference how these server names map to realm names in the [catalyst monitor screen](https://catalyst-monitor.vercel.app/).
+
+
