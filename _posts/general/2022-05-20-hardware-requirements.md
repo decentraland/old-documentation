@@ -15,36 +15,36 @@ The minimum requirements differ depending on if you're running Decentraland via 
 
 ## Web Client
 
-Minimum GPU (90% of accumulated user sessions, cheapest card that reaches 30 fps)
+Minimum GPU
 
 - Intel HD/UHD 9th gen or equivalent
 
-	Recommended GPU (50% of accumulated user sessions, cheapest card that reaches 60 fps)
+Recommended GPU
 
 - Geforce 900 series or equivalent
 
-## Desktop Client (Windows)
+## Desktop Client
 
-Minimum GPU (94% of accumulated user sessions, cheapest card that reaches 30 fps)
+Minimum GPU
 
-- AMD Radeon HD 6000 series or equivalent
+- AMD Radeon HD 6700 series or equivalent
 
-	Recommended GPU (70% of accumulated user sessions, cheapest card that reaches >60 fps)
+Recommended GPU
 
-	 AMD Radeon RX 500 series or equivalent
+- AMD Radeon RX 500 series or equivalent
 
 Minimum GPU MEMORY:
 
-2GB
+- 1GB
 
 Recommended GPU MEMORY:
 
-4GB
+- 4GB
 
 Minimum RAM:
 
-4GB
+- 4GB
 
 Recommended RAM
 
-16GB
+- 16GB
