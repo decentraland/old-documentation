@@ -7,7 +7,7 @@ categories:
 type: Document
 ---
 
-The [transactions-server](https://github.com/decentraland/transactions-server) is a proxy server that relays transactions to [Biconomy](https://www.biconomy.io/). It receives a signed transaction from the client that it's in turn sent to the appropiate network behind the scenes. This allows the server's owner to facilitate it's users with costless transactions
+The [transactions-server](https://github.com/decentraland/transactions-server/tree/v1) is a proxy server that relays transactions to [Biconomy](https://www.biconomy.io/). It receives a signed transaction from the client that it's in turn sent to the appropiate network behind the scenes. This allows the server's owner to facilitate it's users with costless transactions
 
 We use this at Decentraland so users don't have to switch networks when interacting with [Polygon](https://polygon.technology/). They can stay connected to [Ethereum](https://ethereum.org/en/) and interact with Polygon [by only signing transactions](https://docs.decentraland.org/blockchain-integration/transactions-in-polygon/)
 
@@ -15,7 +15,7 @@ The Decentraland DAO has set up a server used by our dapps, covering the cost up
 
 ## Restrictions
 
-All restrictions are per-transaction the user tries to send. Which, in practice, translates in a POST request to the server.
+All restrictions are per-transaction the user tries to send. Which, in practice, translates into a POST request to the server.
 
 The configurable restrictions the server has are:
 
@@ -35,10 +35,10 @@ It needs a contract to forward the transactions, but luckily we can reuse the on
 - [Register](https://dashboard.biconomy.io/signup) in the service
 - Create new dapp for the network you intent to target. To mimic what Decentraland does, you'd pick `Matic Mainnet`
 - Copy the API KEY from the `Keys` section
-- Add a new contract. Click the `+ Add Contract` button. If you want to use the same Decentraland uses you can add [this one](https://polygonscan.com/address/0x0baBda04f62C549A09EF3313Fe187f29c099FF3C#code), which has the following data:
+- Add a new contract. Click the `+ Add Contract` button. If you want to use the same Decentraland uses you can add [this one](https://polygonscan.com/address/0x14d4be0ef62fa7a322bbefe115d53a49f2754752#code), which has the following data:
   - **Name**: Meta Transaction Forwarder
   - **Address**: 0x0baBda04f62C549A09EF3313Fe187f29c099FF3C
-  - \*Application Binary Interface (ABI)\*\*: Check the `Contract ABI` section on the `Contract` tab, in [Polygonscan](https://polygonscan.com/address/0x0baBda04f62C549A09EF3313Fe187f29c099FF3C#code)
+  - \*Application Binary Interface (ABI)\*\*: Check the `Contract ABI` section on the `Contract` tab, in [Polygonscan](https://polygonscan.com/address/0x14d4be0ef62fa7a322bbefe115d53a49f2754752#code)
   - **Meta Transaction Type**: Custom
 - Add a new API. Click the `Manage APIs` button. Continuing with the Decentraland's example:
   - **Smart Contract**: Meta Transaction Forwarder
@@ -46,9 +46,19 @@ It needs a contract to forward the transactions, but luckily we can reuse the on
   - **Name**: Forward Meta Tx
 - Get the APP ID from the created API
 
+Lastly, you'll need to fund your newly created dapp. You can do this by connecting your wallet in the `Gas Tank` section at the top right. Once connected, it'll enable you to deposit your [MATIC](https://polygon.technology/matic-token) to fund the transactions your users will send. If you need to get MATIC, check this [post](https://docs.decentraland.org/blockchain-integration/transactions-in-polygon/#where-can-i-get-matic-to-pay-for-transaction-fees).
+
+### Testnet
+
+If you want to test your app before going live and you're using Polygon you can do so in `Matic Mumbai`, the Polygon testnet.
+
+To do this simply repeat [the process](#configuring-biconomy) but picking `Matic Testnet (Mumbai)` on the network field. Then use the [following contract](https://mumbai.polygonscan.com/address/0xBF6755A83C0dCDBB2933A96EA778E00b717d7004#code) as your MetaTxForwarder.
+
+You'll need to fund your dapp, but you can do so easily by getting MATIC tokens from the [faucet](https://faucet.polygon.technology/).
+
 ## Downloading the transactions server
 
-First off, you'll need a copy of the Decentraland's transactions-server code. You can find it [on github](https://github.com/decentraland/transactions-server). From there, you have two options:
+First off, you'll need a copy of the Decentraland's transactions-server code. You can find it [on github](https://github.com/decentraland/transactions-server/tree/v1). From there, you have two options:
 
 1. **Downloading the code**: To download the code, you have to first click on the green `Code` button and then either
 
@@ -150,7 +160,7 @@ npm run migrate # only the first run
 npm start
 ```
 
-Of course, you'll probably want to deploy this to your service of choice, like [AWS](https://aws.amazon.com/) for example. You can use the Project's [Dockerfile](https://github.com/decentraland/transactions-server/blob/master/Dockerfile) to do so.
+Of course, you'll probably want to deploy this to your service of choice, like [AWS](https://aws.amazon.com/) for example. You can use the Project's [Dockerfile](https://github.com/decentraland/transactions-server/tree/v1/blob/master/Dockerfile) to do so.
 
 ## Using the server
 
