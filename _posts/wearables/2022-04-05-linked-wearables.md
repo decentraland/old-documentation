@@ -10,7 +10,7 @@ type: Document
 
 # About
 
-In accordance with the [initial DAO proposal for Linked Wearables](https://governance.decentraland.org/proposal/?id=14e76cc0-2bc7-11ec-ac84-77607720a240) (previously called: Third Party Wearables) and the last approved [Draft Proposal with final definitions](https://governance.decentraland.org/proposal/?id=f69c4d40-aaaf-11ec-87a7-6d2a41508231), this document will serve as documentation to cover all the relevant details around the Linked Wearables feature. 
+In accordance with the [initial DAO proposal for Linked Wearables](https://governance.decentraland.org/proposal/?id=14e76cc0-2bc7-11ec-ac84-77607720a240) (previously called: Third Party Wearables) and the last approved [Draft Proposal with final definitions](https://governance.decentraland.org/proposal/?id=f69c4d40-aaaf-11ec-87a7-6d2a41508231), this document will serve as documentation to cover all the relevant details around the Linked Wearables feature.
 
 This document is mostly oriented for representatives of Third Parties that want to give their communities the ability to wear their NFTs as wearables when strolling through Decentraland.
 
@@ -18,48 +18,47 @@ This document is mostly oriented for representatives of Third Parties that want 
 
 Linked Wearables are 3D representations of NFTs that originate from outside Decentraland that can be used as wearables in-world, can be equipped on the avatar, and are found in the backpack.
 
-Linked Wearables are not [regular wearables]({{ site.baseurl }}{% post_url /3d-modeling/2021-05-31-wearables-overview %}). They look the same, but carry a completely different meaning. 
+Linked Wearables are not [regular wearables]({{ site.baseurl }}{% post_url /3d-modeling/2021-05-31-wearables-overview %}). They look the same, but carry a completely different meaning.
 
 Linked Wearables do not exist inside traditional wearable collections, have no rarity, and can not be sold in [primary](https://market.decentraland.org/browse?assetType=item&section=wearables) or [secondary](https://market.decentraland.org/browse?assetType=nft&section=wearables&vendor=decentraland&page=1&sortBy=recently_listed&onlyOnSale=true&viewAsGuest=false&onlySmart=false) markets. They are only **in-world representations mapped to external NFTs by a Third Party.**
 
 > Imagine that you have an NFT project called ‘Cryptojackets’ where every NFT is a different kind of 2D jacket and you want your users to have a 3D representation of their jacket in their Decentraland backpack. Linked Wearables will allow you to submit 3D representations of your NFTs inside Decentraland. There is no need to mint a new token, and your current NFT project will have a new out-of-the-box feature to offer!
-> 
 
 # Getting started
 
 ## DAO Proposal
 
-The **first step** to registering your NFTs as Linked Wearables is to be admitted by the DAO as an enabled *Third Party* *(the original creator of the external NFT)* by submitting a proposal using the template in the new category “Linked Wearables Registry”. 
+The **first step** to registering your NFTs as Linked Wearables is to be admitted by the DAO as an enabled _Third Party_ _(the original creator of the external NFT)_ by submitting a proposal using the template in the new category “Linked Wearables Registry”.
 
 Third Parties will need to share details about their project, collection, and define the managers that will later upload the 3D models of their NFTs in the [Builder](https://builder.decentraland.org/).
 
-The passage threshold to become approved is 4 million Voting Power and the Voting Period is 1 week. Resubmission is allowed. 
+The passage threshold to become approved is 4 million Voting Power and the Voting Period is 1 week. Resubmission is allowed.
 
 ![]({{ site.baseurl }}/images/media/linkedw-proposal.png)
 
 ## 3D Models
 
-The 3D model version of your NFTs that will be used as in-world wearables will have to be compliant with the same [guidelines]({{ site.baseurl }}{% post_url /3d-modeling/2021-05-31-creating-wearables %}) as regular wearables. 
+The 3D model version of your NFTs that will be used as in-world wearables will have to be compliant with the same [guidelines]({{ site.baseurl }}{% post_url /3d-modeling/2021-05-31-creating-wearables %}) as regular wearables.
 
 Once you are accepted as a Third Party and added to the Linked Wearables Registry, your Third Party Managers can upload 3D models in the Builder using the Slots made available to you based on your initial application. Slots are one of a limited number of potential NFT representations that Third Parties may use. The slots needed for a whole collection are provided after a Third Party is accepted by the DAO and added to the Linked Wearables Registry. If you require more Slots you will need to apply again.
 
 1. Create a new Linked Wearables Collection
 
-	![]({{ site.baseurl }}/images/media/linkedw-collection.png)
+   ![]({{ site.baseurl }}/images/media/linkedw-collection.png)
 
-	*Only managers of accepted Third Parties will see the “New Linked Wearables Collection” option in the Builder.*
+   _Only managers of accepted Third Parties will see the “New Linked Wearables Collection” option in the Builder._
 
 2. Choose a name for the collection and an ID
-    
+
    ![]({{ site.baseurl }}/images/media/linkedw-name-collection.png)
-    
+
 3. Upload your 3D models. You can do this by item or in bulk following these guidelines.
 
-	![]({{ site.baseurl }}/images/media/linkedw-upload-models.png)
+   ![]({{ site.baseurl }}/images/media/linkedw-upload-models.png)
 
 4. Select the items to be published and wait for the Curators Committee to approve them
 
-	![]({{ site.baseurl }}/images/media/linkedw-publish.png)
+   ![]({{ site.baseurl }}/images/media/linkedw-publish.png)
 
 ## API
 
@@ -70,19 +69,50 @@ Third Parties need to provide an API with 2 endpoints:
 
 **Technical details and examples [here](https://github.com/decentraland/adr/blob/main/docs/ADR-42-third-party-assets-integration.md#third-party-resolver).**
 
+Note that it does not matter in which network your NFT project is: Ethereum, Polygon, Binance, etc. The API is needed to map the owner of the NFT to the 3D model (wearable) submitted to Decentraland. Lets imagine that you have an NFT project with only 10 tokens minted. Therefore you have created and submitted 10 different 3D models (wearables) to Decentraland. Now, you need to create an API that Decentraland can use to know which wearable must be displayed to each token holder of your project. To do that, you will need to have in hand the tokens' owner and the `urn` of each item submitted to Decentraland. The item's urn can be found on each item detail page:
+
+![]({{ site.baseurl }}/images/media/linked-wearables/item-urn.png)
+
+For example, if the address `0x1234567891234567891234567891234567891234` owns two tokens and those tokens are represented in Decentraland by the urns `urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1` and `urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:2` , then the API must return:
+
+```
+{
+    address: "0x1234567891234567891234567891234567891234",
+    assets: [
+        {
+            id: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1",
+            amount: 1,
+            urn: {
+                decentraland: "urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1"
+            }
+        },
+        {
+            id: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:2",
+            amount: 1,
+            urn: {
+                decentraland: "urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:2"
+            }
+        }
+    ],
+    total: 2,
+    page: 1,
+    next: ""
+}
+```
+
 ## Curation
 
-As with regular wearables, your 3D models will need to get the Curators Committee’s approval. You are not excluded from this rule as Decentraland’s aesthetic and gameplay still needs to be safe guarded.  
+As with regular wearables, your 3D models will need to get the Curators Committee’s approval. You are not excluded from this rule as Decentraland’s aesthetic and gameplay still needs to be safe guarded.
 
 ### Handcrafted models
 
-For 3D models that were made individually without any automated process (the usual method for most regular wearables) the Curator will need to go through all items in the collection individually to make sure they are all compliant with the [Wearable Guidelines]({{ site.baseurl }}{% post_url /3d-modeling/2021-05-31-creating-wearables %}). 
+For 3D models that were made individually without any automated process (the usual method for most regular wearables) the Curator will need to go through all items in the collection individually to make sure they are all compliant with the [Wearable Guidelines]({{ site.baseurl }}{% post_url /3d-modeling/2021-05-31-creating-wearables %}).
 
 ### Programmatic collections
 
-Your collection is a Programmatic Collection if each 3D model was not crafted individually by hand, but automatically generated with code, many times from traits that were previously designed and modeled. For example: [CryptoPunks](https://opensea.io/collection/cryptopunks) and [BAYC](https://opensea.io/collection/boredapeyachtclub) are examples of 2D pfp NFT Collections that were created programmatically.  
+Your collection is a Programmatic Collection if each 3D model was not crafted individually by hand, but automatically generated with code, many times from traits that were previously designed and modeled. For example: [CryptoPunks](https://opensea.io/collection/cryptopunks) and [BAYC](https://opensea.io/collection/boredapeyachtclub) are examples of 2D pfp NFT Collections that were created programmatically.
 
-Third Parties that make a **collection for Linked Wearables** programmatically (3D models to upload), will need to include this information in their Linked Wearables Registry proposal. 
+Third Parties that make a **collection for Linked Wearables** programmatically (3D models to upload), will need to include this information in their Linked Wearables Registry proposal.
 
 ![]({{ site.baseurl }}/images/media/linkedw-programatic.png)
 
@@ -99,17 +129,18 @@ Even though there is a storage cost to upload the 3D representations of your Lin
 These are the steps that Third Parties need to follow, in summary:
 
 1. **Create a [DAO](https://governance.decentraland.org/) proposal** in the category “Linked Wearables Registry”. You'll need to:
-    1. Request to be added to the Linked Wearables Registry
-    2. Describe your company or community
-    3. Describe your collection and the number of NFTs in it
-    4. Define Managers
+   1. Request to be added to the Linked Wearables Registry
+   2. Describe your company or community
+   3. Describe your collection and the number of NFTs in it
+   4. Define Managers
 2. Wait one week for DAO's approval. **Ask your community for help!** they can vote for you to be accepted. Remember that MANA, Names, Lands, and/or Estates are needed to vote in the DAO.
 3. **Submit your linked wearables** in the [Builder](https://builder.decentraland.org/) using your available Slots.
-    1. You can submit your linked wearables in bulk
-    2. Once an item is submitted to the Builder, you will see it has a property called **URN**. The **item** **URN** is what you will need to use to format the item’s [API response](https://www.notion.so/Guide-to-Link-Wearables-675dd68a1e5c48319ebfd226ae282880).
-    
-    ![]({{ site.baseurl }}/images/media/linkedw-submit.png)
-    
+
+   1. You can submit your linked wearables in bulk
+   2. Once an item is submitted to the Builder, you will see it has a property called **URN**. The **item** **URN** is what you will need to use to format the item’s [API response](https://www.notion.so/Guide-to-Link-Wearables-675dd68a1e5c48319ebfd226ae282880). Note that the URN uses `matic` for the protocol. This means that the third party registry smart contract has been deployed in the Matic network **BUT** it is not related to or limiting where your project can be created. Every urn for linked wearables items will use `matic` as the protocol. Remember that linked wearables work for any NFT project created at any network. So, if your project has been created in Ethereum, the urn of the item will have `matic` in the protocol and it is ok.
+
+   ![]({{ site.baseurl }}/images/media/linkedw-submit.png)
+
 4. Format each item’s [API](https://github.com/decentraland/adr/blob/main/docs/ADR-42-third-party-assets-integration.md#third-party-resolver).
 5. Wait for the Curators Committee to approve the items in your collection.
 6. Spread the word! Tell your community that they can **enjoy their brand new Linked Wearables in Decentraland!**
@@ -119,6 +150,4 @@ These are the steps that Third Parties need to follow, in summary:
 - The DAO is the authority that will approve the addition of new Third Parties on the Linked Wearables Registry.
 - The Curation Committee always has the power to reject specific items or all items within a collection.
 - Linked Wearables work with any NFT project running at any blockchain, if the API provided can match the user address with the 3D model to show as Linked Wearable.
-- This feature will be enacted after the [Governance Proposal](https://governance.decentraland.org/proposal/?id=5534b120-b786-11ec-903a-6546e8793cef) ends. Third Parties can still submit their Linked Wearables Registry proposals. 
-
-
+- This feature will be enacted after the [Governance Proposal](https://governance.decentraland.org/proposal/?id=5534b120-b786-11ec-903a-6546e8793cef) ends. Third Parties can still submit their Linked Wearables Registry proposals.
