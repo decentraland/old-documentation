@@ -241,41 +241,7 @@ The following is an example of a `wearable.json` file that contains a model for 
 
 This file will be zipped alongside the `aMaleModelFile.glb`, `aTextureFile.png`, `aFemaleModelFile.glb` and `anotherTextureFile.png`.
 
-To add a custom thumbnail to the wearable, you can add a `thumbnail.png` file to the ZIP file and add the `thumbnail.png` string to the contents of the body shapes.
-
-The following example depicts a `wearable.json` that includes a custom thumbnail:
-
-```json
-{
-  "id": "urn:decentraland:matic:collections-thirdparty:third-party-id:collection-id:item-id",
-  "name": "Special hat",
-  "category": "hat",
-  "description": "A description of the wearable",
-  "hides": ["hair"],
-  "replaces": [],
-  "tags": ["special", "new", "hat"],
-  "representations": [
-    {
-      "bodyShapes": ["urn:decentraland:off-chain:base-avatars:BaseMale"],
-      "mainFile": "aMaleModelFile.glb",
-      "contents": ["aMaleModelFile.glb", "aTextureFile.png", "thumbnail.png"],
-      "overrideHides": [],
-      "overrideReplaces": []
-    },
-    {
-      "bodyShapes": ["urn:decentraland:off-chain:base-avatars:BaseFemale"],
-      "mainFile": "aFemaleModelFile.glb",
-      "contents": [
-        "aFemaleModelFile.glb",
-        "anotherTextureFile.png",
-        "thumbnail.png"
-      ],
-      "overrideHides": [],
-      "overrideReplaces": []
-    }
-  ]
-}
-```
+To add a custom thumbnail to the wearable, you can add a `thumbnail.png` file to the ZIP file and the file will be processed when uploaded..
 
 Once all the files are ready, to upload the wearables in bulk, follow these steps:
 
@@ -449,6 +415,37 @@ To publish your wearables, you need to:
 
    ![]({{ site.baseurl }}/images/media/linkedw-publish.png)
 
+Note that it does not matter in which network your NFT project is: Ethereum, Polygon, Binance, etc. The API is needed to map the owner of the NFT to the 3D model (wearable) submitted to Decentraland. Lets imagine that you have an NFT project with only 10 tokens minted. Therefore you have created and submitted 10 different 3D models (wearables) to Decentraland. Now, you need to create an API that Decentraland can use to know which wearable must be displayed to each token holder of your project. To do that, you will need to have in hand the tokens' owner and the `urn` of each item submitted to Decentraland. The item's urn can be found on each item detail page:
+
+![]({{ site.baseurl }}/images/media/linked-wearables/item-urn.png)
+
+For example, if the address `0x1234567891234567891234567891234567891234` owns two tokens and those tokens are represented in Decentraland by the urns `urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1` and `urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:2` , then the API must return:
+
+```
+{
+    address: "0x1234567891234567891234567891234567891234",
+    assets: [
+        {
+            id: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1",
+            amount: 1,
+            urn: {
+                decentraland: "urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1"
+            }
+        },
+        {
+            id: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:2",
+            amount: 1,
+            urn: {
+                decentraland: "urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:2"
+            }
+        }
+    ],
+    total: 2,
+    page: 1,
+    next: ""
+}
+```
+
 ## Curation
 
 As with regular wearables, your 3D models will need to get the Curators Committee’s approval. You are not excluded from this rule as Decentraland’s aesthetic and gameplay still needs to be safe guarded.
@@ -607,7 +604,3 @@ These are the steps that Third Parties need to follow, in summary:
 - The Curation Committee always has the power to reject specific items or all items within a collection.
 - Linked Wearables work with any NFT project running at any blockchain, if the API provided can match the user address with the 3D model to show as Linked Wearable.
 - This feature will be enacted after the [Governance Proposal](https://governance.decentraland.org/proposal/?id=5534b120-b786-11ec-903a-6546e8793cef) ends. Third Parties can still submit their Linked Wearables Registry proposals.
-
-```
-
-```
