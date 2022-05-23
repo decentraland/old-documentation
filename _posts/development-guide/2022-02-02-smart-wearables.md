@@ -143,10 +143,9 @@ To publish your smart wearable:
 
 4. Drag your compressed `portable-expereince.zip` file into the Builder, verify that all the information is accurate.
 
-> Note: If your wearable is an upper_body or a lower_body and meant to be unisex, you need to do a workaround (even if both body shapes use the same model):
-
-    - Select only Male and complete the process
-    - Open the wearables in the editor, click the three dot options button, select “upload female representation”, and upload the 3d model for the female shape.
+  > Note: If your wearable is an upper_body or a lower_body and meant to be unisex, you need to do a workaround (even if both body shapes use the same model): 
+    a) Select only Male and complete the process
+    b) Open the wearables in the editor, click the three dot options button, select “upload female representation”, and upload the 3d model for the female shape.
 
 5. Open the editor and make sure the “hide” and “remove” categories are correctly set to disable other wearable categories when this wearable is on.
 6. Create a new collection with this and perhaps other wearables.
