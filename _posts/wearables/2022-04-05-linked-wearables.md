@@ -18,7 +18,7 @@ This document is mostly oriented for representatives of Third Parties that want 
 
 Linked Wearables are 3D representations of NFTs that originate from outside Decentraland that can be used as wearables in-world, can be equipped on the avatar, and are found in the backpack.
 
-Linked Wearables are not [regular wearables]({{ site.baseurl }}{% post_url /3d-modeling/2021-05-31-wearables-overview %}). They look the same, but carry a completely different meaning.
+Linked Wearables are not [regular wearables]({{ site.baseurl }}{% post_url /wearables/2021-05-31-wearables-overview %}). They look the same, but carry a completely different meaning.
 
 Linked Wearables do not exist inside traditional wearable collections, have no rarity, and can not be sold in [primary](https://market.decentraland.org/browse?assetType=item&section=wearables) or [secondary](https://market.decentraland.org/browse?assetType=nft&section=wearables&vendor=decentraland&page=1&sortBy=recently_listed&onlyOnSale=true&viewAsGuest=false&onlySmart=false) markets. They are only **in-world representations mapped to external NFTs by a Third Party.**
 
@@ -38,7 +38,7 @@ The passage threshold to become approved is 4 million Voting Power and the Votin
 
 ## 3D Models
 
-The 3D model version of your NFTs that will be used as in-world wearables will have to be compliant with the same [guidelines]({{ site.baseurl }}{% post_url /3d-modeling/2021-05-31-creating-wearables %}) as regular wearables.
+The 3D model version of your NFTs that will be used as in-world wearables will have to be compliant with the same [guidelines]({{ site.baseurl }}{% post_url /wearables/2021-05-31-creating-wearables %}) as regular wearables.
 
 Once you are accepted as a Third Party and added to the Linked Wearables Registry, your Third Party Managers can upload 3D models in the Builder using the Slots made available to you based on your initial application. Slots are one of a limited number of potential NFT representations that Third Parties may use. The slots needed for a whole collection are provided after a Third Party is accepted by the DAO and added to the Linked Wearables Registry. If you require more Slots you will need to apply again.
 
@@ -106,7 +106,7 @@ As with regular wearables, your 3D models will need to get the Curators Committe
 
 ### Handcrafted models
 
-For 3D models that were made individually without any automated process (the usual method for most regular wearables) the Curator will need to go through all items in the collection individually to make sure they are all compliant with the [Wearable Guidelines]({{ site.baseurl }}{% post_url /3d-modeling/2021-05-31-creating-wearables %}).
+For 3D models that were made individually without any automated process (the usual method for most regular wearables) the Curator will need to go through all items in the collection individually to make sure they are all compliant with the [Wearable Guidelines]({{ site.baseurl }}{% post_url /wearables/2021-05-31-creating-wearables %}).
 
 ### Programmatic collections
 
