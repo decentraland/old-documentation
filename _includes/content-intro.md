@@ -28,7 +28,7 @@ There are a number of tools that can help with arranging 3d models into position
 
 - **In-world Builder**: While running Decentraland, open the settings and select **Build**, you can then create non-interactive scenes by dragging and dropping 3d models.
 
-- [**Legacy Builder**]((https://builder.decentraland.org)): a simple drag and drop editor. No coding required, some items include built-in functionality. You can start a scene with the Builder, and then export it to continue working on it with the SDK.
+- [**Legacy Builder**](https://builder.decentraland.org): a simple drag and drop editor. No coding required, some items include built-in functionality. You can start a scene with the Builder, and then export it to continue working on it with the SDK.
 
 	Read the [documentation]({{ site.baseurl }}{% post_url /builder/2020-03-16-builder-101 %}).
 
