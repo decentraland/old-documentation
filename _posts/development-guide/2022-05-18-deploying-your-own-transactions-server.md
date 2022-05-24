@@ -9,7 +9,7 @@ type: Document
 
 The [transactions-server](https://github.com/decentraland/transactions-server/tree/v1) is a proxy server that relays transactions to [Biconomy](https://www.biconomy.io/). It receives a signed transaction from the client that it's in turn sent to the appropiate network behind the scenes. This allows the server's owner to facilitate it's users with costless transactions
 
-We use this at Decentraland so users don't have to switch networks when interacting with [Polygon](https://polygon.technology/). They can stay connected to [Ethereum](https://ethereum.org/en/) and interact with Polygon [by only signing transactions](https://docs.decentraland.org/blockchain-integration/transactions-in-polygon/)
+The transaction server is used to help with the UX of using multiple networks and to prevent them from switching network providers on the fly. They can stay connected to [Ethereum](https://ethereum.org/en/) and interact with [Polygon](https://polygon.technology/) [by only signing transactions](https://docs.decentraland.org/blockchain-integration/transactions-in-polygon/)
 
 The Decentraland DAO has set up a server used by our dapps, covering the cost up to a certain limit with a few [restrictions](#restrictions). This document explains how you can [deploy this server](#running-the-server) to enable your users to relay transactions with the restrictions you need, if any.
 
