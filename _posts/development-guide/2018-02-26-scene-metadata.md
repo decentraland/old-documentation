@@ -85,7 +85,7 @@ The above commands all generate rectangular-shaped scenes. Decentraland scenes c
 
 Give your scene a title, a description and a thumbnail image to attract players to your scene and so they know what to expect.
 
-Players will see these when they select the parcels of your scene on the map, they will also see these in a confirmation screen when being [teleported](({{ site.baseurl }}{% post_url /development-guide/2020-05-18-external-links %})) there by another scene.
+Players will see these when they select the parcels of your scene on the map, they will also see these in a confirmation screen when being [teleported]({{ site.baseurl }}{% post_url /development-guide/2020-05-18-external-links %}) there by another scene.
 
 <!-- screenshot -->
 
