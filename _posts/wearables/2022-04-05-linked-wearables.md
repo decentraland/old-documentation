@@ -28,7 +28,7 @@ Linked Wearables do not exist inside traditional wearable collections, have no r
 
 It’s free! Yes. Converting your NFTs in to Linked Wearables is free for all Third Parties that were approved by the DAO (4M VP).
 
-Even though there is a storage cost to upload the 3D representations of your Linked Wearables and also there is a cost for the Curation of your 3D models, the DAO will cover these fees in order to encourage new communities to bring their NFTs to Decentraland!
+Even though there is a storage cost to upload the 3D representations of your Linked Wearables and a cost for the Curation of your 3D models, the DAO will cover these fees in order to encourage new communities to bring their NFTs to Decentraland!
 
 # Getting started
 
@@ -42,7 +42,7 @@ The passage threshold to become approved is 4 million Voting Power and the Votin
 
 ![]({{ site.baseurl }}/images/media/linkedw-proposal.png)
 
-After the DAO has approved the proposal, a set of Third Party managers will be set to operate with the all of the Linked Wearables features.
+After the DAO has approved the proposal, a group of Third Party managers will be assigned to operate with all of the Linked Wearables features.
 
 ## Creating a Linked Wearable Collection
 
@@ -62,9 +62,11 @@ We strongly recommend that you choose a name that is unique and descriptive for 
 
 ## Editing or deleting a Linked Wearable Collection
 
-Linked wearable collections can be edited by Third Party Managers of the Third Party record they belong to. The collection can be renamed at any time but, **the ID (or URN) can be changed and the collection can be deleted only if there are no wearables that were published**.
+Linked wearable collections can be edited by Third Party managers of the Third Party record they belong to.
 
 ### Editing the collection name
+
+A collection can be renamed at any time by a Third Party manager.
 
 To edit the name of a Linked Wearable Collection follow these steps:
 
@@ -77,6 +79,8 @@ To edit the name of a Linked Wearable Collection follow these steps:
    ![]({{ site.baseurl }}/images/media/linked-wearables/edit-collection-name-modal.png)
 
 ### Editing the collection ID or URN
+
+The collection's ID or URN can be changed by a Third Party manager **only if the collection has no published wearables**.
 
 To edit the ID or URN of a Linked Wearable Collection follow these steps:
 
@@ -91,6 +95,8 @@ To edit the ID or URN of a Linked Wearable Collection follow these steps:
 The ID or URN of the collection **MUST be unique**, changing it to an existent one will fail.
 
 ### Deleting the collection
+
+A collection can be delete by a Third Party manager **only if the collection has no published wearables**.
 
 To delete Linked Wearable Collection follow these steps:
 
@@ -129,9 +135,9 @@ As Linked Wearable collections can contain a big number of items, it is possible
 
 The process of uploading wearables in bulk involves uploading a ZIP file for each wearable containing the following:
 
-- The 3D model files of the wearable (GLB, GLTFs, texture files, etc).
-- A `wearable.json` file containing the information of the wearable.
-- An optional `thumbnail.png` file containing the thumbnail of the wearable that will be seen in the Builder and the world. If it is not provided, one will be generated using the 3D model.
+- The **required** 3D model files of the wearable (GLB, GLTFs, texture files, etc).
+- A **required** `wearable.json` file containing the information of the wearable.
+- An **optional** `thumbnail.png` file containing the thumbnail of the wearable that will be seen in the Builder and the world. If it is not provided, one will be generated using the 3D model.
 
 The 3D models and the optional `thumbnail.png` follow the [creating wearables guidelines]({{ site.baseurl }}{% post_url /wearables/2021-05-31-creating-wearables %}) and the [wearables editor user guide]({{ site.baseurl }}{% post_url /wearables/2021-05-31-wearables-editor-user-guide %}) on how to create a custom thumbnail.
 
@@ -204,8 +210,8 @@ Some things to consider about the `wearable.json` file:
 - All the information about the wearable categories and which to choose can be found in the [creating wearables guidelines]({{ site.baseurl }}{% post_url /wearables/2021-05-31-creating-wearables %}).
 - The `id` field is optional and can be used to:
   - Create a wearable with an specific ID.
-  - Update a wearable in Bulk (which will be seen in the `Making changes in bulk` section)
-- The `id` field must contain the whole ID of the wearable, that is, the third party record id, the collection id and the item id `urn:decentraland:matic:collections-thirdparty:third-party-id:collection-id:item-id`. We recommend the id to be formed as `urn:decentraland:matic:collections-thirdparty:third-party-id:contract-address:token-id`, that is, if our wearable will be mapped to the token `0` in the NFT contract `0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d`, we recommend the URN to be `urn:decentraland:matic:collections-thirdparty:third-party-id:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:0`.
+  - Update a wearable in Bulk (which will be seen in the [Editing wearables in bulk](#editing-wearables-in-bulk)
+- The `id` field must contain the whole ID of the wearable, that is, the third party record id, the collection id and the item id `urn:decentraland:matic:collections-thirdparty:third-party-id:collection-id:item-id`. We recommend the id to be formed as `urn:decentraland:matic:collections-thirdparty:third-party-id:contract-address:token-id`, that is, if our wearable will be mapped to the token `1` in the NFT contract `0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d`, we recommend the URN to be `urn:decentraland:matic:collections-thirdparty:third-party-id:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1`.
 - The representations array will contain the information about how each body shape will look like. Each wearable MUST contain at least one representation (it can have one or the two of them), that is, taking
   into consideration the body shapes that we currently have, either `urn:decentraland:off-chain:base-avatars:BaseMale` or `urn:decentraland:off-chain:base-avatars:BaseFemale`. Each representation will describe which models will be used for each body shape.
 
@@ -241,7 +247,7 @@ The following is an example of a `wearable.json` file that contains a model for 
 
 This file will be zipped alongside the `aMaleModelFile.glb`, `aTextureFile.png`, `aFemaleModelFile.glb` and `anotherTextureFile.png`.
 
-To add a custom thumbnail to the wearable, you can add a `thumbnail.png` file to the ZIP file and the file will be processed when uploaded..
+To add a custom thumbnail to the wearable, you can add a `thumbnail.png` file.
 
 Once all the files are ready, to upload the wearables in bulk, follow these steps:
 
@@ -317,14 +323,14 @@ To consider when updating the ID or URN of a wearable:
 
 ## Editing wearables in bulk
 
-Following the same idea previously seen in the `Uploading models in bulk` section, third party managers can make changes to the wearables in bulk.
+Following the same idea previously seen in the [Uploading models in bulk](#uploading-models-in-bulk) section, third party managers can make changes to the wearables in bulk.
 
 To make changes in bulk to wearables, it is necessary to create a ZIP file for each of the wearables that will be changed.
 
 These ZIP files must be created following the format described in `Uploading models in bulk` with one exception, in the `wearable.json` file, the `id`
 property **MUST** be set to the `id` or URN of the wearable that will be changed. This is mandatory as it's the only way to identify the wearable to be changed.
 
-Following the example in the `Uploading models in bulk` section, if we would like to change some of the properties of a wearable, for example, the name where we forgot to add a number to it, we should
+Following the example in the [Uploading models in bulk](#uploading-models-in-bulk) section, if we would like to change some of the properties of a wearable, for example, the name where we forgot to add a number to it, we should
 include a `wearable.json` file in the zip as the next example:
 
 ```json
@@ -393,7 +399,7 @@ Once the ZIP files are ready, follow these steps to edit the items in bulk:
 
 ## Seeing the wearable in world
 
-Linked Wearables can be seen in world to review how the model will work once published.
+Linked Wearables can be seen in world to review how the model will work once published and approved.
 
 To be able to see a wearable in world, follow these steps:
 
@@ -407,44 +413,13 @@ To be able to see a wearable in world, follow these steps:
 
 ## Publishing wearables
 
-Once your wearables are ready, they must be published for curation. Publishing wearables **will consume slots**, a slot per wearable will be consumed upon publishing.
+Once your wearables are ready, they must be published for curation. A slot per wearables will be consumed upon publishing.
 
 To publish your wearables, you need to:
 
 1. Select the items to be published and wait for the Curators Committee to approve them
 
    ![]({{ site.baseurl }}/images/media/linkedw-publish.png)
-
-Note that it does not matter in which network your NFT project is: Ethereum, Polygon, Binance, etc. The API is needed to map the owner of the NFT to the 3D model (wearable) submitted to Decentraland. Lets imagine that you have an NFT project with only 10 tokens minted. Therefore you have created and submitted 10 different 3D models (wearables) to Decentraland. Now, you need to create an API that Decentraland can use to know which wearable must be displayed to each token holder of your project. To do that, you will need to have in hand the tokens' owner and the `urn` of each item submitted to Decentraland. The item's urn can be found on each item detail page:
-
-![]({{ site.baseurl }}/images/media/linked-wearables/item-urn.png)
-
-For example, if the address `0x1234567891234567891234567891234567891234` owns two tokens and those tokens are represented in Decentraland by the urns `urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1` and `urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:2` , then the API must return:
-
-```
-{
-    address: "0x1234567891234567891234567891234567891234",
-    assets: [
-        {
-            id: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1",
-            amount: 1,
-            urn: {
-                decentraland: "urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1"
-            }
-        },
-        {
-            id: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:2",
-            amount: 1,
-            urn: {
-                decentraland: "urn:decentraland:matic:collections-thirdparty:jean-pier:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:2"
-            }
-        }
-    ],
-    total: 2,
-    page: 1,
-    next: ""
-}
-```
 
 ## Curation
 
@@ -473,6 +448,8 @@ In order for Linked Wearables to work, the third parties need to provide an API 
 
 **Technical details and examples [here](https://github.com/decentraland/adr/blob/main/docs/ADR-42-third-party-assets-integration.md#third-party-resolver).**
 
+In the next sub-sections we'll provide an explanation on how to build the mentioned API by using an implementation example of the many possible ones.
+
 ### Endpoint `@GET /registry/:registry-id/address/:address/assets`
 
 If you've followed the steps to create a new collection and the steps to either edit the item's id or URN or to create items in bulk, you already have:
@@ -483,10 +460,10 @@ If you've followed the steps to create a new collection and the steps to either 
 By doing this, you can query your NFT contract or indexer to build the information required to respond to the API as it contains the information about who owns which wearable:
 
 Let's say your contract implements the [ERC721 standard](https://eips.ethereum.org/EIPS/eip-721) with the enumeration extension. If we would like to get the tokens owned by the
-address `0x0f5d2fb29fb7d3cfee444a200298f468908cc942`, your API can query the contract using the `balanceOf` to get the amount of tokens owned by the address and later loop the
+address `0x0f5d2fb29fb7d3cfee444a200298f468908cc942`, your API can query (as one of the sources) the contract using the `balanceOf` to get the amount of tokens owned by the address and later loop the
 tokens with the `tokenOfOwnerByIndex` to get the information about the tokens the address has.
 
-Having all the tokens that the an address owns, the API can easily build the response by building each of the assets:
+Having all the tokens that an address owns, the API can easily build the response by mapping each of the assets:
 
 ```json
 {
@@ -535,7 +512,7 @@ The API can do the following:
       }
     }
   ],
-  "total": 100,
+  "total": 2,
   "page": 1,
   "next": "https://....&startAt=1234"
 }
@@ -545,8 +522,8 @@ The API can do the following:
 
 If you've followed the steps to create a new collection and the steps to either edit the item's id or URN or to create items in bulk, you already have:
 
-- Created a collection which its ID or URN is the contract address of the NFTs that will represent or map to the Linked Wearables.
-- Created wearables which IDs or URNs are the token ids of the NFTs that will represent or map to the Linked Wearables.
+- Created a collection whose ID or URN is the contract address of the NFTs that will represent or map to the Linked Wearables.
+- Created wearables whose IDs or URNs are the token ids of the NFTs that will represent or map to the Linked Wearables.
 
 By doing this, you can query your NFT contract or indexer to build the information required to respond to the API as it contains the information about who owns which wearable:
 
@@ -575,6 +552,14 @@ The API can do the following:
   }
 }
 ```
+
+### Important notice
+
+The examples provided above on how to build the API are just examples, it's not required to follow them. The implementations of the API can vary completely, for example, the information can be retrieved from different sources (an indexer like [TheGraph](https://thegraph.com/), a Database previously populated or multiple indexers or contracts) and a NFT can be mapped to multiple decentraland wearables instead of having a 1:1 mapping with the NFTs.
+
+It must be noted that it does not matter in which network your NFT project is: Ethereum, Polygon, Binance, etc. The purpose of the API is to map an owner of an NFT with a wearable (or multiple wearables) submitted to Decentraland and this mapping is done through the ID or URN of the wearable which can be found on each item detail page:
+
+![]({{ site.baseurl }}/images/media/linked-wearables/item-urn.png)
 
 ## Summary
 
