@@ -207,7 +207,7 @@ Some things to consider about the `wearable.json` file:
   - Update a wearable in Bulk (which will be seen in the `Making changes in bulk` section)
 - The `id` field must contain the whole ID of the wearable, that is, the third party record id, the collection id and the item id `urn:decentraland:matic:collections-thirdparty:third-party-id:collection-id:item-id`. We recommend the id to be formed as `urn:decentraland:matic:collections-thirdparty:third-party-id:contract-address:token-id`, that is, if our wearable will be mapped to the token `0` in the NFT contract `0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d`, we recommend the URN to be `urn:decentraland:matic:collections-thirdparty:third-party-id:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:0`.
 - The representations array will contain the information about how each body shape will look like. Each wearable MUST contain at least one representation (it can have one or the two of them), that is, taking
-  into consideration the body shapes that we currently have, either 'urn:decentraland:off-chain:base-avatars:BaseMale' or 'urn:decentraland:off-chain:base-avatars:BaseFemale'. Each representation will describe which models will be used for each body shape.
+  into consideration the body shapes that we currently have, either `urn:decentraland:off-chain:base-avatars:BaseMale` or `urn:decentraland:off-chain:base-avatars:BaseFemale`. Each representation will describe which models will be used for each body shape.
 
 The following is an example of a `wearable.json` file that contains a model for each body shape:
 
