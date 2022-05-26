@@ -184,27 +184,29 @@ The following is an example of a `wearable.json` file that contains a model for 
 {
   "id": "urn:decentraland:matic:collections-thirdparty:third-party-id:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1",
   "name": "Special hat",
-  "category": "hat",
   "description": "A description of the wearable",
-  "hides": ["hair"],
-  "replaces": [],
-  "tags": ["special", "new", "hat"],
-  "representations": [
-    {
-      "bodyShapes": ["urn:decentraland:off-chain:base-avatars:BaseMale"],
-      "mainFile": "aMaleModelFile.glb",
-      "contents": ["aMaleModelFile.glb", "aTextureFile.png"],
-      "overrideHides": [],
-      "overrideReplaces": []
-    },
-    {
-      "bodyShapes": ["urn:decentraland:off-chain:base-avatars:BaseFemale"],
-      "mainFile": "aFemaleModelFile.glb",
-      "contents": ["aFemaleModelFile.glb", "anotherTextureFile.png"],
-      "overrideHides": [],
-      "overrideReplaces": []
-    }
-  ]
+  "data": {
+    "replaces": [],
+    "hides": ["hair"],
+    "tags": ["special", "new", "hat"],
+    "representations": [
+      {
+        "bodyShapes": ["urn:decentraland:off-chain:base-avatars:BaseMale"],
+        "mainFile": "aMaleModelFile.glb",
+        "contents": ["aMaleModelFile.glb", "aTextureFile.png"],
+        "overrideHides": [],
+        "overrideReplaces": []
+      },
+      {
+        "bodyShapes": ["urn:decentraland:off-chain:base-avatars:BaseFemale"],
+        "mainFile": "aFemaleModelFile.glb",
+        "contents": ["aFemaleModelFile.glb", "anotherTextureFile.png"],
+        "overrideHides": [],
+        "overrideReplaces": []
+      }
+    ],
+    "category": "hat"
+  }
 }
 ```
 
@@ -358,27 +360,29 @@ the name where we forgot to add a number to it, we should include a `wearable.js
 {
   "id": "urn:decentraland:matic:collections-thirdparty:third-party-id:0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d:1",
   "name": "A hat 1",
-  "category": "hat",
   "description": "A description of the wearable",
-  "hides": ["hair"],
-  "replaces": [],
-  "tags": ["special", "new", "hat"],
-  "representations": [
-    {
-      "bodyShapes": ["urn:decentraland:off-chain:base-avatars:BaseMale"],
-      "mainFile": "aMaleModelFile.glb",
-      "contents": ["aMaleModelFile.glb", "aTextureFile.png"],
-      "overrideHides": [],
-      "overrideReplaces": []
-    },
-    {
-      "bodyShapes": ["urn:decentraland:off-chain:base-avatars:BaseFemale"],
-      "mainFile": "aFemaleModelFile.glb",
-      "contents": ["aFemaleModelFile.glb", "anotherTextureFile.png"],
-      "overrideHides": [],
-      "overrideReplaces": []
-    }
-  ]
+  "data": {
+    "replaces": [],
+    "hides": ["hair"],
+    "tags": ["special", "new", "hat"],
+    "representations": [
+      {
+        "bodyShapes": ["urn:decentraland:off-chain:base-avatars:BaseMale"],
+        "mainFile": "aMaleModelFile.glb",
+        "contents": ["aMaleModelFile.glb", "aTextureFile.png"],
+        "overrideHides": [],
+        "overrideReplaces": []
+      },
+      {
+        "bodyShapes": ["urn:decentraland:off-chain:base-avatars:BaseFemale"],
+        "mainFile": "aFemaleModelFile.glb",
+        "contents": ["aFemaleModelFile.glb", "anotherTextureFile.png"],
+        "overrideHides": [],
+        "overrideReplaces": []
+      }
+    ],
+    "category": "hat"
+  }
 }
 ```
 
