@@ -60,6 +60,13 @@ npm i decentraland-ecs@latest
 
 You can confirm that it worked by checking the `package.json` file for the scene, and looking for the `decentraland-ecs` version there.
 
+## Troubleshooting
+
+If you get error messages when attempting to install the CLI, check [this thread](https://stackoverflow.com/questions/16151018/how-to-fix-npm-throwing-error-without-sudo).
+
+
+
+
 <!--
 
 

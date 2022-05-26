@@ -45,6 +45,7 @@
   image: sets/WorldIcon.svg
   children:
     - post: "general/2018-01-01-introduction.md"
+    - post: "general/2022-05-20-hardware-requirements.md"
     - post: "general/2018-01-02-faq.md"
     - title: DAO
       children:

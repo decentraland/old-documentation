@@ -82,7 +82,7 @@ To run a preview scene in the Desktop native client, instead of in the web brows
 
 1) Make sure you have [installed the desktop client](https://decentraland.org/download/). 
 
-	>Note: The desktop client is currently only supported for Windows machines.
+	> Note: The desktop client is currently only supported for Windows machines.
 
 2) Run the preview with:
 
@@ -94,10 +94,8 @@ To run a preview scene in the Desktop native client, instead of in the web brows
 
 4) You'll see the following screen. Check that the URL is correct, then click **Continue** to launch the preview.
 
-	<figure>
-		<img src="{{ site.baseurl }}/images/media/desktop-preview.png" alt="desktop preview" width="300"/>
-	</figure>
-	
+	![]({{ site.baseurl }}/images/media/desktop-preview.png)
+
 	If you need to manually add anything to the URL, to change the default way the scene runs, tick the box **Add custom URL parameters** and write those in the dialog below.
 
  
