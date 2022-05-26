@@ -8,6 +8,37 @@ categories:
 type: Document
 ---
 
+### Table of Contents
+
+- [Introduction](#introduction)
+  - [About](#about)
+  - [What are Linked Wearables?](#what-are-linked-wearables)
+  - [Costs](#costs)
+  - [Getting started - DAO Proposal](#getting-started---dao-proposal)
+- [Linked Wearable](#linked-wearables)
+  - [Creating a Linked Wearable Collection](#creating-a-linked-wearable-collection)
+  - [Creating Linked Wearables one by one](#creating-linked-wearables-one-by-one)
+  - [Creating Linked Wearables in bulk](#creating-linked-wearables-in-bulk)
+  - [Seeing the wearables in world](#seeing-the-wearables-in-world)
+  - [Editing the collection name](#editing-the-collection-name)
+  - [Editing the collection ID or URN](#editing-the-collection-id-or-urn)
+  - [Deleting the collection](#deleting-the-collection)
+  - [Editing a single wearable](#editing-a-single-wearable)
+  - [Editing a wearable's ID or URN](#editing-a-wearables-id-or-urn)
+  - [Editing wearables in bulk](#editing-wearables-in-bulk)
+- [Submitting your Linked Wearables](#submitting-your-linked-wearables)
+  - [Publishing wearables](#publishing-wearables)
+  - [Curation](#curation)
+    - [Handcrafted wearables](#handcrafted-wearables)
+    - [Programmatic collections](#programmatic-collections)
+- [Building the API](#building-the-api)
+  - [Endpoint `@GET /registry/:registry-id/address/:address/assets`](#endpoint-get-registryregistry-idaddressaddressassets)
+  - [Endpoint `@GET /registry/:registry-id/address/:address/assets/:id`](#endpoint-get-registryregistry-idaddressaddressassetsid)
+  - [Important notice and considerations](#important-notice-and-considerations)
+- [Closing up](#closing-up)
+  - [Summary](#summary)
+  - [Additional comments](#additional-comments)
+
 # Introduction
 
 ## About
@@ -258,7 +289,7 @@ Common errors that must be avoided when uploading batched items:
 - The file is bigger than 2MBs. Linked Wearables have the same limitation as regular wearables in terms of size as the standard ones.
 - The custom optional thumbnail image is not a png file.
 
-## Seeing the wearable in world
+## Seeing the wearables in world
 
 Linked Wearables can be seen in world to review how the model will work once published and approved.
 
@@ -472,7 +503,7 @@ In order for Linked Wearables to work, the third parties need to provide an API 
 
 In the next sub-sections we'll provide an explanation on how to build the mentioned API by using an implementation example of the many possible ones.
 
-### Endpoint `@GET /registry/:registry-id/address/:address/assets`
+## Endpoint `@GET /registry/:registry-id/address/:address/assets`
 
 If you've followed the steps to create a new collection and the steps to either edit the item's id or URN or to create items in bulk, you already have:
 
@@ -540,7 +571,7 @@ The API can do the following:
 }
 ```
 
-### Endpoint `@GET /registry/:registry-id/address/:address/assets/:id`
+## Endpoint `@GET /registry/:registry-id/address/:address/assets/:id`
 
 If you've followed the steps to create a new collection and the steps to either edit the item's id or URN or to create items in bulk, you already have:
 
@@ -575,7 +606,7 @@ The API can do the following:
 }
 ```
 
-### Important notice
+## Important notice and considerations
 
 The examples provided above on how to build the API are just examples, it's not required to follow them. The implementations of the API can vary completely, for example, the information can be retrieved from different sources (an indexer like [TheGraph](https://thegraph.com/), a Database previously populated or multiple indexers or contracts) and a NFT can be mapped to multiple decentraland wearables instead of having a 1:1 mapping with the NFTs.
 
