@@ -111,7 +111,7 @@ To confirm that the new version of your content has been propagated throughout a
 
 `npx @dcl/opscli pointer-consistency --pointer '0,0'`
 
-> Note: Use the coordinates of your scene instead of `0,0`. If your scene has multiple parcels, any one of its parcels will produce the same output.
+> Note: Use the coordinates of your scene instead of `0,0`. If your scene has multiple parcels, any one of its parcels will produce the same output. If the _X_ cordinate starts with a negative number, start the string with a `/`. For example `/-50,100`
 
 The output of this command lists each of the servers that make up Decentraland's content network. For each server, it specifies the timestamp of the last uploaded change on that parcel. Each one of these servers refers to a different realm, you can reference how these server names map to realm names in the [catalyst monitor screen](https://catalyst-monitor.vercel.app/).
 
