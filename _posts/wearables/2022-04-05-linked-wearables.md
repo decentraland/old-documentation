@@ -622,22 +622,22 @@ The purpose of the API is to map an owner of an NFT with a wearable (or multiple
 
 These are the steps that Third Parties need to follow, in summary:
 
-1. **Create a [DAO](https://governance.decentraland.org/) proposal** in the category “Linked Wearables Registry”. You'll need to:
+1. **[Create a DAO proposal](#getting-started---dao-proposal)** in the category “Linked Wearables Registry”. You'll need to:
    1. Request to be added to the Linked Wearables Registry
    2. Describe your company or community
    3. Describe your collection and the number of NFTs in it
    4. Define Managers
 2. Wait one week for DAO's approval. **Ask your community for help!** they can vote for you to be accepted. Remember that MANA, Names, Lands, and/or Estates are needed to vote in the DAO.
-3. **Submit your linked wearables** in the [Builder](https://builder.decentraland.org/) using your available Slots.
+3. [**Submit your linked wearables**](#publishing-wearables) in the [Builder](https://builder.decentraland.org/) using your available Slots.
 
-   1. Create a third party collection. We recommend using as its ID or URN the contract address of the NFTs that will represent or be mapped to the Linked Wearables.
-   2. Create or upload your wearables either by uploading them one by one or in bulk.
+   1. [Create a linked wearable collection](#creating-a-linked-wearable-collection). We recommend using as its ID or URN the contract address of the NFTs that will represent or be mapped to the Linked Wearables.
+   2. Create or upload your wearables either by [uploading them one by one](#creating-linked-wearables-one-by-one) or [in bulk](#creating-linked-wearables-in-bulk).
    3. Use the **URN** of the wearables in the Builder to build your API. We recommend that your URN or ID to be set as the token id of the NFT that will be represented by the wearable.
 
    ![]({{ site.baseurl }}/images/media/linkedw-submit.png)
 
 4. [Build the API](#building-the-api).
-5. Wait for the Curators Committee to approve the items in your collection.
+5. [Wait for the Curators Committee to approve the items in your collection](#curation).
 6. Spread the word! Tell your community that they can **enjoy their brand new Linked Wearables in Decentraland!**
 
 ## Additional comments
@@ -645,4 +645,3 @@ These are the steps that Third Parties need to follow, in summary:
 - The DAO is the authority that will approve the addition of new Third Parties on the Linked Wearables Registry.
 - The Curation Committee always has the power to reject specific items or all items within a collection.
 - Linked Wearables work with any NFT project running at any blockchain, if the API provided can match the user address with the 3D model to show as Linked Wearable.
-- This feature will be enacted after the [Governance Proposal](https://governance.decentraland.org/proposal/?id=5534b120-b786-11ec-903a-6546e8793cef) ends. Third Parties can still submit their Linked Wearables Registry proposals.
