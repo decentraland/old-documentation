@@ -15,13 +15,13 @@ The minimum requirements differ depending on if you're running Decentraland via 
 
 ## Web Client
 
-Minimum System requirements
+Minimum system requirements
 
 - Processor: Intel® Core i3-9100 / AMD™ Athlon 3000G
 - Video: NVIDIA® GeForce® GTX 670 / AMD™ Radeon RX 550 / Intel® UHD Graphics 630
 - RAM: 4GB
 
-Recommended System requirements
+Recommended system requirements
 
 - Processor: Intel® Core i7-4770 / AMD™ FX 8310
 - Video: NVIDIA® GeForce® GTX 960 / AMD™ Radeon R9 280
@@ -29,13 +29,13 @@ Recommended System requirements
 
 ## Desktop Client
 
-Minimum System requirements
+Minimum system requirements
 
 - Processor: Intel® Core i5-750 / AMD™ FX 8100
 - Video: Video: NVIDIA® GeForce® GT 440 / AMD™ Radeon HD 5670 / Intel® HD Graphics 5000
 - RAM: 4GB
 
-Recommended System requirements
+Recommended system requirements
 
 - Processor: Intel® Core i7-4770 / AMD™ FX 8310
 - Video: NVIDIA® GeForce® GTX 960 / AMD™ Radeon™ R9 280
