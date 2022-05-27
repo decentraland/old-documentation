@@ -14,13 +14,20 @@ The approval criteria used by the committee when reviewing wearables is outlined
 
 The current members of this committee are:
 
-- HirotoKai. Community Creator
-- Juan Pablo Colasso, 3D Visual Artist
-- KJ Walker, 3D Community Developer
-- Laura Uson Dolsac, Lead Artist, Polygonal Mind
-- Malloy, 3D Artist
-- Martin Shibuya, Art Director, Decentraland Foundation
-- Sebastian Valla, Art Lead, WonderZone
+- Shibu, Art Director, Decentraland Foundation 
+- Juan Pablo Colasso, 3D Visual Artist 
+- Sebastian Valla, Art Director at Wonderzone 
+- Laura Uson Dolsac, Lead Artist at Polygonal Mind 
+- Malloy, Art Director at Feeka Cafe 
+- Hirotokai, 3D Artist and DCL Wearable Designer 
+- Sango, 3D Artist and wearable creator from Metazoo
+- Grimey, 3D Artist and wearable creator from StudioSparkles
+- AndreusAs, 3D Artist and independent wearable creator
+- Mitch Todd, Digital designer and independent wearable creator
+- Kristian, 3D Artist and wearable creator from Dappcraft
+- James Guard, 3D Artist and independent wearable creator
+- Fabeeo Breen, 3D Artist and Independent wearable creator
+- Yannakis, 3D Artist and Independent wearable creator
 
 
 ## Why does Decentraland need a Curation Committee?
