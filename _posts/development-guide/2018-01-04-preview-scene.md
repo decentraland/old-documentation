@@ -173,7 +173,7 @@ Running a Decentraland scene locally depends on two main libraries: `decentralan
 
 ```
 npm i -g decentraland@latest
-npm i decentralnad-ecs@latest
+npm i decentraland-ecs@latest
 ```
 
 If you're using any of the [utils libraries](https://github.com/decentraland-scenes/Awesome-Repository#Libraries) make sure those are also up to date, as older versions of these libraries may not be compatible with newer versions of `decentraland-ecs`.
