@@ -29,71 +29,115 @@ When prompted by the command, select `smart wearable (beta)`
 
 This command creates the basic files and structure for a new smart wearable. This folder is very similar to that of a Decentraland scene, but you will notice the following differences:
 
-- `asset.json` includes all of the metadata for the portable experience
+- `wearable.json` includes all of the metadata for the portable experience
 - There’s a placeholder 3d model (glasses.glb) and thumbnail (glasses.png) for a pair of dark glasses. You should replace these with the actual wearable you want to use
 - `scene.json` is a lot shorter, it doesn’t include properties that are irrelevant to a wearable, like parcels or spawn points
 
-## About Asset.json
+## About wearable.json
 
-The default `asset.json` file looks like this:
+The default `wearable.json` file looks like this:
 
 ```json
 {
   "id": <random-id>,
+  "data": {
+    "replaces": [],
+    "hides": [],
+    "tags": [
+      "special",
+      "new",
+      "eyebrows"
+    ],
+    "representations": [
+      {
+        "bodyShapes": [
+          "urn:decentraland:off-chain:base-avatars:BaseMale",
+          "urn:decentraland:off-chain:base-avatars:BaseFemale"
+        ],
+        "mainFile": "glasses.glb",
+        "contents": [
+          "glasses.glb"
+        ],
+        "overrideHides": [],
+        "overrideReplaces": []
+      }
+    ],
+    "category": "eyewear"
+  },
+  "image": "glasses.png",
+  "i18n": [
+    {
+      "code": "en",
+      "text": "test"
+    }
+  ],
   "assetType": "portable-experience",
   "name": "Portable Experience Example",
   "description": "My new Portable Experience",
-  "category": "eyewear",
   "rarity": "mythic",
   "thumbnail": "glasses.png",
-  "menuBarIcon": "glasses.png",
   "model": "glasses.glb",
-  "bodyShape": "both"
+  "bodyShape": "both",
+  "collectionAddress": ""
 }
 ```
 
-The following fields are present in `asset.json`:
+The following fields are present in `wearable.json`:
 
 - `id`: The `dcl init` command generates a random value for this ID.
 
 > NOTE: If you forked your project from an existing one, make sure the ID value is unique before publishing your wearable. Use [uuidgenerator.net](https://www.uuidgenerator.net/) to generate a new random UUID
 
+
+- `data`: Includes the following
+
+  - `replaces`: List of categories of other wearables that should be unequipped when equipping this wearable, in addition to the default of this category. Eg: When putting on a cape top-body, also hide feet.
+  - `hides`: List of categories of other wearables that should be hidden (but not unequipped) when equipping this wearable, in addition to the default of this category.
+  - `tags`: Tags used to make the wearable searchable in the marketplace.
+  - `representations`:
+    - `bodyShapes`: The list of avatar representations that can use this werable. Eg, both `BaseMale` and `BaseFemale`.
+    - `mainFile`: The main file with the 3d model of the wearable.
+    - `contents`: The full list of files used to render the 3d model of the wearable. For example, the 3d model could include textures as separate files.
+    - `overrideHides`: Any exceptions from the default _hide_ behavior of this wearable category. 
+    - `overrideReplaces`:  Any exceptions from the default _replace_ behavior of this wearable category.
+
+  - `category`: What wearable category to use. Possible values are:
+
+    - 'eyebrows'
+
+    - 'eyes'
+
+    - 'facial_hair'
+
+    - 'hair'
+
+    - 'mouth'
+
+    - 'upper_body'
+
+    - 'lower_body'
+
+    - 'feet'
+
+    - 'earring'
+
+    - 'eyewear'
+
+    - 'hat'
+
+    - 'helmet'
+
+    - 'mask'
+
+    - 'tiara'
+
+    - 'top_head'
+
+    - 'skin'
+
 - `assetType`: This field is required for the preview to identify this project as a portable experience.
 - `name`: The name for the wearable that users will see in the marketplace
 - `description`: The description of the wearable that users will see in the marketplace. Make sure you indicate what the smart wearable can do, as users of the marketplace will have no way to preview its functinality before buying it.
-- `category`: What wearable category to use. Possible values are:
-
-  - 'eyebrows'
-
-  - 'eyes'
-
-  - 'facial_hair'
-
-  - 'hair'
-
-  - 'mouth'
-
-  - 'upper_body'
-
-  - 'lower_body'
-
-  - 'feet'
-
-  - 'earring'
-
-  - 'eyewear'
-
-  - 'hat'
-
-  - 'helmet'
-
-  - 'mask'
-
-  - 'tiara'
-
-  - 'top_head'
-
-  - 'skin'
 
 - `rarity`: The rarity supply of the token. Possible values are:
   - unique (1 copy)
@@ -109,10 +153,11 @@ The following fields are present in `asset.json`:
   - male
   - female
   - both
+- `collectionAddress`: The ethereum address of the published collection of wearables. This address is assigned once publishing, it can be left blank.
 
 ## The Preview
 
-Running a preview of a portable experience is just like running that of a scene, simply run `dcl start`. If the `asset.json` file is properly configured and the project is recognized as a portable experience, you’ll notice that all the visible around you are the default empty parcels. In this preview mode, you are not restricted to any set of parcels, you can add 3d models or sounds anywhere in the world.
+Running a preview of a portable experience is just like running that of a scene, simply run `dcl start`. If the `wearable.json` file is properly configured and the project is recognized as a portable experience, you’ll notice that all the visible around you are the default empty parcels. In this preview mode, you are not restricted to any set of parcels, you can add 3d models or sounds anywhere in the world.
 
 To test how the smart wearable behaves in the context of a scene, you can also run a preview of your wearable at the same time as you run a preview of one or several scenes by using a [Workspace]({{ site.baseurl }}{% post_url /development-guide/2022-02-08-workspaces %}). For example, you can run your smart wearable together with the [Genesis Plaza](https://github.com/decentraland-scenes/Genesis-Plaza) scene to test how it behaves on a busy scene, while on an elevator, etc.
 
@@ -133,7 +178,7 @@ To test how the smart wearable behaves in the context of a scene, you can also r
 
 To publish your smart wearable:
 
-1. Make sure the information in `asset.json` is accurate. If you used another project as a starting point, make sure the `id` is a unique identifier, not used by other wearables.
+1. Make sure the information in `wearable.json` is accurate. If you used another project as a starting point, make sure the `id` is a unique identifier, not used by other wearables.
 
 2. Run `dcl pack` on your project folder. This generates a `portable-experience.zip` file in your project folder.
 
