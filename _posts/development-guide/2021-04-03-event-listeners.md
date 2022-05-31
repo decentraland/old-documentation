@@ -324,6 +324,8 @@ As players move through the map, they may switch islands to be grouped with thos
 
 If your scene relies on a [3rd party server]({{ site.baseurl }}{% post_url /development-guide/2018-01-10-remote-scene-considerations %}) to sync changes between players in real time, then you may want to only share data between players that are grouped in a same realm+island, so it's a good practice to change rooms in the 3rd party server whenever players change island.
 
+<!--
+
 ## Player starts/ends the tutorial
 
 When a new player first enters Decentraland for the fist time, they go through a brief tutorial that shows the basic movements and UI elements. Typically players will experience this on Genesis Plaza, but a new player that enters a specific scene from an event as their first time in Decentraland will experience a shortened version of that tutorial wherever they are.
@@ -345,3 +347,4 @@ tutorialEnableObservable.add((tutorialEnabled) => {
 ```
 
 > Note: This event only occurs when the player starts or ends the tutorial. It doesn't get called at all in case the player has already experienced the tutorial in a prior session or scene.
+-->
