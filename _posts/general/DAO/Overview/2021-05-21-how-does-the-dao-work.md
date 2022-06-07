@@ -17,7 +17,7 @@ The DAO is a complex system created from several layers of entities and platform
 ## Governance dApp
 
 The main interface for the Decentraland DAO is located at [governance.decentraland.org](https://governance.decentraland.org). This is where users log-in, create proposals, and vote. 
-<br>_This is currently maintained by a development team funded by a [DAO grant](https://governance.decentraland.org/proposal/?id=ed53e850-5e70-11ec-8188-4352ce3d30e7)._
+<br/>_This is currently maintained by a development team funded by a [DAO grant](https://governance.decentraland.org/proposal/?id=ed53e850-5e70-11ec-8188-4352ce3d30e7)._
 
 ## Snapshot
 
