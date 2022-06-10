@@ -19,7 +19,7 @@ Make sure of the following:
 
 - You have a [Metamask](https://metamask.io/) account, with your LAND parcels assigned to it.
 
-- You own the necessary amount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market]({{ site.baseurl }}{% post_url /market/2018-01-01-marketplace %}).
+- You own the necessary amount of adjacent LAND parcels. Otherwise you can purchase LAND in the [Market](https://market.decentraland.org).
 
 > Note: Multi-parcel scenes can only be deployed to adjacent parcels.
 
