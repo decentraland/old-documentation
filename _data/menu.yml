@@ -41,199 +41,148 @@
   image: sets/HomeIcon.svg
   page: index.html
 
-- title: World
-  image: sets/WorldIcon.svg
-  children:
-    - post: "general/2018-01-01-introduction.md"
-    - post: "general/2022-05-20-hardware-requirements.md"
-    - post: "general/2018-01-02-faq.md"
-    - title: DAO
-      children:
-        - title: Overview
-          children:
-            - post: "general/DAO/Overview/2021-05-21-what-is-the-dao.md"
-            - post: "general/DAO/Overview/2021-05-21-what-can-you-do-with-the-dao.md"
-            - post: "general/DAO/Overview/2021-05-21-how-does-the-dao-work.md"
-            - post: "general/DAO/Overview/2021-05-21-what-smart-contracts-does-the-dao-control.md"
-            - post: "general/DAO/Overview/2021-05-21-the-dao-fund.md"
-            - post: "general/DAO/Overview/2021-05-21-the-daos-limitations.md"
-            - post: "general/DAO/Overview/2021-05-21-what-do-you-need-to-participate.md"
-        - title: Grants
-          children:
-            - post: "general/DAO/Overview/2021-06-18-community-grants.md"
-            - post: "general/DAO/Overview/2021-06-18-requesting-grants.md"
-            - post: "general/DAO/Overview/2021-06-18-receiving-grants.md"
-        - post: "general/DAO/2021-05-21-dao-userguide.md"
-    - post: "general/2018-01-04-whitepaper.md"
-    - post: "general/2020-11-14-hardware-acceleration.md"
-
-- title: Market
-  image: sets/MarketplaceIcon.svg
-  children:
-    - post: "market/2018-01-01-marketplace.md"
-    - post: "market/2020-02-16-land-manager.md"
-    - post: "market/2018-01-09-mortgages.md"
-    - post: "market/2018-01-03-info-from-land.md"
-    - post: "market/2018-01-01-api.md"
-    - post: "market/2021-01-19-api-migration-guide.md"
-
-- title: Create
-  image: sets/CreateIcon.svg
-  children:
-    - title: Creating content
-      page: "content-intro.html"
-    - title: Design experiences
-      children:
-        - post: "design-experience/2018-06-26-mvp-guidelines.md"
-        - title: UX and UI Guide
-          post: "design-experience/2018-02-01-ux-ui-guide.md"
-        - title: Design constraints
-          post: "design-experience/2018-01-08-design-games.md"
-    - title: Builder
-      children:
-        - post: "builder/2020-03-16-builder-101.md"
-        - post: "builder/2020-03-16-smart-items.md"
-        - post: "builder/2021-03-8-nfts.md"
-        - post: "builder/2020-03-16-manage-scenes.md"
-        - post: "builder/2020-03-16-scene-limitations.md"
-        - post: "builder/2020-03-16-import-items.md"
-        - post: "general/2019-03-19-builder-faq.md"
-        - post: "builder/2020-03-16-export.md"
-    - title: Wearables
-      children:
-        - post: "wearables/2021-05-31-wearables-overview.md"
-        - post: "wearables/2021-05-31-creating-wearables.md"
-        - post: "wearables/2021-05-31-publishing-wearables.md"
-        - post: "wearables/2021-05-31-curation-committee.md"
-        - post: "wearables/2021-05-31-wearables-editor-user-guide.md"
-        - post: "wearables/2022-04-05-linked-wearables.md"        
-    - title: SDK
-      children:
-        - title: Getting started
-          children:
-            - title: SDK 101
-              post: "development-guide/2020-03-16-SDK-101.md"
-            - title: Installation guide
-              post: "development-guide/2018-01-01-installation-guide.md"
-            - title: Coding scenes
-              post: "development-guide/2018-01-02-coding-scenes.md"
-            - title: Preview scene
-              post: "development-guide/2018-01-04-preview-scene.md"
-            - title: Development Workflow
-              post: "development-guide/2021-05-17-dev-workflow.md"
-        - title: Architecture overview
-          children:
-            - title: Entities & Components
-              post: "development-guide/2018-02-1-entities-components.md"
-            - title: Systems
-              post: "development-guide/2018-02-3-systems.md"
-            - title: Custom Components
-              post: "development-guide/2018-02-1-custom-components.md"
-            - title: Component groups
-              post: "development-guide/2018-02-2-component-groups.md"
-            - title: Files in a scene
-              post: "development-guide/2018-01-11-scene-files.md"
-        - post: "development-guide/2018-01-12-entity-positioning.md"
-        - post: "development-guide/2018-02-6-shape-components.md"
-        - post: "development-guide/2018-02-7-materials.md"
-        - post: "development-guide/2018-02-10-sounds.md"
-        - post: "development-guide/2018-02-12-move-entities.md"
-        - post: "development-guide/2018-02-13-3d-model-animations.md"
-        - post: "development-guide/2018-02-14-click-events.md"
-        - post: "development-guide/2021-04-03-event-listeners.md"
-        - post: "development-guide/2018-02-11-text.md"
-        - post: "development-guide/2018-02-15-onscreen-ui.md"
-        - post: "development-guide/2018-02-22-user-data.md"
-        - post: "development-guide/2020-08-28-move-player.md"
-        - post: "development-guide/2020-09-24-avatar-modifiers.md"
-        - post: "development-guide/2020-11-20-trigger-emotes.md"
-        - post: "development-guide/2018-02-27-raycasting.md"
-        - post: "development-guide/2020-05-04-video-playing.md"
-        - post: "development-guide/2020-05-18-external-links.md"
-        - post: "development-guide/2018-02-26-scene-metadata.md"
-        - post: "development-guide/2018-01-06-scene-limitations.md"
-        - post: "development-guide/2021-01-11-performance-optimization.md"
-        - title: SDK Libraries
-          children:
-            - title: "ECS Utils library"
-              url: "https://github.com/decentraland/decentraland-ecs-utils"
-            - title: "Other libraries"
-              url: "https://github.com/decentraland-scenes/Awesome-Repository#Libraries"
-            - post: "development-guide/2022-03-15-create-libraries.md"
-        - title: Blockchain integration
-          children:
-            - title: Display an NFT
-              post: "development-guide/2018-02-01-display-a-certified-nft.md"
-            - title: Hand out POAP Tokens
-              post: "development-guide/2022-03-17-poap-tokens.md"
-            - title: Blockchain operations
-              post: "development-guide/2018-01-07-scene-blockchain-operations.md"
-            - title: Second layer
-              post: "development-guide/2018-02-02-second-layer.md"
-        - title: Advanced
-          children:
-            - title: Game objects
-              post: "development-guide/2018-02-28-game-objects.md"
-            - title: Custom events
-              post: "development-guide/2018-02-16-custom-events.md"
-            - title: Multiplayer sync
-              post: "development-guide/2018-01-10-remote-scene-considerations.md"
-            - title: Special types
-              post: "development-guide/2018-02-20-special-types.md"
-            - title: Network connections
-              post: "development-guide/2018-02-24-network-connections.md"
-            - title: Async functions
-              post: "development-guide/2018-02-25-async-functions.md"
-        - title: Publishing
-          children:
-            - title: Deploy a scene
-              post: "development-guide/2018-01-07-publishing.md"
-            - title: Share a preview
-              post: "development-guide/2018-01-01-deploy-third-party.md"
-        - post: "development-guide/2020-02-20-smart-items.md"
-        - post: "development-guide/2022-02-02-smart-wearables.md"
-        - post: "development-guide/2022-02-08-workspaces.md"
-    - title: 3D modeling
-      children:
-        - post: "3d-modeling/2018-01-09-3d-models.md"
-        - post: "3d-modeling/2018-01-13-animations.md"
-        - post: "3d-modeling/2018-01-12-colliders.md"
-        - post: "3d-modeling/2018-01-11-meshes.md"
-        - post: "3d-modeling/2018-01-10-materials.md"
-    - title: Tutorials
-      children:
-        - title: Written
-          url: "https://github.com/decentraland-scenes/Awesome-Repository#Tutorials"
-        - title: Video
-          url: "https://www.youtube.com/playlist?list=PLAcRraQmr_GPi-8qgv17ewdGl50OHuOhH"
-    - title: Scene examples
-      children:
-        - title: Essentials
-          url: "https://github.com/decentraland-scenes/Awesome-Repository#examples"
-        - title: Game Mechanics
-          url: "https://github.com/decentraland-scenes/Awesome-Repository#game-mechanics"
-        - title: Physics
-          url: "https://github.com/decentraland-scenes/Awesome-Repository#physics"
-        - title: Blockchain Monetization
-          url: "https://github.com/decentraland-scenes/Awesome-Repository#monetization--blockchain"
-        - title: Multiplayer & APIs
-          url: "https://github.com/decentraland-scenes/Awesome-Repository#multiplayer--apis"
-    - title: Release notes
-      children:
-        - post: "releases/sdk/2019-04-25-6.0.md"
-        - post: "releases/sdk/2019-01-09-5.0.md"
-        - post: "releases/sdk/2018-02-15-sdk-roadmap.md"
-        - post: "releases/sdk/2018-01-02-4.1.0.md"
-        - post: "releases/sdk/2018-01-01-4.0.0.md"
-        - post: "releases/sdk/2018-02-01-cli.md"
-- title: Ethereum essentials
-  image: sets/EthereumIcon.svg
-  children:
-    - title: Get a wallet for beginners
-      post: "blockchain-integration/2020-02-17-get-a-wallet.md"
-    - post: "general/2018-01-03-glossary.md"
-    - title: About the blockchain
-      post: "blockchain-integration/2018-01-01-ethereum-essentials.md"
-    - post: "blockchain-integration/2018-01-09-create-a-dapp.md"
-    - post: "blockchain-integration/2022-01-25-transactions-in-polygon.md"
-    - post: "blockchain-integration/2022-02-17-estates-marketplace-integrations.md"
+  - title: Creating content
+    page: "content-intro.html"
+  - title: Design experiences
+    children:
+      - post: "design-experience/2018-06-26-mvp-guidelines.md"
+      - title: UX and UI Guide
+        post: "design-experience/2018-02-01-ux-ui-guide.md"
+      - title: Design constraints
+        post: "design-experience/2018-01-08-design-games.md"
+  - title: Builder
+    children:
+      - post: "builder/2020-03-16-builder-101.md"
+      - post: "builder/2020-03-16-smart-items.md"
+      - post: "builder/2021-03-8-nfts.md"
+      - post: "builder/2020-03-16-manage-scenes.md"
+      - post: "builder/2020-03-16-scene-limitations.md"
+      - post: "builder/2020-03-16-import-items.md"
+      - post: "general/2019-03-19-builder-faq.md"
+      - post: "builder/2020-03-16-export.md"
+  - title: Wearables
+    children:
+      - post: "wearables/2021-05-31-wearables-overview.md"
+      - post: "wearables/2021-05-31-creating-wearables.md"
+      - post: "wearables/2021-05-31-publishing-wearables.md"
+      - post: "wearables/2021-05-31-curation-committee.md"
+      - post: "wearables/2021-05-31-wearables-editor-user-guide.md"
+      - post: "wearables/2022-04-05-linked-wearables.md"        
+  - title: SDK
+    children:
+      - title: Getting started
+        children:
+          - title: SDK 101
+            post: "development-guide/2020-03-16-SDK-101.md"
+          - title: Installation guide
+            post: "development-guide/2018-01-01-installation-guide.md"
+          - title: Coding scenes
+            post: "development-guide/2018-01-02-coding-scenes.md"
+          - title: Preview scene
+            post: "development-guide/2018-01-04-preview-scene.md"
+          - title: Development Workflow
+            post: "development-guide/2021-05-17-dev-workflow.md"
+      - title: Architecture overview
+        children:
+          - title: Entities & Components
+            post: "development-guide/2018-02-1-entities-components.md"
+          - title: Systems
+            post: "development-guide/2018-02-3-systems.md"
+          - title: Custom Components
+            post: "development-guide/2018-02-1-custom-components.md"
+          - title: Component groups
+            post: "development-guide/2018-02-2-component-groups.md"
+          - title: Files in a scene
+            post: "development-guide/2018-01-11-scene-files.md"
+      - post: "development-guide/2018-01-12-entity-positioning.md"
+      - post: "development-guide/2018-02-6-shape-components.md"
+      - post: "development-guide/2018-02-7-materials.md"
+      - post: "development-guide/2018-02-10-sounds.md"
+      - post: "development-guide/2018-02-12-move-entities.md"
+      - post: "development-guide/2018-02-13-3d-model-animations.md"
+      - post: "development-guide/2018-02-14-click-events.md"
+      - post: "development-guide/2021-04-03-event-listeners.md"
+      - post: "development-guide/2018-02-11-text.md"
+      - post: "development-guide/2018-02-15-onscreen-ui.md"
+      - post: "development-guide/2018-02-22-user-data.md"
+      - post: "development-guide/2020-08-28-move-player.md"
+      - post: "development-guide/2020-09-24-avatar-modifiers.md"
+      - post: "development-guide/2020-11-20-trigger-emotes.md"
+      - post: "development-guide/2018-02-27-raycasting.md"
+      - post: "development-guide/2020-05-04-video-playing.md"
+      - post: "development-guide/2020-05-18-external-links.md"
+      - post: "development-guide/2018-02-26-scene-metadata.md"
+      - post: "development-guide/2018-01-06-scene-limitations.md"
+      - post: "development-guide/2021-01-11-performance-optimization.md"
+      - title: SDK Libraries
+        children:
+          - title: "ECS Utils library"
+            url: "https://github.com/decentraland/decentraland-ecs-utils"
+          - title: "Other libraries"
+            url: "https://github.com/decentraland-scenes/Awesome-Repository#Libraries"
+          - post: "development-guide/2022-03-15-create-libraries.md"
+      - title: Blockchain integration
+        children:
+          - title: Display an NFT
+            post: "development-guide/2018-02-01-display-a-certified-nft.md"
+          - title: Hand out POAP Tokens
+            post: "development-guide/2022-03-17-poap-tokens.md"
+          - title: Blockchain operations
+            post: "development-guide/2018-01-07-scene-blockchain-operations.md"
+          - title: Second layer
+            post: "development-guide/2018-02-02-second-layer.md"
+      - title: Advanced
+        children:
+          - title: Game objects
+            post: "development-guide/2018-02-28-game-objects.md"
+          - title: Custom events
+            post: "development-guide/2018-02-16-custom-events.md"
+          - title: Multiplayer sync
+            post: "development-guide/2018-01-10-remote-scene-considerations.md"
+          - title: Special types
+            post: "development-guide/2018-02-20-special-types.md"
+          - title: Network connections
+            post: "development-guide/2018-02-24-network-connections.md"
+          - title: Async functions
+            post: "development-guide/2018-02-25-async-functions.md"
+      - title: Publishing
+        children:
+          - title: Deploy a scene
+            post: "development-guide/2018-01-07-publishing.md"
+          - title: Share a preview
+            post: "development-guide/2018-01-01-deploy-third-party.md"
+      - post: "development-guide/2020-02-20-smart-items.md"
+      - post: "development-guide/2022-02-02-smart-wearables.md"
+      - post: "development-guide/2022-02-08-workspaces.md"
+  - title: 3D modeling
+    children:
+      - post: "3d-modeling/2018-01-09-3d-models.md"
+      - post: "3d-modeling/2018-01-13-animations.md"
+      - post: "3d-modeling/2018-01-12-colliders.md"
+      - post: "3d-modeling/2018-01-11-meshes.md"
+      - post: "3d-modeling/2018-01-10-materials.md"
+  - title: Tutorials
+    children:
+      - title: Written
+        url: "https://github.com/decentraland-scenes/Awesome-Repository#Tutorials"
+      - title: Video
+        url: "https://www.youtube.com/playlist?list=PLAcRraQmr_GPi-8qgv17ewdGl50OHuOhH"
+  - title: Scene examples
+    children:
+      - title: Essentials
+        url: "https://github.com/decentraland-scenes/Awesome-Repository#examples"
+      - title: Game Mechanics
+        url: "https://github.com/decentraland-scenes/Awesome-Repository#game-mechanics"
+      - title: Physics
+        url: "https://github.com/decentraland-scenes/Awesome-Repository#physics"
+      - title: Blockchain Monetization
+        url: "https://github.com/decentraland-scenes/Awesome-Repository#monetization--blockchain"
+      - title: Multiplayer & APIs
+        url: "https://github.com/decentraland-scenes/Awesome-Repository#multiplayer--apis"
+  - title: Release notes
+    children:
+      - post: "releases/sdk/2019-04-25-6.0.md"
+      - post: "releases/sdk/2019-01-09-5.0.md"
+      - post: "releases/sdk/2018-01-02-4.1.0.md"
+      - post: "releases/sdk/2018-01-01-4.0.0.md"
+      - post: "releases/sdk/2018-02-01-cli.md"
