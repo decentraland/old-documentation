@@ -37,7 +37,7 @@ It needs a contract to forward the transactions, but luckily we can reuse the on
 - Copy the API KEY from the `Keys` section
 - Add a new contract. Click the `+ Add Contract` button. If you want to use the same Decentraland uses you can add [this one](https://polygonscan.com/address/0x14d4be0ef62fa7a322bbefe115d53a49f2754752#code), which has the following data:
   - **Name**: Meta Transaction Forwarder
-  - **Address**: 0x0baBda04f62C549A09EF3313Fe187f29c099FF3C
+  - **Address**: 0x14d4be0ef62fa7a322bbefe115d53a49f2754752
   - \*Application Binary Interface (ABI)\*\*: Check the `Contract ABI` section on the `Contract` tab, in [Polygonscan](https://polygonscan.com/address/0x14d4be0ef62fa7a322bbefe115d53a49f2754752#code)
   - **Meta Transaction Type**: Custom
 - Add a new API. Click the `Manage APIs` button. Continuing with the Decentraland's example:
