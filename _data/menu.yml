@@ -106,7 +106,7 @@
         - post: "wearables/2021-05-31-publishing-wearables.md"
         - post: "wearables/2021-05-31-curation-committee.md"
         - post: "wearables/2021-05-31-wearables-editor-user-guide.md"
-        - post: "wearables/2022-04-05-linked-wearables.md"        
+        - post: "wearables/2022-04-05-linked-wearables.md"
     - title: SDK
       children:
         - title: Getting started
@@ -170,6 +170,8 @@
               post: "development-guide/2018-01-07-scene-blockchain-operations.md"
             - title: Second layer
               post: "development-guide/2018-02-02-second-layer.md"
+            - title: Deploying your own transactions server
+              post: "development-guide/2022-05-18-deploying-your-own-transactions-server"
         - title: Advanced
           children:
             - title: Game objects
