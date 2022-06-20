@@ -153,6 +153,7 @@
         - post: "development-guide/2018-02-26-scene-metadata.md"
         - post: "development-guide/2018-01-06-scene-limitations.md"
         - post: "development-guide/2021-01-11-performance-optimization.md"
+        - post: "development-guide/2022-06-20-scene-analytics.md"
         - title: SDK Libraries
           children:
             - title: "ECS Utils library"
