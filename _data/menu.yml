@@ -171,7 +171,7 @@
             - title: Second layer
               post: "development-guide/2018-02-02-second-layer.md"
             - title: Deploying your own transactions server
-              post: "development-guide/2022-05-18-deploying-your-own-transactions-server"
+              post: "development-guide/2022-05-18-deploying-your-own-transactions-server.md"
         - title: Advanced
           children:
             - title: Game objects
