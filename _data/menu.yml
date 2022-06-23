@@ -158,6 +158,7 @@
             post: "development-guide/2018-01-07-scene-blockchain-operations.md"
           - title: Second layer
             post: "development-guide/2018-02-02-second-layer.md"
+          - post: "blockchain-integration/2018-01-09-create-a-dapp.md"
       - title: Publishing
         children:
           - title: Deploy a scene
