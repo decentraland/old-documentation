@@ -16,7 +16,7 @@ As a creator, it's very valuable to track player visits and the way in which pla
 	
 	Read the [WeMeta documentation](https://docs.wemeta.world/docs/quick-start-decentraland) for detailed instructions about how to implement it in your scenes.
 	
-	For additional help or suggestions you can reach out to the WeMeta team [here](https://docs.wemeta.world) or [here](mailto:contact@wemeta.world)
+	For additional help or suggestions you can reach out to the WeMeta team [here](https://docs.wemeta.world) or [by mail](mailto:contact@wemeta.world)
 
 - The [Decentraland Builder](builder.decentraland.org) exposes basic data about user weekly visits to your scenes. This data is only available to users with ownership or operator rights on these parcels, and there is no historical record for checking past periods. As a scene creator you don't need to do any prior actions, this data is available for all published scenes.
 
