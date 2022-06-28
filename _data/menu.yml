@@ -159,6 +159,8 @@
           - title: Second layer
             post: "development-guide/2018-02-02-second-layer.md"
           - post: "blockchain-integration/2018-01-09-create-a-dapp.md"
+          - title: Deploying your own transactions server
+            post: "development-guide/2022-05-18-deploying-your-own-transactions-server.md"
       - title: Publishing
         children:
           - title: Deploy a scene
