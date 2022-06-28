@@ -121,6 +121,7 @@
       - post: "development-guide/2018-02-15-onscreen-ui.md"
       - post: "development-guide/2018-02-22-user-data.md"
       - post: "development-guide/2020-05-04-video-playing.md"
+      - post: "development-guide/2022-06-20-scene-analytics.md"
       - title: SDK Libraries
         children:
           - title: "ECS Utils library"
