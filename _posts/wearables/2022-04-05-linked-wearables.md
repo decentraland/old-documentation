@@ -496,8 +496,9 @@ For programmatic collections, not all items have to be curated individually. The
 
 In order for Linked Wearables to work, the third parties need to provide an API that will be queried by the Decentraland services (Catalyst) with 2 endpoints:
 
-1. `@GET /registry/:registry-id/address/:address/assets` - Retrieves a list of assets associated with a given address
+1. `@GET /registry/:registry-id/address/:address/assets` - Retrieves a list of assets associated with a given address.
 2. `@GET /registry/:registry-id/address/:address/assets/:id` - Validates if a DCL asset is owned by a user.
+3. `@GET /registry/:registry-id/owners-bloom-filter` - Retrieves a [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) as an hex value comprising all the owners a registry has.
 
 **Technical details and examples [here](https://github.com/decentraland/adr/blob/main/docs/ADR-42-third-party-assets-integration.md#third-party-resolver).**
 
@@ -513,8 +514,7 @@ If you've followed the steps to create a new collection and the steps to either 
 By doing this, you can query your NFT contract or indexer to build the information required to respond to the API as it contains the information about who owns which wearable:
 
 Let's say your contract implements the [ERC721 standard](https://eips.ethereum.org/EIPS/eip-721) with the enumeration extension. If we would like to get the tokens owned by the
-address `0x0f5d2fb29fb7d3cfee444a200298f468908cc942`, your API can query (as one of the sources) the contract using the `balanceOf` to get the amount of tokens owned by the address and later loop the
-tokens with the `tokenOfOwnerByIndex` to get the information about the tokens the address has.
+address `0x0f5d2fb29fb7d3cfee444a200298f468908cc942`, your API can query (as one of the sources) the contract using the `balanceOf` to get the amount of tokens owned by the address and later loop the tokens with the `tokenOfOwnerByIndex` to get the information about the tokens the address has.
 
 Having all the tokens that an address owns, the API can easily build the response by mapping each of the assets:
 
@@ -581,8 +581,7 @@ If you've followed the steps to create a new collection and the steps to either 
 By doing this, you can query your NFT contract or indexer to build the information required to respond to the API as it contains the information about who owns which wearable:
 
 Let's say your contract implements the [ERC721 standard](https://eips.ethereum.org/EIPS/eip-721) and you're asked to retrieve information about an asset with an id if the asset is owned by an address.
-By querying the contract using the `ownerOf` method, as we can extract the token id from the asset it because of the requirements assumed above (contract_address:token_id), it is possible to get the
-address of the owner of the token and, if it matches, respond with the required information about the asset.
+By querying the contract using the `ownerOf` method, as we can extract the token id from the asset it because of the requirements assumed above (contract_address:token_id), it is possible to get the address of the owner of the token and, if it matches, respond with the required information about the asset.
 
 As an example, by querying the API to get the information about the asset with id `0xc04528c14c8ffd84c7c1fb6719b4a89853035cdd:1` owned by the `0x0f5d2fb29fb7d3cfee444a200298f468908cc942` address:
 
@@ -603,6 +602,70 @@ The API can do the following:
   "urn": {
     "decentraland": "urn:decentraland:matic:collections-thirdparty:cryptohats:0xc04528c14c8ffd84c7c1fb6719b4a89853035cdd:1"
   }
+}
+```
+
+## Endpoint `@GET /registry/:registry-id/owners-bloom-filter`
+
+If you've followed the steps to create a new collection and the steps to either edit the item's id or URN or to create items in bulk, you already have:
+
+- Created a collection whose ID or URN is the contract address of the NFTs that will represent or map to the Linked Wearables.
+- Created wearables whose IDs or URNs are the token ids of the NFTs that will represent or map to the Linked Wearables.
+
+By doing this, you can query your NFT contract or indexer to build the information required to respond to the API as it contains the information about who owns which wearable:
+
+Let's say your contract implements the [ERC721 standard](https://eips.ethereum.org/EIPS/eip-721) and you used an indexer like [TheGraph](https://thegraph.com/) to make it's data easily queriable using GraphQL. You're then asked to retrieve a bloom filter which has all the addresses (owners) the registry has.
+By using TheGraph, you could have an entity called `Asset` which has an `owner` property. That would allow you to return all assets owners by using the public GraphQL API TheGraph provides.
+
+As an example, by querying the API to get the bloom filter for a registry:
+
+```bash
+curl https://api.cryptohats.io/registry/cryptohats/owners-bloom-filter
+```
+
+The API can do the following:
+
+1. Query TheGraph to get all the assets, selecting the owner property
+
+```graphql
+assets {
+   owner
+}
+```
+
+this will return something like this:
+
+```json
+{
+  "data": {
+    "assets": [
+      { "owner": "0xc04528c14c8ffd84c7c1fb6719b4a89853035cdd" },
+      { "owner": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d" },
+      { "owner": "0x1f0880e0b4514dc58e68b9be91693bfa8c067ac1" }
+    ]
+  }
+}
+```
+
+2. For each owner add it to a BloomFilter and get an hex value. You can use an implementation like [the one found on @ethereum/vm](https://github.com/ethereumjs/ethereumjs-monorepo/blob/v4.1.3/packages/vm/src/bloom/index.ts)
+
+```ts
+import Bloom from "@ethereumjs/vm/dist/bloom"
+
+const filter = new Bloom()
+
+for (const owner of owners) {
+  filter.add(owner)
+}
+
+const data = filter.bitvector.toString("hex")
+```
+
+3. Respond with:
+
+```json
+{
+  "data": "00100000000000000000000000000000080010000800000000000000000000000080000000000000000000000000000000000000000000000000000000000002000000000004000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000800000000040000000000000000000000000000020000000000000280000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040040000000000000000000000000000000010000000000000000000000000000"
 }
 ```
 
