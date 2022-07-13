@@ -176,7 +176,7 @@ const canvas = new UICanvas()
 
 const myText = new UIText(canvas)
 myText.value = "Hello"
-myText.font = new Font(Fonts.SanFrancisco)
+myText.font = new Font(Fonts.SansSerif)
 myText.fontSize = 20
 myText.positionX = "15px"
 myText.color = Color4.Blue()
@@ -187,7 +187,7 @@ myText.color = Color4.Blue()
 You can share a same instanced `Font` object accross multiple `UIText` components.
 
 ```ts
-const sfFont = new Font(Fonts.SanFrancisco)
+const sfFont = new Font(Fonts.SansSerif)
 
 const myText = new UIText(canvas)
 myText.value = "Hello"
