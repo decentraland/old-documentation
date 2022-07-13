@@ -110,7 +110,7 @@ inventoryContainer.stackOrientation = UIStackOrientation.VERTICAL
 
 Container components also have following properties:
 
-- `adaptWidth` `adaptHeight`: Set on parent components. If these are set to true, the width and height wrap the child components (plus padding). If these are true, `width` and `height` values are ignored
+- `adaptWidth`, `adaptHeight`: Set on parent components. If these are set to true, the width and height wrap the child components (plus padding). If these are true, `width` and `height` values are ignored
 
 - `stackOrientation`: The `UIContainerStack` component has this property to set if the stack will expand vertically or horizontally.
 
