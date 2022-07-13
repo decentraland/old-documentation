@@ -361,7 +361,7 @@ textInput.onChanged = new OnChanged((data: { value: string }) => {
 
 ## Open the UI
 
-You can have the code of your scene make the the UI visible when specific events occurs, for example at the end of a game to display the final score.
+You can have the code of your scene make the UI visible when specific events occurs, for example at the end of a game to display the final score.
 
 To do this, simply set the `visible` property of the main `UICanvas` component that wraps the UI to _true_ or _false_.
 
