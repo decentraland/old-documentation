@@ -66,3 +66,5 @@ Please refer to the full Content Policy [here](https://decentraland.org/content/
 - Wearables may not contain duplicate items within a collection. (Each item within a collection must be unique.)
 - Wearables may not mimic or copy other wearables that have already been published.
 - Wearables with misleading categories may be rejected; for example, a hat that is categorized as a lower body item.
+- Wearables must follow the armature humanoid structure to ensure a good quality gameplay. In this sense, currently vehicles or pets are not allowed because these are not wearables by definition.
+- Curators from the curators committee can submit collections but not approve their own. In this case, another curator from the committee would needs to review in order and approve or reject.
