@@ -80,9 +80,7 @@ If you're building a scene to be uploaded to several adjacent parcels, you can e
 
 To run a preview scene in the Desktop native client, instead of in the web browser: 
 
-1) Make sure you have [installed the desktop client](https://decentraland.org/download/). 
-
-	> Note: The desktop client is currently only supported for Windows machines.
+1) Make sure you have downloaded and installed the [Windows](https://decentraland.org/download/) or [Mac](https://github.com/decentraland/explorer-desktop-launcher/releases/latest/download/Decentraland.dmg) desktop client.
 
 2) Run the preview with:
 
@@ -94,7 +92,7 @@ To run a preview scene in the Desktop native client, instead of in the web brows
 
 4) You'll see the following screen. Check that the URL is correct, then click **Continue** to launch the preview.
 
-	![]({{ site.baseurl }}/images/media/desktop-preview.png)
+	![](images/media/desktop-preview.png)
 
 	If you need to manually add anything to the URL, to change the default way the scene runs, tick the box **Add custom URL parameters** and write those in the dialog below.
 
