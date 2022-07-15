@@ -64,9 +64,9 @@ All UI components have several fields you can set to determine the position of t
 
 > Tip: When measuring from the top, the numbers for `positionY` should be negative. Example: to position a component leaving a margin of 20 pixels with respect to the parent on the top and left sides, set `positionX` to 20 and `positionY` to -20.
 
-- `paddingLeft`, `paddingRight`, `paddingTop`, `paddingBottom`: padding space to leave empty around. To set these fields in pixels, write the value as a number. To set these fields as a percentage of the parent's measurements, write the value as a string that ends in "%", for example `10 %`
+- `paddingLeft`, `paddingRight`, `paddingTop`, `paddingBottom`: padding space to leave empty around. To set these fields in pixels, write the value as a number. To set these fields as a percentage of the parent's measurements, write the value as a string that ends in "%", for example `10%`
 
-- `with`, `height`: Set the size of the component in the screen. To set these fields in pixels, write the value as a number. To set these fields as a percentage of the parent's measurements, write the value as a string that ends in "%", for example `10 %`
+- `width`, `height`: Set the size of the component in the screen. To set these fields in pixels, write the value as a number. To set these fields as a percentage of the parent's measurements, write the value as a string that ends in "%", for example `10%`
 
 ```ts
 const canvas = new UICanvas()
@@ -110,7 +110,7 @@ inventoryContainer.stackOrientation = UIStackOrientation.VERTICAL
 
 Container components also have following properties:
 
-- `adaptWidth` `adaptHeight`: Set on parent components. If these are set to true, the width and height wrap the child components (plus padding). If these are true, `width` and `height` values are ignored
+- `adaptWidth`, `adaptHeight`: Set on parent components. If these are set to true, the width and height wrap the child components (plus padding). If these are true, `width` and `height` values are ignored
 
 - `stackOrientation`: The `UIContainerStack` component has this property to set if the stack will expand vertically or horizontally.
 
@@ -176,7 +176,7 @@ const canvas = new UICanvas()
 
 const myText = new UIText(canvas)
 myText.value = "Hello"
-myText.font = new Font(Fonts.SanFrancisco)
+myText.font = new Font(Fonts.SansSerif)
 myText.fontSize = 20
 myText.positionX = "15px"
 myText.color = Color4.Blue()
@@ -187,7 +187,7 @@ myText.color = Color4.Blue()
 You can share a same instanced `Font` object accross multiple `UIText` components.
 
 ```ts
-const sfFont = new Font(Fonts.SanFrancisco)
+const sfFont = new Font(Fonts.SansSerif)
 
 const myText = new UIText(canvas)
 myText.value = "Hello"
@@ -361,7 +361,7 @@ textInput.onChanged = new OnChanged((data: { value: string }) => {
 
 ## Open the UI
 
-You can have the code of your scene make the the UI visible when specific events occurs, for example at the end of a game to display the final score.
+You can have the code of your scene make the UI visible when specific events occurs, for example at the end of a game to display the final score.
 
 To do this, simply set the `visible` property of the main `UICanvas` component that wraps the UI to _true_ or _false_.
 
