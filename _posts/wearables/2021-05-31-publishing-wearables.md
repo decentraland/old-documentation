@@ -26,7 +26,7 @@ There is a required fee for publishing items. This fee was originally [voted in 
 
 The [most recent vote](https://governance.decentraland.org/proposal/?id=b8075360-e8e7-11ec-82d9-d917cdd158ac) regarding publication fees has pegged them to a fixed amount of 150 United States dollars per item, to be paid in MANA.
 
-For example, if you publish a collection with two items and the price of MANA at the time is 1.5 USD, you will have to pay a fee of 200 MANA (150 USD for each item divided by the price of MANA) regardless of the rarity (or how many NFTs can be minted) of those items.
+For example, if you publish a collection with two items and the price of MANA at the time is 1.5 USD, you will have to pay a fee of 200 MANA (150 USD for each item divided by the price of MANA in USD) regardless of the rarity (or how many NFTs can be minted) of those items.
 
 These fees are transferred to the curators committee and the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
 
