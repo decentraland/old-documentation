@@ -24,7 +24,7 @@ For detailed instructions on how to submit your wearable collection for approval
 
 There is a required fee for publishing items. This fee was originally [voted in place by the Decentraland DAO](https://governance.decentraland.org/en/proposal/?id=50092c00-c315-11eb-ac84-1705d1ae4a66) to deter users from publishing an excessive number of wearables in an attempt to “spam” the wearables market.
 
-The most recent publication fee [vote](https://governance.decentraland.org/proposal/?id=b8075360-e8e7-11ec-82d9-d917cdd158ac) has made publication fees pegged to a fixed amount of 150 United States dollars per item, paid in MANA.
+The [most recent vote](https://governance.decentraland.org/proposal/?id=b8075360-e8e7-11ec-82d9-d917cdd158ac) regarding publication fees has pegged them to a fixed amount of 150 United States dollars per item, to be paid in MANA.
 
 For example, if you publish a collection with two items and the price of MANA at the time is 1.5 USD, you will have to pay a fee of 200 MANA (150 USD for each item divided by the price of MANA) regardless of the rarity (or how many NFTs can be minted) of those items.
 
