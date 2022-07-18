@@ -22,19 +22,15 @@ For detailed instructions on how to submit your wearable collection for approval
 
 ### Publication fees 
 
-There is a required fee for publishing items. This fee was [voted in place by the Decentraland DAO](https://governance.decentraland.org/en/proposal/?id=50092c00-c315-11eb-ac84-1705d1ae4a66) This fee exists to deter users from publishing an excessive number of wearables in an attempt to “spam” the wearables market.
+There is a required fee for publishing items. This fee was originally [voted in place by the Decentraland DAO](https://governance.decentraland.org/en/proposal/?id=50092c00-c315-11eb-ac84-1705d1ae4a66) to deter users from publishing an excessive number of wearables in an attempt to “spam” the wearables market.
 
-**The fee is a flat rate of $500 value (paid in MANA) per item (not NFT!) in your collection.**
+The most recent publication fee [vote](https://governance.decentraland.org/proposal/?id=b8075360-e8e7-11ec-82d9-d917cdd158ac) has made publication fees pegged to a fixed amount of 150 United States dollars per item, paid in MANA.
 
-> Note: Previously it was 500 MANA, with MANA's value increase, it was lowered to equal $500 in a recent [DAO vote](https://decentraland.org/blog/project-updates/dao-committee-report-11/).
+For example, if you publish a collection with two items and the price of MANA at the time is 1.5 USD, you will have to pay a fee of 200 MANA (150 USD for each item divided by the price of MANA) regardless of the rarity (or how many NFTs can be minted) of those items.
 
-The calculation examples below use 500 MANA as fee. The actual fee of MANA will be set weekly by the DAO, in order to try and always align with $500 in valuation.
+These fees are transferred to the curators committee and the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
 
-For example, if you publish a collection with two items, you will have to pay a fee of 1000 MANA (500 MANA for each item) regardless of the rarity (or how many NFTs can be minted) of those items.
-
-These fees are transferred to the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
-
-> **Note:** Currently, due to the time and resources required to review each collection submitted, **the 500 MANA publication fee is non-refundable**. If your collection is rejected, you will not receive your 500 MANA back. If your collection is not immediatly approved, the Curation Committee will provide you with suggestions and feedback on how to improve it, but the final acceptance of your collection cannot be guaranteed.
+> **Note:** Currently, due to the time and resources required to review each collection submitted, **the 150 USD in MANA publication fee is non-refundable**. If your collection is rejected, you will not receive your MANA back. If your collection is not immediatly approved, the Curation Committee will provide you with suggestions and feedback on how to improve it, but the final acceptance of your collection cannot be guaranteed.
 
 ### Acceptance criteria
 
