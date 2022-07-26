@@ -192,14 +192,6 @@ You might have to authorize the MANA contract to operate MANA on your behalf. By
 
 There is a required fee for publishing items. This fee exists to deter users from publishing an excessive number of wearables in an attempt to “spam” the wearables market.
 
-**The fee is a flat rate of 500 MANA per item (not NFT!) in your collection.**
-
-For example, if you publish a collection with two items, you will have to pay a fee of 1000 MANA (500 MANA for each item) regardless of the rarity (or how many NFTs can be minted) of those items.
-
-These fees are transferred to the Decentraland DAO, where they are used to help fund the growth of the platform through grants and other initiatives voted on by the greater Decentraland community.
-
-_Currently, due to the time and resources required to review each collection submitted, the 500 MANA publication fee is non-refundable. If your collection is rejected, you will not receive your 500 MANA back._
-
 After reviewing your total fee, click **Next**.
 
 > **Warning!**
