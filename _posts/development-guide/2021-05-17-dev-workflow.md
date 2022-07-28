@@ -39,7 +39,7 @@ Deploy your scene to the test server.
 dcl deploy --target peer-testing.decentraland.org
 ```
 
-To access scenes deployed to the test server, enter [_play.decentraland.org/?&CATALYST=peer-testing.decentraland.org_](play.decentraland.org/?&CATALYST=peer-testing.decentraland.org).
+To access scenes deployed to the test server, enter [_play.decentraland.org/?&CATALYST=peer-testing.decentraland.org_](https://play.decentraland.org/?&CATALYST=peer-testing.decentraland.org).
 
 Players aren't directed to this server, so it's a safe place to test out the full flow of a scene without distractions, including multiplayer interactions, wearables, blockchain interactions and everything you'd find in the production environment.
 
@@ -65,7 +65,7 @@ You can also access your scene in the test environment with the features from `@
 
 After deploying your scene to the test server, enter the following address to view your scenes using the unreleased SDK features:
 
-[_play.decentraland.zone/?&CATALYST=peer-testing.decentraland.org&ENV=org_](play.decentraland.zone/?&CATALYST=peer-testing.decentraland.org&ENV=org).
+[_play.decentraland.zone/?&CATALYST=peer-testing.decentraland.org&ENV=org_](https://play.decentraland.zone/?&CATALYST=peer-testing.decentraland.org&ENV=org).
 
 ## Upload a scene to decentraland
 
