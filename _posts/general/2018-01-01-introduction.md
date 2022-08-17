@@ -3,7 +3,7 @@ date: 2018-01-01
 title: Introduction
 description: Decentraland is a virtual reality platform powered by Ethereum.
 redirect_from:
-  - /login?redirect=docs
+  - /login
   - /docs
   - /docs/
 categories:
