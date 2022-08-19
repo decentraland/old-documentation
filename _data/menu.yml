@@ -82,8 +82,6 @@
   children:
     - title: Creating content
       page: "content-intro.html"
-    - title: Verified Partners
-      page: "metaverse-agencies.html"
     - title: Design experiences
       children:
         - post: "design-experience/2018-06-26-mvp-guidelines.md"
@@ -230,6 +228,8 @@
         - post: "releases/sdk/2018-01-02-4.1.0.md"
         - post: "releases/sdk/2018-01-01-4.0.0.md"
         - post: "releases/sdk/2018-02-01-cli.md"
+    - title: Verified Partners
+      page: "metaverse-agencies.html"
 - title: Ethereum essentials
   image: sets/EthereumIcon.svg
   children:
