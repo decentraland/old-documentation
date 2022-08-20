@@ -32,6 +32,19 @@ These contracts vest every second, and have a one-month cliff.  This means you c
 The beneficiaries are responsible for paying the gas fee required for each withdrawal.
 
 
+## How can I release the Grants funds?
+If your Grant TIER is 1 or 2, there will not be a vesting contract because the funds will be paid directly to the beneficiary address provided in the proposal form. These transfers are initiated by the DAO Committee within 7 days of the grant’s approval by the DAO.
+
+
+If your Grant TIER is 3-4-5-6:
+
+1. Go to [your grant proposal](#where-can-i-see-my-grant-proposal) page
+2. Sign in with your wallet address
+3. Click on the vesting contract, and you will see the release button.
+4. Funds are withdrawn to your wallet
+
+
+
 ## Can I change the beneficiary address of my vesting contract?
 
 Yes.  You will have to do a transaction on the blockchain, so it will have a gas fee cost.  
@@ -65,7 +78,7 @@ Grant owners must provide one [update](#how-to-post-updates-on-my-proposal-page)
 
 When your [vesting contract](#where-can-i-find-my-vesting-contract) period is finalized, you will receive an email from the Grant Support Squad asking you to submit a Final Report.
 
-You can also share updates on your dedicated discord channel on the [DAO Decentraland server](https://discord.gg/3ktRr7aQ). These progress reports should be clear and concise, while still giving the community an accurate sense of how your project is progressing.
+You can also share updates on your dedicated discord channel on the [DAO Decentraland server](https://discord.gg/hQ9vyuHsRg). These progress reports should be clear and concise, while still giving the community an accurate sense of how your project is progressing.
 
 It is also expected that members of the Grant team attends to the [monthly TownHalls ](https://events.decentraland.org/event/?id=cca6c7e2-8235-450c-b14e-e64691c136ba)to report progress.
 
@@ -81,8 +94,8 @@ Missing an update is an alarm for us and may trigger the  [Grant revocation proc
 
 Every Grant will be supported by the Grant Support Squad and by the rest of the community, so you can :
 
-1.  Search for your dedicated discord channel on the [DAO Decentraland server](https://discord.gg/3ktRr7aQ) and ask the community for help.  
-2. Send an email to Grant Support Squad (pablo.lewin@decentraland.org / juan.cassinelli@decentraland.org)
+1.  Search for your dedicated discord channel on the [DAO Decentraland server](https://discord.gg/hQ9vyuHsRg) and ask the community for help.  
+2. Send an email to Grant Support Squad ([Pablo](mailto:pablo.lewin@decentraland.org) / [Zino](mailto:juan.cassinelli@decentraland.org)
 
 
 ALWAYS Check that the domain email address is from decentraland.org . We will never send you emails from outside this domain. Remember that the Decentraland DAO will NEVER ask you for your secret passphrase and we will never host a payment directly in Decentraland.
