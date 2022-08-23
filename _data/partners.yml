@@ -1765,3 +1765,32 @@
     - Architecture
   pois:
     - (-16, -111)
+- name: Meta Fashion House
+  partnerId: 77
+  default_link: https://linktr.ee/NFTcreatortours
+  website: https://www.nftcreatortours.com/
+  email: astrid@NFTcreatortours.com
+  discord: https://discord.gg/GeyzWYqn
+  linkedin: https://www.linkedin.com/in/astridpilla/
+  instagram: https://www.instagram.com/metafashionhousedcl/
+  twitter: https://mobile.twitter.com/metafashionh
+  youtube: https://vimeo.com/channels/metafashionhouse
+  image: /images/partners/metafashionhouse.JPG
+  parcels: https://play.decentraland.org/?island=I1o6k7&position=-118%2C91&realm=dg
+  description: Meta Fashion House can help your brand enter the Metaverse with ease, in style and with the assurance that everything will be taken care of from planning, helping your customers and collectors understand the process, strategic launches, NFT minting, high-end digital wearable production, token-gating, livestreaming, metaverse launch parties, press, and promotion. Work with a production house that has the connections you need for a successful event. Helped our client win Best Digital Experience by Glossier, 2022.
+  region: North America
+  location: United States
+  languages:
+    - English
+    - French
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - Wire Transfer
+  tags:
+    - Event Production
+    - Architecture
+    - Wearable Design
+    - Consulting
+  pois:
+    - (-118, 90)
