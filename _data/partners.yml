@@ -1745,7 +1745,6 @@
 - name: Seed Events
   partnerId: 76
   default_link: https://twitter.com/psyriiis
-  website:
   email: mattimus5460@gmail.com
   discord: https://discord.gg/WMWMKdhD5r
   twitter: https://twitter.com/psyriiis
