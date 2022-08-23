@@ -1742,3 +1742,26 @@
     - Wearable Design
     - Architecture
   pois:
+- name: Seed Events
+  partnerId: 76
+  default_link: https://twitter.com/psyriiis
+  website:
+  email: mattimus5460@gmail.com
+  discord: https://discord.gg/WMWMKdhD5r
+  twitter: https://twitter.com/psyriiis
+  image: /images/partners/seed.events.JPG
+  description: Seed Events is a full suite production company for metaverse, IRL and hybrid events. We specialize in sdk development, live streaming solutions and interactive build features. Anything you can conceive, we can build.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - PayPal
+    - Wire Transfer
+  tags:
+    - Events
+    - Architecture
+  pois:
+    - (-16, -111)
