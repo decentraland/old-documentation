@@ -1671,7 +1671,7 @@
     - Credit Card
   tags:
     - Wearable Design
-    - Architecture
+    - Architect
     - Consulting
   pois:
     - (-99,95)
@@ -1695,7 +1695,7 @@
     - Crypto
   tags:
     - Wearable Design
-    - Architecture
+    - Architect
   pois:
 - name: Kokesmvsh
   partnerId: 74
@@ -1713,12 +1713,32 @@
   location: United States
   languages:
     - English
-  team_size: Small Team
+  team_size: Small Studio
   payments:
     - Crypto
   tags:
     - Wearable Design
-    - Architecture
+    - Architect
     - Event Production
   pois:
     - (-55, -127)
+- name: M-Social
+  partnerId: 75
+  default_link: https://msocialproduction.com/
+  website: https://msocialproduction.com/
+  email: e.kuzin@msocialproduction.com
+  discord: https://discordapp.com/users/951755181933072485
+  image: /images/partners/msocial.JPG
+  description: M-Social is a company that develops web and metaverse projects. We have an extensive experience in developing of promotional projects, as well as service and game-projects of varied difficulty.
+  region: Russia
+  location: Bryansk
+  languages:
+    - English
+  team_size: Medium Studio
+  payments:
+    - Crypto
+    - Wire Transfer
+  tags:
+    - Wearable Design
+    - Architect
+  pois:
