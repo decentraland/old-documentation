@@ -1794,3 +1794,23 @@
     - Consulting
   pois:
     - (-118, 90)
+- name: Offcollection
+  partnerId: 78
+  default_link: https://www.athenjakusz.com/
+  website: https://www.athenjakusz.com/
+  email: athenjakusz@gmail.com
+  discord: https://discordapp.com/users/481970359621386250
+  twitter: https://twitter.com/offcollection
+  image: /images/partners/athenjakusz.png
+  description: Modeling the Metaverse: Player Features, Accessories, and Skins
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+    - PayPal
+  tags:
+    - Wearable Design
+    
