@@ -1883,6 +1883,28 @@
     - PayPal
   tags:
     - Wearable Design
- 
+
+- name: Darko Studio
+  partnerId: 82
+  default_link: https://www.instagram.com/tonydarko.eth/
+  email: tonydarko.ventas@gmail.com
+  instagram: https://www.instagram.com/tonydarko.eth/
+  twitter: https://twitter.com/TonyDarko_eth
+  discord: https://discordapp.com/users/809129959367901242
+  youtube: https://www.youtube.com/channel/UCqRH7S2eJmTftu0Z5amD1Ag
+  image: /images/partners/darko-studio.png
+  description: Darko studio is a mexican animation studio focused on Decentraland, wearable design, SDK builder, Vtubing and experience designs.
+  region: South America
+  location: Mexico
+  languages:
+    - English
+    - Spanish
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - Credit Card
+  tags:
+    - Wearable Design
+    - Archtecture
 
 
