@@ -1839,4 +1839,28 @@
     - Consulting
   pois:
     - (15,61)
-    
+      
+- name: x1 Designs
+  partnerId: 80
+  default_link: https://linktr.ee/x1over
+  website: https://linktr.ee/x1over
+  email: cfise7@gmail.com
+  linkedin: https://www.linkedin.com/company/2853627/
+  twitter: https://twitter.com/x1over
+  youtube: https://www.youtube.com/channel/UC3DKuvBhFExUXyE8wbr4Y2A
+  discord: https://discord.com/invite/ENtJezzfFd
+  opensea: https://opensea.io/x1over
+  image: /images/partners/x1over.png
+  description: x1 Designs Experienced in 3D modeling, Texturing, Rigging, and Animation. Guides every step of the way until approval!
+  region: Asia
+  location: Israel
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - PayPal
+    - Credit Card
+  tags:
+    - Wearable Design 
+
