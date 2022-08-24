@@ -1863,4 +1863,26 @@
     - Credit Card
   tags:
     - Wearable Design 
+    
+- name: Petrichor Arch Studio
+  partnerId: 81
+  default_link: https://twitter.com/Lingxing_DCL
+  email: petrichorstudioid@gmail.com
+  instagram: https://www.instagram.com/petrichorarchstudio/?hl=en
+  twitter: https://twitter.com/Lingxing_DCL
+  opensea: https://opensea.io/Lingxing
+  image: /images/partners/petrichorarchstudio.png
+  description: Petrichor Arch Studio is a 3D design studio that can help you create 3D models and 3D wearables with great detail on shape, texture and aesthetics.
+  region: Asia
+  location: Indonesia
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - PayPal
+  tags:
+    - Wearable Design
+ 
+
 
