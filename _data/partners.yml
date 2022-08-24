@@ -1697,7 +1697,7 @@
     - Wearable Design
     - Architecture
   pois:
-- name: Kokesmvsh
+- name: Smvsh Friends
   partnerId: 74
   default_link: https://smvshfriends.com/
   website: https://smvshfriends.com/
@@ -1721,7 +1721,7 @@
     - Architecture
     - Event Production
   pois:
-    - (-55, -127)
+    - (-55,-127)
 - name: M-Social
   partnerId: 75
   default_link: https://msocialproduction.com/
@@ -1793,7 +1793,7 @@
     - Wearable Design
     - Consulting
   pois:
-    - (-118, 90)
+    - (-118,90)
     
 - name: Offcollection
   partnerId: 78
@@ -1814,4 +1814,29 @@
     - PayPal
   tags:
     - Wearable Design
+    
+ - name: MEA
+  partnerId: 79
+  default_link: https://www.we-are-mea.com
+  website: https://www.we-are-mea.com
+  email: hello@we-are-mea.com
+  linkedin: https://www.linkedin.com/company/2853627/
+  twitter: https://twitter.com/meaAdmin
+  image: /images/partners/MEA.png
+  description: MEA is a software development company founded in 2010. Metaverse services include: VR site creation, wearables development and digital marketing. Visit our latest project, Carbon Coffee at 15,61 Decentraland.  MEA has developed and released hundreds of projects with millions of users all around the world.  We focus on frictionless end to end experiences, which make it easy for customers to interact with digital spaces. Our team of 30 digital artisans is based in Auckland New Zealand delivering true value through beautiful code.  Our skills include React, Javascript, Typescript, Objective C, as well as most popular CMS systems and frameworks including Laravel, Next.js and more.  MEA is AWS Certified.  Reach out today at www.we-are-mea.com.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - PayPal
+    - Credit Card
+  tags:
+    - Wearable Design 
+    - Architecture
+    - Consulting
+  pois:
+    - (15,61)
     
