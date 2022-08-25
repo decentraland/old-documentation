@@ -1953,4 +1953,31 @@
     - Architecture
     - Event Production
 
+- name: VIRTEWEL
+  partnerId: 85
+  default_link: https://www.virtewel.com/
+  website: https://www.virtewel.com/
+  email: design@virtewel.com
+  twitter: https://twitter.com/virtewel
+  youtube: https://www.youtube.com/channel/UCYFltkM2qrRHbajQUSd1psA
+  instagram: https://www.instagram.com/virtewel/
+  discord: https://discordapp.com/users/936725669633740870
+  image: /images/partners/virtewel.png
+  description: Creators of virtual jewelry, buildings, and experiences.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+    - PayPal
+    - Credit Card
+    - Wire Transfer
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
+    - Consulting
+
 
