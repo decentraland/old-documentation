@@ -1906,5 +1906,26 @@
   tags:
     - Wearable Design
     - Archtecture
+- name: Chestnutbruze
+  partnerId: 83
+  default_link: https://twitter.com/Sevalla_Art
+  email: sebastianvalla@hotmail.com
+  twitter: https://twitter.com/Sevalla_Art
+  discord: https://discordapp.com/users/275695757414367234
+  sketchfab: https://sketchfab.com/sebastianvalla
+  image: /images/partners/chestnutbruze.png
+  description: 3D Art and Animation.
+  region: Europe
+  location: Norway
+  languages:
+    - English
+    - Spanish
+  team_size: Individual
+  payments:
+    - Crypto
+    - Wire Transfer
+  tags:
+    - Wearable Design
+    - Archtecture
 
 
