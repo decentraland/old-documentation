@@ -1928,7 +1928,7 @@
     - Wearable Design
     - Architecture
     
-- name: Marc O Matic
+- name: Marc-O-Matic
   partnerId: 84
   default_link: https://marcomatic.com/
   website: https://marcomatic.com/
@@ -1999,6 +1999,8 @@
   team_size: Small Team
   payments:
     - Crypto
+  pois:
+    - (-143,-36)
   tags:
     - Wearable Design
     - Architecture
