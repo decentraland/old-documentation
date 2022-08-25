@@ -2055,6 +2055,14 @@
     - Crypto
     - Wire Transfer
     - PayPal
+  pois:
+    - (-74,53) 
+    - (-76,58) 
+    - (-85,60)
+    - (65,75)
+    - (43,-124)
+    - (-23,69)
+    - (32,-95)
   tags:
     - Architecture
     - Event Production
