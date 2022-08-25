@@ -1980,4 +1980,30 @@
     - Event Production
     - Consulting
 
+- name: Misprint
+  partnerId: 86
+  default_link: http://misprint.store
+  website: http://misprint.store
+  email: info@misprint.store
+  twitter: https://twitter.com/misprint_
+  instagram: https://www.instagram.com/misprint/
+  sketchfab: https://sketchfab.com/nashruckman
+  opensea: https://opensea.io/MisprintOfficial
+  discord: https://discord.gg/7YV887QMMx
+  image: /images/partners/misprint.png
+  description: Misprint is a multi-disciplinary creative studio with a focus on metaverse development in Decentraland.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Team
+  payments:
+    - Crypto
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
+    - Consulting
+    - Land Rental
+
 
