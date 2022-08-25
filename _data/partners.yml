@@ -1089,7 +1089,7 @@
   languages:
     - English
     - French
-  team_size: individual
+  team_size: Individual
   payments:
     - Crypto
     - Wire Transfer
@@ -1968,7 +1968,7 @@
   location: United States
   languages:
     - English
-  team_size: Small Team
+  team_size: Small Studio
   payments:
     - Crypto
     - PayPal
@@ -1996,7 +1996,7 @@
   location: United States
   languages:
     - English
-  team_size: Small Team
+  team_size: Small Studio
   payments:
     - Crypto
     - Credit Card
@@ -2023,7 +2023,7 @@
   location: United States
   languages:
     - English
-  team_size: Small Team
+  team_size: Small Studio
   payments:
     - Crypto
   tags:
@@ -2033,4 +2033,31 @@
     - Consulting
     - Land Rental
 
+- name: Rizk Ghazaly
+  partnerId: 88
+  default_link: https://www.metarizk.net
+  website: https://www.metarizk.net
+  email: rizkghazaly@hotmail.com
+  twitter: https://twitter.com/Rizkgh
+  instagram: https://www.instagram.com/rizk.ghazaly/
+  opensea: https://opensea.io/Rizk-Ghazaly
+  discord: https://discordapp.com/users/572677665115340801
+  youtube: https://www.youtube.com/channel/UCrIceUut8nFiL-AReB9cfjw/videos
+  image: /images/partners/metarizk.png
+  description: As an architect leading this architecture studio, designing and creating spaces in Decentraland since early 2019, having a wide experience in designing NFT galleries, stores, and headquarters for companies and brands. I can offer customized 3d architecture for your space, beside leading you in the metaverse from A to Z to reach your goal. Brands I helped ( RealMissNFT, Goatz, Bitski Shop, Lottie London, Guilded Gamers, Rarepape, Relms, Mad.xyz ) Rizk Ghazaly studio is the official Architect of (District X) on of the biggest Districts in Decentraland.
+  region: Central America
+  location: Costa Rica
+  languages:
+    - English
+    - Spanish
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - Wire Transfer
+    - PayPal
+  tags:
+    - Architecture
+    - Event Production
+    - Consulting
+    - Land Rental
 
