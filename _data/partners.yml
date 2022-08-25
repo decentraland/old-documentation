@@ -1999,6 +1999,7 @@
   team_size: Small Team
   payments:
     - Crypto
+    - Credit Card
   pois:
     - (-143,-36)
   tags:
