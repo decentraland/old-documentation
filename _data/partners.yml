@@ -2069,3 +2069,24 @@
     - Consulting
     - Land Rental
 
+- name: DeFi Drip
+  partnerId: 89
+  default_link: https://twitter.com/DefiDripDCL?s=20&t=KV45rYnR252J9xlpaX6O2g
+  email: defidripdcl@gmail.com
+  twitter: https://twitter.com/DefiDripDCL?s=20&t=KV45rYnR252J9xlpaX6O2g
+  discord: https://discord.gg/ZZhkcWkKER
+  image: /images/partners/defi-drip.png
+  description: Creating 3D wearables which connects and expresses digital identity in the #Metaverse through innovative design and quality workmanship.
+  region: Europe
+  location: Netherlands
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+  pois:
+  tags:
+    - Architecture
+    - Event Production
+    - Wearable Design
+
