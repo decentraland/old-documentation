@@ -2008,5 +2008,29 @@
     - Event Production
     - Consulting
     - Land Rental
+    
+- name: WonderZone
+  partnerId: 87
+  default_link: https://wondermine.wonderzone.io/e
+  website: https://wondermine.wonderzone.io/
+  email: wonderzonegames@gmail.com
+  twitter: https://twitter.com/wonderzonegames
+  opensea: https://opensea.io/collection/wonderzonegames
+  discord: https://discord.gg/VvRyW5dchw
+  image: /images/partners/wonderzone.jpeg
+  description: We are a full stack team creating Web3 experiences and games.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Team
+  payments:
+    - Crypto
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
+    - Consulting
+    - Land Rental
 
 
