@@ -1927,5 +1927,29 @@
   tags:
     - Wearable Design
     - Architecture
+- name: Marc O Matic
+  partnerId: 84
+  default_link: https://marcomatic.com/
+  website: https://marcomatic.com/
+  email: studio@marcomatic.com
+  twitter: https://twitter.com/marc0matic
+  youtube: https://www.youtube.com/marc-o-matic
+  opensea: https://opensea.io/marc-o-matic
+  linkedin: https://www.linkedin.com/in/marc0matic/
+  instagram: https://www.instagram.com/marcomatic/
+  image: /images/partners/marc-o-matic.png
+  description: Marc-O-Matic is a Multidisciplinary Creator across AR/VR & Immersive Tech. His unique style focuses on an intersection of Analogue Art & Digital Media, creating highly unique content and experiences.
+  region: Oceania
+  location: Australia
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+    - PayPal
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
 
 
