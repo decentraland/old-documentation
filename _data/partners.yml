@@ -2212,3 +2212,29 @@
     - Event Production
     - Consulting
     - Wearable Design
+
+- name: Bverse
+  partnerId: 94
+  default_link: https://www.bverseconsulting.io/
+  website: https://www.bverseconsulting.io/
+  email: info@bverseconsulting.io
+  linkedin: https://www.linkedin.com/company/metaverse-consulting-firm/
+  twitter: https://twitter.com/bversedcl
+  youtube: https://www.youtube.com/channel/UCwSKS0Sxk-fpnLrRHfBlV5w
+  image: /images/partners/bverse.jpeg
+  description: BVERSE is a metaverse onboarding and consulting company helping individuals and companies to enter the metaverse space. We provide consulting services, commission build work, wearable consulting, event management and hosting, and streaming services.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - PayPal
+  pois:
+    - (-29,-110)
+  tags:
+    - Architecture
+    - Event Production
+    - Consulting
+    - Wearable Design
