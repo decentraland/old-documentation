@@ -2091,3 +2091,28 @@
     - Event Production
     - Wearable Design
 
+- name: GtrFrost
+  partnerId: 90
+  website: https://polygraphdcl.io/
+  default_link: https://polygraphdcl.io/
+  email: gtrfrost@gmail.com
+  linkedin: https://www.linkedin.com/in/grant-ryan-686056145/
+  twitter: https://twitter.com/gtrfrost
+  instagram: https://www.instagram.com/polygraphdcl/
+  youtube: https://www.youtube.com/channel/UCoTwlIzbfhQz-SPdkpxg-1w
+  discord: https://discordapp.com/users/317680953432735744
+  image: /images/partners/gtrfrost.JPG
+  description: Building a better tomorrow, today!
+  region: Oceania
+  location: Australia
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+  pois:
+  tags:
+    - Architecture
+    - Consulting
+    - Land Rental
+
