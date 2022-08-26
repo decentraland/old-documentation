@@ -2186,3 +2186,28 @@
     - Architecture
     - Event Production
     - Consulting
+
+- name: DCL Curations
+  partnerId: 94
+  default_link: https://www.dclcurations.com/
+  website: https://www.dclcurations.com/
+  email: DCLCurations@gmail.com
+  linkedin: https://www.linkedin.com/in/dclcurations/
+  twitter: https://twitter.com/DCLCurations
+  youtube: https://www.youtube.com/dclcurations
+  image: /images/partners/dcl-curations.jpeg
+  description: Metaverse Consulting and Educational company focused on onboarding new companies and individuals to Decentraland and handling end-to-end project management
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+    - Wire Transfer
+  pois:
+    - (130,133)
+  tags:
+    - Architecture
+    - Event Production
+    - Consulting
