@@ -2115,3 +2115,24 @@
     - Architecture
     - Land Rental
 
+- name: Versepective Architecture
+  partnerId: 91
+  website: https://www.versepective.com/
+  default_link: https://www.versepective.com/
+  email: gtrfrost@gmail.com
+  instagram: https://www.instagram.com/versepective.arch/
+  discord: https://discord.io/Versepective-Architecture
+  image: /images/partners/versepectivearchitecture.png
+  description: Professionals in 3D Space Designs.
+  region: South America
+  location: Argentina
+  languages:
+    - English
+    - Spanish
+  team_size: Individual
+  payments:
+    - Crypto
+  pois:
+  tags:
+    - Architecture
+
