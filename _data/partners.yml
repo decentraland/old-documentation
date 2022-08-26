@@ -2157,3 +2157,32 @@
     - Architecture
     - Events
     - Consulting
+
+- name: Songbird Collective
+  partnerId: 93
+  default_link: https://songbirdcoagency.com/
+  website: https://songbirdcoagency.com/
+  email: jdominguez@songbirdcoagency.com
+  linkedin: https://www.linkedin.com/in/john-dominguez-a236ab47/
+  twitter: https://twitter.com/DhiDominguez
+  instagram: https://www.instagram.com/dhinodhi/
+  discord: https://discordapp.com/users/684141129662595089
+  image: /images/partners/songbird-collective.png
+  description: The Songbird Collective is a group of experienced creatives, producing high-quality content across multiple platforms, including Decentraland (DCL). Our mission is to develop and deliver strategic marketing campaigns with true brand advocacy messaging. As event coordinators, we have developed and activated nearly 300 events in DCL. Our network of partners enables us to develop and launch multi-tiered metaverse activations, from concept design and strategy to marketing.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+    - Wire Transfer
+    - PayPal
+    - Credit Card
+  pois:
+    - (27,-118)
+  tags:
+    - Wearables
+    - Architecture
+    - Events
+    - Consulting
