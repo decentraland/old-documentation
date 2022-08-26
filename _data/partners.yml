@@ -2136,3 +2136,24 @@
   tags:
     - Architecture
 
+- name: ina
+  partnerId: 92
+  default_link: https://twitter.com/ina_dcl
+  email: ignaciodelcano@gmail.comm
+  twitter: https://twitter.com/ina_dcl
+  image: /images/partners/ina.png
+  description: A freelance and player interested in the developing the metaverse
+  region: Europe
+  location: Spain
+  languages:
+    - English
+    - Spanish
+  team_size: Individual
+  payments:
+    - Crypto
+  pois:
+    - (144,-35)
+  tags:
+    - Architecture
+    - Events
+    - Consulting
