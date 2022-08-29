@@ -2316,3 +2316,27 @@
     - (-89,69)
   tags:
     - Architecture
+
+- name: Brandonmanus.ETH
+  partnerId: 98
+  default_link: https://y.at/%F0%9F%90%99%F0%9F%8E%AE%F0%9F%9B%B8%F0%9F%8E%A5
+  website: https://y.at/%F0%9F%90%99%F0%9F%8E%AE%F0%9F%9B%B8%F0%9F%8E%A5
+  email: Brandonmanus15@gmail.com
+  linkedin: https://www.linkedin.com/in/brandon-manus15/
+  twitter: https://twitter.com/brandon_manus
+  instagram: https://www.instagram.com/brandonmanus.eth/
+  youtube: https://www.youtube.com/channel/UCF16LdbxvqoIJLEBJcr_f1Q
+  discord: https://discordapp.com/users/701992959922667532
+  opensea: https://opensea.io/brandonmanus
+  image: /images/partners/brandonmanus.png
+  description: Military Engineering ~ Published/Award winning Student journalist ~ Digital Media
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+    - PayPal
+  tags:
+    - Wearable Design
