@@ -2294,3 +2294,27 @@
   pois: 
   tags:
     - Event Production
+
+- name: Bitgem
+  partnerId: 97
+  default_link: https://www.bitgem3d.com
+  website: https://www.bitgem3d.com/
+  email: support@bitgem3d.com
+  twitter: https://twitter.com/BitGem3d
+  sketchfab: https://sketchfab.com/bitgem
+  youtube: https://www.youtube.com/c/Bitgem
+  discord: https://discord.gg/PHBpHrQUkC
+  image: /images/partners/bitgem.png
+  description: Bitgem is a boutique 3D CGI studio working first and foremost on building a high-quality, style consistent low poly 3d models and texture for the gaming and entertainment industry.
+  region: Europe
+  location: Germany
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - PayPal
+  pois: 
+    - (-89,69)
+  tags:
+    - Architecture
