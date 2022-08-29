@@ -2238,3 +2238,35 @@
     - Event Production
     - Consulting
     - Wearable Design
+    
+- name: Metagellan
+  partnerId: 95
+  default_link: https://www.metagellan.com/en
+  website: https://www.metagellan.com/en
+  email: loic@colleconline.com
+  linkedin: https://www.linkedin.com/in/loïc-schappacher-5a8abb29
+  twitter: https://twitter.com/colleconline
+  instagram: https://www.instagram.com/colleconline_officiel/
+  youtube: https://www.youtube.com/c/Colleconline-Collectors-Website
+  discord: https://discord.gg/uaJJd6aYbp
+  image: /images/partners/metagellan.jpeg
+  description: BUILDING TOGETHER YOUR PROJECT IN THE METAVERSE
+  region: Europe
+  location: France
+  languages:
+    - English
+    - France
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - Wire Transfer
+    - Credit Card
+    - PayPal
+  pois:
+    - 
+  tags:
+    - Architecture
+    - Event Production
+    - Wearables
+    - Consulting
+    - Wearable Design
