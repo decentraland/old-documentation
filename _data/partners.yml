@@ -2370,3 +2370,25 @@
     - Event Production
     - Consulting
     - Land Rental
+
+- name: KingX
+  partnerId: 100
+  default_link: https://market.decentraland.org/accounts/0xc8c086c34c138d9c0981afddc7b0f4a086fa3f19
+  website: https://market.decentraland.org/accounts/0xc8c086c34c138d9c0981afddc7b0f4a086fa3f19
+  email: ferdiyusufdemir@gmail.com
+  linkedin: https://www.linkedin.com/in/ferdi-yusuf-demir-841a7b193/
+  discord: https://discordapp.com/users/506194881170112521 
+  image: /images/partners/kingx.png
+  description: MORE THAN A KING
+  region: Europe
+  location: Turkey
+  languages:
+    - English
+  team_size: Medium Studio
+  payments:
+    - Crypto
+    - Credit Card
+  pois: 
+  tags:
+    - Wearable Design
+    
