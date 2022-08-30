@@ -2136,7 +2136,7 @@
   tags:
     - Architecture
 
-- name: ina
+- name: Ina
   partnerId: 92
   default_link: https://twitter.com/ina_dcl
   email: ignaciodelcano@gmail.comm
