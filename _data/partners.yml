@@ -2340,3 +2340,33 @@
     - PayPal
   tags:
     - Wearable Design
+
+- name: MetaGameHub DAO
+  partnerId: 99
+  default_link: https://metagamehub.io
+  website: https://metagamehub.io
+  email: christian.werner@thedac.info
+  linkedin: https://www.linkedin.com/company/metagamehub-dao/mycompany/
+  twitter: https://twitter.com/mgh_metadev
+  instagram: https://www.instagram.com/metagamehub_dao/?hl=en
+  youtube: https://www.youtube.com/channel/UC6lHXEEmjGiRmIVmiS0odpw
+  discord: https://discord.gg/73cF3XK5
+  image: /images/partners/metagamehub.png
+  description: "We are the MGH Metaverse Development Group, consisting of experienced game designers, artists, 3D modellers and UX designers. As a part of the MetaGameHub DAO, we are very well connected to a network of additional experts in all relevant Web3 technologies that can further add to a truly meaningful experience within the upcoming Metaverses. We are eager to prove to everyone that when done right, the current technology shift towards blockchain, the usage of NFTs and a decentralized approach towards a new economy is a step forward in every aspect. There doesn't have to be a trade-off. The advancements in technology just offer more possibilities, and it's a matter of getting it right."
+  region: Europe
+  location: Germany
+  languages:
+    - English
+    - German
+  team_size: Medium Studio
+  payments:
+    - Crypto
+  pois:
+    - (66,-48) 
+    - (-4,-61)
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
+    - Consulting
+    - Land Rental
