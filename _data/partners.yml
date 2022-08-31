@@ -2510,3 +2510,29 @@
     - Architecture
     - Consulting
     - Wearable Design
+
+- name: Atrovenado
+  partnerId: 106
+  default_link: https://linktr.ee/decentralandbrasil
+  website: https://linktr.ee/decentralandbrasil
+  email: atrovenado@gmail.com 
+  twitter: https://twitter.com/atrovenado
+  discord: https://discord.gg/wnUerFVgsQ
+  youtube: https://www.youtube.com/channel/UCt8IDejYt40qQlu48I2gIVQ
+  instagram: https://www.instagram.com/atrovenado/
+  image: /images/partners/atrovenado.jpg
+  description: 
+  region: South America
+  location: Brazil
+  languages:
+    - English
+    - Portuguese
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - Wyre Transfer
+  tags:
+    - Architecture
+    - Consulting
+    - Wearable Design
+    - Event Producer
