@@ -2481,3 +2481,29 @@
     - Architecture
     - Event Production
     - Consulting
+
+- name: Archonomous 
+  partnerId: 105
+  default_link: https://archonomous.co/
+  website: https://archonomous.co/
+  email: studio@archonomous.co 
+  twitter: https://twitter.com/archonomous
+  discord: https://discordapp.com/users/368903077563990016 
+  sketchfab: https://sketchfab.com/archonomous/models
+  parcel: https://parcel.so/creatorverse/creator/archonomous
+  opensea: https://opensea.io/Archonomous
+  image: /images/partners/archonomous.JPG
+  description: Archonomous is a multi-disciplinary design studio that merges art with technology to create immersive, responsible, and meaningful experiences. Our work strives to achieve timelessness through harmonizing forms and functions while interweaving narrative and experience.
+  region: North America
+  location: United States
+  languages:
+    - English
+    - Spanish
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - PayPal
+    - Wyre Transfer
+  tags:
+    - Architecture
+    - Consulting
