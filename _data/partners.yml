@@ -2457,3 +2457,27 @@
     - Crypto
   tags:
     - Architecture
+
+- name: BioMETA 
+  partnerId: 104
+  default_link: osb.vmt@gmail.com
+  email: osb.vmt@gmail.com 
+  twitter: https://twitter.com/osbvmt
+  instagram: https://instagram.com/osbvmt?igshid=YmMyMTA2M2Y=
+  opensea: https://opensea.io/BioMETAdcl
+  image: /images/partners/biometa.jpeg
+  description: Digital architect and phygital host.
+  region: North America
+  location: United States
+  languages:
+    - English
+    - Spanish
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - PayPal
+    - Credit Card
+  tags:
+    - Architecture
+    - Event Production
+    - Consulting
