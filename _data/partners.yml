@@ -2391,3 +2391,24 @@
   tags:
     - Wearable Design
     
+- name: Leapr Studio
+  partnerId: 101
+  default_link: https://leapr.studio/
+  website: https://leapr.studio/
+  email: tomas@leapr.studio
+  instagram: https://www.instagram.com/leapr.studio/
+  linkedin: https://www.linkedin.com/company/leapr-studio/ 
+  image: /images/partners/leaprstudio.png
+  description: Leapr is a web3 agency helping brands better understand and navigate the ever-evolving world of web3, the metaverse, crypto and NFTs.
+  region: South America
+  location: Argentina
+  languages:
+    - English
+    - Spanish
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - Wire Transfer
+  tags:
+    - Architecture
+    
