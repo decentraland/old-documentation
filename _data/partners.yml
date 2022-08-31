@@ -2436,3 +2436,24 @@
     - Consulting
     - Land Rental
     
+- name: MetaMess
+  partnerId: 103
+  default_link: https://www.deviantart.com/messchen
+  website: https://www.deviantart.com/messchen
+  email: metamesscjb@gmail.com
+  discord: https://discord.gg/mMsFQySkEc
+  twitter: https://twitter.com/metamesseth
+  instagram: https://www.instagram.com/mcartogether/
+  youtube: https://www.youtube.com/channel/UCt5ZDQmORetqp3uIAi5u2cQ
+  image: /images/partners/metamess.png
+  description: I am a space designer, good at all kinds of space design , such as interior design, exhibition design, commercial retail store design, office design, shopping mall design, normal architecture design, etc
+  region: Asia
+  location: China
+  languages:
+    - Chinese
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+  tags:
+    - Architecture
