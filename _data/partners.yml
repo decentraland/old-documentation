@@ -2458,7 +2458,7 @@
   tags:
     - Architecture
 
-- name: BioMETA 
+- name: BioMeta 
   partnerId: 104
   default_link: osb.vmt@gmail.com
   email: osb.vmt@gmail.com 
