@@ -2412,3 +2412,27 @@
   tags:
     - Architecture
     
+- name: Danae
+  partnerId: 102
+  default_link: https://danae.io/
+  website: https://danae.io/
+  email: luca@danae.io
+  discord: https://discord.gg/neK4N3jH
+  twitter: https://twitter.com/Danae__io
+  instagram: https://www.instagram.com/danae.io/
+  linkedin: https://www.linkedin.com/in/luca-babini-8687b91b6 
+  image: /images/partners/danae.png
+  description: Our mission is to create the ecosystem that allows art players to easily connect with the crypto sphere. Created by art historians and blockchain experts, Danae.io offers a unique solution based on the best of both worlds of art and crypto, led by the following observation artistic value, scarcity, and usage make the value of an NFT. We believe that Web3 offers a whole new field of possibilities for the evolution of art. In the same way that contemporary art has represented a new paradigm of art, the evolution of Web2 towards Web3 is opening up a palette of expressions and emotions never before explored.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - PayPal
+    - Wire Transfer
+  tags:
+    - Events
+    - Consultant
+    - Land Rental
+    
