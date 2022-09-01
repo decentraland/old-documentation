@@ -2588,3 +2588,31 @@
     - Land Rental
     - Wearable design
     - Event Production
+
+- name: Applied Talent LLC by Carl Fravel
+  partnerId: 109
+  default_link: https://dclconf.com/
+  website: https://dclconf.com/
+  email: cfravel@applied-talent.com
+  instagram: https://www.instagram.com/cfravel/
+  linkedin: https://linkedin.com/in/cfravel
+  twitter: https://twitter.com/carlfravel    
+  discord: https://discordapp.com/users/281637083712454656 
+  youtube: https://www.youtube.com/c/CarlFravel1
+  opensea: https://opensea.io/carl-fravel
+  image: /images/partners/carlfravel.jpg
+  description: Full-service metaverse scene, event and technology provider.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - Wyre transfer
+    - Paypal
+  tags:
+    - Architecture
+    - Consulting
+    - Land Rental
+    - Event Production
