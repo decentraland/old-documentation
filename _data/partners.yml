@@ -2559,3 +2559,32 @@
     - Architecture
     - Consulting
     - Land Rental
+
+- name: Metakey
+  partnerId: 108
+  default_link: https://themetakey.com/
+  website: https://themetakey.com/
+  email: contact@themetakey.com
+  linkedin: https://au.linkedin.com/in/mateen-soudagar
+  twitter: https://twitter.com/themetakey
+  discord: https://discord.gg/anhN4CpWZD
+  youtube: https://www.youtube.com/channel/UC46Ux6N7c6w5WUWDxbLxZ6A
+  opensea: https://opensea.io/collection/the-meta-key
+  image: /images/partners/metakey.jpg
+  description: Metakey helps brands build and connect to a web3 centric audience. We can help with strategy, concept, build out and activation.
+  region: Oceania
+  location: Australia
+  languages:
+    - English
+  team_size: Large Studio
+  payments:
+    - Crypto
+    - Wyre transfer
+    - Paypal
+    - Credit Card
+  tags:
+    - Architecture
+    - Consulting
+    - Land Rental
+    - Wearable design
+    - Event Producer
