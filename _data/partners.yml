@@ -1,7 +1,7 @@
-- name: Dapp Craft
+- name: DAPPCRAFT
   partnerId: 1
-  default_link: https://dapp-craft.com/
-  website: https://dapp-craft.com/
+  default_link: https://dappcraft.io/
+  website: https://dappcraft.io/
   discord: https://discord.gg/S4ZhNM4
   twitter: https://twitter.com/dapp_craft
   youtube: https://www.youtube.com/channel/UCIibGAk2q7tJWWiyWrOhYGw
@@ -21,7 +21,7 @@
     - Wire Transfer
   languages:
     - English
-  location: Russia
+  location: Singapore
   region: Asia
   team_size: Large Studio
 - name: Low Poly Models
