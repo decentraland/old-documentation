@@ -2136,13 +2136,17 @@
   tags:
     - Architecture
 
-- name: Ina
+- name: Spanish Museum
   partnerId: 92
-  default_link: https://twitter.com/ina_dcl
+  default_link: https://spanishmuseum.es/
+  website: https://spanishmuseum.es/
   email: ignaciodelcano@gmail.comm
-  twitter: https://twitter.com/ina_dcl
+  twitter: https://twitter.com/SpanishMuseum
+  discord: https://discord.gg/6tjupkaWm3
+  instagram: https://www.instagram.com/spanishmuseumdcl/
+  youtube: https://www.youtube.com/channel/UC-Uy7-yFepGaw7jZDdd97wA
   image: /images/partners/ina.png
-  description: A freelance and player interested in the developing the metaverse.
+  description: The main focus of the Spanish Museum is both to create community and to serve to give visibility to the Hispanic world in the metaverse, nft artists, musicians, blockchain projects... We offer development and consulting services for independent events, and hosting events in the Spanish Museum with minigames, poaps, custom nfts, multi language support... and friendly and fun approach.
   region: Europe
   location: Spain
   languages:
