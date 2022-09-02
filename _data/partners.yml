@@ -2635,3 +2635,22 @@
     - Paypal
   tags:
     - Wearable Design
+    
+- name: MorphBot
+  partnerId: 111
+  default_link: https://twitter.com/morph_bot
+  email: morphbot2000@gmail.com
+  twitter: https://twitter.com/morph_bot
+  discord: https://discord.gg/X8MzHCHa
+  opensea: https://opensea.io/Morphbot
+  image: /images/partners/morphbot.png
+  description: Avatar Interoperability & Metaverse Content Creation.
+  region: North America
+  location: Canada
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+  tags:
+    - Consulting
