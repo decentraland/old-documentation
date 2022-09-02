@@ -2679,3 +2679,26 @@
   tags:
     - Wearable Design
     - Consulting
+
+- name: DCL Real Estate
+  partnerId: 113
+  default_link: https://dclrealestate.org/
+  website: https://dclrealestate.org/
+  email: dclrealestateagency@gmail.com
+  discord: https://discord.gg/XBjCRTbRZP
+  instagram: https://www.instagram.com/dclrealestate/
+  opensea: https://opensea.io/KlockmannProperties
+  twitter: https://twitter.com/DCL_RealEstate
+  image: /images/partner.dclrealstate.PNG
+  description: Buy, sell & rent LAND in Decentraland! We will help you sell or rent out your land in DCL - or advise you if you need to buy or rent a parcel. Our DCL Experts is ready to be your trusted advisor. DCL Real Estate is the world's first, best and biggest realtor & marketplace with 100% focus on Decentraland.
+  region: Europe
+  location: Denmark
+  languages:
+    - English
+  team_size: Individual
+  pois: 
+  payments:
+    - Crypto
+  tags:
+    - Land Rental
+    - Consulting
