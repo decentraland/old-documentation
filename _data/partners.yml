@@ -2590,4 +2590,23 @@
     - Land Rental
     - Wearable design
     - Event Production
-
+    
+- name: Outland Machines
+  partnerId: 109
+  default_link: https://www.outlandmachines.com/
+  website: https://www.outlandmachines.com/
+  email: hello@outlandmachines.com
+  image: /images/partners/outland-machines.png
+  description: Outland Machines provide curiosities that you can add to your land freely and easily to provide visitor engagment and monetisation. No need to create your own content or surrender control to renters.
+  region: Europe
+  location: United Kingdom
+  languages:
+    - English
+  team_size: Individual
+  pois: 
+    - (-43,150)
+  payments:
+    - Crypto
+    - Paypal
+  tags:
+    - Architecture
