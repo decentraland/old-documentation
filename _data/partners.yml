@@ -2654,3 +2654,28 @@
     - Crypto
   tags:
     - Consulting
+
+- name: Farkas
+  partnerId: 112
+  default_link: https://linktr.ee/matteoiacobelli
+  website: https://linktr.ee/matteoiacobelli
+  email: mrfarkasofficial@gmail.com
+  discord: https://discordapp.com/users/677491170859024385
+  instagram: https://www.instagram.com/mrfarkasofficial/
+  opensea: https://opensea.io/MrFarkas
+  twitter: https://twitter.com/OfficialFarkas
+  image: /images/partners/farkas.PNG
+  description: Design meets blockchain. Creative solutions, innovative experiences.
+  region: South America
+  location: Argentina
+  languages:
+    - English
+    - Spanish
+  team_size: Individual
+  pois: 
+  payments:
+    - Crypto
+    - Paypal
+  tags:
+    - Wearable Design
+    - Consulting
