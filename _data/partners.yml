@@ -2611,3 +2611,27 @@
     - Paypal
   tags:
     - Architecture
+
+- name: Iacob_visuals
+  partnerId: 110
+  default_link: https://linktr.ee/matteoiacobelli
+  website: https://linktr.ee/matteoiacobelli
+  email: jacob90.matt@gmail.com
+  instagram: https://instagram.com/iacob_visual?igshid=YmMyMTA2M2Y=
+  opensea: https://opensea.io/iacob_visual
+  linkedin: https://www.linkedin.com/in/matteoiacobelli/
+  image: /images/partners/iacobvisuals.PNG
+  description: We are the Metafox Crew, a group of independent creators with the goal to recruit as many members as possible to form the largest crew in the metaverse! Find the foxie wearables and join us
+  region: Europe
+  location: Italy
+  languages:
+    - English
+    - Italian
+    - Spanish
+  team_size: Individual
+  pois: 
+  payments:
+    - Crypto
+    - Paypal
+  tags:
+    - Wearable Design
