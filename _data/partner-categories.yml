@@ -1,0 +1,43 @@
+- name: Service
+  types:
+    - Architecture
+    - Consulting
+    - Event Production
+    - Gaming
+    - Land Rental
+    - Wearable Design
+- name: Region
+  types:
+    - North America
+    - Latin America
+    - Europe
+    - Asia
+    - Oceania
+- name: Size
+  types:
+    - Individual
+    - Small Studio
+    - Medium Studio
+    - Large Studio
+- name: Language
+  types:
+    - Chinese
+    - Danish
+    - English
+    - French
+    - German
+    - Greek
+    - Hebrew
+    - Hindi
+    - Italian
+    - Malay
+    - Portuguese
+    - Rumanian
+    - Spanish
+    - Turkish
+- name: Payment
+  types:
+    - Wire Transfer
+    - PayPal
+    - Credit Card
+    - Crypto

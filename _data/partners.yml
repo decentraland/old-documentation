@@ -11,17 +11,18 @@
   image: /images/partners/dapp-craft.png
   description: Dapp Craft have many different projects in our portfolio. Wearables. Games. Events. Emotes. Scenes and other. Dapp Craft has helped brands like Guo Pei and Mercedes.
   tags:
-    - Wearables
-    - Architect
-    - Land
+    - Wearable Design
+    - Architecture
+    - Land Rental
     - Consulting
-    - Events
+    - Event Production
   payments:
     - Crypto
-    - Wire
+    - Wire Transfer
   languages:
     - English
   location: Russia
+  region: Asia
   team_size: Large Studio
 - name: Low Poly Models
   partnerId: 2
@@ -36,18 +37,19 @@
   image: /images/partners/lowpolymodels.png
   description: Low Poly Models specialise in developing high quality custom 3D assets like wearables, NPCs and or gamified scenes in the smallest possible data packages.  They have been in Decentraland working closely with the community and The Foundation since early 2019, creating scenes, asset packs and curating wearables via the Curation Committee.  The LPM team is very familiar with the ecosystem for wearable approvals, voting and community events.  They focus on making graphics load faster to improve the overall experience for both brand and user. Customisation and compaction like this is ideal for open source metaverses like Decentraland. Low Poly Models have helped brands such as Alison Wonderland, Async Art, Atari ®, Coca-Cola, CNN Brasil, Eden Reforestation Projects, Fred Segal, Jose Delbo, Known Origin, Maserati, $MEME, Mintbase, NIVA, NonFungible, Playboy, RTFKT, Subnation, SuperRare and $Whale.
   location: Spain
+  region: Europe
   team_size: Small Studio
   languages:
     - English
     - Spanish
   payments:
     - Crypto
-    - Wire
+    - Wire Transfer
     - PayPal
   tags:
-    - Wearables
-    - Architect
-    - Events
+    - Wearable Design
+    - Architecture
+    - Event Production
     - Consulting
 - name: Voxel Architects
   partnerId: 3
@@ -59,6 +61,7 @@
   image: /images/partners/voxel-architects.jpeg
   description: Voxel Architects is one of the first metaverse-native architecture studios, committed to designing stunning virtual structures and experiences in the leading virtual worlds. Founded in 2020, and with over 100 projects in their portfolio, Voxel Architects helped artists, brands, and companies such as ConsenSys, Metamask, Sotheby's, Auroboros, Real Vision and Tom Sachs, among many others. No matter the size and the difficulty of the project, Voxel Architects will build it.
   location: Portugal
+  region: Europe
   team_size: Large Studio
   languages:
     - English
@@ -66,11 +69,11 @@
     - Rumanian
   payments:
     - Crypto
-    - Wire
+    - Wire Transfer
   tags:
-    - Wearables
-    - Architect
-    - Events
+    - Wearable Design
+    - Architecture
+    - Event Production
     - Consulting
 - name: Vegas City
   partnerId: 4
@@ -88,15 +91,16 @@
     - English
   team_size: Large Studio
   location: United Kingdom
+  region: Europe
   payments: 
     - Crypto
-    - Wire
+    - Wire Transfer
   tags:
-    - Wearables
-    - Architect
-    - Events
+    - Wearable Design
+    - Architecture
+    - Event Production
     - Consulting
-    - Land
+    - Land Rental
 - name: Malloy
   partnerId: 5
   email: malloy@feekagames.com
@@ -104,20 +108,21 @@
   twitter: https://twitter.com/feekacafe
   image: /images/partners/malloy.jpg
   description: We Activate brands in the Metevarse and connect them to over 50,000 web3 and metaverse native users.
-  location: United Kindom
+  location: United Kingdom
+  region: Europe
   team_size: Small Studio
   languages:
     - English
   payments:
     - Crypto
-    - Wire
-    - Card
+    - Wire Transfer
+    - Credit Card
     - PayPal
   tags:
-    - Wearables
-    - Architect
+    - Wearable Design
+    - Architecture
     - Consulting
-    - Events
+    - Event Production
 - name: Kollektiff
   partnerId: 6
   default_link: https://kollectiff.com/
@@ -129,8 +134,8 @@
   image: /images/partners/kollectiff.png
   description: KOLLECTIFF develops technology and content solutions that make it accessible for brands, media companies and creators to launch, manage and scale web3 experiences. Our multidisciplinary team has extensive blockchain development and bespoke content creation experience. We demystify web3, reduce its barriers to entry, and empower our clients to access and create cultural moments in the era of digital ownership and the metaverse.
   tags:
-    - Wearables
-    - Architect
+    - Wearable Design
+    - Architecture
     - Consulting
 - name: Last Slice
   partnerId: 7
@@ -144,17 +149,18 @@
   instagram: https://www.instagram.com/lastsliceco/
   opensea: https://opensea.io/collection/last-slice-collective-nft
   location: United States
+  region: North America
   payments:  
     - Crypto
-    - Wire
+    - Wire Transfer
   team_size: Large Studio
   languages: 
     - English
   tags:
-    - Wearables
-    - Architect
-    - Land
-    - Events
+    - Wearable Design
+    - Architecture
+    - Land Rental
+    - Event Production
     - Consulting
 
 - name: Fabeeo Breen
@@ -170,16 +176,17 @@
   image: /images/partners/fabeeo-breen.jpeg
   description: Fabeeo Breen is a Metaverse fashion Brand & Digital studio providing services in 3D animation and dynamic simulations, NFT collections, wearables, virtual world showrooms and avatar development.
   location: Italy
+  region: Europe
   languages:
     - English
     - Italian
   team_size: Individual
   payments:
     - Crypto
-    - Wire
+    - Wire Transfer
     - PayPal
   tags:
-    - Wearables
+    - Wearable Design
 - name: XR Couture
   partnerId: 10
   default_link: https://xrcouture.com/
@@ -194,14 +201,15 @@
   image: /images/partners/xrcouture.png
   description: XR Couture is a leading digital fashion platform that enables brands to enter the metaverse and enables users to purchase and experience limited edition collectibles in the digital world. Bespoke solutions focusing on web3. We create digital assets and suggest marketing and collaboration partners to launch various metaverse assets including NFTs.
   location: India
+  region: Asia
   team_size: Medium Studio
   languages:
     - English
   payments:
     - Crypto
-    - Bank Transfer
+    - Wire Transfer
   tags:
-    - Wearables
+    - Wearable Design
 - name: MetaSkins
   partnerId: 11
   default_link: https://metaskins.com/
@@ -211,8 +219,8 @@
   image: /images/partners/metaskins.png
   description: MetaSkins specialize in personalized digital wearables, custom infrastructure built on metaverse parcels and rand tailored metaverse events. MetaSkins helped brands like Placebo, Artisant and Etro.
   tags:
-    - Wearables
-    - Architect
+    - Wearable Design
+    - Architecture
 - name: Polygonal Mind
   partnerId: 12
   default_link: https://www.polygonalmind.com/
@@ -228,20 +236,21 @@
   image: /images/partners/polygonal-mind.png
   description: "Creative Development Studio that imagines, designs and develops stunning environments, avatars, wearables, games and experiences for the Metaverse. We're focused on optimization, lowpoly and beautiful aesthetics. We build what cannot be built in real life, with an extra touch of magic and love."
   location: Spain
+  region: Europe
   team_size: Large Studio
   languages:
     - English
     - Spanish
   payments:
     - Crypto
-    - Wire
+    - Wire Transfer
     - PayPal
     - Credit Card
   tags:
-    - Wearables
-    - Architect
-    - Events
-    - Land
+    - Wearable Design
+    - Architecture
+    - Event Production
+    - Land Rental
     - Consulting
 
 - name: Sugar Club
@@ -254,16 +263,17 @@
   image: /images/partners/sugar-club.jpg
   description: Digital designer. Virtual reality. Metaverse explorer.
   location: France
+  region: Europe
   team_size: Individual
   payments:
     - Crypto
   languages:
     - English
-    - Frech
+    - French
   tags:
-    - Wearables
-    - Architect
-    - Events
+    - Wearable Design
+    - Architecture
+    - Event Production
     - Consulting
 - name: Studio Sparkles 
   partnerId: 14
@@ -275,13 +285,14 @@
   image: /images/partners/sparkles-studio.jpeg
   description: Boutique Animation Studio making digital realms sparkle. We produce both 2d and 3d animation, storyboards and animatics for any pitch or project, and avatars that look good in any metaverse!
   location: Canada
+  region: North America
   team_size: Medium Studio
   languages:
     - English
   payments:
     - Crypto
   tags:
-    - Wearables
+    - Wearable Design
 - name: TerraZero Technologies Inc.
   partnerId: 16
   default_link: https://terrazero.com/
@@ -294,19 +305,20 @@
   image: /images/partners/terrazero.png
   youtube: https://www.youtube.com/channel/UC2SMdQwEWMU_56WMzhknFVg?app=desktop
   location: United States
+  region: North America
   languages:
     - English
   team_size: Large Studio
   description: TerraZero is the premier metaverse studio and technologies firm across multiple metaverse worlds, with numerous 50-100 billion market cap clients active in Decentraland.
   payments: 
-    - Wire
+    - Wire Transfer
     - PayPal
     - Credit Card
   tags:
-    - Wearables
-    - Architect
-    - Events 
-    - Land
+    - Wearable Design
+    - Architecture
+    - Event Production 
+    - Land Rental
     - Consulting
 - name: MixedBag
   partnerId: 19
@@ -319,9 +331,9 @@
   image: /images/partners/mixed-bag.png
   description: MixedBag is an award winning video game studio focused on the creation and development of new and original games using the latest technologies in innovative ways. We’ve developed and successfully launched a wide range of games on all available platforms, from console to PC and mobile. Our latest game, the Apple Arcade exclusive Secret Oops!, uses Augmented Reality to offer a never before seen multiplayer collaborative experience. We now offer an extensive range of metaverse development services, using our knowledge to offer our clients the most stunning and interactive lands possible.
   tags:
-    - Wearables
-    - Architect
-    - Events 
+    - Wearable Design
+    - Architecture
+    - Event Production 
     - Consulting
 - name: Cominted Labs
   partnerId: 21
@@ -335,16 +347,17 @@
   description: Cominted Labs is a metaverse studio building experiences in Decentraland. We are your partner from strategy to execution. Our world-class team of experts, designers, and developers will bring your vision to life in the metaverse!
   team_size: Medium Studio
   location: United States
+  region: North America
   languages: 
     - English
   payments:
     - Crypto
-    - Wire
+    - Wire Transfer
     - PayPal
   tags:
-    - Wearables
-    - Architect
-    - Events 
+    - Wearable Design
+    - Architecture
+    - Event Production 
     - Consulting
 - name: SpacesDAO
   partnerId: 22
@@ -358,16 +371,17 @@
   image: /images/partners/spaces.jpg
   description: Spaces is a collective of architects, artists and developers dedicated to the design of tailored spaces and experiences for the metaverse. At the core of our design philosophy, we imagine and build the unbuildable, defying real life limitations, yet grounded with a seamless combination of organic and futuristic experiences.
   location: Spain
+  region: Europe
   languages: 
     - Spanish
     - English
   team_size: Small Studio
   payments: 
     - Crypto
-    - Wire
+    - Wire Transfer
   tags:
-    - Wearables
-    - Architect
+    - Wearable Design
+    - Architecture
     - Consulting
 - name: Filmrare
   partnerId: 23
@@ -381,14 +395,15 @@
   image: /images/partners/filmrare.jpg
   description: Filmrare is Decentraland´s longest-running cineplex and a venue with multiple screens and gallery floors backed by a DAO grant.
   location: India
+  region: Asia
   languages: 
     - English
   team_size: Small Studio
   payments: 
     - Crypto
-    - Wire
+    - Wire Transfer
   tags:
-    - Events
+    - Event Production
 - name: METAVERSE Architects
   partnerId: 24
   default_link: https://metaverse-architects.com/
@@ -401,19 +416,20 @@
   image: /images/partners/metaverse.architects.jpg
   description: Metaverse Architects is a 3D Modelling & Game Development studio for the Metaverse. We design and develop for Decentraland and all Metaverse worlds. Bringing your brand to the Virtual World in a playful and engaging way.
   location: Malta
+  region: Europe
   languages: 
     - English
   team_size: Medium Studio
   payments: 
     - Crypto
-    - Wire
+    - Wire Transfer
     - PayPal
   tags:
-    - Wearables
-    - Architect
-    - Events 
+    - Wearable Design
+    - Architecture
+    - Event Production 
     - Consulting
-    - Land
+    - Land Rental
 - name: BeatBlox Studio & Music District
   partnerId: 25
   default_link: https://www.beatblox.org/
@@ -428,6 +444,7 @@
   image: /images/partners/beatblox.png
   description: While we keep developing BeatBlox as a brand and positioning us as the main musical district in the metaverse, our in-house team is offering services to 3rd parties who want to activate their brand in the metaverse ecosystem. We highly believe in projects that want to create communities besides revenue, and mostly focused on brands who want to join the musical landscape as it gets built. Services we are offering go from Architecture & 3D Modeling from scratch, Interior Design & Landscaping, NFTs & Smart Contracts Development and Organizing Virtual Concerts & Music Festivals. We also provide pre designed spaces inside our 34 LANDs district for an easy and fast Decentraland onboarding for brands that align with us.
   location: Argentina
+  region: Latin America
   languages: 
     - Spanish
     - English
@@ -435,10 +452,10 @@
   payments: 
     - Crypto
   tags:
-    - Architect
-    - Events 
+    - Architecture
+    - Event Production 
     - Consulting
-    - Land
+    - Land Rental
 - name: Threedium
   partnerId: 26
   default_link: https://www.threedium.co.uk
@@ -452,6 +469,7 @@
   image: /images/partners/threedium.jpg
   description: The all-in-one 3d/ar engine to build and launch immersive commerce experiences and phygital wearables across any digital, physical or metaverse channel at scale.
   location: United Kingdom
+  region: Europe
   team_size: Large Studio
   languages:
     - English
@@ -460,12 +478,12 @@
     - Greek
   payments:
     - Crypto
-    - Wire
+    - Wire Transfer
   tags:
-    - Wearables
-    - Architect 
+    - Wearable Design
+    - Architecture 
     - Consulting
-    - Land
+    - Land Rental
 - name: Decentral Games
   partnerId: 27
   default_link: https://twitter.com/0xmiles
@@ -477,13 +495,14 @@
   image: /images/partners/miles.jpg
   description: Decentral Games builds ICE Poker, the first metaverse-native, play-and-own poker game that give players economic freedom through self-custody and delegation of wearables.
   location: British Virgin Islands
+  region: North America
   team_size: Large Studio
   languages:
     - English
   tags:
-    - Wearables
-    - Events 
-    - Land
+    - Wearable Design
+    - Event Production 
+    - Land Rental
   payments:
     - Crypto
 - name: Renovi Studios
@@ -498,14 +517,15 @@
   description: Renovi Studios is a Web3 agency that develops and builds Metaverse and NFT strategiesfor leading brands in the fashion, entertainment, sports, and hospitality sectors.
   team_size: Small Studio
   location: United Kingdom
+  region: Europe
   languages:
     - English
   payments:
     - Crypto
-    - Wire
+    - Wire Transfer
   tags:
-    - Architect
-    - Land
+    - Architecture
+    - Land Rental
     - Consulting
 - name: Bioma
   partnerId: 29
@@ -519,6 +539,7 @@
   description: "Bioma is a project to threedeemodel the metaverse. Based on the idea of a biome: 'a large naturally occurring community occupying a major habitat', we offer a design experience that revolves around the performativity of the body, virtual materiality, and how these two interact."
   team_size: Individual
   location: United States
+  region: North America
   languages:
     - English
     - Spanish
@@ -526,8 +547,8 @@
     - Crypto
     - PayPal
   tags:
-    - Wearables
-    - Architect
+    - Wearable Design
+    - Architecture
 - name: Fireworks Design Studio
   partnerId: 30
   default_link: https://www.fireworksdesignstudio.com/
@@ -542,14 +563,15 @@
   description: The exploration of ideas from all directions without boundaries and restrictions. Such are the design principles of Fireworks Design Studio, a KL-based interior design firm established in 2008 by Kenny Yap, a professionally trained interior design veteran with more than 20 years of experience in the industry. Built upon the philosophy that every project should be approached with a fresh perspective, Fireworks Design Studio recognizes that each different space possesses a unique identity and thus deserves its very own design language to convey its characteristics to the fullest potential. Ultimately, every idea and inspiration stems from the client’s story and is interwoven into the environment through a modern and functional design approach. Fireworks Design Studio has strong expertise in residential and commercial projects and provides end-to-end interior design services that include consultancy and interior fit-out. The design firm's principle of transcending the norms of interior design is applied in a wide range of works, from private residences and high-rise developments to corporate offices and tailor-made retail spaces and now the Metaverse
   team_size: Medium Studio
   location: Malaysia
+  region: Asia
   languages:
     - English
     - Chinese
   payments:
     - Crypto
-    - Wire
+    - Wire Transfer
   tags:
-    - Architect
+    - Architecture
 - name: Pangea DAO
   partnerId: 31
   default_link: https://pangeadao.org
@@ -562,6 +584,7 @@
   description: PangeaDAO is a Metaverse real estate trust that acquires, develops, and commercializes land in virtual worlds. Pangea’s investment, development, and consulting arms work to create a more equitable and accessible Metaverse for individuals, collectives, and brands.
   team_size: Medium Studio
   location: United States
+  region: North America
   languages:
     - English
     - Spanish
@@ -570,10 +593,10 @@
   payments:
     - Crypto
   tags:
-    - Wearables
-    - Architect
-    - Events 
-    - Land
+    - Wearable Design
+    - Architecture
+    - Event Production 
+    - Land Rental
     - Consulting
 - name: Michi Todd
   partnerId: 32
@@ -587,6 +610,7 @@
   image: /images/partners/michi-todd.png
   description: Michi Todd is a Wearable Creator and 3d Artist bridging brands and traditional/digital artists and NFT projects through digital representation. Creating with imagination and fashion to make stylised metaverse designs.
   location: Australia
+  region: Oceania
   languages:
     - English
   team_size: Individual
@@ -594,8 +618,8 @@
     - Crypto
     - PayPal
   tags:
-    - Wearables
-    - Architect
+    - Wearable Design
+    - Architecture
     - Consulting
 - name: AaronLeupp.com
   partnerId: 33
@@ -612,6 +636,7 @@
   description: Decentraland Wearables, Land Development, Event Hosting, Promotion and everything in between. With over 100,000 NFT owners with our Waifumon collection and 15,000+ twitter followers as well as over 20+ Decentraland events, parties, concerts, parkours, challenges, mazes, games and more can help with any challenge or occasion no matter how big or small.
   team_size: Medium Studio
   location: United States
+  region: North America
   languages:
     - English
   payments:
@@ -620,9 +645,9 @@
     - Credit Card
     - Wire Transfer
   tags:
-    - Wearables
-    - Architect
-    - Events 
+    - Wearable Design
+    - Architecture
+    - Event Production 
     - Consulting
 - name: Doki
   partnerId: 34
@@ -638,6 +663,7 @@
   image: /images/partners/doki.png
   description: 3D wearables artist and supposed metaverse hair stylist.
   location: United Kingdom
+  region: Europe
   languages:
     - English
   team_size: Individual
@@ -646,7 +672,7 @@
     - PayPal
     - Credit Card
   tags:
-    - Wearables
+    - Wearable Design
 - name: Luke Escobar
   partnerId: 35
   default_link: http://www.discordapp.com/users/329781973973336074
@@ -659,6 +685,7 @@
   image: /images/partners/luke-escobar.jpeg
   description: Decentraland Architecture, 3D Modeling, and Scene Design.
   location: United States
+  region: North America
   languages:
     - English
   team_size: Individual
@@ -666,8 +693,8 @@
     - Crypto
     - Credit Card
   tags:
-    - Architect
-    - Land
+    - Architecture
+    - Land Rental
 - name: Roustan
   partnerId: 36
   default_link: https://twitter.com/RoustanNFT
@@ -679,6 +706,7 @@
   image: /images/partners/roustan.jpeg
   description: Short term established 1x1 venue rental located in the Decentraland sign and surrounded by sidewalk. Existing build offers custom image placements, dance floor, hot tub, DJ pre-recording or live streams. Ready to go for your community, NFT reveal, wearable release drop party. No coding or 3D design knowledge required on your end. Also available, empty parcel directly next door that can be customized by you and your programmers to fit your needs. Both are short term rentals.
   location: United States
+  region: North America
   languages:
     - English
   team_size: Individual
@@ -686,8 +714,8 @@
     - Crypto
     - PayPal
   tags:
-    - Events
-    - Land
+    - Event Production
+    - Land Rental
     - Consulting
 - name: Meta Live Studio
   partnerId: 37
@@ -700,6 +728,7 @@
   image: /images/partners/meta-live.jpeg
   description: Metaverse is place of possibilities, our services begins with your idea. Maybe you want to launch a business in Metaverses, but don’t know whcih Metaverse you want to be. Maybe you want some advice in land options. Or maybe you have a creative project to share with the world. Whatever it is, the way you tell your story online can make all the difference.
   location: United Kingdom
+  region: Europe
   languages:
     - English
     - Chinese 
@@ -709,8 +738,8 @@
     - PayPal
     - Credit Card
   tags:
-    - Events
-    - Architect
+    - Event Production
+    - Architecture
     - Consulting
 - name: 42 Meta
   partnerId: 38
@@ -721,6 +750,7 @@
   image: /images/partners/42meta.jpg
   description: "With 42Meta you take the next step in communication and prepare for the future today. We help you with your first steps in the virtual worlds. 42Meta is an early-stage AdTech company that is actively involved in the design of the Metaverse and offers communication options in the Metaverse. Take an active part in building the future and don't wait until all positions have been filled. The Metaverse will be a gigantic upheaval and will not only turn the business world completely upside down."
   location: Germany
+  region: Europe
   languages:
     - English
     - German 
@@ -730,9 +760,9 @@
     - PayPal
     - Wire Transfer
   tags:
-    - Wearables
-    - Events
-    - Architect
+    - Wearable Design
+    - Event Production
+    - Architecture
     - Consulting
 - name: MetaZone
   partnerId: 46
@@ -748,13 +778,14 @@
   image: /images/partners/metazone.png
   description: MetaZone is the app store for the metaverse. We call these apps METAs which stands for Metaverse Enabled Tokenized Applications. A META can be a deployable business as an NFT or a distributed play to earn game as a set of deployable NFTs. Anyone can create and submit METAs to the marketplace and MetaZone can distribute these METAs to any land in a few clicks.
   location: Singapore
+  region: Asia
   languages:
     - English 
   team_size: Medium Studio
   payments:
     - Crypto
   tags:
-    - Events
+    - Event Production
     - Consulting
 - name: Dragocapital
   partnerId: 39
@@ -764,6 +795,7 @@
   image: /images/partners/drago-capital.png
   description: Capital investments in real estate both metaverse and Athens Greece Properties. Events at Vanilla ICE club.
   location: Greece
+  region: Europe
   phone: +306980676729
   languages:
     - English 
@@ -774,8 +806,8 @@
     - Wire Transfer
     - PayPal
   tags:
-    - Events
-    - Land
+    - Event Production
+    - Land Rental
 - name: Scalar Vision
   partnerId: 40
   default_link: https://scalarvision.com/urun-360/
@@ -787,6 +819,7 @@
   image: /images/partners/scalarvision.png
   description: Management consultancy about immersive techs. Create Metaverse Strategy. Design Metaverse Appearance with brand identity, including architectural design and 3D asset generation, NFT creation. Create ideas for utilization of Brand's Metaverse Appereance.
   location: Turkey
+  region: Europe
   languages:
     - English 
     - Turkish
@@ -795,8 +828,8 @@
     - Crypto
     - Wire Transfer
   tags:
-    - Wearables
-    - Architect
+    - Wearable Design
+    - Architecture
     - Consulting
 - name: BigNasty
   partnerId: 41
@@ -809,6 +842,7 @@
   image: /images/partners/bignasty.jpeg
   description: We are a team of blender professionals that center around 3D modeling and Wearable NFT Designing. With 45+ collections published In Decentraland, we promise to always produce the highest quality items. Our 24/7 availability and rapid response times gives you the comfort of knowing we are always on call ready to jump into action. Working with BigNasty also gives YOU the ability to see real-time updates of your project, and allows you to be able to jump in and critique at any point during the process.
   location: United States
+  region: North America
   languages:
     - English 
   team_size: Small Studio
@@ -816,8 +850,8 @@
     - Crypto
     - PayPal
   tags:
-    - Wearables
-    - Architect
+    - Wearable Design
+    - Architecture
 - name: Lapsus Next
   partnerId: 42
   default_link: https://discord.gg/Twu4fRxAF6
@@ -832,6 +866,7 @@
   image: /images/partners/lapsusnext.PNG
   description: Lapsus Next is the Creative design agency determined to work towards innovative solutions for your business growth. Lapsus Next is proudly one of the rarest firms to provide you with a complete solution in the METAVERSE world. From game design and NFT development to Web3 marketing, we got your back.
   location: India
+  region: Asia
   languages:
     - English 
     - Hindi
@@ -841,9 +876,9 @@
     - PayPal
     - Wire Transfer
   tags:
-    - Events
-    - Architect
-    - Wearables
+    - Event Production
+    - Architecture
+    - Wearable Design
     - Consulting
 - name: Bandwagon Labs
   partnerId: 43
@@ -856,6 +891,7 @@
   image: /images/partners/bandwagon.jpg
   description: End to end Decentraland web3 marketing, NFTs, wearable and gamification solutions.
   location: Singapore
+  region: Asia
   languages:
     - English
     - Malay 
@@ -864,10 +900,10 @@
     - Crypto
     - Wire Transfer
   tags:
-    - Events
-    - Architect
+    - Event Production
+    - Architecture
     - Consulting
-    - Land
+    - Land Rental
 - name: Oktopluz
   partnerId: 44
   default_link: https://www.oktopluz.com
@@ -881,6 +917,7 @@
   image: /images/partners/oktopluz.png
   description: If you can imagine, we can do it. If you can't, we imagine and build it for you. Oktopluz is an art studio with a multidisciplinary and very experienced team. From the analog art days till the latest tech of tomorrow. We are capable of giving shape and color to ideas for real or virtual life. Design and implementation for Architecture, Avatars, Wearables, Experiences and Events.
   location: Spain
+  region: Europe
   languages:
     - English
     - Spanish
@@ -890,13 +927,13 @@
   payments:
     - Crypto
     - Wire Transfer
-    - Paypal
+    - PayPal
   tags:
-    - Architect
+    - Architecture
     - Consulting
-    - Wearables
-    - Events
-    - Land
+    - Wearable Design
+    - Event Production
+    - Land Rental
     
 - name: Parcel Party
   partnerId: 45
@@ -911,20 +948,21 @@
   image: /images/partners/parcelparty.png
   description: PARCEL PARTY is a full-service metaverse event & entertainment company, with the goal of turning your fantasies into metaverse realities. Combining our extensive knowledge, understanding, and passion for the metaverse with the integration of custom gamification elements into your events, we create unforgettable metaverse activations. We are a community-driven team of creatives and developers with a unified objective to take you from ideation through to execution, creating a truly unique experience that is true to your brand.
   location: Canada
+  region: North America
   languages:
     - English
   team_size: Large Studio
   payments:
     - Crypto
     - Wire Transfer
-    - Paypal
+    - PayPal
     - Credit Card
   tags:
-    - Wearables
-    - Architect
-    - Events
+    - Wearable Design
+    - Architecture
+    - Event Production
     - Consulting
-    - Land
+    - Land Rental
 - name: Stoney Eye
   partnerId: 46
   default_link: sespromusic@gmail.com
@@ -935,16 +973,17 @@
   image: /images/partners/stoneyeye.jpg
   description: Stoney Eye Studios is here for your Live DJ needs. As well as artwork, such as full NFT projects or even just a flier design. We also do music production, wearables, and land rentals.
   location: United States
+  region: North America
   languages:
     - English
   team_size: Small Studio
   payments:
     - Crypto
-    - Paypal
+    - PayPal
   tags:
-    - Wearables
-    - Events
-    - Land
+    - Wearable Design
+    - Event Production
+    - Land Rental
 - name: Clurge
   partnerId: 8
   default_link: https://clurge.com/
@@ -956,6 +995,7 @@
   image: /images/partners/clurge.png
   description: Beautifully crafted Wearables & Bulk wearable airdrops, We are here to help your projects succeed and make your metaverse dream reality.
   location: Singapore
+  region: Asia
   languages:
     - English
   team_size: Small Studio
@@ -963,7 +1003,7 @@
     - Crypto
     - Wire Transfer
   tags:
-    - Wearables
+    - Wearable Design
 
 - name: MetaVerse Gainers
   partnerId: 15
@@ -975,14 +1015,15 @@
   image: /images/partners/metaverse-gainers.png
   description: We are MetaVerse Gainers. Helping you to take benefits of Metaverse, specially Decentraland platform is our specialty.
   location: Iran
+  region: Asia
   languages:
     - English
   team_size: Small Studio
   payments:
     - Crypto
   tags:
-    - Architect
-    - Land
+    - Architecture
+    - Land Rental
     - Consulting
     
 - name: Serraform
@@ -995,6 +1036,7 @@
   image: /images/partners/serraform.png
   description: Serraform specializes in content streaming and creative productions for event of all shapes and sizes. We are experts in cloud infrastructure, data analytics, web3, and cybersecurity and have worked with several fortune 500 companies to help launch their brands and products into the metaverse.
   location: Canada
+  region: North America
   languages:
     - English
     - French
@@ -1004,7 +1046,7 @@
     - Wire Transfer
     - PayPal
   tags:
-    - Events
+    - Event Production
     - Consulting
 
 - name: Decentral Wear
@@ -1018,6 +1060,7 @@
   image: /images/partners/decentralwear.jpg
   description: "We create Decentraland wearables for your metaverse brand. Wearable NFTs are quickly becoming the most profitable source of income for metaverse brands. Expose your brand to the widest possible audience with your brand's own wearables. Leave the difficult parts to our design team while we make your metaverse vision a reality."
   location: United States
+  region: North America
   languages:
     - English
     - Greek
@@ -1026,9 +1069,9 @@
     - Crypto
     - PayPal
   tags:
-    - Wearables
-    - Architect
-    - Events
+    - Wearable Design
+    - Architecture
+    - Event Production
     - Consulting
 - name: Bufalo
   partnerId: 49
@@ -1042,16 +1085,17 @@
   image: /images/partners/bufalo.png
   description: Bufalo is a masked DJ and producer from Paris who has created a really strong and singular universe inspired by the "Far West" culture, mixing Country, Folk, Deep House, and House to create a new genre called "Futuristic Western Music" The DJ set made by Bufalo is a fully-produced DJ set that contains self madeedits, remixes, compositions, and mashups that have never been done or heard before.
   location: France
+  region: Europe
   languages:
     - English
     - French
-  team_size: Individual
+  team_size: individual
   payments:
     - Crypto
     - Wire Transfer
   tags:
-    - Wearables
-    - Events
+    - Wearable Design
+    - Event Production
 - name: Metatiger
   partnerId: 50
   default_link: https://metatiger.art/
@@ -1063,6 +1107,7 @@
   image: /images/partners/metatiger.jpg
   description: Indie Gamedev, Coder, 3D Artist, Wearable Creator, NFT Coin Art Designer, Decentraland Native / Homie.
   location: Germany
+  region: Europe
   languages:
     - English
     - German
@@ -1070,7 +1115,7 @@
   payments:
     - Crypto
   tags:
-    - Wearables    
+    - Wearable Design    
 - name: OhMyVerse.io
   partnerId: 51
   default_link: https://ohmyverse.io/
@@ -1083,6 +1128,7 @@
   image: /images/partners/ohmyverse.PNG
   description: Metaverse and blockchain development. Full coverage from smartcontract development to SDK coding and 3D designs including wearables and buildings.
   location: Spain
+  region: Europe
   languages:
     - English
     - Spanish
@@ -1091,10 +1137,10 @@
     - Crypto
     - Wire Transfer
   tags:
-    - Wearables
-    - Architect
-    - Land
-    - Events
+    - Wearable Design
+    - Architecture
+    - Land Rental
+    - Event Production
     - Consulting
 - name: SynthiaNominae
   partnerId: 52
@@ -1105,7 +1151,8 @@
   youtube: https://youtube.com/c/SynthiaNominae
   image: /images/partners/synthianominae.png
   description: Helping others find and follow their inner light.
-  location: United Stated
+  location: United States
+  region: North America
   languages:
     - English
   team_size: Individual
@@ -1113,7 +1160,7 @@
     - Crypto
     - PayPal
   tags:
-    - Wearables
+    - Wearable Design
     
 - name: VoxBox.dev
   partnerId: 53
@@ -1125,6 +1172,7 @@
   image: /images/partners/voxbox.png
   description: YOUR MULTIVERSE DEVELOPERS-Custom 3D spaces, items and wearables built for unique cross-platform experiences.
   location: United States
+  region: North America
   languages:
     - English
   team_size: Small Studio
@@ -1132,8 +1180,8 @@
     - Crypto
     - PayPal
   tags:
-    - Wearables
-    - Architect
+    - Wearable Design
+    - Architecture
     
 - name: ulisse.nobody
   partnerId: 54
@@ -1147,6 +1195,7 @@
   image: /images/partners/ulisse-nobody.png
   description: If you have something in your mind, I can extract that idea and turn it into an amazing expirience in the metaverse. With the knoledge accumulated in my fine art study for videogames; your parcel will host something complitly different from the majority.
   location: Spain
+  region: Europe
   languages:
     - English
     - Spanish
@@ -1156,7 +1205,7 @@
     - Crypto
     - Credit Card
   tags:
-    - Architect
+    - Architecture
     
 - name: Nikki Fuego
   partnerId: 55
@@ -1167,27 +1216,29 @@
   twitter: https://twitter.com/NikkiFuego92
   discord:  https://discordapp.com/users/185198280660090891
   image: /images/partners/nikki-fuego.png
-  description: Nikki Fuego is a Drag Queen Wearable Creator. She creates futuristic and fashion forward designs ranging from fantasy to practical functions. Nikki has made a wearable for every category available, but really enjoys making Skins. She is also known for making vehicles in Decentraland. She is the Founder and Project Manager for Vroomway! A racing Play 2 Earn game in Decentraland.
+  description: Bridging innovation and creativity with uniquely crafted designs.
   location: United States
+  region: North America
   languages:
     - English
   team_size: Individual
   payments:
     - Crypto
   tags:
-    - Wearables
+    - Wearable Design
     
 - name: STYLE Protocol
   partnerId: 56
   default_link: https://www.protocol.style
   website: https://www.protocol.style
-  email: leo.hilse@protocol.style
-  linkedin: https://www.linkedin.com/in/leo-hilse/
+  email: info@protocol.style
+  linkedin: https://www.linkedin.com/company/style-protocol/
   discord: https://discord.com/invite/styleprotocol
   twitter: https://twitter.com/StyleProtocol
   image: /images/partners/style-protocol.png
   description: STYLE Protocol aims to bring monetization and utilization to any NFT in any game or metaverse to use and sublicense in order to allow true interoperability of virtual assets across metaverses, games and digital worlds.
   location: Switzerland
+  region: Europe
   languages:
     - English
   team_size: Large Studio
@@ -1197,10 +1248,10 @@
     - Credit Card
     - Wire Transfer
   tags:
-    - Wearables
-    - Architect
-    - Land
-    - Events
+    - Wearable Design
+    - Architecture
+    - Land Rental
+    - Event Production
     - Consulting
 
 - name: Imagine to Create
@@ -1208,12 +1259,13 @@
   default_link: https://www.imaginetocreate.com/
   website: https://www.imaginetocreate.com/
   email: founders@imaginetocreate.com
-  linkedin: https://www.linkedin.com/in/unai-da-silva-merino/
+  linkedin: https://www.linkedin.com/in/karina-ldg/
   discord: https://discordapp.com/users/749691427776233563
-  twitter: https://twitter.com/UDecentraland
+  twitter: https://twitter.com/imagine_2create
   youtube: https://www.youtube.com/channel/UCSwao_El6FKE9q0-XU5fg9Q
   image: /images/partners/imagine-to-create.png
   description: Imagine to Create is a community of creators and investors that together they launch new projects. The experience will happen through a web3 platform governed by a DAO deployed first in the Elrond blockchain. The project virtual HQ will be deployed in Decentraland.
+  region: Europe
   location: Spain
   languages:
     - English
@@ -1224,6 +1276,449 @@
     - Crypto
     - Credit Card
   tags:
-    - Architect
-    - Events
+    - Architecture
+    - Event Production
     - Consulting
+
+- name: ArtCebola
+  partnerId: 58
+  default_link: https://gabrielmagalhaes.net.br/index.html
+  website: https://gabrielmagalhaes.net.br/index.html
+  email: gbljacu@gmail.com
+  linkedin: https://au.linkedin.com/in/gabrielgaldinomagalhaes
+  instagram: https://instagram.com/ArtCebola
+  twitter: https://twitter.com/ArtCebola
+  youtube: https://www.youtube.com/cebolitos
+  image: /images/partners/art-cebola.png
+  description: 3D Artist working as virtual land builder, developing buildings, furniture, wearables and 3D Art for metaverse. I love to mix technologies in order to create experiences that confuse reality and the virtual worlds. DCL [21, -140] & [-70, 42]
+  region: Oceania
+  location: Australia
+  languages:
+    - English
+    - Portuguese
+  team_size: Individual
+  payments:
+    - Crypto
+  tags:
+    - Architecture
+    - Wearable Design
+    
+- name: Judas Judas
+  partnerId: 59
+  default_link: mailto:iamjudasjudas@gmail.com
+  webiste: https://opensea.io/collection/iamjudasjudas
+  email: iamjudasjudas@gmail.com
+  instagram: https://www.instagram.com/iam_judasjudas/
+  twitter: https://twitter.com/iamjudasjudas
+  image: /images/partners/judasjudas.png
+  description: …a creative journey into the Metaverse…
+  region: Europe
+  location: United Kingdom
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+    - Wire Transfer
+  tags:
+    - Architecture
+    - Wearable Design
+    - Land Rental
+    
+- name: ImagineOnEarth
+  partnerId: 60
+  default_link: https://imagineonearth.com/
+  website: https://imagineonearth.com/
+  email: kevinonearth999@gmail.com
+  instagram: https://instagram.com/kevinonearth999
+  linkedin: https://www.linkedin.com/in/pointmotionfounder/
+  twitter: https://twitter.com/kevinonearth999/
+  discord: https://discord.gg/nRbVE4RNzx
+  youtube: https://www.youtube.com/c/KevinonEarth
+  opensea: https://opensea.io/_OnEarth
+  image: /images/partners/imagine.png
+  description: ImagineOnEarth is a creative agency with expertise in developing multi-faceted metaverse experiences which deliver the most relevant value to users at each stage of knowledge and experience operating in web3. Alongside design and development services, ImagineOnEarth created The Decentraland Report, the first Decentralized News Network operating in Decentraland. This platform serves as a vehicle to amplify the voice and outcomes of creators across the metaverse, as well as ImagineOnEarth partners.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - PayPal
+    - Credit Card
+    - Wire Transfer
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
+    - Land Rental
+    - Consulting
+    
+- name: Virtrix
+  partnerId: 61
+  default_link: https://www.virtrix.io
+  website: https://www.virtrix.io
+  email: justin@virtrix.io
+  linkedin: https://www.linkedin.com/company/69868061
+  twitter: https://twitter.com/virtrixity
+  discord: https://discordapp.com/users/914872087091494912
+  pois: 
+    - (-38,111)
+  image: /images/partners/virtrix.jpeg
+  description: VIRTRIX is a Hong Kong based VR/AR/metaverse creative studio specialized in developing immersive digital solutions, offering a new dimension of brand marketing, live events and product showcase.
+  region: Asia
+  location: Hong Kong
+  languages:
+    - English
+  team_size: Medium Studio
+  payments:
+    - Crypto
+    - Wire Transfer
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
+    - Consulting
+
+- name: DOCTORdripp
+  partnerId: 62
+  default_link: https://doctordripp.com/
+  website: https://doctordripp.com/
+  email: info@doctordripp.com
+  twitter: https://twitter.com/DOCTORdrippNFT
+  instagram: https://instagram.com/sick_66
+  opensea: https://opensea.io/DOCTORdrippNFT
+  discord: https://discordapp.com/users/387000020714520577
+  image: /images/partners/doctor-dripp.jpeg
+  description: DOCTORdripp is a digital streetwear, skatewear & irl automotive lighting brand, building out of Southern California.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+    - PayPal
+  tags:
+    - Wearable Design
+    - Consulting
+    
+- name: Areves 
+  partnerId: 63
+  default_link: https://www.areves.com/
+  website: https://www.areves.com/
+  email: info@areves.com
+  twitter: https://twitter.com/MichaelKdcl
+  image: /images/partners/areves.jpeg
+  description: Diversify your brand in a virtual world through blockchain.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - Wire Transfer
+  tags:
+    - Wearable Design
+    - Consulting
+    - Architecture
+    - Land Rental
+    - Event Production
+  pois: 
+    - (88,77)
+   
+- name: Atlas CORP 
+  partnerId: 64
+  default_link: https://atlascorp.io
+  website: https://atlascorp.io
+  email: howie@atlascorp.io
+  twitter: https://twitter.com/AtlasCorp_dcl
+  discord: https://discord.gg/ahZ8utqjpA
+  opensea: https://opensea.io/AtlasCorporation
+  image: /images/partners/atlascorp.PNG
+  description: The Atlas Corporation is a leading-edge provider of web3 development services. Operating out of The LAB in Miami, FL (-54,-83 in Decentraland), Atlas CORP provides web3 development services to metaverse natives & legacy institutions alike.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Medium Studio
+  payments:
+    - Crypto
+    - Wire Transfer
+    - PayPal
+    - Credit Card
+  tags:
+    - Architecture
+    - Land Rental
+  pois: 
+    - (-54,-83)
+    
+- name: Takeaway Reality
+  partnerId: 65
+  default_link: https://takeaway-reality.com/
+  website: https://takeaway-reality.com/
+  email: hello@takeaway-reality.com
+  linkedin: https://www.linkedin.com/company/66669904
+  twitter: https://twitter.com/TAR_Metaverse
+  discord: https://discord.gg/ekjrq6kbmb
+  image: /images/partners/takeawayreality.png
+  description: We are an AR, VR and metaverse agency that empowers and supports businesses in embracing the growing trends of Virtual and Augmented Reality and the metaverse by providing cutting-edge technological solutions and strategic thought leadership. ﻿Our services have helped companies to pursue innovative XR-based solutions within the realms of training and development, education and marketing.
+  region: Europe
+  location: United Kingdom
+  languages:
+    - English
+    - German
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - Wire Transfer
+    - PayPal
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
+    - Consulting
+- name: Vesuvius Group
+  partnerId: 66
+  default_link: https://www.thevesuviusgroup.com/
+  website: https://www.thevesuviusgroup.com/
+  email: contact@thevesuviusgroup.com
+  linkedin: https://www.linkedin.com/company/the-vesuvius-group-llc/
+  twitter: https://twitter.com/VesuviusGroup
+  image: /images/partners/vesuvius-group.png
+  description: The Vesuvius Group, LLC is an international collaborative of creatives specializing in developing online environments for community-building, whose mission it is to support institutions and companies that are engaging in projects that make a difference in their member communities and the larger world. Our experience includes design and implementation of virtual simulation and educational spaces for companies such as Morpheus Media, BeliefNet, Ymere; institutions like the San Francisco Exploratorium and the Chicago Field Museum; educational organizations like the University of Southern California, Ramapo School District, Global Kids, and Kids Connect; and non-profit entities like Virtual Ability. This work has also included integrating virtual spaces with web 2.0 tools, social media web portals and streaming of multimedia content.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - Wire Transfer
+    - PayPal
+    - Credit Card
+  tags:
+    - Architecture
+    - Consulting
+  pois:
+    - (-17, -142)
+    
+- name: NFT World
+  partnerId: 67
+  default_link: https://nftworld.io/
+  website: https://nftworld.io/
+  email: doug@nftworld.io
+  linkedin: https://www.linkedin.com/company/nft-world-llc
+  twitter: https://twitter.com/NFT_World
+  discord: https://nftworld.io/discord/
+  instagram: https://www.instagram.com/nft_world/
+  image: /images/partners/nft-world.png
+  description: NFT World creates exposure for all types of companies and projects looking to establish a presence in the Metaverse. We host events, build scenes, create wearables, and we offer land rentals and advertising opportunities.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Studio
+  payments:
+    - Crypto
+    - PayPal
+    - Credit Card
+  tags:
+    - Wearable Design
+    - Architecture
+    - Land Rental
+    - Event Production
+    - Consulting
+  pois:
+    - (154,66)
+- name: NFT Plazas
+  partnerId: 68
+  default_link: https://nftplazas.com/
+  website: https://nftplazas.com/
+  email: contact@nftplazas.com
+  linkedin: https://www.linkedin.com/company/77104277
+  twitter: https://twitter.com/NFTPlazas
+  discord: https://discord.gg/CWB4Jmj
+  instagram: https://www.instagram.com/nftplazas/
+  youtube: https://www.youtube.com/channel/UCYKElPbw0D1a6GE1McBH2iQ
+  image: /images/partners/nftplaza.JPG
+  description: NFTPlazas.com is your go-to media company covering daily NFT and Metaverse news and events. We work with clients looking to gain exposure in the space by running the largest network of billboard advertising in Decentraland and beyond. We also work with clients to organize events hosted in the Metaverse.
+  region: Europe
+  location: United Kingdom
+  languages:
+    - English
+  team_size: Medium Studio
+  payments:
+    - Crypto
+    - Credit Card
+  tags:
+    - Land Rental
+    - Event Production
+  pois:
+    - (-3,12)
+    - (-67,-2)
+    - (-51,89)
+    - (36,129)
+    - (39,49)
+    - (69,-7)
+    - (55,-49)
+    - (13,-89)
+    - (-11,-134)
+    - (12,-134)
+    - (32,-118)
+    - (-52,-116)
+    - (-120,-40)
+    - (-131,28)
+    - (-142,-125)
+    - (95,39)
+    - (88,-34)
+    - (-68,-21)    
+    
+- name: Dogman
+  partnerId: 69
+  default_link: https://twitter.com/dogmandcl
+  email: dogman7174@gmail.com
+  twitter: https://twitter.com/dogmandcl
+  discord: https://discordapp.com/users/915780548113334383
+  image: /images/partners/starquest.png
+  description: Dogman Development full scale dev focused in gamification
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+    - Wire Transfer
+    - PayPal
+  tags:
+    - Wearable Design
+    - Architecture
+  pois:
+    - (-26,-46)
+
+- name: Wilderness P2E
+  partnerId: 70
+  default_link: https://www.wildernessp2e.com/
+  website: https://www.wildernessp2e.com/
+  email: neha@wildernessp2e.com
+  twitter: https://twitter.com/wildernessp2e
+  instagram: https://www.instagram.com/wildernessp2e/
+  youtube: https://www.youtube.com/channel/UCRLFCjQITyKq39VKZpG3aPw
+  linkedin: https://www.linkedin.com/in/neha-singh-9b215568/
+  discord: https://discord.gg/QdyhS2C3
+  image: /images/partners/wildernesp2e.png
+  description: Free NFT Game in Decentraland. Play to Earn $WLDY in this fantasy themed MMORPG on the Polygon Blockchain.
+  region: Asia
+  location: India
+  languages:
+    - English
+  team_size: Small Team
+  payments:
+    - Crypto
+    - Wire Transfer
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
+    - Consulting
+  pois:
+    - (-25,90)
+    
+- name: Webcore Games
+  partnerId: 71
+  default_link: https://www.webcoregames.com/en
+  website: https://www.webcoregames.com/en
+  email: fernando@webcore.com.br
+  twitter: https://twitter.com/webcoregames
+  instagram: https://www.instagram.com/webcoregames/
+  youtube: https://www.youtube.com/user/webcorebrasil
+  linkedin: https://www.linkedin.com/company/webcore-games/
+  image: /images/partners/webcoregames.JPG
+  description: Established in 2004, Webcore Games won multiple awards for games in a multitude of platforms including consoles, mobile, desktop and web, working also with technologies such as AR and VR. Our last main games are Timo The Game, PS4 version of Starlit Adventures, My Night Job, Turma do Chico Bento, Freekscape and Cavedays. We currently have 25+ people in our team, with a wide network of trusted external partners built since 1999.
+  region: Latin America
+  location: Brazil
+  languages:
+    - English
+  team_size: Large Team
+  payments:
+    - Wire Transfer
+  tags:
+    - Wearable Design
+    - Architecture
+    
+- name: CK Bubbles
+  partnerId: 72
+  default_link: https://www.ckbubbles.com
+  website: https://www.ckbubbles.com
+  email: hiitsck@gmail.com
+  twitter: https://twitter.com/iamckbubbles
+  instagram:  https://www.instagram.com/ckdesignedit
+  linkedin: https://www.linkedin.com/in/courtneykuhlman
+  discord: https://discordapp.com/users/337113834558980096
+  image: /images/partners/ckbubbles.png
+  description: Bridging brands and the Decentraland community to build future worlds, CK is a Creative Director and Nail Artist with 15 years experience in Advertising, Marketing, and Consulting with big brands and startups. They have worked with large and small teams to conceptualize, pitch, and create experiences — both IRL and in the metaverse — in web2 and web3. Ready to take on the next creative challenge, and looking forward to building the metaverse together. 
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+    - PayPal
+    - Credit Card
+  tags:
+    - Wearable Design
+    - Architecture
+    - Consulting
+  pois:
+    - (-99,95)
+    
+- name: WJ Designs
+  partnerId: 73
+  default_link: https://wjnftdesigns.myportfolio.com/
+  website: https://wjnftdesigns.myportfolio.com/
+  email: wjdesigns.nft@gmail.com
+  twitter: https://twitter.com/mr_j_1987
+  opensea: https://opensea.io/MrJ_Designs_Things
+  discord: https://discordapp.com/users/738122316868878449
+  image: /images/partners/wjdesigns.png
+  description: WJ Designs aims to bring technical capability and versatility through creative imagination to deliver unique designs and graphics to the metaverse.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Team
+  payments:
+    - Crypto
+  tags:
+    - Wearable Design
+    - Architecture
+  pois:
+- name: Kokesmvsh
+  partnerId: 74
+  default_link: https://smvshfriends.com/
+  website: https://smvshfriends.com/
+  email: kokesmush@gmail.com
+  twitter: https://twitter.com/smvshfriends
+  opensea: https://opensea.io/collection/smvsh-friends-origins-edition
+  discord: https://discord.gg/kkKeu2RAZr
+  youtube: https://youtube.com/channel/UCWgbJNNRC4rsn691t5YBwDQ
+  instagram: https://instagram.com/smvshfriends
+  image: /images/partners/smvshfriends.jpg
+  description: Smvsh Friends are all about making lifelong meaningful relationships, and instilling positivity into the community by example. I’m the co-creator, the marketer, the scene builder, and the face of the project.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Team
+  payments:
+    - Crypto
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
+  pois:
+    - (-55, -127)
