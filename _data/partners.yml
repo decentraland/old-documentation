@@ -2702,3 +2702,26 @@
   tags:
     - Land Rental
     - Consulting
+
+- name: AwedJob
+  partnerId: 114
+  default_link: https://opensea.io/AwedJob
+  email: scott@affirmative.org
+  discord: https://discordapp.com/users/300263609471336448
+  opensea: https://opensea.io/AwedJob
+  twitter: https://twitter.com/AwedJob
+  instagram: https://www.instagram.com/awedjob/
+  image: /images/partners/awejob.PNG
+  description: High-quality normie wearables for the metaverse.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Individual
+  pois: 
+  payments:
+    - Crypto
+    - PayPal
+    - Credit Card
+  tags:
+    - Wearable Design
