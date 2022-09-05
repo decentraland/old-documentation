@@ -2725,3 +2725,30 @@
     - Credit Card
   tags:
     - Wearable Design
+    
+- name: SinfulMedia
+  partnerId: 115
+  default_link: https://discordapp.com/users/526100583304921092
+  discord: https://discordapp.com/users/526100583304921092
+  opensea: https://opensea.io/SinfulMeatStick
+  twitter: https://twitter.com/SinfulMeatStick
+  youtube: https://www.youtube.com/channel/UCYtqqAoXm9ANVATUUA6j6Fg
+  image: /images/partners/sinfulmedia.PNG
+  description: SinfulMedia specializes in Metaverse Onboarding, Consulting, Live Stream Services, Podcast Show Hosting , Decentaland Event Hosting , as well as Marketing and Advertising. Please contact me today.
+  region: North America
+  location: United States
+  languages:
+    - English
+    - Spanish
+  team_size: Individual
+  pois: 
+    - (-100,-100)
+    - (-89,-86)
+  payments:
+    - Crypto
+    - PayPal
+    - Wire Transfer
+  tags:
+    - Event Production
+    - Land Rental
+    - Consulting
