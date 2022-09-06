@@ -2779,3 +2779,33 @@
     - Event Production
     - Wearable Design
     - Consulting
+
+- name: Cansy
+  partnerId: 117
+  default_link: https://cansy.webflow.io/
+  website: https://cansy.webflow.io/
+  email: cansyland@gmail.com
+  linkedin: https://www.linkedin.com/in/artur-parutkin-29052714b/
+  discord: https://discord.gg/xyjSVMR48C
+  twitter: https://twitter.com/CansyLand
+  instagram: https://www.instagram.com/cansy.land/
+  parcel: https://parcel.so/creatorverse/creator/cansy
+  youtube: https://www.youtube.com/channel/UCONLO1N87OtKNiKe97JIKnQ
+  opensea: https://opensea.io/collection/cansy
+  image: /images/partners/cansy.jpg
+  description: I strolled around Decentraland. All alone and without a clue what to do. I looked at some art installations and tried a little bit of gambling. But then I heard some voices talking in the distance. Curiously I followed these voices. They came from a group of people spontaneously coming together. I joined them… and it was the most fun night I ever had online. And from this point on I knew this is the future.
+  region: Europe
+  location: Germany
+  languages:
+    - English
+    - German
+  team_size: Individual
+  pois: 
+  payments:
+    - Crypto
+    - PayPal
+    - Wire Transfer
+  tags:
+    - Event Production
+    - Architecture
+    - Consulting
