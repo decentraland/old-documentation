@@ -2512,7 +2512,7 @@
   payments:
     - Crypto
     - PayPal
-    - Wyre Transfer
+    - Wire Transfer
   tags:
     - Architecture
     - Consulting
@@ -2582,7 +2582,7 @@
   team_size: Large Studio
   payments:
     - Crypto
-    - Wyre transfer
+    - Wire transfer
     - Paypal
     - Credit Card
   tags:
