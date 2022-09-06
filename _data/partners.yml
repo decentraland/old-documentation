@@ -2837,3 +2837,31 @@
   tags:
     - Wearables
     - Event Production
+
+- name: GMI | General Metaverse Industries
+  partnerId: 119
+  default_link: https://www.generalmetaverse.io/
+  website: https://www.generalmetaverse.io/
+  email: pepegawd@protonmail.com
+  linkedin: https://www.linkedin.com/company/general-metaverse-industries/
+  twitter: https://twitter.com/PepeGawd
+  youtube: https://www.youtube.com/channel/UCxHoFnvKTk_wXD7anXyNWbQ
+  image: /images/partners/generalmetaverseindustries.jpg
+  description: GMI General Metaverse Industries specializes in creating unique metaverse experiences, and provide consulting/onboarding for businesses interested in expanding into web3.
+  region: North America
+  location: Canada
+  languages:
+    - English
+  team_size: Small Studio
+  pois: 
+  - (-35,-60)
+  - (-106,-40)
+  - (-45,42)
+  payments:
+    - Crypto
+    - PayPal
+    - Wire Transfer
+    - Credit Card
+  tags:
+    - Wearables
+    - Event Production
