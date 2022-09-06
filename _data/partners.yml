@@ -2752,3 +2752,30 @@
     - Event Production
     - Land Rental
     - Consulting
+
+- name: MultiNFT
+  partnerId: 116
+  default_link: https://www.multinft.io/
+  website: https://www.multinft.io/
+  email: https://www.multinft.io/
+  linkedin: https://www.linkedin.com/in/maxhatchwell/
+  discord: https://discord.gg/gexb3UVYyp
+  opensea: https://opensea.io/collection/mnft-rage-skins
+  twitter: https://twitter.com/multinft
+  instagram: https://www.instagram.com/multinft_io/
+  image: /images/partners/multinft.png
+  description: Creating Metaverse Experiences. 
+  region: Asia
+  location: Israel
+  languages:
+    - English
+    - Spanish
+    - French
+  team_size: Large Team
+  pois: 
+  payments:
+    - Crypto
+  tags:
+    - Event Production
+    - Wearable Design
+    - Consulting
