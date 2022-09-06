@@ -2809,3 +2809,31 @@
     - Event Production
     - Architecture
     - Consulting
+    
+- name: DJTRAXNFT
+  partnerId: 118
+  default_link: https://partywithlife.com
+  website: https://partywithlife.com
+  email: cjxfuentes610@gmail.com
+  linkedin: https://www.linkedin.com/in/carlos-fuentes-jr-64b5988a/
+  discord: https://discord.gg/9UMFZuFN
+  twitter: https://twitter.com/DJTRAXNFT
+  instagram: https://www.instagram.com/djtraxnft/
+  youtube: https://www.youtube.com/c/CJFuentes
+  opensea: https://opensea.io/collection/djtraxnft
+  image: /images/partners/djtraxnft.jpg
+  description: Event coordinator family project.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small Studio
+  pois: 
+    - (-88,-20)
+  payments:
+    - Crypto
+    - PayPal
+    - Credit Card
+  tags:
+    - Wearables
+    - Event Production
