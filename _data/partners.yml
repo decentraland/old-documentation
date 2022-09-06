@@ -2867,3 +2867,30 @@
     - Land Rental 
     - Consultant
     - Event Production
+
+- name: Sango
+  partnerId: 120
+  default_link: https://sketchfab.com/SangoOfTheEast/models
+  sketchfab: https://sketchfab.com/SangoOfTheEast/models
+  email: sangooftheeast@protonmail.com
+  twitter: https://twitter.com/SangoOfTheEast
+  discord: https://discord.gg/HNNHnkyB9X
+  image: /images/partners/sango.JPG
+  description: Decentraland events, wearables and scenes.
+  region: 
+  location: Global
+  languages:
+    - English
+  team_size: Small Studio
+  pois: 
+  - (110,-23)
+  - (98,101)
+  - (-22,-130)
+  payments:
+    - Crypto
+  tags:
+    - Architecture
+    - Land Rental 
+    - Consultant
+    - Event Production
+    - Wearable Design
