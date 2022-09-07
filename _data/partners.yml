@@ -2195,7 +2195,7 @@
     - Consulting
 
 - name: DCL Curations
-  partnerId: 94
+  partnerId: 124
   default_link: https://www.dclcurations.com/
   website: https://www.dclcurations.com/
   email: DCLCurations@gmail.com
@@ -2203,7 +2203,7 @@
   twitter: https://twitter.com/DCLCurations
   youtube: https://www.youtube.com/dclcurations
   image: /images/partners/dcl-curations.jpeg
-  description: Metaverse Consulting and Educational company focused on onboarding new companies and individuals to Decentraland and handling end-to-end project management
+  description: Metaverse Consulting and Educational company focused on onboarding new companies and individuals to Decentraland and handling end-to-end project management.
   region: North America
   location: United States
   languages:
