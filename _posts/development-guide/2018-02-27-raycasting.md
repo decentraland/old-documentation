@@ -231,7 +231,7 @@ class RaycastSystem implements ISystem {
   }
 }
 
-engine.addSystem(RaycastSystem)
+engine.addSystem(new RaycastSystem())
 ```
 
 This example runs two raycast queries on every frame of the scene. Since they each have a different id, the requests from the first query and from the second query are handled on different queues that are independent from the other.
