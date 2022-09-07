@@ -2940,3 +2940,34 @@
     - Wire Transfer
   tags:
     - Wearable Design
+    
+- name: Tangpoko
+  partnerId: 123
+  default_link: https://www.tangpoko.com/
+  website: https://www.tangpoko.com/
+  email: tangpokoDCL@gmail.com
+  twitter: https://twitter.com/tangpoko
+  discord: https://discordapp.com/users/798624519426015294
+  instagram: https://www.instagram.com/dcl.tangpoko/
+  linkedin: www.linkedin.com/in/tangpoko
+  image: /images/partners/tanpoko.png
+  description: Specializing in 3D Design, Live Experience Curation, Talent and Event Management.
+  region: North America
+  location: Canada
+  languages:
+    - English
+  team_size: Individual
+  pois: 
+    - (-103,-97)
+    - (-100,-997) 
+    - (-59,-25) 
+    - (19,144)
+  payments:
+    - Crypto
+    - Wire Transfer
+    - PayPal
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
+    - Consulting
