@@ -169,7 +169,7 @@ For simple implementations of the POAP booth:
 ```ts
 import { Dispenser } from "./booth/dispenser"
 
-const POAPBooth = new Dispenser(
+const POAPBooth = createDispenser(
   {
     position: new Vector3(8, 0, 8),
     rotation: Quaternion.Euler(0, 0, 0),
