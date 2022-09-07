@@ -2894,3 +2894,24 @@
     - Consulting
     - Event Production
     - Wearable Design
+
+- name: DWP
+  partnerId: 121
+  default_link: https://www.dwp.com/
+  website: https://www.dwp.com/
+  email: andrew@dwpmetatecture.com
+  linkedin: https://www.linkedin.com/in/andrew-phornprapha-67b49097/
+  image: /images/partners/dwp.PNG
+  description: Web3 Studio with background in architecture and interior design.
+  region: Asia
+  location: Thailand
+  languages:
+    - English
+  team_size: Small Studio
+  pois: 
+  payments:
+    - Crypto
+    - Wire Transfer
+    - Credit Card
+  tags:
+    - Wearable Design
