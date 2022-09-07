@@ -2916,3 +2916,58 @@
     - Credit Card
   tags:
     - Wearable Design
+
+- name: Bardez32
+  partnerId: 122
+  default_link: https://www.artstation.com/bardez32
+  website: https://www.artstation.com/bardez32
+  email: bardez32@gmail.com
+  twitter: https://twitter.com/bardez32
+  opensea: https://opensea.io/GimmeUrCrypto
+  instagram: https://www.instagram.com/bardez32/
+  linkedin: https://www.linkedin.com/in/oscar-barrales-hernández-b591836a
+  image: /images/partners/bardez32.jpg
+  description: Taking your Lowpoly ideas to the next level.
+  region: North America
+  location: Canada
+  languages:
+    - English
+    - Spanish
+  team_size: Individual
+  pois: 
+  payments:
+    - Crypto
+    - Wire Transfer
+  tags:
+    - Wearable Design
+    
+- name: Tangpoko
+  partnerId: 123
+  default_link: https://www.tangpoko.com/
+  website: https://www.tangpoko.com/
+  email: tangpokoDCL@gmail.com
+  twitter: https://twitter.com/tangpoko
+  discord: https://discordapp.com/users/798624519426015294
+  instagram: https://www.instagram.com/dcl.tangpoko/
+  linkedin: www.linkedin.com/in/tangpoko
+  image: /images/partners/tanpoko.png
+  description: Specializing in 3D Design, Live Experience Curation, Talent and Event Management.
+  region: North America
+  location: Canada
+  languages:
+    - English
+  team_size: Individual
+  pois: 
+    - (-103,-97)
+    - (-100,-997) 
+    - (-59,-25) 
+    - (19,144)
+  payments:
+    - Crypto
+    - Wire Transfer
+    - PayPal
+  tags:
+    - Wearable Design
+    - Architecture
+    - Event Production
+    - Consulting
