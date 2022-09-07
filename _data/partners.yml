@@ -2801,6 +2801,7 @@
     - German
   team_size: Individual
   pois: 
+    - (-25,-125)
   payments:
     - Crypto
     - PayPal
