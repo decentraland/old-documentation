@@ -2999,3 +2999,29 @@
     - Consulting
     - Wearable Design
     - Land Rental
+
+- name: SirDropBearTV
+  partnerId: 126
+  default_link: https://www.twitch.tv/sirdropbeartv
+  website: https://www.twitch.tv/sirdropbeartv
+  email: sirdropbeareth@gmail.com
+  linkedin: https://www.linkedin.com/in/paul-de-la-hosseraye-ᵍᵐ-87245291/
+  discord: https://discordapp.com/users/240727963841200129
+  twitter: https://twitter.com/sirdropbeartv
+  opensea: https://opensea.io/SirDropBearTV
+  image: /images/partners/sirdropbear.jpeg
+  description: Australian Streamer, Wearable creator and building Creator with scene design. Community Driven and a secret drop bear ;)
+  region: Oceania
+  location: Australia
+  languages:
+    - English
+    - French
+  team_size: Individual
+  payments:
+    - Crypto
+    - Paypal
+  pois:
+  tags:
+    - Architecture
+    - Wearable Design
+    
