@@ -2970,3 +2970,32 @@
     - Event Production
     - Consulting
     - Wearable Design
+
+- name: Land Vault
+  partnerId: 125
+  default_link: https://landvault.io/
+  website: https://landvault.io/
+  email: paul.dlh@landvault.io
+  linkedin: https://www.linkedin.com/in/paul-de-la-hosseraye-ᵍᵐ-87245291/
+  discord: https://discord.gg/landvault
+  twitter: https://twitter.com/TheLandVault
+  youtube: https://www.youtube.com/channel/UCzZivXDhDRx97GsSTs5iQaA
+  image: /images/partners/landvault.PNG
+  description: We are an end-to-end metaverse solutions provider who can help you buy or rent land, build and design a unique location, activate it for consumers to enjoy, and even offer reporting metrics about their journey.We have been building for some of the world's biggest brands since 2020. If you can imagine it we can create it, check out some of our previous work
+  region: Europe
+  location: United Kingdom
+  languages:
+    - English
+    - French
+  team_size: Large Srudio
+  payments:
+    - Crypto
+    - Wire Transfer
+  pois:
+    - (130,133)
+  tags:
+    - Architecture
+    - Event Production
+    - Consulting
+    - Wearable Design
+    - Land Rental
