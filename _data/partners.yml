@@ -2890,29 +2890,6 @@
     - Credit Card
   tags:
     - Wearable Design
-
-- name: Bardez32
-  partnerId: 122
-  default_link: https://www.artstation.com/bardez32
-  website: https://www.artstation.com/bardez32
-  email: bardez32@gmail.com
-  twitter: https://twitter.com/bardez32
-  linkedin: https://www.linkedin.com/in/oscar-barrales-hern%C3%A1ndez-b591836a/
-  opensea: https://opensea.io/GimmeUrCrypto
-  instagram: https://www.instagram.com/bardez32/
-  image: /images/partners/bardez32.jpg
-  description: Taking your Lowpoly ideas to the next level.
-  region: North America
-  location: Canada
-  languages:
-    - English
-    - Spanish
-  team_size: Individual
-  payments:
-    - Crypto
-    - Wire Transfer
-  tags:
-    - Wearable Design
     
 - name: Tangpoko
   partnerId: 123
