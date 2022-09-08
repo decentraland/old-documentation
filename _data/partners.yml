@@ -3023,4 +3023,30 @@
   tags:
     - Architecture
     - Wearable Design
-    
+
+- name: Verse Digital
+  partnerId: 127
+  default_link: https://www.versedigital.org/
+  website: https://www.versedigital.org/
+  email: Justin@versedigital.org
+  linkedin: https://www.linkedin.com/in/justin-edwards-876a193/
+  instagram: https://www.versedigital.org/instagram.com2
+  image: /images/partners/versedigital.png
+  description: We connect with aspirational brands, helping them navigate the complexities of the Metaverse. We manage the end-to-end process from understanding your requirements to activating your experience.
+  region: Europe
+  location: United Kingdom
+  languages:
+    - English
+  team_size: Large Studio
+  payments:
+    - Crypto
+    - Paypal
+    - Wire Transfer
+    - Credit Card
+  tags:
+    - Wearable Design
+    - Architecture
+    - Land Rental
+    - Event Production
+    - Consulting
+
