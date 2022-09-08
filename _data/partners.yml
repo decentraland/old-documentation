@@ -3050,3 +3050,31 @@
     - Event Production
     - Consulting
 
+- name: Carl Fravel, President, Applied-Talent LLC
+  partnerId: 128
+  default_link: https://dclconf.com/
+  website: https://dclconf.com/
+  email: cfravel@applied-talent.com
+  linkedin: https://linkedin.com/in/cfravel
+  twitter: https://twitter.com/carlfravel
+  discord: https://discordapp.com/users/281637083712454656
+  youtube: https://www.youtube.com/c/CarlFravel1
+  opensea: https://opensea.io/carl-fravel
+  instagram: https://www.instagram.com/cfravel/
+  image: /images/partners/carlfravel.png
+  description: Full-service metaverse scene, event and technology provider. 
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small team
+  payments:
+    - Crypto
+    - Paypal
+    - Wire Transfer
+  tags:
+    - Architecture
+    - Land Rental
+    - Event Production
+    - Consulting
+
