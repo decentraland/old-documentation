@@ -3166,3 +3166,25 @@
   tags:
     - Wearable Design
     - Land Rental
+
+- name: Amaxin
+  partnerId: 133
+  default_link: https://fiverr.com/dukeoearl
+  website: https://fiverr.com/dukeoearl
+  email: duke.freelancing@gmail.com
+  discord: https://discordapp.com/users/394035045947539478
+  linkedin: https://www.linkedin.com/in/duke-ngboki-440381188
+  instagram: https://instagram.com/amaxin
+  image: /images/partners/amaxin.png
+  description: Creative with Codes, and 3D NFTs. Exploring Blockchain and helping others aboard.
+  region: Africa
+  location: Nigeria
+  languages:
+    - English
+    - French
+  team_size: Small team
+  payments:
+    - Crypto
+    - Wire Transfer
+  tags:
+    - Wearable Design
