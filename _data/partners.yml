@@ -1091,7 +1091,7 @@
   languages:
     - English
     - French
-  team_size: Individual
+  team_size: individual
   payments:
     - Crypto
     - Wire Transfer
@@ -1908,6 +1908,7 @@
   tags:
     - Wearable Design
     - Architecture
+
 - name: Chestnutbruze
   partnerId: 83
   default_link: https://twitter.com/Sevalla_Art
