@@ -3188,3 +3188,24 @@
     - Wire Transfer
   tags:
     - Wearable Design
+    
+- name: Hitbox Home Decor
+  partnerId: 134
+  default_link: https://www.hitbox.io
+  website: https://www.hitbox.io
+  email: hitboxDCL@gmail.com
+  discord: https://discord.com/channels/985241694217842788/985241694217842790
+  sketchfab: https://sketchfab.com/hitbox
+  image: /images/partners/hitbox.png
+  description: Hitbox is a Home Decor showroom geared towards building spaces in Decentraland!
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Small team
+  payments:
+    - PayPal
+  pois: 
+    - (-135,25)
+  tags:
+    - Architecture
