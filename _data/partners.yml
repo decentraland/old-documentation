@@ -3125,3 +3125,23 @@
     - Architecture
     - Wearable Design
 
+- name: Creators Labs
+  partnerId: 131
+  default_link: https://creator-labs.io/
+  website: https://creator-labs.io/
+  email: creatorlabs3d@gmail.com
+  twitter: https://twitter.com/creatorlabsx
+  instagram: https://instagram.com/creatorlabs.x
+  image: /images/partners/creatorlabs.jpeg
+  description: Creator Labs is a 3D & Motion Design agency in the Caribbean specialising in NFT Production, Animation, Digital Wearables, Metaverse Events and Experiences.
+  region: Europe
+  location: Spain
+  languages:
+    - English
+  team_size: Small team
+  payments:
+    - Crypto
+    - Wire Transfer
+  tags:
+    - Event Production
+    - Wearable Design
