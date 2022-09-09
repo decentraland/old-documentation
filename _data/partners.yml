@@ -3103,3 +3103,25 @@
     - Wearable Design
     - Consulting
 
+- name: Maserphaz
+  partnerId: 130
+  default_link: https://twitter.com/Maserphaz 
+  email: maserphaz@gmail.com
+  twitter: https://twitter.com/Maserphaz
+  discord: https://discordapp.com/users/922240539720560721
+  opensea: https://opensea.io/maserphaz
+  image: /images/partners/maserphaz.png
+  description: It's not weird, it's abstract.
+  region: North America
+  location: United States
+  languages:
+    - English
+  team_size: Individual
+  payments:
+    - Crypto
+    - Wire Transfer
+    - Paypal
+  tags:
+    - Architecture
+    - Wearable Design
+
