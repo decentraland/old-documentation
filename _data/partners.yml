@@ -3145,3 +3145,25 @@
   tags:
     - Event Production
     - Wearable Design
+
+- name: The Clan
+  partnerId: 132
+  default_link: https://twitter.com/thesanninclan
+  email: thesanninclan@gmail.com
+  twitter: https://twitter.com/thesanninclan
+  discord: https://discord.com/invite/PuMtbxmXRe
+  image: /images/partners/theclan.jpeg
+  description: The Clan is a team of 3D artists specialized in fictional weaponry and wearable attire for Decentraland. Hosting art expositions and music performances from Miami local artists. Short-term LAND rental also available.
+  region: North America
+  location: United States
+  languages:
+    - English
+    - Spanish
+  team_size: Small team
+  payments:
+    - Crypto
+    - Credit Card
+  tags:
+    - Event Production
+    - Wearable Design
+    - Land Rental
