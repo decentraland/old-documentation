@@ -11,7 +11,7 @@
   email: hello@dapp-craft.com
   youtube: https://www.youtube.com/channel/UCIibGAk2q7tJWWiyWrOhYGw
   image: /images/partners/dappcraft.png
-  description: DAPPCRAFT is the agency for the Metaverses with a full-cycle production creating experience. The main idea of our team is to give the Metaverses deep and profound meanings. Our goal is to explore the boundaries of what is possible, shaping the future today. We've created many iconic projects for the industry. Our clients included top world companies and brands like Playboy, NASA, Coca-Cola, Guo Pei, Mastercard, Hanson Robotics, Metamask, Kraken, Bored Ape Yacht Club, Unilever and etc.
+  description: DAPPCRAFT is the agency for the Metaverses with a full-cycle production creating experience. The main idea of our team is to give the Metaverses deep and profound meanings. Our goal is to explore the boundaries of what is possible, shaping the future today. We've created many iconic projects for the industry. Our clients included top world companies and brands like Playboy, NASA, Coca-Cola, Guo Pei, Mastercard, Hanson Robotics, Metamask, Kraken, Bored Ape Yacht Club, Unilever, etc.
   tags:
     - Wearable Design
     - Architecture
@@ -26,6 +26,7 @@
   location: Singapore
   region: Asia
   team_size: Large Studio
+  
 - name: Low Poly Models
   partnerId: 2
   default_link: https://www.lowpolymodelsworld.com/
