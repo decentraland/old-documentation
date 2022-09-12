@@ -3210,3 +3210,27 @@
     - (-135,25)
   tags:
     - Architecture
+
+- name: Eyes Of Fashion
+  partnerId: 135
+  default_link: https://linktr.ee/EyesofFashion
+  website: https://linktr.ee/EyesofFashion
+  email: contact@eyesoffashion.art
+  discord: https://discord.gg/eyesoffashion
+  twitter: https://twitter.com/eyesoFashionNFT
+  instagram: https://instagram.com/eyesofashionnft
+  youtube: https://www.youtube.com/channel/UCk61B2jISJNB_zTxyBmYsJQ
+  opensea: https://opensea.io/collection/eyesoffashionnft
+  image: /images/partners/eyesoffashion.png
+  description: Bridging fashion & art to Web3 while empowering women through education and innovation.
+  region: Europe
+  location: Israel
+  languages:
+    - English
+  team_size: Medium Studio
+  payments:
+    - Crypto
+    - Wire Transfer
+    - PayPal
+  tags:
+    - Wearable Design
