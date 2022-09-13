@@ -500,7 +500,7 @@ In order for Linked Wearables to work, the third parties need to provide an API 
 2. `@GET /registry/:registry-id/address/:address/assets/:id` - Validates if a DCL asset is owned by a user.
 3. `@GET /registry/:registry-id/owners-bloom-filter` - Retrieves a [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) as an hex value comprising all the owners a registry has.
 
-**Technical details and examples [here](https://github.com/decentraland/adr/blob/main/docs/ADR-42-third-party-assets-integration.md#third-party-resolver).**
+**Technical details and examples [here](https://github.com/decentraland/adr/blob/main/ADR/ADR-42-third-party-assets-integration.md#third-party-resolver).**
 
 In the next sub-sections we'll provide an explanation on how to build the mentioned API by using an implementation example of the many possible ones.
 
